@@ -7,11 +7,6 @@ uses Winapi.Windows, System.IOUtils, System.Classes, SysUtils,  IdBaseComponent,
   FireDAC.Stan.Error,  FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def, FireDAC.Stan.Pool,
   FireDAC.Stan.Async,  FireDAC.Phys, FireDAC.Comp.Client,FireDAC.Stan.Param;
 
-
-  procedure PCMConnect;
-  procedure PCMDisconnect;
-
-
   procedure Shutdown;
 //  procedure BackupFiles;
   procedure BackupDatabase;
@@ -21,10 +16,6 @@ uses Winapi.Windows, System.IOUtils, System.Classes, SysUtils,  IdBaseComponent,
   procedure ExecuteAndWaitFor(FileName: AnsiString);
   procedure CopyFileSelf(bCompress,bCopy: Integer;sPath,sFile: String);
   procedure RunAndWaitShell(Executable, Parameter, Directory: STRING; ShowParameter: INTEGER);
-var
-  con_PCM: TFDConnection;
-  qWork2: TFDQuery;
-  qWork3: TFDQuery;
 
 type
   TZipDateien = array of string;
@@ -89,29 +80,6 @@ begin
   end;
 end;
 
-procedure PCMConnect;
-begin
-  con_PCM:= TFDConnection.Create(nil);
-  con_PCM.Params.DriverID := 'MySQL';;
-  con_PCM.Params.Add('Server=127.0.0.1');
-  con_PCM.Params.Add('Port=3307');
-  con_PCM.Params.Database := 'pcm_Service';
-  con_PCM.Params.UserName := 'root';
-  con_PCM.Params.Password := 'pcm';
-  con_PCM.LoginPrompt:= false;
-  con_PCM.Connected:= true;
-  qWork2:= TFDQuery.Create(nil);
-  qWork2.Connection:= con_PCM;
-  qWork3:= TFDQuery.Create(nil);
-  qWork3.Connection:= con_PCM;
-end;
-
-procedure PCMDisconnect;
-begin
-  qWork2.Free;
-  qWork3.Free;
-  con_PCM.Free;
-end;
 
 procedure BackupDatabase;
 begin
@@ -139,8 +107,7 @@ var
 
 begin
   try
-    PCMConnect;
-    qWork2.SQL.Text:= 'Select ssd.timeactive,ssd.timesd,ssd.timesdrepeat,ssd.repeatMontag, ' +
+    dm_PCM.qry_work.SQL.Text:= 'Select ssd.timeactive,ssd.timesd,ssd.timesdrepeat,ssd.repeatMontag, ' +
                                   'ssd.repeatDienstag,ssd.repeatMittwoch,ssd.repeatDonnerstag,ssd.repeatFreitag, ' +
                                   'ssd.repeatSamstag,ssd.repeatSonntag,ssd.intervallactive,ssd.intervallminutes , ssd.id, ssd.timenext, ' +
                                   'CASE ' +
@@ -165,26 +132,26 @@ begin
                                   'From service_config_shutdown ssd ' +
                                   'LEFT oUTER JOIN service_config_shutdown_intervall ssdi ON ssd.toleranz = ssdi.Nummer';
     try
-      qWork2.open;
+      dm_PCM.qry_work.open;
     except
       on e:Exception do
-        Writelog(PCM_Logname, e.message,2);
+        Writelog(PCM_Logname,e.message,2);
 
     end;
-    btimer:= qWork2.FieldByName('timeactive').AsBoolean;
-    dtdatetime:= qWork2.FieldByName('timesd').AsDateTime;
-    dtdatetimeNext:= qWork2.FieldByName('timenext').AsDateTime;
-    srepeat:= qWork2.FieldByName('timesdrepeat').AsBoolean;
-    srepeatSon:= qWork2.FieldByName('repeatSonntag').AsBoolean;
-    srepeatMon:= qWork2.FieldByName('repeatMontag').AsBoolean;
-    srepeatDie:= qWork2.FieldByName('repeatDienstag').AsBoolean;
-    srepeatMit:= qWork2.FieldByName('repeatMittwoch').AsBoolean;
-    srepeatDon:= qWork2.FieldByName('repeatDonnerstag').AsBoolean;
-    srepeatFre:= qWork2.FieldByName('repeatFreitag').AsBoolean;
-    srepeatSam:= qWork2.FieldByName('repeatSamstag').AsBoolean;
-    iDiffToleranz:= qWork2.FieldByName('toleranz').AsFloat;
-    iID:= qWork2.FieldByName('ID').AsInteger;
-    qWork2.close;
+    btimer:= dm_PCM.qry_work.FieldByName('timeactive').AsBoolean;
+    dtdatetime:= dm_PCM.qry_work.FieldByName('timesd').AsDateTime;
+    dtdatetimeNext:= dm_PCM.qry_work.FieldByName('timenext').AsDateTime;
+    srepeat:= dm_PCM.qry_work.FieldByName('timesdrepeat').AsBoolean;
+    srepeatSon:= dm_PCM.qry_work.FieldByName('repeatSonntag').AsBoolean;
+    srepeatMon:= dm_PCM.qry_work.FieldByName('repeatMontag').AsBoolean;
+    srepeatDie:= dm_PCM.qry_work.FieldByName('repeatDienstag').AsBoolean;
+    srepeatMit:= dm_PCM.qry_work.FieldByName('repeatMittwoch').AsBoolean;
+    srepeatDon:= dm_PCM.qry_work.FieldByName('repeatDonnerstag').AsBoolean;
+    srepeatFre:= dm_PCM.qry_work.FieldByName('repeatFreitag').AsBoolean;
+    srepeatSam:= dm_PCM.qry_work.FieldByName('repeatSamstag').AsBoolean;
+    iDiffToleranz:= dm_PCM.qry_work.FieldByName('toleranz').AsFloat;
+    iID:= dm_PCM.qry_work.FieldByName('ID').AsInteger;
+    dm_PCM.qry_work.close;
     bExec:= false;
     if dtdatetime = dtdatetimeNext then
       dtdatetimeNext:= dtdatetime;
@@ -257,9 +224,9 @@ begin
         begin
           WriteLog(PCM_LOGname,'aktuelles Datum/Zeit: ' + formatdatetime('dd.mm.yyyy', Now()) + ' ' + formatdatetime('hh:nn:ss', Now()),0);
           WriteLog(PCM_LOGname,'nächster zeitpunkt: ' + formatdatetime('dd.mm.yyyy', dtDatetimeNext) + ' ' + formatdatetime('hh:nn:ss', dtDatetimeNext),0);
-          qWork2.SQL.Text:= 'UPDATE service_config_shutdown SET timenext = TIMESTAMPADD(Day, 1, timenext) Where ID = :ID';
-          qWork2.ParamByName('ID').AsInteger:= iID;
-          qWork2.ExecSQL;
+          dm_PCM.qry_Work.SQL.Text:= 'UPDATE service_config_shutdown SET timenext = TIMESTAMPADD(Day, 1, timenext) Where ID = :ID';
+          dm_PCM.qry_Work.ParamByName('ID').AsInteger:= iID;
+          dm_PCM.qry_Work.ExecSQL;
           iDiff := Now() - dtDatetimeNext;
           if (bExec) and (iDiff <= iDiffToleranz ) and (iDiff >= 0.0 ) then
           begin
@@ -272,8 +239,7 @@ begin
         end;
       end;
     end;
-  finally
-    PCMDisconnect;
+  except
   end;
 end;
 
@@ -286,50 +252,49 @@ var
 //  wStd, wMin, wSec, wMSec: Word;
 begin
   // Backup erstellen
-  PCMConnect;
-  qwork2.SQL.Text:= 'SELECT * FROM service_config_quellcode_apps';
-  qwork2.open;
+  dm_PCM.qry_Work.Connection:= dm_PCM.con_PCM;
+  dm_PCM.qry_Work.SQL.Text:= 'SELECT * FROM service_config_quellcode_apps';
+  dm_PCM.qry_Work.open;
 
-  while not qwork2.Eof do
+  while not dm_PCM.qry_Work.Eof do
   begin
-    if qwork2.FieldByName('Aktiv').AsInteger = 1 then
+    if dm_PCM.qry_Work.FieldByName('Aktiv').AsInteger = 1 then
     begin
-      qwork3.SQL.Text:= 'SELECT * FROM service_config_quellcode_dir Where Backup = 1 and ID_Service_Config_apps = :ID';
-      qwork3.ParamByName('ID').AsInteger:= qwork2.FieldByName('ID').AsInteger;
-      qwork3.open;
-      for iTemp := 1 to qwork3.RecordCount do
+      dm_PCM.qry_Work1.SQL.Text:= 'SELECT * FROM service_config_quellcode_dir Where Backup = 1 and ID_Service_Config_apps = :ID';
+      dm_PCM.qry_Work1.ParamByName('ID').AsInteger:= dm_PCM.qry_Work.FieldByName('ID').AsInteger;
+      dm_PCM.qry_Work1.open;
+      for iTemp := 1 to dm_PCM.qry_Work1.RecordCount do
       begin
-        sFileTo := qwork2.FieldByName('Destination').AsString;
-        sFileTo := StringReplace(sFileTo, '%VERSION%',  StringReplace(qwork2.FieldByName('Version').AsString, '.', '', [rfReplaceAll]),[rfReplaceAll]);
+        sFileTo := dm_PCM.qry_Work.FieldByName('Destination').AsString;
+        sFileTo := StringReplace(sFileTo, '%VERSION%',  StringReplace(dm_PCM.qry_Work.FieldByName('Version').AsString, '.', '', [rfReplaceAll]),[rfReplaceAll]);
         if Copy(sFileTo, Length(sFileTo), 1) <> '\' then
           sFileTo := sFileTo + '\';
         System.SysUtils.ForceDirectories(sFileTo);
 
-        sFileTo := sFileTo + qwork3.FieldByName('Program').AsString + '.zip';
-        sFileToAlternate := ExtractFilePath(ParamStr(0)) + qwork3.FieldByName('Program').AsString + '.zip';
-        sFileFrom := qwork2.FieldByName('Source').AsString;
+        sFileTo := sFileTo + dm_PCM.qry_Work1.FieldByName('Program').AsString + '.zip';
+        sFileToAlternate := ExtractFilePath(ParamStr(0)) + dm_PCM.qry_Work1.FieldByName('Program').AsString + '.zip';
+        sFileFrom := dm_PCM.qry_Work.FieldByName('Source').AsString;
         if Copy(sFileFrom, Length(sFileFrom), 1) <> '\' then
           sFileFrom := sFileFrom + '\';
-        sFileFrom := sFileFrom + qwork3.FieldByName('Program').AsString;
-        if qwork3.FieldByName('Backup').AsInteger = 1 then
+        sFileFrom := sFileFrom + dm_PCM.qry_Work1.FieldByName('Program').AsString;
+        if dm_PCM.qry_Work1.FieldByName('Backup').AsInteger = 1 then
         begin
-          Zippen(sFileFrom, sFileTo,sFileToAlternate, qwork2.FieldByName('FileExt').asString);
+          Zippen(sFileFrom, sFileTo,sFileToAlternate, dm_PCM.qry_Work.FieldByName('FileExt').asString);
         end;
-        qwork3.Next
+        dm_PCM.qry_Work1.Next
       end;
-      qwork3.Close;
+      dm_PCM.qry_Work1.Close;
     end;
-    qwork2.Next;
+    dm_PCM.qry_Work.Next;
   end;
-  qwork2.First;
+  dm_PCM.qry_Work.First;
 
-  while not qwork2.Eof do
+  while not dm_PCM.qry_Work.Eof do
   begin
-    CopyFileSelf(qwork2.FieldByName('Komprimieren').AsInteger,qwork2.FieldByName('Kopieren').AsInteger,qwork2.FieldByName('PfadInno').asString,qwork2.FieldByName('DateiInno').asString);
-    qwork2.Next;
+    CopyFileSelf(dm_PCM.qry_Work.FieldByName('Komprimieren').AsInteger,dm_PCM.qry_Work.FieldByName('Kopieren').AsInteger,dm_PCM.qry_Work.FieldByName('PfadInno').asString,dm_PCM.qry_Work.FieldByName('DateiInno').asString);
+    dm_PCM.qry_Work.Next;
   end;
 end;
-
 procedure Zippen(sFrom, sTo,sToAlternate, sExt: String);
 var
 //  ZipDateien:TZipDateien;
@@ -367,7 +332,6 @@ begin
     END;
   end;
 end;
-
 procedure ExecuteAndWaitFor(FileName: AnsiString);
 var
   StartupInfo: TStartupInfoA;
