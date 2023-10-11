@@ -237,7 +237,7 @@ begin
   if not DirectoryExists(GetEnvironmentVariable('LOCALAPPDATA') + '\PCM') then
     CreateDir(GetEnvironmentVariable('LOCALAPPDATA') + '\PCM');
 
-  if (AProgram = 'PCMService') or (AProgram = 'PCMAppserver') or (AProgram = 'PCMBackupService')then
+  if (AProgram = 'PCMRestserver') or (AProgram = 'PCMService') or (AProgram = 'PCMAppserver') or (AProgram = 'PCMBackupService')then
     sFilePath := ExtractFilePath(paramstr(0)) + AProgram + sTag + '.log'
   else
     sFilePath := GetEnvironmentVariable('LOCALAPPDATA') + '\PCM\'+ AProgram + sTag + '.log';

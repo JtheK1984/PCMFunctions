@@ -2,8 +2,8 @@ object frm_PCM_System: Tfrm_PCM_System
   Left = 0
   Top = 0
   Caption = 'frm_PCM_System'
-  ClientHeight = 480
-  ClientWidth = 1055
+  ClientHeight = 479
+  ClientWidth = 1051
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -19,14 +19,14 @@ object frm_PCM_System: Tfrm_PCM_System
     PanelStyle.Active = True
     Style.BorderStyle = ebsNone
     TabOrder = 0
-    ExplicitWidth = 1063
-    ExplicitHeight = 481
-    Height = 480
-    Width = 1055
+    ExplicitWidth = 1059
+    ExplicitHeight = 480
+    Height = 479
+    Width = 1051
     object grpbx_SysInfo_CPU: TcxGroupBox
       AlignWithMargins = True
-      Left = 3
-      Top = 121
+      Left = 2
+      Top = 120
       Margins.Left = 0
       Margins.Top = 6
       Margins.Right = 0
@@ -41,9 +41,9 @@ object frm_PCM_System: Tfrm_PCM_System
       Style.Font.Style = [fsBold]
       Style.IsFontAssigned = True
       TabOrder = 0
-      ExplicitWidth = 1057
+      ExplicitWidth = 1055
       Height = 87
-      Width = 1049
+      Width = 1047
       object lbl_ProcCount: TcxLabel
         Left = 16
         Top = 35
@@ -125,8 +125,8 @@ object frm_PCM_System: Tfrm_PCM_System
     end
     object grpbx_SysInfo_Ram: TcxGroupBox
       AlignWithMargins = True
-      Left = 3
-      Top = 214
+      Left = 2
+      Top = 213
       Margins.Left = 0
       Margins.Top = 6
       Margins.Right = 0
@@ -141,9 +141,9 @@ object frm_PCM_System: Tfrm_PCM_System
       Style.Font.Style = [fsBold]
       Style.IsFontAssigned = True
       TabOrder = 1
-      ExplicitWidth = 1057
+      ExplicitWidth = 1055
       Height = 66
-      Width = 1049
+      Width = 1047
       object lbl_RAMFree: TcxLabel
         Left = 16
         Top = 35
@@ -199,8 +199,8 @@ object frm_PCM_System: Tfrm_PCM_System
     end
     object grpbx_SysInfo_Resource: TcxGroupBox
       AlignWithMargins = True
-      Left = 3
-      Top = 286
+      Left = 2
+      Top = 285
       Margins.Left = 0
       Margins.Top = 6
       Margins.Right = 0
@@ -215,45 +215,39 @@ object frm_PCM_System: Tfrm_PCM_System
       Style.Font.Style = [fsBold]
       Style.IsFontAssigned = True
       TabOrder = 2
-      ExplicitWidth = 1057
+      ExplicitWidth = 1055
       Height = 138
-      Width = 1049
+      Width = 1047
       object prgbr_ProcUse: TcxProgressBar
         AlignWithMargins = True
-        Left = 16
-        Top = 94
+        Left = 15
+        Top = 97
         Margins.Left = 13
         Margins.Right = 13
         Margins.Bottom = 0
         Align = alTop
         AutoSize = False
         TabOrder = 0
-        ExplicitLeft = 15
-        ExplicitTop = 97
-        ExplicitWidth = 1025
         Height = 22
         Width = 1017
       end
       object prgbr_RamUse: TcxProgressBar
         AlignWithMargins = True
-        Left = 16
-        Top = 44
+        Left = 15
+        Top = 47
         Margins.Left = 13
         Margins.Right = 13
         Margins.Bottom = 0
         Align = alTop
         AutoSize = False
         TabOrder = 1
-        ExplicitLeft = 15
-        ExplicitTop = 47
-        ExplicitWidth = 1025
         Height = 22
         Width = 1017
       end
       object lbl_ProcUse: TcxLabel
         AlignWithMargins = True
-        Left = 16
-        Top = 74
+        Left = 15
+        Top = 77
         Margins.Left = 13
         Margins.Top = 8
         Margins.Right = 13
@@ -268,13 +262,13 @@ object frm_PCM_System: Tfrm_PCM_System
         Style.Font.Style = []
         Style.IsFontAssigned = True
         Transparent = True
-        ExplicitTop = 59
+        ExplicitTop = 81
         ExplicitWidth = 1025
       end
       object lbl_RamUse: TcxLabel
         AlignWithMargins = True
-        Left = 16
-        Top = 24
+        Left = 15
+        Top = 27
         Margins.Left = 13
         Margins.Top = 9
         Margins.Right = 13
@@ -289,14 +283,13 @@ object frm_PCM_System: Tfrm_PCM_System
         Style.Font.Style = []
         Style.IsFontAssigned = True
         Transparent = True
-        ExplicitTop = 5
         ExplicitWidth = 1025
       end
     end
     object grpbx_SysInfo_Sys: TcxGroupBox
       AlignWithMargins = True
-      Left = 3
-      Top = 9
+      Left = 2
+      Top = 8
       Margins.Left = 0
       Margins.Top = 6
       Margins.Right = 0
@@ -312,9 +305,9 @@ object frm_PCM_System: Tfrm_PCM_System
       Style.Font.Style = [fsBold]
       Style.IsFontAssigned = True
       TabOrder = 3
-      ExplicitWidth = 1057
+      ExplicitWidth = 1055
       Height = 106
-      Width = 1049
+      Width = 1047
       object lbl_Graphic: TcxLabel
         Left = 16
         Top = 56
