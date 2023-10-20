@@ -5,9 +5,12 @@ interface
 uses Winapi.Windows, System.IOUtils, System.Classes, SysUtils,  IdBaseComponent, IdComponent, IdTCPConnection,
   IdTCPClient, IdHTTP, Data.DB,DateUtils,winapi.shellapi, FireDAC.Stan.Intf,  FireDAC.Stan.Option,
   FireDAC.Stan.Error,  FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def, FireDAC.Stan.Pool,
-  FireDAC.Stan.Async,  FireDAC.Phys, FireDAC.Comp.Client,FireDAC.Stan.Param;
+  FireDAC.Stan.Async,  FireDAC.Phys, FireDAC.Comp.Client,FireDAC.Stan.Param, System.Json,REST.Types;
+
+  function CheckReccurence(AID: Integer; AStart: TDateTime; AWiederholung: string) :TDateTime;
 
   procedure Shutdown;
+  procedure SendPushNotification;
 //  procedure BackupFiles;
   procedure BackupDatabase;
   procedure BackupQuellcode;
@@ -23,6 +26,98 @@ type
 implementation
 
 uses PCM.Functions,PCM.main,PCM.Data;
+
+function CheckReccurence(AID: Integer; AStart: TDateTime; AWiederholung: string) :TDateTime;
+var
+  fWeekWiederholung,fDays: double;
+  sWiederholungDays,sDay,sInterval: String;
+  iDOw,iInterval, iMonat, iTag: Integer;
+  iJahrAkt,iMonatAkt,iTagakt: Word;
+begin
+  Result:= AStart;
+////////////////////////////////////////////////////////////////////////////////
+// Täglich                                                                    //
+////////////////////////////////////////////////////////////////////////////////
+  if Pos('FREQ=DAILY',Awiederholung) > 0 then
+  begin
+    if Pos('INTERVAL',Awiederholung) > 0 then
+    begin
+      fDays:= (Date - StrToDate(Copy(DateTimeToStr(AStart),1,10))) /2;
+      if frac(fdays * 10) = 0  then
+      begin
+        Result:= StrToDateTime(DateToStr(Date) + ' ' + Copy(DateTimetoStr(AStart),11,Length(DateTimetoStr(AStart))));
+      end;
+    end
+    else begin
+      Result:= StrToDateTime(DateToStr(Date) + ' ' + Copy(DateTimetoStr(AStart),11,Length(DateTimetoStr(AStart))));
+    end;
+
+  end;
+////////////////////////////////////////////////////////////////////////////////
+// Wöchentlich                                                                //
+////////////////////////////////////////////////////////////////////////////////
+  if Pos('FREQ=WEEKLY',Awiederholung) > 0 then
+  begin
+    if Pos('BYDAY',Awiederholung) > 0 then
+    begin
+      sWiederholungDays:= Copy(Awiederholung,Pos('BYDAY',Awiederholung) + 6,Length(Awiederholung));
+      iDow := DayOfWeek(Date);
+      case iDow of
+      1: sDay:= 'SU';
+      2: sDay:= 'MO';
+      3: sDay:= 'TU';
+      4: sDay:= 'WE';
+      5: sDay:= 'TH';
+      6: sDay:= 'FR';
+      7: sDay:= 'SA';
+      end;
+      if Pos(sday,sWiederholungDays) > 0 then
+      begin
+        if Pos('INTERVAL',Awiederholung) > 0 then
+        begin
+          sInterval:= Copy(Awiederholung,Pos('INTERVAL',Awiederholung)+9,Length(AWiederholung));
+          sInterval:= Copy(sInterval,1,Pos(';',sInterval) -1);
+          iInterval:=  StrToInt(sInterval);
+          fWeekWiederholung := WeekOf(date) - WeekOf(AStart);
+          fWeekWiederholung:= fWeekWiederholung / iInterval;
+          fWeekWiederholung:= frac(fWeekWiederholung);
+          if fWeekWiederholung = 0 then
+            Result:= StrToDateTime(DateToStr(Date) + ' ' + Copy(DateTimetoStr(AStart),11,Length(DateTimetoStr(AStart))));
+        end
+        else
+        begin
+          Result:= StrToDateTime(DateToStr(Date) + ' ' + Copy(DateTimetoStr(AStart),11,Length(DateTimetoStr(AStart))));
+        end;
+      end;
+    end
+    else begin
+      Result:= StrToDateTime(DateToStr(Date) + ' ' + Copy(DateTimetoStr(AStart),11,Length(DateTimetoStr(AStart))));
+    end;
+  end;
+////////////////////////////////////////////////////////////////////////////////
+// Monatlich                                                                  //
+////////////////////////////////////////////////////////////////////////////////
+  if Pos('FREQ=MONTHLY',Awiederholung) > 0 then
+  begin
+
+  end;
+////////////////////////////////////////////////////////////////////////////////
+// Jährlich                                                                  //
+////////////////////////////////////////////////////////////////////////////////
+  if Pos('FREQ=YEARLY',Awiederholung) > 0 then
+  begin
+    sWiederholungDays:= StringReplace(AWiederholung,'FREQ=YEARLY;','',[rfReplaceAll,rfIgnoreCase]);
+    sWiederholungDays:= Copy(sWiederholungDays,Pos('BYMONTHDAY=',sWiederholungDays) + 11,Length(sWiederholungDays));
+    iTag := StrToint(Copy(sWiederholungDays,1,Pos(';',sWiederholungDays)-1));
+    sWiederholungDays:= Copy(sWiederholungDays,Pos('BYMONTH=',sWiederholungDays) + 8,Length(sWiederholungDays));
+    iMonat := StrToint(Copy(sWiederholungDays,1,2));
+  end;
+  DecodeDate(Date,iJahrAkt,iMonatAkt,iTagakt);
+  if (iTagakt = iTag) and (iMonatAkt = iMonat)then
+    Result:= StrToDateTime(DateToStr(Date) + ' ' + Copy(DateTimetoStr(AStart),11,Length(DateTimetoStr(AStart))));
+
+end;
+
 
 procedure RunAndWaitShell(Executable, Parameter, Directory: STRING; ShowParameter: INTEGER);
 var
@@ -55,7 +150,6 @@ begin
   until (exitCode <> WAIT_TIMEOUT);
 
 end;
-
 procedure CopyFileSelf(bcompress,bCopy: Integer; sPath,sFile: String);
 var
   FPackerPath: String;
@@ -79,13 +173,10 @@ begin
     CopyFileEx(PChar(sfile), PChar(sPath + '\' +  ExtractFileName(sfile)), Nil, Nil, nil, 0);
   end;
 end;
-
-
 procedure BackupDatabase;
 begin
   ExecuteAndWaitFor(AnsiString(ExtractFilePath(ParamStr(0)) + 'PCMBackup\PCMBackupService.exe'));
 end;
-
 procedure Shutdown;
 var
   a: string;
@@ -242,14 +333,149 @@ begin
   except
   end;
 end;
+procedure SendPushNotification;
+var
+  sDateTime: TDateTime;
+  joBodyMain,joBodySub: TJSONObject;
+  sID,sUploadstate: String;
+  sWochentagBeginn, sWochentagEnde,sAlertBody: string;
 
+begin
+
+  // Alle Pushnotifications schicken
+  dm_PCM.qry_Work.Connection:= dm_PCM.con_PCM;
+  dm_PCM.qry_Work.SQL.Text:= 'SELECT spn.ID, bt.Devicetoken,spn.message FROM service_pushnotifications spn LEFT OUTER JOIN benutzer_token bt ON bt.ID_Benutzer = spn.ID_Benutzer';
+  dm_PCM.qry_Work.open;
+  while not dm_PCM.qry_Work.eof do
+  begin
+    WriteLog(PCM_Logname,'Token:= ' + dm_PCM.qry_Work.Fieldbyname('Devicetoken').asString,0);
+    if not Assigned(joBodyMain) then
+      joBodyMain:= TJSONObject.Create;
+    sID:= sID + ',' + dm_PCM.qry_Work.Fieldbyname('ID').asString;
+    joBodyMain.AddPair(TJSONPair.Create('to',dm_PCM.qry_Work.Fieldbyname('Devicetoken').asString));
+    joBodyMain.AddPair(TJSONPair.Create('priority','high'));
+    if not Assigned(joBodySub) then
+      joBodySub:= TJSONObject.Create;
+    joBodySub.AddPair(TJSONPair.Create('body',dm_PCM.qry_Work.Fieldbyname('Message').asString));
+    joBodySub.AddPair(TJSONPair.Create('title','Änderung festgestellt'));
+    joBodyMain.AddPair(TJSONPair.Create('notification',joBodySub));
+    sUploadstate:= joBodyMain.ToString;
+    dm_PCM.RESTRequest2.Params.AddItem('Authorization', 'Bearer AAAAKei3FDU:APA91bHidAp5KysKnJeC0zMHHs242AW-DN9GHepIEOQgqJeCni82g9l6m324q71H5Rn3yThrjLW-rH5W1P7KV4TC32eDeUUB4zeHmTv4AhTjTGVYc384BzUMUaDSY6x8KtqqkydOoq5a', pkHTTPHEADER, [poDoNotEncode]);
+    dm_PCM.RESTRequest2.Body.Add(joBodyMain);
+    dm_PCM.RESTRequest2.Execute;
+    dm_PCM.RESTRequest2.ClearBody;
+    dm_PCM.RESTRequest2.Body.ClearBody;
+    if Assigned(joBodySub) then
+      joBodySub:= nil;
+    if Assigned(joBodyMain) then
+      joBodyMain:= nil;
+    dm_pcm.qry_work.Next;
+
+  end;
+  dm_pcm.qry_work.close;
+  dm_PCM.qry_work.SQL.Text:= 'Delete FROM service_pushnotifications Where ID IN (0 ' + sid + ')';
+  dm_PCM.qry_work.ExecSQL;
+  dm_pcm.qry_work.SQL.Text:= 'SELECT mkal.*, btok.DeviceToken FROM manager_kalender mkal ' +
+                             'LEFT OUTER JOIN benutzer_token btok ON btok.iD_Benutzer = mkal.ID_Benutzer ' +
+                             'WHERE mkal.Reminder = true AND mkal.ReminderDate <= NOW()  AND TYP IN (1,2) ' +
+                             'ORDER BY btok.devicetoken, mkal.ReminderDate';
+  dm_pcm.qry_work.open;
+  while not dm_pcm.qry_work.Eof do
+  begin
+    case DayOfWeek(dm_pcm.qry_work.FieldByName('Start').AsDateTime) of
+      1: sWochentagBeginn:= 'So.';
+      2: sWochentagBeginn:= 'Mo.';
+      3: sWochentagBeginn:= 'Di.';
+      4: sWochentagBeginn:= 'Mi.';
+      5: sWochentagBeginn:= 'Do.';
+      6: sWochentagBeginn:= 'Fr.';
+      7: sWochentagBeginn:= 'Sa.';
+    end;
+
+    case DayOfWeek(dm_pcm.qry_work.FieldByName('Finish').AsDateTime) of
+      1: sWochentagEnde:= 'So.';
+      2: sWochentagEnde:= 'Mo.';
+      3: sWochentagEnde:= 'Di.';
+      4: sWochentagEnde:= 'Mi.';
+      5: sWochentagEnde:= 'Do.';
+      6: sWochentagEnde:= 'Fr.';
+      7: sWochentagEnde:= 'Sa.';
+    end;
+    sDateTime:= CheckReccurence(dm_pcm.qry_work.FieldByName('ID').asInteger,dm_pcm.qry_work.FieldByName('Start').asDatetime,dm_pcm.qry_work.FieldByName('wiederholung_text').asString);
+    if ((DateOf(sDateTime) = Date) and (dm_pcm.qry_work.FieldByName('wiederholung_text').asString <> '')) or (dm_pcm.qry_work.FieldByName('wiederholung_text').asString = '') then
+    begin
+      if dm_pcm.qry_work.FieldByName('CompleteDay').AsBoolean then
+      begin
+        if dm_pcm.qry_work.FieldByName('Finish').AsDateTime - dm_pcm.qry_work.FieldByName('Start').AsDateTime  = 1 then
+        begin
+          sAlertBody:= sWochentagBeginn + ' ' + FormatDateTime('dd.mm.yyyy',dm_pcm.qry_work.FieldByName('Start').AsDateTime);
+        end
+        else begin
+          sAlertBody:= sWochentagBeginn + ' ' + FormatDateTime('dd.mm.yyyy',dm_pcm.qry_work.FieldByName('Start').AsDateTime) + ' - ' + sWochentagEnde + ' ' + FormatDateTime('dd.mm.yyyy',dm_pcm.qry_work.FieldByName('Finish').AsDateTime);
+        end;
+      end
+      else begin
+        if dm_pcm.qry_work.FieldByName('Finish').AsDateTime - dm_pcm.qry_work.FieldByName('Start').AsDateTime  = 1 then
+        begin
+          sAlertBody:= sWochentagBeginn + ' ' + FormatDateTime('dd.mm.yyyy',dm_pcm.qry_work.FieldByName('Start').AsDateTime)
+        end
+        else begin
+          sAlertBody:= sWochentagBeginn + ' ' + FormatDateTime('dd.mm.yyyy hh:mm',dm_pcm.qry_work.FieldByName('Start').AsDateTime) + ' - ' + FormatDateTime('hh:mm',dm_pcm.qry_work.FieldByName('Finish').AsDateTime);
+        end;
+      end;
+    end
+    else begin
+      if dm_pcm.qry_work.FieldByName('CompleteDay').AsBoolean then
+      begin
+        if dm_pcm.qry_work.FieldByName('Finish').AsDateTime - dm_pcm.qry_work.FieldByName('Start').AsDateTime  = 1 then
+        begin
+          sAlertBody:= sWochentagBeginn + ' ' + FormatDateTime('dd.mm.yyyy',dm_pcm.qry_work.FieldByName('Start').AsDateTime);
+        end
+        else begin
+          sAlertBody:= sWochentagBeginn + ' ' + FormatDateTime('dd.mm.yyyy',dm_pcm.qry_work.FieldByName('Start').AsDateTime) + ' - ' + sWochentagEnde + ' ' + FormatDateTime('dd.mm.yyyy',dm_pcm.qry_work.FieldByName('Finish').AsDateTime);
+        end;
+      end
+      else begin
+        if dm_pcm.qry_work.FieldByName('Finish').AsDateTime - dm_pcm.qry_work.FieldByName('Start').AsDateTime  = 1 then
+        begin
+          sAlertBody:= sWochentagBeginn + ' ' + FormatDateTime('dd.mm.yyyy',dm_pcm.qry_work.FieldByName('Start').AsDateTime)
+        end
+        else begin
+          sAlertBody:= sWochentagBeginn + ' ' + FormatDateTime('dd.mm.yyyy hh:mm',dm_pcm.qry_work.FieldByName('Start').AsDateTime) + ' - ' + FormatDateTime('hh:mm',dm_pcm.qry_work.FieldByName('Finish').AsDateTime);
+        end;
+      end;
+    end;
+    if not Assigned(joBodyMain) then
+      joBodyMain:= TJSONObject.Create;
+    joBodyMain.AddPair(TJSONPair.Create('to',dm_PCM.qry_Work.Fieldbyname('Devicetoken').asString));
+    joBodyMain.AddPair(TJSONPair.Create('priority','high'));
+    if not Assigned(joBodySub) then
+      joBodySub:= TJSONObject.Create;
+    joBodySub.AddPair(TJSONPair.Create('body',sAlertBody));
+    joBodySub.AddPair(TJSONPair.Create('title',dm_PCM.qry_Work.Fieldbyname('Caption').asString));
+    joBodyMain.AddPair(TJSONPair.Create('notification',joBodySub));
+    sUploadstate:= joBodyMain.ToString;
+    dm_PCM.RESTRequest2.Params.AddItem('Authorization', 'Bearer AAAAKei3FDU:APA91bHidAp5KysKnJeC0zMHHs242AW-DN9GHepIEOQgqJeCni82g9l6m324q71H5Rn3yThrjLW-rH5W1P7KV4TC32eDeUUB4zeHmTv4AhTjTGVYc384BzUMUaDSY6x8KtqqkydOoq5a', pkHTTPHEADER, [poDoNotEncode]);
+    dm_PCM.RESTRequest2.Body.Add(joBodyMain);
+    dm_PCM.RESTRequest2.Execute;
+    dm_PCM.RESTRequest2.ClearBody;
+    dm_PCM.RESTRequest2.Body.ClearBody;
+    if Assigned(joBodySub) then
+      joBodySub:= nil;
+    if Assigned(joBodyMain) then
+      joBodyMain:= nil;
+    dm_pcm.qry_work1.SQL.Text:= 'Update manager_kalender Set ReminderDate = :Reminderdate Where ID = :ID';
+    dm_pcm.qry_work1.ParamByName('ID').AsInteger:= dm_pcm.qry_work.FieldByName('ID').asInteger;
+    dm_pcm.qry_work1.ParamByName('ReminderDate').AsDateTime:= Incday(dm_pcm.qry_work.FieldByName('ReminderDate').AsDateTime,1);
+    dm_pcm.qry_work1.ExecSQL;
+    dm_pcm.qry_work.next;
+  end;
+  dm_pcm.qry_work.close;
+end;
 procedure BackupQuellcode;
 var
   iTemp: Integer;
   sFileFrom, sFileTo,sFileToAlternate: string;
-  //sDatum, sUhrzeit: String;
-//  wJahr, wMonat, wTag: Word;
-//  wStd, wMin, wSec, wMSec: Word;
 begin
   // Backup erstellen
   dm_PCM.qry_Work.Connection:= dm_PCM.con_PCM;

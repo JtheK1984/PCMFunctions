@@ -109,6 +109,7 @@ var
   nNewCPUTime    : ULONG = 0;
 
   procedure WriteLog(AProgram, ALogString: String; AError: integer);
+	function GetHDnr: DWord;
   function GetMD5Hash(AValue: string) :String;
 
 const
@@ -209,6 +210,34 @@ begin
     on E: Exception do
       Writelog(PCM_logname,'Exception: ' + E.Message, 2);
   end;
+end;
+
+
+function GetWindowsRootDir: string;
+var
+  Dir: string;
+  Len: DWord;
+begin
+  SetLength(dir,MAX_PATH);
+  Len:= GetWindowsDirectory(Pchar(dir),MAX_PATH);
+  if len > 0 then
+  begin
+    SetLength(Dir,len);
+    Result:= Dir;
+    Result:= ExtractFileDrive(Result) + '\';
+  end
+  else
+    RaiseLastOSError;
+end;
+
+function GetHDnr: DWord;
+var
+  HD,D2,d3: Dword;
+  root: String;
+begin
+  root := GetWindowsRootDir;
+  GetVolumeInformation(PCHAR(Root),nil,0,@HD,d2,d3,nil,0);
+  Result:= HD;
 end;
 
 procedure WriteLog(AProgram, ALogString: String; AError: integer);
