@@ -1,4 +1,7 @@
 steps:
+- task: mspremier.PostBuildCleanup.PostBuildCleanup-task.PostBuildCleanup@3
+  displayName: 'CleanUp Agent Directories'
+
 - task: gitsync@1
   displayName: Synchronsiere mit GitHub
   inputs:
