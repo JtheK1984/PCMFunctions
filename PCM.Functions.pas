@@ -110,6 +110,7 @@ var
 
   procedure WriteLog(AProgram, ALogString: String; AError: integer);
 	function GetHDnr: DWord;
+	function GetPCName: string;
   function GetMD5Hash(AValue: string) :String;
 
 const
@@ -238,6 +239,17 @@ begin
   root := GetWindowsRootDir;
   GetVolumeInformation(PCHAR(Root),nil,0,@HD,d2,d3,nil,0);
   Result:= HD;
+end;
+
+function GetPCName: String;
+var
+ pCh_P: PChar;
+ dwd_dw: dword;
+begin
+  pCh_P := StrAlloc(256);
+  dwd_dw := 255;
+  GetComputerName(pCh_P, dwd_dw);
+  Result:= pCh_P;
 end;
 
 procedure WriteLog(AProgram, ALogString: String; AError: integer);

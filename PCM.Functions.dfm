@@ -19,8 +19,6 @@ object frm_PCM_System: Tfrm_PCM_System
     PanelStyle.Active = True
     Style.BorderStyle = ebsNone
     TabOrder = 0
-    ExplicitWidth = 1059
-    ExplicitHeight = 480
     Height = 479
     Width = 1051
     object grpbx_SysInfo_CPU: TcxGroupBox
@@ -41,7 +39,6 @@ object frm_PCM_System: Tfrm_PCM_System
       Style.Font.Style = [fsBold]
       Style.IsFontAssigned = True
       TabOrder = 0
-      ExplicitWidth = 1055
       Height = 87
       Width = 1047
       object lbl_ProcCount: TcxLabel
@@ -141,7 +138,6 @@ object frm_PCM_System: Tfrm_PCM_System
       Style.Font.Style = [fsBold]
       Style.IsFontAssigned = True
       TabOrder = 1
-      ExplicitWidth = 1055
       Height = 66
       Width = 1047
       object lbl_RAMFree: TcxLabel
@@ -215,7 +211,6 @@ object frm_PCM_System: Tfrm_PCM_System
       Style.Font.Style = [fsBold]
       Style.IsFontAssigned = True
       TabOrder = 2
-      ExplicitWidth = 1055
       Height = 138
       Width = 1047
       object prgbr_ProcUse: TcxProgressBar
@@ -262,8 +257,6 @@ object frm_PCM_System: Tfrm_PCM_System
         Style.Font.Style = []
         Style.IsFontAssigned = True
         Transparent = True
-        ExplicitTop = 81
-        ExplicitWidth = 1025
       end
       object lbl_RamUse: TcxLabel
         AlignWithMargins = True
@@ -283,7 +276,6 @@ object frm_PCM_System: Tfrm_PCM_System
         Style.Font.Style = []
         Style.IsFontAssigned = True
         Transparent = True
-        ExplicitWidth = 1025
       end
     end
     object grpbx_SysInfo_Sys: TcxGroupBox
@@ -305,7 +297,6 @@ object frm_PCM_System: Tfrm_PCM_System
       Style.Font.Style = [fsBold]
       Style.IsFontAssigned = True
       TabOrder = 3
-      ExplicitWidth = 1055
       Height = 106
       Width = 1047
       object lbl_Graphic: TcxLabel
