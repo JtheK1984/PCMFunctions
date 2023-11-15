@@ -12,7 +12,6 @@ steps:
       [string] $buildName = "$(versionNumber)"
       Write-Host "Setting the name of the build to '$buildName'."
       Write-Host "##vso[build.updatebuildnumber]$buildName"
-steps:
 - task: mspremier.PostBuildCleanup.PostBuildCleanup-task.PostBuildCleanup@3
   displayName: 'CleanUp Agent Directories'
 
