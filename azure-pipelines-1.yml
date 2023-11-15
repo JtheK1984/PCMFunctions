@@ -1,3 +1,17 @@
+variables:
+  version.MajorMinor: '1.6.0' # Manually adjust the version number as needed. Patch is auto-incremented.
+  version.Patch: $[counter(variables['version.MajorMinor'], 0)]
+  versionNumber: '$(version.MajorMinor).$(VersionBuild)' 
+
+steps:
+- task: PowerShell@2
+  displayName: Set the name of the build (i.e. the Build.BuildNumber)
+  inputs:
+    targetType: 'inline'
+    script: |
+      [string] $buildName = "$(versionNumber)"
+      Write-Host "Setting the name of the build to '$buildName'."
+      Write-Host "##vso[build.updatebuildnumber]$buildName"
 steps:
 - task: mspremier.PostBuildCleanup.PostBuildCleanup-task.PostBuildCleanup@3
   displayName: 'CleanUp Agent Directories'
