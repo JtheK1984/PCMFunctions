@@ -185,7 +185,6 @@ type
     procedure cxDBLookupComboBox21PropertiesChange(Sender: TObject);
     procedure cxDBLookupComboBox20PropertiesChange(Sender: TObject);
     procedure OpenData;
-    procedure FormPaint(Sender: TObject);
   private
     { Private-Deklarationen }
     SaveGridViewUser,SaveGridViewRight: TSavedGridView;
@@ -383,17 +382,6 @@ procedure Tfrm_User.FormDestroy(Sender: TObject);
 begin
   SetGridViews(false);
 end;
-
-procedure Tfrm_User.FormPaint(Sender: TObject);
-begin
-  if not qBenutzer.active then
-  begin
-    opendata;
-    InitializeRights;
-    SetGridViews(true);
-  end;
-end;
-
 procedure Tfrm_User.FormShow(Sender: TObject);
 begin
   OPendata;
