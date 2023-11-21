@@ -423,6 +423,7 @@ end;
 procedure Tfrm_User.btn_OptionChangePasswordClick(Sender: TObject);
 begin
   dm_PCM.iIDBenutzerPCM:= qBenutzer.FieldByName('ID').AsInteger;
+  Application.CreateForm(TfrM_PCM_ChangePW,frM_PCM_ChangePW);
   frM_PCM_ChangePW.ShowModal;
 end;
 procedure Tfrm_User.btn_OptionSaveRightClick(Sender: TObject);
