@@ -155,6 +155,7 @@ object frm_User: Tfrm_User
               Font.Name = 'Tahoma'
               Font.Style = []
               ParentFont = False
+              OnClick = btn_OptionChangePasswordClick
             end
             object edt_OptionName: TcxDBTextEdit
               Left = 61
