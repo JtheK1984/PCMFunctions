@@ -12,7 +12,6 @@ object frm_User: Tfrm_User
   Font.Name = 'Tahoma'
   Font.Style = []
   OnDestroy = FormDestroy
-  OnPaint = FormPaint
   OnShow = FormShow
   TextHeight = 13
   object pnl_right: TcxGroupBox
