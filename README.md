@@ -55,7 +55,7 @@
     - Unit zum Verwalten der Fortschrittsanzeige
 
 # Entwicklungsumgebung:
-  DELPHI 11.3 Alexandria
+  DELPHI 12
 
 # Entwickler:
   Jens Henske
@@ -75,4 +75,4 @@
   - PrepareCopy.cmd (erzeugte Versionen werden in das Inno-Setupverzeichnis abgelgt)
 
 # Stand:
-  01.10.2023
+  01.12.2023
