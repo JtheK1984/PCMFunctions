@@ -21,8 +21,6 @@ object frm_PCM_InfoApp: Tfrm_PCM_InfoApp
     PanelStyle.Active = True
     Style.BorderStyle = ebsNone
     TabOrder = 0
-    ExplicitWidth = 682
-    ExplicitHeight = 279
     Height = 280
     Width = 686
     object grpbx_Info: TcxGroupBox
@@ -1452,7 +1450,7 @@ object frm_PCM_InfoApp: Tfrm_PCM_InfoApp
       object cxLabel7: TcxLabel
         Left = 243
         Top = 111
-        Caption = 'Lizenziert  f'#252'r:'
+        Caption = 'Lizenziert f'#252'r:'
         ParentFont = False
         Style.Font.Charset = DEFAULT_CHARSET
         Style.Font.Color = clWindowText

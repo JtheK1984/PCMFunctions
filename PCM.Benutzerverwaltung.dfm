@@ -321,7 +321,7 @@ object frm_User: Tfrm_User
               Top = 63
               Hint = 'automatisches Login des Benutzers '
               BiDiMode = bdLeftToRight
-              Caption = 'automtisches Login (Windows-Benutzer)'
+              Caption = 'automatisches Login (Windows-Benutzer)'
               DataBinding.DataField = 'Autologin'
               DataBinding.DataSource = dsBenutzer
               ParentBiDiMode = False
@@ -339,7 +339,7 @@ object frm_User: Tfrm_User
             object cxDBCheckBox3: TcxDBCheckBox
               Left = 61
               Top = 89
-              Hint = 'Zugriff aud PCM-Rest-API'
+              Hint = 'Zugriff auf PCM-Rest-API'
               BiDiMode = bdLeftToRight
               Caption = 'Rest-API'
               DataBinding.DataField = 'Restapi'
@@ -845,7 +845,7 @@ object frm_User: Tfrm_User
           object cxLabel10: TcxLabel
             Left = 545
             Top = 125
-            Caption = 'Augaben:'
+            Caption = 'Ausgaben:'
             ParentFont = False
             Style.Font.Charset = DEFAULT_CHARSET
             Style.Font.Color = clWindowText
