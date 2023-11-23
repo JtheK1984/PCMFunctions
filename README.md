@@ -2,7 +2,9 @@
   PCM.Functions (dieses Projekt ist nicht kompilierbar)
 
 # Enthaltene Units und Formualare 
-  - PCM.Functions.AppInfo.dfm,
+  - PCM.Benutzerverwaltung.dfm
+  - PCM.Benutzerverwaltung.pas
+  - PCM.Functions.AppInfo.dfm
   - PCM.Functions.AppInfo.pas
   - PCM.Functions.ChangePW.dfm
   - PCM.Functions.ChangePW.pas
@@ -10,6 +12,7 @@
   - PCM.Functions.Lizenz.pas
   - PCM.Functions.Login.dfm
   - PCM.Functions.Login.pas
+  - PCM.Functions.Login.SQL.pas
   - PCM.Functions.dfm
   - PCM.Functions.pas
   - PCM.Functions.Server.Methods.pas
@@ -68,7 +71,7 @@
 	
 # Erforderliche Komponenten (DELPHI-IDE)
   - Devexpress
-  - ZipForge  
+  - Abrevia (Get-IT)
 	
 # Erforderliche Scripte (nur für die Buildpipelines in Azure DevOps): 
   - PrepareBuild.cmd (Umgebungsvariablen für Delphi anpassen, wird für den Build benötigt)
