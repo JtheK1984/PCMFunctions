@@ -30,7 +30,7 @@ object frm_User: Tfrm_User
       Height = 916
       Align = alClient
       TabOrder = 0
-      Properties.ActivePage = ts_rights
+      Properties.ActivePage = ts_User
       Properties.CustomButtons.Buttons = <>
       Properties.Images = dm_PCM.imglst_16x16
       Properties.TabSlants.Kind = skCutCorner
