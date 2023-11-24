@@ -53,7 +53,7 @@ object frm_Language: Tfrm_Language
           Value = 'ES'
         end>
       TabOrder = 0
-      ExplicitHeight = 174
+      ExplicitLeft = 11
       Height = 144
       Width = 608
     end
