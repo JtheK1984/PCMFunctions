@@ -30,7 +30,7 @@ object frm_User: Tfrm_User
       Height = 916
       Align = alClient
       TabOrder = 0
-      Properties.ActivePage = ts_User
+      Properties.ActivePage = ts_rights
       Properties.CustomButtons.Buttons = <>
       Properties.Images = dm_PCM.imglst_16x16
       Properties.TabSlants.Kind = skCutCorner
@@ -1308,7 +1308,7 @@ object frm_User: Tfrm_User
           object cxLabel18: TcxLabel
             Left = 10
             Top = 17
-            Caption = 'Vokababeln:'
+            Caption = 'Vokabeln:'
             ParentFont = False
             Style.Font.Charset = DEFAULT_CHARSET
             Style.Font.Color = clWindowText
