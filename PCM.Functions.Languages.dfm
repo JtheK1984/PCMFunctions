@@ -10,7 +10,7 @@ object frm_Language: Tfrm_Language
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
-  Position = poDefault
+  Position = poScreenCenter
   OnShow = FormShow
   TextHeight = 15
   object cxGroupBox1: TcxGroupBox
