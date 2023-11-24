@@ -53,7 +53,6 @@ procedure Tfrm_Language.cxButton1Click(Sender: TObject);
 begin
   dm_Pcm.slocale:= cxRadioGroup1.Properties.Items[cxRadioGroup1.Itemindex].Value;
 end;
-
 procedure Tfrm_Language.FormShow(Sender: TObject);
 begin
   case AnsiIndexStr(dm_pcm.slocale, ['DE', 'EN','FR','IT','ES']) of
