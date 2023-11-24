@@ -43,9 +43,11 @@ var
 
 implementation
 
-uses PCM.Data;
+
 
 {$R *.dfm}
+
+uses PCM.Data;
 
 procedure Tfrm_Language.cxButton1Click(Sender: TObject);
 begin
