@@ -1,4 +1,4 @@
-unit PCM.Language;
+unit PCM.Functions.Languages;
 
 interface
 
@@ -47,7 +47,7 @@ implementation
 
 {$R *.dfm}
 
-uses PCM.Data;
+//uses PCM.Data;
 
 procedure Tfrm_Language.cxButton1Click(Sender: TObject);
 begin
