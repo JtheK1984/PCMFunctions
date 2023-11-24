@@ -145,6 +145,10 @@
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="PCM.Functions.Synch.Wait.pas"/>
+        <DCCReference Include="PCM.Functions.Languages.pas">
+            <Form>frm_Language</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

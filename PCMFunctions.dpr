@@ -12,7 +12,8 @@ uses
   PCM.Functions.Server.Methods in 'PCM.Functions.Server.Methods.pas',
   PCM.Functions.Synch.ProgressDialog in 'PCM.Functions.Synch.ProgressDialog.pas' {frmProgressDialog},
   PCM.Functions.Synch.Transparenz in 'PCM.Functions.Synch.Transparenz.pas' {frmTransparenz},
-  PCM.Functions.Synch.Wait in 'PCM.Functions.Synch.Wait.pas';
+  PCM.Functions.Synch.Wait in 'PCM.Functions.Synch.Wait.pas',
+  PCM.Functions.Languages in 'PCM.Functions.Languages.pas' {frm_Language};
 
 {$R *.res}
 
@@ -26,5 +27,6 @@ begin
   Application.CreateForm(Tfrm_PCM_System, frm_PCM_System);
   Application.CreateForm(TfrmProgressDialog, frmProgressDialog);
   Application.CreateForm(TfrmTransparenz, frmTransparenz);
+  Application.CreateForm(Tfrm_Language, frm_Language);
   Application.Run;
 end.
