@@ -47,11 +47,11 @@ implementation
 
 {$R *.dfm}
 
-//uses PCM.Data;
+uses PCM.Data;
 
 procedure Tfrm_Language.cxButton1Click(Sender: TObject);
 begin
-  Showmessage(cxRadioGroup1.Properties.Items[cxRadioGroup1.Properties.Items.Count -1].Caption);
+  dm_Pcm.slocale:= cxRadioGroup1.Properties.Items[cxRadioGroup1.Itemindex].Value;
 end;
 
 procedure Tfrm_Language.FormShow(Sender: TObject);

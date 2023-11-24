@@ -10,6 +10,7 @@ object frm_Language: Tfrm_Language
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  Position = poScreenCenter
   OnShow = FormShow
   TextHeight = 15
   object cxGroupBox1: TcxGroupBox
@@ -53,7 +54,6 @@ object frm_Language: Tfrm_Language
           Value = 'ES'
         end>
       TabOrder = 0
-      ExplicitLeft = 11
       Height = 144
       Width = 608
     end
@@ -71,9 +71,6 @@ object frm_Language: Tfrm_Language
       Caption = 'Sprache wechseln'
       TabOrder = 1
       OnClick = cxButton1Click
-      ExplicitLeft = 280
-      ExplicitTop = 104
-      ExplicitWidth = 75
     end
   end
 end
