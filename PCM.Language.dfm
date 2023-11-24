@@ -1,4 +1,4 @@
-object Form1: TForm1
+object frm_Language: Tfrm_Language
   Left = 0
   Top = 0
   Caption = 'Sprache w'#228'hlen'
@@ -10,6 +10,7 @@ object Form1: TForm1
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  OnShow = FormShow
   TextHeight = 15
   object cxGroupBox1: TcxGroupBox
     Left = 0
@@ -18,7 +19,6 @@ object Form1: TForm1
     PanelStyle.Active = True
     Style.BorderStyle = ebsNone
     TabOrder = 0
-    ExplicitHeight = 441
     Height = 190
     Width = 624
     object cxRadioGroup1: TcxRadioGroup
@@ -53,12 +53,27 @@ object Form1: TForm1
           Value = 'SP'
         end>
       TabOrder = 0
-      ExplicitLeft = 16
-      ExplicitTop = 64
-      ExplicitWidth = 185
-      ExplicitHeight = 105
-      Height = 174
+      ExplicitHeight = 174
+      Height = 144
       Width = 608
+    end
+    object cxButton1: TcxButton
+      AlignWithMargins = True
+      Left = 8
+      Top = 157
+      Width = 608
+      Height = 25
+      Margins.Left = 5
+      Margins.Top = 0
+      Margins.Right = 5
+      Margins.Bottom = 5
+      Align = alBottom
+      Caption = 'Sprache wechseln'
+      TabOrder = 1
+      OnClick = cxButton1Click
+      ExplicitLeft = 280
+      ExplicitTop = 104
+      ExplicitWidth = 75
     end
   end
 end
