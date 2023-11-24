@@ -54,7 +54,7 @@ end;
 
 procedure Tfrm_Language.FormShow(Sender: TObject);
 begin
-  case AnsiIndexStr(dm_pcm.slocale, ['DE', 'EN','FR','IT','SP']) of
+  case AnsiIndexStr(dm_pcm.slocale, ['DE', 'EN','FR','IT','ES']) of
   0: cxRadioGroup1.ItemIndex:= 0;
   1: cxRadioGroup1.ItemIndex:= 1;
   2: cxRadioGroup1.ItemIndex:= 2;
