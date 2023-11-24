@@ -50,7 +50,7 @@ object frm_Language: Tfrm_Language
         end
         item
           Caption = 'Spanisch'
-          Value = 'SP'
+          Value = 'ES'
         end>
       TabOrder = 0
       ExplicitHeight = 174
