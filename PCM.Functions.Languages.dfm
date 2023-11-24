@@ -20,7 +20,6 @@ object frm_Language: Tfrm_Language
     PanelStyle.Active = True
     Style.BorderStyle = ebsNone
     TabOrder = 0
-    ExplicitHeight = 125
     Height = 214
     Width = 624
     object cxRadioGroup1: TcxRadioGroup
@@ -55,7 +54,6 @@ object frm_Language: Tfrm_Language
           Value = 'ES'
         end>
       TabOrder = 0
-      ExplicitHeight = 79
       Height = 168
       Width = 608
     end
@@ -73,7 +71,6 @@ object frm_Language: Tfrm_Language
       Caption = 'Sprache wechseln'
       TabOrder = 1
       OnClick = cxButton1Click
-      ExplicitTop = 92
     end
   end
 end
