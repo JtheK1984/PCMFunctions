@@ -160,7 +160,7 @@ begin
   lbl_PCManagerAppInfo_AppName.Caption:= PCM_Programmname;
   lbl_PCManagerAppInfo_Version.Caption:= GetAppVersion;
   lbl_PCManagerAppInfo_Revision.Caption:= GetFileDate;
-  if PCM_Logname <> 'PCMLizenzgenerator' then
+  if (PCM_Logname <> 'PCMLizenzgenerator') and (PCM_Logname <> 'PCMBackup') then
   begin
     cxLabel1.Caption:= dm_PCM.Firma;
     if not dm_PCM.bDemo then
