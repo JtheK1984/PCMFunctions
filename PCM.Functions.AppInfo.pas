@@ -176,7 +176,10 @@ begin
   end
   else begin
     cxButton1.Visible:= false;
-    cxLabel1.Caption:= 'Jens Henske';
+    dm_PCM.qry_work.SQL.Text:= 'Select Benutzer From manager_lizenz';
+    dm_PCM.qry_work.Open;
+    cxLabel1.Caption:= dm_PCM.qry_work.FieldByName('Benutzer').AsString;
+    dm_PCM.qry_work.close;
     cxLabel4.Caption:= 'Nein';
     cxLabel6.Caption:= 'unbegrenzt';
   end;
