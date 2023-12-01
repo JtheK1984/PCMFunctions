@@ -10,8 +10,9 @@ steps:
     targetType: 'inline'
     script: |
       [string] $buildName = "$(versionNumber)"
+      [string] $buildbranch = "$(Build.SourceBranchName)"
       Write-Host "Setting the name of the build to '$buildName'."
-      Write-Host "##vso[build.updatebuildnumber]$buildName"
+      Write-Host "##vso[build.updatebuildnumber]$buildbranch-$buildName"
 - task: mspremier.PostBuildCleanup.PostBuildCleanup-task.PostBuildCleanup@3
   displayName: 'CleanUp Agent Directories'
 
