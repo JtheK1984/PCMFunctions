@@ -206,6 +206,10 @@ resourcestring
   rs_Demolizenz = ' - Demolizenz gültig bis ';
   rs_Datensicherung = 'Datensicherung';
   rs_Programminfo = 'Programminfo';
+  rs_Nein = 'Nein';
+  rs_Ja = 'Ja';
+  rs_unbegrenzt = 'unbegrenzt';
+
 
   rs_BV_Benutzer = 'Benutzer';
   rs_BV_Vorname = 'Vorname';
