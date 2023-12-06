@@ -210,7 +210,7 @@ resourcestring
   rs_BV_Benutzer = 'Benutzer';
   rs_BV_Vorname = 'Vorname';
   rs_BV_Nachname = 'Nachname';
-
+  rs_BV_Bezeichnung = 'Bezeichnung';
 
 implementation
 
