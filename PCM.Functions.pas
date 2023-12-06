@@ -200,6 +200,12 @@ type
 
 resourcestring
   rs_Benutzerverwaltung ='Benutzerverwaltung';
+  rs_Systeminformation = 'Systeminformation';
+  rs_Konfiguration = 'Konfiguration';
+  rs_Sprachdatei = 'Sprachdatei kann nicht geladen werden';
+  rs_Demolizenz = ' - Demolizenz gültig bis ';
+  rs_Datensicherung = 'Datensicherung';
+  rs_Programminfo = 'Programminfo';
 
 implementation
 
