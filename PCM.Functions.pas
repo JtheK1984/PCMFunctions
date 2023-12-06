@@ -197,6 +197,10 @@ type
                                     SystemInformationLength: Longint;
                                     ReturnLength: Longint): Longint; stdcall;
                                     external 'ntdll.dll' name 'NtQuerySystemInformation';
+
+resourcestring
+  rs_Benutzerverwaltung ='Benutzerverwaltung';
+
 implementation
 
 {$R *.dfm}
