@@ -257,6 +257,7 @@ object frm_PCM_System: Tfrm_PCM_System
         Style.Font.Style = []
         Style.IsFontAssigned = True
         Transparent = True
+        ExplicitTop = 59
       end
       object lbl_RamUse: TcxLabel
         AlignWithMargins = True
@@ -276,6 +277,7 @@ object frm_PCM_System: Tfrm_PCM_System
         Style.Font.Style = []
         Style.IsFontAssigned = True
         Transparent = True
+        ExplicitTop = 5
       end
     end
     object grpbx_SysInfo_Sys: TcxGroupBox

@@ -207,6 +207,11 @@ resourcestring
   rs_Datensicherung = 'Datensicherung';
   rs_Programminfo = 'Programminfo';
 
+  rs_BV_Benutzer = 'Benutzer';
+  rs_BV_Vorname = 'Vorname';
+  rs_BV_Nachname = 'Nachname';
+
+
 implementation
 
 {$R *.dfm}

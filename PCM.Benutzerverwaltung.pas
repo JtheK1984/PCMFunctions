@@ -251,6 +251,9 @@ begin
   qBenutzer.Open;
   qRechte.Open;
   qRechte_Detail.Open;
+  cxGridDBColumn2.Caption:= rs_BV_Benutzer;
+  cxGridDBTableView3Column1:= rs_BV_Vorname;
+  cxGridDBTableView3Column2:= rs_BV_name;
 end;
 procedure Tfrm_User.SetButtons;
 begin
