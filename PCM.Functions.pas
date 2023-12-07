@@ -216,6 +216,15 @@ resourcestring
   rs_BV_Nachname = 'Nachname';
   rs_BV_Bezeichnung = 'Bezeichnung';
 
+  rs_liz_Demolizenz = 'Demolizenz für: ';
+  rs_liz_Programm = 'Programm: ';
+  rs_liz_Version = 'Version: ';
+  rs_liz_Gueltig = 'Gültig bis: ';
+  rs_liz_Benutzer = 'Benutzer: PCM';
+  rs_liz_Lizenz = 'Lizenz: ';
+
+
+
 implementation
 
 {$R *.dfm}
