@@ -223,6 +223,9 @@ resourcestring
   rs_liz_Benutzer = 'Benutzer: PCM';
   rs_liz_Lizenz = 'Lizenz: ';
 
+  rs_liz_KundeLizenz = 'Kunden / Lizenzen';
+  rs_liz_Programme = 'Programme';
+
 
 
 implementation
