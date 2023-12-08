@@ -3702,7 +3702,6 @@ object frm_PCM_Login: Tfrm_PCM_Login
     PanelStyle.Active = True
     Style.BorderStyle = ebsNone
     TabOrder = 0
-    ExplicitHeight = 334
     Height = 434
     Width = 315
     object btn_PCManagerLogin_Cancel: TcxButton

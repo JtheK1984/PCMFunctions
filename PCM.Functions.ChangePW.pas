@@ -22,7 +22,8 @@ uses Winapi.Windows, System.SysUtils, System.Classes, Vcl.Graphics, Vcl.Forms,
   dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinTheBezier,
   dxSkinsDefaultPainters, dxSkinValentine, dxSkinVisualStudio2013Blue,
   dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light, dxSkinVS2010,
-  dxSkinWhiteprint, dxSkinXmas2008Blue, cxLabel, cxImage, cxGroupBox,cxPC;
+  dxSkinWhiteprint, dxSkinXmas2008Blue, cxLabel, cxImage, cxGroupBox,cxPC,
+  dxSkinWXI,Vcl.Dialogs;
 type
   TcxPageControlPropertiesAccess = class(TcxPageControlProperties);
 type
@@ -53,7 +54,8 @@ implementation
 
 uses  PCM.Functions.ChangePW.SQL,
       PCM.Data,
-      PCM.Functions;
+      PCM.Functions,
+			PCM.Strings;
 
 Procedure Tfrm_PCM_ChangePW.Execute(const AShowModal: Boolean);
 begin
@@ -64,7 +66,7 @@ begin
 end;
 procedure Tfrm_PCM_ChangePW.FormShow(Sender: TObject);
 begin
-  caption:= PCM_Programmname + ': Passwort ändern';
+  caption:= PCM_Programmname + rs_PCM_PasswortAendern;
   edt_PCManagerChangePassword_NewPass.SetFocus;
 end;
 procedure Tfrm_PCM_ChangePW.btn_PCManagerChangePassword_CancelClick(Sender: TObject);
@@ -77,14 +79,12 @@ var
 begin
   if edt_PCManagerChangePassword_NewPass.Text <> edt_PCManagerChangePassword_RepPass.Text  then
   begin
-    MessageBox(Application.Handle, 'Die Passwörter stimmen nicht überein.' + slinebreak +
-    'Bitte überprüfen Sie ihre Eingabe.', PChar('Passwort ändern'),MB_OK or MB_ICONWARNING);
+    MessageDlg(rs_PCM_PasswortStimmtNicht + slinebreak + rs_PCM_EingabePruefen ,mtWarning,[mbOk], 0);
   end
   else begin
     if (edt_PCManagerChangePassword_NewPass.Text = '') or (edt_PCManagerChangePassword_RepPass.Text = '') then
     begin
-      MessageBox(Application.Handle, 'Kein Passwort eingegeben.' + slinebreak +
-      'Bitte überprüfen Sie ihre Eingabe.', PChar('Passwort ändern'),MB_OK or MB_ICONWARNING);
+      MessageDlg(rs_PCM_KeinPasswort + slinebreak + rs_PCM_EingabePruefen ,mtWarning,[mbOk], 0);
     end
     else begin
       sPassword:= GetMD5Hash(edt_PCManagerChangePassword_RepPass.text);

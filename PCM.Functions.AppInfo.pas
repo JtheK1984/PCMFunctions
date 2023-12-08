@@ -150,7 +150,7 @@ begin
 
       dm_PCM.qry_work.SQL.Text:= 'SELECT CONCAT(Major,''.'',Minor) as Version from version_db';
       dm_PCM.qry_work.Open;
-      lblDataVersion.Caption:= 'Version: ' + dm_PCM.qry_work.FieldByName('Version').AsString;
+      lblDataVersion.Caption:= rs_liz_Version + dm_PCM.qry_work.FieldByName('Version').AsString;
       dm_PCM.qry_work.close;
 
     end;

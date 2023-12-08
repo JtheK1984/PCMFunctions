@@ -23,7 +23,6 @@ object frm_PCM_Lizenz: Tfrm_PCM_Lizenz
     PanelStyle.Active = True
     Style.BorderStyle = ebsNone
     TabOrder = 0
-    ExplicitHeight = 358
     Height = 458
     Width = 316
     object btn_SaveLicence: TcxButton

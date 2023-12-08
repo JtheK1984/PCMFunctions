@@ -67,7 +67,8 @@ implementation
 
 uses  PCM.Functions,
       PCM.Functions.Login.SQL,
-      PCM.Data;
+      PCM.Data,
+      PCM.Strings;
 
 
 function Tfrm_PCM_Login.Login_User : boolean;
@@ -99,7 +100,7 @@ begin
 end;
 procedure Tfrm_PCM_Login.FormShow(Sender: TObject);
 begin
-  caption:= PCM_Programmname + ': Anmeldung';
+  caption:= PCM_Programmname + rs_PCM_Anmeldung;
   cmbbx_PCManagerLogin_User.clear;
   dm_pcm.qry_Work.Connection:= dm_PCM.con_PCM;
   dm_pcm.qry_Work.SQL.Text:= ASSQL_GetUser[dm_PCM.iDBType];
@@ -119,7 +120,7 @@ var
 begin
   if cmbbx_PCManagerLogin_User.Text = '' then
   begin
-    MessageDlg('Bitte Benutzer eingeben.', mtWarning, [mbOk], 0);
+    MessageDlg(rs_PCM_Benutzereingeben, mtWarning, [mbOk], 0);
     exit;
   end;
   if edt_PCManagerLogin_Pass.text <> '' then
@@ -134,7 +135,7 @@ begin
 
     if iBenutzer = 0 then
     begin
-      MessageDlg('Benutzerdaten sind nicht korrekt.', mtWarning, [mbOk], 0);
+      MessageDlg(rs_PCM_Benutzerfalsch, mtWarning, [mbOk], 0);
       edt_PCManagerLogin_Pass.Text:= '';
       exit;
     end
@@ -145,7 +146,7 @@ begin
     end;
   end
   else begin
-    MessageDlg('Bitte Passwort eingeben.', mtWarning, [mbOk], 0);
+    MessageDlg(rs_PCM_Passworteingeben, mtWarning, [mbOk], 0);
     exit;
   end;
 end;

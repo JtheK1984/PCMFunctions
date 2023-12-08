@@ -313,16 +313,16 @@ begin
 
         if (Now() >= dtDatetimeNext) then
         begin
-          WriteLog(PCM_LOGname,'aktuelles Datum/Zeit: ' + formatdatetime('dd.mm.yyyy', Now()) + ' ' + formatdatetime('hh:nn:ss', Now()),0);
-          WriteLog(PCM_LOGname,'nächster zeitpunkt: ' + formatdatetime('dd.mm.yyyy', dtDatetimeNext) + ' ' + formatdatetime('hh:nn:ss', dtDatetimeNext),0);
+          WriteLog(PCM_LOGname,rs_PCMService_AktuelleZeit + formatdatetime('dd.mm.yyyy', Now()) + ' ' + formatdatetime('hh:nn:ss', Now()),0);
+          WriteLog(PCM_LOGname,rs_PCMService_naechsterZeitpunkt + formatdatetime('dd.mm.yyyy', dtDatetimeNext) + ' ' + formatdatetime('hh:nn:ss', dtDatetimeNext),0);
           dm_PCM.qry_Work.SQL.Text:= 'UPDATE service_config_shutdown SET timenext = TIMESTAMPADD(Day, 1, timenext) Where ID = :ID';
           dm_PCM.qry_Work.ParamByName('ID').AsInteger:= iID;
           dm_PCM.qry_Work.ExecSQL;
           iDiff := Now() - dtDatetimeNext;
           if (bExec) and (iDiff <= iDiffToleranz ) and (iDiff >= 0.0 ) then
           begin
-            WriteLog(PCM_LOGname,'PC wird heruntergefahren',0);
-            WriteLog(PCM_LOGname,'Service beendet',0);
+            WriteLog(PCM_LOGname,rs_PCMService_Herunterfahren,0);
+            WriteLog(PCM_LOGname,rs_PCMService_Beenden,0);
             //PCM_Service.Timer1.Enabled:= false;
             a:= 'cmd /C shutdown /t 1 /s /f /m \\';// + lbl_PCName_data.Caption;
             ShellExecute(0,nil,PChar('cmd.exe'),PChar(a),nil,SW_SHOWNOACTIVATE);

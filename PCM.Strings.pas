@@ -24,7 +24,21 @@ resourcestring rs_PCM_Verbindungsversuch2 = 'erfolgreich';
 resourcestring rs_PCM_Ende = 'Das Programm wird beendet.';
 resourcestring rs_PCM_Style1 = 'Soll der gewählte Style sofort übernommen werden? ';
 resourcestring rs_PCM_Style2 = 'Bei Ja wird das Programm neu gestartet.';
-
+resourcestring rs_PCM_Benutzereingeben = 'Bitte Benutzer eingeben.';
+resourcestring rs_PCM_Benutzerfalsch = 'Benutzerdaten sind nicht korrekt.';
+resourcestring rs_PCM_Passworteingeben = 'Bitte Passwort eingeben.';
+resourcestring rs_PCM_Anmeldung = ': Anmeldung';
+resourcestring rs_PCM_LizenzFalsch = 'Lizenz nicht gültig!';
+resourcestring rs_PCM_LizenzAbgelaufen = 'Lizenz ist abgelaufen!';
+resourcestring rs_PCM_Lizenz = ': Lizenz';
+resourcestring rs_PCM_TestLizenz = 'Es ist eine 30-tägige Testlizenz vorhanden.  Möchten Sie die Testlizenz übernehmen?';
+resourcestring rs_PCM_LizenzGueltig = ': Lizenz gültig bis ';
+resourcestring rs_PCM_LizenzEintragen = 'Bitte Lizenz eingeben!';
+resourcestring rs_PCM_PasswortAendern = ': Passwort ändern';
+resourcestring rs_PCM_PasswortStimmtNicht = 'Die Passwörter stimmen nicht überein.';
+resourcestring rs_PCM_PasswortAendern1 = 'Passwort ändern';
+resourcestring rs_PCM_EingabePruefen = 'Bitte überprüfen Sie ihre Eingabe.';
+resourcestring rs_PCM_KeinPasswort = 'Kein Passwort eingegeben.';
 // Logfile
 resourcestring rs_PCMLog_Verbindungerfolgreich ='Verbindung erfolgreich hergestellt';
 resourcestring rs_PCMLog_KeineVerbindung1 = 'Es konnte keine Verbindung zur Datenbank auf dem Server ';
@@ -80,6 +94,11 @@ resourcestring rs_liz_MessagePLZ = 'Bitte PLZ eingeben!';
 resourcestring rs_liz_MessageORT = 'Bitte Ort eingeben!';
 resourcestring rs_liz_MessageKundeexists = 'Kunde exisitiert bereits!';
 resourcestring rs_liz_Lizenfuer = 'Lizenz für "';
+// PCM - Service / Servicemanager
+resourcestring rs_PCMService_AktuelleZeit = 'aktuelles Datum/Zeit: ';
+resourcestring rs_PCMService_naechsterZeitpunkt = 'nächster zeitpunkt: ';
+resourcestring rs_PCMService_Herunterfahren = 'PC wird heruntergefahren';
+resourcestring rs_PCMService_Beenden = 'Service beendet';
 
 implementation
 

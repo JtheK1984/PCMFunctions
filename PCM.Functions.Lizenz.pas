@@ -58,7 +58,8 @@ implementation
 
 {$R *.dfm}
 
-uses  PCM.Data;
+uses  PCM.Data,
+      PCM.Strings;
 
 function Tfrm_PCM_Lizenz.GetAppVersion: string;
 var
@@ -247,27 +248,27 @@ begin
     iProgramm := GetBits(1, 8);
     if iProgramm <> PCM_Programmnummer then
     begin
-      MessageDlg('Lizenz nicht gültig!',mtwarning,[mbok],0);
+      MessageDlg(rs_PCM_LizenzFalsch,mtwarning,[mbok],0);
       exit;
     end;
     iGeburtTagMonat:= GetBits(17,16);
     if iGeburtTagMonat <> 2402 then
     begin
-      MessageDlg('Lizenz nicht gültig!',mtwarning,[mbok],0);
+      MessageDlg(rs_PCM_LizenzFalsch,mtwarning,[mbok],0);
       exit;
     end;
 
     iGeburtJahr:= GetBits(33, 16);
     if iGeburtJahr <> 1984 then
     begin
-      MessageDlg('Lizenz nicht gültig!',mtwarning,[mbok],0);
+      MessageDlg(rs_PCM_LizenzFalsch,mtwarning,[mbok],0);
       exit;
     end;
 
     iDevJahr:= GetBits(49, 16);
     if iDevJahr <> 2015 then
     begin
-      MessageDlg('Lizenz nicht gültig!',mtwarning,[mbok],0);
+      MessageDlg(rs_PCM_LizenzFalsch,mtwarning,[mbok],0);
       exit;
     end;
 
@@ -277,11 +278,11 @@ begin
       datCurrDate := StrToDate(DateToStr(Now));
       if datGueltig < datCurrDate then
       begin
-        MessageDlg('Lizenz ist abgelaufen!',mtwarning,[mbok],0);
+        MessageDlg(rs_PCM_LizenzAbgelaufen,mtwarning,[mbok],0);
         exit;
       end
       else begin
-        MessageDlg('Lizenz ist gültig bis ' + DateToStr(datGueltig) ,mtInformation,[mbok],0);
+        MessageDlg(rs_PCM_LizenzAbgelaufen + DateToStr(datGueltig) ,mtInformation,[mbok],0);
       end;
     end;
     dm_PCM.dtGueltig:= datGueltig;
@@ -294,7 +295,7 @@ begin
     dm_PCM.qry_Work.ExecSQL;
   end
   else begin
-    MessageDlg('Lizenz nicht gültig!',mtwarning,[mbok],0);
+    MessageDlg(rs_PCM_LizenzFalsch,mtwarning,[mbok],0);
     exit;
   end;
   frm_PCM_Lizenz.Close;
@@ -318,10 +319,10 @@ begin
   btn_SaveLicence.optionsimage.images:= dm_PCM.imglst_16x16;
   btn_LizenzCancel.optionsimage.images:= dm_PCM.imglst_16x16;
   sVersion:= GetAppVersion;
-  caption:= PCM_Programmname + ': Lizenz';
+  caption:= PCM_Programmname + rs_PCM_Lizenz;
   if FileExists(ExtractFilepath(Paramstr(0)) + PCM_Logname + '_Lizenz.liz') then
   begin
-    if MessageDlg('Es ist eine 30-tägige Testlizenz vorhanden.  Möchten Sie die Testlizenz übernehmen?',
+    if MessageDlg(rs_PCM_TestLizenz,
     mtConfirmation, [mbYes, mbNo], 0, mbYes) = mrYes then
     begin
       AssignFile(f,ExtractFilepath(Paramstr(0)) + PCM_Logname + '_Lizenz.liz');
@@ -329,7 +330,7 @@ begin
       while not Eof(f) do
       begin
         ReadLn(f, text);
-        frm_PCM_Lizenz.caption:= PCM_Programmname + ': Lizenz gültig bis ' + text;
+        frm_PCM_Lizenz.caption:= PCM_Programmname + rs_PCM_LizenzGueltig + text;
         ReadLn(f, text);
         edt_kunde.Text:= text;
         ReadLn(f, text);
@@ -351,13 +352,13 @@ procedure Tfrm_PCM_Lizenz.btn_SaveLicenceClick(Sender: TObject);
 begin
   if edt_kunde.Text = '' then
   begin
-    MessageDlg('Bitte Kundennamen eingeben!', mtwarning,[mbok],0);
+    MessageDlg(rs_liz_MessageKundenname, mtwarning,[mbok],0);
     exit;
   end;
 
   if edt_Lizenz.Text = '' then
   begin
-    MessageDlg('Bitte Kundennamen eingeben!', mtwarning,[mbok],0);
+    MessageDlg(rs_PCM_LizenzEintragen, mtwarning,[mbok],0);
     exit;
   end;
   Check;
