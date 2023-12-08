@@ -22,6 +22,9 @@ resourcestring rs_PCM_Beenden = 'Programm beendet';
 resourcestring rs_PCM_Verbindungsversuch1 = 'Verbindungsversuch';
 resourcestring rs_PCM_Verbindungsversuch2 = 'erfolgreich';
 resourcestring rs_PCM_Ende = 'Das Programm wird beendet.';
+resourcestring rs_PCM_Style1 = 'Soll der gewählte Style sofort übernommen werden? ';
+resourcestring rs_PCM_Style2 = 'Bei Ja wird das Programm neu gestartet.';
+
 // Logfile
 resourcestring rs_PCMLog_Verbindungerfolgreich ='Verbindung erfolgreich hergestellt';
 resourcestring rs_PCMLog_KeineVerbindung1 = 'Es konnte keine Verbindung zur Datenbank auf dem Server ';
@@ -47,10 +50,11 @@ resourcestring rs_PCMAPPServer_Einnahmenanzahl = 'Einnahmen lesen, Anzahl:';
 resourcestring rs_PCMAPPServer_Einnahmenpruefung = 'Einnahmen geprüft, Anzahl:';
 resourcestring rs_PCMAPPServer_GeraeteRegistrierung = 'Gerät wird registriert';
 // PCM  - Backup / Backupservice
-resourcestring rs_PCMAPPServer_Backupgesichert = ' gesichert';
-resourcestring rs_PCMAPPServer_Backup = 'Sicherung: Datenbank PCM wird gesichert';
-resourcestring rs_PCMAPPServer_BackupLoeschen = 'Temporäre Dateien löschen: PCM wird gelöscht';
-resourcestring rs_PCMAPPServer_BackupErfolgreich = 'Sicherung: Datenbanken wurden erfolgreich gesichert';
+resourcestring rs_PCMBackup_Backupgesichert = ' gesichert';
+resourcestring rs_PCMBackup_Backup = 'Sicherung: Datenbank PCM wird gesichert';
+resourcestring rs_PCMBackup_BackupLoeschen = 'Temporäre Dateien löschen: PCM wird gelöscht';
+resourcestring rs_PCMBackup_BackupErfolgreich = 'Sicherung: Datenbanken wurden erfolgreich gesichert';
+resourcestring rs_PCMBackup_Ordnerwaehlen = 'Zielverzeichniss für Backup auswählen';
 // PCM  - Benutzerverwaltung
 resourcestring rs_PCMBenutzerverwaltung_Benutzer = 'Benutzer';
 resourcestring rs_PCMBenutzerverwaltung_Vorname = 'Vorname';
