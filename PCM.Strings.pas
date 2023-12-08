@@ -60,6 +60,9 @@ resourcestring rs_PCMBenutzerverwaltung_Benutzer = 'Benutzer';
 resourcestring rs_PCMBenutzerverwaltung_Vorname = 'Vorname';
 resourcestring rs_PCMBenutzerverwaltung_Nachname = 'Nachname';
 resourcestring rs_PCMBenutzerverwaltung_Bezeichnung = 'Bezeichnung';
+resourcestring rs_PCMBenutzerverwaltung_RechteBearbeiten = 'Die vordefinierten Rechte können nicht bearbeitet werden!';
+resourcestring rs_PCMBenutzerverwaltung_RechteLoeschen = 'Die vordefinierten Rechte können nicht gelöscht werden!';
+resourcestring rs_PCMBenutzerverwaltung_BenutzerLoeschen = 'Der Haupbenutzer kann nicht gelöscht werden!';
 // Lizenzgenerator
 resourcestring rs_liz_Demolizenz = 'Demolizenz für: ';
 resourcestring rs_liz_Programm = 'Programm: ';

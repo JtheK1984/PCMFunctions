@@ -431,7 +431,7 @@ begin
   end
   else begin
     qRechte.Cancel;
-    MessageDlg('Die vordefinierten Rechte können nicht bearbeitet werden!'  , mtWarning, [mbOk], 0);
+    MessageDlg(rs_PCMBenutzerverwaltung_RechteBearbeiten, mtWarning, [mbOk], 0);
   end;
 end;
 procedure Tfrm_User.btn_OptionDeleteRightClick(Sender: TObject);
@@ -441,7 +441,7 @@ begin
     qRechte.Delete;
   end
   else begin
-    MessageDlg('Die vordefinierten Rechte können nicht gelöscht werden!'  , mtWarning, [mbOk], 0);
+    MessageDlg(rs_PCMBenutzerverwaltung_RechteLoeschen  , mtWarning, [mbOk], 0);
   end;
 end;
 procedure Tfrm_User.btn_OptionNewUserClick(Sender: TObject);
@@ -580,7 +580,7 @@ begin
     qBenutzer.Delete;
   end
   else begin
-    MessageDlg('Der Haupbenutzer kann nicht gelöscht werden!'  , mtWarning, [mbOk], 0);
+    MessageDlg(rs_PCMBenutzerverwaltung_BenutzerLoeschen , mtWarning, [mbOk], 0);
   end;
 end;
 procedure Tfrm_User.btn_OptionNewRightClick(Sender: TObject);
