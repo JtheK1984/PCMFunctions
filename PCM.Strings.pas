@@ -17,6 +17,7 @@ resourcestring rs_PCM_Ja = 'Ja';
 resourcestring rs_PCM_unbegrenzt = 'unbegrenzt';
 resourcestring rs_PCM_Abbrechen ='Abbrechen';
 resourcestring rs_PCM_Schliessen = 'Schlieﬂen';
+resourcestring rs_PCM_Start = 'Programm gestartet';
 resourcestring rs_PCM_Beenden = 'Programm beendet';
 resourcestring rs_PCM_Verbindungsversuch1 = 'Verbindungsversuch';
 resourcestring rs_PCM_Verbindungsversuch2 = 'erfolgreich';
