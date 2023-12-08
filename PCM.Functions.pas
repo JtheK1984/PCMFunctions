@@ -202,7 +202,8 @@ implementation
 
 {$R *.dfm}
 
-uses PCM.Data;
+uses 	PCM.Data,
+			PCM.Strings;
 
 procedure TAufgabenThread.Execute;
 begin
@@ -390,7 +391,7 @@ begin
     except
       on E: Exception do
       begin
-        ShowMessage('Fehler beim Speichern des Layouts: ' + E.Message);
+        ShowMessage(rs_PCM_GridSpeichernFehler + E.Message);
       end;
     end;
 
@@ -421,7 +422,7 @@ begin
   except
     on E: Exception do
     begin
-      ShowMessage('Fehler beim Laden des Layouts: ' + E.Message);
+      ShowMessage(rs_PCM_GridLadenFehler + E.Message);
     end;
   end;
 
@@ -438,7 +439,7 @@ begin
   except
     on E: Exception do
     begin
-      ShowMessage('Fehler beim Speichern des Layouts: ' + E.Message);
+      ShowMessage(rs_PCM_GridSpeichernFehler + E.Message);
     end;
   end;
 end;
