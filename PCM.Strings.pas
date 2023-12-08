@@ -17,6 +17,10 @@ resourcestring rs_PCM_Ja = 'Ja';
 resourcestring rs_PCM_unbegrenzt = 'unbegrenzt';
 resourcestring rs_PCM_Abbrechen ='Abbrechen';
 resourcestring rs_PCM_Schliessen = 'Schließen';
+resourcestring rs_PCM_Beenden = 'Programm beendet';
+resourcestring rs_PCM_Verbindungsversuch1 = 'Verbindungsversuch';
+resourcestring rs_PCM_Verbindungsversuch2 = 'erfolgreich';
+resourcestring rs_PCM_Ende = 'Das Programm wird beendet.';
 // Logfile
 resourcestring rs_PCMLog_Verbindungerfolgreich ='Verbindung erfolgreich hergestellt';
 resourcestring rs_PCMLog_KeineVerbindung1 = 'Es konnte keine Verbindung zur Datenbank auf dem Server ';
@@ -46,10 +50,10 @@ resourcestring rs_PCMAPPServer_GeraeteRegistrierung = 'Gerät wird registriert';
 
 
 // Benutzerverwaltung
-resourcestring rs_BV_Benutzer = 'Benutzer';
-resourcestring rs_BV_Vorname = 'Vorname';
-resourcestring rs_BV_Nachname = 'Nachname';
-resourcestring rs_BV_Bezeichnung = 'Bezeichnung';
+resourcestring rs_PCMBenutzerverwaltung_Benutzer = 'Benutzer';
+resourcestring rs_PCMBenutzerverwaltung_Vorname = 'Vorname';
+resourcestring rs_PCMBenutzerverwaltung_Nachname = 'Nachname';
+resourcestring rs_PCMBenutzerverwaltung_Bezeichnung = 'Bezeichnung';
 // Lizenzgenerator
 resourcestring rs_liz_Demolizenz = 'Demolizenz für: ';
 resourcestring rs_liz_Programm = 'Programm: ';
