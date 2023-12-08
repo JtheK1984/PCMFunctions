@@ -39,6 +39,8 @@ resourcestring rs_PCM_PasswortStimmtNicht = 'Die Passwörter stimmen nicht überei
 resourcestring rs_PCM_PasswortAendern1 = 'Passwort ändern';
 resourcestring rs_PCM_EingabePruefen = 'Bitte überprüfen Sie ihre Eingabe.';
 resourcestring rs_PCM_KeinPasswort = 'Kein Passwort eingegeben.';
+resourcestring rs_PCM_GridSpeichernFehler = 'Fehler beim Speichern des Layouts: ';
+resourcestring rs_PCM_GridLadenFehler = 'Fehler beim Laden des Layouts: ';
 // Logfile
 resourcestring rs_PCMLog_Verbindungerfolgreich ='Verbindung erfolgreich hergestellt';
 resourcestring rs_PCMLog_KeineVerbindung1 = 'Es konnte keine Verbindung zur Datenbank auf dem Server ';
