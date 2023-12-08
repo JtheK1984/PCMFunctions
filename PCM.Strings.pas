@@ -41,6 +41,7 @@ resourcestring rs_PCM_EingabePruefen = 'Bitte überprüfen Sie ihre Eingabe.';
 resourcestring rs_PCM_KeinPasswort = 'Kein Passwort eingegeben.';
 resourcestring rs_PCM_GridSpeichernFehler = 'Fehler beim Speichern des Layouts: ';
 resourcestring rs_PCM_GridLadenFehler = 'Fehler beim Laden des Layouts: ';
+resourcestring rs_PCM_Version = 'Version: ';
 // Logfile
 resourcestring rs_PCMLog_Verbindungerfolgreich ='Verbindung erfolgreich hergestellt';
 resourcestring rs_PCMLog_KeineVerbindung1 = 'Es konnte keine Verbindung zur Datenbank auf dem Server ';
@@ -79,14 +80,15 @@ resourcestring rs_PCMBenutzerverwaltung_Bezeichnung = 'Bezeichnung';
 resourcestring rs_PCMBenutzerverwaltung_RechteBearbeiten = 'Die vordefinierten Rechte können nicht bearbeitet werden!';
 resourcestring rs_PCMBenutzerverwaltung_RechteLoeschen = 'Die vordefinierten Rechte können nicht gelöscht werden!';
 resourcestring rs_PCMBenutzerverwaltung_BenutzerLoeschen = 'Der Haupbenutzer kann nicht gelöscht werden!';
-// Lizenzgenerator
-resourcestring rs_liz_Demolizenz = 'Demolizenz für: ';
-resourcestring rs_liz_Programm = 'Programm: ';
-resourcestring rs_liz_Version = 'Version: ';
-resourcestring rs_liz_Gueltig = 'Gültig bis: ';
-resourcestring rs_liz_Benutzer = 'Benutzer: PCM';
-resourcestring rs_liz_Lizenz = 'Lizenz: ';
-
+// PCM  - Lizenzgenerator
+resourcestring rs_PCMLizenzgenerator_Demolizenz = 'Demolizenz für: ';
+resourcestring rs_PCMLizenzgenerator_Programm = 'Programm: ';
+resourcestring rs_PCMLizenzgenerator_Gueltig = 'Gültig bis: ';
+resourcestring rs_PCMLizenzgenerator_Benutzer = 'Benutzer: PCM';
+resourcestring rs_PCMLizenzgenerator_Lizenz = 'Lizenz: ';
+resourcestring rs_PCMLizenzgenerator_Loeschen1 = 'Soll die Lizenz für ';
+resourcestring rs_PCMLizenzgenerator_Loeschen2 = ' für den Kunden ';
+resourcestring rs_PCMLizenzgenerator_Loeschen3 = ' gelöscht werden?';
 resourcestring rs_liz_KundeLizenz = 'Kunden / Lizenzen';
 resourcestring rs_liz_Programme = 'Programme';
 resourcestring rs_liz_Lizenzautomatic = 'automatische Lizenz';
