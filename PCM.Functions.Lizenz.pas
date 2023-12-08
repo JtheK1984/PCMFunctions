@@ -352,7 +352,7 @@ procedure Tfrm_PCM_Lizenz.btn_SaveLicenceClick(Sender: TObject);
 begin
   if edt_kunde.Text = '' then
   begin
-    MessageDlg(rs_liz_MessageKundenname, mtwarning,[mbok],0);
+    MessageDlg(rs_PCMLizenzgenerator_MessageKundenname, mtwarning,[mbok],0);
     exit;
   end;
 
