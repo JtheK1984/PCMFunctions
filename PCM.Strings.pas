@@ -17,6 +17,10 @@ resourcestring rs_Ja = 'Ja';
 resourcestring rs_unbegrenzt = 'unbegrenzt';
 resourcestring rs_Abbrechen ='Abbrechen';
 resourcestring rs_Schliessen = 'Schließen';
+resourcestring rs_KeineVerbindung1 = 'Es konnte keine Verbindung zur Datenbank auf dem Server ';
+resourcestring rs_KeineVerbindung2 = ' hergestellt werden:';
+resourcestring rs_PCMINIPruefen = 'Bitte überprüfen Sie die Serveraddresse in der Konfigurationsdatei:';
+
 // Benutzerverwaltung
 resourcestring rs_BV_Benutzer = 'Benutzer';
 resourcestring rs_BV_Vorname = 'Vorname';
