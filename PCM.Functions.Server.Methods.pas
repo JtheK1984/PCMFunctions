@@ -585,8 +585,7 @@ begin
   end
   else
   begin
-    WriteLog(PCM_Logname,'ExecuteAndWaitFor konnte nicht ausgeführt werden. '+
-                ' Error-Code '+intToStr(GetLastError),2);
+    WriteLog(PCM_Logname,'ExecuteAndWaitFor Error: Error-Code '+intToStr(GetLastError),2);
   end;
 end;
 end.
