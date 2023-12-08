@@ -198,36 +198,6 @@ type
                                     ReturnLength: Longint): Longint; stdcall;
                                     external 'ntdll.dll' name 'NtQuerySystemInformation';
 
-resourcestring
-  rs_Benutzerverwaltung ='Benutzerverwaltung';
-  rs_Systeminformation = 'Systeminformation';
-  rs_Konfiguration = 'Konfiguration';
-  rs_Sprachdatei = 'Sprachdatei kann nicht geladen werden';
-  rs_Demolizenz = ' - Demolizenz gültig bis ';
-  rs_Datensicherung = 'Datensicherung';
-  rs_Programminfo = 'Programminfo';
-  rs_Nein = 'Nein';
-  rs_Ja = 'Ja';
-  rs_unbegrenzt = 'unbegrenzt';
-
-
-  rs_BV_Benutzer = 'Benutzer';
-  rs_BV_Vorname = 'Vorname';
-  rs_BV_Nachname = 'Nachname';
-  rs_BV_Bezeichnung = 'Bezeichnung';
-
-  rs_liz_Demolizenz = 'Demolizenz für: ';
-  rs_liz_Programm = 'Programm: ';
-  rs_liz_Version = 'Version: ';
-  rs_liz_Gueltig = 'Gültig bis: ';
-  rs_liz_Benutzer = 'Benutzer: PCM';
-  rs_liz_Lizenz = 'Lizenz: ';
-
-  rs_liz_KundeLizenz = 'Kunden / Lizenzen';
-  rs_liz_Programme = 'Programme';
-
-
-
 implementation
 
 {$R *.dfm}
