@@ -5,21 +5,45 @@ interface
 uses Windows, Classes;
 
 // allgemein
-resourcestring rs_Benutzerverwaltung ='Benutzerverwaltung';
-resourcestring rs_Systeminformation = 'Systeminformation';
-resourcestring rs_Konfiguration = 'Konfiguration';
-resourcestring rs_Sprachdatei = 'Sprachdatei kann nicht geladen werden';
-resourcestring rs_Demolizenz = ' - Demolizenz gültig bis ';
-resourcestring rs_Datensicherung = 'Datensicherung';
-resourcestring rs_Programminfo = 'Programminfo';
-resourcestring rs_Nein = 'Nein';
-resourcestring rs_Ja = 'Ja';
-resourcestring rs_unbegrenzt = 'unbegrenzt';
-resourcestring rs_Abbrechen ='Abbrechen';
-resourcestring rs_Schliessen = 'Schließen';
-resourcestring rs_KeineVerbindung1 = 'Es konnte keine Verbindung zur Datenbank auf dem Server ';
-resourcestring rs_KeineVerbindung2 = ' hergestellt werden:';
-resourcestring rs_PCMINIPruefen = 'Bitte überprüfen Sie die Serveraddresse in der Konfigurationsdatei:';
+resourcestring rs_PCM_Benutzerverwaltung ='Benutzerverwaltung';
+resourcestring rs_PCM_Systeminformation = 'Systeminformation';
+resourcestring rs_PCM_Konfiguration = 'Konfiguration';
+resourcestring rs_PCM_Sprachdatei = 'Sprachdatei kann nicht geladen werden';
+resourcestring rs_PCM_Demolizenz = ' - Demolizenz gültig bis ';
+resourcestring rs_PCM_Datensicherung = 'Datensicherung';
+resourcestring rs_PCM_Programminfo = 'Programminfo';
+resourcestring rs_PCM_Nein = 'Nein';
+resourcestring rs_PCM_Ja = 'Ja';
+resourcestring rs_PCM_unbegrenzt = 'unbegrenzt';
+resourcestring rs_PCM_Abbrechen ='Abbrechen';
+resourcestring rs_PCM_Schliessen = 'Schließen';
+// Logfile
+resourcestring rs_PCMLog_Verbindungerfolgreich ='Verbindung erfolgreich hergestellt';
+resourcestring rs_PCMLog_KeineVerbindung1 = 'Es konnte keine Verbindung zur Datenbank auf dem Server ';
+resourcestring rs_PCMLog_KeineVerbindung2 = ' hergestellt werden:';
+resourcestring rs_PCMLog_PCMINIPruefen = 'Bitte überprüfen Sie die Serveraddresse in der Konfigurationsdatei:';
+resourcestring rs_PCMLog_FalschesPW = 'Falsches Passwort';
+// PCM - Appserver
+resourcestring rs_PCMAPPServer_Start = 'PCM - APPServer mit HTTPS gestartet';
+resourcestring rs_PCMAPPServer_Dienst = 'Appserver für PCM-Apps';
+resourcestring rs_PCMAPPServer_BenutzerausPCMpruefen = 'Benutzer aus PCM - APP prüfen';
+resourcestring rs_PCMAPPServer_Tokenpruefung = 'Token geprüft';
+resourcestring rs_PCMAPPServer_Kontakteanzahl = 'Kontakte lesen, Anzahl:';
+resourcestring rs_PCMAPPServer_Kontaktepruefung = 'Kontakte geprüft, Anzahl:';
+resourcestring rs_PCMAPPServer_Kalenderanzahl = 'Kalender lesen, Anzahl:';
+resourcestring rs_PCMAPPServer_Kalenderpruefung = 'Kalender geprüft, Anzahl:';
+resourcestring rs_PCMAPPServer_Passwordanzahl = 'Passwörter lesen, Anzahl:';
+resourcestring rs_PCMAPPServer_Passwordpruefung = 'Passwörter geprüft, Anzahl:';
+resourcestring rs_PCMAPPServer_Serialsanzahl = 'Serials lesen, Anzahl:';
+resourcestring rs_PCMAPPServer_Serialspruefung = 'Serials geprüft, Anzahl:';
+resourcestring rs_PCMAPPServer_Ausgabenanzahl = 'Ausgaben lesen, Anzahl:';
+resourcestring rs_PCMAPPServer_Ausgabenpruefung = 'Ausgaben geprüft, Anzahl:';
+resourcestring rs_PCMAPPServer_Einnahmenanzahl = 'Einnahmen lesen, Anzahl:';
+resourcestring rs_PCMAPPServer_Einnahmenpruefung = 'Einnahmen geprüft, Anzahl:';
+resourcestring rs_PCMAPPServer_GeraeteRegistrierung = 'Gerät wird registriert';
+
+
+
 
 // Benutzerverwaltung
 resourcestring rs_BV_Benutzer = 'Benutzer';
