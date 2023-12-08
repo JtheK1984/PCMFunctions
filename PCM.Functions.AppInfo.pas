@@ -66,7 +66,7 @@ implementation
 
 {$R *.dfm}
 
-uses PCM.Data,PCM.Functions.Lizenz,PCM.Main,PCM.Functions;
+uses PCM.Data,PCM.Functions.Lizenz,PCM.Main,PCM.Strings;
 ////////////////////////////////////////////////////////////////////////////////
 // Hilfsfunktionen                                                            //
 ////////////////////////////////////////////////////////////////////////////////
@@ -123,15 +123,15 @@ begin
   cxLabel1.Caption:= dm_PCM.Firma;
   if not dm_PCM.bDemo then
   begin
-    cxLabel4.Caption:= rs_Nein;
-    cxLabel6.Caption:= rs_unbegrenzt;
+    cxLabel4.Caption:= rs_PCM_Nein;
+    cxLabel6.Caption:= rs_PCM_unbegrenzt;
     frm_PCM_main.Caption:=PCM_Programmname;
   end
   else
   begin
-    cxLabel4.Caption:= rs_Ja;
+    cxLabel4.Caption:= rs_PCM_Ja;
     cxLabel6.Caption:= DateToStr(dm_PCM.dtGueltig);
-    frm_PCM_main.Caption:=PCM_Programmname + rs_Demolizenz + DateTostr(dm_PCM.dtGueltig);
+    frm_PCM_main.Caption:=PCM_Programmname + rs_PCM_Demolizenz + DateTostr(dm_PCM.dtGueltig);
   end;
 end;
 
@@ -165,12 +165,12 @@ begin
     cxLabel1.Caption:= dm_PCM.Firma;
     if not dm_PCM.bDemo then
     begin
-      cxLabel4.Caption:= rs_Nein;
-      cxLabel6.Caption:= rs_unbegrenzt;
+      cxLabel4.Caption:= rs_PCM_Nein;
+      cxLabel6.Caption:= rs_PCM_unbegrenzt;
     end
     else
     begin
-      cxLabel4.Caption:= rs_Ja;
+      cxLabel4.Caption:= rs_PCM_Ja;
       cxLabel6.Caption:= DateToStr(dm_PCM.dtGueltig);
     end;
   end
@@ -180,8 +180,8 @@ begin
     dm_PCM.qry_work.Open;
     cxLabel1.Caption:= dm_PCM.qry_work.FieldByName('Benutzer').AsString;
     dm_PCM.qry_work.close;
-    cxLabel4.Caption:= rs_Nein;
-    cxLabel6.Caption:= rs_unbegrenzt;
+    cxLabel4.Caption:= rs_PCM_Nein;
+    cxLabel6.Caption:= rs_PCM_unbegrenzt;
   end;
 end;
 

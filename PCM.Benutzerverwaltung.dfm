@@ -137,6 +137,7 @@ object frm_User: Tfrm_User
             PanelStyle.Active = True
             Style.BorderStyle = ebsNone
             TabOrder = 1
+            ExplicitTop = -4
             Height = 114
             Width = 1175
             object btn_OptionChangePassword: TcxButton

@@ -205,7 +205,8 @@ implementation
 
 uses  PCM.Main,
       PCM.Data,
-      PCM.Functions.ChangePW;
+      PCM.Functions.ChangePW,
+      PCM.strings;
 
 procedure Tfrm_User.SetGridViews(Show:boolean);
 begin
@@ -251,10 +252,10 @@ begin
   qBenutzer.Open;
   qRechte.Open;
   qRechte_Detail.Open;
-  cxGridDBColumn2.Caption:= rs_BV_Benutzer;
-  cxGridDBTableView3Column1.Caption:= rs_BV_Vorname;
-  cxGridDBTableView3Column2.Caption:= rs_BV_Nachname;
-  cxGridDBTableView1Bezeichnung.Caption:= rs_BV_Bezeichnung;
+  cxGridDBColumn2.Caption:= rs_PCMBenutzerverwaltung_Benutzer;
+  cxGridDBTableView3Column1.Caption:= rs_PCMBenutzerverwaltung_Vorname;
+  cxGridDBTableView3Column2.Caption:= rs_PCMBenutzerverwaltung_Nachname;
+  cxGridDBTableView1Bezeichnung.Caption:= rs_PCMBenutzerverwaltung_Bezeichnung;
 end;
 procedure Tfrm_User.SetButtons;
 begin
