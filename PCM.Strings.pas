@@ -45,11 +45,12 @@ resourcestring rs_PCMAPPServer_Ausgabenpruefung = 'Ausgaben geprüft, Anzahl:';
 resourcestring rs_PCMAPPServer_Einnahmenanzahl = 'Einnahmen lesen, Anzahl:';
 resourcestring rs_PCMAPPServer_Einnahmenpruefung = 'Einnahmen geprüft, Anzahl:';
 resourcestring rs_PCMAPPServer_GeraeteRegistrierung = 'Gerät wird registriert';
-
-
-
-
-// Benutzerverwaltung
+// PCM  - Backup / Backupservice
+resourcestring rs_PCMAPPServer_Backupgesichert = ' gesichert';
+resourcestring rs_PCMAPPServer_Backup = 'Sicherung: Datenbank PCM wird gesichert';
+resourcestring rs_PCMAPPServer_BackupLoeschen = 'Temporäre Dateien löschen: PCM wird gelöscht';
+resourcestring rs_PCMAPPServer_BackupErfolgreich = 'Sicherung: Datenbanken wurden erfolgreich gesichert';
+// PCM  - Benutzerverwaltung
 resourcestring rs_PCMBenutzerverwaltung_Benutzer = 'Benutzer';
 resourcestring rs_PCMBenutzerverwaltung_Vorname = 'Vorname';
 resourcestring rs_PCMBenutzerverwaltung_Nachname = 'Nachname';
