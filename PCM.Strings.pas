@@ -101,6 +101,12 @@ resourcestring rs_PCMLizenzgenerator_Lizenfuer = 'Lizenz für "';
 resourcestring rs_PCMLizenzgenerator_DatumFuerLizenz = 'Bitte Datum für die Demolizenz angeben!';
 resourcestring rs_PCMLizenzgenerator_Lizenzerstellen ='Soll die Lizenz wirklich erstellt werden?';
 resourcestring rs_PCMLizenzgenerator_Lizenzexistiert ='Lizenz existiert bereits!';
+resourcestring rs_PCMLizenzgenerator_Name = '';
+resourcestring rs_PCMLizenzgenerator_MessageStrasse = 'Bitte Straße eingeben!';
+resourcestring rs_PCMLizenzgenerator_MessagePLZ = 'Bitte PLZ eingeben!';
+resourcestring rs_PCMLizenzgenerator_MessageORT = 'Bitte Ort eingeben!';
+
+
 // PCM - Service / Servicemanager
 resourcestring rs_PCMService_AktuelleZeit = 'aktuelles Datum/Zeit: ';
 resourcestring rs_PCMService_naechsterZeitpunkt = 'nächster zeitpunkt: ';
