@@ -126,6 +126,7 @@ resourcestring
   rs_PCMManager_Kontakte = 'Kontakte: ';
   rs_PCMManager_Terminealle = 'Termine alle: ';
   rs_PCMManager_Aufgaben = 'Aufgaben: ';
+  rs_PCMManager_DatumUngueltig = 'Datum ungültig. ';
 // PCM - Restserver
   rs_PCMRestserver_Registry = 'Erstelle Registryeinträge';
   rs_PCMRestserver_StartError = 'Fehler beim Starten des PCM - REST Server: ';
