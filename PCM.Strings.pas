@@ -146,6 +146,9 @@ resourcestring
   rs_PCMManager_Eintragnichterledigt1 = 'Der Eintrag ist noch nicht als gelesen markiert. ' ;
   rs_PCMManager_Eintragnichterledigt2 = 'Möchten Sie ihn wirklich als Bearbeitet markieren?';
   rs_PCMManager_AlsBearbeitet = 'Als Bearbeitet markieren';
+// PCM - Mediacenter
+// PCM - MP3Manager
+
 // PCM - Restserver
   rs_PCMRestserver_Registry = 'Erstelle Registryeinträge';
   rs_PCMRestserver_StartError = 'Fehler beim Starten des PCM - REST Server: ';
@@ -164,7 +167,9 @@ resourcestring
   rs_PCMService_HIID = 'HD-ID:';
   rs_PCMService_PCID = 'PC-ID:';
   rs_PCMService_Aufrufvon = 'Aufruf von ';
-
+  rs_PCMService_TerminAufgabenloeschen = 'Wollen Sie wirklich diesen Termin und alle zugewiesenen Aufgaben löschen?';
+  rs_PCMService_KeinQuellVerzeichnis1 = 'Es wurde kein Quell-Verzeichnis gewählt.';
+  rs_PCMService_KeinQuellVerzeichnis2 = 'Damit Dateiendungen gewählt werden können, muss ein Quell-Verzeichnis angegeben werden';
 
 type
   TResourceStringID = Pointer;
