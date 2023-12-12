@@ -146,9 +146,23 @@ resourcestring
   rs_PCMManager_Eintragnichterledigt1 = 'Der Eintrag ist noch nicht als gelesen markiert. ' ;
   rs_PCMManager_Eintragnichterledigt2 = 'Möchten Sie ihn wirklich als Bearbeitet markieren?';
   rs_PCMManager_AlsBearbeitet = 'Als Bearbeitet markieren';
+	rs_PCMManager_Feiertageintragen = 'Feiertag eintragen';
+	rs_PCMManager_KontakteImportieren = 'Kontakte importieren';
+	rs_PCMManager_TermineImportieren = 'Termine importieren';
+	rs_PCMManager_TermineLoeschen = 'Termine aus Outlook löschen';
+	rs_PCMManager_AufgabenLoeschen = 'Aufgaben aus Outlook löschen';
+	rs_PCMManager_AufgabenImportieren = 'Aufgaben importieren';
 // PCM - Mediacenter
 // PCM - MP3Manager
-
+  rs_PCMMP3Manger_MP3Verzeichnis = 'MP3-Verzeichnis auswählen';
+  rs_PCMMP3Manger_MP3Tags = 'MP3-Tags bearbeiten';
+  rs_PCMMP3Manger_MP3DateiHinweis1 = 'Hinweis:  Datei ';
+  rs_PCMMP3Manger_MP3DateiHinweis2 = ' wird geändert';
+  rs_PCMMP3Manger_MP3DateiFehler1 = 'Fehler:  Datei ';
+  rs_PCMMP3Manger_MP3DateiFehler2 = ' kann nicht geändert werden. Grund: Falsche Konvention';
+  rs_PCMMP3Manger_MP3DateiFehler3 = ' kann nicht geändert werden. Grund: ';
+  rs_PCMMP3Manger_MP3DateiEdit1 = 'Es wurden ';
+  rs_PCMMP3Manger_MP3DateiEdit2 = ' Dateien editiert';
 // PCM - Restserver
   rs_PCMRestserver_Registry = 'Erstelle Registryeinträge';
   rs_PCMRestserver_StartError = 'Fehler beim Starten des PCM - REST Server: ';
@@ -170,7 +184,12 @@ resourcestring
   rs_PCMService_TerminAufgabenloeschen = 'Wollen Sie wirklich diesen Termin und alle zugewiesenen Aufgaben löschen?';
   rs_PCMService_KeinQuellVerzeichnis1 = 'Es wurde kein Quell-Verzeichnis gewählt.';
   rs_PCMService_KeinQuellVerzeichnis2 = 'Damit Dateiendungen gewählt werden können, muss ein Quell-Verzeichnis angegeben werden';
-
+	rs_PCMService_ZielVerzeichnisBackup = 'Zielverzeichniss für Backup auswählen';
+	rs_PCMService_QuellverzeichnissBackup = 'Quellverzeichniss für Backup auswählen';
+	rs_PCMService_ZielVerzeichnisINNO = 'Bitte Verzeichnis für INNO-Setup wählen';
+	rs_PCMService_ZielVerzeichnis = 'Bitte Ziel-Verzeichnis wählen';
+	rs_PCMService_QuellVerzeichnis = 'Bitte Quell-Verzeichnis wählen';
+	
 type
   TResourceStringID = Pointer;
 
