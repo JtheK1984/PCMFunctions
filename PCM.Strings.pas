@@ -127,6 +127,25 @@ resourcestring
   rs_PCMManager_Terminealle = 'Termine alle: ';
   rs_PCMManager_Aufgaben = 'Aufgaben: ';
   rs_PCMManager_DatumUngueltig = 'Datum ungültig. ';
+  rs_PCMManager_DatumVonBis = 'Bitte geben Sie ein "Von"- und ein "Bis"-Datum an.';
+  rs_PCMManager_DatumBisVon ='Das Beginn-Datum muss vor dem Ende-Datum liegen.';
+  rs_PCMManager_AufgabenArtWaehlen = 'Bitte wählen Sie eine Aufgaben-Art aus.';
+  rs_PCMManager_BetreffEingeben = 'Bitte geben Sie einen Betreff ein.';
+  rs_PCMManager_EndeInVergangenheit = 'Das Ende des Termins / der Aufgabe darf nicht in der Vergangenheit liegen.';
+  rs_PCMManager_AufgabeInVergangenheit = 'Die Aufgabe ist in der Vergangenheit fällig! Möchten Sie wirklich fortfahren?';
+  rs_PCMManager_FaelligkeitStandard = 'Die Fälligkeit entspricht nicht der hinterlegten Standardfälligkeit von ';
+  rs_PCMManager_FaelligkeitStandardTage = ' Tagen. ';
+  rs_PCMManager_Fortfahren = 'Möchten Sie wirklich fortfahren?';
+  rs_PCMManager_Faelligkeit4Stunden = 'Die Aufgabe ist in weniger als 4 Stunden fällig. ';
+  rs_PCMManager_Erledigungsgrad1 = 'Wenn der Erledigungsgrad auf 100% gesetzt wird, wird die Aufgabe oder der Termin ';
+  rs_PCMManager_Erledigungsgrad2 = 'nach dem Speichern als ''Bearbeitet'' gekennzeichnet.';
+  rs_PCMManager_Erledigungsgrad3 = 'Aufgabe erledigt?';
+  rs_PCMManager_Eintraegenichterledigt1 = 'Einträge sind noch nicht als gelesen markiert. ';
+  rs_PCMManager_Eintraegenichterledigt2 = 'Möchten Sie die ';
+  rs_PCMManager_Eintraegenichterledigt3 = ' Einträge wirklich als Bearbeitet markieren?';
+  rs_PCMManager_Eintragnichterledigt1 = 'Der Eintrag ist noch nicht als gelesen markiert. ' ;
+  rs_PCMManager_Eintragnichterledigt2 = 'Möchten Sie ihn wirklich als Bearbeitet markieren?';
+  rs_PCMManager_AlsBearbeitet = 'Als Bearbeitet markieren';
 // PCM - Restserver
   rs_PCMRestserver_Registry = 'Erstelle Registryeinträge';
   rs_PCMRestserver_StartError = 'Fehler beim Starten des PCM - REST Server: ';
