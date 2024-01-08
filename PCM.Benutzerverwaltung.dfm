@@ -63,8 +63,6 @@ object frm_User: Tfrm_User
             Width = 1175
             Height = 681
             Align = alClient
-            BevelInner = bvLowered
-            BevelKind = bkFlat
             BorderStyle = cxcbsNone
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
@@ -137,7 +135,6 @@ object frm_User: Tfrm_User
             PanelStyle.Active = True
             Style.BorderStyle = ebsNone
             TabOrder = 1
-            ExplicitTop = -4
             Height = 114
             Width = 1175
             object btn_OptionChangePassword: TcxButton
@@ -885,8 +882,6 @@ object frm_User: Tfrm_User
           Width = 1181
           Height = 292
           Align = alClient
-          BevelInner = bvLowered
-          BevelKind = bkFlat
           BorderStyle = cxcbsNone
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText

@@ -23,7 +23,7 @@ uses
   dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
   dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint, dxSkinWXI,
   dxSkinXmas2008Blue, cxGroupBox, cxRadioGroup, Vcl.Menus, Vcl.StdCtrls,
-  cxButtons,StrUtils ;
+  cxButtons,StrUtils,inifiles;
 
 type
   Tfrm_Language = class(TForm)
@@ -47,12 +47,12 @@ implementation
 
 {$R *.dfm}
 
-uses PCM.Data;
+uses PCM.Data,PCM.Main;
 
 procedure Tfrm_Language.cxButton1Click(Sender: TObject);
 begin
   dm_Pcm.slocale:= cxRadioGroup1.Properties.Items[cxRadioGroup1.Itemindex].Value;
-  Close;
+  close;
 end;
 procedure Tfrm_Language.FormShow(Sender: TObject);
 begin

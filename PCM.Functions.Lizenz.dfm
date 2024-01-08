@@ -2,7 +2,7 @@ object frm_PCM_Lizenz: Tfrm_PCM_Lizenz
   Left = 0
   Top = 0
   BorderIcons = []
-  BorderStyle = bsSingle
+  BorderStyle = bsDialog
   Caption = 'Lizenz eintragen'
   ClientHeight = 458
   ClientWidth = 316

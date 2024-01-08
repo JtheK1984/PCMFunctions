@@ -23,7 +23,7 @@ uses Winapi.Windows, System.SysUtils, System.Classes, Vcl.Graphics, Vcl.Forms,
   dxSkinsDefaultPainters, dxSkinValentine, dxSkinVisualStudio2013Blue,
   dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light, dxSkinVS2010,
   dxSkinWhiteprint, dxSkinXmas2008Blue, cxLabel, cxImage, cxGroupBox,cxPC,
-  dxSkinWXI,Vcl.Dialogs;
+  dxSkinWXI,Vcl.Dialogs,System.UITypes;
 type
   TcxPageControlPropertiesAccess = class(TcxPageControlProperties);
 type

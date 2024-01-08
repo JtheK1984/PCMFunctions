@@ -30,7 +30,7 @@ object frm_Language: Tfrm_Language
       Margins.Top = 5
       Margins.Right = 5
       Margins.Bottom = 5
-      Align = alClient
+      Align = alTop
       Caption = 'Sprachen'
       Properties.Items = <
         item
@@ -67,10 +67,11 @@ object frm_Language: Tfrm_Language
       Margins.Top = 0
       Margins.Right = 5
       Margins.Bottom = 5
-      Align = alBottom
+      Align = alTop
       Caption = 'Sprache wechseln'
       TabOrder = 1
       OnClick = cxButton1Click
+      ExplicitLeft = 11
     end
   end
 end
