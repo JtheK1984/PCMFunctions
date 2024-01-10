@@ -39,9 +39,6 @@ object frm_PCM_System: Tfrm_PCM_System
       Style.Font.Style = [fsBold]
       Style.IsFontAssigned = True
       TabOrder = 0
-      ExplicitLeft = 3
-      ExplicitTop = 121
-      ExplicitWidth = 1045
       Height = 87
       Width = 1047
       object lbl_ProcCount: TcxLabel
@@ -141,9 +138,6 @@ object frm_PCM_System: Tfrm_PCM_System
       Style.Font.Style = [fsBold]
       Style.IsFontAssigned = True
       TabOrder = 1
-      ExplicitLeft = 3
-      ExplicitTop = 214
-      ExplicitWidth = 1045
       Height = 66
       Width = 1047
       object lbl_RAMFree: TcxLabel
@@ -217,9 +211,6 @@ object frm_PCM_System: Tfrm_PCM_System
       Style.Font.Style = [fsBold]
       Style.IsFontAssigned = True
       TabOrder = 2
-      ExplicitLeft = 3
-      ExplicitTop = 286
-      ExplicitWidth = 1045
       Height = 138
       Width = 1047
       object prgbr_ProcUse: TcxProgressBar
@@ -232,7 +223,6 @@ object frm_PCM_System: Tfrm_PCM_System
         Align = alTop
         AutoSize = False
         TabOrder = 0
-        ExplicitWidth = 1013
         Height = 22
         Width = 1017
       end
@@ -246,7 +236,6 @@ object frm_PCM_System: Tfrm_PCM_System
         Align = alTop
         AutoSize = False
         TabOrder = 1
-        ExplicitWidth = 1013
         Height = 22
         Width = 1017
       end
@@ -268,9 +257,7 @@ object frm_PCM_System: Tfrm_PCM_System
         Style.Font.Style = []
         Style.IsFontAssigned = True
         Transparent = True
-        ExplicitLeft = 16
-        ExplicitTop = 59
-        ExplicitWidth = 1013
+        ExplicitTop = 81
       end
       object lbl_RamUse: TcxLabel
         AlignWithMargins = True
@@ -290,9 +277,6 @@ object frm_PCM_System: Tfrm_PCM_System
         Style.Font.Style = []
         Style.IsFontAssigned = True
         Transparent = True
-        ExplicitLeft = 16
-        ExplicitTop = 5
-        ExplicitWidth = 1013
       end
     end
     object grpbx_SysInfo_Sys: TcxGroupBox
@@ -314,9 +298,6 @@ object frm_PCM_System: Tfrm_PCM_System
       Style.Font.Style = [fsBold]
       Style.IsFontAssigned = True
       TabOrder = 3
-      ExplicitLeft = 3
-      ExplicitTop = 9
-      ExplicitWidth = 1045
       Height = 106
       Width = 1047
       object lbl_Graphic: TcxLabel

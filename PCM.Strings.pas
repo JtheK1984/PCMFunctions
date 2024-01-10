@@ -185,6 +185,7 @@ resourcestring
   rs_PCMManager_TerminenichtErmitteln = 'Termine konnten nicht importiert werden. Grund: ';
   rs_PCMManager_AufgabennichtErmitteln = 'Aufgaben konnten nicht importiert werden. Grund: ';
   rs_PCMManager_OutlookVerbinden = 'Mit Outlook verbinden';
+  rs_PCMManager_Archiv = 'Archiv';
   rs_PCMManager_Kontakt = 'Kontakte';
   rs_PCMManager_Kontakte = 'Kontakte: ';
   rs_PCMManager_Terminealle = 'Termine alle: ';

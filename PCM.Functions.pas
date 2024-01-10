@@ -161,7 +161,8 @@ const
   // PCM Vokabeltrainer
   GV_Vokabeln = 300;
   GV_Status = 301;
-
+  // PCM Archiv
+  GV_Pfad = 400;
 type
     SYSTEM_BASIC_INFORMATION = packed record
     dwUnknown1              : DWORD;
