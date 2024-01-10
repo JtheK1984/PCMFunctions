@@ -3709,7 +3709,7 @@ object frm_PCM_Login: Tfrm_PCM_Login
       Top = 397
       Width = 146
       Height = 25
-      Caption = 'Abbre&chen'
+      Caption = 'Abbrechen'
       OptionsImage.ImageIndex = 57
       OptionsImage.Images = dm_PCM.imglst_16x16
       TabOrder = 3
@@ -3720,7 +3720,7 @@ object frm_PCM_Login: Tfrm_PCM_Login
       Top = 397
       Width = 146
       Height = 25
-      Caption = 'Anme&lden'
+      Caption = 'Anmelden'
       LookAndFeel.NativeStyle = False
       OptionsImage.ImageIndex = 56
       OptionsImage.Images = dm_PCM.imglst_16x16

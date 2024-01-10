@@ -479,7 +479,7 @@ object frm_PCM_ChangePW: Tfrm_PCM_ChangePW
         Top = 100
         Width = 105
         Height = 25
-        Caption = '&Abbrechen'
+        Caption = 'Abbrechen'
         OptionsImage.ImageIndex = 57
         OptionsImage.Images = dm_PCM.imglst_16x16
         TabOrder = 3
@@ -490,7 +490,7 @@ object frm_PCM_ChangePW: Tfrm_PCM_ChangePW
         Top = 100
         Width = 105
         Height = 25
-        Caption = '&Ok'
+        Caption = 'Ok'
         OptionsImage.ImageIndex = 56
         OptionsImage.Images = dm_PCM.imglst_16x16
         TabOrder = 2

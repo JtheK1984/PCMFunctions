@@ -50,6 +50,8 @@ type
     cxLabel10: TcxLabel;
     lblDBVersion: TcxLabel;
     lblDataVersion: TcxLabel;
+    cxLabel11: TcxLabel;
+    lbl_PCManagerAppInfo_Server: TcxLabel;
     procedure FormShow(Sender: TObject);
     procedure cxButton1Click(Sender: TObject);
   private
@@ -152,7 +154,6 @@ begin
       dm_PCM.qry_work.Open;
       lblDataVersion.Caption:= rs_PCM_Version + dm_PCM.qry_work.FieldByName('Version').AsString;
       dm_PCM.qry_work.close;
-
     end;
   end;
 
@@ -160,6 +161,7 @@ begin
   lbl_PCManagerAppInfo_AppName.Caption:= PCM_Programmname;
   lbl_PCManagerAppInfo_Version.Caption:= GetAppVersion;
   lbl_PCManagerAppInfo_Revision.Caption:= GetFileDate;
+  lbl_PCManagerAppInfo_Server.Caption:= dm_PCM.sServer;
   if (PCM_Logname <> 'PCMLizenzgenerator') and (PCM_Logname <> 'PCMBackup') then
   begin
     cxLabel1.Caption:= dm_PCM.Firma;

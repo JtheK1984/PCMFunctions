@@ -3,7 +3,7 @@ object frm_PCM_InfoApp: Tfrm_PCM_InfoApp
   Top = 108
   BorderStyle = bsDialog
   Caption = 'Programminfo'
-  ClientHeight = 280
+  ClientHeight = 297
   ClientWidth = 686
   Color = clBtnFace
   Font.Charset = ANSI_CHARSET
@@ -21,14 +21,15 @@ object frm_PCM_InfoApp: Tfrm_PCM_InfoApp
     PanelStyle.Active = True
     Style.BorderStyle = ebsNone
     TabOrder = 0
-    Height = 280
+    ExplicitHeight = 280
+    Height = 297
     Width = 686
     object grpbx_Info: TcxGroupBox
       Left = 2
-      Top = 2
+      Top = 3
       PanelStyle.Active = True
       TabOrder = 0
-      Height = 241
+      Height = 256
       Width = 685
       object img_PCManagerAppInfo_Image: TcxImage
         Left = 8
@@ -907,11 +908,11 @@ object frm_PCM_InfoApp: Tfrm_PCM_InfoApp
         Style.BorderStyle = ebsFlat
         TabOrder = 0
         Transparent = True
-        Height = 221
-        Width = 221
+        Height = 240
+        Width = 240
       end
       object lbl_PCManagerAppInfo_AppCopyRight: TcxLabel
-        Left = 351
+        Left = 370
         Top = 67
         Caption = 'Jens Henske'
         ParentFont = False
@@ -924,7 +925,7 @@ object frm_PCM_InfoApp: Tfrm_PCM_InfoApp
         Transparent = True
       end
       object lbl_PCManagerAppInfo_AppCopyRightInfo: TcxLabel
-        Left = 243
+        Left = 262
         Top = 67
         Caption = 'Copyright:'
         ParentFont = False
@@ -937,7 +938,7 @@ object frm_PCM_InfoApp: Tfrm_PCM_InfoApp
         Transparent = True
       end
       object lbl_PCManagerAppInfo_AppName: TcxLabel
-        Left = 243
+        Left = 262
         Top = 8
         Caption = 'PCM ServiceManager'
         ParentFont = False
@@ -950,7 +951,7 @@ object frm_PCM_InfoApp: Tfrm_PCM_InfoApp
         Transparent = True
       end
       object lbl_PCManagerAppInfo_Revision: TcxLabel
-        Left = 351
+        Left = 370
         Top = 48
         Caption = '130313'
         ParentFont = False
@@ -963,7 +964,7 @@ object frm_PCM_InfoApp: Tfrm_PCM_InfoApp
         Transparent = True
       end
       object lbl_PCManagerAppInfo_RevisionInfo: TcxLabel
-        Left = 243
+        Left = 262
         Top = 48
         Caption = 'Revision:'
         ParentFont = False
@@ -976,7 +977,7 @@ object frm_PCM_InfoApp: Tfrm_PCM_InfoApp
         Transparent = True
       end
       object lbl_PCManagerAppInfo_Version: TcxLabel
-        Left = 351
+        Left = 370
         Top = 29
         Caption = '1.0.0.1'
         ParentFont = False
@@ -989,7 +990,7 @@ object frm_PCM_InfoApp: Tfrm_PCM_InfoApp
         Transparent = True
       end
       object lbl_PCManagerAppInfo_VersionInfo: TcxLabel
-        Left = 243
+        Left = 262
         Top = 29
         Caption = 'Version:'
         ParentFont = False
@@ -1002,7 +1003,7 @@ object frm_PCM_InfoApp: Tfrm_PCM_InfoApp
         Transparent = True
       end
       object cxLabel7: TcxLabel
-        Left = 243
+        Left = 262
         Top = 111
         Caption = 'Lizenziert f'#252'r:'
         ParentFont = False
@@ -1015,7 +1016,7 @@ object frm_PCM_InfoApp: Tfrm_PCM_InfoApp
         Transparent = True
       end
       object cxLabel6: TcxLabel
-        Left = 351
+        Left = 370
         Top = 149
         Caption = '1.0.0.1'
         ParentFont = False
@@ -1028,7 +1029,7 @@ object frm_PCM_InfoApp: Tfrm_PCM_InfoApp
         Transparent = True
       end
       object cxLabel5: TcxLabel
-        Left = 243
+        Left = 262
         Top = 130
         Caption = 'Demo:'
         ParentFont = False
@@ -1041,7 +1042,7 @@ object frm_PCM_InfoApp: Tfrm_PCM_InfoApp
         Transparent = True
       end
       object cxLabel4: TcxLabel
-        Left = 351
+        Left = 370
         Top = 130
         Caption = '130313'
         ParentFont = False
@@ -1054,7 +1055,7 @@ object frm_PCM_InfoApp: Tfrm_PCM_InfoApp
         Transparent = True
       end
       object cxLabel1: TcxLabel
-        Left = 351
+        Left = 370
         Top = 111
         Caption = 'Jens Henske'
         ParentFont = False
@@ -1067,7 +1068,7 @@ object frm_PCM_InfoApp: Tfrm_PCM_InfoApp
         Transparent = True
       end
       object cxLabel2: TcxLabel
-        Left = 243
+        Left = 262
         Top = 149
         Caption = 'G'#252'ltig bis:'
         ParentFont = False
@@ -1080,7 +1081,7 @@ object frm_PCM_InfoApp: Tfrm_PCM_InfoApp
         Transparent = True
       end
       object cxLabel8: TcxLabel
-        Left = 243
+        Left = 262
         Top = 90
         AutoSize = False
         Caption = 'Lizenz:'
@@ -1096,7 +1097,7 @@ object frm_PCM_InfoApp: Tfrm_PCM_InfoApp
         Width = 142
       end
       object cxLabel3: TcxLabel
-        Left = 243
+        Left = 262
         Top = 172
         AutoSize = False
         Caption = 'Datenbank:'
@@ -1112,7 +1113,7 @@ object frm_PCM_InfoApp: Tfrm_PCM_InfoApp
         Width = 295
       end
       object cxLabel9: TcxLabel
-        Left = 243
+        Left = 262
         Top = 193
         Caption = 'Datenbank:'
         ParentFont = False
@@ -1125,7 +1126,7 @@ object frm_PCM_InfoApp: Tfrm_PCM_InfoApp
         Transparent = True
       end
       object cxLabel10: TcxLabel
-        Left = 243
+        Left = 262
         Top = 212
         Caption = 'Datenversion:'
         ParentFont = False
@@ -1138,7 +1139,7 @@ object frm_PCM_InfoApp: Tfrm_PCM_InfoApp
         Transparent = True
       end
       object lblDBVersion: TcxLabel
-        Left = 351
+        Left = 370
         Top = 193
         Caption = 'Datenbank:'
         ParentFont = False
@@ -1151,9 +1152,35 @@ object frm_PCM_InfoApp: Tfrm_PCM_InfoApp
         Transparent = True
       end
       object lblDataVersion: TcxLabel
-        Left = 351
+        Left = 370
         Top = 212
         Caption = 'Datenversion:'
+        ParentFont = False
+        Style.Font.Charset = DEFAULT_CHARSET
+        Style.Font.Color = clWindowText
+        Style.Font.Height = -11
+        Style.Font.Name = 'Tahoma'
+        Style.Font.Style = []
+        Style.IsFontAssigned = True
+        Transparent = True
+      end
+      object cxLabel11: TcxLabel
+        Left = 262
+        Top = 231
+        Caption = 'Server:'
+        ParentFont = False
+        Style.Font.Charset = DEFAULT_CHARSET
+        Style.Font.Color = clWindowText
+        Style.Font.Height = -11
+        Style.Font.Name = 'Tahoma'
+        Style.Font.Style = []
+        Style.IsFontAssigned = True
+        Transparent = True
+      end
+      object lbl_PCManagerAppInfo_Server: TcxLabel
+        Left = 370
+        Top = 231
+        Caption = 'Server'
         ParentFont = False
         Style.Font.Charset = DEFAULT_CHARSET
         Style.Font.Color = clWindowText
@@ -1166,11 +1193,11 @@ object frm_PCM_InfoApp: Tfrm_PCM_InfoApp
     end
     object cxButton1: TcxButton
       AlignWithMargins = True
-      Left = 2
-      Top = 247
+      Left = 0
+      Top = 265
       Width = 685
       Height = 25
-      Caption = 'Neue &Lizenz eintragen'
+      Caption = 'Neue Lizenz eintragen'
       TabOrder = 1
       OnClick = cxButton1Click
     end

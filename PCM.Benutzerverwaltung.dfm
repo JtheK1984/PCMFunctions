@@ -1560,7 +1560,7 @@ object frm_User: Tfrm_User
       WholeRow = False
     end
     object btn_OptionNewUser: TdxBarLargeButton
-      Caption = 'Benutzer a&nlegen'
+      Caption = 'Benutzer anlegen'
       Category = 0
       Hint = 'Benutzer anlegen'
       Visible = ivAlways
@@ -1570,7 +1570,7 @@ object frm_User: Tfrm_User
       Width = 125
     end
     object btn_OptionSaveUser: TdxBarLargeButton
-      Caption = 'Benutzer &speichern'
+      Caption = 'Benutzer speichern'
       Category = 0
       Hint = 'Benutzer speichern'
       Visible = ivAlways
@@ -1580,7 +1580,7 @@ object frm_User: Tfrm_User
       Width = 125
     end
     object btn_OptionCancelUser: TdxBarLargeButton
-      Caption = '&Abbrechen'
+      Caption = 'Abbrechen'
       Category = 0
       Hint = 'Abbrechen'
       Visible = ivAlways
@@ -1590,7 +1590,7 @@ object frm_User: Tfrm_User
       Width = 125
     end
     object btn_OptionDeleteUser: TdxBarLargeButton
-      Caption = 'Benutzer &l'#246'schen'
+      Caption = 'Benutzer l'#246'schen'
       Category = 0
       Hint = 'Benutzer l'#246'schen'
       Visible = ivAlways
@@ -1610,7 +1610,7 @@ object frm_User: Tfrm_User
       Width = 125
     end
     object btn_OptionNewRight: TdxBarLargeButton
-      Caption = 'Recht &anlegen'
+      Caption = 'Recht anlegen'
       Category = 0
       Hint = 'Recht anlegen'
       Visible = ivAlways
@@ -1630,7 +1630,7 @@ object frm_User: Tfrm_User
       Width = 125
     end
     object btn_OptionDeleteRight: TdxBarLargeButton
-      Caption = 'Recht &l'#246'schen'
+      Caption = 'Recht l'#246'schen'
       Category = 0
       Hint = 'Recht l'#246'schen'
       Visible = ivAlways
@@ -1640,7 +1640,7 @@ object frm_User: Tfrm_User
       Width = 125
     end
     object btn_OptionCancelRight: TdxBarLargeButton
-      Caption = '&Abbrechen'
+      Caption = 'Abbrechen'
       Category = 0
       Hint = 'Abbrechen'
       Visible = ivAlways
@@ -1650,7 +1650,7 @@ object frm_User: Tfrm_User
       Width = 125
     end
     object btn_OptionSaveRight: TdxBarLargeButton
-      Caption = 'Recht &speichern'
+      Caption = 'Recht speichern'
       Category = 0
       Hint = 'Recht speichern'
       Visible = ivAlways

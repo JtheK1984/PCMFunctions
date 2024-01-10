@@ -32,6 +32,7 @@ object frm_PCM_Lizenz: Tfrm_PCM_Lizenz
       Height = 25
       Caption = 'Ok'
       OptionsImage.ImageIndex = 56
+      OptionsImage.Images = dm_PCM.imglst_16x16
       TabOrder = 0
       OnClick = btn_SaveLicenceClick
     end
@@ -42,6 +43,7 @@ object frm_PCM_Lizenz: Tfrm_PCM_Lizenz
       Height = 25
       Caption = 'Abbrechen'
       OptionsImage.ImageIndex = 57
+      OptionsImage.Images = dm_PCM.imglst_16x16
       TabOrder = 1
       OnClick = AbbrechenClick
     end
