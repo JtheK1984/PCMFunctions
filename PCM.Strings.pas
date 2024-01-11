@@ -132,6 +132,7 @@ resourcestring
   rs_PCMAPPServer_Einnahmenpruefung = 'Einnahmen geprüft, Anzahl:';
   rs_PCMAPPServer_GeraeteRegistrierung = 'Gerät wird registriert';
 // PCM  - Backup / Backupservice
+  rs_PCMBackup_BackupMod = 'Datensicherung';
   rs_PCMBackup_Backupgesichert = ' gesichert';
   rs_PCMBackup_Backup = 'Sicherung: Datenbank PCM wird gesichert';
   rs_PCMBackup_BackupLoeschen = 'Temporäre Dateien löschen: PCM wird gelöscht';

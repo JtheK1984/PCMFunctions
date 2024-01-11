@@ -56,9 +56,6 @@ object frm_User: Tfrm_User
           Style.Font.Style = [fsBold]
           Style.IsFontAssigned = True
           TabOrder = 0
-          ExplicitTop = 58
-          ExplicitWidth = 1187
-          ExplicitHeight = 835
           Height = 819
           Width = 1181
           object cxGrid3: TcxGrid
@@ -76,8 +73,6 @@ object frm_User: Tfrm_User
             TabOrder = 1
             TabStop = False
             LockedStateImageOptions.Effect = lsieDark
-            ExplicitTop = 129
-            ExplicitHeight = 681
             object cxGridDBTableView3: TcxGridDBTableView
               Navigator.Buttons.CustomButtons = <>
               FilterBox.CustomizeDialog = False
@@ -149,8 +144,6 @@ object frm_User: Tfrm_User
               PanelStyle.Active = True
               Style.BorderStyle = ebsNone
               TabOrder = 0
-              ExplicitLeft = 0
-              ExplicitHeight = 108
               Height = 94
               Width = 525
               object cxDBCheckBox3: TcxDBCheckBox
@@ -283,7 +276,6 @@ object frm_User: Tfrm_User
               PanelStyle.Active = True
               Style.BorderStyle = ebsNone
               TabOrder = 1
-              ExplicitHeight = 108
               Height = 94
               Width = 444
               object btn_OptionChangePassword: TcxButton
@@ -291,7 +283,7 @@ object frm_User: Tfrm_User
                 Top = 0
                 Width = 177
                 Height = 21
-                Caption = '&Passwort '#228'ndern'
+                Caption = 'Passwort '#228'ndern'
                 OptionsImage.ImageIndex = 9
                 OptionsImage.Images = dm_PCM.imglst_16x16
                 TabOrder = 3
@@ -436,8 +428,6 @@ object frm_User: Tfrm_User
             Style.Font.Style = [fsBold]
             Style.IsFontAssigned = True
             TabOrder = 0
-            ExplicitTop = 63
-            ExplicitWidth = 1181
             Height = 95
             Width = 1162
             object Label1: TLabel
@@ -518,13 +508,12 @@ object frm_User: Tfrm_User
               end
             end
             object pnl_RightRight: TcxGroupBox
-              Left = 534
+              Left = 517
               Top = 41
               Align = alRight
               PanelStyle.Active = True
               Style.BorderStyle = ebsNone
               TabOrder = 2
-              ExplicitLeft = 536
               Height = 45
               Width = 642
               object Label2: TcxLabel
@@ -574,9 +563,8 @@ object frm_User: Tfrm_User
               PanelStyle.Active = True
               Style.BorderStyle = ebsNone
               TabOrder = 0
-              ExplicitWidth = 1169
               Height = 20
-              Width = 1167
+              Width = 1150
               object Label12: TcxLabel
                 Left = 5
                 Top = 1
@@ -624,7 +612,6 @@ object frm_User: Tfrm_User
             Style.Font.Style = [fsBold]
             Style.IsFontAssigned = True
             TabOrder = 3
-            ExplicitTop = 195
             Height = 147
             Width = 1162
             object pnl_mrLeft: TcxGroupBox
@@ -634,7 +621,6 @@ object frm_User: Tfrm_User
               PanelStyle.Active = True
               Style.BorderStyle = ebsNone
               TabOrder = 0
-              ExplicitHeight = 129
               Height = 123
               Width = 536
               object cxLabel1: TcxLabel
@@ -820,8 +806,6 @@ object frm_User: Tfrm_User
               PanelStyle.Active = True
               Style.BorderStyle = ebsNone
               TabOrder = 1
-              ExplicitLeft = 534
-              ExplicitHeight = 129
               Height = 123
               Width = 642
               object cxLabel10: TcxLabel
@@ -1014,9 +998,6 @@ object frm_User: Tfrm_User
             Style.Font.Style = [fsBold]
             Style.IsFontAssigned = True
             TabOrder = 4
-            ExplicitLeft = 3
-            ExplicitTop = 321
-            ExplicitWidth = 1179
             Height = 72
             Width = 1162
             object pnl_mcLeft: TcxGroupBox
@@ -1104,7 +1085,6 @@ object frm_User: Tfrm_User
               Align = alRight
               Style.BorderStyle = ebsNone
               TabOrder = 1
-              ExplicitLeft = 534
               Height = 48
               Width = 642
               object cxDBLookupComboBox12: TcxDBLookupComboBox
@@ -1294,8 +1274,6 @@ object frm_User: Tfrm_User
             Style.Font.Style = [fsBold]
             Style.IsFontAssigned = True
             TabOrder = 7
-            ExplicitLeft = 13
-            ExplicitTop = 501
             Height = 47
             Width = 1162
             object pnl_scLeft: TcxGroupBox
@@ -1402,8 +1380,6 @@ object frm_User: Tfrm_User
             Style.Font.Style = [fsBold]
             Style.IsFontAssigned = True
             TabOrder = 8
-            ExplicitLeft = -3
-            ExplicitTop = 548
             Height = 74
             Width = 1162
             object pnl_VTLeft: TcxGroupBox
@@ -1546,7 +1522,6 @@ object frm_User: Tfrm_User
             TabOrder = 9
             TabStop = False
             LockedStateImageOptions.Effect = lsieDark
-            ExplicitTop = 617
             object cxGridDBTableView1: TcxGridDBTableView
               Navigator.Buttons.CustomButtons = <>
               FilterBox.CustomizeDialog = False
@@ -1661,7 +1636,6 @@ object frm_User: Tfrm_User
             Style.Font.Style = [fsBold]
             Style.IsFontAssigned = True
             TabOrder = 2
-            ExplicitTop = 145
             Height = 47
             Width = 1162
             object cxLabel24: TcxLabel
@@ -1890,16 +1864,6 @@ object frm_User: Tfrm_User
       LargeImageIndex = 24
       Width = 125
     end
-    object btn_OptionUserClose: TdxBarLargeButton
-      Align = iaRight
-      Caption = 'S&chlie'#223'en'
-      Category = 0
-      Hint = 'Schlie'#223'en'
-      Visible = ivAlways
-      AutoGrayScale = False
-      LargeImageIndex = 23
-      Width = 125
-    end
     object btn_OptionNewRight: TdxBarLargeButton
       Caption = 'Recht anlegen'
       Category = 0
@@ -1908,16 +1872,6 @@ object frm_User: Tfrm_User
       OnClick = btn_OptionNewRightClick
       AutoGrayScale = False
       LargeImageIndex = 27
-      Width = 125
-    end
-    object btn_OptionRightsClose: TdxBarLargeButton
-      Align = iaRight
-      Caption = 'S&chlie'#223'en'
-      Category = 0
-      Hint = 'Schlie'#223'en'
-      Visible = ivAlways
-      AutoGrayScale = False
-      LargeImageIndex = 23
       Width = 125
     end
     object btn_OptionDeleteRight: TdxBarLargeButton
