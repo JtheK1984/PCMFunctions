@@ -106,6 +106,7 @@ resourcestring
   rs_PCM_Sortierung = 'Sortierung';
   rs_PCM_Hauptpostfach = 'Hauptpostfach';
   rs_PCM_Fehler = 'Fehler: ';
+  rs_PCM_ChooseModul = 'Bitte Modul wählen';
 // Logfile
   rs_PCMLog_Verbindungerfolgreich ='Verbindung erfolgreich hergestellt';
   rs_PCMLog_KeineVerbindung1 = 'Es konnte keine Verbindung zur Datenbank auf dem Server ';

@@ -163,6 +163,9 @@ const
   GV_Status = 301;
   // PCM Archiv
   GV_Pfad = 400;
+  GV_Main = 401;
+  GV_Sub = 402;
+  GV_Archiv = 403;
 type
     SYSTEM_BASIC_INFORMATION = packed record
     dwUnknown1              : DWORD;
