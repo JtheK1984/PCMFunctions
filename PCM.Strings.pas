@@ -111,7 +111,7 @@ resourcestring
   rs_PCMLog_Verbindungerfolgreich ='Verbindung erfolgreich hergestellt';
   rs_PCMLog_KeineVerbindung1 = 'Es konnte keine Verbindung zur Datenbank auf dem Server ';
   rs_PCMLog_KeineVerbindung2 = ' hergestellt werden:';
-  rs_PCMLog_PCMINIPruefen = 'Bitte überprüfen Sie die Serveraddresse in der Konfigurationsdatei:';
+  rs_PCMLog_PCMINIPruefen = 'Bitte überprüfen Sie die Serveradresse in der Konfigurationsdatei:';
   rs_PCMLog_FalschesPW = 'Falsches Passwort';
 // PCM - Appserver
   rs_PCMAPPServer_Start = 'PCM - APPServer mit HTTPS gestartet';
@@ -145,7 +145,7 @@ resourcestring
   rs_PCMBenutzerverwaltung_Bezeichnung = 'Bezeichnung';
   rs_PCMBenutzerverwaltung_RechteBearbeiten = 'Die vordefinierten Rechte können nicht bearbeitet werden!';
   rs_PCMBenutzerverwaltung_RechteLoeschen = 'Die vordefinierten Rechte können nicht gelöscht werden!';
-  rs_PCMBenutzerverwaltung_BenutzerLoeschen = 'Der Haupbenutzer kann nicht gelöscht werden!';
+  rs_PCMBenutzerverwaltung_BenutzerLoeschen = 'Der Hauptbenutzer kann nicht gelöscht werden!';
 // PCM  - Lizenzgenerator
   rs_PCMLizenzgenerator_Demolizenz = 'Demolizenz für: ';
   rs_PCMLizenzgenerator_Programm = 'Programm: ';
