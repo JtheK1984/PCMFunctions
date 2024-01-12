@@ -21,16 +21,19 @@ object frm_PCM_InfoApp: Tfrm_PCM_InfoApp
     PanelStyle.Active = True
     Style.BorderStyle = ebsNone
     TabOrder = 0
-    ExplicitHeight = 280
     Height = 297
     Width = 686
     object grpbx_Info: TcxGroupBox
-      Left = 2
+      Left = 3
       Top = 3
+      Align = alClient
       PanelStyle.Active = True
       TabOrder = 0
-      Height = 256
-      Width = 685
+      ExplicitLeft = 2
+      ExplicitWidth = 685
+      ExplicitHeight = 256
+      Height = 260
+      Width = 680
       object img_PCManagerAppInfo_Image: TcxImage
         Left = 8
         Top = 8
@@ -1193,13 +1196,17 @@ object frm_PCM_InfoApp: Tfrm_PCM_InfoApp
     end
     object cxButton1: TcxButton
       AlignWithMargins = True
-      Left = 0
-      Top = 265
-      Width = 685
+      Left = 6
+      Top = 266
+      Width = 674
       Height = 25
+      Align = alBottom
       Caption = 'Neue Lizenz eintragen'
       TabOrder = 1
       OnClick = cxButton1Click
+      ExplicitLeft = 0
+      ExplicitTop = 265
+      ExplicitWidth = 685
     end
   end
 end

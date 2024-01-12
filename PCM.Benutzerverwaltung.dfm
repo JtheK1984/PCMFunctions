@@ -428,8 +428,9 @@ object frm_User: Tfrm_User
             Style.Font.Style = [fsBold]
             Style.IsFontAssigned = True
             TabOrder = 0
+            ExplicitWidth = 1162
             Height = 95
-            Width = 1162
+            Width = 1179
             object Label1: TLabel
               Left = 194
               Top = 44
@@ -508,12 +509,13 @@ object frm_User: Tfrm_User
               end
             end
             object pnl_RightRight: TcxGroupBox
-              Left = 517
+              Left = 534
               Top = 41
               Align = alRight
               PanelStyle.Active = True
               Style.BorderStyle = ebsNone
               TabOrder = 2
+              ExplicitLeft = 517
               Height = 45
               Width = 642
               object Label2: TcxLabel
@@ -563,8 +565,9 @@ object frm_User: Tfrm_User
               PanelStyle.Active = True
               Style.BorderStyle = ebsNone
               TabOrder = 0
+              ExplicitWidth = 1150
               Height = 20
-              Width = 1150
+              Width = 1167
               object Label12: TcxLabel
                 Left = 5
                 Top = 1
@@ -612,8 +615,9 @@ object frm_User: Tfrm_User
             Style.Font.Style = [fsBold]
             Style.IsFontAssigned = True
             TabOrder = 3
+            ExplicitWidth = 1162
             Height = 147
-            Width = 1162
+            Width = 1179
             object pnl_mrLeft: TcxGroupBox
               Left = 3
               Top = 15
@@ -800,12 +804,13 @@ object frm_User: Tfrm_User
               end
             end
             object pnl_mrRight: TcxGroupBox
-              Left = 517
+              Left = 534
               Top = 15
               Align = alRight
               PanelStyle.Active = True
               Style.BorderStyle = ebsNone
               TabOrder = 1
+              ExplicitLeft = 517
               Height = 123
               Width = 642
               object cxLabel10: TcxLabel
@@ -998,8 +1003,9 @@ object frm_User: Tfrm_User
             Style.Font.Style = [fsBold]
             Style.IsFontAssigned = True
             TabOrder = 4
+            ExplicitWidth = 1162
             Height = 72
-            Width = 1162
+            Width = 1179
             object pnl_mcLeft: TcxGroupBox
               Left = 3
               Top = 15
@@ -1080,11 +1086,12 @@ object frm_User: Tfrm_User
               end
             end
             object pnl_mcRight: TcxGroupBox
-              Left = 517
+              Left = 534
               Top = 15
               Align = alRight
               Style.BorderStyle = ebsNone
               TabOrder = 1
+              ExplicitLeft = 517
               Height = 48
               Width = 642
               object cxDBLookupComboBox12: TcxDBLookupComboBox
@@ -1172,8 +1179,9 @@ object frm_User: Tfrm_User
             Style.Font.Style = [fsBold]
             Style.IsFontAssigned = True
             TabOrder = 5
+            ExplicitWidth = 1162
             Height = 47
-            Width = 1162
+            Width = 1179
             object cxLabel15: TcxLabel
               Left = 13
               Top = 17
@@ -1223,8 +1231,9 @@ object frm_User: Tfrm_User
             Style.Font.Style = [fsBold]
             Style.IsFontAssigned = True
             TabOrder = 6
+            ExplicitWidth = 1162
             Height = 47
-            Width = 1162
+            Width = 1179
             object cxLabel16: TcxLabel
               Left = 13
               Top = 17
@@ -1274,8 +1283,9 @@ object frm_User: Tfrm_User
             Style.Font.Style = [fsBold]
             Style.IsFontAssigned = True
             TabOrder = 7
+            ExplicitWidth = 1162
             Height = 47
-            Width = 1162
+            Width = 1179
             object pnl_scLeft: TcxGroupBox
               Left = 3
               Top = 15
@@ -1322,12 +1332,13 @@ object frm_User: Tfrm_User
               end
             end
             object pnl_scRight: TcxGroupBox
-              Left = 517
+              Left = 534
               Top = 15
               Align = alRight
               PanelStyle.Active = True
               Style.BorderStyle = ebsNone
               TabOrder = 1
+              ExplicitLeft = 517
               Height = 23
               Width = 642
               object cxLabel19: TcxLabel
@@ -1380,8 +1391,9 @@ object frm_User: Tfrm_User
             Style.Font.Style = [fsBold]
             Style.IsFontAssigned = True
             TabOrder = 8
+            ExplicitWidth = 1162
             Height = 74
-            Width = 1162
+            Width = 1179
             object pnl_VTLeft: TcxGroupBox
               Left = 3
               Top = 15
@@ -1462,12 +1474,13 @@ object frm_User: Tfrm_User
               end
             end
             object pnl_vtRight: TcxGroupBox
-              Left = 517
+              Left = 534
               Top = 15
               Align = alRight
               PanelStyle.Active = True
               Style.BorderStyle = ebsNone
               TabOrder = 1
+              ExplicitLeft = 517
               Height = 50
               Width = 642
               object cxDBLookupComboBox20: TcxDBLookupComboBox
@@ -1510,9 +1523,9 @@ object frm_User: Tfrm_User
           object cxGrid1: TcxGrid
             Left = 0
             Top = 623
-            Width = 1162
-            Height = 200
-            Align = alBottom
+            Width = 1179
+            Height = 150
+            Align = alTop
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
             Font.Height = -11
@@ -1522,6 +1535,7 @@ object frm_User: Tfrm_User
             TabOrder = 9
             TabStop = False
             LockedStateImageOptions.Effect = lsieDark
+            ExplicitWidth = 1162
             object cxGridDBTableView1: TcxGridDBTableView
               Navigator.Buttons.CustomButtons = <>
               FilterBox.CustomizeDialog = False
@@ -1585,8 +1599,9 @@ object frm_User: Tfrm_User
             Style.Font.Style = [fsBold]
             Style.IsFontAssigned = True
             TabOrder = 1
+            ExplicitWidth = 1162
             Height = 47
-            Width = 1162
+            Width = 1179
             object cxLabel23: TcxLabel
               Left = 13
               Top = 17
@@ -1636,8 +1651,9 @@ object frm_User: Tfrm_User
             Style.Font.Style = [fsBold]
             Style.IsFontAssigned = True
             TabOrder = 2
+            ExplicitWidth = 1162
             Height = 47
-            Width = 1162
+            Width = 1179
             object cxLabel24: TcxLabel
               Left = 13
               Top = 17
