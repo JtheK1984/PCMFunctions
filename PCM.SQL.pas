@@ -31,13 +31,24 @@ var
   ASSQL_OpenAProgramme,
   ASSQL_ChartKunde,
   ASSQL_ChartLizenz,
-  ASSQL_ChartProg: TPCMSQL;
+  ASSQL_ChartProg,
+  ASSQL_GetCustomerCount,
+  ASSQL_InsCustomer,
+  ASSQL_UpdCustomer,
+  ASSQL_GetLicenceIDDefault,
+  ASSQL_GetLicenceCountDefault,
+  ASSQL_GetLicence,
+  ASSQL_GetLicenceInfo,
+  ASSQL_GetLicenceCount,
+  ASSQL_SetLicence,
+  ASSQL_GetProgramms,
+  ASSQL_GetProgramm: TPCMSQL;
 
 implementation
 begin
   // PCM - Allgemein
   ASSQL_GetAutologin[0]:= 'SELECT ID,Benutzer FROM benutzer WHERE benutzer  = :Benutzer and Autologin = True';
-  ASSQL_GetAllRights[0]:= 'SELECT mr.ba_backup, mr.dm_archiv,mr.Benutzer,mr.Konfiguration,mr.ma_Kontakte as Kontakte,mr.ma_Kalender as Kalender,mr.ma_Stundenplan as Stundenplan,'+
+  ASSQL_GetAllRights[0]:= 'SELECT mr.ba_backup, mr.dm_archiv,mr.Benutzer,mr.Konfiguration,mr.lg_Lizenzen,mr.lg_Programme, mr.ma_Kontakte as Kontakte,mr.ma_Kalender as Kalender,mr.ma_Stundenplan as Stundenplan,'+
                        'mr.ma_Email as Email,mr.ma_Password as Password,mr.ma_Serials as Serials,mr.ma_Monatsuebersicht as Monatsuebersicht,'+
                        'mr.ma_Verfuegung as Verfuegung,mr.ma_Einnahmen as Einnahmen,mr.ma_Ausgaben as Ausgaben '+
                        'FROM benutzer mb LEFT OUTER JOIN rechte mr ON mr.ID = mb.ID_rechte WHERE mb.id = :ID';
@@ -64,5 +75,17 @@ begin
   ASSQL_ChartKunde[0]:= 'SELECT COUNT(*) as Wert, kun.Name FROM lizenzgenerator_lizenzen liz LEFT OUTER JOIN lizenzgenerator_kunden kun ON liz.ID_Kunden = kun.ID GROUP BY ID_Kunden';
   ASSQL_ChartLizenz[0]:= 'SELECT COUNT(*) as Wert, pro.Programm FROM lizenzgenerator_lizenzen liz LEFT OUTER JOIN lizenzgenerator_programme pro ON liz.Programm = pro.ID GROUP BY liz.programm';
   ASSQL_ChartProg[0]:= 'SELECT COUNT(*) as Wert,Programm FROM lizenzgenerator_programme Group BY number';
+  ASSQL_GetCustomerCount[0]:= 'SELECT COUNT(*) as Anzahl  FROM lizenzgenerator_Kunden WHERE Name  = :Name AND Strasse = :Strasse AND PLZ = :PLZ AND Ort = :Ort and ID_benutzer = :ID_benutzer';
+  ASSQL_InsCustomer[0]:= 'Insert Into lizenzgenerator_Kunden (name,Strasse,PLZ,Ort,ID_Benutzer) values(:name,:Strasse,:PLZ,:Ort,:ID_Benutzer)';
+  ASSQL_UpdCustomer[0]:= 'Update lizenzgenerator_Kunden Set name = :name ,Strasse = :Strasse,PLZ = :PLZ,Ort = :Ort,ID_Benutzer = :ID_Benutzer Where ID = :ID';
+  ASSQL_GetLicenceIDDefault[0]:='SELECT ID FROM lizenzgenerator_lizenzen WHERE ID_kunden = :ID  AND Version = :Version AND  Programm = :Programm';
+  ASSQL_GetLicenceCountDefault[0]:='SELECT COUNT(*)as Anzahl FROM lizenzgenerator_lizenzen WHERE ID_kunden = :ID  AND Version = :Version AND  Programm = :Programm';
+  ASSQL_GetLicence[0]:= 'Select Distinct Number From lizenzgenerator_programme Where Programm = :Programm';
+  ASSQL_GetLicenceInfo[0]:= 'Select Major,Minor From lizenzgenerator_programme Where Programm = :Programm and Lizenz = true order by Major, Minor';
+  ASSQL_GetLicenceCount[0]:= 'SELECT COUNT(*)as Anzahl FROM lizenzgenerator_lizenzen WHERE ID_kunden = :ID  AND Version = :Version AND Demo = :Demo  And Programm = :Programm  AND Gueltig_bis = :Gueltig_bis';
+  ASSQL_SetLicence[0]:= 'Update lizenzgenerator_lizenzen Set ID_Kunden = :ID_Kunden, Datum = :Datum, Uhrzeit= :Uhrzeit, ' +
+                               'Version = :Version, Demo = :Demo, Gueltig_bis= :Gueltig_bis ,Programm = :Programm, Lizenz =  :Lizenz, Bemerkung = :Bemerkung, ID_Benutzer = :ID_Benutzer Where ID = :ID';
+   ASSQL_GetProgramms[0]:= 'Select DISTINCT Number,Programm From lizenzgenerator_programme Where Lizenz = true order by Programm';
+   ASSQL_GetProgramm[0]:= 'Select Programm From lizenzgenerator_programme Where Number = :Number';
 
 end.

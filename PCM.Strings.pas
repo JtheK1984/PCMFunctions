@@ -9,6 +9,8 @@ resourcestring
   rs_PCM_Benutzerverwaltung ='Benutzerverwaltung';
   rs_PCM_Systeminformation = 'Systeminformation';
   rs_PCM_Konfiguration = 'Konfiguration';
+  rs_PCM_Lizenzen = 'Lizenzen';
+  rs_PCM_Programme = 'Programme';
   rs_PCM_Sprachdatei = 'Sprachdatei kann nicht geladen werden';
   rs_PCM_Demolizenz = ' - Demolizenz gültig bis ';
   rs_PCM_Datensicherung = 'Datensicherung';
