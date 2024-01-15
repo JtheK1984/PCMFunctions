@@ -49,7 +49,9 @@ var
   ASSQL_GetLizenzCount_PCMMediaCenter,
   ASSQL_GetUserLizenz_PCMMediaCenter,
   ASSQL_GetLizenzCount_PCMMP3,
-  ASSQL_GetUserLizenz_PCMMP3 : TPCMSQL;
+  ASSQL_GetUserLizenz_PCMMP3,
+  ASSQL_GetLizenzCount_PCMNotenrechner,
+  ASSQL_GetUserLizenz_PCMNotenrechner: TPCMSQL;
 
 implementation
 begin
@@ -103,4 +105,7 @@ begin
   // PCM - MP3
   ASSQL_GetLizenzCount_PCMMP3[0]:= 'Select Count(*)as Anzahl From mp3_lizenz';
   ASSQL_GetUserLizenz_PCMMP3[0]:= 'Select Benutzer , Lizenz From mp3_lizenz';
+  // PCM - Notenrechner
+  ASSQL_GetLizenzCount_PCMNotenrechner[0]:= 'Select Count(*)as Anzahl From notenrechner_lizenz';
+  ASSQL_GetUserLizenz_PCMNotenrechner[0]:=  'Select Benutzer , Lizenz From notenrechner_lizenz';
 end.
