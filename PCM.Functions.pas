@@ -88,6 +88,10 @@ type
     lbl_ProcUse: TcxLabel;
     lbl_RamUse: TcxLabel;
     pnl_design: TcxGroupBox;
+    cxPageControl1: TcxPageControl;
+    cxTabSheet1: TcxTabSheet;
+    cxImageList1: TcxImageList;
+    cxGroupBox1: TcxGroupBox;
     procedure tmr_GetRamUsageTimer(Sender: TObject);
     procedure FormShow(Sender: TObject);
   private
