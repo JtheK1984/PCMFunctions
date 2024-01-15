@@ -43,7 +43,13 @@ var
   ASSQL_GetLicenceCount,
   ASSQL_SetLicence,
   ASSQL_GetProgramms,
-  ASSQL_GetProgramm: TPCMSQL;
+  ASSQL_GetProgramm,
+  ASSQL_GetLizenzCount_PCMManager,
+  ASSQL_GetUserLizenz_PCMManager,
+  ASSQL_GetLizenzCount_PCMMediaCenter,
+  ASSQL_GetUserLizenz_PCMMediaCenter,
+  ASSQL_GetLizenzCount_PCMMP3,
+  ASSQL_GetUserLizenz_PCMMP3 : TPCMSQL;
 
 implementation
 begin
@@ -88,5 +94,13 @@ begin
                                'Version = :Version, Demo = :Demo, Gueltig_bis= :Gueltig_bis ,Programm = :Programm, Lizenz =  :Lizenz, Bemerkung = :Bemerkung, ID_Benutzer = :ID_Benutzer Where ID = :ID';
   ASSQL_GetProgramms[0]:= 'Select DISTINCT Number,Programm From lizenzgenerator_programme Where Lizenz = true order by Programm';
   ASSQL_GetProgramm[0]:= 'Select Programm From lizenzgenerator_programme Where Number = :Number';
-
+  // PCM - Manager
+  ASSQL_GetLizenzCount_PCMManager[0]:= 'Select Count(*)as Anzahl From manager_lizenz';
+  ASSQL_GetUserLizenz_PCMManager[0]:= 'Select Benutzer , Lizenz From manager_lizenz';
+  // PCM - Mediacenter
+  ASSQL_GetLizenzCount_PCMMediaCenter[0]:= 'Select Count(*)as Anzahl From mediacenter_lizenz';
+  ASSQL_GetUserLizenz_PCMMediaCenter[0]:= 'Select Benutzer , Lizenz From mediacenter_lizenz';
+  // PCM - MP3
+  ASSQL_GetLizenzCount_PCMMP3[0]:= 'Select Count(*)as Anzahl From mp3_lizenz';
+  ASSQL_GetUserLizenz_PCMMP3[0]:= 'Select Benutzer , Lizenz From mp3_lizenz';
 end.

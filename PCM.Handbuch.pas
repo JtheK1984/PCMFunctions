@@ -51,8 +51,6 @@ uses
   PCM.Data;
 
 procedure Tfrm_Handbuch.FormShow(Sender: TObject);
-var
-  SPath: String;
 begin
   EdgeBrowser.UserDataFolder := TPath.Combine(TPath.GetDirectoryName(Application.ExeName), 'CustomCache');
   EdgeBrowser.Navigate(TPath.GetDirectoryName(Application.ExeName) + '\' + PCM_Logname + '.htm');
