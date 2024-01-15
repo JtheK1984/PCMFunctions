@@ -17,6 +17,7 @@ var
   ASSQL_GetUsername,
   ASSQL_GetLizenzCount_PCMArchiv,
   ASSQL_GetUserLizenz_PCMArchiv,
+  ASSQL_GetBackupOptions,
   ASSQL_GetDefaultID,
   ASSQL_InsDefault,
   ASSQL_GetDefaultCount,
@@ -57,10 +58,10 @@ begin
   ASSQL_GetRightsDetail[0]:= 'Select Nummer, Bezeichnung From Rechte_detail';
   ASSQL_GetUsername[0]:= 'Select Benutzer from Benutzer Where ID = :ID';
   // PCM - Archiv
-  // PCM.Data
   ASSQL_GetLizenzCount_PCMArchiv[0]:= 'Select Count(*)as Anzahl From archiv_lizenz';
   ASSQL_GetUserLizenz_PCMArchiv[0]:= 'Select Benutzer , Lizenz From archiv_lizenz';
-
+  // PCM - Backup
+  ASSQL_GetBackupOptions[0]:= 'SELECT * FROM service_backupdatabase';
   // PCM - Lizenzgenerator
   ASSQL_GetDefaultID[0]:= 'SELECT ID FROM lizenzgenerator_Kunden WHERE Name  = :Name and ID_benutzer = 1';
   ASSQL_InsDefault[0]:= 'Insert Into lizenzgenerator_Kunden (name,ID_Benutzer) values(:name,1)';
@@ -85,7 +86,7 @@ begin
   ASSQL_GetLicenceCount[0]:= 'SELECT COUNT(*)as Anzahl FROM lizenzgenerator_lizenzen WHERE ID_kunden = :ID  AND Version = :Version AND Demo = :Demo  And Programm = :Programm  AND Gueltig_bis = :Gueltig_bis';
   ASSQL_SetLicence[0]:= 'Update lizenzgenerator_lizenzen Set ID_Kunden = :ID_Kunden, Datum = :Datum, Uhrzeit= :Uhrzeit, ' +
                                'Version = :Version, Demo = :Demo, Gueltig_bis= :Gueltig_bis ,Programm = :Programm, Lizenz =  :Lizenz, Bemerkung = :Bemerkung, ID_Benutzer = :ID_Benutzer Where ID = :ID';
-   ASSQL_GetProgramms[0]:= 'Select DISTINCT Number,Programm From lizenzgenerator_programme Where Lizenz = true order by Programm';
-   ASSQL_GetProgramm[0]:= 'Select Programm From lizenzgenerator_programme Where Number = :Number';
+  ASSQL_GetProgramms[0]:= 'Select DISTINCT Number,Programm From lizenzgenerator_programme Where Lizenz = true order by Programm';
+  ASSQL_GetProgramm[0]:= 'Select Programm From lizenzgenerator_programme Where Number = :Number';
 
 end.
