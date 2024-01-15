@@ -34,14 +34,14 @@ uses
   FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
   FireDAC.Comp.DataSet, FireDAC.Comp.Client,PCM.Functions, dxSkinWXI,
-  cxGridCustomPopupMenu, cxGridPopupMenu;
+  cxGridCustomPopupMenu, cxGridPopupMenu, cxScrollBox;
 
 type
   Tfrm_User = class(TForm)
     pnl_right: TcxGroupBox;
     AA_pc_User: TcxPageControl;
     ts_User: TcxTabSheet;
-    cxGroupBox9: TcxGroupBox;
+    pnl_User: TcxGroupBox;
     cxGrid3: TcxGrid;
     cxGridDBTableView3: TcxGridDBTableView;
     cxGridDBColumn2: TcxGridDBColumn;
@@ -52,9 +52,7 @@ type
     btn_OptionChangePassword: TcxButton;
     edt_OptionName: TcxDBTextEdit;
     edt_OptionPassword: TcxDBTextEdit;
-    edt_OptionSurName: TcxDBTextEdit;
     edt_OptionUser: TcxDBTextEdit;
-    lucbx_OptionRights: TcxDBLookupComboBox;
     Label14: TcxLabel;
     Label15: TcxLabel;
     Label7: TcxLabel;
@@ -92,15 +90,11 @@ type
     cxLabel1: TcxLabel;
     cxDBLookupComboBox1: TcxDBLookupComboBox;
     cxLabel2: TcxLabel;
-    cxDBLookupComboBox2: TcxDBLookupComboBox;
     cxDBCheckBox1: TcxDBCheckBox;
-    edt_OptionRight: TcxDBTextEdit;
-    Label12: TcxLabel;
     Label2: TcxLabel;
     Label3: TcxLabel;
     lucbx_Backup: TcxDBLookupComboBox;
     lucbx_Option: TcxDBLookupComboBox;
-    cxDBLookupComboBox3: TcxDBLookupComboBox;
     cxDBLookupComboBox4: TcxDBLookupComboBox;
     cxLabel3: TcxLabel;
     cxLabel4: TcxLabel;
@@ -137,14 +131,41 @@ type
     grpbx_6Vokabeltrainer: TcxGroupBox;
     cxLabel18: TcxLabel;
     cxDBLookupComboBox18: TcxDBLookupComboBox;
-    cxDBLookupComboBox19: TcxDBLookupComboBox;
-    cxLabel19: TcxLabel;
     cxDBLookupComboBox20: TcxDBLookupComboBox;
     cxLabel20: TcxLabel;
     cxLabel21: TcxLabel;
     cxDBLookupComboBox21: TcxDBLookupComboBox;
     cxDBCheckBox2: TcxDBCheckBox;
     cxDBCheckBox3: TcxDBCheckBox;
+    pnl_UserLeft: TcxGroupBox;
+    pnl_UserRight: TcxGroupBox;
+    lucbx_OptionRights: TcxDBLookupComboBox;
+    edt_OptionSurName: TcxDBTextEdit;
+    pnl_RightLEft: TcxGroupBox;
+    pnl_RightRight: TcxGroupBox;
+    cxGroupBox3: TcxGroupBox;
+    Label12: TcxLabel;
+    edt_OptionRight: TcxDBTextEdit;
+    Label1: TLabel;
+    pnl_mrLeft: TcxGroupBox;
+    cxDBLookupComboBox2: TcxDBLookupComboBox;
+    cxScrollBox1: TcxScrollBox;
+    cxDBLookupComboBox3: TcxDBLookupComboBox;
+    pnl_mrRight: TcxGroupBox;
+    cxGroupBox1: TcxGroupBox;
+    cxLabel23: TcxLabel;
+    cxDBLookupComboBox22: TcxDBLookupComboBox;
+    cxGroupBox2: TcxGroupBox;
+    cxLabel24: TcxLabel;
+    cxDBLookupComboBox23: TcxDBLookupComboBox;
+    pnl_mcLeft: TcxGroupBox;
+    pnl_mcRight: TcxGroupBox;
+    pnl_scLeft: TcxGroupBox;
+    pnl_scRight: TcxGroupBox;
+    cxLabel19: TcxLabel;
+    cxDBLookupComboBox19: TcxDBLookupComboBox;
+    pnl_VTLeft: TcxGroupBox;
+    pnl_vtRight: TcxGroupBox;
     procedure btn_OptionChangePasswordClick(Sender: TObject);
     procedure edt_OptionPasswordExit(Sender: TObject);
     procedure btn_OptionNewRightClick(Sender: TObject);
@@ -183,6 +204,9 @@ type
     procedure cxDBLookupComboBox21PropertiesChange(Sender: TObject);
     procedure cxDBLookupComboBox20PropertiesChange(Sender: TObject);
     procedure OpenData;
+    procedure FormResize(Sender: TObject);
+    procedure cxDBLookupComboBox22PropertiesChange(Sender: TObject);
+    procedure cxDBLookupComboBox23PropertiesChange(Sender: TObject);
   private
     { Private-Deklarationen }
     SaveGridViewUser,SaveGridViewRight: TSavedGridView;
@@ -204,7 +228,8 @@ implementation
 uses  PCM.Main,
       PCM.Data,
       PCM.Functions.ChangePW,
-      PCM.strings;
+      PCM.strings,
+      PCM.SQL;
 
 procedure Tfrm_User.SetGridViews(Show:boolean);
 begin
@@ -244,11 +269,13 @@ begin
   end;
 
 end;
-
 procedure Tfrm_User.OpenData;
 begin
+  qBenutzer.SQL.Text:= ASSQL_GetUSer[dm_PCM.iDBType];
   qBenutzer.Open;
+  qRechte.SQL.Text:= ASSQL_GetRights[dm_PCM.iDBType];
   qRechte.Open;
+  qRechte_Detail.SQL.Text:= ASSQL_GetRightsDetail[dm_PCM.iDBType];
   qRechte_Detail.Open;
   cxGridDBColumn2.Caption:= rs_PCMBenutzerverwaltung_Benutzer;
   cxGridDBTableView3Column1.Caption:= rs_PCMBenutzerverwaltung_Vorname;
@@ -385,6 +412,72 @@ procedure Tfrm_User.FormDestroy(Sender: TObject);
 begin
   SetGridViews(false);
 end;
+procedure Tfrm_User.FormResize(Sender: TObject);
+begin
+  // USER
+  pnl_UserLeft.Width:= Round(pnl_User.Width / 2) - 16;
+  pnl_UserRight.Width:= Round(pnl_User.Width / 2) - 16;
+  edt_OptionUser.Width:= pnl_UserLeft.Width -124;
+  edt_OptionName.Width:= pnl_UserLeft.Width -124;
+  edt_OptionSurName.Width:= pnl_UserRight.Width -124;
+  cxDBCheckBox3.Width:= pnl_UserLeft.Width -124;
+
+  edt_OptionPassword.Width:= pnl_UserRight.Width -129 - btn_OptionChangePassword.width;
+  btn_OptionChangePassword.Left:= edt_OptionPassword.Left + edt_OptionPassword.Width + 7;
+  lucbx_OptionRights.Width:= pnl_UserLeft.Width -121;
+  cxDBCheckBox2.Width:= pnl_UserRight.Width -121;
+  cxGridDBColumn2.Width:= Round((pnl_User.Width - 42) / 3);
+  cxGridDBTableView3Column1.Width:= Round((pnl_User.Width - 42) / 3);
+  cxGridDBTableView3Column2.Width:= Round((pnl_User.Width - 42) / 3);
+  // RECHTE
+
+  edt_OptionRight.width:= grpbx_1Allgemein.Width - 151;
+  pnl_RightLeft.Width:= Round(grpbx_1Allgemein.Width / 2) - 16;
+  pnl_RightRight.Width:= Round(grpbx_1Allgemein.Width / 2) - 16;
+  lucbx_Option.width:= pnl_RightLeft.Width -152;
+  cxDBCheckBox1.width:= pnl_RightLeft.Width -152;
+  lucbx_Backup.width:= pnl_RightRight.Width -130;
+  // Archiv
+  cxDBLookupComboBox22.Width:= grpbx_1Allgemein.Width - 151;
+  // Backup
+  cxDBLookupComboBox23.Width:= grpbx_1Allgemein.Width - 151;
+  // Manager
+  pnl_mrLeft.Width:= Round(grpbx_1Allgemein.Width / 2) - 16;
+  cxDBLookupComboBox1.Width:= pnl_mrLeft.Width -152;
+  cxDBLookupComboBox3.Width:= pnl_mrLeft.Width -152;
+  cxDBLookupComboBox5.Width:= pnl_mrLeft.Width -152;
+  cxDBLookupComboBox7.Width:= pnl_mrLeft.Width -152;
+  cxDBLookupComboBox9.Width:= pnl_mrLeft.Width -152;
+  pnl_mrRight.Width:= Round(grpbx_1Allgemein.Width / 2) - 16;
+  cxDBLookupComboBox2.Width:= pnl_mrRight.Width -130;
+  cxDBLookupComboBox4.Width:= pnl_mrRight.Width -130;
+  cxDBLookupComboBox6.Width:= pnl_mrRight.Width -130;
+  cxDBLookupComboBox8.Width:= pnl_mrRight.Width -130;
+  cxDBLookupComboBox10.Width:= pnl_mrRight.Width -130;
+  // Mediacenter
+  pnl_mcLeft.Width:= Round(grpbx_1Allgemein.Width / 2) - 16;
+  cxDBLookupComboBox11.Width:= pnl_mcLeft.Width -152;
+  cxDBLookupComboBox13.Width:= pnl_mcLeft.Width -152;
+  pnl_mcRight.Width:= Round(grpbx_1Allgemein.Width / 2) - 16;
+  cxDBLookupComboBox12.Width:= pnl_mcRight.Width -130;
+  cxDBLookupComboBox14.Width:= pnl_mcRight.Width -130;
+  // MP3-Manager
+  cxDBLookupComboBox15.Width:= grpbx_1Allgemein.Width - 151;
+  // Notenrechner
+  cxDBLookupComboBox16.Width:= grpbx_1Allgemein.Width - 151;
+  // Servicemanager
+  pnl_scLeft.Width:= Round(grpbx_1Allgemein.Width / 2) - 16;
+  cxDBLookupComboBox17.Width:= pnl_scLeft.Width -152;
+  pnl_scRight.Width:= Round(grpbx_1Allgemein.Width / 2) - 16;
+  cxDBLookupComboBox19.Width:= pnl_scright.Width -130;
+  // Vokabeltrainer
+  pnl_vtLeft.Width:= Round(grpbx_1Allgemein.Width / 2) - 16;
+  cxDBLookupComboBox18.Width:= pnl_vtLeft.Width -152;
+  cxDBLookupComboBox21.Width:= pnl_vtLeft.Width -152;
+  pnl_vtRight.Width:= Round(grpbx_1Allgemein.Width / 2) - 16;
+  cxDBLookupComboBox20.Width:= pnl_vtright.Width -130;
+  cxGridDBTableView1Bezeichnung.Width:= Round(grpbx_1Allgemein.Width - 42);
+end;
 procedure Tfrm_User.FormShow(Sender: TObject);
 begin
   OPendata;
@@ -470,107 +563,94 @@ procedure Tfrm_User.cxDBLookupComboBox10PropertiesChange(Sender: TObject);
 begin
   SetRightColor(cxDBLookupComboBox10);
 end;
-
 procedure Tfrm_User.cxDBLookupComboBox11PropertiesChange(Sender: TObject);
 begin
   SetRightColor(cxDBLookupComboBox11);
 end;
-
 procedure Tfrm_User.cxDBLookupComboBox12PropertiesChange(Sender: TObject);
 begin
   SetRightColor(cxDBLookupComboBox12);
 end;
-
 procedure Tfrm_User.cxDBLookupComboBox13PropertiesChange(Sender: TObject);
 begin
   SetRightColor(cxDBLookupComboBox13);
 end;
-
 procedure Tfrm_User.cxDBLookupComboBox14PropertiesChange(Sender: TObject);
 begin
   SetRightColor(cxDBLookupComboBox14);
 end;
-
 procedure Tfrm_User.cxDBLookupComboBox15PropertiesChange(Sender: TObject);
 begin
   SetRightColor(cxDBLookupComboBox15);
 end;
-
 procedure Tfrm_User.cxDBLookupComboBox16PropertiesChange(Sender: TObject);
 begin
   SetRightColor(cxDBLookupComboBox16);
 end;
-
 procedure Tfrm_User.cxDBLookupComboBox17PropertiesChange(Sender: TObject);
 begin
   SetRightColor(cxDBLookupComboBox17);
 end;
-
 procedure Tfrm_User.cxDBLookupComboBox18PropertiesChange(Sender: TObject);
 begin
   SetRightColor(cxDBLookupComboBox18);
 end;
-
 procedure Tfrm_User.cxDBLookupComboBox19PropertiesChange(Sender: TObject);
 begin
   SetRightColor(cxDBLookupComboBox19);
 end;
-
 procedure Tfrm_User.cxDBLookupComboBox1PropertiesChange(Sender: TObject);
 begin
   SetRightColor(cxDBLookupComboBox1);
 end;
-
 procedure Tfrm_User.cxDBLookupComboBox20PropertiesChange(Sender: TObject);
 begin
   SetRightColor(cxDBLookupComboBox20);
 end;
-
 procedure Tfrm_User.cxDBLookupComboBox21PropertiesChange(Sender: TObject);
 begin
   SetRightColor(cxDBLookupComboBox21);
 end;
-
+procedure Tfrm_User.cxDBLookupComboBox22PropertiesChange(Sender: TObject);
+begin
+  SetRightColor(cxDBLookupComboBox22);
+end;
+procedure Tfrm_User.cxDBLookupComboBox23PropertiesChange(Sender: TObject);
+begin
+  SetRightColor(cxDBLookupComboBox23);
+end;
 procedure Tfrm_User.cxDBLookupComboBox2PropertiesChange(Sender: TObject);
 begin
   SetRightColor(cxDBLookupComboBox2);
 end;
-
 procedure Tfrm_User.cxDBLookupComboBox3PropertiesChange(Sender: TObject);
 begin
   SetRightColor(cxDBLookupComboBox3);
 end;
-
 procedure Tfrm_User.cxDBLookupComboBox4PropertiesChange(Sender: TObject);
 begin
   SetRightColor(cxDBLookupComboBox4);
 end;
-
 procedure Tfrm_User.cxDBLookupComboBox5PropertiesChange(Sender: TObject);
 begin
   SetRightColor(cxDBLookupComboBox5);
 end;
-
 procedure Tfrm_User.cxDBLookupComboBox6PropertiesChange(Sender: TObject);
 begin
   SetRightColor(cxDBLookupComboBox6);
 end;
-
 procedure Tfrm_User.cxDBLookupComboBox7PropertiesChange(Sender: TObject);
 begin
   SetRightColor(cxDBLookupComboBox7);
 end;
-
 procedure Tfrm_User.cxDBLookupComboBox8PropertiesChange(Sender: TObject);
 begin
   SetRightColor(cxDBLookupComboBox8);
 end;
-
 procedure Tfrm_User.cxDBLookupComboBox9PropertiesChange(Sender: TObject);
 begin
   SetRightColor(cxDBLookupComboBox9);
 end;
-
 procedure Tfrm_User.btn_OptionDeleteUserClick(Sender: TObject);
 begin
   if qBenutzer.FieldByName('ID').AsInteger > 1 then

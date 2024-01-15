@@ -23,7 +23,8 @@ uses WinApi.Windows, SysUtils, System.Classes, Vcl.Graphics,
   dxSkinValentine, dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
   dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
   dxSkinXmas2008Blue, cxControls, cxContainer, cxEdit, cxLabel, cxGroupBox,
-  cxImage,Vcl.Styles,vcl.themes,inifiles, Vcl.Imaging.pngimage, dxSkinWXI;
+  cxImage,Vcl.Styles,vcl.themes,inifiles, Vcl.Imaging.pngimage, dxSkinWXI,
+  dxBarBuiltInMenu, cxPC, cxImageList;
 
 type
   Tfrm_PCM_InfoApp = class(TForm)
@@ -52,6 +53,10 @@ type
     lblDataVersion: TcxLabel;
     cxLabel11: TcxLabel;
     lbl_PCManagerAppInfo_Server: TcxLabel;
+    cxPageControl1: TcxPageControl;
+    cxTabSheet1: TcxTabSheet;
+    cxImageList1: TcxImageList;
+    cxGroupBox1: TcxGroupBox;
     procedure FormShow(Sender: TObject);
     procedure cxButton1Click(Sender: TObject);
   private

@@ -106,11 +106,12 @@ resourcestring
   rs_PCM_Sortierung = 'Sortierung';
   rs_PCM_Hauptpostfach = 'Hauptpostfach';
   rs_PCM_Fehler = 'Fehler: ';
+  rs_PCM_ChooseModul = 'Bitte Modul wählen';
 // Logfile
   rs_PCMLog_Verbindungerfolgreich ='Verbindung erfolgreich hergestellt';
   rs_PCMLog_KeineVerbindung1 = 'Es konnte keine Verbindung zur Datenbank auf dem Server ';
   rs_PCMLog_KeineVerbindung2 = ' hergestellt werden:';
-  rs_PCMLog_PCMINIPruefen = 'Bitte überprüfen Sie die Serveraddresse in der Konfigurationsdatei:';
+  rs_PCMLog_PCMINIPruefen = 'Bitte überprüfen Sie die Serveradresse in der Konfigurationsdatei:';
   rs_PCMLog_FalschesPW = 'Falsches Passwort';
 // PCM - Appserver
   rs_PCMAPPServer_Start = 'PCM - APPServer mit HTTPS gestartet';
@@ -131,11 +132,12 @@ resourcestring
   rs_PCMAPPServer_Einnahmenpruefung = 'Einnahmen geprüft, Anzahl:';
   rs_PCMAPPServer_GeraeteRegistrierung = 'Gerät wird registriert';
 // PCM  - Backup / Backupservice
+  rs_PCMBackup_BackupMod = 'Datensicherung';
   rs_PCMBackup_Backupgesichert = ' gesichert';
   rs_PCMBackup_Backup = 'Sicherung: Datenbank PCM wird gesichert';
   rs_PCMBackup_BackupLoeschen = 'Temporäre Dateien löschen: PCM wird gelöscht';
   rs_PCMBackup_BackupErfolgreich = 'Sicherung: Datenbanken wurden erfolgreich gesichert';
-  rs_PCMBackup_Ordnerwaehlen = 'Zielverzeichniss für Backup auswählen';
+  rs_PCMBackup_Ordnerwaehlen = 'Zielverzeichnis für Backup auswählen';
 // PCM  - Benutzerverwaltung
   rs_PCMBenutzerverwaltung_Benutzer = 'Benutzer';
   rs_PCMBenutzerverwaltung_Vorname = 'Vorname';
@@ -143,7 +145,7 @@ resourcestring
   rs_PCMBenutzerverwaltung_Bezeichnung = 'Bezeichnung';
   rs_PCMBenutzerverwaltung_RechteBearbeiten = 'Die vordefinierten Rechte können nicht bearbeitet werden!';
   rs_PCMBenutzerverwaltung_RechteLoeschen = 'Die vordefinierten Rechte können nicht gelöscht werden!';
-  rs_PCMBenutzerverwaltung_BenutzerLoeschen = 'Der Haupbenutzer kann nicht gelöscht werden!';
+  rs_PCMBenutzerverwaltung_BenutzerLoeschen = 'Der Hauptbenutzer kann nicht gelöscht werden!';
 // PCM  - Lizenzgenerator
   rs_PCMLizenzgenerator_Demolizenz = 'Demolizenz für: ';
   rs_PCMLizenzgenerator_Programm = 'Programm: ';
@@ -348,8 +350,8 @@ resourcestring
   rs_PCMService_TerminAufgabenloeschen = 'Wollen Sie wirklich diesen Termin und alle zugewiesenen Aufgaben löschen?';
   rs_PCMService_KeinQuellVerzeichnis1 = 'Es wurde kein Quell-Verzeichnis gewählt.';
   rs_PCMService_KeinQuellVerzeichnis2 = 'Damit Dateiendungen gewählt werden können, muss ein Quell-Verzeichnis angegeben werden';
-	rs_PCMService_ZielVerzeichnisBackup = 'Zielverzeichniss für Backup auswählen';
-	rs_PCMService_QuellverzeichnissBackup = 'Quellverzeichniss für Backup auswählen';
+	rs_PCMService_ZielVerzeichnisBackup = 'Zielverzeichnis für Backup auswählen';
+	rs_PCMService_QuellverzeichnissBackup = 'Quellverzeichnis für Backup auswählen';
 	rs_PCMService_ZielVerzeichnisINNO = 'Bitte Verzeichnis für INNO-Setup wählen';
 	rs_PCMService_ZielVerzeichnis = 'Bitte Ziel-Verzeichnis wählen';
 	rs_PCMService_QuellVerzeichnis = 'Bitte Quell-Verzeichnis wählen';

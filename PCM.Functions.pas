@@ -88,6 +88,10 @@ type
     lbl_ProcUse: TcxLabel;
     lbl_RamUse: TcxLabel;
     pnl_design: TcxGroupBox;
+    cxPageControl1: TcxPageControl;
+    cxTabSheet1: TcxTabSheet;
+    cxImageList1: TcxImageList;
+    cxGroupBox1: TcxGroupBox;
     procedure tmr_GetRamUsageTimer(Sender: TObject);
     procedure FormShow(Sender: TObject);
   private
@@ -163,6 +167,9 @@ const
   GV_Status = 301;
   // PCM Archiv
   GV_Pfad = 400;
+  GV_Main = 401;
+  GV_Sub = 402;
+  GV_Archiv = 403;
 type
     SYSTEM_BASIC_INFORMATION = packed record
     dwUnknown1              : DWORD;
