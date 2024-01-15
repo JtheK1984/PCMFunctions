@@ -207,6 +207,7 @@ type
     procedure FormResize(Sender: TObject);
     procedure cxDBLookupComboBox22PropertiesChange(Sender: TObject);
     procedure cxDBLookupComboBox23PropertiesChange(Sender: TObject);
+    procedure AA_pc_UserChange(Sender: TObject);
   private
     { Private-Deklarationen }
     SaveGridViewUser,SaveGridViewRight: TSavedGridView;
@@ -481,6 +482,7 @@ end;
 procedure Tfrm_User.FormShow(Sender: TObject);
 begin
   OPendata;
+  FormResize(Self);
   InitializeRights;
   SetGridViews(true);
 end;
@@ -496,6 +498,11 @@ procedure Tfrm_User.SetButtonsEnableVisible(DataSet: TDataSet);
 begin
   SetButtons;
 end;
+procedure Tfrm_User.AA_pc_UserChange(Sender: TObject);
+begin
+  FormResize(Self);
+end;
+
 procedure Tfrm_User.btn_OptionCancelRightClick(Sender: TObject);
 begin
   qRechte.Cancel;
