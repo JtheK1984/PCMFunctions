@@ -142,7 +142,7 @@ object frm_User: Tfrm_User
               Top = 8
               Width = 177
               Height = 21
-              Caption = '&Passwort '#228'ndern'
+              Caption = 'Passwort '#228'ndern'
               OptionsImage.ImageIndex = 9
               OptionsImage.Images = dm_PCM.imglst_16x16
               TabOrder = 5
@@ -1599,16 +1599,6 @@ object frm_User: Tfrm_User
       LargeImageIndex = 24
       Width = 125
     end
-    object btn_OptionUserClose: TdxBarLargeButton
-      Align = iaRight
-      Caption = 'S&chlie'#223'en'
-      Category = 0
-      Hint = 'Schlie'#223'en'
-      Visible = ivAlways
-      AutoGrayScale = False
-      LargeImageIndex = 23
-      Width = 125
-    end
     object btn_OptionNewRight: TdxBarLargeButton
       Caption = 'Recht anlegen'
       Category = 0
@@ -1617,16 +1607,6 @@ object frm_User: Tfrm_User
       OnClick = btn_OptionNewRightClick
       AutoGrayScale = False
       LargeImageIndex = 27
-      Width = 125
-    end
-    object btn_OptionRightsClose: TdxBarLargeButton
-      Align = iaRight
-      Caption = 'S&chlie'#223'en'
-      Category = 0
-      Hint = 'Schlie'#223'en'
-      Visible = ivAlways
-      AutoGrayScale = False
-      LargeImageIndex = 23
       Width = 125
     end
     object btn_OptionDeleteRight: TdxBarLargeButton

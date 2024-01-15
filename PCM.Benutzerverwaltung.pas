@@ -80,9 +80,7 @@ type
     btn_OptionSaveUser: TdxBarLargeButton;
     btn_OptionCancelUser: TdxBarLargeButton;
     btn_OptionDeleteUser: TdxBarLargeButton;
-    btn_OptionUserClose: TdxBarLargeButton;
     btn_OptionNewRight: TdxBarLargeButton;
-    btn_OptionRightsClose: TdxBarLargeButton;
     btn_OptionDeleteRight: TdxBarLargeButton;
     btn_OptionCancelRight: TdxBarLargeButton;
     btn_OptionSaveRight: TdxBarLargeButton;
