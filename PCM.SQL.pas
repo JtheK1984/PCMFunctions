@@ -68,7 +68,7 @@ implementation
 begin
   // PCM - Allgemein
   ASSQL_GetAutologin[0]:= 'SELECT ID,Benutzer FROM benutzer WHERE benutzer  = :Benutzer and Autologin = True';
-  ASSQL_GetAllRights[0]:= 'SELECT mr.ba_backup, mr.dm_archiv,mr.Benutzer,mr.Konfiguration,mr.lg_Lizenzen,mr.lg_Programme, mr.ma_Kontakte as Kontakte,mr.ma_Kalender as Kalender,mr.ma_Stundenplan as Stundenplan,'+
+  ASSQL_GetAllRights[0]:= 'SELECT mr.ba_backup, mr.dm_archiv,mr.Benutzer,mr.Konfiguration,mr.Design,mr.lg_Lizenzen,mr.lg_Programme, mr.ma_Kontakte as Kontakte,mr.ma_Kalender as Kalender,mr.ma_Stundenplan as Stundenplan,'+
                        'mr.ma_Email as Email,mr.ma_Password as Password,mr.ma_Serials as Serials,mr.ma_Monatsuebersicht as Monatsuebersicht,'+
                        'mr.ma_Verfuegung as Verfuegung,mr.ma_Einnahmen as Einnahmen,mr.ma_Ausgaben as Ausgaben '+
                        'FROM benutzer mb LEFT OUTER JOIN rechte mr ON mr.ID = mb.ID_rechte WHERE mb.id = :ID';
