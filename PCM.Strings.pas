@@ -9,12 +9,14 @@ resourcestring
   rs_PCM_Benutzerverwaltung ='Benutzerverwaltung';
   rs_PCM_Systeminformation = 'Systeminformation';
   rs_PCM_Konfiguration = 'Konfiguration';
+  rs_PCM_Design = 'Design / Style';
   rs_PCM_Lizenzen = 'Lizenzen';
   rs_PCM_Programme = 'Programme';
   rs_PCM_Sprachdatei = 'Sprachdatei kann nicht geladen werden';
   rs_PCM_Demolizenz = ' - Demolizenz gültig bis ';
   rs_PCM_Datensicherung = 'Datensicherung';
   rs_PCM_Programminfo = 'Programminfo';
+  rs_PCM_Handbuch = 'Handbuch';
   rs_PCM_Nein = 'Nein';
   rs_PCM_Ja = 'Ja';
   rs_PCM_unbegrenzt = 'unbegrenzt';
@@ -133,6 +135,8 @@ resourcestring
   rs_PCMAPPServer_Einnahmenanzahl = 'Einnahmen lesen, Anzahl:';
   rs_PCMAPPServer_Einnahmenpruefung = 'Einnahmen geprüft, Anzahl:';
   rs_PCMAPPServer_GeraeteRegistrierung = 'Gerät wird registriert';
+// PCM - Archiv
+  rs_PCMArchiv_Archiv = 'Archiv';
 // PCM  - Backup / Backupservice
   rs_PCMBackup_BackupMod = 'Datensicherung';
   rs_PCMBackup_Backupgesichert = ' gesichert';
@@ -189,7 +193,6 @@ resourcestring
   rs_PCMManager_TerminenichtErmitteln = 'Termine konnten nicht importiert werden. Grund: ';
   rs_PCMManager_AufgabennichtErmitteln = 'Aufgaben konnten nicht importiert werden. Grund: ';
   rs_PCMManager_OutlookVerbinden = 'Mit Outlook verbinden';
-  rs_PCMManager_Archiv = 'Archiv';
   rs_PCMManager_Kontakt = 'Kontakte';
   rs_PCMManager_Kontakte = 'Kontakte: ';
   rs_PCMManager_Terminealle = 'Termine alle: ';

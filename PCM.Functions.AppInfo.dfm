@@ -22,7 +22,6 @@ object frm_PCM_InfoApp: Tfrm_PCM_InfoApp
     PanelStyle.Active = True
     Style.BorderStyle = ebsNone
     TabOrder = 0
-    ExplicitHeight = 297
     Height = 334
     Width = 686
     object cxPageControl1: TcxPageControl
@@ -36,10 +35,6 @@ object frm_PCM_InfoApp: Tfrm_PCM_InfoApp
       Properties.CustomButtons.Buttons = <>
       Properties.Images = cxImageList1
       Properties.Style = 11
-      ExplicitLeft = 208
-      ExplicitTop = 72
-      ExplicitWidth = 289
-      ExplicitHeight = 193
       ClientRectBottom = 322
       ClientRectLeft = 2
       ClientRectRight = 674
@@ -47,9 +42,6 @@ object frm_PCM_InfoApp: Tfrm_PCM_InfoApp
       object cxTabSheet1: TcxTabSheet
         Caption = 'Info'
         ImageIndex = 0
-        ExplicitTop = 27
-        ExplicitWidth = 281
-        ExplicitHeight = 160
         object cxGroupBox1: TcxGroupBox
           Left = 0
           Top = 0
@@ -57,8 +49,6 @@ object frm_PCM_InfoApp: Tfrm_PCM_InfoApp
           PanelStyle.Active = True
           Style.BorderStyle = ebsNone
           TabOrder = 0
-          ExplicitTop = -40
-          ExplicitHeight = 297
           Height = 294
           Width = 672
           object grpbx_Info: TcxGroupBox
@@ -67,7 +57,6 @@ object frm_PCM_InfoApp: Tfrm_PCM_InfoApp
             Align = alTop
             PanelStyle.Active = True
             TabOrder = 0
-            ExplicitTop = -34
             Height = 260
             Width = 666
             object img_PCManagerAppInfo_Image: TcxImage

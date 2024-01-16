@@ -136,6 +136,7 @@ object frm_User: Tfrm_User
             PanelStyle.Active = True
             Style.BorderStyle = ebsNone
             TabOrder = 0
+            ExplicitTop = -4
             Height = 100
             Width = 1175
             object pnl_UserLeft: TcxGroupBox
@@ -445,6 +446,8 @@ object frm_User: Tfrm_User
               PanelStyle.Active = True
               Style.BorderStyle = ebsNone
               TabOrder = 1
+              ExplicitTop = 22
+              ExplicitHeight = 64
               Height = 45
               Width = 571
               object cxDBCheckBox1: TcxDBCheckBox
@@ -515,6 +518,8 @@ object frm_User: Tfrm_User
               PanelStyle.Active = True
               Style.BorderStyle = ebsNone
               TabOrder = 2
+              ExplicitTop = 22
+              ExplicitHeight = 64
               Height = 45
               Width = 642
               object Label2: TcxLabel
@@ -564,6 +569,7 @@ object frm_User: Tfrm_User
               PanelStyle.Active = True
               Style.BorderStyle = ebsNone
               TabOrder = 0
+              ExplicitTop = -1
               Height = 20
               Width = 1167
               object Label12: TcxLabel
@@ -622,6 +628,8 @@ object frm_User: Tfrm_User
               PanelStyle.Active = True
               Style.BorderStyle = ebsNone
               TabOrder = 0
+              ExplicitTop = -4
+              ExplicitHeight = 142
               Height = 123
               Width = 536
               object cxLabel1: TcxLabel
@@ -807,6 +815,8 @@ object frm_User: Tfrm_User
               PanelStyle.Active = True
               Style.BorderStyle = ebsNone
               TabOrder = 1
+              ExplicitTop = -4
+              ExplicitHeight = 142
               Height = 123
               Width = 642
               object cxLabel10: TcxLabel
@@ -1007,6 +1017,8 @@ object frm_User: Tfrm_User
               Align = alLeft
               Style.BorderStyle = ebsNone
               TabOrder = 0
+              ExplicitTop = -4
+              ExplicitHeight = 67
               Height = 48
               Width = 536
               object cxLabel13: TcxLabel
@@ -1086,6 +1098,8 @@ object frm_User: Tfrm_User
               Align = alRight
               Style.BorderStyle = ebsNone
               TabOrder = 1
+              ExplicitTop = -4
+              ExplicitHeight = 67
               Height = 48
               Width = 642
               object cxDBLookupComboBox12: TcxDBLookupComboBox
@@ -1284,6 +1298,8 @@ object frm_User: Tfrm_User
               PanelStyle.Active = True
               Style.BorderStyle = ebsNone
               TabOrder = 0
+              ExplicitTop = -4
+              ExplicitHeight = 42
               Height = 23
               Width = 536
               object cxDBLookupComboBox17: TcxDBLookupComboBox
@@ -1329,6 +1345,8 @@ object frm_User: Tfrm_User
               PanelStyle.Active = True
               Style.BorderStyle = ebsNone
               TabOrder = 1
+              ExplicitTop = -4
+              ExplicitHeight = 42
               Height = 23
               Width = 642
               object cxLabel19: TcxLabel
@@ -1389,6 +1407,8 @@ object frm_User: Tfrm_User
               Align = alLeft
               Style.BorderStyle = ebsNone
               TabOrder = 0
+              ExplicitTop = -4
+              ExplicitHeight = 69
               Height = 50
               Width = 536
               object cxLabel21: TcxLabel
@@ -1469,6 +1489,8 @@ object frm_User: Tfrm_User
               PanelStyle.Active = True
               Style.BorderStyle = ebsNone
               TabOrder = 1
+              ExplicitTop = -4
+              ExplicitHeight = 69
               Height = 50
               Width = 642
               object cxDBLookupComboBox20: TcxDBLookupComboBox

@@ -73,7 +73,11 @@ implementation
 
 {$R *.dfm}
 
-uses PCM.Data,PCM.Functions.Lizenz,PCM.Main,PCM.Strings;
+uses PCM.Data,
+     PCM.Functions.Lizenz,
+     PCM.Main,PCM.Strings,
+     PCM.Helper;
+
 ////////////////////////////////////////////////////////////////////////////////
 // Hilfsfunktionen                                                            //
 ////////////////////////////////////////////////////////////////////////////////
@@ -126,7 +130,7 @@ begin
   frm_PCM_lizenz.Showmodal;
   frm_PCM_lizenz.Free;
 
-  dm_PCM.CheckLizenzNew;
+  CheckLizenzNew;
   cxLabel1.Caption:= dm_PCM.Firma;
   if not dm_PCM.bDemo then
   begin

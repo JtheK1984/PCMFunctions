@@ -3,7 +3,8 @@ unit PCM.SQL;
 interface
 
 uses
-  PCM.Main;
+  PCM.Main,
+  PCM.Data;
 
 type
   TPCMSQL = array [0 .. 2] of string;
@@ -15,8 +16,8 @@ var
   ASSQL_GetRights,
   ASSQL_GetRightsDetail,
   ASSQL_GetUsername,
-  ASSQL_GetLizenzCount_PCMArchiv,
-  ASSQL_GetUserLizenz_PCMArchiv,
+  ASSQL_GetCurrentLizenzCount,
+  ASSQL_GetUserLizenz,
   ASSQL_GetBackupOptions,
   ASSQL_GetDefaultID,
   ASSQL_InsDefault,
@@ -76,8 +77,8 @@ begin
   ASSQL_GetRightsDetail[0]:= 'Select Nummer, Bezeichnung From Rechte_detail';
   ASSQL_GetUsername[0]:= 'Select Benutzer from Benutzer Where ID = :ID';
   // PCM - Archiv
-  ASSQL_GetLizenzCount_PCMArchiv[0]:= 'Select Count(*)as Anzahl From archiv_lizenz';
-  ASSQL_GetUserLizenz_PCMArchiv[0]:= 'Select Benutzer , Lizenz From archiv_lizenz';
+  ASSQL_GetCurrentLizenzCount[0]:= 'Select Count(*)as Anzahl From ' + PCM_Alias + '_lizenz';
+  ASSQL_GetUserLizenz[0]:= 'Select Benutzer , Lizenz From ' + PCM_Alias + '_lizenz';
   // PCM - Backup
   ASSQL_GetBackupOptions[0]:= 'SELECT * FROM service_backupdatabase';
   // PCM - Lizenzgenerator
@@ -106,24 +107,5 @@ begin
                                'Version = :Version, Demo = :Demo, Gueltig_bis= :Gueltig_bis ,Programm = :Programm, Lizenz =  :Lizenz, Bemerkung = :Bemerkung, ID_Benutzer = :ID_Benutzer Where ID = :ID';
   ASSQL_GetProgramms[0]:= 'Select DISTINCT Number,Programm From lizenzgenerator_programme Where Lizenz = true order by Programm';
   ASSQL_GetProgramm[0]:= 'Select Programm From lizenzgenerator_programme Where Number = :Number';
-  // PCM - Manager
-  ASSQL_GetLizenzCount_PCMManager[0]:= 'Select Count(*)as Anzahl From manager_lizenz';
-  ASSQL_GetUserLizenz_PCMManager[0]:= 'Select Benutzer , Lizenz From manager_lizenz';
-  // PCM - Mediacenter
-  ASSQL_GetLizenzCount_PCMMediaCenter[0]:= 'Select Count(*)as Anzahl From mediacenter_lizenz';
-  ASSQL_GetUserLizenz_PCMMediaCenter[0]:= 'Select Benutzer , Lizenz From mediacenter_lizenz';
-  // PCM - MP3
-  ASSQL_GetLizenzCount_PCMMP3[0]:= 'Select Count(*)as Anzahl From mp3_lizenz';
-  ASSQL_GetUserLizenz_PCMMP3[0]:= 'Select Benutzer , Lizenz From mp3_lizenz';
-  // PCM - Notenrechner
-  ASSQL_GetLizenzCount_PCMNotenrechner[0]:= 'Select Count(*)as Anzahl From notenrechner_lizenz';
-  ASSQL_GetUserLizenz_PCMNotenrechner[0]:= 'Select Benutzer , Lizenz From notenrechner_lizenz';
-  // PCM - Servicemanager
-  ASSQL_GetLizenzCount_PCMServicemanager[0]:= 'Select Count(*)as Anzahl From service_lizenz';
-  ASSQL_GetUserLizenz_PCMServicemanager[0]:= 'Select Benutzer , Lizenz From service_lizenz';
-  // PCM - Vokabeltrainer
-  ASSQL_GetLizenzCount_PCMVokabeltrainer[0]:=  'Select Count(*)as Anzahl From vokabeltrainer_lizenz';
-  ASSQL_GetUserLizenz_PCMVokabeltrainer[0]:=  'Select Benutzer , Lizenz From vokabeltrainer_lizenz';
-
 
 end.

@@ -286,7 +286,7 @@ end;
 procedure Tfrm_User.SetButtons;
 begin
   // Benutzer
-  if dm_PCM.int_optionenRecht >= 2 then
+  if dm_PCM.iBenutzer >= 2 then
   begin
     btn_OptionSaveUser.Enabled := qBenutzer.State in [dsInsert, dsEdit];
     btn_OptionCancelUser.Enabled := qBenutzer.State in [dsInsert, dsEdit];
@@ -295,7 +295,7 @@ begin
     btn_OptionCancelRight.Enabled := qRechte.State in [dsInsert, dsEdit];
   end;
 
-  if dm_PCM.int_optionenRecht = 3 then
+  if dm_PCM.iBenutzer = 3 then
   begin
     // Benutzer
     btn_OptionDeleteUser.Enabled := (not qBenutzer.Eof) and not (qBenutzer.State in [dsInsert, dsEdit]);
@@ -306,7 +306,7 @@ end;
 procedure Tfrm_User.InitializeRights;
 begin
   // Benutzerverwaltung / Lesen
-  if dm_PCM.int_optionenRecht = 1 then
+  if dm_PCM.iBenutzer = 1 then
   begin
     //// Benutzer
     // Toolbar
@@ -334,7 +334,7 @@ begin
     lucbx_Backup.Enabled:= false;
   end;
   // Benutzerverwaltung / Ändern
-  if dm_PCM.int_optionenRecht = 2 then
+  if dm_PCM.iBenutzer = 2 then
   begin
     //// Benutzer
     // Toolbar
@@ -363,7 +363,7 @@ begin
   end;
 
    // Benutzerverwaltung / Vollzugriff
-  if dm_PCM.int_optionenRecht = 3 then
+  if dm_PCM.iBenutzer = 3 then
   begin
     //// Benutzer
     // Toolbar
@@ -548,7 +548,7 @@ begin
     qBenutzer.Post;
   qBenutzer.Append;
   qBenutzer.Insert;
-  if dm_PCM.int_optionenRecht = 2 then
+  if dm_PCM.iBenutzer = 2 then
     qBenutzer.FieldByName('ID_Rechte').AsInteger:= 2
 
   else
