@@ -23,7 +23,7 @@ uses
   dxSkinsDefaultPainters, dxSkinValentine, dxSkinVisualStudio2013Blue,
   dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light, dxSkinVS2010,
   dxSkinWhiteprint, dxSkinWXI, dxSkinXmas2008Blue, cxContainer, cxEdit,
-  cxGroupBox, cxPC;
+  cxGroupBox, cxPC, System.ImageList, Vcl.ImgList, cxImageList;
 
 type
   Tfrm_Handbuch = class(TForm)
@@ -33,6 +33,7 @@ type
     cxTabSheet2: TcxTabSheet;
     cxGroupBox1: TcxGroupBox;
     EdgeBrowser1: TEdgeBrowser;
+    cxImageList1: TcxImageList;
     procedure FormShow(Sender: TObject);
   private
     { Private-Deklarationen }
