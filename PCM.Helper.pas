@@ -334,7 +334,7 @@ begin
   end;
 end;
 {$else}
-  function ReadServerAdressService: boolean;
+  function ReadServerAdress: boolean;
   var
     iniRESTServer: TIniFile;
     sIniFile: String;
