@@ -287,6 +287,7 @@ begin
     dm_PCM.bNewLiceneCheck:= CheckLizenz;
   end;
 end;
+{$if ndef Service}
 function ReadServerAdress: boolean;
 var
   iniFile: TIniFile;
@@ -297,6 +298,7 @@ begin
   dm_PCM.sDesign:= iniFile.ReadString(PCM_Logname,'Design','Basic');
   dm_PCM.iDBType:= iniFile.ReadInteger('Database','Type',0);
   dm_PCM.slocale:= iniFile.ReadString(PCM_Logname,'Language','DE');
+
   frm_PCM_main.lafCtrl_Main.SkinName:= dm_PCM.sDesign;
   iniFile.Free;
   result:= false;
@@ -331,7 +333,65 @@ begin
     + rs_PCM_Ende, mtError, [mbOk], 0);
   end;
 end;
-
+{$else}
+  function ReadServerAdressService: boolean;
+  var
+    iniRESTServer: TIniFile;
+    sIniFile: String;
+    slocale: String;
+  begin
+    sIniFile := ExtractFilePath(ParamStr(0)) + PCM_Logname + '.ini';
+    iniRESTServer := TIniFile.Create(sIniFile);
+    try
+      if FileExists(sIniFile) then
+      begin
+        dm_PCM.sServer:= iniRESTServer.ReadString('PCM','Server','localhost');
+        slocale:= iniRESTServer.ReadString('PCM','Language','DE');
+        dm_PCM.iDBType:= 0;
+      end
+      else
+      begin
+        iniRESTServer.WriteString('PCM', 'Server', 'localhost');
+        iniRESTServer.WriteString('PCM', 'Language', 'DE');
+        iniRESTServer.WriteInteger('Database', 'Type', 0);
+      end;
+    finally
+      iniRESTServer.Free;
+    end;
+    result:= false;
+    try
+      dm_PCM.con_PCM.Params.Values['Server'] := dm_PCM.sServer;
+      try
+        WriteLog(PCM_logname, rs_PCM_Verbindungsversuch1 + ' 1 PCM',0);
+        dm_PCM.con_PCM.Connected:= True;
+        WriteLog(PCM_logname, rs_PCM_Verbindungsversuch1 + ' 1 PCM ' + rs_PCM_Verbindungsversuch2,0);
+        result:= true;
+      except
+        Sleep(5000);
+        try
+          WriteLog(PCM_logname, rs_PCM_Verbindungsversuch1 + ' 2 pcm',0);
+          dm_PCM.con_PCM.Connected:= True;
+          WriteLog(PCM_logname, rs_PCM_Verbindungsversuch1 + ' 2 PCM ' + rs_PCM_Verbindungsversuch2,0);
+          result:= true;
+        except
+          Sleep(5000);
+          try
+            WriteLog(PCM_logname, rs_PCM_Verbindungsversuch1 + ' 3 PCM',0);
+            dm_PCM.con_PCM.Connected:= True;
+            WriteLog(PCM_logname, rs_PCM_Verbindungsversuch1 + ' 3 PCM ' + rs_PCM_Verbindungsversuch2,0);
+            result:= true;
+          except
+          end;
+        end;
+      end;
+      dm_PCM.qry_work.Connection:= dm_PCM.Con_PCM;
+      WriteLog(PCM_LOGname,rs_PCMLog_Verbindungerfolgreich,0);
+    except
+      Writelog(PCM_Logname,rs_PCMLog_KeineVerbindung1 + dm_PCM.sServer + rs_PCMLog_KeineVerbindung2,2);
+      Writelog(PCM_Logname,rs_PCMLog_PCMINIPruefen + ExtractFilePath(ParamStr(0)) + PCM_Logname +'.ini.',2);
+    end;
+  end;
+{$endif}
 
 
 end.
