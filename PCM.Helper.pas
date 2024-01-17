@@ -301,7 +301,9 @@ begin
   dm_PCM.iDBType:= iniFile.ReadInteger('Database','Type',0);
   dm_PCM.slocale:= iniFile.ReadString(PCM_Logname,'Language','DE');
 
+  {$if ndef Service}
   frm_PCM_main.lafCtrl_Main.SkinName:= dm_PCM.sDesign;
+  {$endif}
   iniFile.Free;
   result:= false;
   try
