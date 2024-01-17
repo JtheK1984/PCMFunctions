@@ -45,9 +45,6 @@ var
   ASSQL_SetLicence,
   ASSQL_GetProgramms,
   ASSQL_GetProgramm,
-  // PCM - Manager
-  ASSQL_GetLizenzCount_PCMManager,
-  ASSQL_GetUserLizenz_PCMManager,
   // PCM - Mediacenter
   ASSQL_GetLizenzCount_PCMMediaCenter,
   ASSQL_GetUserLizenz_PCMMediaCenter,
