@@ -13,7 +13,9 @@ uses
   PCM.SQL,
   PCM.Strings,
   PCM.Functions,
-  PCM.Functions.Lizenz;
+  PCM.Functions.Lizenz,
+  FireDAC.Stan.Param,
+  system.UITypes;
 
 function CheckAutologin: String;
 function Autologin: boolean;
