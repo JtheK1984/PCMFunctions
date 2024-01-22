@@ -28,7 +28,7 @@ object frm_Handbuch: Tfrm_Handbuch
       Height = 435
       Align = alClient
       TabOrder = 0
-      Properties.ActivePage = cxTabSheet2
+      Properties.ActivePage = cxTabSheet1
       Properties.CustomButtons.Buttons = <>
       Properties.Images = cxImageList1
       ClientRectBottom = 429
@@ -46,7 +46,7 @@ object frm_Handbuch: Tfrm_Handbuch
           Align = alClient
           TabOrder = 0
           TabStop = True
-          AllowSingleSignOnUsingOSPrimaryAccount = False
+          AllowSingleSignOnUsingOSPrimaryAccount = True
           TargetCompatibleBrowserVersion = '117.0.2045.28'
           UserDataFolder = '%LOCALAPPDATA%\bds.exe.WebView2'
         end
@@ -62,7 +62,7 @@ object frm_Handbuch: Tfrm_Handbuch
           Align = alClient
           TabOrder = 0
           TabStop = True
-          AllowSingleSignOnUsingOSPrimaryAccount = False
+          AllowSingleSignOnUsingOSPrimaryAccount = True
           TargetCompatibleBrowserVersion = '117.0.2045.28'
           UserDataFolder = '%LOCALAPPDATA%\bds.exe.WebView2'
         end
