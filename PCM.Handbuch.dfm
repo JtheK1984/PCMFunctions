@@ -22,27 +22,26 @@ object frm_Handbuch: Tfrm_Handbuch
     Height = 441
     Width = 624
     object cxPageControl1: TcxPageControl
-      Left = 3
-      Top = 3
-      Width = 618
-      Height = 435
+      Left = 2
+      Top = 2
+      Width = 620
+      Height = 437
       Align = alClient
       TabOrder = 0
       Properties.ActivePage = cxTabSheet2
       Properties.CustomButtons.Buttons = <>
       Properties.Images = cxImageList1
-      ClientRectBottom = 429
-      ClientRectLeft = 2
-      ClientRectRight = 612
-      ClientRectTop = 29
+      ClientRectBottom = 437
+      ClientRectRight = 620
+      ClientRectTop = 26
       object cxTabSheet2: TcxTabSheet
         Caption = 'PDF'
         ImageIndex = 1
         object EdgeBrowser1: TEdgeBrowser
           Left = 0
           Top = 0
-          Width = 610
-          Height = 400
+          Width = 620
+          Height = 411
           Align = alClient
           TabOrder = 0
           TabStop = True
@@ -57,8 +56,8 @@ object frm_Handbuch: Tfrm_Handbuch
         object EdgeBrowser: TEdgeBrowser
           Left = 0
           Top = 0
-          Width = 610
-          Height = 400
+          Width = 620
+          Height = 411
           Align = alClient
           TabOrder = 0
           TabStop = True
