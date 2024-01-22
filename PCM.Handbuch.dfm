@@ -28,7 +28,7 @@ object frm_Handbuch: Tfrm_Handbuch
       Height = 435
       Align = alClient
       TabOrder = 0
-      Properties.ActivePage = cxTabSheet1
+      Properties.ActivePage = cxTabSheet2
       Properties.CustomButtons.Buttons = <>
       Properties.Images = cxImageList1
       ClientRectBottom = 429
