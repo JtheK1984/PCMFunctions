@@ -323,6 +323,27 @@ resourcestring
   rs_PCMManager_Absender = 'Absender';
   rs_PCMManager_Erhalten = 'Erhalten am';
   rs_PCMManager_Groeße = 'Größe';
+  rs_PCMManager_KalenderTag = 'Terminkalender - Tagesansicht';
+  rs_PCMManager_KalenderWoche = 'Terminkalender - Wochenansicht';
+  rs_PCMManager_KalenderMonat = 'Terminkalender - Monatsansicht';
+  rs_PCMManager_Kalenderjahr = 'Terminkalender - Jahresansicht';
+  rs_PCMManager_Kalenderagenda = 'Terminkalender - Agendaansicht';
+  rs_PCMManager_aktAufgaben = 'aktuelle Aufgaben';
+  rs_PCMManager_bearbAufgaben = 'bearbeitete Aufgaben';
+  rs_PCMManager_normAnsicht = 'norm. Ansicht';
+  rs_PCMManager_maxAnsicht = 'max. Ansicht';
+  rs_PCMManager_ArbWocheZurueck = 'Eine Arbeitswoche zurück springen';
+  rs_PCMManager_ArbWocheVor = 'Eine Arbeitswoche vor springen';
+  rs_PCMManager_JahrZurueck = 'Ein Jahr zurück springen';
+  rs_PCMManager_JahrVor = 'Ein Jahr vor springen';
+  rs_PCMManager_MonatZurueck = 'Einen Monat zurück springen';
+  rs_PCMManager_MonatVor = 'Einen Monat vor springen';
+  rs_PCMManager_TagZurueck = 'Einen Tag zurück springen';
+  rs_PCMManager_TagVor = 'Einen Tag vor springen';
+  rs_PCMManager_WocheZurueck = 'Eine Woche zurück springen';
+  rs_PCMManager_WocheVor = 'Eine Woche vor springen';
+  rs_PCMManager_Terminopen = 'Termin öffnen';
+  rs_PCMManager_Adresseengefunden = ' Adressen gefunden!';
 // PCM - Mediacenter
 // PCM - MP3Manager
   rs_PCMMP3Manger_MP3Verzeichnis = 'MP3-Verzeichnis auswählen';
