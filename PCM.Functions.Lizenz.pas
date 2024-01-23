@@ -282,7 +282,7 @@ begin
         exit;
       end
       else begin
-        MessageDlg(rs_PCM_LizenzAbgelaufen + DateToStr(datGueltig) ,mtInformation,[mbok],0);
+        MessageDlg(rs_PCM_Demolizenz1 + DateToStr(datGueltig) ,mtInformation,[mbok],0);
       end;
     end;
     dm_PCM.dtGueltig:= datGueltig;

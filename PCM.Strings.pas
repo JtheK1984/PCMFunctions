@@ -14,6 +14,7 @@ resourcestring
   rs_PCM_Programme = 'Programme';
   rs_PCM_Sprachdatei = 'Sprachdatei kann nicht geladen werden';
   rs_PCM_Demolizenz = ' - Demolizenz gültig bis ';
+  rs_PCM_Demolizenz1 = 'Demolizenz gültig bis ';
   rs_PCM_Datensicherung = 'Datensicherung';
   rs_PCM_Programminfo = 'Programminfo';
   rs_PCM_Handbuch = 'Handbuch';
