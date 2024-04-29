@@ -1,6 +1,6 @@
 variables:
   version.MajorMinor: '1.6.0' # Manually adjust the version number as needed. Patch is auto-incremented.
-  version.Patch: $[counter(variables['version.MajorMinor'], 0)]
+  version.Patch: $[counter(variables['version.MajorMinor'], 0)] 
   versionNumber: '$(version.MajorMinor).$(VersionBuild)' 
 
 steps:
