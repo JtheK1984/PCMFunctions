@@ -396,7 +396,12 @@ var
   FResStrings: TStringList = nil;
   FUseResCache: Boolean = true;
 
-// TS, 02.10.2012 Bug: #DCH-1301 Performance ab Sommerrelease (virtualisiert)
+Const
+  SetNone = 0;
+  SetRead = 1;
+  SetReadWrite = 2;
+  SetComplete = 3;
+
 procedure initNewLanguage(locale: LCID);
 procedure CreateResStringLists;
 procedure DestroyResStringLists;
@@ -412,7 +417,6 @@ begin
   inherited Create;
   CaseSensitive := True;
 end;
-
 procedure ClearResourceStrings;
 begin
   if FResStrings <> nil then
@@ -420,26 +424,21 @@ begin
   if FResOriginalStrings <> nil then
     FResOriginalStrings.Clear;
 end;
-
 procedure CreateResStringLists;
 begin
   FResOriginalStrings := TResOriginalStrings.Create;
   FResStrings := TStringList.Create;
 end;
-
 procedure DestroyResStringLists;
 begin
   FreeAndNil(FResOriginalStrings);
   FreeAndNil(FResStrings);
 end;
-
 function GetResOriginalStringIndex(AResString: TResourceStringID): Integer;
 begin
   Result := FResOriginalStrings.IndexOfObject(TObject(AResString));
 end;
-
-procedure SetResourceString(AResString: TResourceStringID;
-  const Value: string);
+procedure SetResourceString(AResString: TResourceStringID; const Value: string);
 var
   AIndex: Integer;
 begin
@@ -452,7 +451,6 @@ begin
     FResStrings.Add(Value);
   end;
 end;
-
 function GetResourceString(AResString: TResourceStringID): string;
 var
   AIndex: Integer;
@@ -473,8 +471,6 @@ begin
   else
     Result := LoadResString(AResString);
 end;
-
-// TS, 02.10.2012 Bug: #DCH-1301 Performance ab Sommerrelease (virtualisiert)
 procedure initNewLanguage(locale: LCID);
 begin
   ClearResourceStrings;
