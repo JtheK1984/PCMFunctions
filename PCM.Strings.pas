@@ -138,6 +138,7 @@ resourcestring
   rs_PCMAPPServer_GeraeteRegistrierung = 'Gerät wird registriert';
 // PCM - Archiv
   rs_PCMArchiv_Archiv = 'Archiv';
+  rs_PCMArchiv_DeleteIndex1 = 'Soll der Index ';
 // PCM  - Backup / Backupservice
   rs_PCMBackup_BackupMod = 'Datensicherung';
   rs_PCMBackup_Backupgesichert = ' gesichert';
