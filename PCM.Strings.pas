@@ -136,7 +136,9 @@ resourcestring
   rs_PCMAPPServer_Einnahmenanzahl = 'Einnahmen lesen, Anzahl:';
   rs_PCMAPPServer_Einnahmenpruefung = 'Einnahmen geprüft, Anzahl:';
   rs_PCMAPPServer_Belegeanzahl = 'Belege lesen, Anzahl:';
+  rs_PCMAPPServer_Belegepruefung = 'Belege geprüft, Anzahl:';
   rs_PCMAPPServer_Gutscheinanzahl = 'Gutscheine lesen, Anzahl:';
+  rs_PCMAPPServer_Gutscheinpruefung = 'Gutscheine geprüft, Anzahl:';
   rs_PCMAPPServer_GeraeteRegistrierung = 'Gerät wird registriert';
 // PCM - Archiv
   rs_PCMArchiv_Archiv = 'Archiv';
