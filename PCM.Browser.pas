@@ -18,7 +18,8 @@ uses  uwvLoader,
       Vcl.Controls,
       IdURI,
       IdGlobal,
-      Vcl.Dialogs;
+      Vcl.Dialogs,
+      uWVTypeLibrary;
 type
   TOnBeforeNavigate = procedure (ASender: TObject; var URL:WideString; var Cancel: Boolean) of object;
   TOnDocumentComplete = procedure (ASender: TObject; var URL:WideString) of object;
@@ -420,7 +421,8 @@ end;
 procedure TWebView2WebBrowser.onWebView2Created(Sender: TObject);
 begin
   FWebView2Window.UpdateSize;
-  FBrowser.CoreWebView2Settings.AreDefaultContextMenusEnabled:= false;
+//  FBrowser.CoreWebView2Settings.AreDefaultContextMenusEnabled:= false;
+  FBrowser.CoreWebView2Settings.HiddenPdfToolbarItems:= COREWEBVIEW2_PDF_TOOLBAR_ITEMS_FULL_SCREEN +  COREWEBVIEW2_PDF_TOOLBAR_ITEMS_Save;
 end;
 function TWebView2WebBrowser.GetWebview2Component;
 begin
@@ -437,6 +439,7 @@ begin
     FWebView2Window.Align:= alClient;
     FWebView2Window.Height:= 338;
     FWebView2Window.TabStop:= true;
+																								 
     FWebView2Window.Browser:= FBrowser;
   end;
   Result:= FBrowser;
