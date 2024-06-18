@@ -387,6 +387,9 @@ resourcestring
 	rs_PCMService_ZielVerzeichnisINNO = 'Bitte Verzeichnis für INNO-Setup wählen';
 	rs_PCMService_ZielVerzeichnis = 'Bitte Ziel-Verzeichnis wählen';
 	rs_PCMService_QuellVerzeichnis = 'Bitte Quell-Verzeichnis wählen';
+  rs_PCMService_Shutdown = 'automatisches Herunterfahren';
+  rs_PCMService_Backup = 'Sicherungen';
+  rs_PCMService_Jobs = 'Termine / Aufgaben für PCM-Service';
 	
 type
   TResourceStringID = Pointer;
