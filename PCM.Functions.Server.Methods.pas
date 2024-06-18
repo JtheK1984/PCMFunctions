@@ -8,8 +8,6 @@ uses Winapi.Windows, System.IOUtils, System.Classes, SysUtils,  IdBaseComponent,
   FireDAC.Stan.Async,  FireDAC.Phys, FireDAC.Comp.Client,FireDAC.Stan.Param, System.Json,REST.Types,
   AbBase, AbBrowse, AbZBrows, AbZipper;
 
-  function CheckReccurence(AID: Integer; AStart: TDateTime; AWiederholung: string) :TDateTime;
-
   procedure Shutdown;
   procedure SendPushNotification;
 //  procedure BackupFiles;
@@ -27,98 +25,6 @@ uses  PCM.Data,
       PCM.Main,
       PCM.Strings;
 
-function CheckReccurence(AID: Integer; AStart: TDateTime; AWiederholung: string) :TDateTime;
-var
-  fWeekWiederholung,fDays: double;
-  sWiederholungDays,sDay,sInterval: String;
-  iDOw,iInterval, iMonat, iTag: Integer;
-  iJahrAkt,iMonatAkt,iTagakt: Word;
-begin
-  Result:= AStart;
-  iMonat:= 1;
-  iTag:= 1;
-////////////////////////////////////////////////////////////////////////////////
-// Täglich                                                                    //
-////////////////////////////////////////////////////////////////////////////////
-  if Pos('FREQ=DAILY',Awiederholung) > 0 then
-  begin
-    if Pos('INTERVAL',Awiederholung) > 0 then
-    begin
-      fDays:= (Date - StrToDate(Copy(DateTimeToStr(AStart),1,10))) /2;
-      if frac(fdays * 10) = 0  then
-      begin
-        Result:= StrToDateTime(DateToStr(Date) + ' ' + Copy(DateTimetoStr(AStart),11,Length(DateTimetoStr(AStart))));
-      end;
-    end
-    else begin
-      Result:= StrToDateTime(DateToStr(Date) + ' ' + Copy(DateTimetoStr(AStart),11,Length(DateTimetoStr(AStart))));
-    end;
-
-  end;
-////////////////////////////////////////////////////////////////////////////////
-// Wöchentlich                                                                //
-////////////////////////////////////////////////////////////////////////////////
-  if Pos('FREQ=WEEKLY',Awiederholung) > 0 then
-  begin
-    if Pos('BYDAY',Awiederholung) > 0 then
-    begin
-      sWiederholungDays:= Copy(Awiederholung,Pos('BYDAY',Awiederholung) + 6,Length(Awiederholung));
-      iDow := DayOfWeek(Date);
-      case iDow of
-      1: sDay:= 'SU';
-      2: sDay:= 'MO';
-      3: sDay:= 'TU';
-      4: sDay:= 'WE';
-      5: sDay:= 'TH';
-      6: sDay:= 'FR';
-      7: sDay:= 'SA';
-      end;
-      if Pos(sday,sWiederholungDays) > 0 then
-      begin
-        if Pos('INTERVAL',Awiederholung) > 0 then
-        begin
-          sInterval:= Copy(Awiederholung,Pos('INTERVAL',Awiederholung)+9,Length(AWiederholung));
-          sInterval:= Copy(sInterval,1,Pos(';',sInterval) -1);
-          iInterval:=  StrToInt(sInterval);
-          fWeekWiederholung := WeekOf(date) - WeekOf(AStart);
-          fWeekWiederholung:= fWeekWiederholung / iInterval;
-          fWeekWiederholung:= frac(fWeekWiederholung);
-          if fWeekWiederholung = 0 then
-            Result:= StrToDateTime(DateToStr(Date) + ' ' + Copy(DateTimetoStr(AStart),11,Length(DateTimetoStr(AStart))));
-        end
-        else
-        begin
-          Result:= StrToDateTime(DateToStr(Date) + ' ' + Copy(DateTimetoStr(AStart),11,Length(DateTimetoStr(AStart))));
-        end;
-      end;
-    end
-    else begin
-      Result:= StrToDateTime(DateToStr(Date) + ' ' + Copy(DateTimetoStr(AStart),11,Length(DateTimetoStr(AStart))));
-    end;
-  end;
-////////////////////////////////////////////////////////////////////////////////
-// Monatlich                                                                  //
-////////////////////////////////////////////////////////////////////////////////
-  if Pos('FREQ=MONTHLY',Awiederholung) > 0 then
-  begin
-
-  end;
-////////////////////////////////////////////////////////////////////////////////
-// Jährlich                                                                  //
-////////////////////////////////////////////////////////////////////////////////
-  if Pos('FREQ=YEARLY',Awiederholung) > 0 then
-  begin
-    sWiederholungDays:= StringReplace(AWiederholung,'FREQ=YEARLY;','',[rfReplaceAll,rfIgnoreCase]);
-    sWiederholungDays:= Copy(sWiederholungDays,Pos('BYMONTHDAY=',sWiederholungDays) + 11,Length(sWiederholungDays));
-    iTag := StrToint(Copy(sWiederholungDays,1,Pos(';',sWiederholungDays)-1));
-    sWiederholungDays:= Copy(sWiederholungDays,Pos('BYMONTH=',sWiederholungDays) + 8,Length(sWiederholungDays));
-    iMonat := StrToint(Copy(sWiederholungDays,1,2));
-  end;
-  DecodeDate(Date,iJahrAkt,iMonatAkt,iTagakt);
-  if (iTagakt = iTag) and (iMonatAkt = iMonat)then
-    Result:= StrToDateTime(DateToStr(Date) + ' ' + Copy(DateTimetoStr(AStart),11,Length(DateTimetoStr(AStart))));
-
-end;
 procedure BackupDatabase;
 begin
   ExecuteAndWaitFor(AnsiString(ExtractFilePath(ParamStr(0)) + 'PCMBackup\PCMBackupService.exe'));
@@ -329,141 +235,288 @@ begin
   end;
 end;
 procedure SendPushNotification;
+  function CheckReccurence(AID: Integer; AStart, ADate: TDateTime; AWiederholung: string) :TDateTime;
+  var
+    fWeekWiederholung: double;
+    fDays: double;
+    iDow: Integer;
+    iInterval: Integer;
+    iMonat: Integer;
+    iTag: Integer;
+    sDay: String;
+    sInterval: String;
+    sWiederholungDays: String;
+    wJahrAkt: Word;
+    wMonatAkt: Word;
+    wTagakt: Word;
+  begin
+    if AWiederholung = '' then
+    begin
+      result := AStart;
+      exit;
+    end;
+
+
+    itag:= 1;
+    iMonat:= 1;
+    Result:= AStart;
+  ////////////////////////////////////////////////////////////////////////////////
+  // Täglich                                                                    //
+  ////////////////////////////////////////////////////////////////////////////////
+    if Pos('FREQ=DAILY',Awiederholung) > 0 then
+    begin
+      if Pos('INTERVAL',Awiederholung) > 0 then
+      begin
+        fDays:= (ADate - StrToDate(Copy(DateTimeToStr(AStart),1,10))) /2;
+        if frac(fdays * 10) = 0  then
+        begin
+          Result:= StrToDateTime(DateToStr(ADate) + ' ' + Copy(DateTimetoStr(AStart),11,Length(DateTimetoStr(AStart))));
+        end;
+      end
+      else begin
+        Result:= StrToDateTime(DateToStr(ADate) + ' ' + Copy(DateTimetoStr(AStart),11,Length(DateTimetoStr(AStart))));
+      end;
+
+    end;
+  ////////////////////////////////////////////////////////////////////////////////
+  // Wöchentlich                                                                //
+  ////////////////////////////////////////////////////////////////////////////////
+    if Pos('FREQ=WEEKLY',Awiederholung) > 0 then
+    begin
+      if Pos('BYDAY',Awiederholung) > 0 then
+      begin
+        sWiederholungDays:= Copy(Awiederholung,Pos('BYDAY',Awiederholung) + 6,Length(Awiederholung));
+        iDow := DayOfWeek(ADate);
+        case iDow of
+        1: sDay:= 'SU';
+        2: sDay:= 'MO';
+        3: sDay:= 'TU';
+        4: sDay:= 'WE';
+        5: sDay:= 'TH';
+        6: sDay:= 'FR';
+        7: sDay:= 'SA';
+        end;
+        if Pos(sday,sWiederholungDays) > 0 then
+        begin
+          if Pos('INTERVAL',Awiederholung) > 0 then
+          begin
+            sInterval:= Copy(Awiederholung,Pos('INTERVAL',Awiederholung)+9,Length(AWiederholung));
+            sInterval:= Copy(sInterval,1,Pos(';',sInterval) -1);
+            iInterval:=  StrToInt(sInterval);
+            fWeekWiederholung := WeekOf(ADate - AStart);
+            fWeekWiederholung:= fWeekWiederholung / iInterval;
+            fWeekWiederholung:= frac(fWeekWiederholung);
+            if fWeekWiederholung = 0 then
+              Result:= StrToDateTime(DateToStr(ADate) + ' ' + Copy(DateTimetoStr(AStart),11,Length(DateTimetoStr(AStart))));
+          end
+          else
+          begin
+            Result:= StrToDateTime(DateToStr(ADate) + ' ' + Copy(DateTimetoStr(AStart),11,Length(DateTimetoStr(AStart))));
+          end;
+        end;
+      end
+      else begin
+        Result:= StrToDateTime(DateToStr(ADate) + ' ' + Copy(DateTimetoStr(AStart),11,Length(DateTimetoStr(AStart))));
+      end;
+    end;
+  ////////////////////////////////////////////////////////////////////////////////
+  // Monatlich                                                                  //
+  ////////////////////////////////////////////////////////////////////////////////
+    if Pos('FREQ=MONTHLY',Awiederholung) > 0 then
+    begin
+
+    end;
+  ////////////////////////////////////////////////////////////////////////////////
+  // Jährlich                                                                  //
+  ////////////////////////////////////////////////////////////////////////////////
+    if Pos('FREQ=YEARLY',Awiederholung) > 0 then
+    begin
+      sWiederholungDays:= StringReplace(AWiederholung,'FREQ=YEARLY;','',[rfReplaceAll,rfIgnoreCase]);
+      sWiederholungDays:= Copy(sWiederholungDays,Pos('BYMONTHDAY=',sWiederholungDays) + 11,Length(sWiederholungDays));
+      iTag := StrToint(Copy(sWiederholungDays,1,Pos(';',sWiederholungDays)-1));
+      sWiederholungDays:= Copy(sWiederholungDays,Pos('BYMONTH=',sWiederholungDays) + 8,Length(sWiederholungDays));
+      iMonat := StrToint(Copy(sWiederholungDays,1,2));
+    end;
+    DecodeDate(ADate,wJahrAkt,wMonatAkt,wTagakt);
+    if (wTagakt = iTag) and (wMonatAkt = iMonat)then
+      Result:= StrToDateTime(DateToStr(ADate) + ' ' + Copy(DateTimetoStr(AStart),11,Length(DateTimetoStr(AStart))));
+  end;
+  function GetWeekDay(ADateTime: TDateTime) : String;
+  begin
+    case DayOfWeek(ADateTime) of
+      1: Result:= 'So.';
+      2: Result:= 'Mo.';
+      3: Result:= 'Di.';
+      4: Result:= 'Mi.';
+      5: Result:= 'Do.';
+      6: Result:= 'Fr.';
+      7: Result:= 'Sa.';
+    end;
+  end;
+  Procedure SendPush(AToken,AMessage,ACaption: String);
+  var
+    joBodyMain:       TJSONObject;
+    joBodySub:        TJSONObject;
+    sUploadstate:     String;
+  begin
+    joBodyMain:= TJSONObject.Create;
+    joBodyMain.AddPair(TJSONPair.Create('to',AToken));
+    joBodyMain.AddPair(TJSONPair.Create('priority','high'));
+    joBodySub:= TJSONObject.Create;
+    joBodySub.AddPair(TJSONPair.Create('body',AMessage));
+    joBodySub.AddPair(TJSONPair.Create('title',ACaption));
+    joBodyMain.AddPair(TJSONPair.Create('notification',joBodySub));
+    sUploadstate:= joBodyMain.ToString;
+    dm_PCM.rstreq_Push.Params.AddItem('Authorization', 'Bearer AAAAKei3FDU:APA91bHidAp5KysKnJeC0zMHHs242AW-DN9GHepIEOQgqJeCni82g9l6m324q71H5Rn3yThrjLW-rH5W1P7KV4TC32eDeUUB4zeHmTv4AhTjTGVYc384BzUMUaDSY6x8KtqqkydOoq5a', pkHTTPHEADER, [poDoNotEncode]);
+    dm_PCM.rstreq_Push.Body.Add(joBodyMain);
+    dm_PCM.rstreq_Push.Execute;
+    dm_PCM.rstreq_Push.ClearBody;
+    dm_PCM.rstreq_Push.Body.ClearBody;
+    FreeandNil(joBodyMain);
+  end;
 var
-  sDateTime: TDateTime;
-  joBodyMain,joBodySub: TJSONObject;
-  sID,sUploadstate: String;
-  sWochentagBeginn, sWochentagEnde,sAlertBody: string;
+  dtStart:              TDateTime;
+  dtDateTimeEvent:      TDateTime;
+  iID:                  Integer;
+  iID_Benutzer:         Integer;
+  sMessage:             string;
+  sCaption:             String;
+  sID:                  String;
+  sToken:               String;
+  sWochentagBeginn:     string;
+  sWochentagEnde:       string;
 begin
-  // Alle Pushnotifications schicken
+  // Termine
   dm_PCM.qry_Work.Connection:= dm_PCM.con_PCM;
-  dm_PCM.qry_Work.SQL.Text:= 'SELECT spn.ID, bt.Devicetoken,spn.message FROM service_pushnotifications spn LEFT OUTER JOIN benutzer_token bt ON bt.ID_Benutzer = spn.ID_Benutzer';
+  dm_PCM.qry_Work.SQL.Text:= 'SELECT ID_Benutzer, DEviceToken From manager_devices';
   dm_PCM.qry_Work.open;
   while not dm_PCM.qry_Work.eof do
   begin
-    WriteLog(PCM_Logname,'Token:= ' + dm_PCM.qry_Work.Fieldbyname('Devicetoken').asString,0);
-    if not Assigned(joBodyMain) then
-      joBodyMain:= TJSONObject.Create;
-    sID:= sID + ',' + dm_PCM.qry_Work.Fieldbyname('ID').asString;
-    joBodyMain.AddPair(TJSONPair.Create('to',dm_PCM.qry_Work.Fieldbyname('Devicetoken').asString));
-    joBodyMain.AddPair(TJSONPair.Create('priority','high'));
-    if not Assigned(joBodySub) then
-      joBodySub:= TJSONObject.Create;
-    joBodySub.AddPair(TJSONPair.Create('body',dm_PCM.qry_Work.Fieldbyname('Message').asString));
-    joBodySub.AddPair(TJSONPair.Create('title','Änderung festgestellt'));
-    joBodyMain.AddPair(TJSONPair.Create('notification',joBodySub));
-    sUploadstate:= joBodyMain.ToString;
-    dm_PCM.rstreq_Push.Params.AddItem('Authorization', 'Bearer AAAAKei3FDU:APA91bHidAp5KysKnJeC0zMHHs242AW-DN9GHepIEOQgqJeCni82g9l6m324q71H5Rn3yThrjLW-rH5W1P7KV4TC32eDeUUB4zeHmTv4AhTjTGVYc384BzUMUaDSY6x8KtqqkydOoq5a', pkHTTPHEADER, [poDoNotEncode]);
-    dm_PCM.rstreq_Push.Body.Add(joBodyMain);
-    dm_PCM.rstreq_Push.Execute;
-    dm_PCM.rstreq_Push.ClearBody;
-    dm_PCM.rstreq_Push.Body.ClearBody;
-    if Assigned(joBodySub) then
-      joBodySub:= nil;
-    if Assigned(joBodyMain) then
-      joBodyMain:= nil;
-    dm_pcm.qry_work.Next;
-
-  end;
-  dm_pcm.qry_work.close;
-  dm_PCM.qry_work.SQL.Text:= 'Delete FROM service_pushnotifications Where ID IN (0 ' + sid + ')';
-  dm_PCM.qry_work.ExecSQL;
-  dm_pcm.qry_work.SQL.Text:= 'SELECT mkal.*, btok.DeviceToken FROM manager_kalender mkal ' +
-                             'LEFT OUTER JOIN benutzer_token btok ON btok.iD_Benutzer = mkal.ID_Benutzer ' +
-                             'WHERE mkal.Reminder = true AND mkal.ReminderDate <= NOW()  AND TYP IN (1,2) ' +
-                             'ORDER BY btok.devicetoken, mkal.ReminderDate';
-  dm_pcm.qry_work.open;
-  while not dm_pcm.qry_work.Eof do
-  begin
-    case DayOfWeek(dm_pcm.qry_work.FieldByName('Start').AsDateTime) of
-      1: sWochentagBeginn:= 'So.';
-      2: sWochentagBeginn:= 'Mo.';
-      3: sWochentagBeginn:= 'Di.';
-      4: sWochentagBeginn:= 'Mi.';
-      5: sWochentagBeginn:= 'Do.';
-      6: sWochentagBeginn:= 'Fr.';
-      7: sWochentagBeginn:= 'Sa.';
-    end;
-
-    case DayOfWeek(dm_pcm.qry_work.FieldByName('Finish').AsDateTime) of
-      1: sWochentagEnde:= 'So.';
-      2: sWochentagEnde:= 'Mo.';
-      3: sWochentagEnde:= 'Di.';
-      4: sWochentagEnde:= 'Mi.';
-      5: sWochentagEnde:= 'Do.';
-      6: sWochentagEnde:= 'Fr.';
-      7: sWochentagEnde:= 'Sa.';
-    end;
-    sDateTime:= CheckReccurence(dm_pcm.qry_work.FieldByName('ID').asInteger,dm_pcm.qry_work.FieldByName('Start').asDatetime,dm_pcm.qry_work.FieldByName('wiederholung_text').asString);
-    if ((DateOf(sDateTime) = Date) and (dm_pcm.qry_work.FieldByName('wiederholung_text').asString <> '')) or (dm_pcm.qry_work.FieldByName('wiederholung_text').asString = '') then
+    iID_Benutzer:= dm_PCM.qry_Work.Fieldbyname('ID_Benutzer').asInteger;
+    sToken:= dm_PCM.qry_Work.Fieldbyname('Devicetoken').asString;
+    WriteLog(PCM_Logname,'Termine per Pushbenachrichtigung versenden',0);
+    dm_PCM.qry_Work_Sub.SQL.Text:= 'SELECT ID, Caption, Start,Finish,Message, CompleteDay,kalendername, wiederholung_text, Date(START) ' +
+                                   'FROM manager_Kalender ' +
+                                   'WHERE ID_Benutzer = :ID_Benutzer ' +
+                                   'AND ((Wiederholung_text IS NOT NULL AND Wiederholung_text <> '''') ' +
+                                   'OR (Date(START) = Date(Now()) AND (Wiederholung_text IS null or Wiederholung_text = '''' ))) ' +
+                                   'AND (LastPush IS NULL OR Date(lastpush) < DATE(NOW())) ' +
+                                   'ORDER BY Start';
+    dm_PCM.qry_Work_Sub.ParamByName('ID_Benutzer').AsInteger:= iID_Benutzer;
+    dm_PCM.qry_Work_Sub.open;
+    while not dm_PCM.qry_Work_Sub.eof do
     begin
-      if dm_pcm.qry_work.FieldByName('CompleteDay').AsBoolean then
+      sCaption:= dm_PCM.qry_Work_Sub.FieldByName('Caption').AsString;
+      iID:= dm_PCM.qry_Work_Sub.FieldByName('ID').asInteger;
+      dtDateTimeEvent:= CheckReccurence(dm_PCM.qry_Work_Sub.FieldByName('ID').asInteger,dm_PCM.qry_Work_Sub.FieldByName('Start').asDatetime,Date,dm_PCM.qry_Work_Sub.FieldByName('wiederholung_text').asString);
+      if (DateOf(dtDateTimeEvent) = Date) and (dm_PCM.qry_Work_Sub.FieldByName('wiederholung_text').asString <> '') then
       begin
-        if dm_pcm.qry_work.FieldByName('Finish').AsDateTime - dm_pcm.qry_work.FieldByName('Start').AsDateTime  = 1 then
+
+        sWochentagBeginn:= GetWeekDay(dtDateTimeEvent);
+        sWochentagEnde:= GetWeekDay(dm_PCM.qry_Work_Sub.FieldByName('Finish').AsDateTime);
+
+        dm_PCM.qry_Cal.SQL.Text:= 'Select Count(*) as Anzahl FROM manager_tempkalender WHERE Text = :Text';
+        dm_PCM.qry_Cal.ParamByName('Text').AsString :=  dm_PCM.qry_Work_Sub.FieldByName('Caption').AsString;
+        dm_PCM.qry_Cal.open;
+
+        if dm_PCM.qry_Cal.FieldByName('Anzahl').AsInteger = 0 then
         begin
-          sAlertBody:= sWochentagBeginn + ' ' + FormatDateTime('dd.mm.yyyy',dm_pcm.qry_work.FieldByName('Start').AsDateTime);
-        end
-        else begin
-          sAlertBody:= sWochentagBeginn + ' ' + FormatDateTime('dd.mm.yyyy',dm_pcm.qry_work.FieldByName('Start').AsDateTime) + ' - ' + sWochentagEnde + ' ' + FormatDateTime('dd.mm.yyyy',dm_pcm.qry_work.FieldByName('Finish').AsDateTime);
+          if dm_PCM.qry_Work_Sub.FieldByName('CompleteDay').AsBoolean then
+          begin
+            sMessage:= sWochentagBeginn + ' ' + FormatDateTime('dd.mm.yyyy',Date);
+            dtStart:= StrToTime(FormatDateTime('hh:mm',Date));
+          end
+          else begin
+            sMessage:= sWochentagBeginn + ' ' + FormatDateTime('dd.mm.yyyy',dtDateTimeEvent) + ' ' + FormatDateTime('hh:mm',dm_pcm.qry_Work_Sub.FieldByName('Start').AsDateTime) + ' - ' + FormatDateTime('hh:mm',dm_pcm.qry_Work_Sub.FieldByName('Finish').AsDateTime);
+            dtStart:= StrToTime(FormatDateTime('hh:mm',dm_pcm.qry_Work_Sub.FieldByName('Start').AsDateTime));
+          end;
+          dm_PCM.qry_cal_sub.SQL.Text:= 'Insert INTO manager_TempKalender(Text,Detail,Start,ID_manager_Kalender) Values (:Text,:Detail,:Start,:ID_Kalender)';;
+          dm_PCM.qry_cal_sub.ParamByName('Text').AsString :=  sCaption;
+          dm_PCM.qry_cal_sub.ParamByName('Detail').AsString:= sMessage;
+          dm_PCM.qry_cal_sub.ParamByName('Start').AsDateTime:= dtStart;
+          dm_PCM.qry_cal_sub.ParamByName('ID_Kalender').AsInteger:= iID;
+          dm_PCM.qry_cal_sub.ExecSQL;
         end;
+        dm_PCM.qry_Cal.Close;
       end
       else begin
-        if dm_pcm.qry_work.FieldByName('Finish').AsDateTime - dm_pcm.qry_work.FieldByName('Start').AsDateTime  = 1 then
+        dtDateTimeEvent:= dm_pcm.qry_Work_Sub.FieldByName('Start').AsDateTime;
+        if (DateOf(dtDateTimeEvent) = Date) then
         begin
-          sAlertBody:= sWochentagBeginn + ' ' + FormatDateTime('dd.mm.yyyy',dm_pcm.qry_work.FieldByName('Start').AsDateTime)
-        end
-        else begin
-          sAlertBody:= sWochentagBeginn + ' ' + FormatDateTime('dd.mm.yyyy hh:mm',dm_pcm.qry_work.FieldByName('Start').AsDateTime) + ' - ' + FormatDateTime('hh:mm',dm_pcm.qry_work.FieldByName('Finish').AsDateTime);
+          sWochentagBeginn:= GetWeekDay(dm_pcm.qry_Work_Sub.FieldByName('Start').AsDateTime);
+          sWochentagEnde:= GetWeekDay(dm_PCM.qry_Work_Sub.FieldByName('Finish').AsDateTime);
+          dm_PCM.qry_Cal.SQL.Text:= 'Select Count(*) as Anzahl FROM manager_tempkalender WHERE Text = :Text';
+          dm_PCM.qry_Cal.ParamByName('Text').AsString :=  dm_pcm.qry_Work_Sub.FieldByName('Caption').AsString;
+          dm_PCM.qry_Cal.open;
+          if dm_PCM.qry_Cal.FieldByName('Anzahl').AsInteger = 0 then
+          begin
+            if dm_pcm.qry_Work_Sub.FieldByName('CompleteDay').AsBoolean then
+            begin
+              if dm_pcm.qry_Work_Sub.FieldByName('Finish').AsDateTime - dm_pcm.qry_Work_Sub.FieldByName('Start').AsDateTime  = 1 then
+              begin
+                sMessage:= sWochentagBeginn + ' ' + FormatDateTime('dd.mm.yyyy',dm_pcm.qry_Work_Sub.FieldByName('Start').AsDateTime);
+                dtStart:= StrToTime(FormatDateTime('hh:mm',dm_pcm.qry_Work_Sub.FieldByName('Start').AsDateTime));
+              end
+              else begin
+                sMessage:= sWochentagBeginn + ' ' + FormatDateTime('dd.mm.yyyy',dm_pcm.qry_Work_Sub.FieldByName('Start').AsDateTime) + ' - ' + sWochentagEnde + ' ' + FormatDateTime('dd.mm.yyyy',dm_pcm.qry_Work_Sub.FieldByName('Finish').AsDateTime);
+                dtStart:= StrToDateTime(FormatDateTime('dd.mm.yyyy hh:mm',dm_pcm.qry_Work_Sub.FieldByName('Start').AsDateTime));
+              end;
+            end
+            else begin
+              if dm_pcm.qry_Work_Sub.FieldByName('Finish').AsDateTime - dm_pcm.qry_Work_Sub.FieldByName('Start').AsDateTime  = 1 then
+              begin
+                sMessage:= sWochentagBeginn + ' ' + FormatDateTime('dd.mm.yyyy',dm_pcm.qry_Work_Sub.FieldByName('Start').AsDateTime);
+                dtStart:= StrToTime(FormatDateTime('hh:mm',dm_pcm.qry_Work_Sub.FieldByName('Start').AsDateTime));
+              end
+              else begin
+                sMessage:= sWochentagBeginn + ' ' + FormatDateTime('dd.mm.yyyy hh:mm',dm_pcm.qry_Work_Sub.FieldByName('Start').AsDateTime) + ' - ' + FormatDateTime('hh:mm',dm_pcm.qry_Work_Sub.FieldByName('Finish').AsDateTime);
+                dtStart:= StrToTime(FormatDateTime('hh:mm',dm_pcm.qry_Work_Sub.FieldByName('Start').AsDateTime));
+              end;
+            end;
+            dm_PCM.qry_cal_sub.SQL.Text:= 'Insert INTO manager_TempKalender(Text,Detail,Start,ID_manager_Kalender) Values (:Text,:Detail,:Start,:ID_Kalender)';;
+            dm_PCM.qry_cal_sub.ParamByName('Text').AsString :=  sCaption;
+            dm_PCM.qry_cal_sub.ParamByName('Detail').AsString:= sMessage;
+            dm_PCM.qry_cal_sub.ParamByName('Start').AsDateTime:= dtStart;
+            dm_PCM.qry_cal_sub.ParamByName('ID_Kalender').AsInteger:= iID;
+            dm_PCM.qry_cal_sub.ExecSQL;
+          end;
+          dm_PCM.qry_Cal.Close;
         end;
       end;
-    end
-    else begin
-      if dm_pcm.qry_work.FieldByName('CompleteDay').AsBoolean then
-      begin
-        if dm_pcm.qry_work.FieldByName('Finish').AsDateTime - dm_pcm.qry_work.FieldByName('Start').AsDateTime  = 1 then
-        begin
-          sAlertBody:= sWochentagBeginn + ' ' + FormatDateTime('dd.mm.yyyy',dm_pcm.qry_work.FieldByName('Start').AsDateTime);
-        end
-        else begin
-          sAlertBody:= sWochentagBeginn + ' ' + FormatDateTime('dd.mm.yyyy',dm_pcm.qry_work.FieldByName('Start').AsDateTime) + ' - ' + sWochentagEnde + ' ' + FormatDateTime('dd.mm.yyyy',dm_pcm.qry_work.FieldByName('Finish').AsDateTime);
-        end;
-      end
-      else begin
-        if dm_pcm.qry_work.FieldByName('Finish').AsDateTime - dm_pcm.qry_work.FieldByName('Start').AsDateTime  = 1 then
-        begin
-          sAlertBody:= sWochentagBeginn + ' ' + FormatDateTime('dd.mm.yyyy',dm_pcm.qry_work.FieldByName('Start').AsDateTime)
-        end
-        else begin
-          sAlertBody:= sWochentagBeginn + ' ' + FormatDateTime('dd.mm.yyyy hh:mm',dm_pcm.qry_work.FieldByName('Start').AsDateTime) + ' - ' + FormatDateTime('hh:mm',dm_pcm.qry_work.FieldByName('Finish').AsDateTime);
-        end;
-      end;
+      dm_pcm.qry_Work_Sub.Next;
     end;
-    if not Assigned(joBodyMain) then
-      joBodyMain:= TJSONObject.Create;
-    joBodyMain.AddPair(TJSONPair.Create('to',dm_PCM.qry_Work.Fieldbyname('Devicetoken').asString));
-    joBodyMain.AddPair(TJSONPair.Create('priority','high'));
-    if not Assigned(joBodySub) then
-      joBodySub:= TJSONObject.Create;
-    joBodySub.AddPair(TJSONPair.Create('body',sAlertBody));
-    joBodySub.AddPair(TJSONPair.Create('title',dm_PCM.qry_Work.Fieldbyname('Caption').asString));
-    joBodyMain.AddPair(TJSONPair.Create('notification',joBodySub));
-    sUploadstate:= joBodyMain.ToString;
-    dm_PCM.rstreq_Push.Params.AddItem('Authorization', 'Bearer AAAAKei3FDU:APA91bHidAp5KysKnJeC0zMHHs242AW-DN9GHepIEOQgqJeCni82g9l6m324q71H5Rn3yThrjLW-rH5W1P7KV4TC32eDeUUB4zeHmTv4AhTjTGVYc384BzUMUaDSY6x8KtqqkydOoq5a', pkHTTPHEADER, [poDoNotEncode]);
-    dm_PCM.rstreq_Push.Body.Add(joBodyMain);
-    dm_PCM.rstreq_Push.Execute;
-    dm_PCM.rstreq_Push.ClearBody;
-    dm_PCM.rstreq_Push.Body.ClearBody;
-    if Assigned(joBodySub) then
-      joBodySub:= nil;
-    if Assigned(joBodyMain) then
-      joBodyMain:= nil;
-    dm_pcm.qry_Work_Sub.SQL.Text:= 'Update manager_kalender Set ReminderDate = :Reminderdate Where ID = :ID';
-    dm_pcm.qry_Work_Sub.ParamByName('ID').AsInteger:= dm_pcm.qry_work.FieldByName('ID').asInteger;
-    dm_pcm.qry_Work_Sub.ParamByName('ReminderDate').AsDateTime:= Incday(dm_pcm.qry_work.FieldByName('ReminderDate').AsDateTime,1);
-    dm_pcm.qry_Work_Sub.ExecSQL;
-    dm_pcm.qry_work.next;
+    dm_pcm.qry_Work_Sub.Close;
+
+    dm_pcm.qry_Cal.SQL.Text:= 'Select * From manager_tempkalender order by Start asc';
+    dm_pcm.qry_Cal.open;
+    while not dm_pcm.qry_Cal.eof do
+    begin
+      SendPush(sToken,dm_pcm.qry_Cal.FieldByName('Detail').AsString,dm_pcm.qry_Cal.FieldByName('Text').AsString);
+      dm_PCM.qry_Cal_Sub.SQL.Text:= 'Update manager_kalender Set LAstPush = Now() Where ID = :ID';
+      dm_PCM.qry_Cal_Sub.ParamByName('ID').AsInteger := dm_pcm.qry_Cal.FieldByName('ID_manager_kalender').AsInteger;
+      dm_PCM.qry_Cal_Sub.ExecSQL;
+      dm_pcm.qry_Cal.Next;
+    end;
+    dm_pcm.qry_Cal.Close;
+
+    // Änderungsmitteilungen
+    dm_PCM.qry_Cal.SQL.Text:= 'SELECT ID, message FROM service_pushnotifications WHERE ID_Benutzer = :ID_Benutzer';
+    dm_PCM.qry_Cal.ParamByName('ID_Benutzer').AsInteger:= iID_Benutzer;
+    dm_PCM.qry_Cal.open;
+    while not dm_PCM.qry_Cal.eof do
+    begin
+      sID:= sID + ',' + dm_PCM.qry_Cal.Fieldbyname('ID').asString;
+      SendPush(sToken,dm_PCM.qry_Cal.Fieldbyname('Message').asString,'Änderung festgestellt');
+      dm_pcm.qry_Cal.Next;
+    end;
+    dm_pcm.qry_Cal.close;
+    dm_PCM.qry_Cal.SQL.Text:= 'Delete FROM service_pushnotifications Where ID IN (0 ' + sid + ')';
+    dm_PCM.qry_Cal.ExecSQL;
+    dm_pcm.qry_work.Next;
   end;
   dm_pcm.qry_work.close;
+  dm_PCM.qry_work.SQL.Text:= 'DELETE FROM manager_tempkalender';
+  dm_PCM.qry_work.ExecSQL;
 end;
 procedure Shutdown;
 var
