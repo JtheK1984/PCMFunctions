@@ -351,6 +351,10 @@ resourcestring
   rs_PCMManager_Terminopen = 'Termin öffnen';
   rs_PCMManager_Adresseengefunden = ' Adressen gefunden!';
 // PCM - Mediacenter
+  rs_PCMMediacenter_Musikplayer = 'Musikplayer';
+  rs_PCMMediacenter_Webradio = 'Webradio';
+  rs_PCMMediacenter_Videoplayer = 'Videoplayer';
+  rs_PCMMediacenter_Videoplayer = 'Fotos';
 // PCM - MP3Manager
   rs_PCMMP3Manger_MP3Verzeichnis = 'MP3-Verzeichnis auswählen';
   rs_PCMMP3Manger_MP3Tags = 'MP3-Tags bearbeiten';
