@@ -375,10 +375,13 @@ procedure SendPushNotification;
     FreeandNil(joBodyMain);
   end;
 var
+  bReminder:            Boolean;
   dtStart:              TDateTime;
   dtDateTimeEvent:      TDateTime;
+  dtReminderdate:       TDateTime;
   iID:                  Integer;
   iID_Benutzer:         Integer;
+  iReminder:            Integer;
   sMessage:             string;
   sCaption:             String;
   sID:                  String;
@@ -395,30 +398,31 @@ begin
     iID_Benutzer:= dm_PCM.qry_Work.Fieldbyname('ID_Benutzer').asInteger;
     sToken:= dm_PCM.qry_Work.Fieldbyname('Devicetoken').asString;
     WriteLog(PCM_Logname,'Termine per Pushbenachrichtigung versenden',0);
-    dm_PCM.qry_Work_Sub.SQL.Text:= 'SELECT ID, Caption, Start,Finish,Message, CompleteDay,kalendername, wiederholung_text, Date(START) ' +
-                                   'FROM manager_Kalender ' +
-                                   'WHERE ID_Benutzer = :ID_Benutzer ' +
-                                   'AND ((Wiederholung_text IS NOT NULL AND Wiederholung_text <> '''') ' +
-                                   'OR (Date(START) = Date(Now()) AND (Wiederholung_text IS null or Wiederholung_text = '''' ))) ' +
-                                   'AND (LastPush IS NULL OR Date(lastpush) < DATE(NOW())) ' +
-                                   'ORDER BY Start';
+    dm_PCM.qry_Work_Sub.SQL.Text:= 'SELECT ID, Caption, Start,Finish,Message, CompleteDay,kalendername, wiederholung_text, Reminder, Reminderdate,if(ReminderMinutesbeforeStart = 0, 15,ReminderMinutesbeforeStart) AS ReminderMinutesbeforeStart ' +
+                                    'FROM manager_Kalender ' +
+                                    'WHERE ID_Benutzer = :ID_Benutzer ' +
+                                    'AND ((Wiederholung_text IS NOT NULL AND Wiederholung_text <> '''') ' +
+                                    'OR (Date(START) = Date(Now()) AND (Wiederholung_text IS null or Wiederholung_text = '''' ))) ' +
+                                    'AND (LastPush IS NULL OR Date(lastpush) < DATE(NOW())) ' +
+                                    'AND Reminder is True ' +
+                                    'ORDER BY Start';
     dm_PCM.qry_Work_Sub.ParamByName('ID_Benutzer').AsInteger:= iID_Benutzer;
     dm_PCM.qry_Work_Sub.open;
     while not dm_PCM.qry_Work_Sub.eof do
     begin
       sCaption:= dm_PCM.qry_Work_Sub.FieldByName('Caption').AsString;
       iID:= dm_PCM.qry_Work_Sub.FieldByName('ID').asInteger;
+      bReminder:= dm_PCM.qry_Work_Sub.FieldByName('Reminder').asBoolean;
+      dtReminderdate:= dm_PCM.qry_Work_Sub.FieldByName('Reminderdate').AsDateTime;
+      iReminder:= dm_PCM.qry_Work_Sub.FieldByName('ReminderMinutesbeforeStart').asInteger;
       dtDateTimeEvent:= CheckReccurence(dm_PCM.qry_Work_Sub.FieldByName('ID').asInteger,dm_PCM.qry_Work_Sub.FieldByName('Start').asDatetime,Date,dm_PCM.qry_Work_Sub.FieldByName('wiederholung_text').asString);
-      if (DateOf(dtDateTimeEvent) = Date) and (dm_PCM.qry_Work_Sub.FieldByName('wiederholung_text').asString <> '') then
+      if (DateOf(dtDateTimeEvent) = Date) and (dm_PCM.qry_Work_Sub.FieldByName('wiederholung_text').asString <> '') and  (IncMinute(dtDateTimeEvent,iReminder *-1) <= Now()) then
       begin
-
         sWochentagBeginn:= GetWeekDay(dtDateTimeEvent);
         sWochentagEnde:= GetWeekDay(dm_PCM.qry_Work_Sub.FieldByName('Finish').AsDateTime);
-
         dm_PCM.qry_Cal.SQL.Text:= 'Select Count(*) as Anzahl FROM manager_tempkalender WHERE Text = :Text';
         dm_PCM.qry_Cal.ParamByName('Text').AsString :=  dm_PCM.qry_Work_Sub.FieldByName('Caption').AsString;
         dm_PCM.qry_Cal.open;
-
         if dm_PCM.qry_Cal.FieldByName('Anzahl').AsInteger = 0 then
         begin
           if dm_PCM.qry_Work_Sub.FieldByName('CompleteDay').AsBoolean then
@@ -441,7 +445,7 @@ begin
       end
       else begin
         dtDateTimeEvent:= dm_pcm.qry_Work_Sub.FieldByName('Start').AsDateTime;
-        if (DateOf(dtDateTimeEvent) = Date) then
+        if (DateOf(dtDateTimeEvent ) = Date) and  (IncMinute(dtDateTimeEvent,iReminder *-1) <= Now())then
         begin
           sWochentagBeginn:= GetWeekDay(dm_pcm.qry_Work_Sub.FieldByName('Start').AsDateTime);
           sWochentagEnde:= GetWeekDay(dm_PCM.qry_Work_Sub.FieldByName('Finish').AsDateTime);
