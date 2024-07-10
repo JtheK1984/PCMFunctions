@@ -169,7 +169,8 @@ const
   GV_Pfad = 400;
   GV_Main = 401;
   GV_Sub = 402;
-  GV_Archiv = 403;
+  GV_Index = 403;
+  GV_Archiv = 404;
 type
     SYSTEM_BASIC_INFORMATION = packed record
     dwUnknown1              : DWORD;
