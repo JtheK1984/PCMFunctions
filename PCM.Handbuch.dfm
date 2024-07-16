@@ -31,40 +31,17 @@ object frm_Handbuch: Tfrm_Handbuch
       Properties.ActivePage = cxTabSheet2
       Properties.CustomButtons.Buttons = <>
       Properties.Images = cxImageList1
-      ClientRectBottom = 437
-      ClientRectRight = 620
+      ClientRectBottom = 433
+      ClientRectLeft = 4
+      ClientRectRight = 616
       ClientRectTop = 26
       object cxTabSheet2: TcxTabSheet
         Caption = 'PDF'
         ImageIndex = 1
-        object EdgeBrowser1: TEdgeBrowser
-          Left = 0
-          Top = 0
-          Width = 620
-          Height = 411
-          Align = alClient
-          TabOrder = 0
-          TabStop = True
-          AllowSingleSignOnUsingOSPrimaryAccount = True
-          TargetCompatibleBrowserVersion = '117.0.2045.28'
-          UserDataFolder = '%LOCALAPPDATA%\bds.exe.WebView2'
-        end
       end
       object cxTabSheet1: TcxTabSheet
         Caption = 'HTML'
         ImageIndex = 0
-        object EdgeBrowser: TEdgeBrowser
-          Left = 0
-          Top = 0
-          Width = 620
-          Height = 411
-          Align = alClient
-          TabOrder = 0
-          TabStop = True
-          AllowSingleSignOnUsingOSPrimaryAccount = True
-          TargetCompatibleBrowserVersion = '117.0.2045.28'
-          UserDataFolder = '%LOCALAPPDATA%\bds.exe.WebView2'
-        end
       end
     end
   end

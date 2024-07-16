@@ -23,22 +23,23 @@ uses
   dxSkinsDefaultPainters, dxSkinValentine, dxSkinVisualStudio2013Blue,
   dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light, dxSkinVS2010,
   dxSkinWhiteprint, dxSkinWXI, dxSkinXmas2008Blue, cxContainer, cxEdit,
-  cxGroupBox, cxPC, System.ImageList, Vcl.ImgList, cxImageList;
+  cxGroupBox, cxPC, System.ImageList, Vcl.ImgList, cxImageList,PCM.Browser;
 
 type
   Tfrm_Handbuch = class(TForm)
-    EdgeBrowser: TEdgeBrowser;
     cxPageControl1: TcxPageControl;
     cxTabSheet1: TcxTabSheet;
     cxTabSheet2: TcxTabSheet;
     cxGroupBox1: TcxGroupBox;
-    EdgeBrowser1: TEdgeBrowser;
     cxImageList1: TcxImageList;
     procedure FormShow(Sender: TObject);
+    procedure cxPageControl1Change(Sender: TObject);
   private
     { Private-Deklarationen }
   public
     { Public-Deklarationen }
+    FWebBrowser: TAbstractWebBrowser;
+    procedure InitializeBrowser(AParent: TWinControl);
   end;
 
 var
@@ -49,14 +50,45 @@ implementation
 {$R *.dfm}
 
 uses
-  PCM.Data;
+  PCM.Data,
+  PCM.Browser.FullScreen;
+
+procedure Tfrm_Handbuch.InitializeBrowser(AParent: TWinControl);
+begin
+  if not Assigned(FWebBrowser) then
+  begin
+    FWebBrowser := TWebBrowserFactory.CreateWebBrowser(Self);
+    FWebBrowser.Parent := AParent;
+    FWebBrowser.Align := alClient;
+    FWebBrowser.OnBeforeNavigate := nil;
+  end
+  else
+  begin
+    FreeAndNil(FWebBrowser);
+    FWebBrowser := TWebBrowserFactory.CreateWebBrowser(Self);
+    FWebBrowser.Parent := AParent;
+    FWebBrowser.Align := alClient;
+    FWebBrowser.OnBeforeNavigate := nil;
+  end;
+  FWebBrowser.Navigate(TPath.GetDirectoryName(Application.ExeName) + '\' + PCM_Logname + '.pdf');
+end;
+
+procedure Tfrm_Handbuch.cxPageControl1Change(Sender: TObject);
+begin
+  if cxPageControl1.ActivePage = cxTabSheet2 then
+  begin
+    InitializeBrowser(cxTabSheet2);
+    FWebBrowser.Navigate(TPath.GetDirectoryName(Application.ExeName) + '\' + PCM_Logname + '.pdf');
+  end
+  else begin
+    InitializeBrowser(cxTabSheet1);
+    FWebBrowser.Navigate(TPath.GetDirectoryName(Application.ExeName) + '\' + PCM_Logname + '.htm');
+  end;
+end;
 
 procedure Tfrm_Handbuch.FormShow(Sender: TObject);
 begin
-  EdgeBrowser.UserDataFolder := TPath.Combine(TPath.GetDirectoryName(Application.ExeName), 'CustomCache');
-  EdgeBrowser.Navigate(TPath.GetDirectoryName(Application.ExeName) + '\' + PCM_Logname + '.htm');
-  EdgeBrowser1.UserDataFolder := TPath.Combine(TPath.GetDirectoryName(Application.ExeName), 'CustomCache');
-  EdgeBrowser1.Navigate(TPath.GetDirectoryName(Application.ExeName) + '\' + PCM_Logname + '.pdf');
+  InitializeBrowser(cxTabSheet2);
 end;
 
 end.
