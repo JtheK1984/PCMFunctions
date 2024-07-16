@@ -31,6 +31,7 @@ object frm_Handbuch: Tfrm_Handbuch
       Properties.ActivePage = cxTabSheet2
       Properties.CustomButtons.Buttons = <>
       Properties.Images = cxImageList1
+      OnChange = cxPageControl1Change
       ClientRectBottom = 433
       ClientRectLeft = 4
       ClientRectRight = 616

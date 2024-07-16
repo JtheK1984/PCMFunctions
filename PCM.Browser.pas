@@ -421,7 +421,7 @@ end;
 procedure TWebView2WebBrowser.onWebView2Created(Sender: TObject);
 begin
   FWebView2Window.UpdateSize;
-//  FBrowser.CoreWebView2Settings.AreDefaultContextMenusEnabled:= false;
+  FBrowser.CoreWebView2Settings.AreDefaultContextMenusEnabled:= false;
   FBrowser.CoreWebView2Settings.HiddenPdfToolbarItems:= COREWEBVIEW2_PDF_TOOLBAR_ITEMS_FULL_SCREEN +  COREWEBVIEW2_PDF_TOOLBAR_ITEMS_Save;
 end;
 function TWebView2WebBrowser.GetWebview2Component;
