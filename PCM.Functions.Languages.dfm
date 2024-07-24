@@ -3,7 +3,7 @@ object frm_Language: Tfrm_Language
   Top = 0
   Caption = 'Sprache w'#228'hlen'
   ClientHeight = 135
-  ClientWidth = 624
+  ClientWidth = 1070
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -20,9 +20,9 @@ object frm_Language: Tfrm_Language
     PanelStyle.Active = True
     Style.BorderStyle = ebsNone
     TabOrder = 0
-    ExplicitHeight = 214
+    ExplicitWidth = 624
     Height = 135
-    Width = 624
+    Width = 1070
     object cxRadioGroup1: TcxRadioGroup
       AlignWithMargins = True
       Left = 8
@@ -43,14 +43,15 @@ object frm_Language: Tfrm_Language
           Value = 'EN'
         end>
       TabOrder = 0
+      ExplicitWidth = 608
       Height = 89
-      Width = 608
+      Width = 1054
     end
     object cxButton1: TcxButton
       AlignWithMargins = True
       Left = 8
       Top = 102
-      Width = 608
+      Width = 1054
       Height = 25
       Margins.Left = 5
       Margins.Top = 0
@@ -60,7 +61,7 @@ object frm_Language: Tfrm_Language
       Caption = 'Sprache wechseln'
       TabOrder = 1
       OnClick = cxButton1Click
-      ExplicitTop = 181
+      ExplicitWidth = 608
     end
   end
 end
