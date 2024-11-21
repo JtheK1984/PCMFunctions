@@ -157,6 +157,7 @@ type
     class constructor Create;
     constructor Create(AOwner:TComponent); override;
     procedure onWebView2Created(Sender: TObject);
+    procedure BasicAuthenticationRequested(Sender: TObject; const aWebView: ICoreWebView2; const aArgs: ICoreWebView2BasicAuthenticationRequestedEventArgs);
     procedure Reset; override;
     procedure Navigate(AURL:WideString; encodeURL : boolean = false;force : boolean = false); override;
     procedure GoForeward; override;
@@ -418,10 +419,21 @@ begin
     end;
   end;
 end;
+procedure TWebView2WebBrowser.BasicAuthenticationRequested(Sender: TObject; const aWebView: ICoreWebView2; const aArgs: ICoreWebView2BasicAuthenticationRequestedEventArgs);
+var
+  Response: ICoreWebView2BasicAuthenticationResponse;
+begin
+ if Succeeded(aArgs.Get_Response(Response)) then
+  begin
+    Response.Set_UserName('Jens.Henske@outlook.com');
+    Response.Set_Password('JensHenske1984');
+  end;
+end;
 procedure TWebView2WebBrowser.onWebView2Created(Sender: TObject);
 begin
   FWebView2Window.UpdateSize;
   FBrowser.CoreWebView2Settings.AreDefaultContextMenusEnabled:= false;
+  FBrowser.CoreWebView2Settings.AreBrowserAcceleratorKeysEnabled:= false;
   FBrowser.CoreWebView2Settings.HiddenPdfToolbarItems:= COREWEBVIEW2_PDF_TOOLBAR_ITEMS_FULL_SCREEN +  COREWEBVIEW2_PDF_TOOLBAR_ITEMS_Save;
 end;
 function TWebView2WebBrowser.GetWebview2Component;
@@ -433,7 +445,8 @@ begin
     FBrowser.DefaultURL:=   FFirstURL;
     FBrowser.TargetCompatibleBrowserVersion:= '95.0.1020.44';
     FBrowser.OnAfterCreated:=  onWebView2Created;
-//    FBrowser.OnNavigationCompleted: = OnNavigationCompleted;
+    FBrowser.OnBasicAuthenticationRequested:= BasicAuthenticationRequested;
+    //    FBrowser.OnNavigationCompleted: = OnNavigationCompleted;
     FWebView2Window:= TWVWindowParent.Create(Self);
     FWebView2Window.Parent:= Self ;
     FWebView2Window.Align:= alClient;
@@ -577,28 +590,15 @@ begin
 end;
 procedure TWebView2WebBrowser.ShowDevTools(const Value: Boolean);
 begin
-  GetWebview2Component.OpenDevToolsWindow;
-//  if Value then begin
-//    if FDevTools = nil then begin
-//      FDevTools := TWebView2DevTools.Create(self, GetWebview2Component);
-//      FDevTools.Align := alBottom;
-//      FDevTools.Parent := Self;
-//      FDevTools.Height := 120;
-//      FDevSplitter := TSplitter.Create(Self);
-//      FDevSplitter.ResizeStyle := rsUpdate;
-//      FDevSplitter.Cursor := crVSplit;
-//      FDevSplitter.Align := alBottom;
-//      FDevSplitter.Height := 4;
-//      FDevSplitter.Parent := Self;
-//    end;
-//    FDevTools.Visible := Value;
-//    FDevSplitter.Visible := Value;
-//    FDevSplitter.Top := FDevTools.Top -1;
-//  end
-//  else if Assigned(FDevTools) then begin
-//    FDevTools.Visible := Value;
-//    FDevSplitter.Visible := Value;
-//  end;
+  if Value then
+  begin
+    FBrowser.CoreWebView2.Settings.Set_AreDevToolsEnabled(1);
+    GetWebview2Component.OpenDevToolsWindow;
+  end
+  else begin
+    FBrowser.CoreWebView2.Settings.Set_AreDevToolsEnabled(0);
+
+  end;
 end;
 procedure TWebView2WebBrowser.PrintWithDialog;
 begin
