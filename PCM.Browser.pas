@@ -44,7 +44,6 @@ type
     FBeforeNavigate           : TOnBeforeNavigate;
     FDocumentComplete         : TOnDocumentComplete;
     FBrowserMessage           : TOnBrowserMessage;
-//    FSearchPanel              : TSearchPanel;
     FUrlProcessors            : TArray<IUrlProcessor>;
   protected
     FURL                      : WideString;
@@ -149,7 +148,7 @@ type
     procedure OnTimerCreateWebViewWindow(ASender: TObject);
     procedure SetPopupMenu_(AValue:TPopupMenu); override;
     function GetPopupMenu_:TPopupMenu; override;
-    procedure OnNavigationCompleted;//(Sender: TObject; const aWebView: ICoreWebView2; const aArgs: ICoreWebView2NavigationCompletedEventArgs);
+
     procedure CreateHandle; override;
     procedure WMMove(var aMessage : TWMMove); message WM_MOVE;
     procedure WMMoving(var aMessage : TMessage); message WM_MOVING;
@@ -158,6 +157,7 @@ type
     constructor Create(AOwner:TComponent); override;
     procedure onWebView2Created(Sender: TObject);
     procedure BasicAuthenticationRequested(Sender: TObject; const aWebView: ICoreWebView2; const aArgs: ICoreWebView2BasicAuthenticationRequestedEventArgs);
+    procedure NavigationCompleted(Sender: TObject; const aWebView: ICoreWebView2; const aArgs: ICoreWebView2NavigationCompletedEventArgs);
     procedure Reset; override;
     procedure Navigate(AURL:WideString; encodeURL : boolean = false;force : boolean = false); override;
     procedure GoForeward; override;
@@ -446,16 +446,32 @@ begin
     FBrowser.TargetCompatibleBrowserVersion:= '95.0.1020.44';
     FBrowser.OnAfterCreated:=  onWebView2Created;
     FBrowser.OnBasicAuthenticationRequested:= BasicAuthenticationRequested;
-    //    FBrowser.OnNavigationCompleted: = OnNavigationCompleted;
+    FBrowser.OnNavigationCompleted:= NavigationCompleted;
     FWebView2Window:= TWVWindowParent.Create(Self);
     FWebView2Window.Parent:= Self ;
     FWebView2Window.Align:= alClient;
     FWebView2Window.Height:= 338;
     FWebView2Window.TabStop:= true;
-																								 
+
     FWebView2Window.Browser:= FBrowser;
   end;
   Result:= FBrowser;
+end;
+
+procedure TWebView2WebBrowser.NavigationCompleted(Sender: TObject; const aWebView: ICoreWebView2; const aArgs: ICoreWebView2NavigationCompletedEventArgs);
+var
+  success: integer;
+begin
+  // Handle navigation completion here
+  if aArgs.Get_IsSuccess(success) = 0 then
+  begin
+    ShowMessage('ready');
+  end
+  else
+  begin
+//    ShowMessage(' not ready');
+  end                     ;
+  ShowMessage(IntToStr(Success));
 end;
 procedure TWebView2WebBrowser.Navigate(AURL:WideString; encodeURL : boolean = false;force : boolean = false);
 var
@@ -597,7 +613,6 @@ begin
   end
   else begin
     FBrowser.CoreWebView2.Settings.Set_AreDevToolsEnabled(0);
-
   end;
 end;
 procedure TWebView2WebBrowser.PrintWithDialog;
@@ -613,10 +628,6 @@ end;
 function TWebView2WebBrowser.DevToolsVisible: Boolean;
 begin
     Result := GetWebView2Component.DevToolsEnabled;
-end;
-procedure TWebView2WebBrowser.OnNavigationCompleted; //const aWebView: ICoreWebView2; const aArgs: ICoreWebView2NavigationCompletedEventArgs);
-begin
-
 end;
 destructor TWebView2WebBrowser.Destroy;
 begin
