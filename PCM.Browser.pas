@@ -461,17 +461,24 @@ end;
 procedure TWebView2WebBrowser.NavigationCompleted(Sender: TObject; const aWebView: ICoreWebView2; const aArgs: ICoreWebView2NavigationCompletedEventArgs);
 var
   success: integer;
+  sScript: string;
 begin
   // Handle navigation completion here
   if aArgs.Get_IsSuccess(success) = 0 then
   begin
-    ShowMessage('ready');
+    sScript:= 'document.getElementsByName(''L_INTERNAL_LOGINNM_'')[0].value = ''Jens.Henske@outlook.com''; ' +
+              'document.getElementsByName(''L_INTERNAL_PASSWRD_'')[0].value = ''Jh2019+1''; ' +
+              'let buttons = document.getElementsByTagName(''button''); ' +
+              'for (let button of buttons) { ' +
+              'if (button.textContent.trim().toLowerCase() === ''login'') { ' +
+              '  button.click(); ' +
+              '  break; ' +
+              '  } ' +
+              '}';
+    if FBrowser.Source = 'https://pcm-apps.de/.cm4all/auth/index.php/SI_DA2_fa040ad8/aHR0cDovL3BjbS1hcHBzLmRlL1dvcmtwbGFjZT90eG5pZD0/1/1,auth,8,1' then
+    FBrowser.ExecuteScript(sScript);
   end
-  else
-  begin
-//    ShowMessage(' not ready');
-  end                     ;
-  ShowMessage(IntToStr(Success));
+
 end;
 procedure TWebView2WebBrowser.Navigate(AURL:WideString; encodeURL : boolean = false;force : boolean = false);
 var

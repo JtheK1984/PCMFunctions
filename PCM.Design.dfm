@@ -66,8 +66,6 @@ object frm_Design: Tfrm_Design
             Style.LookAndFeel.NativeStyle = False
             StyleDisabled.LookAndFeel.NativeStyle = False
             TabOrder = 2
-            ExplicitLeft = 6
-            ExplicitTop = 80
             Height = 733
             Width = 1175
             object cxImage1: TVirtualImage
@@ -297,6 +295,7 @@ object frm_Design: Tfrm_Design
                 'Turquoise Gray'
                 'Vapor'
                 'Wedgewood Light'
+                'Windows'
                 'Windows10 BlackPearl'
                 'Windows10 Blue Whale'
                 'Windows10 Blue'
