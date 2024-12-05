@@ -66,8 +66,6 @@ object frm_Design: Tfrm_Design
             Style.LookAndFeel.NativeStyle = False
             StyleDisabled.LookAndFeel.NativeStyle = False
             TabOrder = 2
-            ExplicitLeft = 6
-            ExplicitTop = 80
             Height = 733
             Width = 1175
             object cxImage1: TVirtualImage
@@ -311,7 +309,8 @@ object frm_Design: Tfrm_Design
                 'Windows11 Modern Dark'
                 'Windows11 Modern Light'
                 'Windows11 Polar Dark'
-                'Windows11 Polar Light')
+                'Windows11 Polar Light'
+                'Windows')
               Properties.OnChange = cbx_StylePropertiesChange
               TabOrder = 1
               Width = 1042
