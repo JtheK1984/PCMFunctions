@@ -22,20 +22,20 @@ object frm_Handbuch: Tfrm_Handbuch
     Height = 441
     Width = 624
     object cxPageControl1: TcxPageControl
-      Left = 2
-      Top = 2
-      Width = 620
-      Height = 437
+      Left = 3
+      Top = 3
+      Width = 618
+      Height = 435
       Align = alClient
       TabOrder = 0
       Properties.ActivePage = cxTabSheet2
       Properties.CustomButtons.Buttons = <>
       Properties.Images = cxImageList1
       OnChange = cxPageControl1Change
-      ClientRectBottom = 433
-      ClientRectLeft = 4
-      ClientRectRight = 616
-      ClientRectTop = 26
+      ClientRectBottom = 429
+      ClientRectLeft = 2
+      ClientRectRight = 612
+      ClientRectTop = 29
       object cxTabSheet2: TcxTabSheet
         Caption = 'PDF'
         ImageIndex = 1
@@ -43,6 +43,10 @@ object frm_Handbuch: Tfrm_Handbuch
       object cxTabSheet1: TcxTabSheet
         Caption = 'HTML'
         ImageIndex = 0
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
       end
     end
   end

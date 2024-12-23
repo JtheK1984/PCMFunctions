@@ -1231,9 +1231,6 @@ object frm_PCM_InfoApp: Tfrm_PCM_InfoApp
             Caption = 'Neue Lizenz eintragen'
             TabOrder = 1
             OnClick = cxButton1Click
-            ExplicitLeft = 9
-            ExplicitTop = 250
-            ExplicitWidth = 660
           end
         end
       end

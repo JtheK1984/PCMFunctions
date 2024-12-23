@@ -5,8 +5,8 @@ object frmProgressDialog: TfrmProgressDialog
   BorderIcons = []
   BorderStyle = bsToolWindow
   Caption = 'Bitte warten...'
-  ClientHeight = 77
-  ClientWidth = 425
+  ClientHeight = 65
+  ClientWidth = 417
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText

@@ -295,7 +295,6 @@ object frm_Design: Tfrm_Design
                 'Turquoise Gray'
                 'Vapor'
                 'Wedgewood Light'
-                'Windows'
                 'Windows10 BlackPearl'
                 'Windows10 Blue Whale'
                 'Windows10 Blue'
