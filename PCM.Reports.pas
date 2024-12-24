@@ -7,6 +7,9 @@ interface
 {$Region Deklaration}
 // PCM-Zeiterfassung
 procedure Drucke_PCM_ZE_Monatsbericht(AMonat: integer; AJahr: String);
+// PCM-Manager
+procedure Drucke_PCM_Manager_Finanzuebersicht(AMonat,AJahr:integer);
+
 {$EndRegion Deklaration}
 implementation
 
@@ -107,7 +110,7 @@ begin
   slFileXML.Add('									<th class="small1">Fehl.</th>');
   slFileXML.Add('								</tr>');
   slFileXML.Add('							</tbody>');
-  dm_PCM.qry_work.SQL.Text:= 'Select * From Zeiterfassung_buchungen Where Datum between :Von and :Bis';
+  dm_PCM.qry_work.SQL.Text:= 'Select * From manager_buchungen Where Datum between :Von and :Bis';
   dm_PCM.qry_work.ParamByName('Von').AsDate:= StartOfAMonth(StrToInt(AJahr),AMonat);
   dm_PCM.qry_work.ParamByName('Bis').AsDate:= EndOfAMonth(StrToInt(AJahr),AMonat);
   dm_PCM.qry_work.open;
@@ -185,7 +188,7 @@ begin
     end;
     slFileXML.Add('								</tr> ');
     slFileXML.Add('							</tbody>');
-    dm_PCM.qry_Work1.SQL.Text:= 'SELECT Pause1Beginn,Pause1Ende,Pause2Beginn,Pause2Ende From Zeiterfassung_buchungen Where ID = :ID';
+    dm_PCM.qry_Work1.SQL.Text:= 'SELECT Pause1Beginn,Pause1Ende,Pause2Beginn,Pause2Ende From manager_buchungen Where ID = :ID';
     dm_PCM.qry_Work1.ParamByName('ID').AsInteger:= dm_PCM.qry_Work.FieldByName('ID').AsInteger;
     dm_PCM.qry_Work1.Open;
     if dm_PCM.qry_Work1.FieldByName('Pause1Beginn').asString <> '00:00:00' then
@@ -253,7 +256,7 @@ begin
   slFileXML.Add('				<th class="small">Dez.</th>');
   slFileXML.Add('			</tr>');
   slFileXML.Add('		</tbody>');
-  dm_PCM.qry_work.SQL.Text:= 'Select * From Zeiterfassung_Monatswerte Where Monat = :Monat and Jahr = :Jahr';
+  dm_PCM.qry_work.SQL.Text:= 'Select * From manager_Monatswerte Where Monat = :Monat and Jahr = :Jahr';
   dm_PCM.qry_work.ParamByName('Monat').AsInteger:= AMonat;
   dm_PCM.qry_work.ParamByName('Jahr').AsInteger:= StrToInt(AJahr);
   dm_PCM.qry_work.open;
@@ -432,5 +435,237 @@ begin
   frm_Browser_FullScreen.Execute(True,'PCM - Manager: Monatsbericht',TPath.Combine(TPath.GetDirectoryName(Application.ExeName), 'Report') + '_Monatsbericht.html');
 end;
 
+procedure Drucke_PCM_Manager_Finanzuebersicht(AMonat,AJahr: integer);
+var
+  slFileXML: TStringList;
+  fEinSum,fAusvar,fAusFix: Double;
+begin
+  slFileXML:= TStringList.Create;
+  slFileXML.Add('<!DOCTYPE html>');
 
+  slFileXML.Add('<html>');
+  slFileXML.Add('  <head>');
+  slFileXML.Add('    <title>PCM - Finanzübersicht</title>');
+  slFileXML.Add('    <meta http-equiv="content-type" content="text/html; charset=Windows-1252"/>');
+  slFileXML.Add('    <style type="text/css">body {background: #086A87;}');
+  slFileXML.Add('		.container-table {margin: auto;	margin-top: calc(8vh - 7px); margin-bottom: calc(8vh - 7px); width: 80vw; min-height: 8vh; display: block; overflow: auto; -moz-box-shadow: 0px 0px 10px #ccc; -webkit-box-shadow: 0px 0px 10px #ccc; border-bottom: solid 5px #93a8d8;}');
+  slFileXML.Add('		.container-table {padding: 15px 15px 15px 15px;width: 80%; }');
+  slFileXML.Add('		.container-table-background{background-color: white;}');
+  slFileXML.Add('		.container-table * {font-family: "Lucida Grande", "Lucida Sans Unicode", Arial, Helvetica, Verdana, sans-serif;}');
+  slFileXML.Add('		.container-table h2 {font-size: 20px; font-weight: 100;}');
+  slFileXML.Add('		.Report {width: calc(50% - 15px); float: left; text-align: left;}');
+  slFileXML.Add('		.Datumuhrzeit {width: calc(50% - 15px); float: right; text-align: right;}');
+  slFileXML.Add('		.divider {height: 5px; width: 100%; background-color: #086A87}');
+  slFileXML.Add('		#search {outline: none; margin-top: 0px; margin-bottom: 15px;  width: 100%; display: block; border: none; border-bottom: solid 2px #c9c9c9; transition: border 0.3s;}');
+  slFileXML.Add('		#search:focus, #search.focus {border-bottom: solid 2px #969696;}');
+  slFileXML.Add('		table {width: 100%;border-collapse:collapse; padding: 0px 15px 0px 15px;}');
+  slFileXML.Add('		table thead th {padding: 15px 0px 0px 0px;}');
+  slFileXML.Add('		table tbody th {border-top: 1px solid black; padding: 5px 0px 0px 0px}');
+  slFileXML.Add('		table tfoot th {border-bottom: 5px double black;padding: 20px 0px 0px 0px;}');
+  slFileXML.Add('		th {padding-bottom: 5px; text-align: Left}');
+  slFileXML.Add('		th.big {padding-bottom: 5px; text-align: Left; width:500}');
+  slFileXML.Add('		th.small {padding-bottom: 5px; text-align: right; width:200}');
+  slFileXML.Add('		td {padding-top: 1px; padding-bottom: 1px; font-size: 15px;}');
+  slFileXML.Add('		.status-fields {float: left; display: flex; flex-wrap: wrap; width: calc( 100% - 20px ); text-align: center; margin: 20px 10px 20px 10px;}');
+  slFileXML.Add('		div.status-fields>div {width: calc( 20% - 20px ); display: flex; align-items: center; justify-content: center; flex-direction: column; margin: 5px 5px 5px 5px; padding: 10px 5px 10px 5px; float: left; }');
+  slFileXML.Add('		div.status-fields>tr {display: none;} div.status-fields>tr>td {display: none;}');
+  slFileXML.Add('		.mobile-hidden {display: none;}</style>');
+  slFileXML.Add('  </head>');
+  slFileXML.Add('  <body>');
+  slFileXML.Add('      <div class="container-table container-table-background">');
+  slFileXML.Add('      <div class="Report">');
+  slFileXML.Add('        <h2>PCM - Finanzübersicht für ' + GetMonthName(AMonat) + ' ' + IntToStr(AJahr) + '</h2>');
+  slFileXML.Add('      </div>');
+  slFileXML.Add('      <div class="Datumuhrzeit">');
+  slFileXML.Add('        <h2>' + DatetoStr(Date()) + ' - ' + Copy(TimeToStr(Now()),1,5) + ' Uhr</h2>');
+  slFileXML.Add('      </div>');
+  slFileXML.Add('      <div style="clear: both;">');
+  slFileXML.Add('				<input id="search" placeholder="Suchen"/>');
+  slFileXML.Add('				<div class="divider">');
+  slFileXML.Add('					<div class="status-fields">');
+  slFileXML.Add('						<table id="tblData">');
+  ////////////////////////////////////////////////////////////////////////////
+  // Einnahmen                                                              //
+  ////////////////////////////////////////////////////////////////////////////
+  slFileXML.Add('							<thead>');
+  slFileXML.Add('								<tr>');
+  slFileXML.Add('									<th colspan="3">Einnahmen:</th>');
+  slFileXML.Add('								</tr>');
+  slFileXML.Add('							</thead>');
+  slFileXML.Add('              <tbody>');
+  slFileXML.Add('								<tr>');
+  slFileXML.Add('									<th class="big">Quelle:</th>');
+  slFileXML.Add('									<th class="big">Beschreibung:</th>');
+  slFileXML.Add('									<th class="small">Betrag:</th>');
+  slFileXML.Add('								</tr>');
+  slFileXML.Add('							</tbody>');
+  dm_PCM.qry_work.SQL.Text:= 'SELECT * FROM manager_finanzen_einnahmen where id_benutzer = :id_benutzer order by quelle';
+  dm_PCM.qry_work.ParamByName('id_benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
+  dm_PCM.qry_work.open;
+  fEinSum:= 0;
+  while not dm_PCM.qry_work.Eof do
+  begin
+    slFileXML.Add('							<tbody>');
+    slFileXML.Add('								<tr>');
+    slFileXML.Add('									<th class="big">' + dm_PCM.qry_work.FieldByName('Quelle').AsString + '</th>');
+    slFileXML.Add('									<th class="big">' + dm_PCM.qry_work.FieldByName('Bezeichnung').AsString + '</th>');
+    slFileXML.Add('									<th class="small">' + Format('%.2f €', [dm_PCM.qry_work.FieldByName('Betrag').AsFloat]) + '</th>');
+    slFileXML.Add('								</tr> ');
+    slFileXML.Add('							</tbody>');
+    fEinSum:= fEinSum + dm_PCM.qry_work.FieldByName('Betrag').AsFloat;
+    dm_PCM.qry_work.Next
+  end;
+  slFileXML.Add('              <tbody>');
+  slFileXML.Add('								<tr>');
+  slFileXML.Add('									<th class="big">Einnahmen gesamt:</th>');
+  slFileXML.Add('									<th class="big"> </th>');
+  slFileXML.Add('									<th class="small">' + Format('%.2f €', [fEinSum]) + '</th>');
+  slFileXML.Add('								</tr>');
+  slFileXML.Add('							</tbody>');
+  ////////////////////////////////////////////////////////////////////////////
+  // Ausgaben variabel                                                      //
+  ////////////////////////////////////////////////////////////////////////////
+  slFileXML.Add('							<thead>');
+  slFileXML.Add('								<tr>');
+  slFileXML.Add('									<th colspan="3">Ausgaben variabel:</th>');
+  slFileXML.Add('								</tr>');
+  slFileXML.Add('							</thead>');
+  slFileXML.Add('              <tbody>');
+  slFileXML.Add('								<tr>');
+  slFileXML.Add('									<th class="big">Empfänger:</th>');
+  slFileXML.Add('									<th class="big">Beschreibung:</th>');
+  slFileXML.Add('									<th class="small">Betrag:</th>');
+  slFileXML.Add('								</tr>');
+  slFileXML.Add('							</tbody>');
+  dm_PCM.qry_work.SQL.Text:= 'SELECT * FROM manager_finanzen_ausgaben where id_benutzer = :id_benutzer and Gueltig_monat = :Monat and Gueltig_jahr = :Jahr and fixkosten = false order by Name';
+  dm_PCM.qry_work.ParamByName('id_benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
+  dm_PCM.qry_work.ParamByName('Monat').AsInteger:= AMonat;
+  dm_PCM.qry_work.ParamByName('Jahr').AsInteger:= Ajahr;
+  dm_PCM.qry_work.open;
+  fAusvar:= 0;
+  while not dm_PCM.qry_work.Eof do
+  begin
+    slFileXML.Add('							<tbody>');
+    slFileXML.Add('								<tr>');
+    slFileXML.Add('									<th class="big">' + dm_PCM.qry_work.FieldByName('Name').AsString + '</th>');
+    slFileXML.Add('									<th class="big">' + dm_PCM.qry_work.FieldByName('Bezeichnung').AsString + '</th>');
+    slFileXML.Add('									<th class="small">' + Format('%.2f €', [dm_PCM.qry_work.FieldByName('Betrag').AsFloat]) + '</th>');
+    slFileXML.Add('								</tr> ');
+    slFileXML.Add('							</tbody>');
+    fAusvar:= fAusvar + dm_PCM.qry_work.FieldByName('Betrag').AsFloat;
+    dm_PCM.qry_work.Next
+  end;
+  slFileXML.Add('              <tbody>');
+  slFileXML.Add('								<tr>');
+  slFileXML.Add('									<th class="big">Ausgaben variabel gesamt:</th>');
+  slFileXML.Add('									<th class="big"> </th>');
+  slFileXML.Add('									<th class="small">' + Format('%.2f €', [fAusvar]) + '</th>');
+  slFileXML.Add('								</tr>');
+  slFileXML.Add('							</tbody>');
+  ////////////////////////////////////////////////////////////////////////////
+  // Ausgaben Fix                                                           //
+  ////////////////////////////////////////////////////////////////////////////
+  slFileXML.Add('							<thead>');
+  slFileXML.Add('								<tr>');
+  slFileXML.Add('									<th colspan="3">Ausgaben fix:</th>');
+  slFileXML.Add('								</tr>');
+  slFileXML.Add('							</thead>');
+  slFileXML.Add('              <tbody>');
+  slFileXML.Add('								<tr>');
+  slFileXML.Add('									<th class="big">Empfänger:</th>');
+  slFileXML.Add('									<th class="big">Beschreibung:</th>');
+  slFileXML.Add('									<th class="small">Betrag:</th>');
+  slFileXML.Add('								</tr>');
+  slFileXML.Add('							</tbody>');
+  dm_PCM.qry_work.SQL.Text:= 'SELECT * FROM manager_finanzen_ausgaben where id_benutzer = :id_benutzer and  fixkosten = ''true'' order by Name';
+  dm_PCM.qry_work.ParamByName('id_benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
+  dm_PCM.qry_work.open;
+  fAusfix:= 0;
+  while not dm_PCM.qry_work.Eof do
+  begin
+    slFileXML.Add('							<tbody>');
+    slFileXML.Add('								<tr>');
+    slFileXML.Add('									<th class="big">' + dm_PCM.qry_work.FieldByName('Name').AsString + '</th>');
+    slFileXML.Add('									<th class="big">' + dm_PCM.qry_work.FieldByName('Beschreibung').AsString + '</th>');
+    slFileXML.Add('									<th class="small">' + Format('%.2f €', [dm_PCM.qry_work.FieldByName('Betrag').AsFloat]) + '</th>');
+    slFileXML.Add('								</tr> ');
+    slFileXML.Add('							</tbody>');
+    fAusfix:= fAusfix + dm_PCM.qry_work.FieldByName('Betrag').AsFloat;
+    dm_PCM.qry_work.Next
+  end;
+  slFileXML.Add('              <tbody>');
+  slFileXML.Add('								<tr>');
+  slFileXML.Add('									<th class="big">Ausgaben fix gesamt:</th>');
+  slFileXML.Add('									<th class="big"> </th>');
+  slFileXML.Add('									<th class="small">' + Format('%.2f €', [fAusfix]) + '</th>');
+  slFileXML.Add('								</tr>');
+  slFileXML.Add('							</tbody>');
+  slFileXML.Add('							<tfoot>');
+  slFileXML.Add('								<tr/>');
+  slFileXML.Add('								<th class="big">verfügbare Restsumme:</th>');
+  slFileXML.Add('								<th class="big"></th>');
+  slFileXML.Add('								<th class="small">' + Format('%.2f €', [fEinSum - fAusfix - fAusvar ]) + '</th>');
+  slFileXML.Add('							</tfoot>');
+  slFileXML.Add('						</table>');
+  slFileXML.Add('					</div>');
+  slFileXML.Add('				</div>');
+  slFileXML.Add('			</div>');
+  slFileXML.Add('    </div>');
+  slFileXML.Add('    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>');
+  slFileXML.Add('    <script type="text/javascript">$(document).ready(function()');
+  slFileXML.Add('{');
+  slFileXML.Add('	$(''#search'').keyup(function()');
+  slFileXML.Add('	{');
+  slFileXML.Add('		searchTable($(this).val());');
+  slFileXML.Add('	});');
+  slFileXML.Add('});');
+  slFileXML.Add('function searchTable(inputVal)');
+  slFileXML.Add('{');
+  slFileXML.Add('	// Tabellenvariable festlegen');
+  slFileXML.Add('	var table = $(''#tblData'');');
+  slFileXML.Add('	// Tabelleninhalt Tr finden');
+  slFileXML.Add('	table.find(''tr'').each(function(index, row)');
+  slFileXML.Add('	{');
+  slFileXML.Add('		var allCells = $(row).find(''td'');');
+  slFileXML.Add('		if(allCells.length > 0)');
+  slFileXML.Add('		{');
+  slFileXML.Add('			var found = false;');
+  slFileXML.Add('			allCells.each(function(index, td)');
+  slFileXML.Add('			{');
+  slFileXML.Add('				var regExp = new RegExp(inputVal, ''i'');');
+  slFileXML.Add('				if(regExp.test($(td).text()))');
+  slFileXML.Add('				{');
+  slFileXML.Add('					found = true;');
+  slFileXML.Add('					return false;');
+  slFileXML.Add('				}');
+  slFileXML.Add('			});');
+  slFileXML.Add('			if(found == true)$(row).show();else $(row).hide();');
+  slFileXML.Add('		};');
+  slFileXML.Add('		if(allCells.length < 1)');
+  slFileXML.Add('		{');
+  slFileXML.Add('			var allCells = $(row).find(''th'');');
+  slFileXML.Add('			if(allCells.length > 0)');
+  slFileXML.Add('			{');
+  slFileXML.Add('				var found = false;');
+  slFileXML.Add('				allCells.each(function(index, td)');
+  slFileXML.Add('				{');
+  slFileXML.Add('					var regExp = new RegExp(inputVal, ''i'');');
+  slFileXML.Add('					if(regExp.test($(td).text()))');
+  slFileXML.Add('					{');
+  slFileXML.Add('						found = true;');
+  slFileXML.Add('						return false;');
+  slFileXML.Add('					}');
+  slFileXML.Add('				});');
+  slFileXML.Add('				if(found == true)$(row).show();else $(row).hide();');
+  slFileXML.Add('			};');
+  slFileXML.Add('		};');
+  slFileXML.Add('	});');
+  slFileXML.Add('}</script>');
+  slFileXML.Add('  </body>');
+  slFileXML.Add('</html>');
+  slFileXML.SaveToFile(TPath.Combine(TPath.GetDirectoryName(Application.ExeName), 'Report') + '_Finanzübersicht.html');
+  Application.CreateForm(Tfrm_Browser_FullScreen, frm_Browser_FullScreen);
+  frm_Browser_FullScreen.Execute(True,'PCM - Manager: Finanzübersicht',TPath.Combine(TPath.GetDirectoryName(Application.ExeName), 'Report') + '_Finanzübersicht.html');
+  slFileXML.Free;
+end;
 end.
