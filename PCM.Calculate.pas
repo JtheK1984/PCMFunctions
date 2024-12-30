@@ -645,14 +645,14 @@ begin
   dm_PCM.qry_Work.SQL.text := 'Insert into manager_Kalender (Typ,EventType,Caption,Location,Message,'
                       + 'Start,Finish,Options,Parent_ID,RecurrenceIndex,RecurrenceInfo,Reminder,ReminderDate,'
                       + 'ReminderMinutesBeforeStart,LabelColor,FontColor,ID_Benutzer,Kalendername,CompleteDay) Values '
-                      + '(0,:Eventtype,:SUMMARY,:Location,:Message,:DateBegin,:DateEnd,:Options,0,-1,:RecurrenceInfo,:Reminder,'
+                      + '(2,:Eventtype,:SUMMARY,:Location,:Message,:DateBegin,:DateEnd,:Options,0,-1,:RecurrenceInfo,:Reminder,'
                       + 'NULL,0,:Color,:FontColor,:ID,:Kalender,:ganzerTag)';
   dm_PCM.qry_Work.ParamByName('Message').asString := 'Test';
   dm_PCM.qry_Work.ParamByName('Eventtype').asInteger := 0;
   dm_PCM.qry_Work.ParamByName('Location').AsString := ALocation;
   dm_PCM.qry_Work.ParamByName('Message').AsString := AMessage;
-  dm_PCM.qry_Work.ParamByName('Options').asInteger := 6;
-  dm_PCM.qry_Work.ParamByName('Reminder').AsString := 'false';
+  dm_PCM.qry_Work.ParamByName('Options').asInteger := 2;
+  dm_PCM.qry_Work.ParamByName('Reminder').AsString := 'False';
   dm_PCM.qry_Work.ParamByName('RecurrenceInfo').AsString := '';
   dm_PCM.qry_Work.ParamByName('Kalender').AsString := 'Buchungen';
   dm_PCM.qry_Work.ParamByName('ganzerTag').AsString := 'false';
