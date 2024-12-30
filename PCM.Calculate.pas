@@ -315,7 +315,7 @@ begin
   begin
     dm_pcm.qry_Calc.SQL.Text:= 'SELECT ze_b.*, ze_FT.* FROM manager_buchungen ze_B ' +
                                'LEFT OUTER  JOIN manager_Fehltag ze_ft ON ze_ft.Kuerzel = ze_B.Fehltag ' +
-                               'WHERE ze_B.Datum = :Datum';
+                               'WHERE ze_B.Datum = :Datum order by ze_B.Datum';
     dm_pcm.qry_Calc.ParamByName('Datum').AsDate:= EncodeDate(AJahr,AMonat,ATag);
     WaitFormSetText('Berechne Tag: ' + IntToStr(ATag) + '. ' + GetMonthName(AMonat) + ', Jahr:' + IntToStr(AJahr));
   end
@@ -324,7 +324,7 @@ begin
     begin
       dm_pcm.qry_Calc.SQL.Text:= 'SELECT ze_b.*, ze_FT.* FROM manager_buchungen ze_B ' +
                                  'LEFT OUTER  JOIN manager_Fehltag ze_ft ON ze_ft.Kuerzel = ze_B.Fehltag ' +
-                                 'WHERE MONTH(ze_B.Datum) = :monat and YEAR(ze_B.Datum) = :jahr and abgeschlossen is null';
+                                 'WHERE MONTH(ze_B.Datum) = :monat and YEAR(ze_B.Datum) = :jahr and abgeschlossen is null order by ze_B.Datum';
       dm_pcm.qry_Calc.ParamByName('monat').AsInteger:= AMonat;
       dm_pcm.qry_Calc.ParamByName('jahr').AsInteger:= AJahr;
       WaitFormSetText('Berechne Monat: ' + GetMonthName(AMonat) + ', Jahr:' + IntToStr(AJahr));
@@ -332,7 +332,7 @@ begin
     else begin
       dm_pcm.qry_Calc.SQL.Text:= 'SELECT ze_b.*, ze_FT.* FROM manager_buchungen ze_B ' +
                                  'LEFT OUTER  JOIN manager_Fehltag ze_ft ON ze_ft.Kuerzel = ze_B.Fehltag ' +
-                                 'WHERE ze_B.Datum >= :Von and ze_B.Datum <= :Bis and abgeschlossen is null';
+                                 'WHERE ze_B.Datum >= :Von and ze_B.Datum <= :Bis and abgeschlossen is null order by ze_B.Datum';
       dm_pcm.qry_Calc.ParamByName('Von').AsDate:= EncodeDate(AJahr,1,1);
       dm_pcm.qry_Calc.ParamByName('Bis').AsDate:= EncodeDate(AJahr,12,31);
       WaitFormSetText('Berechne Jahr: '  + IntToStr(AJahr));
