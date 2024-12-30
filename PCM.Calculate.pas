@@ -12,17 +12,18 @@ function GetFehltagTage(AID_Fehltage: integer) : double;
 function GetFeiertage(AVon,ABis: TDate): double;
 function GetMonthName(AMonat: integer) : String;
 function GetPersonalSollStunden: TTime;
+function GetResturlaub(AJahr,AMonat: integer) : double;
 function GetTimeValue(AValue: integer) : String;
 function GetULAnspruch: double;
 function GetULVorjahr(AJahr,AMonat: integer) : double;
 function GetULVorMonat(AJahr,AMonat: integer) : double;
 // Proceduren
+procedure BerechneMonat(AMonat,AJahr: integer);
 procedure BerechneMonate;
 procedure BerechneTage(ATag,AMonat,AJahr: integer);
 procedure StartBooking(ACaption,AMessage,ALocation: String;AStart,AFinish: TDateTime; ACalCol,AFontCol: integer);
-procedure WriteMonatswert(ARest: Double;AaktGLZ,AMonat,AJahr,ASollzeit,AIStzeit,AMehrarbeit,APausen,AFeiertag,AUrlaub_bezahlt,AUrlaub_unbezahlt,AKrank_bezahlt,AKrank_unbezahlt: Integer);
+procedure WriteMonatswert(ARest: Double;AaktGLZ,AMonat,AJahr,ASollzeit,AIStzeit,AMehrarbeit,APausen,AFeiertag: integer; AUrlaub_bezahlt,AUrlaub_unbezahlt,AKrank_bezahlt,AKrank_unbezahlt: double);
 {$EndRegion Deklaration}
-
 implementation
 
 uses
@@ -55,8 +56,8 @@ uses
   Winapi.Messages,
   Winapi.Windows;
 {$EndRegion Uses}
-
 // Functions
+{$Region Functions}
 function GetBuchungsart(ATyp: integer; AVon,ABis: TDate) : integer;
 var
   qry_BA: TFDQuery;
@@ -193,6 +194,22 @@ begin
   qry_Soll.UnPrepare;
   qry_Soll.free;
 end;
+function GetResturlaub(AJahr,AMonat: integer) : double;
+var
+  qry_Rul: TFDQuery;
+begin
+  qry_Rul:= TFDQuery.Create(nil);
+  qry_Rul.Connection:= dm_PCM.con_PCM;
+  qry_Rul.SQL.Text:= 'Select Resturlaub From manager_Monatswerte Where Monat = :Monat and Jahr = :Jahr';
+  qry_Rul.ParamByName('Jahr').AsInteger:= AJahr;
+  qry_Rul.ParamByName('Monat').AsInteger:= AMonat;
+  qry_Rul.Prepare;
+  qry_Rul.open;
+  result:= qry_Rul.FieldByName('Resturlaub').AsFloat;
+  qry_Rul.close;
+  qry_Rul.UnPrepare;
+  qry_Rul.free;
+end;
 function GetTimeValue(AValue: integer) : String;
 var
   iHour,iMin: integer;
@@ -258,7 +275,9 @@ begin
   qry_UL.UnPrepare;
   qry_UL.free;
 end;
+{$EndRegion Functions}
 // Proceduren
+{$Region Procedures}
 procedure BerechneTage(ATag,AMonat,AJahr: integer);
 var
   dtFinish: TDateTime;
@@ -295,17 +314,30 @@ begin
   if ATag > 0 then
   begin
     dm_pcm.qry_Calc.SQL.Text:= 'SELECT ze_b.*, ze_FT.* FROM manager_buchungen ze_B ' +
-                                'LEFT OUTER  JOIN manager_Fehltag ze_ft ON ze_ft.Kuerzel = ze_B.Fehltag ' +
-                                'WHERE ze_B.Datum = :Datum';
+                               'LEFT OUTER  JOIN manager_Fehltag ze_ft ON ze_ft.Kuerzel = ze_B.Fehltag ' +
+                               'WHERE ze_B.Datum = :Datum';
     dm_pcm.qry_Calc.ParamByName('Datum').AsDate:= EncodeDate(AJahr,AMonat,ATag);
+    WaitFormSetText('Berechne Tag: ' + IntToStr(ATag) + '. ' + GetMonthName(AMonat) + ', Jahr:' + IntToStr(AJahr));
   end
   else begin
-    dm_pcm.qry_Calc.SQL.Text:= 'SELECT ze_b.*, ze_FT.* FROM manager_buchungen ze_B ' +
-                                'LEFT OUTER  JOIN manager_Fehltag ze_ft ON ze_ft.Kuerzel = ze_B.Fehltag ' +
-                                'WHERE MONTH(ze_B.Datum) = :monat and YEAR(ze_B.Datum) = :jahr and abgeschlossen is null';
-    dm_pcm.qry_Calc.ParamByName('monat').AsInteger:= AMonat;
-    dm_pcm.qry_Calc.ParamByName('jahr').AsInteger:= AJahr;
-    WaitFormSetText('Berechne Monat: ' + GetMonthName(AMonat) + ', Jahr:' + IntToStr(AJahr));
+    if AMonat > 0 then
+    begin
+      dm_pcm.qry_Calc.SQL.Text:= 'SELECT ze_b.*, ze_FT.* FROM manager_buchungen ze_B ' +
+                                 'LEFT OUTER  JOIN manager_Fehltag ze_ft ON ze_ft.Kuerzel = ze_B.Fehltag ' +
+                                 'WHERE MONTH(ze_B.Datum) = :monat and YEAR(ze_B.Datum) = :jahr and abgeschlossen is null';
+      dm_pcm.qry_Calc.ParamByName('monat').AsInteger:= AMonat;
+      dm_pcm.qry_Calc.ParamByName('jahr').AsInteger:= AJahr;
+      WaitFormSetText('Berechne Monat: ' + GetMonthName(AMonat) + ', Jahr:' + IntToStr(AJahr));
+    end
+    else begin
+      dm_pcm.qry_Calc.SQL.Text:= 'SELECT ze_b.*, ze_FT.* FROM manager_buchungen ze_B ' +
+                                 'LEFT OUTER  JOIN manager_Fehltag ze_ft ON ze_ft.Kuerzel = ze_B.Fehltag ' +
+                                 'WHERE ze_B.Datum >= :Von and ze_B.Datum <= :Bis and abgeschlossen is null';
+      dm_pcm.qry_Calc.ParamByName('Von').AsDate:= EncodeDate(AJahr,1,1);
+      dm_pcm.qry_Calc.ParamByName('Bis').AsDate:= EncodeDate(AJahr,12,31);
+      WaitFormSetText('Berechne Jahr: '  + IntToStr(AJahr));
+    end;
+
   end;
   dm_pcm.qry_Calc.open;
   WaitFormSetNewCount(dm_pcm.qry_Calc.RecordCount);
@@ -353,7 +385,7 @@ begin
       // Arbeitszeit
       if (dm_pcm.qry_Calc.FieldByName('Kommen').asDateTime <> StrToTime('00:00:00')) and (dm_pcm.qry_Calc.FieldByName('Gehen').asDateTime = StrToTime('00:00:00')) then
       begin
-        iArbeitszeit:= 0
+        iArbeitszeit:= MinutesBetween(TimeOf(Now),dm_pcm.qry_Calc.FieldByName('Kommen').asDateTime);
       end
       else begin
         iArbeitszeit:= MinutesBetween(dm_pcm.qry_Calc.FieldByName('Gehen').asDateTime,dm_pcm.qry_Calc.FieldByName('Kommen').asDateTime);
@@ -489,6 +521,67 @@ begin
 //  frm_ZE.qry_Buchungen.refresh;
   dm_PCm.qry_Kalender_Kalender.Refresh;
 end;
+procedure BerechneMonat(AMonat,AJahr: integer);
+var
+  iSollzeit: integer;
+  iIStzeit: integer;
+  iMehrarbeit: integer;
+  iFeiertag: integer;
+  iPausen: integer;
+  iUrlaub_bezahlt: double;
+  iUrlaub_unbezahlt: double;
+  iKrank_bezahlt: double;
+  iKrank_unbezahlt: double;
+  fULges: double;
+  fResturlaub: double;
+  fULgen: double;
+  fJahresAnspruch: double;
+  iaktGLZ: integer;
+  iVMonat: integer;
+  ivJahr: integer;
+begin
+  if AMonat = 0 then
+  begin
+
+  end
+  else begin
+    iVMonat := AMonat -1;
+    iVJahr:= Ajahr;
+    if iVMonat = 0 then
+    begin
+      iVMonat := 12;
+      iVJahr:= Ajahr-1;
+    end;
+    fResturlaub:= GetULVorMonat(iVJahr,iVMonat);
+    iaktGLZ:= GetMehrarbeitVorMonat(iVJahr,iVMonat);
+    fULgen:= GetFehltagSum(1,1,1,StartOfAMonth(AJahr,AMonat) ,EndOfAMonth(AJahr,AMonat));
+    fJahresAnspruch:= GetULAnspruch;
+    dm_pcm.qry_Work1.SQL.Text:= 'SELECT SUM(SollstundenI) AS Sollstunden, SUM(ArbeitszeitI) AS Arbeitszeit, SUM(MehrarbeitI) AS Mehrarbeit, SUM(PausenI) AS Pausen,SUM(FeiertagI) AS Feiertag ' +
+                                  'FROM manager_buchungen ' +
+                                  'WHERE MONTH(Datum) = :monat ' +
+                                  'and YEAR(Datum) = :jahr ' +
+                                  'GROUP BY MONTH(Datum),YEAR(Datum)';
+    dm_pcm.qry_Work1.ParamByName('monat').AsInteger:= AMonat;
+    dm_pcm.qry_Work1.ParamByName('jahr').AsInteger:= Ajahr;
+    dm_pcm.qry_Work1.Open;
+    iSollzeit:= dm_pcm.qry_Work1.FieldByName('Sollstunden').AsInteger;
+    iIStzeit:= dm_pcm.qry_Work1.FieldByName('Arbeitszeit').AsInteger;
+    iMehrarbeit:= dm_pcm.qry_Work1.FieldByName('Mehrarbeit').AsInteger;
+    iPausen:= dm_pcm.qry_Work1.FieldByName('Pausen').AsInteger;
+    iFeiertag:= dm_pcm.qry_Work1.FieldByName('Feiertag').AsInteger;
+    dm_pcm.qry_Work1.Close;
+    iUrlaub_bezahlt:= GetFehltagSum(1,1,1,StartOfAMonth(AJahr,AMonat) ,EndOfAMonth(AJahr,AMonat));
+    iUrlaub_unbezahlt:= GetFehltagSum(1,1,2,StartOfAMonth(AJahr,AMonat) ,EndOfAMonth(AJahr,AMonat));
+    iKrank_bezahlt:= GetFehltagSum(1,2,1,StartOfAMonth(AJahr,AMonat) ,EndOfAMonth(AJahr,AMonat));
+    iKrank_unbezahlt:= GetFehltagSum(1,2,2,StartOfAMonth(AJahr,AMonat) ,EndOfAMonth(AJahr,AMonat));
+    dm_pcm.qry_Work1.close;
+    if AMonat = 1 then
+      fULges:=  fResturlaub - fULgen + fJahresAnspruch
+    else
+      fULges:=  fResturlaub - fULgen;
+    WriteMonatswert(fUlges,iaktGLZ, AMonat,AJahr,iSollzeit,iIStzeit,iMehrarbeit,iPausen,iFeiertag,iUrlaub_bezahlt,iUrlaub_unbezahlt,iKrank_bezahlt,iKrank_unbezahlt);
+  end;
+end;
 procedure BerechneMonate;
 var
   fResturlaub: double;
@@ -538,34 +631,7 @@ begin
       iVJahr:= iBjahr-1;
     end;
     BerechneTage(0,iBMonat,iBJahr);
-    fResturlaub:= GetULVorMonat(iVJahr,iVMonat);
-    iaktGLZ:= GetMehrarbeitVorMonat(iVJahr,iVMonat);
-    fULgen:= GetFehltagSum(1,1,1,StartOfAMonth(iBJahr,iBMonat) ,EndOfAMonth(iBJahr,iBMonat));
-    iJahresAnspruch:= GetULAnspruch;
-    dm_pcm.qry_Work1.SQL.Text:= 'SELECT SUM(SollstundenI) AS Sollstunden, SUM(ArbeitszeitI) AS Arbeitszeit, SUM(MehrarbeitI) AS Mehrarbeit, SUM(PausenI) AS Pausen,SUM(FeiertagI) AS Feiertag ' +
-                                'FROM manager_buchungen ' +
-                                'WHERE MONTH(Datum) = :monat ' +
-                                'and YEAR(Datum) = :jahr ' +
-                                'GROUP BY MONTH(Datum),YEAR(Datum)';
-    dm_pcm.qry_Work1.ParamByName('monat').AsInteger:= iBMonat;
-    dm_pcm.qry_Work1.ParamByName('jahr').AsInteger:= iBjahr;
-    dm_pcm.qry_Work1.Open;
-    iSollzeit:= dm_pcm.qry_Work1.FieldByName('Sollstunden').AsInteger;
-    iIStzeit:= dm_pcm.qry_Work1.FieldByName('Arbeitszeit').AsInteger;
-    iMehrarbeit:= dm_pcm.qry_Work1.FieldByName('Mehrarbeit').AsInteger;
-    iPausen:= dm_pcm.qry_Work1.FieldByName('Pausen').AsInteger;
-    iFeiertag:= dm_pcm.qry_Work1.FieldByName('Feiertag').AsInteger;
-    dm_pcm.qry_Work1.Close;
-    iUrlaub_bezahlt:= Round(GetFehltagSum(1,1,1,StartOfAMonth(iBJahr,iBMonat) ,EndOfAMonth(iBJahr,iBMonat)));
-    iUrlaub_unbezahlt:= Round(GetFehltagSum(1,1,2,StartOfAMonth(iBJahr,iBMonat) ,EndOfAMonth(iBJahr,iBMonat)));
-    iKrank_bezahlt:= Round(GetFehltagSum(1,2,1,StartOfAMonth(iBJahr,iBMonat) ,EndOfAMonth(iBJahr,iBMonat)));
-    iKrank_unbezahlt:= Round(GetFehltagSum(1,2,2,StartOfAMonth(iBJahr,iBMonat) ,EndOfAMonth(iBJahr,iBMonat)));
-    dm_pcm.qry_Work1.close;
-    if iBmonat = 1 then
-      fULges:=  fResturlaub - fULgen + iJahresAnspruch
-    else
-      fULges:=  fResturlaub - fULgen;
-    WriteMonatswert(fUlges,iaktGLZ, iBMonat,iBJahr,iSollzeit,iIStzeit,iMehrarbeit,iPausen,iFeiertag,iUrlaub_bezahlt,iUrlaub_unbezahlt,iKrank_bezahlt,iKrank_unbezahlt);
+    BerechneMonat(iBMonat,iBJahr);
     qry_Month.Next;
   end;
   CloseWaitForm;
@@ -599,7 +665,7 @@ begin
   dm_PCM.qry_Work.ExecSQL;
   dm_PCM.qry_Work.Unprepare;
 end;
-procedure WriteMonatswert(ARest: Double;AaktGLZ,AMonat,AJahr,ASollzeit,AIStzeit,AMehrarbeit,APausen,AFeiertag,AUrlaub_bezahlt,AUrlaub_unbezahlt,AKrank_bezahlt,AKrank_unbezahlt: Integer);
+procedure WriteMonatswert(ARest: Double;AaktGLZ,AMonat,AJahr,ASollzeit,AIStzeit,AMehrarbeit,APausen,AFeiertag: integer; AUrlaub_bezahlt,AUrlaub_unbezahlt,AKrank_bezahlt,AKrank_unbezahlt: double);
 var
   iAnzahl: integer;
 begin
@@ -631,10 +697,10 @@ begin
     dm_pcm.qry_Calc.ParamByName('Mehrarbeit').AsInteger:= AMehrarbeit;
     dm_pcm.qry_Calc.ParamByName('Pausen').AsInteger:= APausen;
     dm_pcm.qry_Calc.ParamByName('Feiertag').AsInteger:= AFeiertag;
-    dm_pcm.qry_Calc.ParamByName('Urlaub_bezahlt').AsInteger:= AUrlaub_bezahlt;
-    dm_pcm.qry_Calc.ParamByName('Urlaub_unbezahlt').AsInteger:= AUrlaub_unbezahlt;
-    dm_pcm.qry_Calc.ParamByName('Krank_bezahlt').AsInteger:= AKrank_bezahlt;
-    dm_pcm.qry_Calc.ParamByName('Krank_unbezahlt').AsInteger:= AKrank_unbezahlt;
+    dm_pcm.qry_Calc.ParamByName('Urlaub_bezahlt').AsFloat:= AUrlaub_bezahlt;
+    dm_pcm.qry_Calc.ParamByName('Urlaub_unbezahlt').AsFloat:= AUrlaub_unbezahlt;
+    dm_pcm.qry_Calc.ParamByName('Krank_bezahlt').AsFloat:= AKrank_bezahlt;
+    dm_pcm.qry_Calc.ParamByName('Krank_unbezahlt').AsFloat:= AKrank_unbezahlt;
     dm_pcm.qry_Calc.ParamByName('Resturlaub').AsFloat:= ARest;
     dm_pcm.qry_Calc.ParamByName('monat').AsInteger:= AMonat;
     dm_pcm.qry_Calc.ParamByName('jahr').AsInteger:= AJahr;
@@ -652,14 +718,15 @@ begin
     dm_pcm.qry_Calc.ParamByName('Mehrarbeit').AsInteger:= AMehrarbeit;
     dm_pcm.qry_Calc.ParamByName('Pausen').AsInteger:= APausen;
     dm_pcm.qry_Calc.ParamByName('Feiertag').AsInteger:= AFeiertag;
-    dm_pcm.qry_Calc.ParamByName('Urlaub_bezahlt').AsInteger:= AUrlaub_bezahlt;
-    dm_pcm.qry_Calc.ParamByName('Urlaub_unbezahlt').AsInteger:= AUrlaub_unbezahlt;
-    dm_pcm.qry_Calc.ParamByName('Krank_bezahlt').AsInteger:= AKrank_bezahlt;
-    dm_pcm.qry_Calc.ParamByName('Krank_unbezahlt').AsInteger:= AKrank_unbezahlt;
+    dm_pcm.qry_Calc.ParamByName('Urlaub_bezahlt').AsFloat:= AUrlaub_bezahlt;
+    dm_pcm.qry_Calc.ParamByName('Urlaub_unbezahlt').AsFloat:= AUrlaub_unbezahlt;
+    dm_pcm.qry_Calc.ParamByName('Krank_bezahlt').AsFloat:= AKrank_bezahlt;
+    dm_pcm.qry_Calc.ParamByName('Krank_unbezahlt').AsFloat:= AKrank_unbezahlt;
     dm_pcm.qry_Calc.ParamByName('monat').AsInteger:= AMonat;
     dm_pcm.qry_Calc.ParamByName('jahr').AsInteger:= AJahr;
     dm_pcm.qry_Calc.ParamByName('ID').AsInteger:= dm_pcm.iIDBenutzerPCM;
     dm_pcm.qry_Calc.ExecSQL;
   end;
 end;
+{$EndRegion Procedures}
 end.
