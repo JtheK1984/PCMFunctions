@@ -17,7 +17,7 @@ implementation
 uses
   {$Region Uses}
   PCM.Data,
-  PCM.Calculate,
+  PCMTime.Calculate,
   System.Classes,
   FireDAC.Stan.Intf,
   FireDAC.Stan.Option,
@@ -109,7 +109,7 @@ begin
   slFileXML.Add('									<th class="big1">Homeoffice</th>');
   slFileXML.Add('								</tr>');
   slFileXML.Add('							</tbody>');
-  dm_PCM.qry_work.SQL.Text:= 'Select * From manager_monatswerte Where Jahr = :Jahr ORDER BY Monat';
+  dm_PCM.qry_work.SQL.Text:= 'Select * From time_monatswerte Where Jahr = :Jahr ORDER BY Monat';
   dm_PCM.qry_work.ParamByName('Jahr').asInteger:= StrToInt(AJahr);
   dm_PCM.qry_work.open;
   while not dm_PCM.qry_work.Eof do
@@ -162,7 +162,7 @@ begin
   dm_PCM.qry_work.SQL.Text:= 'SELECT SUM(sollzeit) as Sollzeit,SUM(Istzeit) as Istzeit,' +
                              'SUM(Pausen) as Pausen,SUM(Istzeit) - SUM(sollzeit) as aktuelleMehrarbeit,'+
                              'SUM(Urlaub_bezahlt) AS UL,SUM(KRank_bezahlt) AS KR,SUM(Feiertag) as Feiertag '+
-                             'From manager_monatswerte Where Jahr = :Jahr';
+                             'From time_monatswerte Where Jahr = :Jahr';
   dm_PCM.qry_work.ParamByName('Jahr').AsInteger:= StrToInt(AJahr);
   dm_PCM.qry_work.open;
   slFileXML.Add('    <tfoot>');
@@ -314,7 +314,7 @@ begin
   slFileXML.Add('									<th class="small1">Fehl.</th>');
   slFileXML.Add('								</tr>');
   slFileXML.Add('							</tbody>');
-  dm_PCM.qry_work.SQL.Text:= 'Select * From manager_buchungen Where Datum between :Von and :Bis';
+  dm_PCM.qry_work.SQL.Text:= 'Select * From time_buchungen Where Datum between :Von and :Bis';
   dm_PCM.qry_work.ParamByName('Von').AsDate:= StartOfAMonth(StrToInt(AJahr),AMonat);
   dm_PCM.qry_work.ParamByName('Bis').AsDate:= EndOfAMonth(StrToInt(AJahr),AMonat);
   dm_PCM.qry_work.open;
@@ -397,7 +397,7 @@ begin
     end;
     slFileXML.Add('								</tr> ');
     slFileXML.Add('							</tbody>');
-    dm_PCM.qry_Work1.SQL.Text:= 'SELECT Pause1Beginn,Pause1Ende,Pause2Beginn,Pause2Ende From manager_buchungen Where ID = :ID';
+    dm_PCM.qry_Work1.SQL.Text:= 'SELECT Pause1Beginn,Pause1Ende,Pause2Beginn,Pause2Ende From time_buchungen Where ID = :ID';
     dm_PCM.qry_Work1.ParamByName('ID').AsInteger:= dm_PCM.qry_Work.FieldByName('ID').AsInteger;
     dm_PCM.qry_Work1.Open;
     if dm_PCM.qry_Work1.FieldByName('Pause1Beginn').asString <> '00:00:00' then
@@ -463,7 +463,7 @@ begin
   slFileXML.Add('				<th class="small">Dez.</th>');
   slFileXML.Add('			</tr>');
   slFileXML.Add('		</tbody>');
-  dm_PCM.qry_work.SQL.Text:= 'Select * From manager_Monatswerte Where Monat = :Monat and Jahr = :Jahr';
+  dm_PCM.qry_work.SQL.Text:= 'Select * From time_Monatswerte Where Monat = :Monat and Jahr = :Jahr';
   dm_PCM.qry_work.ParamByName('Monat').AsInteger:= AMonat;
   dm_PCM.qry_work.ParamByName('Jahr').AsInteger:= StrToInt(AJahr);
   dm_PCM.qry_work.open;
