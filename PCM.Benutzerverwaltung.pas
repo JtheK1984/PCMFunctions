@@ -17,37 +17,27 @@ uses
   FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
   FireDAC.Comp.DataSet, FireDAC.Comp.Client,PCM.Functions, dxSkinWXI,
-  cxGridCustomPopupMenu, cxGridPopupMenu, cxScrollBox;
+  cxGridCustomPopupMenu, cxGridPopupMenu, cxScrollBox, dxLayoutContainer,
+  dxLayoutControl, dxLayoutcxEditAdapters, dxLayoutControlAdapters, cxMemo,
+  cxCalendar;
 
 type
   Tfrm_User = class(TForm)
-    pnl_right: TcxGroupBox;
-    AA_pc_User: TcxPageControl;
-    ts_User: TcxTabSheet;
-    pnl_User: TcxGroupBox;
     cxGrid3: TcxGrid;
     cxGridDBTableView3: TcxGridDBTableView;
     cxGridDBColumn2: TcxGridDBColumn;
     cxGridDBTableView3Column1: TcxGridDBColumn;
     cxGridDBTableView3Column2: TcxGridDBColumn;
     cxGridLevel3: TcxGridLevel;
-    cxGroupBox10: TcxGroupBox;
     btn_OptionChangePassword: TcxButton;
     edt_OptionName: TcxDBTextEdit;
     edt_OptionPassword: TcxDBTextEdit;
     edt_OptionUser: TcxDBTextEdit;
-    Label14: TcxLabel;
-    Label15: TcxLabel;
-    Label7: TcxLabel;
-    Label8: TcxLabel;
-    Label9: TcxLabel;
-    ts_rights: TcxTabSheet;
     cxGrid1: TcxGrid;
     cxGridDBTableView1: TcxGridDBTableView;
     cxGridDBTableView1ID: TcxGridDBColumn;
     cxGridDBTableView1Bezeichnung: TcxGridDBColumn;
     cxGridLevel1: TcxGridLevel;
-    grpbx_1Allgemein: TcxGroupBox;
     qBenutzer: TFDQuery;
     qRechte: TFDQuery;
     qRechte_Detail: TFDQuery;
@@ -69,86 +59,100 @@ type
     dxBarDockControl2: TdxBarDockControl;
     cxGridPopupMenu1: TcxGridPopupMenu;
     cxGridPopupMenu2: TcxGridPopupMenu;
-    grpbx_2PCMManager: TcxGroupBox;
-    cxLabel1: TcxLabel;
-    cxDBLookupComboBox1: TcxDBLookupComboBox;
-    cxLabel2: TcxLabel;
-    cxDBCheckBox1: TcxDBCheckBox;
-    Label2: TcxLabel;
-    Label3: TcxLabel;
-    lucbx_Backup: TcxDBLookupComboBox;
-    lucbx_Option: TcxDBLookupComboBox;
-    cxDBLookupComboBox4: TcxDBLookupComboBox;
-    cxLabel3: TcxLabel;
-    cxLabel4: TcxLabel;
-    cxDBLookupComboBox5: TcxDBLookupComboBox;
-    cxLabel5: TcxLabel;
-    cxLabel6: TcxLabel;
-    cxDBLookupComboBox6: TcxDBLookupComboBox;
-    cxLabel7: TcxLabel;
-    cxDBLookupComboBox7: TcxDBLookupComboBox;
-    cxLabel8: TcxLabel;
-    cxDBLookupComboBox8: TcxDBLookupComboBox;
-    cxLabel9: TcxLabel;
-    cxDBLookupComboBox9: TcxDBLookupComboBox;
-    cxLabel10: TcxLabel;
-    cxDBLookupComboBox10: TcxDBLookupComboBox;
-    grpbx_3Mediacenter: TcxGroupBox;
-    cxLabel11: TcxLabel;
-    cxDBLookupComboBox11: TcxDBLookupComboBox;
-    cxLabel12: TcxLabel;
-    cxDBLookupComboBox12: TcxDBLookupComboBox;
-    cxDBLookupComboBox13: TcxDBLookupComboBox;
-    cxDBLookupComboBox14: TcxDBLookupComboBox;
-    cxLabel13: TcxLabel;
-    cxLabel14: TcxLabel;
-    grpbx_4MP3Manager: TcxGroupBox;
-    cxLabel15: TcxLabel;
-    cxDBLookupComboBox15: TcxDBLookupComboBox;
-    grpbx_5Notenrechner: TcxGroupBox;
-    cxLabel16: TcxLabel;
-    cxDBLookupComboBox16: TcxDBLookupComboBox;
-    grpbx_5Service: TcxGroupBox;
-    cxLabel17: TcxLabel;
-    cxDBLookupComboBox17: TcxDBLookupComboBox;
-    grpbx_6Vokabeltrainer: TcxGroupBox;
-    cxLabel18: TcxLabel;
     cxDBLookupComboBox18: TcxDBLookupComboBox;
     cxDBLookupComboBox20: TcxDBLookupComboBox;
-    cxLabel20: TcxLabel;
-    cxLabel21: TcxLabel;
-    cxDBLookupComboBox21: TcxDBLookupComboBox;
     cxDBCheckBox2: TcxDBCheckBox;
     cxDBCheckBox3: TcxDBCheckBox;
-    pnl_UserLeft: TcxGroupBox;
-    pnl_UserRight: TcxGroupBox;
     lucbx_OptionRights: TcxDBLookupComboBox;
     edt_OptionSurName: TcxDBTextEdit;
-    pnl_RightLEft: TcxGroupBox;
-    pnl_RightRight: TcxGroupBox;
-    cxGroupBox3: TcxGroupBox;
-    Label12: TcxLabel;
     edt_OptionRight: TcxDBTextEdit;
-    Label1: TLabel;
-    pnl_mrLeft: TcxGroupBox;
-    cxDBLookupComboBox2: TcxDBLookupComboBox;
-    cxScrollBox1: TcxScrollBox;
-    cxDBLookupComboBox3: TcxDBLookupComboBox;
-    pnl_mrRight: TcxGroupBox;
-    cxGroupBox1: TcxGroupBox;
-    cxLabel23: TcxLabel;
+    lactrl_Main: TdxLayoutControl;
+    lagrp_Personal: TdxLayoutGroup;
+    dxLayoutGroup1: TdxLayoutGroup;
+    lagrp_Suche: TdxLayoutGroup;
+    lagrp_Mitarbeiter: TdxLayoutGroup;
+    lagrp_SucheFilter: TdxLayoutGroup;
+    dxLayoutGroup2: TdxLayoutGroup;
+    dxLayoutItem4: TdxLayoutItem;
+    dxLayoutItem5: TdxLayoutItem;
+    dxLayoutItem6: TdxLayoutItem;
+    dxLayoutItem7: TdxLayoutItem;
+    dxLayoutItem8: TdxLayoutItem;
+    dxLayoutItem9: TdxLayoutItem;
+    dxLayoutAutoCreatedGroup2: TdxLayoutAutoCreatedGroup;
+    dxLayoutAutoCreatedGroup3: TdxLayoutAutoCreatedGroup;
+    dxLayoutItem10: TdxLayoutItem;
+    dxLayoutItem11: TdxLayoutItem;
+    dxLayoutItem1: TdxLayoutItem;
+    dxLayoutItem2: TdxLayoutItem;
+    dxLayoutAutoCreatedGroup1: TdxLayoutAutoCreatedGroup;
+    dxLayoutItem3: TdxLayoutItem;
+    dxLayoutItem12: TdxLayoutItem;
+    dxLayoutItem13: TdxLayoutItem;
+    lucbx_Backup: TcxDBLookupComboBox;
+    dxLayoutItem14: TdxLayoutItem;
+    lucbx_Option: TcxDBLookupComboBox;
+    dxLayoutItem15: TdxLayoutItem;
+    cxDBCheckBox1: TcxDBCheckBox;
+    dxLayoutAutoCreatedGroup4: TdxLayoutAutoCreatedGroup;
+    dxLayoutGroup3: TdxLayoutGroup;
+    dxLayoutGroup4: TdxLayoutGroup;
+    dxLayoutGroup5: TdxLayoutGroup;
+    dxLayoutGroup7: TdxLayoutGroup;
+    dxLayoutGroup8: TdxLayoutGroup;
+    dxLayoutItem16: TdxLayoutItem;
     cxDBLookupComboBox22: TcxDBLookupComboBox;
-    cxGroupBox2: TcxGroupBox;
-    cxLabel24: TcxLabel;
     cxDBLookupComboBox23: TcxDBLookupComboBox;
-    pnl_mcLeft: TcxGroupBox;
-    pnl_mcRight: TcxGroupBox;
-    pnl_scLeft: TcxGroupBox;
-    pnl_scRight: TcxGroupBox;
-    cxLabel19: TcxLabel;
+    dxLayoutItem17: TdxLayoutItem;
+    dxLayoutItem18: TdxLayoutItem;
+    cxDBLookupComboBox1: TcxDBLookupComboBox;
+    dxLayoutItem19: TdxLayoutItem;
+    cxDBLookupComboBox3: TcxDBLookupComboBox;
+    dxLayoutItem20: TdxLayoutItem;
+    cxDBLookupComboBox5: TcxDBLookupComboBox;
+    dxLayoutItem21: TdxLayoutItem;
+    cxDBLookupComboBox7: TcxDBLookupComboBox;
+    dxLayoutItem22: TdxLayoutItem;
+    cxDBLookupComboBox9: TcxDBLookupComboBox;
+    dxLayoutItem23: TdxLayoutItem;
+    cxDBLookupComboBox10: TcxDBLookupComboBox;
+    dxLayoutItem24: TdxLayoutItem;
+    cxDBLookupComboBox2: TcxDBLookupComboBox;
+    dxLayoutItem25: TdxLayoutItem;
+    cxDBLookupComboBox4: TcxDBLookupComboBox;
+    dxLayoutItem26: TdxLayoutItem;
+    cxDBLookupComboBox6: TcxDBLookupComboBox;
+    dxLayoutItem27: TdxLayoutItem;
+    cxDBLookupComboBox8: TcxDBLookupComboBox;
+    dxLayoutAutoCreatedGroup7: TdxLayoutAutoCreatedGroup;
+    dxLayoutAutoCreatedGroup5: TdxLayoutAutoCreatedGroup;
+    dxLayoutItem28: TdxLayoutItem;
+    cxDBLookupComboBox11: TcxDBLookupComboBox;
+    dxLayoutItem29: TdxLayoutItem;
+    cxDBLookupComboBox13: TcxDBLookupComboBox;
+    dxLayoutItem30: TdxLayoutItem;
+    cxDBLookupComboBox12: TcxDBLookupComboBox;
+    dxLayoutItem31: TdxLayoutItem;
+    cxDBLookupComboBox14: TcxDBLookupComboBox;
+    dxLayoutAutoCreatedGroup6: TdxLayoutAutoCreatedGroup;
+    dxLayoutAutoCreatedGroup8: TdxLayoutAutoCreatedGroup;
+    dxLayoutItem32: TdxLayoutItem;
+    cxDBLookupComboBox15: TcxDBLookupComboBox;
+    dxLayoutGroup6: TdxLayoutGroup;
+    dxLayoutGroup9: TdxLayoutGroup;
+    dxLayoutGroup10: TdxLayoutGroup;
+    dxLayoutItem33: TdxLayoutItem;
+    dxLayoutItem34: TdxLayoutItem;
+    cxDBLookupComboBox16: TcxDBLookupComboBox;
+    dxLayoutItem35: TdxLayoutItem;
+    cxDBLookupComboBox17: TcxDBLookupComboBox;
+    dxLayoutItem36: TdxLayoutItem;
     cxDBLookupComboBox19: TcxDBLookupComboBox;
-    pnl_VTLeft: TcxGroupBox;
-    pnl_vtRight: TcxGroupBox;
+    dxLayoutItem37: TdxLayoutItem;
+    dxLayoutItem38: TdxLayoutItem;
+    dxLayoutItem39: TdxLayoutItem;
+    dxLayoutAutoCreatedGroup9: TdxLayoutAutoCreatedGroup;
+    cxDBLookupComboBox21: TcxDBLookupComboBox;
     procedure btn_OptionChangePasswordClick(Sender: TObject);
     procedure edt_OptionPasswordExit(Sender: TObject);
     procedure btn_OptionNewRightClick(Sender: TObject);
@@ -187,10 +191,8 @@ type
     procedure cxDBLookupComboBox21PropertiesChange(Sender: TObject);
     procedure cxDBLookupComboBox20PropertiesChange(Sender: TObject);
     procedure OpenData;
-    procedure FormResize(Sender: TObject);
     procedure cxDBLookupComboBox22PropertiesChange(Sender: TObject);
     procedure cxDBLookupComboBox23PropertiesChange(Sender: TObject);
-    procedure AA_pc_UserChange(Sender: TObject);
   private
     { Private-Deklarationen }
     SaveGridViewUser,SaveGridViewRight: TSavedGridView;
@@ -396,76 +398,9 @@ procedure Tfrm_User.FormDestroy(Sender: TObject);
 begin
   SetGridViews(false);
 end;
-procedure Tfrm_User.FormResize(Sender: TObject);
-begin
-  // USER
-  pnl_UserLeft.Width:= Round(pnl_User.Width / 2) - 16;
-  pnl_UserRight.Width:= Round(pnl_User.Width / 2) - 16;
-  edt_OptionUser.Width:= pnl_UserLeft.Width -124;
-  edt_OptionName.Width:= pnl_UserLeft.Width -124;
-  edt_OptionSurName.Width:= pnl_UserRight.Width -124;
-  cxDBCheckBox3.Width:= pnl_UserLeft.Width -124;
-
-  edt_OptionPassword.Width:= pnl_UserRight.Width -129 - btn_OptionChangePassword.width;
-  btn_OptionChangePassword.Left:= edt_OptionPassword.Left + edt_OptionPassword.Width + 7;
-  lucbx_OptionRights.Width:= pnl_UserLeft.Width -121;
-  cxDBCheckBox2.Width:= pnl_UserRight.Width -121;
-  cxGridDBColumn2.Width:= Round((pnl_User.Width - 42) / 3);
-  cxGridDBTableView3Column1.Width:= Round((pnl_User.Width - 42) / 3);
-  cxGridDBTableView3Column2.Width:= Round((pnl_User.Width - 42) / 3);
-  // RECHTE
-
-  edt_OptionRight.width:= grpbx_1Allgemein.Width - 151;
-  pnl_RightLeft.Width:= Round(grpbx_1Allgemein.Width / 2) - 16;
-  pnl_RightRight.Width:= Round(grpbx_1Allgemein.Width / 2) - 16;
-  lucbx_Option.width:= pnl_RightLeft.Width -152;
-  cxDBCheckBox1.width:= pnl_RightLeft.Width -152;
-  lucbx_Backup.width:= pnl_RightRight.Width -130;
-  // Archiv
-  cxDBLookupComboBox22.Width:= grpbx_1Allgemein.Width - 151;
-  // Backup
-  cxDBLookupComboBox23.Width:= grpbx_1Allgemein.Width - 151;
-  // Manager
-  pnl_mrLeft.Width:= Round(grpbx_1Allgemein.Width / 2) - 16;
-  cxDBLookupComboBox1.Width:= pnl_mrLeft.Width -152;
-  cxDBLookupComboBox3.Width:= pnl_mrLeft.Width -152;
-  cxDBLookupComboBox5.Width:= pnl_mrLeft.Width -152;
-  cxDBLookupComboBox7.Width:= pnl_mrLeft.Width -152;
-  cxDBLookupComboBox9.Width:= pnl_mrLeft.Width -152;
-  pnl_mrRight.Width:= Round(grpbx_1Allgemein.Width / 2) - 16;
-  cxDBLookupComboBox2.Width:= pnl_mrRight.Width -130;
-  cxDBLookupComboBox4.Width:= pnl_mrRight.Width -130;
-  cxDBLookupComboBox6.Width:= pnl_mrRight.Width -130;
-  cxDBLookupComboBox8.Width:= pnl_mrRight.Width -130;
-  cxDBLookupComboBox10.Width:= pnl_mrRight.Width -130;
-  // Mediacenter
-  pnl_mcLeft.Width:= Round(grpbx_1Allgemein.Width / 2) - 16;
-  cxDBLookupComboBox11.Width:= pnl_mcLeft.Width -152;
-  cxDBLookupComboBox13.Width:= pnl_mcLeft.Width -152;
-  pnl_mcRight.Width:= Round(grpbx_1Allgemein.Width / 2) - 16;
-  cxDBLookupComboBox12.Width:= pnl_mcRight.Width -130;
-  cxDBLookupComboBox14.Width:= pnl_mcRight.Width -130;
-  // MP3-Manager
-  cxDBLookupComboBox15.Width:= grpbx_1Allgemein.Width - 151;
-  // Notenrechner
-  cxDBLookupComboBox16.Width:= grpbx_1Allgemein.Width - 151;
-  // Servicemanager
-  pnl_scLeft.Width:= Round(grpbx_1Allgemein.Width / 2) - 16;
-  cxDBLookupComboBox17.Width:= pnl_scLeft.Width -152;
-  pnl_scRight.Width:= Round(grpbx_1Allgemein.Width / 2) - 16;
-  cxDBLookupComboBox19.Width:= pnl_scright.Width -130;
-  // Vokabeltrainer
-  pnl_vtLeft.Width:= Round(grpbx_1Allgemein.Width / 2) - 16;
-  cxDBLookupComboBox18.Width:= pnl_vtLeft.Width -152;
-  cxDBLookupComboBox21.Width:= pnl_vtLeft.Width -152;
-  pnl_vtRight.Width:= Round(grpbx_1Allgemein.Width / 2) - 16;
-  cxDBLookupComboBox20.Width:= pnl_vtright.Width -130;
-  cxGridDBTableView1Bezeichnung.Width:= Round(grpbx_1Allgemein.Width - 42);
-end;
 procedure Tfrm_User.FormShow(Sender: TObject);
 begin
   OPendata;
-  FormResize(Self);
   InitializeRights;
   SetGridViews(true);
 end;
@@ -481,11 +416,6 @@ procedure Tfrm_User.SetButtonsEnableVisible(DataSet: TDataSet);
 begin
   SetButtons;
 end;
-procedure Tfrm_User.AA_pc_UserChange(Sender: TObject);
-begin
-  FormResize(Self);
-end;
-
 procedure Tfrm_User.btn_OptionCancelRightClick(Sender: TObject);
 begin
   qRechte.Cancel;
