@@ -94,10 +94,13 @@ type
     procedure FormShow(Sender: TObject);
   private
     { Private-Deklarationen }
+    FLastIdleTime: Int64;
+    FLastKernelTime: Int64;
+    FLastUserTime: Int64;
     procedure GetRamUsage;
     function GetProzessorName: string;
     function GetCPUSpeed: real;
-    function GetCPUUsage: Integer;
+    function GetCPUUsage: double;
 
   public
     { Public-Deklarationen }
@@ -512,36 +515,64 @@ begin
   Result := TimerLow / (1000.0 * TimeOfDelay);
 end;
 {$endif}
-function Tfrm_PCM_System.GetCPUUsage: Integer;
+function Tfrm_PCM_System.GetCPUUsage: double;
 var
-  spi : SYSTEM_PERFORMANCE_INFORMATION;
-  sti : SYSTEM_TIME_INFORMATION;
-  sbi : SYSTEM_BASIC_INFORMATION;
+  IdleTimeRec, KernelTimeRec, UserTimeRec: TFileTime;
+  IdleTime, KernelTime, UserTime: Int64;
+  IdleDiff, KernelDiff, UserDiff, SysTime: Int64;
 begin
-  result := 0;
+  GetSystemTimes(IdleTimeRec, KernelTimeRec, UserTimeRec);
 
-  if (NTQuerySystemInformation(SYS_BASIC_INFO, @sbi, sizeof(SYSTEM_BASIC_INFORMATION), 0) = NO_ERROR) then
-  begin
-    if (NTQuerySystemInformation(SYS_TIME_INFO, @sti, sizeof(SYSTEM_TIME_INFORMATION), 0) = NO_ERROR) then
-    if (NTQuerySystemInformation(SYS_PERFORMANCE_INFO, @spi, sizeof(SYSTEM_PERFORMANCE_INFORMATION), 0)= NO_ERROR) then
-    begin
-      if (nOldIdleTime <> 0) then
-      begin
-        try
-          nNewCPUTime:= trunc(100-((spi.nIdleTime-nOldIdleTime)/(sti.nKeSystemTime-nOldSystemTime)*100)/sbi.bKeNumberProcessors+0.5);
-          if (nNewCPUTime <> nOldIdleTime) then
-          begin
-            Result := nNewCPUTIME;
-          end;
-        except
-          Result := 0;
-        end;
-      end;
-      nOldIdleTime   := spi.nIdleTime;
-      nOldSystemTime := sti.nKeSystemTime;
-    end;
-  end;
+  IdleTime := Int64(IdleTimeRec.dwLowDateTime) or (Int64(IdleTimeRec.dwHighDateTime) shl 32);
+  KernelTime := Int64(KernelTimeRec.dwLowDateTime) or (Int64(KernelTimeRec.dwHighDateTime) shl 32);
+  UserTime := Int64(UserTimeRec.dwLowDateTime) or (Int64(UserTimeRec.dwHighDateTime) shl 32);
+
+  IdleDiff := IdleTime - FLastIdleTime;
+  KernelDiff := KernelTime - FLastKernelTime;
+  UserDiff := UserTime - FLastUserTime;
+
+  SysTime := KernelDiff + UserDiff;
+
+  if SysTime > 0 then
+    Result := 100.0 - (IdleDiff * 100.0 / SysTime)
+  else
+    Result := 0;
+
+  FLastIdleTime := IdleTime;
+  FLastKernelTime := KernelTime;
+  FLastUserTime := UserTime;
 end;
+
+//function Tfrm_PCM_System.GetCPUUsage: Integer;
+//var
+//  spi : SYSTEM_PERFORMANCE_INFORMATION;
+//  sti : SYSTEM_TIME_INFORMATION;
+//  sbi : SYSTEM_BASIC_INFORMATION;
+//begin
+//  result := 0;
+//
+//  if (NTQuerySystemInformation(SYS_BASIC_INFO, @sbi, sizeof(SYSTEM_BASIC_INFORMATION), 0) = NO_ERROR) then
+//  begin
+//    if (NTQuerySystemInformation(SYS_TIME_INFO, @sti, sizeof(SYSTEM_TIME_INFORMATION), 0) = NO_ERROR) then
+//    if (NTQuerySystemInformation(SYS_PERFORMANCE_INFO, @spi, sizeof(SYSTEM_PERFORMANCE_INFORMATION), 0)= NO_ERROR) then
+//    begin
+//      if (nOldIdleTime <> 0) then
+//      begin
+//        try
+//          nNewCPUTime:= trunc(100-((spi.nIdleTime-nOldIdleTime)/(sti.nKeSystemTime-nOldSystemTime)*100)/sbi.bKeNumberProcessors+0.5);
+//          if (nNewCPUTime <> nOldIdleTime) then
+//          begin
+//            Result := nNewCPUTIME;
+//          end;
+//        except
+//          Result := 0;
+//        end;
+//      end;
+//      nOldIdleTime   := spi.nIdleTime;
+//      nOldSystemTime := sti.nKeSystemTime;
+//    end;
+//  end;
+//end;
 function GetMD5Hash(AValue: string): String;
 var
     hashMessageDigest5 : TIdHashMessageDigest5;
@@ -582,8 +613,7 @@ begin
   prgbr_RamUse.Position:= dwd_UsedRamTemp;
   lbl_RAMTotal_data.Caption := Format('%.2f MB', [mst_memory.ullTotalPhys / (1024 * 1024)]);
   lbl_RAMFree_data.Caption := Format('%.2f MB', [mst_memory.ullAvailPhys / (1024 * 1024)]);
-  sCPU:= IntToStr(GetCPUUsage());
-  prgbr_ProcUse.Position:= StrToFloatDef(sCPU,0);
+  prgbr_ProcUse.Position:= GetCPUUsage;
 end;
 procedure Tfrm_PCM_System.tmr_GetRamUsageTimer(Sender: TObject);
 begin
