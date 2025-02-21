@@ -12,446 +12,362 @@ object frm_PCM_System: Tfrm_PCM_System
   Font.Style = []
   OnShow = FormShow
   TextHeight = 13
-  object pnl_design: TcxGroupBox
+  object dxLayoutControl1: TdxLayoutControl
     Left = 0
     Top = 0
-    Align = alClient
-    PanelStyle.Active = True
-    Style.BorderStyle = ebsNone
-    TabOrder = 0
-    Height = 479
     Width = 1051
-    object cxPageControl1: TcxPageControl
-      Left = 3
-      Top = 3
-      Width = 1045
-      Height = 473
-      Align = alClient
+    Height = 479
+    Align = alClient
+    TabOrder = 0
+    AutoSize = True
+    LayoutLookAndFeel = dxLayoutCxLookAndFeel1
+    object prgbr_ProcUse: TcxProgressBar
+      AlignWithMargins = True
+      Left = 22
+      Top = 364
+      Margins.Left = 13
+      Margins.Right = 13
+      Margins.Bottom = 0
+      AutoSize = False
+      Style.TransparentBorder = False
+      TabOrder = 1
+      Height = 22
+      Width = 1007
+    end
+    object prgbr_RamUse: TcxProgressBar
+      AlignWithMargins = True
+      Left = 22
+      Top = 316
+      Margins.Left = 13
+      Margins.Right = 13
+      Margins.Bottom = 0
+      AutoSize = False
+      Style.TransparentBorder = False
       TabOrder = 0
-      Properties.ActivePage = cxTabSheet1
-      Properties.CustomButtons.Buttons = <>
-      Properties.Images = cxImageList1
-      Properties.Style = 11
-      ExplicitLeft = 392
-      ExplicitTop = 162
-      ExplicitWidth = 289
-      ExplicitHeight = 193
-      ClientRectBottom = 467
-      ClientRectLeft = 2
-      ClientRectRight = 1039
-      ClientRectTop = 28
-      object cxTabSheet1: TcxTabSheet
-        Caption = 'Systeminfo'
-        ImageIndex = 0
-        ExplicitTop = 23
-        ExplicitWidth = 1043
-        ExplicitHeight = 450
-        object cxGroupBox1: TcxGroupBox
-          Left = 0
-          Top = 0
-          Align = alClient
-          PanelStyle.Active = True
-          Style.BorderStyle = ebsNone
-          TabOrder = 0
-          ExplicitWidth = 1043
-          ExplicitHeight = 450
-          Height = 439
-          Width = 1037
-          object grpbx_SysInfo_CPU: TcxGroupBox
-            AlignWithMargins = True
-            Left = 3
-            Top = 121
-            Margins.Left = 0
-            Margins.Top = 6
-            Margins.Right = 0
-            Margins.Bottom = 0
-            Align = alTop
-            Caption = 'Prozessor'
-            ParentFont = False
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWindowText
-            Style.Font.Height = -11
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = [fsBold]
-            Style.IsFontAssigned = True
-            TabOrder = 0
-            ExplicitWidth = 1037
-            Height = 87
-            Width = 1031
-            object lbl_ProcCount: TcxLabel
-              Left = 16
-              Top = 35
-              Caption = 'Prozessoranzahl:'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              Transparent = True
-            end
-            object lbl_ProcCount_data: TcxLabel
-              Left = 500
-              Top = 36
-              Caption = 'PROCESSORCOUNT'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              Transparent = True
-            end
-            object lbl_ProcSpeed: TcxLabel
-              Left = 16
-              Top = 55
-              Caption = 'Prozessorgeschwindigkeit:'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              Transparent = True
-            end
-            object lbl_ProcSpeed_data: TcxLabel
-              Left = 500
-              Top = 55
-              Caption = 'PROCESSORSPEED'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              Transparent = True
-            end
-            object lbl_ProcType: TcxLabel
-              Left = 16
-              Top = 16
-              Caption = 'Prozessortyp:'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              Transparent = True
-            end
-            object lbl_ProcType_data: TcxLabel
-              Left = 500
-              Top = 16
-              Caption = 'PROCESSORTYPE'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              Transparent = True
-            end
-          end
-          object grpbx_SysInfo_Ram: TcxGroupBox
-            AlignWithMargins = True
-            Left = 3
-            Top = 214
-            Margins.Left = 0
-            Margins.Top = 6
-            Margins.Right = 0
-            Margins.Bottom = 0
-            Align = alTop
-            Caption = 'Arbeitsspeicher'
-            ParentFont = False
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWindowText
-            Style.Font.Height = -11
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = [fsBold]
-            Style.IsFontAssigned = True
-            TabOrder = 1
-            ExplicitWidth = 1037
-            Height = 66
-            Width = 1031
-            object lbl_RAMFree: TcxLabel
-              Left = 16
-              Top = 35
-              Caption = 'freier Arbeitsspeicher:'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              Transparent = True
-            end
-            object lbl_RAMFree_data: TcxLabel
-              Left = 500
-              Top = 35
-              Caption = 'RAM FREE'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              Transparent = True
-            end
-            object lbl_RAMTotal: TcxLabel
-              Left = 16
-              Top = 16
-              Caption = 'Gesamter Arbeitsspeicher:'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              Transparent = True
-            end
-            object lbl_RAMTotal_data: TcxLabel
-              Left = 500
-              Top = 16
-              Caption = 'RAM TOTAL'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              Transparent = True
-            end
-          end
-          object grpbx_SysInfo_Resource: TcxGroupBox
-            AlignWithMargins = True
-            Left = 3
-            Top = 286
-            Margins.Left = 0
-            Margins.Top = 6
-            Margins.Right = 0
-            Margins.Bottom = 0
-            Align = alTop
-            Caption = 'Auslastung'
-            ParentFont = False
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWindowText
-            Style.Font.Height = -11
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = [fsBold]
-            Style.IsFontAssigned = True
-            TabOrder = 2
-            ExplicitWidth = 1037
-            Height = 138
-            Width = 1031
-            object prgbr_ProcUse: TcxProgressBar
-              AlignWithMargins = True
-              Left = 16
-              Top = 94
-              Margins.Left = 13
-              Margins.Right = 13
-              Margins.Bottom = 0
-              Align = alTop
-              AutoSize = False
-              TabOrder = 0
-              ExplicitWidth = 1009
-              Height = 22
-              Width = 999
-            end
-            object prgbr_RamUse: TcxProgressBar
-              AlignWithMargins = True
-              Left = 16
-              Top = 44
-              Margins.Left = 13
-              Margins.Right = 13
-              Margins.Bottom = 0
-              Align = alTop
-              AutoSize = False
-              TabOrder = 1
-              ExplicitWidth = 1009
-              Height = 22
-              Width = 999
-            end
-            object lbl_ProcUse: TcxLabel
-              AlignWithMargins = True
-              Left = 16
-              Top = 74
-              Margins.Left = 13
-              Margins.Top = 8
-              Margins.Right = 13
-              Margins.Bottom = 0
-              Align = alTop
-              Caption = 'Prozessor:'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              Transparent = True
-              ExplicitTop = 59
-              ExplicitWidth = 1005
-            end
-            object lbl_RamUse: TcxLabel
-              AlignWithMargins = True
-              Left = 16
-              Top = 24
-              Margins.Left = 13
-              Margins.Top = 9
-              Margins.Right = 13
-              Margins.Bottom = 0
-              Align = alTop
-              Caption = 'Arbeitsspeicher:'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              Transparent = True
-              ExplicitTop = 5
-              ExplicitWidth = 1005
-            end
-          end
-          object grpbx_SysInfo_Sys: TcxGroupBox
-            AlignWithMargins = True
-            Left = 3
-            Top = 9
-            Margins.Left = 0
-            Margins.Top = 6
-            Margins.Right = 0
-            Margins.Bottom = 0
-            Align = alTop
-            Caption = 'Windows'
-            ParentBackground = False
-            ParentFont = False
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWindowText
-            Style.Font.Height = -11
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = [fsBold]
-            Style.IsFontAssigned = True
-            TabOrder = 3
-            ExplicitWidth = 1037
-            Height = 106
-            Width = 1031
-            object lbl_Graphic: TcxLabel
-              Left = 16
-              Top = 56
-              Caption = 'Grafikaufl'#246'sung:'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              Transparent = True
-            end
-            object lbl_Graphic_data: TcxLabel
-              Left = 500
-              Top = 56
-              Caption = 'Label2'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              Transparent = True
-            end
-            object lbl_os: TcxLabel
-              Left = 16
-              Top = 16
-              Caption = 'Betriebssystem:'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              Transparent = True
-            end
-            object lbl_os_data: TcxLabel
-              Left = 500
-              Top = 16
-              Caption = 'Label2'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              Transparent = True
-            end
-            object lbl_PCName: TcxLabel
-              Left = 16
-              Top = 36
-              Caption = 'Computername:'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              Transparent = True
-            end
-            object lbl_PCName_data: TcxLabel
-              Left = 500
-              Top = 36
-              Caption = 'Label2'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              Transparent = True
-            end
-            object lbl_SysDir: TcxLabel
-              Left = 16
-              Top = 75
-              Caption = 'Systemlaufwerk:'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              Transparent = True
-            end
-            object lbl_SysDir_data: TcxLabel
-              Left = 500
-              Top = 75
-              Caption = 'Label2'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              Transparent = True
-            end
-          end
-        end
-      end
+      Height = 22
+      Width = 1007
+    end
+    object dxLayoutControl1Group_Root: TdxLayoutGroup
+      AlignHorz = ahClient
+      AlignVert = avClient
+      Hidden = True
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = -1
+    end
+    object dxLayoutGroup3: TdxLayoutGroup
+      Parent = dxLayoutControl1Group_Root
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'Systeminfo'
+      ItemIndex = 3
+      ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutGroup5: TdxLayoutGroup
+      Parent = dxLayoutGroup3
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Windows'
+      Index = 0
+    end
+    object lbl_os: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup1
+      AlignHorz = ahLeft
+      AlignVert = avTop
+      Offsets.Left = 8
+      CaptionOptions.AlignVert = tavTop
+      CaptionOptions.Text = 'Betriebssystem:'
+      CaptionOptions.Width = 200
+      Index = 0
+    end
+    object lbl_os_data: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup1
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.AlignVert = tavTop
+      CaptionOptions.Text = 'Label2'
+      CaptionOptions.Width = 200
+      Index = 1
+    end
+    object dxLayoutGroup9: TdxLayoutGroup
+      Parent = dxLayoutGroup3
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Prozessor'
+      ItemIndex = 2
+      Index = 1
+    end
+    object dxLayoutGroup12: TdxLayoutGroup
+      Parent = dxLayoutGroup3
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Arbeitsspeicher'
+      ItemIndex = 1
+      Index = 2
+    end
+    object dxLayoutGroup15: TdxLayoutGroup
+      Parent = dxLayoutGroup13
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Auslastung'
+      ItemIndex = 2
+      Index = 0
+    end
+    object dxLayoutItem7: TdxLayoutItem
+      Parent = dxLayoutGroup15
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Arbeitsspeicher:'
+      CaptionOptions.Layout = clTop
+      Control = prgbr_RamUse
+      ControlOptions.OriginalHeight = 22
+      ControlOptions.OriginalWidth = 1009
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object lbl_ProcUse: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup15
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.AlignVert = tavTop
+      CaptionOptions.Text = 'Prozessor:'
+      Index = 1
+    end
+    object dxLayoutItem8: TdxLayoutItem
+      Parent = dxLayoutGroup15
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'prgbr_ProcUse'
+      CaptionOptions.Visible = False
+      Control = prgbr_ProcUse
+      ControlOptions.OriginalHeight = 22
+      ControlOptions.OriginalWidth = 1009
+      ControlOptions.ShowBorder = False
+      Index = 2
+    end
+    object dxLayoutGroup1: TdxLayoutGroup
+      Parent = dxLayoutGroup5
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutGroup2: TdxLayoutGroup
+      Parent = dxLayoutGroup5
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutLabeledItem1: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup2
+      AlignHorz = ahLeft
+      AlignVert = avTop
+      Offsets.Left = 8
+      CaptionOptions.Text = 'Computername:'
+      CaptionOptions.Width = 200
+      Index = 0
+    end
+    object lbl_PCName_data: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup2
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Label'
+      Index = 1
+    end
+    object dxLayoutLabeledItem3: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup6
+      AlignHorz = ahLeft
+      AlignVert = avTop
+      Offsets.Left = 8
+      CaptionOptions.Text = 'Grafikaufl'#246'sung:'
+      CaptionOptions.Width = 200
+      Index = 0
+    end
+    object lbl_Graphic_data: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup6
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Label'
+      Index = 1
+    end
+    object dxLayoutGroup6: TdxLayoutGroup
+      Parent = dxLayoutGroup5
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 2
+    end
+    object dxLayoutLabeledItem5: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup7
+      AlignHorz = ahLeft
+      AlignVert = avTop
+      Offsets.Left = 8
+      CaptionOptions.Text = 'Systemlaufwerk:'
+      CaptionOptions.Width = 200
+      Index = 0
+    end
+    object lbl_SysDir_data: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup7
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Label'
+      Index = 1
+    end
+    object dxLayoutGroup7: TdxLayoutGroup
+      Parent = dxLayoutGroup5
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 3
+    end
+    object dxLayoutGroup8: TdxLayoutGroup
+      Parent = dxLayoutGroup9
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutGroup18: TdxLayoutGroup
+      Parent = dxLayoutGroup9
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutGroup19: TdxLayoutGroup
+      Parent = dxLayoutGroup9
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 2
+    end
+    object dxLayoutLabeledItem2: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup19
+      AlignHorz = ahLeft
+      AlignVert = avTop
+      Offsets.Left = 8
+      CaptionOptions.Text = 'Prozessorgeschwindigkeit:'
+      CaptionOptions.Width = 200
+      Index = 0
+    end
+    object lbl_ProcSpeed_data: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup19
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Label'
+      Index = 1
+    end
+    object dxLayoutLabeledItem6: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup18
+      AlignHorz = ahLeft
+      AlignVert = avTop
+      Offsets.Left = 8
+      CaptionOptions.Text = 'Prozessoranzahl:'
+      CaptionOptions.Width = 200
+      Index = 0
+    end
+    object lbl_ProcCount_data: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup18
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Label'
+      Index = 1
+    end
+    object dxLayoutLabeledItem8: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup8
+      AlignHorz = ahLeft
+      AlignVert = avTop
+      Offsets.Left = 8
+      CaptionOptions.Text = 'Prozessortyp:'
+      CaptionOptions.Width = 200
+      Index = 0
+    end
+    object lbl_ProcType_data: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup8
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Label'
+      Index = 1
+    end
+    object dxLayoutGroup10: TdxLayoutGroup
+      Parent = dxLayoutGroup12
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutGroup11: TdxLayoutGroup
+      Parent = dxLayoutGroup12
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutLabeledItem4: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup11
+      AlignHorz = ahLeft
+      AlignVert = avTop
+      Offsets.Left = 8
+      CaptionOptions.Text = 'freier Arbeitsspeicher:'
+      CaptionOptions.Width = 200
+      Index = 0
+    end
+    object lbl_RAMFree_data: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup11
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Label'
+      Index = 1
+    end
+    object dxLayoutLabeledItem9: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup10
+      AlignHorz = ahLeft
+      AlignVert = avTop
+      Offsets.Left = 8
+      CaptionOptions.Text = 'Gesamter Arbeitsspeicher:'
+      CaptionOptions.Width = 200
+      Index = 0
+    end
+    object lbl_RAMTotal_data: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup10
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Label'
+      Index = 1
+    end
+    object dxLayoutGroup13: TdxLayoutGroup
+      Parent = dxLayoutGroup3
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ShowBorder = False
+      Index = 3
     end
   end
   object tmr_GetRamUsage: TTimer
@@ -498,5 +414,10 @@ object frm_PCM_System: Tfrm_PCM_System
           5FF907168BC53C1A1C922691C5B7679ECD9B3D129D30BF9219FE7E8537EFE752
           0FF6A463B24326885F7EE8F77F30340F1C0000000049454E44AE426082}
       end>
+  end
+  object dxLayoutLookAndFeelList1: TdxLayoutLookAndFeelList
+    object dxLayoutCxLookAndFeel1: TdxLayoutCxLookAndFeel
+      PixelsPerInch = 96
+    end
   end
 end

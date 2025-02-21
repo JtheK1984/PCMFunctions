@@ -16,40 +16,44 @@ object frm_PCM_Lizenz: Tfrm_PCM_Lizenz
   OnCreate = FormCreate
   OnShow = FormShow
   TextHeight = 13
-  object pnl_main: TcxGroupBox
+  object dxLayoutControl1: TdxLayoutControl
     Left = 0
     Top = 0
-    Align = alClient
-    PanelStyle.Active = True
-    Style.BorderStyle = ebsNone
-    TabOrder = 0
-    Height = 458
     Width = 316
+    Height = 458
+    Align = alClient
+    TabOrder = 0
+    AutoSize = True
+    LayoutLookAndFeel = dxLayoutCxLookAndFeel1
+    ExplicitLeft = 16
+    ExplicitTop = 120
+    ExplicitWidth = 300
+    ExplicitHeight = 250
     object btn_SaveLicence: TcxButton
-      Left = 8
-      Top = 427
-      Width = 146
+      Left = 10
+      Top = 423
+      Width = 145
       Height = 25
       Caption = 'Ok'
       OptionsImage.ImageIndex = 56
       OptionsImage.Images = dm_PCM.imglst_16x16
-      TabOrder = 0
+      TabOrder = 3
       OnClick = btn_SaveLicenceClick
     end
     object btn_LizenzCancel: TcxButton
-      Left = 162
-      Top = 427
-      Width = 146
+      Left = 161
+      Top = 423
+      Width = 145
       Height = 25
       Caption = 'Abbrechen'
       OptionsImage.ImageIndex = 57
       OptionsImage.Images = dm_PCM.imglst_16x16
-      TabOrder = 1
+      TabOrder = 4
       OnClick = AbbrechenClick
     end
     object img_PCManagerLogin_Image: TcxImage
-      Left = 8
-      Top = 9
+      Left = 10
+      Top = 10
       TabStop = False
       Picture.Data = {
         0D546478536D617274496D61676589504E470D0A1A0A0000000D494844520000
@@ -1265,59 +1269,129 @@ object frm_PCM_Lizenz: Tfrm_PCM_Lizenz
         C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3
         C3C3C3C3C3C3C3C3C3C3C3C3C3C323CB10F9FF03EC8DA2FDFE8C3D3100000000
         49454E44AE426082}
-      TabOrder = 2
-      Height = 300
-      Width = 300
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 0
+      Height = 321
+      Width = 296
     end
-    object pnl_Lizenz: TcxGroupBox
-      Left = 8
-      Top = 315
-      PanelStyle.Active = True
-      Style.BorderStyle = ebs3D
-      TabOrder = 3
-      Height = 106
-      Width = 300
-      object edt_kunde: TcxTextEdit
-        Left = 8
-        Top = 27
-        TabOrder = 0
-        TextHint = 'Name eingeben'
-        Width = 284
-      end
-      object edt_lizenz: TcxTextEdit
-        Left = 8
-        Top = 73
-        Properties.OnChange = edt_lizenzChange
-        TabOrder = 1
-        TextHint = 'Lizenz eingeben'
-        Width = 284
-      end
-      object lbl_Kunde: TcxLabel
-        Left = 8
-        Top = 8
-        Caption = 'Name:'
-        ParentFont = False
-        Style.Font.Charset = DEFAULT_CHARSET
-        Style.Font.Color = clWindowText
-        Style.Font.Height = -11
-        Style.Font.Name = 'Tahoma'
-        Style.Font.Style = []
-        Style.IsFontAssigned = True
-        Transparent = True
-      end
-      object lbl_lizenz: TcxLabel
-        Left = 8
-        Top = 54
-        Caption = 'Lizenz:'
-        ParentFont = False
-        Style.Font.Charset = DEFAULT_CHARSET
-        Style.Font.Color = clWindowText
-        Style.Font.Height = -11
-        Style.Font.Name = 'Tahoma'
-        Style.Font.Style = []
-        Style.IsFontAssigned = True
-        Transparent = True
-      end
+    object edt_kunde: TcxTextEdit
+      Left = 10
+      Top = 355
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 1
+      TextHint = 'Name eingeben'
+      Width = 296
+    end
+    object edt_lizenz: TcxTextEdit
+      Left = 10
+      Top = 398
+      Properties.OnChange = edt_lizenzChange
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 2
+      TextHint = 'Lizenz eingeben'
+      Width = 296
+    end
+    object dxLayoutControl1Group_Root: TdxLayoutGroup
+      AlignHorz = ahClient
+      AlignVert = avClient
+      Hidden = True
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = -1
+    end
+    object dxLayoutItem1: TdxLayoutItem
+      Parent = dxLayoutGroup8
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'img_PCManagerLogin_Image'
+      CaptionOptions.Visible = False
+      Control = img_PCManagerLogin_Image
+      ControlOptions.OriginalHeight = 300
+      ControlOptions.OriginalWidth = 300
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutGroup5: TdxLayoutGroup
+      Parent = dxLayoutGroup8
+      AlignHorz = ahClient
+      AlignVert = avTop
+      ItemIndex = 1
+      ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem2: TdxLayoutItem
+      Parent = dxLayoutGroup5
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Name:'
+      CaptionOptions.Layout = clTop
+      Control = edt_kunde
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 284
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem3: TdxLayoutItem
+      Parent = dxLayoutGroup5
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Lizenz:'
+      CaptionOptions.Layout = clTop
+      Control = edt_lizenz
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 284
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem4: TdxLayoutItem
+      Parent = dxLayoutGroup9
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'btn_SaveLicence'
+      CaptionOptions.Visible = False
+      Control = btn_SaveLicence
+      ControlOptions.OriginalHeight = 25
+      ControlOptions.OriginalWidth = 146
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem5: TdxLayoutItem
+      Parent = dxLayoutGroup9
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'btn_LizenzCancel'
+      CaptionOptions.Visible = False
+      Control = btn_LizenzCancel
+      ControlOptions.OriginalHeight = 25
+      ControlOptions.OriginalWidth = 146
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutGroup8: TdxLayoutGroup
+      Parent = dxLayoutControl1Group_Root
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutGroup9: TdxLayoutGroup
+      Parent = dxLayoutGroup8
+      AlignHorz = ahClient
+      AlignVert = avBottom
+      CaptionOptions.Text = 'New Group'
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 2
+    end
+  end
+  object dxLayoutLookAndFeelList1: TdxLayoutLookAndFeelList
+    object dxLayoutCxLookAndFeel1: TdxLayoutCxLookAndFeel
+      PixelsPerInch = 96
     end
   end
 end

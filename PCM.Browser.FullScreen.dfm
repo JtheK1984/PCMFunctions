@@ -33,6 +33,5 @@ object frm_Browser_FullScreen: Tfrm_Browser_FullScreen
     AlignSplitter = salTop
     Control = pnl_D
     Visible = False
-    ExplicitTop = 183
   end
 end

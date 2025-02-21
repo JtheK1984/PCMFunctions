@@ -8,7 +8,9 @@ uses Winapi.Windows, System.SysUtils, System.Classes, Vcl.Graphics, Vcl.Forms,
   cxButtons, System.ImageList, Vcl.ImgList,FireDac.Stan.Param,
   cxControls, cxContainer, cxEdit, cxTextEdit,
   cxLabel, cxImage, cxGroupBox,cxPC,
-  Vcl.Dialogs,System.UITypes;
+  Vcl.Dialogs,System.UITypes, cxClasses, dxLayoutLookAndFeels,
+  dxLayoutContainer, dxLayoutControl, dxLayoutcxEditAdapters,
+  dxLayoutControlAdapters;
 type
   TcxPageControlPropertiesAccess = class(TcxPageControlProperties);
 type
@@ -17,9 +19,19 @@ type
     edt_PCManagerChangePassword_NewPass: TcxTextEdit;
     edt_PCManagerChangePassword_RepPass: TcxTextEdit;
     img_PCManagerChangePassword_Image: TcxImage;
-    lbl_PCManagerChangePassword_NewPass: TcxLabel;
-    lbl_PCManagerChangePassword_RepPass: TcxLabel;
-    grpbx_PwChangePassword: TcxGroupBox;
+    dxLayoutControl1Group_Root: TdxLayoutGroup;
+    dxLayoutControl1: TdxLayoutControl;
+    dxLayoutLookAndFeelList1: TdxLayoutLookAndFeelList;
+    dxLayoutCxLookAndFeel1: TdxLayoutCxLookAndFeel;
+    dxLayoutGroup3: TdxLayoutGroup;
+    dxLayoutItem1: TdxLayoutItem;
+    dxLayoutItem2: TdxLayoutItem;
+    dxLayoutItem3: TdxLayoutItem;
+    dxLayoutItem4: TdxLayoutItem;
+    dxLayoutItem5: TdxLayoutItem;
+    dxLayoutGroup8: TdxLayoutGroup;
+    dxLayoutGroup9: TdxLayoutGroup;
+    dxLayoutGroup1: TdxLayoutGroup;
     procedure btn_PCManagerChangePassword_OkClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure btn_PCManagerChangePassword_CancelClick(Sender: TObject);

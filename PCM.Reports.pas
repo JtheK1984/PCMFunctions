@@ -17,7 +17,7 @@ implementation
 uses
   {$Region Uses}
   PCM.Data,
-  PCMTime.Calculate,
+  PCM.Calculate,
   System.Classes,
   FireDAC.Stan.Intf,
   FireDAC.Stan.Option,

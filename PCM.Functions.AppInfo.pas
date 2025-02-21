@@ -8,39 +8,59 @@ uses WinApi.Windows, SysUtils, System.Classes, Vcl.Graphics,
   Vcl.Menus, System.ImageList, Vcl.ImgList, cxButtons,
   cxControls, cxContainer, cxEdit, cxLabel, cxGroupBox,
   cxImage,Vcl.Styles,vcl.themes,inifiles, Vcl.Imaging.pngimage,
-  dxBarBuiltInMenu, cxPC, cxImageList;
+  dxBarBuiltInMenu, cxPC, cxImageList, dxLayoutcxEditAdapters,
+  dxLayoutControlAdapters, dxLayoutContainer, cxClasses, dxLayoutControl,
+  dxLayoutLookAndFeels;
 
 type
   Tfrm_PCM_InfoApp = class(TForm)
-    pnl_INFO: TcxGroupBox;
-    lbl_PCManagerAppInfo_AppName: TcxLabel;
-    lbl_PCManagerAppInfo_VersionInfo: TcxLabel;
-    lbl_PCManagerAppInfo_RevisionInfo: TcxLabel;
-    lbl_PCManagerAppInfo_Version: TcxLabel;
-    lbl_PCManagerAppInfo_Revision: TcxLabel;
-    lbl_PCManagerAppInfo_AppCopyRightInfo: TcxLabel;
-    lbl_PCManagerAppInfo_AppCopyRight: TcxLabel;
     img_PCManagerAppInfo_Image: TcxImage;
-    grpbx_Info: TcxGroupBox;
     cxButton1: TcxButton;
-    cxLabel7: TcxLabel;
-    cxLabel6: TcxLabel;
-    cxLabel5: TcxLabel;
-    cxLabel4: TcxLabel;
-    cxLabel1: TcxLabel;
-    cxLabel2: TcxLabel;
-    cxLabel8: TcxLabel;
-    cxLabel3: TcxLabel;
-    cxLabel9: TcxLabel;
-    cxLabel10: TcxLabel;
-    lblDBVersion: TcxLabel;
-    lblDataVersion: TcxLabel;
-    cxLabel11: TcxLabel;
-    lbl_PCManagerAppInfo_Server: TcxLabel;
-    cxPageControl1: TcxPageControl;
-    cxTabSheet1: TcxTabSheet;
     cxImageList1: TcxImageList;
-    cxGroupBox1: TcxGroupBox;
+    dxLayoutControl1Group_Root: TdxLayoutGroup;
+    dxLayoutControl1: TdxLayoutControl;
+    dxLayoutGroup3: TdxLayoutGroup;
+    dxLayoutGroup5: TdxLayoutGroup;
+    dxLayoutItem1: TdxLayoutItem;
+    lbl_PCManagerAppInfo_AppName: TdxLayoutLabeledItem;
+    cxLabel7: TdxLayoutLabeledItem;
+    cxLabel5: TdxLayoutLabeledItem;
+    cxLabel9: TdxLayoutLabeledItem;
+    lbl_PCManagerAppInfo_ServerLabel: TdxLayoutLabeledItem;
+    dxLayoutItem7: TdxLayoutItem;
+    dxLayoutGroup1: TdxLayoutGroup;
+    dxLayoutGroup11: TdxLayoutGroup;
+    dxLayoutGroup2: TdxLayoutGroup;
+    dxLayoutGroup12: TdxLayoutGroup;
+    lbl_PCManagerAppInfo_Version: TdxLayoutLabeledItem;
+    dxLayoutGroup13: TdxLayoutGroup;
+    dxLayoutLabeledItem1: TdxLayoutLabeledItem;
+    lbl_PCManagerAppInfo_Revision: TdxLayoutLabeledItem;
+    dxLayoutLabeledItem2: TdxLayoutLabeledItem;
+    lbl_PCManagerAppInfo_AppCopyRight: TdxLayoutLabeledItem;
+    dxLayoutGroup14: TdxLayoutGroup;
+    dxLayoutGroup15: TdxLayoutGroup;
+    dxLayoutLabeledItem4: TdxLayoutLabeledItem;
+    dxLayoutGroup16: TdxLayoutGroup;
+    dxLayoutLabeledItem5: TdxLayoutLabeledItem;
+    dxLayoutGroup17: TdxLayoutGroup;
+    cxLabel1: TdxLayoutLabeledItem;
+    dxLayoutGroup18: TdxLayoutGroup;
+    cxLabel4: TdxLayoutLabeledItem;
+    dxLayoutGroup4: TdxLayoutGroup;
+    dxLayoutLabeledItem3: TdxLayoutLabeledItem;
+    cxLabel6: TdxLayoutLabeledItem;
+    dxLayoutLabeledItem6: TdxLayoutLabeledItem;
+    dxLayoutGroup8: TdxLayoutGroup;
+    dxLayoutGroup6: TdxLayoutGroup;
+    dxLayoutGroup7: TdxLayoutGroup;
+    lblDBVersion: TdxLayoutLabeledItem;
+    dxLayoutLabeledItem8: TdxLayoutLabeledItem;
+    lblDataVersion: TdxLayoutLabeledItem;
+    lbl_PCManagerAppInfo_Server: TdxLayoutLabeledItem;
+    dxLayoutLookAndFeelList1: TdxLayoutLookAndFeelList;
+    dxLayoutCxLookAndFeel1: TdxLayoutCxLookAndFeel;
+    dxLayoutGroup9: TdxLayoutGroup;
     procedure FormShow(Sender: TObject);
     procedure cxButton1Click(Sender: TObject);
   private
@@ -151,32 +171,32 @@ begin
   end;
 
 
-  lbl_PCManagerAppInfo_AppName.Caption:= PCM_Programmname;
-  lbl_PCManagerAppInfo_Version.Caption:= GetAppVersion;
-  lbl_PCManagerAppInfo_Revision.Caption:= GetFileDate;
-  lbl_PCManagerAppInfo_Server.Caption:= dm_PCM.sServer;
+  lbl_PCManagerAppInfo_AppName.CaptionOptions.Text:= '[B]' + PCM_Programmname + '[/B]';
+  lbl_PCManagerAppInfo_Version.CaptionOptions.Text:= GetAppVersion;
+  lbl_PCManagerAppInfo_Revision.CaptionOptions.Text:= GetFileDate;
+  lbl_PCManagerAppInfo_Server.CaptionOptions.Text:= dm_PCM.sServer;
   if (PCM_Logname <> 'PCMLizenzgenerator') and (PCM_Logname <> 'PCMBackup') then
   begin
-    cxLabel1.Caption:= dm_PCM.Firma;
+    cxLabel1.CaptionOptions.Text:= dm_PCM.Firma;
     if not dm_PCM.bDemo then
     begin
-      cxLabel4.Caption:= rs_PCM_Nein;
-      cxLabel6.Caption:= rs_PCM_unbegrenzt;
+      cxLabel4.CaptionOptions.Text:= rs_PCM_Nein;
+      cxLabel6.CaptionOptions.Text:= rs_PCM_unbegrenzt;
     end
     else
     begin
-      cxLabel4.Caption:= rs_PCM_Ja;
-      cxLabel6.Caption:= DateToStr(dm_PCM.dtGueltig);
+      cxLabel4.CaptionOptions.Text:= rs_PCM_Ja;
+      cxLabel6.CaptionOptions.Text:= DateToStr(dm_PCM.dtGueltig);
     end;
   end
   else begin
     cxButton1.Visible:= false;
     dm_PCM.qry_work.SQL.Text:= 'Select Benutzer From manager_lizenz';
     dm_PCM.qry_work.Open;
-    cxLabel1.Caption:= dm_PCM.qry_work.FieldByName('Benutzer').AsString;
+    cxLabel1.CaptionOptions.Text:= dm_PCM.qry_work.FieldByName('Benutzer').AsString;
     dm_PCM.qry_work.close;
-    cxLabel4.Caption:= rs_PCM_Nein;
-    cxLabel6.Caption:= rs_PCM_unbegrenzt;
+    cxLabel4.CaptionOptions.Text:= rs_PCM_Nein;
+    cxLabel6.CaptionOptions.Text:= rs_PCM_unbegrenzt;
   end;
 end;
 

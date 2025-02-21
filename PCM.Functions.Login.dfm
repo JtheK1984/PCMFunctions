@@ -4,8 +4,8 @@ object frm_PCM_Login: Tfrm_PCM_Login
   BorderIcons = []
   BorderStyle = bsSingle
   Caption = 'Anmeldung - PCM ServiceManager'
-  ClientHeight = 434
-  ClientWidth = 315
+  ClientHeight = 458
+  ClientWidth = 316
   Color = clWhite
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -3695,61 +3695,66 @@ object frm_PCM_Login: Tfrm_PCM_Login
   Position = poScreenCenter
   OnShow = FormShow
   TextHeight = 13
-  object pnl_design: TcxGroupBox
+  object dxLayoutControl1: TdxLayoutControl
     Left = 0
     Top = 0
+    Width = 316
+    Height = 458
     Align = alClient
-    PanelStyle.Active = True
-    Style.BorderStyle = ebsNone
     TabOrder = 0
-    Height = 434
-    Width = 315
+    AutoSize = True
+    LayoutLookAndFeel = dxLayoutCxLookAndFeel1
+    ExplicitLeft = 16
+    ExplicitTop = 112
+    ExplicitWidth = 300
+    ExplicitHeight = 250
     object btn_PCManagerLogin_Cancel: TcxButton
-      Left = 162
-      Top = 397
-      Width = 146
+      Left = 161
+      Top = 423
+      Width = 145
       Height = 25
       Caption = 'Abbrechen'
       OptionsImage.ImageIndex = 57
       OptionsImage.Images = dm_PCM.imglst_16x16
-      TabOrder = 3
+      TabOrder = 4
       OnClick = btn_PCManagerLogin_CancelClick
     end
     object btn_PCManagerLogin_Ok: TcxButton
-      Left = 8
-      Top = 397
-      Width = 146
+      Left = 10
+      Top = 423
+      Width = 145
       Height = 25
       Caption = 'Anmelden'
       LookAndFeel.NativeStyle = False
       OptionsImage.ImageIndex = 56
       OptionsImage.Images = dm_PCM.imglst_16x16
-      TabOrder = 2
+      TabOrder = 3
       OnClick = btn_PCManagerLogin_OkClick
     end
     object cmbbx_PCManagerLogin_User: TcxComboBox
-      Left = 87
-      Top = 337
-      Style.BorderStyle = ebsFlat
-      TabOrder = 0
+      Left = 88
+      Top = 348
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 1
       Text = 'cmbbx_PCManagerLogin_User'
-      Width = 221
+      Width = 218
     end
     object edt_PCManagerLogin_Pass: TcxTextEdit
-      Left = 87
-      Top = 364
+      Left = 88
+      Top = 373
       Properties.EchoMode = eemPassword
       Properties.PasswordChar = '*'
-      Style.BorderStyle = ebsFlat
-      TabOrder = 1
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 2
       OnKeyUp = edt_PCManagerLogin_PassKeyUp
-      Width = 221
+      Width = 218
     end
     object img_PCManagerLogin_Image: TcxImage
-      Left = 8
-      Top = 6
+      Left = 10
+      Top = 10
       TabStop = False
-      Enabled = False
       Picture.Data = {
         0D546478536D617274496D61676589504E470D0A1A0A0000000D494844520000
         012C0000012C0806000000797D8E75000000017352474200AECE1CE900000004
@@ -4964,52 +4969,120 @@ object frm_PCM_Login: Tfrm_PCM_Login
         C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3
         C3C3C3C3C3C3C3C3C3C3C3C3C3C323CB10F9FF03EC8DA2FDFE8C3D3100000000
         49454E44AE426082}
-      Style.BorderStyle = ebsNone
-      TabOrder = 4
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 0
       Transparent = True
       Height = 300
-      Width = 300
+      Width = 296
     end
-    object lbl_PCManagerLogin_Info: TcxLabel
-      Left = 8
-      Top = 317
-      Caption = 'Bitte melden Sie sich an:'
-      ParentFont = False
-      Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clWindowText
-      Style.Font.Height = -11
-      Style.Font.Name = 'Tahoma'
-      Style.Font.Style = [fsBold]
-      Style.IsFontAssigned = True
-      Transparent = True
+    object dxLayoutControl1Group_Root: TdxLayoutGroup
+      AlignHorz = ahClient
+      AlignVert = avClient
+      Hidden = True
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = -1
     end
-    object lbl_PCManagerLogin_Pass: TcxLabel
-      Left = 8
-      Top = 367
-      Caption = 'Passwort:'
-      Transparent = True
+    object dxLayoutItem1: TdxLayoutItem
+      Parent = dxLayoutGroup6
+      CaptionOptions.Text = 'img_PCManagerLogin_Image'
+      CaptionOptions.Visible = False
+      Control = img_PCManagerLogin_Image
+      ControlOptions.OriginalHeight = 300
+      ControlOptions.OriginalWidth = 300
+      ControlOptions.ShowBorder = False
+      Index = 0
     end
-    object lbl_PCManagerLogin_User: TcxLabel
-      Left = 8
-      Top = 340
-      Caption = 'Benutzername:'
-      Transparent = True
+    object lbl_PCManagerLogin_Info: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup6
+      CaptionOptions.AlignVert = tavTop
+      CaptionOptions.Text = 'Bitte melden Sie sich an:'
+      Index = 2
     end
-    object pnl_PCManagerLogin_Trenn1: TPanel
-      Left = 8
-      Top = 312
-      Width = 300
-      Height = 1
-      BevelInner = bvLowered
-      TabOrder = 8
+    object dxLayoutItem2: TdxLayoutItem
+      Parent = dxLayoutGroup6
+      CaptionOptions.Text = 'Benutzername:'
+      Control = cmbbx_PCManagerLogin_User
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 221
+      ControlOptions.ShowBorder = False
+      Index = 3
     end
-    object pnl_PCManagerLogin_Trenn2: TPanel
-      Left = 8
-      Top = 390
-      Width = 300
-      Height = 1
-      BevelInner = bvLowered
-      TabOrder = 9
+    object dxLayoutItem3: TdxLayoutItem
+      Parent = dxLayoutGroup6
+      CaptionOptions.Text = 'Passwort:'
+      Control = edt_PCManagerLogin_Pass
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 221
+      ControlOptions.ShowBorder = False
+      Index = 4
+    end
+    object dxLayoutItem4: TdxLayoutItem
+      Parent = dxLayoutGroup5
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'btn_PCManagerLogin_Ok'
+      CaptionOptions.Visible = False
+      Control = btn_PCManagerLogin_Ok
+      ControlOptions.OriginalHeight = 25
+      ControlOptions.OriginalWidth = 361
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem5: TdxLayoutItem
+      Parent = dxLayoutGroup5
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'btn_PCManagerLogin_Cancel'
+      CaptionOptions.Visible = False
+      Control = btn_PCManagerLogin_Cancel
+      ControlOptions.OriginalHeight = 25
+      ControlOptions.OriginalWidth = 361
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutSeparatorItem1: TdxLayoutSeparatorItem
+      Parent = dxLayoutGroup6
+      CaptionOptions.Text = 'Separator'
+      Index = 1
+    end
+    object dxLayoutSeparatorItem2: TdxLayoutSeparatorItem
+      Parent = dxLayoutGroup6
+      CaptionOptions.Text = 'Separator'
+      Index = 5
+    end
+    object dxLayoutGroup5: TdxLayoutGroup
+      Parent = dxLayoutGroup4
+      AlignHorz = ahClient
+      AlignVert = avBottom
+      CaptionOptions.Text = 'New Group'
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutGroup6: TdxLayoutGroup
+      Parent = dxLayoutGroup4
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 5
+      ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutGroup4: TdxLayoutGroup
+      Parent = dxLayoutControl1Group_Root
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      ShowBorder = False
+      Index = 0
+    end
+  end
+  object dxLayoutLookAndFeelList1: TdxLayoutLookAndFeelList
+    object dxLayoutCxLookAndFeel1: TdxLayoutCxLookAndFeel
+      PixelsPerInch = 96
     end
   end
 end

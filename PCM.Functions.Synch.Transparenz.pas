@@ -29,7 +29,6 @@ procedure TfrmTransparenz.Execute(const AParentForm: TForm; const AWidth: Intege
 begin
   Self.Left := AParentForm.Left;
   Self.Top := AParentForm.Top;
-//  Self.Parent := AParentForm;
   Self.Width := AWidth;
   Self.Height := AHeight;
 end;

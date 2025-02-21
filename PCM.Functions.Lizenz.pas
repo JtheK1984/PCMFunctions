@@ -8,7 +8,9 @@ uses
   dxGDIPlusClasses, Vcl.ExtCtrls, cxGraphics, cxLookAndFeels,FireDac.Stan.Param,
   cxLookAndFeelPainters, Vcl.Menus, dxSkinsCore, cxButtons, System.ImageList,System.uitypes,
   Vcl.ImgList,inifiles, dxSkinMetropolisDark, cxControls, cxContainer, cxEdit,
-  cxTextEdit, cxImage, cxLabel, cxGroupBox;
+  cxTextEdit, cxImage, cxLabel, cxGroupBox, dxLayoutcxEditAdapters,
+  dxLayoutControlAdapters, cxClasses, dxLayoutLookAndFeels, dxLayoutContainer,
+  dxLayoutControl;
 
 type
   Tfrm_PCM_Lizenz = class(TForm)
@@ -16,11 +18,19 @@ type
     btn_LizenzCancel: TcxButton;
     edt_kunde: TcxTextEdit;
     edt_lizenz: TcxTextEdit;
-    pnl_main: TcxGroupBox;
-    lbl_Kunde: TcxLabel;
-    lbl_lizenz: TcxLabel;
     img_PCManagerLogin_Image: TcxImage;
-    pnl_Lizenz: TcxGroupBox;
+    dxLayoutControl1Group_Root: TdxLayoutGroup;
+    dxLayoutControl1: TdxLayoutControl;
+    dxLayoutItem1: TdxLayoutItem;
+    dxLayoutGroup5: TdxLayoutGroup;
+    dxLayoutItem2: TdxLayoutItem;
+    dxLayoutItem3: TdxLayoutItem;
+    dxLayoutItem4: TdxLayoutItem;
+    dxLayoutItem5: TdxLayoutItem;
+    dxLayoutLookAndFeelList1: TdxLayoutLookAndFeelList;
+    dxLayoutCxLookAndFeel1: TdxLayoutCxLookAndFeel;
+    dxLayoutGroup8: TdxLayoutGroup;
+    dxLayoutGroup9: TdxLayoutGroup;
     procedure AbbrechenClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure edt_lizenzChange(Sender: TObject);

@@ -9,21 +9,32 @@ uses
   Vcl.ComCtrls, cxGraphics, cxLookAndFeels, cxLookAndFeelPainters, Vcl.Menus,
   cxButtons, System.ImageList, Vcl.ImgList,inifiles,system.uitypes,FireDac.Stan.Param,
   cxControls, cxContainer, cxEdit, cxTextEdit, cxMaskEdit,
-  cxDropDownEdit, cxClasses, cxLabel, cxImage, cxGroupBox;
+  cxDropDownEdit, cxClasses, cxLabel, cxImage, cxGroupBox,
+  dxLayoutcxEditAdapters, dxLayoutControlAdapters, dxLayoutContainer,
+  dxLayoutLookAndFeels, dxLayoutControl;
 
 type
   Tfrm_PCM_Login = class(TForm)
-    pnl_PCManagerLogin_Trenn2: TPanel;
-    pnl_PCManagerLogin_Trenn1: TPanel;
     btn_PCManagerLogin_Ok: TcxButton;
     btn_PCManagerLogin_Cancel: TcxButton;
     cmbbx_PCManagerLogin_User: TcxComboBox;
     edt_PCManagerLogin_Pass: TcxTextEdit;
-    lbl_PCManagerLogin_User: TcxLabel;
-    lbl_PCManagerLogin_Pass: TcxLabel;
-    lbl_PCManagerLogin_Info: TcxLabel;
     img_PCManagerLogin_Image: TcxImage;
-    pnl_design: TcxGroupBox;
+    dxLayoutControl1Group_Root: TdxLayoutGroup;
+    dxLayoutControl1: TdxLayoutControl;
+    dxLayoutItem1: TdxLayoutItem;
+    lbl_PCManagerLogin_Info: TdxLayoutLabeledItem;
+    dxLayoutItem2: TdxLayoutItem;
+    dxLayoutItem3: TdxLayoutItem;
+    dxLayoutItem4: TdxLayoutItem;
+    dxLayoutItem5: TdxLayoutItem;
+    dxLayoutLookAndFeelList1: TdxLayoutLookAndFeelList;
+    dxLayoutCxLookAndFeel1: TdxLayoutCxLookAndFeel;
+    dxLayoutSeparatorItem1: TdxLayoutSeparatorItem;
+    dxLayoutSeparatorItem2: TdxLayoutSeparatorItem;
+    dxLayoutGroup5: TdxLayoutGroup;
+    dxLayoutGroup6: TdxLayoutGroup;
+    dxLayoutGroup4: TdxLayoutGroup;
     procedure btn_PCManagerLogin_CancelClick(Sender: TObject);
     procedure cbx_PCManagerLogin_UserExit(Sender: TObject);
     procedure btn_PCManagerLogin_OkClick(Sender: TObject);

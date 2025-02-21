@@ -7,15 +7,24 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Winapi.WebView2, Winapi.ActiveX,
   Vcl.Edge, system.IOUtils, dxBarBuiltInMenu, cxGraphics, cxControls,
   cxLookAndFeels, cxLookAndFeelPainters, cxContainer, cxEdit,
-  cxGroupBox, cxPC, System.ImageList, Vcl.ImgList, cxImageList,PCM.Browser;
+  cxGroupBox, cxPC, System.ImageList, Vcl.ImgList, cxImageList,PCM.Browser,
+  cxClasses, dxLayoutLookAndFeels, dxLayoutContainer, dxLayoutControl,
+  dxLayoutcxEditAdapters;
 
 type
   Tfrm_Handbuch = class(TForm)
-    cxPageControl1: TcxPageControl;
-    cxTabSheet1: TcxTabSheet;
-    cxTabSheet2: TcxTabSheet;
-    cxGroupBox1: TcxGroupBox;
     cxImageList1: TcxImageList;
+    dxLayoutControl1Group_Root: TdxLayoutGroup;
+    dxLayoutControl1: TdxLayoutControl;
+    dxLayoutGroup2: TdxLayoutGroup;
+    dxLayoutGroup3: TdxLayoutGroup;
+    dxLayoutGroup4: TdxLayoutGroup;
+    dxLayoutLookAndFeelList1: TdxLayoutLookAndFeelList;
+    dxLayoutCxLookAndFeel1: TdxLayoutCxLookAndFeel;
+    dxLayoutItem1: TdxLayoutItem;
+    dxLayoutItem2: TdxLayoutItem;
+    pnl_HTML: TcxGroupBox;
+    pnl_PDF: TcxGroupBox;
     procedure FormShow(Sender: TObject);
     procedure cxPageControl1Change(Sender: TObject);
   private
@@ -59,20 +68,20 @@ end;
 
 procedure Tfrm_Handbuch.cxPageControl1Change(Sender: TObject);
 begin
-  if cxPageControl1.ActivePage = cxTabSheet2 then
+  if dxLayoutGroup2.Itemindex = 0 then
   begin
-    InitializeBrowser(cxTabSheet2);
+    InitializeBrowser(pnl_PDF);
     FWebBrowser.Navigate(TPath.GetDirectoryName(Application.ExeName) + '\' + PCM_Logname + '.pdf');
   end
   else begin
-    InitializeBrowser(cxTabSheet1);
+    InitializeBrowser(pnl_HTML);
     FWebBrowser.Navigate(TPath.GetDirectoryName(Application.ExeName) + '\' + PCM_Logname + '.htm');
   end;
 end;
 
 procedure Tfrm_Handbuch.FormShow(Sender: TObject);
 begin
-  InitializeBrowser(cxTabSheet2);
+  InitializeBrowser(pnl_PDF);
 end;
 
 end.

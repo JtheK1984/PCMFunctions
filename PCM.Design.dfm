@@ -13,430 +13,457 @@ object frm_Design: Tfrm_Design
   Font.Style = []
   OnShow = FormShow
   TextHeight = 13
-  object pnl_right: TcxGroupBox
+  object cxImage1: TVirtualImage
+    Left = 0
+    Top = 22
+    Width = 435
+    Height = 351
+    ImageCollection = ImageCollection1
+    ImageWidth = 0
+    ImageHeight = 0
+    ImageIndex = 55
+    ImageName = 'Windows10 SlateGray'
+  end
+  object dxLayoutControl1: TdxLayoutControl
     Left = 0
     Top = 0
-    Align = alClient
-    PanelStyle.Active = True
-    Style.BorderStyle = ebsNone
-    TabOrder = 0
-    Height = 922
     Width = 1195
-    object AB_pc_Options: TcxPageControl
-      Left = 3
-      Top = 3
-      Width = 1189
-      Height = 916
-      Align = alClient
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 0
-      Properties.ActivePage = E_ts_Personal
-      Properties.CustomButtons.Buttons = <>
-      Properties.Images = cxImageList1
-      ClientRectBottom = 910
-      ClientRectLeft = 2
-      ClientRectRight = 1183
-      ClientRectTop = 28
-      object E_ts_Personal: TcxTabSheet
-        Caption = 'Personalisierung'
-        ImageIndex = 0
-        object cxGroupBox2: TcxGroupBox
-          Left = 0
-          Top = 63
-          Align = alClient
-          Caption = 'Programmdesign'
+    Height = 922
+    Align = alClient
+    TabOrder = 0
+    AutoSize = True
+    LayoutLookAndFeel = dxLayoutCxLookAndFeel1
+    OptionsImage.Images = cxImageList1
+    object cbx_Style: TcxComboBox
+      AlignWithMargins = True
+      Left = 72
+      Top = 175
+      Margins.Left = 8
+      Margins.Top = 2
+      Margins.Bottom = 2
+      AutoSize = False
+      Properties.DropDownListStyle = lsEditFixedList
+      Properties.DropDownRows = 20
+      Properties.Items.Strings = (
+        'Amakrits'
+        'Amethyst Kamri'
+        'Aqua Graphite'
+        'Aqua Light Slate'
+        'Auric'
+        'Calypso'
+        'Carbon'
+        'Charcoal Dark Slate'
+        'Cobalt XEMedia'
+        'Copper'
+        'CopperDark'
+        'Coral'
+        'Cyan Dusk'
+        'Cyan Night'
+        'Diamond'
+        'Emerald Light Slate'
+        'Emerald'
+        'Flat UI Light'
+        'Glossy'
+        'Glow'
+        'Golden Graphite'
+        'Iceberg Classico'
+        'Jet'
+        'Lavender Classico'
+        'Light'
+        'Luna'
+        'Material Oxford Blue SE'
+        'Material Oxford Blue'
+        'Obsidian'
+        'Onyx Blue'
+        'Puerto Rico'
+        'Radiant'
+        'Ruby Graphite'
+        'Sapphire Kamri'
+        'Silver'
+        'Sky'
+        'Slate Classico'
+        'Smokey Quartz Kamri'
+        'Stellar Dark'
+        'Stellar'
+        'Sterling'
+        'Tablet Dark'
+        'Tablet Light'
+        'Turquoise Gray'
+        'Vapor'
+        'Wedgewood Light'
+        'Windows10 BlackPearl'
+        'Windows10 Blue Whale'
+        'Windows10 Blue'
+        'Windows10 Charcoal'
+        'Windows10 Clear Day'
+        'Windows10 Dark'
+        'Windows10 Green'
+        'Windows10 Malibu'
+        'Windows10 Purple'
+        'Windows10 SlateGray'
+        'Windows10'
+        'Windows11 Modern Dark'
+        'Windows11 Modern Light'
+        'Windows11 Polar Dark'
+        'Windows11 Polar Light'
+        'Windows')
+      Properties.OnChange = cbx_StylePropertiesChange
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 2
+      Height = 21
+      Width = 1088
+    end
+    object cbx_Design: TcxComboBox
+      AlignWithMargins = True
+      Left = 72
+      Top = 148
+      Margins.Left = 8
+      Margins.Top = 2
+      Margins.Bottom = 2
+      AutoSize = False
+      Properties.DropDownRows = 20
+      Properties.Items.Strings = (
+        'Basic'
+        'Black'
+        'Blue'
+        'Blueprint'
+        'Caramel'
+        'Coffee'
+        'Darkroom'
+        'DarkSide'
+        'DevExpressDarkStyle'
+        'DevExpressStyle'
+        'Foggy'
+        'GlassOceans'
+        'HighContrast'
+        'iMaginary'
+        'Lilian'
+        'LiquidSky'
+        'LondonLiquidSky'
+        'McSkin'
+        'Metropolis'
+        'MetropolisDark'
+        'MoneyTwins'
+        'Office2007Black'
+        'Office2007Blue'
+        'Office2007Green'
+        'Office2007Pink'
+        'Office2007Silver'
+        'Office2010Black'
+        'Office2010Blue'
+        'Office2010Silver'
+        'Office2013DarkGray'
+        'Office2013LightGray'
+        'Office2013White'
+        'Office2016Colorful'
+        'Office2016Dark'
+        'Office2019Black'
+        'Office2019Colorful'
+        'Office2019DarkGray'
+        'Office2019White'
+        'Pumpkin'
+        'Seven'
+        'SevenClassic'
+        'Sharp'
+        'SharpPlus'
+        'Silver'
+        'Springtime'
+        'Stardust'
+        'Summer2008'
+        'TheAsphaltWorld'
+        'TheBezier'
+        'UserSkin'
+        'Valentine'
+        'VisualStudio2013Blue'
+        'VisualStudio2013Dark'
+        'VisualStudio2013Light'
+        'VS2010'
+        'Whiteprint'
+        'Xmas2008Blue')
+      Properties.OnChange = cbx_DesignPropertiesChange
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 1
+      Height = 21
+      Width = 1088
+    end
+    object dxBarDockControl1: TdxBarDockControl
+      Left = 22
+      Top = 48
+      Width = 1147
+      Height = 63
+      Align = dalNone
+      BarManager = dxBarManager1
+    end
+    object cxGroupBox3: TcxGroupBox
+      AlignWithMargins = True
+      Left = 22
+      Top = 214
+      Margins.Left = 0
+      Margins.Top = 0
+      Margins.Right = 0
+      Margins.Bottom = 0
+      Caption = 'Vorschau'
+      ParentBackground = False
+      ParentColor = False
+      Style.Color = 7566195
+      Style.LookAndFeel.NativeStyle = False
+      Style.TransparentBorder = False
+      StyleDisabled.LookAndFeel.NativeStyle = False
+      TabOrder = 3
+      Height = 682
+      Width = 1147
+      object VirtualImage1: TVirtualImage
+        Left = 3
+        Top = 20
+        Width = 435
+        Height = 351
+        ImageCollection = ImageCollection1
+        ImageWidth = 0
+        ImageHeight = 0
+        ImageIndex = 55
+        ImageName = 'Windows10 SlateGray'
+      end
+      object des_Main: TcxGroupBox
+        Left = 4
+        Top = 48
+        ParentBackground = False
+        Style.BorderStyle = ebsNone
+        Style.Shadow = False
+        TabOrder = 0
+        Height = 321
+        Width = 433
+        object des_ToolButton3: TcxButton
+          Left = 150
+          Top = 0
+          Width = 75
+          Height = 27
+          Caption = 'ToolButton3'
+          SpeedButtonOptions.AllowAllUp = True
+          SpeedButtonOptions.Transparent = True
           TabOrder = 0
-          Height = 819
-          Width = 1181
-          object cxGroupBox3: TcxGroupBox
-            AlignWithMargins = True
-            Left = 3
-            Top = 77
-            Margins.Left = 0
-            Margins.Top = 0
-            Margins.Right = 0
-            Margins.Bottom = 0
-            Align = alClient
-            Caption = 'Vorschau'
-            Style.LookAndFeel.NativeStyle = False
-            StyleDisabled.LookAndFeel.NativeStyle = False
-            TabOrder = 2
-            Height = 733
-            Width = 1175
-            object cxImage1: TVirtualImage
-              Left = 3
-              Top = 20
-              Width = 435
-              Height = 351
-              ImageCollection = ImageCollection1
-              ImageWidth = 0
-              ImageHeight = 0
-              ImageIndex = 55
-              ImageName = 'Windows10 SlateGray'
-            end
-            object des_Main: TcxGroupBox
-              Left = 4
-              Top = 48
-              ParentBackground = False
-              Style.BorderStyle = ebsNone
-              Style.Shadow = False
-              TabOrder = 0
-              Height = 321
-              Width = 433
-              object des_ToolButton3: TcxButton
-                Left = 150
-                Top = 0
-                Width = 75
-                Height = 27
-                Caption = 'ToolButton3'
-                SpeedButtonOptions.AllowAllUp = True
-                SpeedButtonOptions.Transparent = True
-                TabOrder = 0
-                TabStop = False
-              end
-              object des_ToolButton2: TcxButton
-                Left = 75
-                Top = 0
-                Width = 75
-                Height = 27
-                Caption = 'ToolButton2'
-                SpeedButtonOptions.Transparent = True
-                TabOrder = 1
-                TabStop = False
-              end
-              object des_ToolButton1: TcxButton
-                Left = 0
-                Top = 0
-                Width = 75
-                Height = 27
-                Caption = 'ToolButton1'
-                SpeedButtonOptions.Transparent = True
-                TabOrder = 2
-                TabStop = False
-              end
-              object des_Label1: TcxLabel
-                Left = 16
-                Top = 33
-                AutoSize = False
-                Caption = 'Label1'
-                Transparent = True
-                Height = 17
-                Width = 210
-              end
-              object des_Edit1: TcxTextEdit
-                Left = 16
-                Top = 56
-                TabStop = False
-                TabOrder = 4
-                Text = 'Edit1'
-                Width = 367
-              end
-              object des_CheckBox1: TcxCheckBox
-                Left = 16
-                Top = 83
-                TabStop = False
-                AutoSize = False
-                Caption = 'CheckBox1'
-                State = cbsChecked
-                Style.TransparentBorder = False
-                TabOrder = 5
-                Transparent = True
-                Height = 17
-                Width = 86
-              end
-              object des_RadioButton1: TcxRadioButton
-                Left = 16
-                Top = 106
-                Width = 113
-                Height = 17
-                Caption = 'RadioButton1'
-                Checked = True
-                TabOrder = 6
-                TabStop = True
-                Transparent = True
-              end
-              object des_Button1: TcxButton
-                Left = 16
-                Top = 221
-                Width = 72
-                Height = 24
-                Caption = 'Button1'
-                SpeedButtonOptions.AllowAllUp = True
-                SpeedButtonOptions.Transparent = True
-                TabOrder = 7
-                TabStop = False
-              end
-              object des_Button2: TcxButton
-                Left = 106
-                Top = 221
-                Width = 72
-                Height = 24
-                Caption = 'Button2'
-                SpeedButtonOptions.AllowAllUp = True
-                SpeedButtonOptions.Transparent = True
-                TabOrder = 8
-                TabStop = False
-              end
-              object des_Button3: TcxButton
-                Left = 196
-                Top = 221
-                Width = 72
-                Height = 24
-                Caption = 'Button3'
-                SpeedButtonOptions.AllowAllUp = True
-                SpeedButtonOptions.Transparent = True
-                TabOrder = 9
-                TabStop = False
-              end
-              object cxGrid2: TcxGrid
-                Left = 16
-                Top = 129
-                Width = 367
-                Height = 72
-                TabOrder = 10
-                TabStop = False
-                object cxGrid1DBTableView1: TcxGridDBTableView
-                  Navigator.Buttons.CustomButtons = <>
-                  ScrollbarAnnotations.CustomAnnotations = <>
-                  DataController.Summary.DefaultGroupSummaryItems = <>
-                  DataController.Summary.FooterSummaryItems = <>
-                  DataController.Summary.SummaryGroups = <>
-                  OptionsView.GroupByBox = False
-                  object cxGrid1DBTableView1Column1: TcxGridDBColumn
-                    Caption = 'Column1'
-                    DataBinding.IsNullValueType = True
-                    Width = 110
-                  end
-                  object cxGrid1DBTableView1Column2: TcxGridDBColumn
-                    Caption = 'Column2'
-                    DataBinding.IsNullValueType = True
-                    Width = 110
-                  end
-                  object cxGrid1DBTableView1Column3: TcxGridDBColumn
-                    Caption = 'Column1'
-                    DataBinding.IsNullValueType = True
-                    Width = 110
-                  end
-                end
-                object cxGrid1Level1: TcxGridLevel
-                  GridView = cxGrid1DBTableView1
-                end
-              end
-            end
-          end
-          object cxGroupBox4: TcxGroupBox
-            Left = 3
-            Top = 46
-            Align = alTop
-            PanelStyle.Active = True
-            Style.BorderStyle = ebsNone
-            TabOrder = 1
-            Height = 31
-            Width = 1175
-            object cbx_Style: TcxComboBox
-              AlignWithMargins = True
-              Left = 127
-              Top = 5
-              Margins.Left = 8
-              Margins.Top = 2
-              Margins.Bottom = 2
-              Align = alClient
-              Properties.DropDownListStyle = lsEditFixedList
-              Properties.DropDownRows = 20
-              Properties.Items.Strings = (
-                'Amakrits'
-                'Amethyst Kamri'
-                'Aqua Graphite'
-                'Aqua Light Slate'
-                'Auric'
-                'Calypso'
-                'Carbon'
-                'Charcoal Dark Slate'
-                'Cobalt XEMedia'
-                'Copper'
-                'CopperDark'
-                'Coral'
-                'Cyan Dusk'
-                'Cyan Night'
-                'Diamond'
-                'Emerald Light Slate'
-                'Emerald'
-                'Flat UI Light'
-                'Glossy'
-                'Glow'
-                'Golden Graphite'
-                'Iceberg Classico'
-                'Jet'
-                'Lavender Classico'
-                'Light'
-                'Luna'
-                'Material Oxford Blue SE'
-                'Material Oxford Blue'
-                'Obsidian'
-                'Onyx Blue'
-                'Puerto Rico'
-                'Radiant'
-                'Ruby Graphite'
-                'Sapphire Kamri'
-                'Silver'
-                'Sky'
-                'Slate Classico'
-                'Smokey Quartz Kamri'
-                'Stellar Dark'
-                'Stellar'
-                'Sterling'
-                'Tablet Dark'
-                'Tablet Light'
-                'Turquoise Gray'
-                'Vapor'
-                'Wedgewood Light'
-                'Windows10 BlackPearl'
-                'Windows10 Blue Whale'
-                'Windows10 Blue'
-                'Windows10 Charcoal'
-                'Windows10 Clear Day'
-                'Windows10 Dark'
-                'Windows10 Green'
-                'Windows10 Malibu'
-                'Windows10 Purple'
-                'Windows10 SlateGray'
-                'Windows10'
-                'Windows11 Modern Dark'
-                'Windows11 Modern Light'
-                'Windows11 Polar Dark'
-                'Windows11 Polar Light'
-                'Windows')
-              Properties.OnChange = cbx_StylePropertiesChange
-              TabOrder = 1
-              Width = 1042
-            end
-            object cxLabel1: TcxLabel
-              AlignWithMargins = True
-              Left = 10
-              Top = 7
-              Margins.Left = 7
-              Margins.Top = 4
-              Margins.Right = 7
-              Margins.Bottom = 4
-              Align = alLeft
-              AutoSize = False
-              Caption = 'Style:'
-              Transparent = True
-              Height = 17
-              Width = 102
-            end
-          end
-          object cxGroupBox5: TcxGroupBox
-            Left = 3
-            Top = 15
-            Align = alTop
-            PanelStyle.Active = True
-            Style.BorderStyle = ebsNone
-            TabOrder = 0
-            Height = 31
-            Width = 1175
-            object cxLabel2: TcxLabel
-              AlignWithMargins = True
-              Left = 10
-              Top = 7
-              Margins.Left = 7
-              Margins.Top = 4
-              Margins.Right = 7
-              Margins.Bottom = 4
-              Align = alLeft
-              AutoSize = False
-              Caption = 'Design:'
-              Transparent = True
-              Height = 17
-              Width = 102
-            end
-            object cbx_Design: TcxComboBox
-              AlignWithMargins = True
-              Left = 127
-              Top = 5
-              Margins.Left = 8
-              Margins.Top = 2
-              Margins.Bottom = 2
-              Align = alClient
-              Properties.DropDownRows = 20
-              Properties.Items.Strings = (
-                'Basic'
-                'Black'
-                'Blue'
-                'Blueprint'
-                'Caramel'
-                'Coffee'
-                'Darkroom'
-                'DarkSide'
-                'DevExpressDarkStyle'
-                'DevExpressStyle'
-                'Foggy'
-                'GlassOceans'
-                'HighContrast'
-                'iMaginary'
-                'Lilian'
-                'LiquidSky'
-                'LondonLiquidSky'
-                'McSkin'
-                'Metropolis'
-                'MetropolisDark'
-                'MoneyTwins'
-                'Office2007Black'
-                'Office2007Blue'
-                'Office2007Green'
-                'Office2007Pink'
-                'Office2007Silver'
-                'Office2010Black'
-                'Office2010Blue'
-                'Office2010Silver'
-                'Office2013DarkGray'
-                'Office2013LightGray'
-                'Office2013White'
-                'Office2016Colorful'
-                'Office2016Dark'
-                'Office2019Black'
-                'Office2019Colorful'
-                'Office2019DarkGray'
-                'Office2019White'
-                'Pumpkin'
-                'Seven'
-                'SevenClassic'
-                'Sharp'
-                'SharpPlus'
-                'Silver'
-                'Springtime'
-                'Stardust'
-                'Summer2008'
-                'TheAsphaltWorld'
-                'TheBezier'
-                'UserSkin'
-                'Valentine'
-                'VisualStudio2013Blue'
-                'VisualStudio2013Dark'
-                'VisualStudio2013Light'
-                'VS2010'
-                'Whiteprint'
-                'Xmas2008Blue')
-              Properties.OnChange = cbx_DesignPropertiesChange
-              TabOrder = 0
-              Width = 1042
-            end
-          end
+          TabStop = False
         end
-        object dxBarDockControl1: TdxBarDockControl
+        object des_ToolButton2: TcxButton
+          Left = 75
+          Top = 0
+          Width = 75
+          Height = 27
+          Caption = 'ToolButton2'
+          SpeedButtonOptions.Transparent = True
+          TabOrder = 1
+          TabStop = False
+        end
+        object des_ToolButton1: TcxButton
           Left = 0
           Top = 0
-          Width = 1181
-          Height = 63
-          Align = dalTop
-          BarManager = dxBarManager1
+          Width = 75
+          Height = 27
+          Caption = 'ToolButton1'
+          SpeedButtonOptions.Transparent = True
+          TabOrder = 2
+          TabStop = False
+        end
+        object des_Label1: TcxLabel
+          Left = 16
+          Top = 33
+          AutoSize = False
+          Caption = 'Label1'
+          Transparent = True
+          Height = 17
+          Width = 210
+        end
+        object des_Edit1: TcxTextEdit
+          Left = 16
+          Top = 56
+          TabStop = False
+          TabOrder = 4
+          Text = 'Edit1'
+          Width = 367
+        end
+        object des_CheckBox1: TcxCheckBox
+          Left = 16
+          Top = 83
+          TabStop = False
+          AutoSize = False
+          Caption = 'CheckBox1'
+          State = cbsChecked
+          Style.TransparentBorder = False
+          TabOrder = 5
+          Transparent = True
+          Height = 17
+          Width = 86
+        end
+        object des_RadioButton1: TcxRadioButton
+          Left = 16
+          Top = 106
+          Width = 113
+          Height = 17
+          Caption = 'RadioButton1'
+          Checked = True
+          TabOrder = 6
+          TabStop = True
+          Transparent = True
+        end
+        object des_Button1: TcxButton
+          Left = 16
+          Top = 221
+          Width = 72
+          Height = 24
+          Caption = 'Button1'
+          SpeedButtonOptions.AllowAllUp = True
+          SpeedButtonOptions.Transparent = True
+          TabOrder = 7
+          TabStop = False
+        end
+        object des_Button2: TcxButton
+          Left = 106
+          Top = 221
+          Width = 72
+          Height = 24
+          Caption = 'Button2'
+          SpeedButtonOptions.AllowAllUp = True
+          SpeedButtonOptions.Transparent = True
+          TabOrder = 8
+          TabStop = False
+        end
+        object des_Button3: TcxButton
+          Left = 196
+          Top = 221
+          Width = 72
+          Height = 24
+          Caption = 'Button3'
+          SpeedButtonOptions.AllowAllUp = True
+          SpeedButtonOptions.Transparent = True
+          TabOrder = 9
+          TabStop = False
+        end
+        object cxGrid2: TcxGrid
+          Left = 16
+          Top = 129
+          Width = 367
+          Height = 72
+          TabOrder = 10
+          TabStop = False
+          object cxGrid1DBTableView1: TcxGridDBTableView
+            Navigator.Buttons.CustomButtons = <>
+            ScrollbarAnnotations.CustomAnnotations = <>
+            DataController.Summary.DefaultGroupSummaryItems = <>
+            DataController.Summary.FooterSummaryItems = <>
+            DataController.Summary.SummaryGroups = <>
+            OptionsView.GroupByBox = False
+            object cxGrid1DBTableView1Column1: TcxGridDBColumn
+              Caption = 'Column1'
+              DataBinding.IsNullValueType = True
+              Width = 110
+            end
+            object cxGrid1DBTableView1Column2: TcxGridDBColumn
+              Caption = 'Column2'
+              DataBinding.IsNullValueType = True
+              Width = 110
+            end
+            object cxGrid1DBTableView1Column3: TcxGridDBColumn
+              Caption = 'Column1'
+              DataBinding.IsNullValueType = True
+              Width = 110
+            end
+          end
+          object cxGrid1Level1: TcxGridLevel
+            GridView = cxGrid1DBTableView1
+          end
         end
       end
+    end
+    object dxLayoutControl1Group_Root: TdxLayoutGroup
+      AlignHorz = ahClient
+      AlignVert = avClient
+      Hidden = True
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = -1
+    end
+    object dxLayoutGroup2: TdxLayoutGroup
+      Parent = dxLayoutControl1Group_Root
+      AlignHorz = ahClient
+      AlignVert = avClient
+      LayoutDirection = ldTabbed
+      ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutGroup3: TdxLayoutGroup
+      Parent = dxLayoutGroup2
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.ImageIndex = 0
+      CaptionOptions.Text = 'Personalisierung'
+      ItemIndex = 2
+      Index = 0
+    end
+    object dxLayoutItem1: TdxLayoutItem
+      Parent = dxLayoutGroup3
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'dxBarDockControl1'
+      CaptionOptions.Visible = False
+      Control = dxBarDockControl1
+      ControlOptions.AutoColor = True
+      ControlOptions.OriginalHeight = 63
+      ControlOptions.OriginalWidth = 1181
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutGroup5: TdxLayoutGroup
+      Parent = dxLayoutGroup3
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Programmdesign'
+      ItemIndex = 1
+      Index = 1
+    end
+    object dxLayoutItem2: TdxLayoutItem
+      Parent = dxLayoutGroup5
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Design:'
+      Control = cbx_Design
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 1042
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem3: TdxLayoutItem
+      Parent = dxLayoutGroup5
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Style:'
+      Control = cbx_Style
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 1042
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutGroup9: TdxLayoutGroup
+      Parent = dxLayoutGroup3
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'Vorschau'
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 2
+    end
+    object dxLayoutItem4: TdxLayoutItem
+      Parent = dxLayoutGroup9
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = cxGroupBox3
+      ControlOptions.AutoColor = True
+      ControlOptions.OriginalHeight = 441
+      ControlOptions.OriginalWidth = 624
+      ControlOptions.ShowBorder = False
+      Index = 0
     end
   end
   object dxBarManager1: TdxBarManager
@@ -30823,5 +30850,10 @@ object frm_Design: Tfrm_Design
           34F93B1333D1D576E66FDB78F0DD63CCBD85C48824CB3675B2BBA42CBF5F2E11
           9D67BABB065733F81D5F9B5A3501AA25530000000049454E44AE426082}
       end>
+  end
+  object dxLayoutLookAndFeelList1: TdxLayoutLookAndFeelList
+    object dxLayoutCxLookAndFeel1: TdxLayoutCxLookAndFeel
+      PixelsPerInch = 96
+    end
   end
 end

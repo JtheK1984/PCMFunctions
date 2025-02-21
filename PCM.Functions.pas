@@ -11,7 +11,9 @@ uses
   cxGroupBox, cxLabel, cxImageList,IdGlobal, IdHash, IdHashMessageDigest,cxGridDBTableView,cxGridCustomView,
   FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error,
   FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
-  FireDAC.Comp.Client, FireDAC.Comp.DataSet, dxBarBuiltInMenu, cxPC ;
+  FireDAC.Comp.Client, FireDAC.Comp.DataSet, dxBarBuiltInMenu, cxPC,
+  dxLayoutcxEditAdapters, cxClasses, dxLayoutLookAndFeels, dxLayoutContainer,
+  dxLayoutControl ;
 
 type
   TAufgabenThread = class(TThread)
@@ -47,35 +49,47 @@ type
     tmr_GetRamUsage: TTimer;
     prgbr_RamUse: TcxProgressBar;
     prgbr_ProcUse: TcxProgressBar;
-    grpbx_SysInfo_Ram: TcxGroupBox;
-    grpbx_SysInfo_CPU: TcxGroupBox;
-    lbl_RAMFree: TcxLabel;
-    lbl_RAMFree_data: TcxLabel;
-    lbl_RAMTotal: TcxLabel;
-    lbl_RAMTotal_data: TcxLabel;
-    lbl_ProcType: TcxLabel;
-    lbl_ProcType_data: TcxLabel;
-    lbl_ProcSpeed_data: TcxLabel;
-    lbl_ProcCount: TcxLabel;
-    lbl_ProcSpeed: TcxLabel;
-    lbl_ProcCount_data: TcxLabel;
-    grpbx_SysInfo_Sys: TcxGroupBox;
-    grpbx_SysInfo_Resource: TcxGroupBox;
-    lbl_Graphic: TcxLabel;
-    lbl_Graphic_data: TcxLabel;
-    lbl_os: TcxLabel;
-    lbl_os_data: TcxLabel;
-    lbl_PCName: TcxLabel;
-    lbl_PCName_data: TcxLabel;
-    lbl_SysDir: TcxLabel;
-    lbl_SysDir_data: TcxLabel;
-    lbl_ProcUse: TcxLabel;
-    lbl_RamUse: TcxLabel;
-    pnl_design: TcxGroupBox;
-    cxPageControl1: TcxPageControl;
-    cxTabSheet1: TcxTabSheet;
     cxImageList1: TcxImageList;
-    cxGroupBox1: TcxGroupBox;
+    dxLayoutControl1Group_Root: TdxLayoutGroup;
+    dxLayoutControl1: TdxLayoutControl;
+    dxLayoutGroup3: TdxLayoutGroup;
+    dxLayoutGroup5: TdxLayoutGroup;
+    lbl_os: TdxLayoutLabeledItem;
+    lbl_os_data: TdxLayoutLabeledItem;
+    dxLayoutGroup9: TdxLayoutGroup;
+    dxLayoutGroup12: TdxLayoutGroup;
+    dxLayoutGroup15: TdxLayoutGroup;
+    dxLayoutItem7: TdxLayoutItem;
+    lbl_ProcUse: TdxLayoutLabeledItem;
+    dxLayoutItem8: TdxLayoutItem;
+    dxLayoutLookAndFeelList1: TdxLayoutLookAndFeelList;
+    dxLayoutCxLookAndFeel1: TdxLayoutCxLookAndFeel;
+    dxLayoutGroup1: TdxLayoutGroup;
+    dxLayoutGroup2: TdxLayoutGroup;
+    dxLayoutLabeledItem1: TdxLayoutLabeledItem;
+    lbl_PCName_data: TdxLayoutLabeledItem;
+    dxLayoutLabeledItem3: TdxLayoutLabeledItem;
+    lbl_Graphic_data: TdxLayoutLabeledItem;
+    dxLayoutGroup6: TdxLayoutGroup;
+    dxLayoutLabeledItem5: TdxLayoutLabeledItem;
+    lbl_SysDir_data: TdxLayoutLabeledItem;
+    dxLayoutGroup7: TdxLayoutGroup;
+    dxLayoutGroup8: TdxLayoutGroup;
+    dxLayoutGroup18: TdxLayoutGroup;
+    dxLayoutGroup19: TdxLayoutGroup;
+    dxLayoutLabeledItem2: TdxLayoutLabeledItem;
+    lbl_ProcSpeed_data: TdxLayoutLabeledItem;
+    dxLayoutLabeledItem6: TdxLayoutLabeledItem;
+    lbl_ProcCount_data: TdxLayoutLabeledItem;
+    dxLayoutLabeledItem8: TdxLayoutLabeledItem;
+    lbl_ProcType_data: TdxLayoutLabeledItem;
+    dxLayoutGroup10: TdxLayoutGroup;
+    dxLayoutGroup11: TdxLayoutGroup;
+    dxLayoutLabeledItem4: TdxLayoutLabeledItem;
+    lbl_RAMFree_data: TdxLayoutLabeledItem;
+    dxLayoutLabeledItem9: TdxLayoutLabeledItem;
+    lbl_RAMTotal_data: TdxLayoutLabeledItem;
+    dxLayoutGroup13: TdxLayoutGroup;
     procedure tmr_GetRamUsageTimer(Sender: TObject);
     procedure FormShow(Sender: TObject);
   private

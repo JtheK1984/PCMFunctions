@@ -14,15 +14,33 @@ uses
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGridCustomView,
   cxGrid, Vcl.StdCtrls, cxRadioGroup, cxCheckBox, cxTextEdit, cxLabel,
   cxButtons, dxGDIPlusClasses, cxImage, cxGroupBox, cxPC,inifiles, Vcl.Themes,system.UITypes,
-  Vcl.VirtualImage, Vcl.BaseImageCollection, Vcl.ImageCollection;
+  Vcl.VirtualImage, Vcl.BaseImageCollection, Vcl.ImageCollection,
+  dxLayoutContainer, dxLayoutcxEditAdapters, dxLayoutControl,
+  dxLayoutLookAndFeels;
 
 type
   Tfrm_Design = class(TForm)
-    pnl_right: TcxGroupBox;
-    AB_pc_Options: TcxPageControl;
-    E_ts_Personal: TcxTabSheet;
-    cxGroupBox2: TcxGroupBox;
+    cbx_Style: TcxComboBox;
+    cbx_Design: TcxComboBox;
+    dxBarManager1: TdxBarManager;
+    btn_OptionSaveUser: TdxBarLargeButton;
+    dxBarManager1Bar1: TdxBar;
+    cxButton1: TdxBarLargeButton;
+    dxBarDockControl1: TdxBarDockControl;
+    ImageCollection1: TImageCollection;
+    cxImage1: TVirtualImage;
+    cxImageList1: TcxImageList;
+    dxLayoutControl1Group_Root: TdxLayoutGroup;
+    dxLayoutControl1: TdxLayoutControl;
+    dxLayoutGroup2: TdxLayoutGroup;
+    dxLayoutGroup3: TdxLayoutGroup;
+    dxLayoutItem1: TdxLayoutItem;
+    dxLayoutGroup5: TdxLayoutGroup;
+    dxLayoutItem2: TdxLayoutItem;
+    dxLayoutItem3: TdxLayoutItem;
+    dxLayoutGroup9: TdxLayoutGroup;
     cxGroupBox3: TcxGroupBox;
+    VirtualImage1: TVirtualImage;
     des_Main: TcxGroupBox;
     des_ToolButton3: TcxButton;
     des_ToolButton2: TcxButton;
@@ -40,20 +58,9 @@ type
     cxGrid1DBTableView1Column2: TcxGridDBColumn;
     cxGrid1DBTableView1Column3: TcxGridDBColumn;
     cxGrid1Level1: TcxGridLevel;
-    cxGroupBox4: TcxGroupBox;
-    cbx_Style: TcxComboBox;
-    cxLabel1: TcxLabel;
-    cxGroupBox5: TcxGroupBox;
-    cxLabel2: TcxLabel;
-    cbx_Design: TcxComboBox;
-    dxBarManager1: TdxBarManager;
-    btn_OptionSaveUser: TdxBarLargeButton;
-    dxBarManager1Bar1: TdxBar;
-    cxButton1: TdxBarLargeButton;
-    dxBarDockControl1: TdxBarDockControl;
-    ImageCollection1: TImageCollection;
-    cxImage1: TVirtualImage;
-    cxImageList1: TcxImageList;
+    dxLayoutItem4: TdxLayoutItem;
+    dxLayoutLookAndFeelList1: TdxLayoutLookAndFeelList;
+    dxLayoutCxLookAndFeel1: TdxLayoutCxLookAndFeel;
     procedure cxButton1Click(Sender: TObject);
     procedure cbx_DesignPropertiesChange(Sender: TObject);
     procedure cbx_StylePropertiesChange(Sender: TObject);

@@ -33,12 +33,9 @@ object frm_User: Tfrm_User
     TabOrder = 0
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
     OptionsImage.Images = dm_PCM.imglst_16x16
-    ExplicitTop = 359
-    ExplicitWidth = 1012
-    ExplicitHeight = 300
     object cxGrid3: TcxGrid
-      Left = 22
-      Top = 260
+      Left = 10000
+      Top = 10000
       Width = 1089
       Height = 373
       Font.Charset = DEFAULT_CHARSET
@@ -49,6 +46,7 @@ object frm_User: Tfrm_User
       ParentFont = False
       TabOrder = 9
       TabStop = False
+      Visible = False
       LockedStateImageOptions.Effect = lsieDark
       object cxGridDBTableView3: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
@@ -106,7 +104,7 @@ object frm_User: Tfrm_User
       end
     end
     object edt_OptionRight: TcxDBTextEdit
-      Left = 10397
+      Left = 10000
       Top = 10000
       DataBinding.DataField = 'Bezeichnung'
       DataBinding.DataSource = dsRechte
@@ -122,11 +120,11 @@ object frm_User: Tfrm_User
       TabOrder = 11
       Visible = False
       OnExit = btn_OptionSaveRightClick
-      Width = 177
+      Width = 962
     end
     object cxDBLookupComboBox21: TcxDBLookupComboBox
-      Left = 10000
-      Top = 10000
+      Left = 140
+      Top = 486
       DataBinding.DataField = 'Vk_Vokabeltest'
       DataBinding.DataSource = dsRechte
       ParentFont = False
@@ -146,12 +144,11 @@ object frm_User: Tfrm_User
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 36
-      Visible = False
-      Width = 415
+      Width = 424
     end
     object cxDBLookupComboBox18: TcxDBLookupComboBox
-      Left = 10000
-      Top = 10000
+      Left = 140
+      Top = 461
       DataBinding.DataField = 'vk_Vokabeluebersicht'
       DataBinding.DataSource = dsRechte
       ParentFont = False
@@ -171,12 +168,11 @@ object frm_User: Tfrm_User
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 35
-      Visible = False
-      Width = 415
+      Width = 424
     end
     object cxDBLookupComboBox20: TcxDBLookupComboBox
-      Left = 10000
-      Top = 10000
+      Left = 679
+      Top = 461
       DataBinding.DataField = 'Vk_Vokabeltest'
       DataBinding.DataSource = dsRechte
       ParentFont = False
@@ -196,14 +192,13 @@ object frm_User: Tfrm_User
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 37
-      Visible = False
-      Width = 415
+      Width = 423
     end
     object cxGrid1: TcxGrid
-      Left = 10000
-      Top = 10000
+      Left = 22
+      Top = 523
       Width = 1089
-      Height = 150
+      Height = 110
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -212,7 +207,6 @@ object frm_User: Tfrm_User
       ParentFont = False
       TabOrder = 38
       TabStop = False
-      Visible = False
       LockedStateImageOptions.Effect = lsieDark
       object cxGridDBTableView1: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
@@ -265,8 +259,8 @@ object frm_User: Tfrm_User
       end
     end
     object cxDBCheckBox3: TcxDBCheckBox
-      Left = 90
-      Top = 223
+      Left = 10000
+      Top = 10000
       Hint = 'Zugriff auf PCM-Rest-API'
       AutoSize = False
       BiDiMode = bdLeftToRight
@@ -285,14 +279,14 @@ object frm_User: Tfrm_User
       Style.IsFontAssigned = True
       TabOrder = 4
       Transparent = True
+      Visible = False
       Height = 19
       Width = 476
     end
     object edt_OptionName: TcxDBTextEdit
-      Left = 90
-      Top = 173
+      Left = 10000
+      Top = 10000
       Hint = 'Vorname des Benutzers'
-      Align = alClient
       DataBinding.DataField = 'Vorname'
       DataBinding.DataSource = dsBenutzer
       ParentFont = False
@@ -305,14 +299,14 @@ object frm_User: Tfrm_User
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 2
+      Visible = False
       OnExit = btn_OptionSaveUserClick
       Width = 476
     end
     object edt_OptionUser: TcxDBTextEdit
-      Left = 90
-      Top = 148
+      Left = 10000
+      Top = 10000
       Hint = 'Benutzername des Benutzers'
-      Align = alClient
       DataBinding.DataField = 'Benutzer'
       DataBinding.DataSource = dsBenutzer
       ParentFont = False
@@ -325,14 +319,14 @@ object frm_User: Tfrm_User
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 1
+      Visible = False
       OnExit = btn_OptionSaveUserClick
       Width = 476
     end
     object edt_OptionSurName: TcxDBTextEdit
-      Left = 90
-      Top = 198
+      Left = 10000
+      Top = 10000
       Hint = 'Nachname des Benutzers'
-      Align = alClient
       AutoSize = False
       DataBinding.DataField = 'Nachname'
       DataBinding.DataSource = dsBenutzer
@@ -346,13 +340,14 @@ object frm_User: Tfrm_User
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 3
+      Visible = False
       OnExit = btn_OptionSaveUserClick
       Height = 19
       Width = 476
     end
     object btn_OptionChangePassword: TcxButton
-      Left = 982
-      Top = 148
+      Left = 10000
+      Top = 10000
       Width = 120
       Height = 21
       Caption = 'Passwort '#228'ndern'
@@ -360,6 +355,7 @@ object frm_User: Tfrm_User
       OptionsImage.Images = dm_PCM.imglst_16x16
       TabOrder = 6
       TabStop = False
+      Visible = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -369,8 +365,8 @@ object frm_User: Tfrm_User
       OnClick = btn_OptionChangePasswordClick
     end
     object cxDBCheckBox2: TcxDBCheckBox
-      Left = 677
-      Top = 200
+      Left = 10000
+      Top = 10000
       Hint = 'automatisches Login des Benutzers '
       BiDiMode = bdLeftToRight
       Caption = 'automatisches Login (Windows-Benutzer)'
@@ -388,10 +384,11 @@ object frm_User: Tfrm_User
       Style.IsFontAssigned = True
       TabOrder = 8
       Transparent = True
+      Visible = False
     end
     object edt_OptionPassword: TcxDBTextEdit
-      Left = 627
-      Top = 148
+      Left = 10000
+      Top = 10000
       Hint = 'Passwort des Benutzers'
       AutoSize = False
       DataBinding.DataField = 'Passwort'
@@ -408,14 +405,15 @@ object frm_User: Tfrm_User
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 5
+      Visible = False
       OnEnter = edt_OptionPasswordEnter
       OnExit = edt_OptionPasswordExit
       Height = 19
       Width = 349
     end
     object lucbx_OptionRights: TcxDBLookupComboBox
-      Left = 627
-      Top = 175
+      Left = 10000
+      Top = 10000
       Hint = 'Recht des Benutzers'
       DataBinding.DataField = 'ID_Rechte'
       DataBinding.DataSource = dsBenutzer
@@ -435,18 +433,11 @@ object frm_User: Tfrm_User
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 7
+      Visible = False
       OnExit = btn_OptionSaveUserClick
       Width = 475
     end
     object dxBarDockControl1: TdxBarDockControl
-      Left = 22
-      Top = 48
-      Width = 1089
-      Height = 63
-      Align = dalNone
-      BarManager = dxBarManager1
-    end
-    object dxBarDockControl2: TdxBarDockControl
       Left = 10000
       Top = 10000
       Width = 1089
@@ -455,8 +446,16 @@ object frm_User: Tfrm_User
       BarManager = dxBarManager1
       Visible = False
     end
+    object dxBarDockControl2: TdxBarDockControl
+      Left = 22
+      Top = 48
+      Width = 1089
+      Height = 63
+      Align = dalNone
+      BarManager = dxBarManager1
+    end
     object lucbx_Backup: TcxDBLookupComboBox
-      Left = 10397
+      Left = 10000
       Top = 10000
       DataBinding.DataField = 'Konfiguration'
       DataBinding.DataSource = dsRechte
@@ -478,10 +477,10 @@ object frm_User: Tfrm_User
       Style.IsFontAssigned = True
       TabOrder = 13
       Visible = False
-      Width = 31
+      Width = 423
     end
     object lucbx_Option: TcxDBLookupComboBox
-      Left = 10397
+      Left = 10000
       Top = 10000
       DataBinding.DataField = 'Benutzer'
       DataBinding.DataSource = dsRechte
@@ -503,10 +502,10 @@ object frm_User: Tfrm_User
       Style.IsFontAssigned = True
       TabOrder = 12
       Visible = False
-      Width = 31
+      Width = 424
     end
     object cxDBCheckBox1: TcxDBCheckBox
-      Left = 10397
+      Left = 10000
       Top = 10000
       AutoSize = False
       BiDiMode = bdLeftToRight
@@ -527,10 +526,10 @@ object frm_User: Tfrm_User
       Transparent = True
       Visible = False
       Height = 19
-      Width = 286
+      Width = 1071
     end
     object cxDBLookupComboBox22: TcxDBLookupComboBox
-      Left = 10397
+      Left = 10000
       Top = 10000
       DataBinding.DataField = 'dm_Archiv'
       DataBinding.DataSource = dsRechte
@@ -552,11 +551,11 @@ object frm_User: Tfrm_User
       Style.IsFontAssigned = True
       TabOrder = 15
       Visible = False
-      Width = 177
+      Width = 945
     end
     object cxDBLookupComboBox23: TcxDBLookupComboBox
-      Left = 10397
-      Top = 10000
+      Left = 140
+      Top = 218
       DataBinding.DataField = 'dm_Archiv'
       DataBinding.DataSource = dsRechte
       ParentFont = False
@@ -576,8 +575,7 @@ object frm_User: Tfrm_User
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 16
-      Visible = False
-      Width = 177
+      Width = 962
     end
     object cxDBLookupComboBox1: TcxDBLookupComboBox
       Left = 10000
@@ -602,11 +600,11 @@ object frm_User: Tfrm_User
       Style.IsFontAssigned = True
       TabOrder = 17
       Visible = False
-      Width = 31
+      Width = 415
     end
     object cxDBLookupComboBox3: TcxDBLookupComboBox
-      Left = 10397
-      Top = 10262
+      Left = 10000
+      Top = 10000
       AutoSize = False
       DataBinding.DataField = 'ma_Kalender'
       DataBinding.DataSource = dsRechte
@@ -629,11 +627,11 @@ object frm_User: Tfrm_User
       TabOrder = 18
       Visible = False
       Height = 19
-      Width = 31
+      Width = 415
     end
     object cxDBLookupComboBox5: TcxDBLookupComboBox
-      Left = 10397
-      Top = 10262
+      Left = 10000
+      Top = 10000
       DataBinding.DataField = 'ma_Stundenplan'
       DataBinding.DataSource = dsRechte
       ParentFont = False
@@ -654,11 +652,11 @@ object frm_User: Tfrm_User
       Style.IsFontAssigned = True
       TabOrder = 19
       Visible = False
-      Width = 31
+      Width = 415
     end
     object cxDBLookupComboBox7: TcxDBLookupComboBox
-      Left = 10397
-      Top = 10262
+      Left = 10000
+      Top = 10000
       DataBinding.DataField = 'ma_Email'
       DataBinding.DataSource = dsRechte
       ParentFont = False
@@ -679,11 +677,11 @@ object frm_User: Tfrm_User
       Style.IsFontAssigned = True
       TabOrder = 20
       Visible = False
-      Width = 31
+      Width = 415
     end
     object cxDBLookupComboBox9: TcxDBLookupComboBox
-      Left = 10397
-      Top = 10262
+      Left = 10000
+      Top = 10000
       DataBinding.DataField = 'ma_Password'
       DataBinding.DataSource = dsRechte
       ParentFont = False
@@ -704,11 +702,11 @@ object frm_User: Tfrm_User
       Style.IsFontAssigned = True
       TabOrder = 21
       Visible = False
-      Width = 31
+      Width = 415
     end
     object cxDBLookupComboBox10: TcxDBLookupComboBox
-      Left = 10397
-      Top = 10262
+      Left = 10000
+      Top = 10000
       AutoSize = False
       DataBinding.DataField = 'ma_Ausgaben'
       DataBinding.DataSource = dsRechte
@@ -731,11 +729,11 @@ object frm_User: Tfrm_User
       TabOrder = 26
       Visible = False
       Height = 19
-      Width = 31
+      Width = 415
     end
     object cxDBLookupComboBox2: TcxDBLookupComboBox
-      Left = 10397
-      Top = 10262
+      Left = 10000
+      Top = 10000
       AutoSize = False
       DataBinding.DataField = 'ma_Kalender'
       DataBinding.DataSource = dsRechte
@@ -758,11 +756,11 @@ object frm_User: Tfrm_User
       TabOrder = 22
       Visible = False
       Height = 19
-      Width = 31
+      Width = 415
     end
     object cxDBLookupComboBox4: TcxDBLookupComboBox
-      Left = 10397
-      Top = 10262
+      Left = 10000
+      Top = 10000
       AutoSize = False
       DataBinding.DataField = 'ma_Email'
       DataBinding.DataSource = dsRechte
@@ -785,11 +783,11 @@ object frm_User: Tfrm_User
       TabOrder = 23
       Visible = False
       Height = 19
-      Width = 31
+      Width = 415
     end
     object cxDBLookupComboBox6: TcxDBLookupComboBox
-      Left = 10397
-      Top = 10262
+      Left = 10000
+      Top = 10000
       AutoSize = False
       DataBinding.DataField = 'ma_Serials'
       DataBinding.DataSource = dsRechte
@@ -812,11 +810,11 @@ object frm_User: Tfrm_User
       TabOrder = 24
       Visible = False
       Height = 19
-      Width = 31
+      Width = 415
     end
     object cxDBLookupComboBox8: TcxDBLookupComboBox
-      Left = 10397
-      Top = 10262
+      Left = 10000
+      Top = 10000
       DataBinding.DataField = 'ma_Verfuegung'
       DataBinding.DataSource = dsRechte
       ParentFont = False
@@ -837,11 +835,11 @@ object frm_User: Tfrm_User
       Style.IsFontAssigned = True
       TabOrder = 25
       Visible = False
-      Width = 31
+      Width = 415
     end
     object cxDBLookupComboBox11: TcxDBLookupComboBox
       Left = 10000
-      Top = 10127
+      Top = 10000
       AutoSize = False
       DataBinding.DataField = 'mc_Audioplayer'
       DataBinding.DataSource = dsRechte
@@ -864,11 +862,11 @@ object frm_User: Tfrm_User
       TabOrder = 27
       Visible = False
       Height = 19
-      Width = 438
+      Width = 415
     end
     object cxDBLookupComboBox13: TcxDBLookupComboBox
       Left = 10000
-      Top = 10127
+      Top = 10000
       DataBinding.DataField = 'mc_Webradio'
       DataBinding.DataSource = dsRechte
       ParentFont = False
@@ -889,11 +887,11 @@ object frm_User: Tfrm_User
       Style.IsFontAssigned = True
       TabOrder = 28
       Visible = False
-      Width = 438
+      Width = 415
     end
     object cxDBLookupComboBox12: TcxDBLookupComboBox
       Left = 10000
-      Top = 10127
+      Top = 10000
       DataBinding.DataField = 'mc_Videoplayer'
       DataBinding.DataSource = dsRechte
       ParentFont = False
@@ -914,11 +912,11 @@ object frm_User: Tfrm_User
       Style.IsFontAssigned = True
       TabOrder = 29
       Visible = False
-      Width = 438
+      Width = 415
     end
     object cxDBLookupComboBox14: TcxDBLookupComboBox
       Left = 10000
-      Top = 10127
+      Top = 10000
       DataBinding.DataField = 'mc_Fotos'
       DataBinding.DataSource = dsRechte
       ParentFont = False
@@ -939,10 +937,10 @@ object frm_User: Tfrm_User
       Style.IsFontAssigned = True
       TabOrder = 30
       Visible = False
-      Width = 438
+      Width = 415
     end
     object cxDBLookupComboBox15: TcxDBLookupComboBox
-      Left = 10397
+      Left = 10000
       Top = 10000
       DataBinding.DataField = 'mm_MP3'
       DataBinding.DataSource = dsRechte
@@ -964,11 +962,11 @@ object frm_User: Tfrm_User
       Style.IsFontAssigned = True
       TabOrder = 31
       Visible = False
-      Width = 177
+      Width = 945
     end
     object cxDBLookupComboBox16: TcxDBLookupComboBox
       Left = 10000
-      Top = 10127
+      Top = 10000
       AutoSize = False
       DataBinding.DataField = 'nr_Noten'
       DataBinding.DataSource = dsRechte
@@ -991,7 +989,7 @@ object frm_User: Tfrm_User
       TabOrder = 32
       Visible = False
       Height = 19
-      Width = 991
+      Width = 962
     end
     object cxDBLookupComboBox17: TcxDBLookupComboBox
       Left = 10000
@@ -1059,6 +1057,7 @@ object frm_User: Tfrm_User
       AlignVert = avClient
       CaptionOptions.Text = 'New Group'
       SizeOptions.Height = 800
+      ItemIndex = 1
       LayoutDirection = ldTabbed
       Locked = True
       ShowBorder = False
@@ -1071,7 +1070,7 @@ object frm_User: Tfrm_User
       AlignVert = avClient
       CaptionOptions.ImageIndex = 1
       CaptionOptions.Text = 'Benutzer'
-      ItemIndex = 1
+      ItemIndex = 2
       TabbedOptions.HotTrack = True
       TabbedOptions.MultiLineTabCaptions = True
       TabbedOptions.ShowFrame = True
@@ -1083,7 +1082,7 @@ object frm_User: Tfrm_User
       AlignVert = avClient
       CaptionOptions.ImageIndex = 2
       CaptionOptions.Text = 'Rechte'
-      ItemIndex = 9
+      ItemIndex = 10
       Index = 1
     end
     object lagrp_SucheFilter: TdxLayoutGroup
@@ -1102,11 +1101,10 @@ object frm_User: Tfrm_User
       CaptionOptions.Text = '[B]Rechte Allgemein[/B]'
       ButtonOptions.ShowExpandButton = True
       Expanded = False
-      ItemIndex = 1
       Index = 1
     end
     object dxLayoutItem4: TdxLayoutItem
-      Parent = dxLayoutAutoCreatedGroup3
+      Parent = dxLayoutGroup19
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'Benutzer:'
@@ -1117,8 +1115,9 @@ object frm_User: Tfrm_User
       Index = 0
     end
     object dxLayoutItem5: TdxLayoutItem
-      Parent = dxLayoutAutoCreatedGroup3
+      Parent = dxLayoutGroup19
       AlignHorz = ahClient
+      AlignVert = avTop
       CaptionOptions.Text = 'Vorname:'
       Control = edt_OptionName
       ControlOptions.OriginalHeight = 19
@@ -1127,8 +1126,9 @@ object frm_User: Tfrm_User
       Index = 1
     end
     object dxLayoutItem6: TdxLayoutItem
-      Parent = dxLayoutAutoCreatedGroup3
+      Parent = dxLayoutGroup19
       AlignHorz = ahClient
+      AlignVert = avTop
       CaptionOptions.Text = 'Nachname:'
       Control = edt_OptionSurName
       ControlOptions.OriginalHeight = 19
@@ -1137,8 +1137,9 @@ object frm_User: Tfrm_User
       Index = 2
     end
     object dxLayoutItem7: TdxLayoutItem
-      Parent = dxLayoutAutoCreatedGroup3
+      Parent = dxLayoutGroup19
       AlignHorz = ahClient
+      AlignVert = avTop
       Offsets.Left = 59
       CaptionOptions.Text = 'cxDBCheckBox3'
       CaptionOptions.Visible = False
@@ -1149,7 +1150,7 @@ object frm_User: Tfrm_User
       Index = 3
     end
     object dxLayoutItem8: TdxLayoutItem
-      Parent = dxLayoutAutoCreatedGroup1
+      Parent = dxLayoutGroup17
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'Password:'
@@ -1160,8 +1161,9 @@ object frm_User: Tfrm_User
       Index = 0
     end
     object dxLayoutItem9: TdxLayoutItem
-      Parent = dxLayoutAutoCreatedGroup2
+      Parent = dxLayoutGroup18
       AlignHorz = ahClient
+      AlignVert = avTop
       CaptionOptions.Text = 'Recht:'
       Control = lucbx_OptionRights
       ControlOptions.OriginalHeight = 19
@@ -1169,21 +1171,10 @@ object frm_User: Tfrm_User
       ControlOptions.ShowBorder = False
       Index = 1
     end
-    object dxLayoutAutoCreatedGroup2: TdxLayoutAutoCreatedGroup
-      Parent = lagrp_SucheFilter
-      AlignHorz = ahClient
-      AlignVert = avClient
-      Index = 1
-    end
-    object dxLayoutAutoCreatedGroup3: TdxLayoutAutoCreatedGroup
-      Parent = lagrp_SucheFilter
+    object dxLayoutItem10: TdxLayoutItem
+      Parent = dxLayoutGroup18
       AlignHorz = ahClient
       AlignVert = avTop
-      Index = 0
-    end
-    object dxLayoutItem10: TdxLayoutItem
-      Parent = dxLayoutAutoCreatedGroup2
-      AlignHorz = ahClient
       Offsets.Left = 105
       CaptionOptions.Text = 'cxDBCheckBox2'
       CaptionOptions.Visible = False
@@ -1194,8 +1185,9 @@ object frm_User: Tfrm_User
       Index = 2
     end
     object dxLayoutItem11: TdxLayoutItem
-      Parent = dxLayoutAutoCreatedGroup1
+      Parent = dxLayoutGroup17
       AlignHorz = ahRight
+      AlignVert = avTop
       CaptionOptions.Text = 'btn_OptionChangePassword'
       CaptionOptions.Visible = False
       Control = btn_OptionChangePassword
@@ -1218,18 +1210,12 @@ object frm_User: Tfrm_User
     object dxLayoutItem2: TdxLayoutItem
       Parent = lagrp_Mitarbeiter
       AlignHorz = ahClient
+      AlignVert = avTop
       Control = dxBarDockControl2
       ControlOptions.AutoColor = True
       ControlOptions.OriginalHeight = 63
       ControlOptions.OriginalWidth = 500
       ControlOptions.ShowBorder = False
-      Index = 0
-    end
-    object dxLayoutAutoCreatedGroup1: TdxLayoutAutoCreatedGroup
-      Parent = dxLayoutAutoCreatedGroup2
-      AlignHorz = ahClient
-      AlignVert = avTop
-      LayoutDirection = ldHorizontal
       Index = 0
     end
     object dxLayoutItem3: TdxLayoutItem
@@ -1245,6 +1231,7 @@ object frm_User: Tfrm_User
     object dxLayoutItem12: TdxLayoutItem
       Parent = dxLayoutGroup2
       AlignHorz = ahClient
+      AlignVert = avTop
       CaptionOptions.Text = 'Bezeichnung:'
       Control = edt_OptionRight
       ControlOptions.OriginalHeight = 19
@@ -1253,8 +1240,9 @@ object frm_User: Tfrm_User
       Index = 0
     end
     object dxLayoutItem13: TdxLayoutItem
-      Parent = dxLayoutAutoCreatedGroup4
+      Parent = dxLayoutGroup16
       AlignHorz = ahClient
+      AlignVert = avTop
       CaptionOptions.Text = 'Optionen:'
       CaptionOptions.Width = 105
       Control = lucbx_Backup
@@ -1264,7 +1252,7 @@ object frm_User: Tfrm_User
       Index = 1
     end
     object dxLayoutItem14: TdxLayoutItem
-      Parent = dxLayoutAutoCreatedGroup4
+      Parent = dxLayoutGroup16
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'Benutzerverwaltung:'
@@ -1278,6 +1266,7 @@ object frm_User: Tfrm_User
     object dxLayoutItem15: TdxLayoutItem
       Parent = dxLayoutGroup2
       AlignHorz = ahClient
+      AlignVert = avTop
       CaptionOptions.Visible = False
       Control = cxDBCheckBox1
       ControlOptions.OriginalHeight = 19
@@ -1285,15 +1274,10 @@ object frm_User: Tfrm_User
       ControlOptions.ShowBorder = False
       Index = 2
     end
-    object dxLayoutAutoCreatedGroup4: TdxLayoutAutoCreatedGroup
-      Parent = dxLayoutGroup2
-      AlignVert = avTop
-      LayoutDirection = ldHorizontal
-      Index = 1
-    end
     object dxLayoutGroup3: TdxLayoutGroup
       Parent = lagrp_Mitarbeiter
       AlignHorz = ahClient
+      AlignVert = avTop
       CaptionOptions.Text = '[B]Rechte PCM - Archiv[/B]'
       ButtonOptions.ShowExpandButton = True
       Expanded = False
@@ -1302,14 +1286,15 @@ object frm_User: Tfrm_User
     object dxLayoutGroup4: TdxLayoutGroup
       Parent = lagrp_Mitarbeiter
       AlignHorz = ahClient
+      AlignVert = avTop
       CaptionOptions.Text = '[B]Rechte PCM - Backup[/B]'
       ButtonOptions.ShowExpandButton = True
-      Expanded = False
       Index = 3
     end
     object dxLayoutGroup5: TdxLayoutGroup
       Parent = lagrp_Mitarbeiter
       AlignHorz = ahClient
+      AlignVert = avTop
       CaptionOptions.Text = '[B]Rechte PCM - Manager[/B]'
       ButtonOptions.ShowExpandButton = True
       Expanded = False
@@ -1319,6 +1304,8 @@ object frm_User: Tfrm_User
     end
     object dxLayoutGroup7: TdxLayoutGroup
       Parent = lagrp_Mitarbeiter
+      AlignHorz = ahClient
+      AlignVert = avTop
       CaptionOptions.Text = '[B]Rechte PCM - MP3Manager[/B]'
       ButtonOptions.ShowExpandButton = True
       Expanded = False
@@ -1327,6 +1314,7 @@ object frm_User: Tfrm_User
     object dxLayoutGroup8: TdxLayoutGroup
       Parent = lagrp_Mitarbeiter
       AlignHorz = ahClient
+      AlignVert = avTop
       CaptionOptions.Text = '[B]Rechte PCM - Mediacenter[/B]'
       ButtonOptions.ShowExpandButton = True
       Expanded = False
@@ -1336,6 +1324,8 @@ object frm_User: Tfrm_User
     end
     object dxLayoutItem16: TdxLayoutItem
       Parent = dxLayoutGroup3
+      AlignHorz = ahClient
+      AlignVert = avTop
       CaptionOptions.Text = 'Archiv:'
       Control = cxDBLookupComboBox22
       ControlOptions.OriginalHeight = 19
@@ -1345,6 +1335,8 @@ object frm_User: Tfrm_User
     end
     object dxLayoutItem17: TdxLayoutItem
       Parent = dxLayoutGroup4
+      AlignHorz = ahClient
+      AlignVert = avTop
       CaptionOptions.Text = 'Backup:'
       Control = cxDBLookupComboBox23
       ControlOptions.OriginalHeight = 19
@@ -1353,8 +1345,9 @@ object frm_User: Tfrm_User
       Index = 0
     end
     object dxLayoutItem18: TdxLayoutItem
-      Parent = dxLayoutAutoCreatedGroup7
+      Parent = dxLayoutGroup15
       AlignHorz = ahClient
+      AlignVert = avTop
       CaptionOptions.Text = 'Kontakte:'
       Control = cxDBLookupComboBox1
       ControlOptions.OriginalHeight = 19
@@ -1363,8 +1356,9 @@ object frm_User: Tfrm_User
       Index = 0
     end
     object dxLayoutItem19: TdxLayoutItem
-      Parent = dxLayoutAutoCreatedGroup7
+      Parent = dxLayoutGroup15
       AlignHorz = ahClient
+      AlignVert = avTop
       CaptionOptions.Text = 'Kalender:'
       Control = cxDBLookupComboBox3
       ControlOptions.OriginalHeight = 19
@@ -1373,8 +1367,9 @@ object frm_User: Tfrm_User
       Index = 1
     end
     object dxLayoutItem20: TdxLayoutItem
-      Parent = dxLayoutAutoCreatedGroup7
+      Parent = dxLayoutGroup15
       AlignHorz = ahClient
+      AlignVert = avTop
       CaptionOptions.Text = 'Stundenplan:'
       Control = cxDBLookupComboBox5
       ControlOptions.OriginalHeight = 19
@@ -1383,8 +1378,9 @@ object frm_User: Tfrm_User
       Index = 2
     end
     object dxLayoutItem21: TdxLayoutItem
-      Parent = dxLayoutAutoCreatedGroup7
+      Parent = dxLayoutGroup15
       AlignHorz = ahClient
+      AlignVert = avTop
       CaptionOptions.Text = 'E-Mail:'
       Control = cxDBLookupComboBox7
       ControlOptions.OriginalHeight = 19
@@ -1393,8 +1389,9 @@ object frm_User: Tfrm_User
       Index = 3
     end
     object dxLayoutItem22: TdxLayoutItem
-      Parent = dxLayoutAutoCreatedGroup7
+      Parent = dxLayoutGroup15
       AlignHorz = ahClient
+      AlignVert = avTop
       CaptionOptions.Text = 'Passw'#246'rter:'
       Control = cxDBLookupComboBox9
       ControlOptions.OriginalHeight = 19
@@ -1403,8 +1400,9 @@ object frm_User: Tfrm_User
       Index = 4
     end
     object dxLayoutItem23: TdxLayoutItem
-      Parent = dxLayoutAutoCreatedGroup5
+      Parent = dxLayoutGroup14
       AlignHorz = ahClient
+      AlignVert = avTop
       CaptionOptions.Text = 'Ausgaben:'
       Control = cxDBLookupComboBox10
       ControlOptions.OriginalHeight = 19
@@ -1413,9 +1411,9 @@ object frm_User: Tfrm_User
       Index = 4
     end
     object dxLayoutItem24: TdxLayoutItem
-      Parent = dxLayoutAutoCreatedGroup5
+      Parent = dxLayoutGroup14
       AlignHorz = ahClient
-      AlignVert = avClient
+      AlignVert = avTop
       CaptionOptions.Text = 'Serials:'
       CaptionOptions.Width = 105
       Control = cxDBLookupComboBox2
@@ -1425,8 +1423,9 @@ object frm_User: Tfrm_User
       Index = 0
     end
     object dxLayoutItem25: TdxLayoutItem
-      Parent = dxLayoutAutoCreatedGroup5
+      Parent = dxLayoutGroup14
       AlignHorz = ahClient
+      AlignVert = avTop
       CaptionOptions.Text = 'Monats'#252'bersicht:'
       Control = cxDBLookupComboBox4
       ControlOptions.OriginalHeight = 19
@@ -1435,7 +1434,9 @@ object frm_User: Tfrm_User
       Index = 1
     end
     object dxLayoutItem26: TdxLayoutItem
-      Parent = dxLayoutAutoCreatedGroup5
+      Parent = dxLayoutGroup14
+      AlignHorz = ahClient
+      AlignVert = avTop
       CaptionOptions.Text = 'Verf'#252'gung:'
       Control = cxDBLookupComboBox6
       ControlOptions.OriginalHeight = 19
@@ -1444,8 +1445,9 @@ object frm_User: Tfrm_User
       Index = 2
     end
     object dxLayoutItem27: TdxLayoutItem
-      Parent = dxLayoutAutoCreatedGroup5
+      Parent = dxLayoutGroup14
       AlignHorz = ahClient
+      AlignVert = avTop
       CaptionOptions.Text = 'Einnahmen:'
       Control = cxDBLookupComboBox8
       ControlOptions.OriginalHeight = 19
@@ -1453,21 +1455,10 @@ object frm_User: Tfrm_User
       ControlOptions.ShowBorder = False
       Index = 3
     end
-    object dxLayoutAutoCreatedGroup7: TdxLayoutAutoCreatedGroup
-      Parent = dxLayoutGroup5
-      AlignHorz = ahClient
-      AlignVert = avTop
-      Index = 0
-    end
-    object dxLayoutAutoCreatedGroup5: TdxLayoutAutoCreatedGroup
-      Parent = dxLayoutGroup5
-      AlignHorz = ahClient
-      AlignVert = avTop
-      Index = 1
-    end
     object dxLayoutItem28: TdxLayoutItem
-      Parent = dxLayoutAutoCreatedGroup6
+      Parent = dxLayoutGroup13
       AlignHorz = ahClient
+      AlignVert = avTop
       CaptionOptions.Text = 'MP3 - Player:'
       CaptionOptions.Width = 105
       Control = cxDBLookupComboBox11
@@ -1477,8 +1468,9 @@ object frm_User: Tfrm_User
       Index = 0
     end
     object dxLayoutItem29: TdxLayoutItem
-      Parent = dxLayoutAutoCreatedGroup6
+      Parent = dxLayoutGroup13
       AlignHorz = ahClient
+      AlignVert = avTop
       CaptionOptions.Text = 'Webradio:'
       Control = cxDBLookupComboBox13
       ControlOptions.OriginalHeight = 19
@@ -1487,8 +1479,9 @@ object frm_User: Tfrm_User
       Index = 1
     end
     object dxLayoutItem30: TdxLayoutItem
-      Parent = dxLayoutAutoCreatedGroup8
+      Parent = dxLayoutGroup12
       AlignHorz = ahClient
+      AlignVert = avTop
       CaptionOptions.Text = 'Videoplayer:'
       CaptionOptions.Width = 105
       Control = cxDBLookupComboBox12
@@ -1498,8 +1491,9 @@ object frm_User: Tfrm_User
       Index = 0
     end
     object dxLayoutItem31: TdxLayoutItem
-      Parent = dxLayoutAutoCreatedGroup8
+      Parent = dxLayoutGroup12
       AlignHorz = ahClient
+      AlignVert = avTop
       CaptionOptions.Text = 'Fotos:'
       Control = cxDBLookupComboBox14
       ControlOptions.OriginalHeight = 19
@@ -1507,18 +1501,10 @@ object frm_User: Tfrm_User
       ControlOptions.ShowBorder = False
       Index = 1
     end
-    object dxLayoutAutoCreatedGroup6: TdxLayoutAutoCreatedGroup
-      Parent = dxLayoutGroup8
-      AlignHorz = ahClient
-      Index = 0
-    end
-    object dxLayoutAutoCreatedGroup8: TdxLayoutAutoCreatedGroup
-      Parent = dxLayoutGroup8
-      AlignHorz = ahClient
-      Index = 1
-    end
     object dxLayoutItem32: TdxLayoutItem
       Parent = dxLayoutGroup7
+      AlignHorz = ahClient
+      AlignVert = avTop
       CaptionOptions.Text = 'MP3 - Tags:'
       Control = cxDBLookupComboBox15
       ControlOptions.OriginalHeight = 19
@@ -1529,15 +1515,17 @@ object frm_User: Tfrm_User
     object dxLayoutGroup6: TdxLayoutGroup
       Parent = lagrp_Mitarbeiter
       AlignHorz = ahClient
+      AlignVert = avTop
       CaptionOptions.Text = '[B]Rechte PCM - Vokabeltrainer[/B]'
       ButtonOptions.ShowExpandButton = True
-      Expanded = False
+      ItemIndex = 1
       LayoutDirection = ldHorizontal
       Index = 9
     end
     object dxLayoutGroup9: TdxLayoutGroup
       Parent = lagrp_Mitarbeiter
       AlignHorz = ahClient
+      AlignVert = avTop
       CaptionOptions.Text = '[B]Rechte PCM - Servicemanager[/B]'
       ButtonOptions.ShowExpandButton = True
       Expanded = False
@@ -1557,6 +1545,7 @@ object frm_User: Tfrm_User
     object dxLayoutItem33: TdxLayoutItem
       Parent = lagrp_Mitarbeiter
       AlignHorz = ahClient
+      AlignVert = avClient
       Control = cxGrid1
       ControlOptions.OriginalHeight = 150
       ControlOptions.OriginalWidth = 1118
@@ -1566,6 +1555,7 @@ object frm_User: Tfrm_User
     object dxLayoutItem34: TdxLayoutItem
       Parent = dxLayoutGroup10
       AlignHorz = ahClient
+      AlignVert = avTop
       CaptionOptions.Text = 'Noten:'
       Control = cxDBLookupComboBox16
       ControlOptions.OriginalHeight = 19
@@ -1609,8 +1599,9 @@ object frm_User: Tfrm_User
       Index = 1
     end
     object dxLayoutItem38: TdxLayoutItem
-      Parent = dxLayoutAutoCreatedGroup9
+      Parent = dxLayoutGroup11
       AlignHorz = ahClient
+      AlignVert = avTop
       CaptionOptions.Text = 'Test:'
       Control = cxDBLookupComboBox21
       ControlOptions.OriginalHeight = 19
@@ -1619,7 +1610,7 @@ object frm_User: Tfrm_User
       Index = 1
     end
     object dxLayoutItem39: TdxLayoutItem
-      Parent = dxLayoutAutoCreatedGroup9
+      Parent = dxLayoutGroup11
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'Vokabeln:'
@@ -1629,9 +1620,84 @@ object frm_User: Tfrm_User
       ControlOptions.ShowBorder = False
       Index = 0
     end
-    object dxLayoutAutoCreatedGroup9: TdxLayoutAutoCreatedGroup
+    object dxLayoutGroup11: TdxLayoutGroup
       Parent = dxLayoutGroup6
       AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutGroup12: TdxLayoutGroup
+      Parent = dxLayoutGroup8
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutGroup13: TdxLayoutGroup
+      Parent = dxLayoutGroup8
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutGroup14: TdxLayoutGroup
+      Parent = dxLayoutGroup5
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 3
+      ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutGroup15: TdxLayoutGroup
+      Parent = dxLayoutGroup5
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 4
+      ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutGroup16: TdxLayoutGroup
+      Parent = dxLayoutGroup2
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutGroup17: TdxLayoutGroup
+      Parent = dxLayoutGroup18
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutGroup18: TdxLayoutGroup
+      Parent = lagrp_SucheFilter
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 2
+      ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutGroup19: TdxLayoutGroup
+      Parent = lagrp_SucheFilter
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 3
+      ShowBorder = False
       Index = 0
     end
   end

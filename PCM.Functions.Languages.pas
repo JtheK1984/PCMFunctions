@@ -6,13 +6,20 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, cxGraphics, cxControls, cxLookAndFeels,
   cxLookAndFeelPainters, cxContainer, cxEdit, cxGroupBox, cxRadioGroup, Vcl.Menus, Vcl.StdCtrls,
-  cxButtons,StrUtils,inifiles;
+  cxButtons,StrUtils,inifiles, dxLayoutcxEditAdapters, dxLayoutControlAdapters,
+  dxLayoutContainer, cxClasses, dxLayoutControl, dxLayoutLookAndFeels;
 
 type
   Tfrm_Language = class(TForm)
-    cxGroupBox1: TcxGroupBox;
     cxRadioGroup1: TcxRadioGroup;
     cxButton1: TcxButton;
+    dxLayoutControl1Group_Root: TdxLayoutGroup;
+    dxLayoutControl1: TdxLayoutControl;
+    dxLayoutItem1: TdxLayoutItem;
+    dxLayoutItem2: TdxLayoutItem;
+    dxLayoutLookAndFeelList1: TdxLayoutLookAndFeelList;
+    dxLayoutCxLookAndFeel1: TdxLayoutCxLookAndFeel;
+    dxLayoutGroup1: TdxLayoutGroup;
     procedure cxButton1Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
   private

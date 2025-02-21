@@ -79,13 +79,10 @@ type
     dxLayoutItem7: TdxLayoutItem;
     dxLayoutItem8: TdxLayoutItem;
     dxLayoutItem9: TdxLayoutItem;
-    dxLayoutAutoCreatedGroup2: TdxLayoutAutoCreatedGroup;
-    dxLayoutAutoCreatedGroup3: TdxLayoutAutoCreatedGroup;
     dxLayoutItem10: TdxLayoutItem;
     dxLayoutItem11: TdxLayoutItem;
     dxLayoutItem1: TdxLayoutItem;
     dxLayoutItem2: TdxLayoutItem;
-    dxLayoutAutoCreatedGroup1: TdxLayoutAutoCreatedGroup;
     dxLayoutItem3: TdxLayoutItem;
     dxLayoutItem12: TdxLayoutItem;
     dxLayoutItem13: TdxLayoutItem;
@@ -94,7 +91,6 @@ type
     lucbx_Option: TcxDBLookupComboBox;
     dxLayoutItem15: TdxLayoutItem;
     cxDBCheckBox1: TcxDBCheckBox;
-    dxLayoutAutoCreatedGroup4: TdxLayoutAutoCreatedGroup;
     dxLayoutGroup3: TdxLayoutGroup;
     dxLayoutGroup4: TdxLayoutGroup;
     dxLayoutGroup5: TdxLayoutGroup;
@@ -124,8 +120,6 @@ type
     cxDBLookupComboBox6: TcxDBLookupComboBox;
     dxLayoutItem27: TdxLayoutItem;
     cxDBLookupComboBox8: TcxDBLookupComboBox;
-    dxLayoutAutoCreatedGroup7: TdxLayoutAutoCreatedGroup;
-    dxLayoutAutoCreatedGroup5: TdxLayoutAutoCreatedGroup;
     dxLayoutItem28: TdxLayoutItem;
     cxDBLookupComboBox11: TcxDBLookupComboBox;
     dxLayoutItem29: TdxLayoutItem;
@@ -134,8 +128,6 @@ type
     cxDBLookupComboBox12: TcxDBLookupComboBox;
     dxLayoutItem31: TdxLayoutItem;
     cxDBLookupComboBox14: TcxDBLookupComboBox;
-    dxLayoutAutoCreatedGroup6: TdxLayoutAutoCreatedGroup;
-    dxLayoutAutoCreatedGroup8: TdxLayoutAutoCreatedGroup;
     dxLayoutItem32: TdxLayoutItem;
     cxDBLookupComboBox15: TcxDBLookupComboBox;
     dxLayoutGroup6: TdxLayoutGroup;
@@ -151,8 +143,16 @@ type
     dxLayoutItem37: TdxLayoutItem;
     dxLayoutItem38: TdxLayoutItem;
     dxLayoutItem39: TdxLayoutItem;
-    dxLayoutAutoCreatedGroup9: TdxLayoutAutoCreatedGroup;
     cxDBLookupComboBox21: TcxDBLookupComboBox;
+    dxLayoutGroup11: TdxLayoutGroup;
+    dxLayoutGroup12: TdxLayoutGroup;
+    dxLayoutGroup13: TdxLayoutGroup;
+    dxLayoutGroup14: TdxLayoutGroup;
+    dxLayoutGroup15: TdxLayoutGroup;
+    dxLayoutGroup16: TdxLayoutGroup;
+    dxLayoutGroup17: TdxLayoutGroup;
+    dxLayoutGroup18: TdxLayoutGroup;
+    dxLayoutGroup19: TdxLayoutGroup;
     procedure btn_OptionChangePasswordClick(Sender: TObject);
     procedure edt_OptionPasswordExit(Sender: TObject);
     procedure btn_OptionNewRightClick(Sender: TObject);

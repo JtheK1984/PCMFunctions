@@ -12,42 +12,107 @@ object frm_Handbuch: Tfrm_Handbuch
   Font.Style = []
   OnShow = FormShow
   TextHeight = 15
-  object cxGroupBox1: TcxGroupBox
+  object dxLayoutControl1: TdxLayoutControl
     Left = 0
     Top = 0
-    Align = alClient
-    PanelStyle.Active = True
-    Style.BorderStyle = ebsNone
-    TabOrder = 0
-    Height = 441
     Width = 624
-    object cxPageControl1: TcxPageControl
-      Left = 3
-      Top = 3
-      Width = 618
-      Height = 435
-      Align = alClient
+    Height = 441
+    Align = alClient
+    TabOrder = 0
+    AutoSize = True
+    LayoutLookAndFeel = dxLayoutCxLookAndFeel1
+    OptionsImage.Images = cxImageList1
+    ExplicitLeft = 168
+    ExplicitTop = 112
+    ExplicitWidth = 300
+    ExplicitHeight = 250
+    object pnl_HTML: TcxGroupBox
+      Left = 10000
+      Top = 10000
+      PanelStyle.Active = True
+      ParentBackground = False
+      ParentColor = False
+      Style.Color = 7566195
+      Style.TransparentBorder = False
+      TabOrder = 1
+      Visible = False
+      Height = 105
+      Width = 185
+    end
+    object pnl_PDF: TcxGroupBox
+      Left = 26
+      Top = 53
+      PanelStyle.Active = True
+      ParentBackground = False
+      ParentColor = False
+      Style.Color = 7566195
+      Style.TransparentBorder = False
       TabOrder = 0
-      Properties.ActivePage = cxTabSheet2
-      Properties.CustomButtons.Buttons = <>
-      Properties.Images = cxImageList1
-      OnChange = cxPageControl1Change
-      ClientRectBottom = 429
-      ClientRectLeft = 2
-      ClientRectRight = 612
-      ClientRectTop = 29
-      object cxTabSheet2: TcxTabSheet
-        Caption = 'PDF'
-        ImageIndex = 1
-      end
-      object cxTabSheet1: TcxTabSheet
-        Caption = 'HTML'
-        ImageIndex = 0
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
-      end
+      Height = 358
+      Width = 568
+    end
+    object dxLayoutControl1Group_Root: TdxLayoutGroup
+      AlignHorz = ahClient
+      AlignVert = avClient
+      Hidden = True
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = -1
+    end
+    object dxLayoutGroup2: TdxLayoutGroup
+      Parent = dxLayoutControl1Group_Root
+      AlignHorz = ahClient
+      AlignVert = avClient
+      LayoutDirection = ldTabbed
+      ShowBorder = False
+      OnTabChanged = cxPageControl1Change
+      Index = 0
+    end
+    object dxLayoutGroup3: TdxLayoutGroup
+      Parent = dxLayoutGroup2
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.ImageIndex = 1
+      CaptionOptions.Text = 'PDF'
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutGroup4: TdxLayoutGroup
+      Parent = dxLayoutGroup2
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.ImageIndex = 0
+      CaptionOptions.Text = 'HTML'
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem1: TdxLayoutItem
+      Parent = dxLayoutGroup3
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = pnl_PDF
+      ControlOptions.AutoColor = True
+      ControlOptions.OriginalHeight = 105
+      ControlOptions.OriginalWidth = 185
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem2: TdxLayoutItem
+      Parent = dxLayoutGroup4
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = pnl_HTML
+      ControlOptions.AutoColor = True
+      ControlOptions.OriginalHeight = 105
+      ControlOptions.OriginalWidth = 185
+      ControlOptions.ShowBorder = False
+      Index = 0
     end
   end
   object cxImageList1: TcxImageList
@@ -100,5 +165,11 @@ object frm_Handbuch: Tfrm_Handbuch
           07C3C5F3E3CD2A94522FED5A4D93D6D465AD84D0B252F1B443F5ECB129F52A9F
           CF9B7F00B2C0259947DC87E10000000049454E44AE426082}
       end>
+  end
+  object dxLayoutLookAndFeelList1: TdxLayoutLookAndFeelList
+    Left = 208
+    object dxLayoutCxLookAndFeel1: TdxLayoutCxLookAndFeel
+      PixelsPerInch = 96
+    end
   end
 end
