@@ -603,7 +603,7 @@ type
     function GetMatch(Idx: Integer): RegExprString;
 
     procedure SetInputString(const AInputString: RegExprString);
-    procedure SetInputRange(AStart, AEnd, AContinueAnchor: PRegExprChar);
+//    procedure SetInputRange(AStart, AEnd, AContinueAnchor: PRegExprChar);
 
     {$IFDEF UseLineSep}
     procedure SetLineSeparators(const AStr: RegExprString);
@@ -2821,7 +2821,7 @@ function TRegExpr.FindInCharClass(ABuffer: PRegExprChar; AChar: REChar; AIgnoreC
 var
   OpKind: REChar;
   ch, ch2: REChar;
-  N, i: Integer;
+  N: Integer;
 begin
   if AIgnoreCase then
     AChar := _UpperCase(AChar);
@@ -6578,6 +6578,7 @@ end;
 function TRegExpr.ExecPrim(AOffset: Integer; ASlowChecks, ABackward: Boolean;
   ATryMatchOnlyStartingBefore: Integer): Boolean;
 begin
+  Result := False;
   if fRaiseForRuntimeError then begin
     Result := ExecPrimProtected(AOffset, ASlowChecks, ABackward, ATryMatchOnlyStartingBefore);
   end
@@ -6585,13 +6586,13 @@ begin
     try
       Result := ExecPrimProtected(AOffset, ASlowChecks, ABackward, ATryMatchOnlyStartingBefore);
     except
-      on E: EStackOverflow do begin
+      on E: EOverflow  do begin
         Result := False;
         fLastError := reeLoopStackExceeded;
         Error(reeLoopStackExceeded);
       end;
       on E: ERegExpr do begin
-        Result := False;
+
         raise;
       end;
       else begin
@@ -6763,14 +6764,14 @@ begin
   fInputContinue := fInputStart;
 end;
 
-procedure TRegExpr.SetInputRange(AStart, AEnd, AContinueAnchor: PRegExprChar);
-begin
-  ClearMatches;
-  fInputString := '';
-  fInputStart := AStart;
-  fInputEnd := AEnd;
-  fInputContinue := AContinueAnchor;
-end;
+//procedure TRegExpr.SetInputRange(AStart, AEnd, AContinueAnchor: PRegExprChar);
+//begin
+//  ClearMatches;
+//  fInputString := '';
+//  fInputStart := AStart;
+//  fInputEnd := AEnd;
+//  fInputContinue := AContinueAnchor;
+//end;
 
 {$IFDEF UseLineSep}
 procedure TRegExpr.SetLineSeparators(const AStr: RegExprString);
@@ -8020,6 +8021,7 @@ var
   NotFixedLen, r, NextIsNil: Boolean;
   FirstVarLenOp: TREOp;
 begin
+
   Result := False;
   NotFixedLen := False;
   AMinLen := 0;
@@ -8027,7 +8029,7 @@ begin
   FndMaxLen := 0;
   next := prog;
   s := prog;
-
+  FirstVarLenOp:= s^;
   repeat
     NextIsNil := next = nil;
     next := regNext(s);
@@ -8140,7 +8142,7 @@ begin
 
       OP_LOOKAHEAD, OP_LOOKAHEAD_NEG:
         begin
-          r := IsPartFixedLength(s, op, ASubLen, ASubMaxLen, OP_LOOKAHEAD_END, next, [flfSkipLookAround, flfForceToStopAt]);
+//          r := IsPartFixedLength(s, op, ASubLen, ASubMaxLen, OP_LOOKAHEAD_END, next, [flfSkipLookAround, flfForceToStopAt]);
           s := next;
           Inc(s, REOpSz + RENextOffSz); // skip the OP_LOOKAHEAD_END
           if not (flfSkipLookAround in Flags) then
@@ -8153,7 +8155,7 @@ begin
       OP_LOOKBEHIND, OP_LOOKBEHIND_NEG:
         begin
           Inc(s, ReOpLookBehindOptionsSz);
-          r := IsPartFixedLength(s, op, ASubLen, ASubMaxLen, OP_LOOKBEHIND_END, next, [flfSkipLookAround, flfForceToStopAt]);
+//          r := IsPartFixedLength(s, op, ASubLen, ASubMaxLen, OP_LOOKBEHIND_END, next, [flfSkipLookAround, flfForceToStopAt]);
           s := next;
           Inc(s, REOpSz + RENextOffSz); // skip the OP_LOOKBEHIND_END
           if not (flfSkipLookAround in Flags) then
