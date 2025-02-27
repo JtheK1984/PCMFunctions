@@ -19,7 +19,7 @@ uses
   FireDAC.Comp.DataSet, FireDAC.Comp.Client,PCM.Functions, dxSkinWXI,
   cxGridCustomPopupMenu, cxGridPopupMenu, cxScrollBox, dxLayoutContainer,
   dxLayoutControl, dxLayoutcxEditAdapters, dxLayoutControlAdapters, cxMemo,
-  cxCalendar;
+  cxCalendar, dxUIAClasses, dxLayoutLookAndFeels;
 
 type
   Tfrm_User = class(TForm)
@@ -153,6 +153,8 @@ type
     dxLayoutGroup17: TdxLayoutGroup;
     dxLayoutGroup18: TdxLayoutGroup;
     dxLayoutGroup19: TdxLayoutGroup;
+    dxLayoutLookAndFeelList1: TdxLayoutLookAndFeelList;
+    dxLayoutCxLookAndFeel1: TdxLayoutCxLookAndFeel;
     procedure btn_OptionChangePasswordClick(Sender: TObject);
     procedure edt_OptionPasswordExit(Sender: TObject);
     procedure btn_OptionNewRightClick(Sender: TObject);

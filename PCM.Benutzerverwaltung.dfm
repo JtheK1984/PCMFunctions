@@ -31,12 +31,13 @@ object frm_User: Tfrm_User
     Font.Style = []
     ParentFont = False
     TabOrder = 0
+    LayoutLookAndFeel = dxLayoutCxLookAndFeel1
     OptionsImage.Images = dm_PCM.imglst_16x16
     object cxGrid3: TcxGrid
-      Left = 24
-      Top = 248
-      Width = 1089
-      Height = 387
+      Left = 20
+      Top = 239
+      Width = 1097
+      Height = 400
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -107,8 +108,6 @@ object frm_User: Tfrm_User
       DataBinding.DataField = 'Bezeichnung'
       DataBinding.DataSource = dsRechte
       ParentFont = False
-      Style.BorderColor = clWindowFrame
-      Style.BorderStyle = ebs3D
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
       Style.Font.Height = -11
@@ -135,8 +134,6 @@ object frm_User: Tfrm_User
         end>
       Properties.ListSource = dsRechte_Detail
       Properties.OnChange = cxDBLookupComboBox21PropertiesChange
-      Style.BorderColor = clWindowFrame
-      Style.BorderStyle = ebs3D
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
       Style.Font.Height = -11
@@ -144,8 +141,6 @@ object frm_User: Tfrm_User
       Style.Font.Style = []
       Style.HotTrack = False
       Style.TransparentBorder = False
-      Style.ButtonStyle = bts3D
-      Style.PopupBorderStyle = epbsFrame3D
       Style.IsFontAssigned = True
       TabOrder = 36
       Visible = False
@@ -164,8 +159,6 @@ object frm_User: Tfrm_User
         end>
       Properties.ListSource = dsRechte_Detail
       Properties.OnChange = cxDBLookupComboBox18PropertiesChange
-      Style.BorderColor = clWindowFrame
-      Style.BorderStyle = ebs3D
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
       Style.Font.Height = -11
@@ -173,8 +166,6 @@ object frm_User: Tfrm_User
       Style.Font.Style = []
       Style.HotTrack = False
       Style.TransparentBorder = False
-      Style.ButtonStyle = bts3D
-      Style.PopupBorderStyle = epbsFrame3D
       Style.IsFontAssigned = True
       TabOrder = 35
       Visible = False
@@ -193,8 +184,6 @@ object frm_User: Tfrm_User
         end>
       Properties.ListSource = dsRechte_Detail
       Properties.OnChange = cxDBLookupComboBox20PropertiesChange
-      Style.BorderColor = clWindowFrame
-      Style.BorderStyle = ebs3D
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
       Style.Font.Height = -11
@@ -202,8 +191,6 @@ object frm_User: Tfrm_User
       Style.Font.Style = []
       Style.HotTrack = False
       Style.TransparentBorder = False
-      Style.ButtonStyle = bts3D
-      Style.PopupBorderStyle = epbsFrame3D
       Style.IsFontAssigned = True
       TabOrder = 37
       Visible = False
@@ -275,8 +262,8 @@ object frm_User: Tfrm_User
       end
     end
     object cxDBCheckBox3: TcxDBCheckBox
-      Left = 95
-      Top = 211
+      Left = 91
+      Top = 202
       Hint = 'Zugriff auf PCM-Rest-API'
       AutoSize = False
       BiDiMode = bdLeftToRight
@@ -285,8 +272,6 @@ object frm_User: Tfrm_User
       DataBinding.DataSource = dsBenutzer
       ParentBiDiMode = False
       ParentFont = False
-      Style.BorderColor = clWindowFrame
-      Style.BorderStyle = ebs3D
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
       Style.Font.Height = -11
@@ -298,17 +283,15 @@ object frm_User: Tfrm_User
       TabOrder = 4
       Transparent = True
       Height = 19
-      Width = 473
+      Width = 477
     end
     object edt_OptionName: TcxDBTextEdit
-      Left = 95
-      Top = 159
+      Left = 91
+      Top = 152
       Hint = 'Vorname des Benutzers'
       DataBinding.DataField = 'Vorname'
       DataBinding.DataSource = dsBenutzer
       ParentFont = False
-      Style.BorderColor = clWindowFrame
-      Style.BorderStyle = ebs3D
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
       Style.Font.Height = -11
@@ -319,17 +302,15 @@ object frm_User: Tfrm_User
       Style.IsFontAssigned = True
       TabOrder = 2
       OnExit = btn_OptionSaveUserClick
-      Width = 473
+      Width = 477
     end
     object edt_OptionUser: TcxDBTextEdit
-      Left = 95
-      Top = 132
+      Left = 91
+      Top = 127
       Hint = 'Benutzername des Benutzers'
       DataBinding.DataField = 'Benutzer'
       DataBinding.DataSource = dsBenutzer
       ParentFont = False
-      Style.BorderColor = clWindowFrame
-      Style.BorderStyle = ebs3D
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
       Style.Font.Height = -11
@@ -340,18 +321,16 @@ object frm_User: Tfrm_User
       Style.IsFontAssigned = True
       TabOrder = 1
       OnExit = btn_OptionSaveUserClick
-      Width = 473
+      Width = 477
     end
     object edt_OptionSurName: TcxDBTextEdit
-      Left = 95
-      Top = 186
+      Left = 91
+      Top = 177
       Hint = 'Nachname des Benutzers'
       AutoSize = False
       DataBinding.DataField = 'Nachname'
       DataBinding.DataSource = dsBenutzer
       ParentFont = False
-      Style.BorderColor = clWindowFrame
-      Style.BorderStyle = ebs3D
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
       Style.Font.Height = -11
@@ -363,11 +342,11 @@ object frm_User: Tfrm_User
       TabOrder = 3
       OnExit = btn_OptionSaveUserClick
       Height = 19
-      Width = 473
+      Width = 477
     end
     object btn_OptionChangePassword: TcxButton
-      Left = 981
-      Top = 132
+      Left = 985
+      Top = 127
       Width = 120
       Height = 21
       Caption = 'Passwort '#228'ndern'
@@ -385,7 +364,7 @@ object frm_User: Tfrm_User
     end
     object cxDBCheckBox2: TcxDBCheckBox
       Left = 679
-      Top = 186
+      Top = 179
       Hint = 'automatisches Login des Benutzers '
       BiDiMode = bdLeftToRight
       Caption = 'automatisches Login (Windows-Benutzer)'
@@ -393,8 +372,6 @@ object frm_User: Tfrm_User
       DataBinding.DataSource = dsBenutzer
       ParentBiDiMode = False
       ParentFont = False
-      Style.BorderColor = clWindowFrame
-      Style.BorderStyle = ebs3D
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
       Style.Font.Height = -11
@@ -408,7 +385,7 @@ object frm_User: Tfrm_User
     end
     object edt_OptionPassword: TcxDBTextEdit
       Left = 629
-      Top = 132
+      Top = 127
       Hint = 'Passwort des Benutzers'
       AutoSize = False
       DataBinding.DataField = 'Passwort'
@@ -416,8 +393,6 @@ object frm_User: Tfrm_User
       ParentFont = False
       Properties.EchoMode = eemPassword
       Properties.PasswordChar = '*'
-      Style.BorderColor = clWindowFrame
-      Style.BorderStyle = ebs3D
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
       Style.Font.Height = -11
@@ -430,11 +405,11 @@ object frm_User: Tfrm_User
       OnEnter = edt_OptionPasswordEnter
       OnExit = edt_OptionPasswordExit
       Height = 19
-      Width = 346
+      Width = 350
     end
     object lucbx_OptionRights: TcxDBLookupComboBox
       Left = 629
-      Top = 159
+      Top = 154
       Hint = 'Recht des Benutzers'
       DataBinding.DataField = 'ID_Rechte'
       DataBinding.DataSource = dsBenutzer
@@ -445,8 +420,6 @@ object frm_User: Tfrm_User
           FieldName = 'Bezeichnung'
         end>
       Properties.ListSource = dsRechte
-      Style.BorderColor = clWindowFrame
-      Style.BorderStyle = ebs3D
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
       Style.Font.Height = -11
@@ -454,18 +427,16 @@ object frm_User: Tfrm_User
       Style.Font.Style = []
       Style.HotTrack = False
       Style.TransparentBorder = False
-      Style.ButtonStyle = bts3D
-      Style.PopupBorderStyle = epbsFrame3D
       Style.IsFontAssigned = True
       TabOrder = 7
       OnExit = btn_OptionSaveUserClick
-      Width = 472
+      Width = 476
     end
     object dxBarDockControl1: TdxBarDockControl
-      Left = 24
+      Left = 20
       Top = 45
-      Width = 1089
-      Height = 63
+      Width = 1097
+      Height = 58
       Align = dalNone
       BarManager = dxBarManager1
     end
@@ -473,7 +444,7 @@ object frm_User: Tfrm_User
       Left = 10000
       Top = 10000
       Width = 1089
-      Height = 63
+      Height = 58
       Align = dalNone
       BarManager = dxBarManager1
       Visible = False
@@ -491,8 +462,6 @@ object frm_User: Tfrm_User
         end>
       Properties.ListSource = dsRechte_Detail
       Properties.OnChange = lucbx_BackupPropertiesChange
-      Style.BorderColor = clWindowFrame
-      Style.BorderStyle = ebs3D
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
       Style.Font.Height = -11
@@ -500,8 +469,6 @@ object frm_User: Tfrm_User
       Style.Font.Style = []
       Style.HotTrack = False
       Style.TransparentBorder = False
-      Style.ButtonStyle = bts3D
-      Style.PopupBorderStyle = epbsFrame3D
       Style.IsFontAssigned = True
       TabOrder = 13
       Visible = False
@@ -520,8 +487,6 @@ object frm_User: Tfrm_User
         end>
       Properties.ListSource = dsRechte_Detail
       Properties.OnChange = lucbx_OptionPropertiesChange
-      Style.BorderColor = clWindowFrame
-      Style.BorderStyle = ebs3D
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
       Style.Font.Height = -11
@@ -529,8 +494,6 @@ object frm_User: Tfrm_User
       Style.Font.Style = []
       Style.HotTrack = False
       Style.TransparentBorder = False
-      Style.ButtonStyle = bts3D
-      Style.PopupBorderStyle = epbsFrame3D
       Style.IsFontAssigned = True
       TabOrder = 12
       Visible = False
@@ -546,8 +509,6 @@ object frm_User: Tfrm_User
       DataBinding.DataSource = dsRechte
       ParentBiDiMode = False
       ParentFont = False
-      Style.BorderColor = clWindowFrame
-      Style.BorderStyle = ebs3D
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
       Style.Font.Height = -11
@@ -575,8 +536,6 @@ object frm_User: Tfrm_User
         end>
       Properties.ListSource = dsRechte_Detail
       Properties.OnChange = cxDBLookupComboBox22PropertiesChange
-      Style.BorderColor = clWindowFrame
-      Style.BorderStyle = ebs3D
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
       Style.Font.Height = -11
@@ -584,8 +543,6 @@ object frm_User: Tfrm_User
       Style.Font.Style = []
       Style.HotTrack = False
       Style.TransparentBorder = False
-      Style.ButtonStyle = bts3D
-      Style.PopupBorderStyle = epbsFrame3D
       Style.IsFontAssigned = True
       TabOrder = 15
       Visible = False
@@ -604,8 +561,6 @@ object frm_User: Tfrm_User
         end>
       Properties.ListSource = dsRechte_Detail
       Properties.OnChange = cxDBLookupComboBox23PropertiesChange
-      Style.BorderColor = clWindowFrame
-      Style.BorderStyle = ebs3D
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
       Style.Font.Height = -11
@@ -613,8 +568,6 @@ object frm_User: Tfrm_User
       Style.Font.Style = []
       Style.HotTrack = False
       Style.TransparentBorder = False
-      Style.ButtonStyle = bts3D
-      Style.PopupBorderStyle = epbsFrame3D
       Style.IsFontAssigned = True
       TabOrder = 16
       Visible = False
@@ -633,8 +586,6 @@ object frm_User: Tfrm_User
         end>
       Properties.ListSource = dsRechte_Detail
       Properties.OnChange = cxDBLookupComboBox1PropertiesChange
-      Style.BorderColor = clWindowFrame
-      Style.BorderStyle = ebs3D
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
       Style.Font.Height = -11
@@ -642,8 +593,6 @@ object frm_User: Tfrm_User
       Style.Font.Style = []
       Style.HotTrack = False
       Style.TransparentBorder = False
-      Style.ButtonStyle = bts3D
-      Style.PopupBorderStyle = epbsFrame3D
       Style.IsFontAssigned = True
       TabOrder = 17
       Visible = False
@@ -663,8 +612,6 @@ object frm_User: Tfrm_User
         end>
       Properties.ListSource = dsRechte_Detail
       Properties.OnChange = cxDBLookupComboBox3PropertiesChange
-      Style.BorderColor = clWindowFrame
-      Style.BorderStyle = ebs3D
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
       Style.Font.Height = -11
@@ -672,8 +619,6 @@ object frm_User: Tfrm_User
       Style.Font.Style = []
       Style.HotTrack = False
       Style.TransparentBorder = False
-      Style.ButtonStyle = bts3D
-      Style.PopupBorderStyle = epbsFrame3D
       Style.IsFontAssigned = True
       TabOrder = 18
       Visible = False
@@ -693,8 +638,6 @@ object frm_User: Tfrm_User
         end>
       Properties.ListSource = dsRechte_Detail
       Properties.OnChange = cxDBLookupComboBox5PropertiesChange
-      Style.BorderColor = clWindowFrame
-      Style.BorderStyle = ebs3D
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
       Style.Font.Height = -11
@@ -702,8 +645,6 @@ object frm_User: Tfrm_User
       Style.Font.Style = []
       Style.HotTrack = False
       Style.TransparentBorder = False
-      Style.ButtonStyle = bts3D
-      Style.PopupBorderStyle = epbsFrame3D
       Style.IsFontAssigned = True
       TabOrder = 19
       Visible = False
@@ -722,8 +663,6 @@ object frm_User: Tfrm_User
         end>
       Properties.ListSource = dsRechte_Detail
       Properties.OnChange = cxDBLookupComboBox7PropertiesChange
-      Style.BorderColor = clWindowFrame
-      Style.BorderStyle = ebs3D
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
       Style.Font.Height = -11
@@ -731,8 +670,6 @@ object frm_User: Tfrm_User
       Style.Font.Style = []
       Style.HotTrack = False
       Style.TransparentBorder = False
-      Style.ButtonStyle = bts3D
-      Style.PopupBorderStyle = epbsFrame3D
       Style.IsFontAssigned = True
       TabOrder = 20
       Visible = False
@@ -751,8 +688,6 @@ object frm_User: Tfrm_User
         end>
       Properties.ListSource = dsRechte_Detail
       Properties.OnChange = cxDBLookupComboBox9PropertiesChange
-      Style.BorderColor = clWindowFrame
-      Style.BorderStyle = ebs3D
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
       Style.Font.Height = -11
@@ -760,8 +695,6 @@ object frm_User: Tfrm_User
       Style.Font.Style = []
       Style.HotTrack = False
       Style.TransparentBorder = False
-      Style.ButtonStyle = bts3D
-      Style.PopupBorderStyle = epbsFrame3D
       Style.IsFontAssigned = True
       TabOrder = 21
       Visible = False
@@ -781,8 +714,6 @@ object frm_User: Tfrm_User
         end>
       Properties.ListSource = dsRechte_Detail
       Properties.OnChange = cxDBLookupComboBox10PropertiesChange
-      Style.BorderColor = clWindowFrame
-      Style.BorderStyle = ebs3D
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
       Style.Font.Height = -11
@@ -790,8 +721,6 @@ object frm_User: Tfrm_User
       Style.Font.Style = []
       Style.HotTrack = False
       Style.TransparentBorder = False
-      Style.ButtonStyle = bts3D
-      Style.PopupBorderStyle = epbsFrame3D
       Style.IsFontAssigned = True
       TabOrder = 26
       Visible = False
@@ -812,8 +741,6 @@ object frm_User: Tfrm_User
         end>
       Properties.ListSource = dsRechte_Detail
       Properties.OnChange = cxDBLookupComboBox2PropertiesChange
-      Style.BorderColor = clWindowFrame
-      Style.BorderStyle = ebs3D
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
       Style.Font.Height = -11
@@ -821,8 +748,6 @@ object frm_User: Tfrm_User
       Style.Font.Style = []
       Style.HotTrack = False
       Style.TransparentBorder = False
-      Style.ButtonStyle = bts3D
-      Style.PopupBorderStyle = epbsFrame3D
       Style.IsFontAssigned = True
       TabOrder = 22
       Visible = False
@@ -843,8 +768,6 @@ object frm_User: Tfrm_User
         end>
       Properties.ListSource = dsRechte_Detail
       Properties.OnChange = cxDBLookupComboBox4PropertiesChange
-      Style.BorderColor = clWindowFrame
-      Style.BorderStyle = ebs3D
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
       Style.Font.Height = -11
@@ -852,8 +775,6 @@ object frm_User: Tfrm_User
       Style.Font.Style = []
       Style.HotTrack = False
       Style.TransparentBorder = False
-      Style.ButtonStyle = bts3D
-      Style.PopupBorderStyle = epbsFrame3D
       Style.IsFontAssigned = True
       TabOrder = 23
       Visible = False
@@ -874,8 +795,6 @@ object frm_User: Tfrm_User
         end>
       Properties.ListSource = dsRechte_Detail
       Properties.OnChange = cxDBLookupComboBox6PropertiesChange
-      Style.BorderColor = clWindowFrame
-      Style.BorderStyle = ebs3D
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
       Style.Font.Height = -11
@@ -883,8 +802,6 @@ object frm_User: Tfrm_User
       Style.Font.Style = []
       Style.HotTrack = False
       Style.TransparentBorder = False
-      Style.ButtonStyle = bts3D
-      Style.PopupBorderStyle = epbsFrame3D
       Style.IsFontAssigned = True
       TabOrder = 24
       Visible = False
@@ -904,8 +821,6 @@ object frm_User: Tfrm_User
         end>
       Properties.ListSource = dsRechte_Detail
       Properties.OnChange = cxDBLookupComboBox8PropertiesChange
-      Style.BorderColor = clWindowFrame
-      Style.BorderStyle = ebs3D
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
       Style.Font.Height = -11
@@ -913,8 +828,6 @@ object frm_User: Tfrm_User
       Style.Font.Style = []
       Style.HotTrack = False
       Style.TransparentBorder = False
-      Style.ButtonStyle = bts3D
-      Style.PopupBorderStyle = epbsFrame3D
       Style.IsFontAssigned = True
       TabOrder = 25
       Visible = False
@@ -934,8 +847,6 @@ object frm_User: Tfrm_User
         end>
       Properties.ListSource = dsRechte_Detail
       Properties.OnChange = cxDBLookupComboBox11PropertiesChange
-      Style.BorderColor = clWindowFrame
-      Style.BorderStyle = ebs3D
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
       Style.Font.Height = -11
@@ -943,8 +854,6 @@ object frm_User: Tfrm_User
       Style.Font.Style = []
       Style.HotTrack = False
       Style.TransparentBorder = False
-      Style.ButtonStyle = bts3D
-      Style.PopupBorderStyle = epbsFrame3D
       Style.IsFontAssigned = True
       TabOrder = 27
       Visible = False
@@ -964,8 +873,6 @@ object frm_User: Tfrm_User
         end>
       Properties.ListSource = dsRechte_Detail
       Properties.OnChange = cxDBLookupComboBox13PropertiesChange
-      Style.BorderColor = clWindowFrame
-      Style.BorderStyle = ebs3D
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
       Style.Font.Height = -11
@@ -973,8 +880,6 @@ object frm_User: Tfrm_User
       Style.Font.Style = []
       Style.HotTrack = False
       Style.TransparentBorder = False
-      Style.ButtonStyle = bts3D
-      Style.PopupBorderStyle = epbsFrame3D
       Style.IsFontAssigned = True
       TabOrder = 28
       Visible = False
@@ -993,8 +898,6 @@ object frm_User: Tfrm_User
         end>
       Properties.ListSource = dsRechte_Detail
       Properties.OnChange = cxDBLookupComboBox12PropertiesChange
-      Style.BorderColor = clWindowFrame
-      Style.BorderStyle = ebs3D
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
       Style.Font.Height = -11
@@ -1002,8 +905,6 @@ object frm_User: Tfrm_User
       Style.Font.Style = []
       Style.HotTrack = False
       Style.TransparentBorder = False
-      Style.ButtonStyle = bts3D
-      Style.PopupBorderStyle = epbsFrame3D
       Style.IsFontAssigned = True
       TabOrder = 29
       Visible = False
@@ -1022,8 +923,6 @@ object frm_User: Tfrm_User
         end>
       Properties.ListSource = dsRechte_Detail
       Properties.OnChange = cxDBLookupComboBox14PropertiesChange
-      Style.BorderColor = clWindowFrame
-      Style.BorderStyle = ebs3D
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
       Style.Font.Height = -11
@@ -1031,8 +930,6 @@ object frm_User: Tfrm_User
       Style.Font.Style = []
       Style.HotTrack = False
       Style.TransparentBorder = False
-      Style.ButtonStyle = bts3D
-      Style.PopupBorderStyle = epbsFrame3D
       Style.IsFontAssigned = True
       TabOrder = 30
       Visible = False
@@ -1051,8 +948,6 @@ object frm_User: Tfrm_User
         end>
       Properties.ListSource = dsRechte_Detail
       Properties.OnChange = cxDBLookupComboBox15PropertiesChange
-      Style.BorderColor = clWindowFrame
-      Style.BorderStyle = ebs3D
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
       Style.Font.Height = -11
@@ -1060,8 +955,6 @@ object frm_User: Tfrm_User
       Style.Font.Style = []
       Style.HotTrack = False
       Style.TransparentBorder = False
-      Style.ButtonStyle = bts3D
-      Style.PopupBorderStyle = epbsFrame3D
       Style.IsFontAssigned = True
       TabOrder = 31
       Visible = False
@@ -1081,8 +974,6 @@ object frm_User: Tfrm_User
         end>
       Properties.ListSource = dsRechte_Detail
       Properties.OnChange = cxDBLookupComboBox16PropertiesChange
-      Style.BorderColor = clWindowFrame
-      Style.BorderStyle = ebs3D
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
       Style.Font.Height = -11
@@ -1090,8 +981,6 @@ object frm_User: Tfrm_User
       Style.Font.Style = []
       Style.HotTrack = False
       Style.TransparentBorder = False
-      Style.ButtonStyle = bts3D
-      Style.PopupBorderStyle = epbsFrame3D
       Style.IsFontAssigned = True
       TabOrder = 32
       Visible = False
@@ -1111,8 +1000,6 @@ object frm_User: Tfrm_User
         end>
       Properties.ListSource = dsRechte_Detail
       Properties.OnChange = cxDBLookupComboBox17PropertiesChange
-      Style.BorderColor = clWindowFrame
-      Style.BorderStyle = ebs3D
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
       Style.Font.Height = -11
@@ -1120,8 +1007,6 @@ object frm_User: Tfrm_User
       Style.Font.Style = []
       Style.HotTrack = False
       Style.TransparentBorder = False
-      Style.ButtonStyle = bts3D
-      Style.PopupBorderStyle = epbsFrame3D
       Style.IsFontAssigned = True
       TabOrder = 33
       Visible = False
@@ -1141,8 +1026,6 @@ object frm_User: Tfrm_User
         end>
       Properties.ListSource = dsRechte_Detail
       Properties.OnChange = cxDBLookupComboBox19PropertiesChange
-      Style.BorderColor = clWindowFrame
-      Style.BorderStyle = ebs3D
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
       Style.Font.Height = -11
@@ -1150,8 +1033,6 @@ object frm_User: Tfrm_User
       Style.Font.Style = []
       Style.HotTrack = False
       Style.TransparentBorder = False
-      Style.ButtonStyle = bts3D
-      Style.PopupBorderStyle = epbsFrame3D
       Style.IsFontAssigned = True
       TabOrder = 34
       Visible = False
@@ -1172,6 +1053,7 @@ object frm_User: Tfrm_User
       AlignVert = avClient
       CaptionOptions.Text = 'New Group'
       SizeOptions.Height = 800
+      AllowRemove = False
       LayoutDirection = ldTabbed
       Locked = True
       ShowBorder = False
@@ -1223,7 +1105,7 @@ object frm_User: Tfrm_User
       AlignVert = avTop
       CaptionOptions.Text = 'Benutzer:'
       Control = edt_OptionUser
-      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalHeight = 19
       ControlOptions.OriginalWidth = 400
       ControlOptions.ShowBorder = False
       Index = 0
@@ -1234,7 +1116,7 @@ object frm_User: Tfrm_User
       AlignVert = avTop
       CaptionOptions.Text = 'Vorname:'
       Control = edt_OptionName
-      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalHeight = 19
       ControlOptions.OriginalWidth = 400
       ControlOptions.ShowBorder = False
       Index = 1
@@ -1280,7 +1162,7 @@ object frm_User: Tfrm_User
       AlignVert = avTop
       CaptionOptions.Text = 'Recht:'
       Control = lucbx_OptionRights
-      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalHeight = 19
       ControlOptions.OriginalWidth = 400
       ControlOptions.ShowBorder = False
       Index = 1
@@ -1316,7 +1198,7 @@ object frm_User: Tfrm_User
       AlignVert = avTop
       Control = dxBarDockControl1
       ControlOptions.AlignVert = avTop
-      ControlOptions.OriginalHeight = 63
+      ControlOptions.OriginalHeight = 58
       ControlOptions.OriginalWidth = 500
       ControlOptions.ShowBorder = False
       Index = 0
@@ -1327,7 +1209,7 @@ object frm_User: Tfrm_User
       AlignVert = avTop
       Control = dxBarDockControl2
       ControlOptions.AutoColor = True
-      ControlOptions.OriginalHeight = 63
+      ControlOptions.OriginalHeight = 58
       ControlOptions.OriginalWidth = 500
       ControlOptions.ShowBorder = False
       Index = 0
@@ -1348,7 +1230,7 @@ object frm_User: Tfrm_User
       AlignVert = avTop
       CaptionOptions.Text = 'Bezeichnung:'
       Control = edt_OptionRight
-      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalHeight = 19
       ControlOptions.OriginalWidth = 853
       ControlOptions.ShowBorder = False
       Index = 0
@@ -1360,7 +1242,7 @@ object frm_User: Tfrm_User
       CaptionOptions.Text = 'Optionen:'
       CaptionOptions.Width = 105
       Control = lucbx_Backup
-      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalHeight = 19
       ControlOptions.OriginalWidth = 370
       ControlOptions.ShowBorder = False
       Index = 1
@@ -1372,7 +1254,7 @@ object frm_User: Tfrm_User
       CaptionOptions.Text = 'Benutzerverwaltung:'
       CaptionOptions.Width = 105
       Control = lucbx_Option
-      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalHeight = 19
       ControlOptions.OriginalWidth = 370
       ControlOptions.ShowBorder = False
       Index = 0
@@ -1443,7 +1325,7 @@ object frm_User: Tfrm_User
       AlignVert = avTop
       CaptionOptions.Text = 'Archiv:'
       Control = cxDBLookupComboBox22
-      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalHeight = 19
       ControlOptions.OriginalWidth = 370
       ControlOptions.ShowBorder = False
       Index = 0
@@ -1454,7 +1336,7 @@ object frm_User: Tfrm_User
       AlignVert = avTop
       CaptionOptions.Text = 'Backup:'
       Control = cxDBLookupComboBox23
-      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalHeight = 19
       ControlOptions.OriginalWidth = 370
       ControlOptions.ShowBorder = False
       Index = 0
@@ -1465,7 +1347,7 @@ object frm_User: Tfrm_User
       AlignVert = avTop
       CaptionOptions.Text = 'Kontakte:'
       Control = cxDBLookupComboBox1
-      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalHeight = 19
       ControlOptions.OriginalWidth = 370
       ControlOptions.ShowBorder = False
       Index = 0
@@ -1487,7 +1369,7 @@ object frm_User: Tfrm_User
       AlignVert = avTop
       CaptionOptions.Text = 'Stundenplan:'
       Control = cxDBLookupComboBox5
-      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalHeight = 19
       ControlOptions.OriginalWidth = 370
       ControlOptions.ShowBorder = False
       Index = 2
@@ -1498,7 +1380,7 @@ object frm_User: Tfrm_User
       AlignVert = avTop
       CaptionOptions.Text = 'E-Mail:'
       Control = cxDBLookupComboBox7
-      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalHeight = 19
       ControlOptions.OriginalWidth = 370
       ControlOptions.ShowBorder = False
       Index = 3
@@ -1509,7 +1391,7 @@ object frm_User: Tfrm_User
       AlignVert = avTop
       CaptionOptions.Text = 'Passw'#246'rter:'
       Control = cxDBLookupComboBox9
-      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalHeight = 19
       ControlOptions.OriginalWidth = 370
       ControlOptions.ShowBorder = False
       Index = 4
@@ -1565,7 +1447,7 @@ object frm_User: Tfrm_User
       AlignVert = avTop
       CaptionOptions.Text = 'Einnahmen:'
       Control = cxDBLookupComboBox8
-      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalHeight = 19
       ControlOptions.OriginalWidth = 370
       ControlOptions.ShowBorder = False
       Index = 3
@@ -1588,7 +1470,7 @@ object frm_User: Tfrm_User
       AlignVert = avTop
       CaptionOptions.Text = 'Webradio:'
       Control = cxDBLookupComboBox13
-      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalHeight = 19
       ControlOptions.OriginalWidth = 370
       ControlOptions.ShowBorder = False
       Index = 1
@@ -1600,7 +1482,7 @@ object frm_User: Tfrm_User
       CaptionOptions.Text = 'Videoplayer:'
       CaptionOptions.Width = 105
       Control = cxDBLookupComboBox12
-      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalHeight = 19
       ControlOptions.OriginalWidth = 370
       ControlOptions.ShowBorder = False
       Index = 0
@@ -1611,7 +1493,7 @@ object frm_User: Tfrm_User
       AlignVert = avTop
       CaptionOptions.Text = 'Fotos:'
       Control = cxDBLookupComboBox14
-      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalHeight = 19
       ControlOptions.OriginalWidth = 370
       ControlOptions.ShowBorder = False
       Index = 1
@@ -1622,7 +1504,7 @@ object frm_User: Tfrm_User
       AlignVert = avTop
       CaptionOptions.Text = 'MP3 - Tags:'
       Control = cxDBLookupComboBox15
-      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalHeight = 19
       ControlOptions.OriginalWidth = 370
       ControlOptions.ShowBorder = False
       Index = 0
@@ -1685,7 +1567,7 @@ object frm_User: Tfrm_User
       AlignVert = avTop
       CaptionOptions.Text = 'Shutdown:'
       Control = cxDBLookupComboBox17
-      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalHeight = 19
       ControlOptions.OriginalWidth = 145
       ControlOptions.ShowBorder = False
       Index = 0
@@ -1709,7 +1591,7 @@ object frm_User: Tfrm_User
       CaptionOptions.Text = 'Statistik:'
       CaptionOptions.Width = 105
       Control = cxDBLookupComboBox20
-      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalHeight = 19
       ControlOptions.OriginalWidth = 370
       ControlOptions.ShowBorder = False
       Index = 1
@@ -1720,7 +1602,7 @@ object frm_User: Tfrm_User
       AlignVert = avTop
       CaptionOptions.Text = 'Test:'
       Control = cxDBLookupComboBox21
-      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalHeight = 19
       ControlOptions.OriginalWidth = 370
       ControlOptions.ShowBorder = False
       Index = 1
@@ -1731,7 +1613,7 @@ object frm_User: Tfrm_User
       AlignVert = avTop
       CaptionOptions.Text = 'Vokabeln:'
       Control = cxDBLookupComboBox18
-      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalHeight = 19
       ControlOptions.OriginalWidth = 370
       ControlOptions.ShowBorder = False
       Index = 0
@@ -2053,5 +1935,10 @@ object frm_User: Tfrm_User
     PopupMenus = <>
     Left = 248
     Top = 410
+  end
+  object dxLayoutLookAndFeelList1: TdxLayoutLookAndFeelList
+    object dxLayoutCxLookAndFeel1: TdxLayoutCxLookAndFeel
+      PixelsPerInch = 96
+    end
   end
 end
