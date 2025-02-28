@@ -13,7 +13,7 @@ uses
   FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
   FireDAC.Comp.Client, FireDAC.Comp.DataSet, dxBarBuiltInMenu, cxPC,
   dxLayoutcxEditAdapters, cxClasses, dxLayoutLookAndFeels, dxLayoutContainer,
-  dxLayoutControl ;
+  dxLayoutControl, dxUIAClasses ;
 
 type
   TAufgabenThread = class(TThread)

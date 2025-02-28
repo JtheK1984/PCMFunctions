@@ -34,10 +34,10 @@ object frm_User: Tfrm_User
     LayoutLookAndFeel = dxLayoutCxLookAndFeel1
     OptionsImage.Images = dm_PCM.imglst_16x16
     object cxGrid3: TcxGrid
-      Left = 20
-      Top = 239
-      Width = 1097
-      Height = 400
+      Left = 22
+      Top = 258
+      Width = 1089
+      Height = 375
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -262,8 +262,8 @@ object frm_User: Tfrm_User
       end
     end
     object cxDBCheckBox3: TcxDBCheckBox
-      Left = 91
-      Top = 202
+      Left = 92
+      Top = 222
       Hint = 'Zugriff auf PCM-Rest-API'
       AutoSize = False
       BiDiMode = bdLeftToRight
@@ -283,11 +283,11 @@ object frm_User: Tfrm_User
       TabOrder = 4
       Transparent = True
       Height = 19
-      Width = 477
+      Width = 474
     end
     object edt_OptionName: TcxDBTextEdit
-      Left = 91
-      Top = 152
+      Left = 92
+      Top = 172
       Hint = 'Vorname des Benutzers'
       DataBinding.DataField = 'Vorname'
       DataBinding.DataSource = dsBenutzer
@@ -302,11 +302,11 @@ object frm_User: Tfrm_User
       Style.IsFontAssigned = True
       TabOrder = 2
       OnExit = btn_OptionSaveUserClick
-      Width = 477
+      Width = 474
     end
     object edt_OptionUser: TcxDBTextEdit
-      Left = 91
-      Top = 127
+      Left = 92
+      Top = 147
       Hint = 'Benutzername des Benutzers'
       DataBinding.DataField = 'Benutzer'
       DataBinding.DataSource = dsBenutzer
@@ -321,11 +321,11 @@ object frm_User: Tfrm_User
       Style.IsFontAssigned = True
       TabOrder = 1
       OnExit = btn_OptionSaveUserClick
-      Width = 477
+      Width = 474
     end
     object edt_OptionSurName: TcxDBTextEdit
-      Left = 91
-      Top = 177
+      Left = 92
+      Top = 197
       Hint = 'Nachname des Benutzers'
       AutoSize = False
       DataBinding.DataField = 'Nachname'
@@ -342,11 +342,11 @@ object frm_User: Tfrm_User
       TabOrder = 3
       OnExit = btn_OptionSaveUserClick
       Height = 19
-      Width = 477
+      Width = 474
     end
     object btn_OptionChangePassword: TcxButton
-      Left = 985
-      Top = 127
+      Left = 980
+      Top = 147
       Width = 120
       Height = 21
       Caption = 'Passwort '#228'ndern'
@@ -363,8 +363,8 @@ object frm_User: Tfrm_User
       OnClick = btn_OptionChangePasswordClick
     end
     object cxDBCheckBox2: TcxDBCheckBox
-      Left = 679
-      Top = 179
+      Left = 677
+      Top = 199
       Hint = 'automatisches Login des Benutzers '
       BiDiMode = bdLeftToRight
       Caption = 'automatisches Login (Windows-Benutzer)'
@@ -384,8 +384,8 @@ object frm_User: Tfrm_User
       Transparent = True
     end
     object edt_OptionPassword: TcxDBTextEdit
-      Left = 629
-      Top = 127
+      Left = 627
+      Top = 147
       Hint = 'Passwort des Benutzers'
       AutoSize = False
       DataBinding.DataField = 'Passwort'
@@ -405,11 +405,11 @@ object frm_User: Tfrm_User
       OnEnter = edt_OptionPasswordEnter
       OnExit = edt_OptionPasswordExit
       Height = 19
-      Width = 350
+      Width = 347
     end
     object lucbx_OptionRights: TcxDBLookupComboBox
-      Left = 629
-      Top = 154
+      Left = 627
+      Top = 174
       Hint = 'Recht des Benutzers'
       DataBinding.DataField = 'ID_Rechte'
       DataBinding.DataSource = dsBenutzer
@@ -430,13 +430,13 @@ object frm_User: Tfrm_User
       Style.IsFontAssigned = True
       TabOrder = 7
       OnExit = btn_OptionSaveUserClick
-      Width = 476
+      Width = 473
     end
     object dxBarDockControl1: TdxBarDockControl
-      Left = 20
-      Top = 45
-      Width = 1097
-      Height = 58
+      Left = 22
+      Top = 48
+      Width = 1089
+      Height = 63
       Align = dalNone
       BarManager = dxBarManager1
     end
@@ -444,7 +444,7 @@ object frm_User: Tfrm_User
       Left = 10000
       Top = 10000
       Width = 1089
-      Height = 58
+      Height = 63
       Align = dalNone
       BarManager = dxBarManager1
       Visible = False
@@ -1175,7 +1175,7 @@ object frm_User: Tfrm_User
       CaptionOptions.Text = 'cxDBCheckBox2'
       CaptionOptions.Visible = False
       Control = cxDBCheckBox2
-      ControlOptions.OriginalHeight = 17
+      ControlOptions.OriginalHeight = 19
       ControlOptions.OriginalWidth = 218
       ControlOptions.ShowBorder = False
       Index = 2
@@ -1198,7 +1198,7 @@ object frm_User: Tfrm_User
       AlignVert = avTop
       Control = dxBarDockControl1
       ControlOptions.AlignVert = avTop
-      ControlOptions.OriginalHeight = 58
+      ControlOptions.OriginalHeight = 63
       ControlOptions.OriginalWidth = 500
       ControlOptions.ShowBorder = False
       Index = 0
@@ -1209,7 +1209,7 @@ object frm_User: Tfrm_User
       AlignVert = avTop
       Control = dxBarDockControl2
       ControlOptions.AutoColor = True
-      ControlOptions.OriginalHeight = 58
+      ControlOptions.OriginalHeight = 63
       ControlOptions.OriginalWidth = 500
       ControlOptions.ShowBorder = False
       Index = 0
@@ -1766,7 +1766,6 @@ object frm_User: Tfrm_User
     ImageOptions.LargeImages = dm_PCM.imglst_32x32
     NotDocking = [dsNone, dsLeft, dsTop, dsRight, dsBottom]
     PopupMenuLinks = <>
-    Style = bmsUseLookAndFeel
     UseSystemFont = True
     Left = 448
     Top = 256
@@ -1937,6 +1936,8 @@ object frm_User: Tfrm_User
     Top = 410
   end
   object dxLayoutLookAndFeelList1: TdxLayoutLookAndFeelList
+    Left = 192
+    Top = 384
     object dxLayoutCxLookAndFeel1: TdxLayoutCxLookAndFeel
       PixelsPerInch = 96
     end
