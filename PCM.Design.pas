@@ -16,32 +16,23 @@ uses
   cxButtons, dxGDIPlusClasses, cxImage, cxGroupBox, cxPC,inifiles, Vcl.Themes,system.UITypes,
   Vcl.VirtualImage, Vcl.BaseImageCollection, Vcl.ImageCollection,
   dxLayoutContainer, dxLayoutcxEditAdapters, dxLayoutControl,
-  dxLayoutLookAndFeels;
+  dxLayoutLookAndFeels, dxUIAClasses, dxLayoutControlAdapters;
 
 type
   Tfrm_Design = class(TForm)
-    cbx_Style: TcxComboBox;
     cbx_Design: TcxComboBox;
-    dxBarManager1: TdxBarManager;
+    brmgr_Main: TdxBarManager;
     btn_OptionSaveUser: TdxBarLargeButton;
     dxBarManager1Bar1: TdxBar;
     cxButton1: TdxBarLargeButton;
-    dxBarDockControl1: TdxBarDockControl;
-    ImageCollection1: TImageCollection;
-    cxImage1: TVirtualImage;
-    cxImageList1: TcxImageList;
-    dxLayoutControl1Group_Root: TdxLayoutGroup;
-    dxLayoutControl1: TdxLayoutControl;
-    dxLayoutGroup2: TdxLayoutGroup;
+    brdckCtrl_Main: TdxBarDockControl;
+    lactrl_MainGroup_Root: TdxLayoutGroup;
+    lactrl_Main: TdxLayoutControl;
     dxLayoutGroup3: TdxLayoutGroup;
     dxLayoutItem1: TdxLayoutItem;
     dxLayoutGroup5: TdxLayoutGroup;
     dxLayoutItem2: TdxLayoutItem;
-    dxLayoutItem3: TdxLayoutItem;
     dxLayoutGroup9: TdxLayoutGroup;
-    cxGroupBox3: TcxGroupBox;
-    VirtualImage1: TVirtualImage;
-    des_Main: TcxGroupBox;
     des_ToolButton3: TcxButton;
     des_ToolButton2: TcxButton;
     des_ToolButton1: TcxButton;
@@ -58,12 +49,27 @@ type
     cxGrid1DBTableView1Column2: TcxGridDBColumn;
     cxGrid1DBTableView1Column3: TcxGridDBColumn;
     cxGrid1Level1: TcxGridLevel;
-    dxLayoutItem4: TdxLayoutItem;
-    dxLayoutLookAndFeelList1: TdxLayoutLookAndFeelList;
-    dxLayoutCxLookAndFeel1: TdxLayoutCxLookAndFeel;
+    lalaflst_Main: TdxLayoutLookAndFeelList;
+    laCxlaf_Main: TdxLayoutCxLookAndFeel;
+    dxLayoutGroup1: TdxLayoutGroup;
+    dxLayoutGroup2: TdxLayoutGroup;
+    dxLayoutItem5: TdxLayoutItem;
+    dxLayoutItem6: TdxLayoutItem;
+    dxLayoutItem7: TdxLayoutItem;
+    dxLayoutItem8: TdxLayoutItem;
+    dxLayoutItem9: TdxLayoutItem;
+    dxLayoutItem10: TdxLayoutItem;
+    dxLayoutItem11: TdxLayoutItem;
+    dxLayoutGroup4: TdxLayoutGroup;
+    dxLayoutItem12: TdxLayoutItem;
+    dxLayoutItem13: TdxLayoutItem;
+    dxLayoutItem14: TdxLayoutItem;
+    dxLayoutItem15: TdxLayoutItem;
+    dxLayoutGroup6: TdxLayoutGroup;
+    lalaflst_Design: TdxLayoutLookAndFeelList;
+    laCxlaf_Design: TdxLayoutCxLookAndFeel;
     procedure cxButton1Click(Sender: TObject);
     procedure cbx_DesignPropertiesChange(Sender: TObject);
-    procedure cbx_StylePropertiesChange(Sender: TObject);
     procedure FormShow(Sender: TObject);
   private
     { Private-Deklarationen }
@@ -83,18 +89,10 @@ uses  PCM.Main,
       PCM.Strings,
       NtLanguageDlg;
 
-procedure Tfrm_Design.cbx_StylePropertiesChange(Sender: TObject);
-begin
-  if cbx_Style.ItemIndex > -1 then
-    cximage1.ImageIndex:= cbx_Style.itemindex;
-end;
 procedure Tfrm_Design.cbx_DesignPropertiesChange(Sender: TObject);
 begin
   if cbx_Design.ItemIndex > -1 then
   begin
-    des_main.Style.LookAndFeel.SkinName:= cbx_Design.Properties.Items[cbx_Design.Itemindex];
-    des_main.Height:=des_main.Height + 1;
-    des_main.Height:=des_main.Height - 1;
     des_Label1.Style.LookAndFeel.SkinName:= cbx_Design.Properties.Items[cbx_Design.Itemindex];
     des_Edit1.Style.LookAndFeel.SkinName:= cbx_Design.Properties.Items[cbx_Design.Itemindex];
     des_CheckBox1.Style.LookAndFeel.SkinName:= cbx_Design.Properties.Items[cbx_Design.Itemindex];
@@ -106,6 +104,7 @@ begin
     des_ToolButton1.LookAndFeel.SkinName:= cbx_Design.Properties.Items[cbx_Design.Itemindex];
     des_ToolButton2.LookAndFeel.SkinName:= cbx_Design.Properties.Items[cbx_Design.Itemindex];
     des_ToolButton3.LookAndFeel.SkinName:= cbx_Design.Properties.Items[cbx_Design.Itemindex];
+    laCxlaf_Design.LookAndFeel.SkinName:= cbx_Design.Properties.Items[cbx_Design.Itemindex];
   end;
 end;
 procedure Tfrm_Design.cxButton1Click(Sender: TObject);
@@ -115,18 +114,8 @@ begin
   iniFile:=TIniFile.create(GetEnvironmentVariable('LOCALAPPDATA') + '\PCM\PCM.ini');
   try
     iniFile.WriteString(PCM_Logname,'Design',cbx_Design.Properties.Items[cbx_Design.ItemIndex]) ;
-    iniFile.WriteString(PCM_Logname,'Style',cbx_Style.Properties.Items[cbx_Style.ItemIndex]) ;
+
     frm_PCM_main.lafCtrl_Main.SkinName:= cbx_Design.Properties.Items[cbx_Design.ItemIndex];
-    if dm_PCM.sStyle <> cbx_Style.Properties.Items[cbx_Style.ItemIndex] then
-    begin
-      if MessageDlg(rs_PCM_Style1 + slinebreak + rs_PCM_Style2,mtInformation,[mbYes,mbNo], 0) = mrYes then
-      begin
-        dm_PCM.bStyle:= true;
-        TStyleManager.TRYSetStyle(cbx_Style.Properties.Items[cbx_Style.Itemindex]);
-        dm_PCM.sDesign:= cbx_Design.Properties.Items[cbx_Design.ItemIndex];
-        dm_PCM.sStyle:= cbx_Style.Properties.Items[cbx_Style.ItemIndex];
-      end;
-    end;
   finally
      iniFile.Free;
   end;
@@ -135,7 +124,6 @@ end;
 procedure Tfrm_Design.FormShow(Sender: TObject);
 begin
   cbx_Design.ItemIndex := cbx_Design.Properties.Items.IndexOf(dm_PCM.sDesign);
-  cbx_Style.ItemIndex := cbx_Style.Properties.Items.IndexOf(dm_PCM.sStyle);
 end;
 
 end.
