@@ -119,7 +119,7 @@ object frm_User: Tfrm_User
       TabOrder = 11
       Visible = False
       OnExit = btn_OptionSaveRightClick
-      Width = 962
+      Width = 853
     end
     object cxDBLookupComboBox21: TcxDBLookupComboBox
       Left = 10000
@@ -144,7 +144,7 @@ object frm_User: Tfrm_User
       Style.IsFontAssigned = True
       TabOrder = 36
       Visible = False
-      Width = 421
+      Width = 370
     end
     object cxDBLookupComboBox18: TcxDBLookupComboBox
       Left = 10000
@@ -169,7 +169,7 @@ object frm_User: Tfrm_User
       Style.IsFontAssigned = True
       TabOrder = 35
       Visible = False
-      Width = 421
+      Width = 370
     end
     object cxDBLookupComboBox20: TcxDBLookupComboBox
       Left = 10000
@@ -194,13 +194,13 @@ object frm_User: Tfrm_User
       Style.IsFontAssigned = True
       TabOrder = 37
       Visible = False
-      Width = 420
+      Width = 370
     end
     object cxGrid1: TcxGrid
       Left = 10000
       Top = 10000
-      Width = 1089
-      Height = 269
+      Width = 1067
+      Height = 150
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -433,9 +433,9 @@ object frm_User: Tfrm_User
       Width = 473
     end
     object dxBarDockControl1: TdxBarDockControl
-      Left = 22
-      Top = 48
-      Width = 1089
+      Left = 33
+      Top = 78
+      Width = 1067
       Height = 63
       Align = dalNone
       BarManager = dxBarManager1
@@ -443,7 +443,7 @@ object frm_User: Tfrm_User
     object dxBarDockControl2: TdxBarDockControl
       Left = 10000
       Top = 10000
-      Width = 1089
+      Width = 1067
       Height = 63
       Align = dalNone
       BarManager = dxBarManager1
@@ -472,7 +472,7 @@ object frm_User: Tfrm_User
       Style.IsFontAssigned = True
       TabOrder = 13
       Visible = False
-      Width = 423
+      Width = 370
     end
     object lucbx_Option: TcxDBLookupComboBox
       Left = 10000
@@ -497,7 +497,7 @@ object frm_User: Tfrm_User
       Style.IsFontAssigned = True
       TabOrder = 12
       Visible = False
-      Width = 424
+      Width = 370
     end
     object cxDBCheckBox1: TcxDBCheckBox
       Left = 10000
@@ -521,7 +521,7 @@ object frm_User: Tfrm_User
       Transparent = True
       Visible = False
       Height = 19
-      Width = 1071
+      Width = 85
     end
     object cxDBLookupComboBox22: TcxDBLookupComboBox
       Left = 10000
@@ -546,7 +546,7 @@ object frm_User: Tfrm_User
       Style.IsFontAssigned = True
       TabOrder = 15
       Visible = False
-      Width = 945
+      Width = 370
     end
     object cxDBLookupComboBox23: TcxDBLookupComboBox
       Left = 10000
@@ -571,7 +571,7 @@ object frm_User: Tfrm_User
       Style.IsFontAssigned = True
       TabOrder = 16
       Visible = False
-      Width = 956
+      Width = 370
     end
     object cxDBLookupComboBox1: TcxDBLookupComboBox
       Left = 10000
@@ -596,7 +596,7 @@ object frm_User: Tfrm_User
       Style.IsFontAssigned = True
       TabOrder = 17
       Visible = False
-      Width = 415
+      Width = 370
     end
     object cxDBLookupComboBox3: TcxDBLookupComboBox
       Left = 10000
@@ -623,7 +623,7 @@ object frm_User: Tfrm_User
       TabOrder = 18
       Visible = False
       Height = 19
-      Width = 415
+      Width = 370
     end
     object cxDBLookupComboBox5: TcxDBLookupComboBox
       Left = 10000
@@ -648,7 +648,7 @@ object frm_User: Tfrm_User
       Style.IsFontAssigned = True
       TabOrder = 19
       Visible = False
-      Width = 415
+      Width = 370
     end
     object cxDBLookupComboBox7: TcxDBLookupComboBox
       Left = 10000
@@ -673,7 +673,7 @@ object frm_User: Tfrm_User
       Style.IsFontAssigned = True
       TabOrder = 20
       Visible = False
-      Width = 415
+      Width = 370
     end
     object cxDBLookupComboBox9: TcxDBLookupComboBox
       Left = 10000
@@ -698,7 +698,7 @@ object frm_User: Tfrm_User
       Style.IsFontAssigned = True
       TabOrder = 21
       Visible = False
-      Width = 415
+      Width = 370
     end
     object cxDBLookupComboBox10: TcxDBLookupComboBox
       Left = 10000
@@ -725,7 +725,7 @@ object frm_User: Tfrm_User
       TabOrder = 26
       Visible = False
       Height = 19
-      Width = 415
+      Width = 370
     end
     object cxDBLookupComboBox2: TcxDBLookupComboBox
       Left = 10000
@@ -752,7 +752,7 @@ object frm_User: Tfrm_User
       TabOrder = 22
       Visible = False
       Height = 19
-      Width = 415
+      Width = 370
     end
     object cxDBLookupComboBox4: TcxDBLookupComboBox
       Left = 10000
@@ -779,7 +779,7 @@ object frm_User: Tfrm_User
       TabOrder = 23
       Visible = False
       Height = 19
-      Width = 415
+      Width = 370
     end
     object cxDBLookupComboBox6: TcxDBLookupComboBox
       Left = 10000
@@ -806,7 +806,7 @@ object frm_User: Tfrm_User
       TabOrder = 24
       Visible = False
       Height = 19
-      Width = 415
+      Width = 370
     end
     object cxDBLookupComboBox8: TcxDBLookupComboBox
       Left = 10000
@@ -831,7 +831,7 @@ object frm_User: Tfrm_User
       Style.IsFontAssigned = True
       TabOrder = 25
       Visible = False
-      Width = 415
+      Width = 370
     end
     object cxDBLookupComboBox11: TcxDBLookupComboBox
       Left = 10000
@@ -858,7 +858,7 @@ object frm_User: Tfrm_User
       TabOrder = 27
       Visible = False
       Height = 19
-      Width = 415
+      Width = 370
     end
     object cxDBLookupComboBox13: TcxDBLookupComboBox
       Left = 10000
@@ -883,7 +883,7 @@ object frm_User: Tfrm_User
       Style.IsFontAssigned = True
       TabOrder = 28
       Visible = False
-      Width = 415
+      Width = 370
     end
     object cxDBLookupComboBox12: TcxDBLookupComboBox
       Left = 10000
@@ -908,7 +908,7 @@ object frm_User: Tfrm_User
       Style.IsFontAssigned = True
       TabOrder = 29
       Visible = False
-      Width = 415
+      Width = 370
     end
     object cxDBLookupComboBox14: TcxDBLookupComboBox
       Left = 10000
@@ -933,7 +933,7 @@ object frm_User: Tfrm_User
       Style.IsFontAssigned = True
       TabOrder = 30
       Visible = False
-      Width = 415
+      Width = 370
     end
     object cxDBLookupComboBox15: TcxDBLookupComboBox
       Left = 10000
@@ -958,7 +958,7 @@ object frm_User: Tfrm_User
       Style.IsFontAssigned = True
       TabOrder = 31
       Visible = False
-      Width = 945
+      Width = 370
     end
     object cxDBLookupComboBox16: TcxDBLookupComboBox
       Left = 10000
@@ -985,7 +985,7 @@ object frm_User: Tfrm_User
       TabOrder = 32
       Visible = False
       Height = 19
-      Width = 962
+      Width = 370
     end
     object cxDBLookupComboBox17: TcxDBLookupComboBox
       Left = 10000
@@ -1010,7 +1010,7 @@ object frm_User: Tfrm_User
       Style.IsFontAssigned = True
       TabOrder = 33
       Visible = False
-      Width = 415
+      Width = 145
     end
     object cxDBLookupComboBox19: TcxDBLookupComboBox
       Left = 10000
@@ -1037,7 +1037,7 @@ object frm_User: Tfrm_User
       TabOrder = 34
       Visible = False
       Height = 19
-      Width = 415
+      Width = 145
     end
     object lagrp_Personal: TdxLayoutGroup
       AlignHorz = ahClient
@@ -1066,7 +1066,7 @@ object frm_User: Tfrm_User
       AlignVert = avClient
       CaptionOptions.ImageIndex = 1
       CaptionOptions.Text = 'Benutzer'
-      ItemIndex = 2
+      ItemIndex = 1
       TabbedOptions.HotTrack = True
       TabbedOptions.MultiLineTabCaptions = True
       TabbedOptions.ShowFrame = True
@@ -1078,7 +1078,6 @@ object frm_User: Tfrm_User
       AlignVert = avClient
       CaptionOptions.ImageIndex = 2
       CaptionOptions.Text = 'Rechte'
-      ItemIndex = 10
       Index = 1
     end
     object lagrp_SucheFilter: TdxLayoutGroup
@@ -1086,14 +1085,10 @@ object frm_User: Tfrm_User
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = '[B]Benutzerdetails[/B]'
-      ItemIndex = 1
-      LayoutDirection = ldHorizontal
-      Index = 1
+      Index = 0
     end
     object dxLayoutGroup2: TdxLayoutGroup
-      Parent = lagrp_Mitarbeiter
-      AlignHorz = ahClient
-      AlignVert = avTop
+      Parent = dxLayoutGroup21
       CaptionOptions.Text = '[B]Rechte Allgemein[/B]'
       ButtonOptions.ShowExpandButton = True
       Expanded = False
@@ -1193,7 +1188,7 @@ object frm_User: Tfrm_User
       Index = 1
     end
     object dxLayoutItem1: TdxLayoutItem
-      Parent = lagrp_Suche
+      Parent = lagrp_SucheFilter
       AlignHorz = ahClient
       AlignVert = avTop
       Control = dxBarDockControl1
@@ -1204,9 +1199,7 @@ object frm_User: Tfrm_User
       Index = 0
     end
     object dxLayoutItem2: TdxLayoutItem
-      Parent = lagrp_Mitarbeiter
-      AlignHorz = ahClient
-      AlignVert = avTop
+      Parent = dxLayoutGroup21
       Control = dxBarDockControl2
       ControlOptions.AutoColor = True
       ControlOptions.OriginalHeight = 63
@@ -1222,7 +1215,7 @@ object frm_User: Tfrm_User
       ControlOptions.OriginalHeight = 5
       ControlOptions.OriginalWidth = 1129
       ControlOptions.ShowBorder = False
-      Index = 2
+      Index = 1
     end
     object dxLayoutItem12: TdxLayoutItem
       Parent = dxLayoutGroup2
@@ -1271,27 +1264,21 @@ object frm_User: Tfrm_User
       Index = 2
     end
     object dxLayoutGroup3: TdxLayoutGroup
-      Parent = lagrp_Mitarbeiter
-      AlignHorz = ahClient
-      AlignVert = avTop
+      Parent = dxLayoutGroup21
       CaptionOptions.Text = '[B]Rechte PCM - Archiv[/B]'
       ButtonOptions.ShowExpandButton = True
       Expanded = False
       Index = 2
     end
     object dxLayoutGroup4: TdxLayoutGroup
-      Parent = lagrp_Mitarbeiter
-      AlignHorz = ahClient
-      AlignVert = avTop
+      Parent = dxLayoutGroup21
       CaptionOptions.Text = '[B]Rechte PCM - Backup[/B]'
       ButtonOptions.ShowExpandButton = True
       Expanded = False
       Index = 3
     end
     object dxLayoutGroup5: TdxLayoutGroup
-      Parent = lagrp_Mitarbeiter
-      AlignHorz = ahClient
-      AlignVert = avTop
+      Parent = dxLayoutGroup21
       CaptionOptions.Text = '[B]Rechte PCM - Manager[/B]'
       ButtonOptions.ShowExpandButton = True
       Expanded = False
@@ -1300,18 +1287,14 @@ object frm_User: Tfrm_User
       Index = 4
     end
     object dxLayoutGroup7: TdxLayoutGroup
-      Parent = lagrp_Mitarbeiter
-      AlignHorz = ahClient
-      AlignVert = avTop
+      Parent = dxLayoutGroup21
       CaptionOptions.Text = '[B]Rechte PCM - MP3Manager[/B]'
       ButtonOptions.ShowExpandButton = True
       Expanded = False
       Index = 6
     end
     object dxLayoutGroup8: TdxLayoutGroup
-      Parent = lagrp_Mitarbeiter
-      AlignHorz = ahClient
-      AlignVert = avTop
+      Parent = dxLayoutGroup21
       CaptionOptions.Text = '[B]Rechte PCM - Mediacenter[/B]'
       ButtonOptions.ShowExpandButton = True
       Expanded = False
@@ -1510,9 +1493,7 @@ object frm_User: Tfrm_User
       Index = 0
     end
     object dxLayoutGroup6: TdxLayoutGroup
-      Parent = lagrp_Mitarbeiter
-      AlignHorz = ahClient
-      AlignVert = avTop
+      Parent = dxLayoutGroup21
       CaptionOptions.Text = '[B]Rechte PCM - Vokabeltrainer[/B]'
       ButtonOptions.ShowExpandButton = True
       Expanded = False
@@ -1521,9 +1502,7 @@ object frm_User: Tfrm_User
       Index = 9
     end
     object dxLayoutGroup9: TdxLayoutGroup
-      Parent = lagrp_Mitarbeiter
-      AlignHorz = ahClient
-      AlignVert = avTop
+      Parent = dxLayoutGroup21
       CaptionOptions.Text = '[B]Rechte PCM - Servicemanager[/B]'
       ButtonOptions.ShowExpandButton = True
       Expanded = False
@@ -1532,18 +1511,14 @@ object frm_User: Tfrm_User
       Index = 8
     end
     object dxLayoutGroup10: TdxLayoutGroup
-      Parent = lagrp_Mitarbeiter
-      AlignHorz = ahClient
-      AlignVert = avTop
+      Parent = dxLayoutGroup21
       CaptionOptions.Text = '[B]Rechte PCM - Notenrechner[/B]'
       ButtonOptions.ShowExpandButton = True
       Expanded = False
       Index = 7
     end
     object dxLayoutItem33: TdxLayoutItem
-      Parent = lagrp_Mitarbeiter
-      AlignHorz = ahClient
-      AlignVert = avClient
+      Parent = dxLayoutGroup21
       Control = cxGrid1
       ControlOptions.OriginalHeight = 150
       ControlOptions.OriginalWidth = 1118
@@ -1681,7 +1656,7 @@ object frm_User: Tfrm_User
       Index = 0
     end
     object dxLayoutGroup18: TdxLayoutGroup
-      Parent = lagrp_SucheFilter
+      Parent = dxLayoutGroup20
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
@@ -1690,12 +1665,28 @@ object frm_User: Tfrm_User
       Index = 1
     end
     object dxLayoutGroup19: TdxLayoutGroup
-      Parent = lagrp_SucheFilter
+      Parent = dxLayoutGroup20
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
       ItemIndex = 3
       ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutGroup20: TdxLayoutGroup
+      Parent = lagrp_SucheFilter
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutGroup21: TdxLayoutGroup
+      Parent = lagrp_Mitarbeiter
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = '[B]Rechtedetails[/B]'
+      ItemIndex = 10
       Index = 0
     end
   end

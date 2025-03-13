@@ -155,6 +155,8 @@ type
     dxLayoutGroup19: TdxLayoutGroup;
     dxLayoutLookAndFeelList1: TdxLayoutLookAndFeelList;
     dxLayoutCxLookAndFeel1: TdxLayoutCxLookAndFeel;
+    dxLayoutGroup20: TdxLayoutGroup;
+    dxLayoutGroup21: TdxLayoutGroup;
     procedure btn_OptionChangePasswordClick(Sender: TObject);
     procedure edt_OptionPasswordExit(Sender: TObject);
     procedure btn_OptionNewRightClick(Sender: TObject);
