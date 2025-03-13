@@ -97,16 +97,16 @@ object frm_Design: Tfrm_Design
       Width = 1112
     end
     object brdckCtrl_Main: TdxBarDockControl
-      Left = 10
-      Top = 10
-      Width = 1175
+      Left = 21
+      Top = 40
+      Width = 1153
       Height = 63
       Align = dalNone
       BarManager = brmgr_Main
     end
     object des_ToolButton3: TcxButton
-      Left = 194
-      Top = 211
+      Left = 205
+      Top = 200
       Width = 75
       Height = 27
       Caption = 'ToolButton3'
@@ -116,8 +116,8 @@ object frm_Design: Tfrm_Design
       TabStop = False
     end
     object des_ToolButton2: TcxButton
-      Left = 113
-      Top = 211
+      Left = 124
+      Top = 200
       Width = 75
       Height = 27
       Caption = 'ToolButton2'
@@ -126,8 +126,8 @@ object frm_Design: Tfrm_Design
       TabStop = False
     end
     object des_ToolButton1: TcxButton
-      Left = 32
-      Top = 211
+      Left = 43
+      Top = 200
       Width = 75
       Height = 27
       Caption = 'ToolButton1'
@@ -136,8 +136,8 @@ object frm_Design: Tfrm_Design
       TabStop = False
     end
     object des_Label1: TcxLabel
-      Left = 32
-      Top = 252
+      Left = 43
+      Top = 241
       AutoSize = False
       Caption = 'Label1'
       Style.HotTrack = False
@@ -148,8 +148,8 @@ object frm_Design: Tfrm_Design
       Width = 367
     end
     object des_Edit1: TcxTextEdit
-      Left = 32
-      Top = 283
+      Left = 43
+      Top = 272
       TabStop = False
       Style.HotTrack = False
       Style.TransparentBorder = False
@@ -158,8 +158,8 @@ object frm_Design: Tfrm_Design
       Width = 367
     end
     object des_CheckBox1: TcxCheckBox
-      Left = 32
-      Top = 316
+      Left = 43
+      Top = 305
       TabStop = False
       AutoSize = False
       Caption = 'CheckBox1'
@@ -172,8 +172,8 @@ object frm_Design: Tfrm_Design
       Width = 367
     end
     object des_RadioButton1: TcxRadioButton
-      Left = 32
-      Top = 347
+      Left = 43
+      Top = 336
       Width = 367
       Height = 17
       Caption = 'RadioButton1'
@@ -186,8 +186,8 @@ object frm_Design: Tfrm_Design
       Transparent = True
     end
     object des_Button1: TcxButton
-      Left = 32
-      Top = 464
+      Left = 43
+      Top = 453
       Width = 72
       Height = 24
       Caption = 'Button1'
@@ -197,8 +197,8 @@ object frm_Design: Tfrm_Design
       TabStop = False
     end
     object des_Button2: TcxButton
-      Left = 110
-      Top = 464
+      Left = 121
+      Top = 453
       Width = 72
       Height = 24
       Caption = 'Button2'
@@ -208,8 +208,8 @@ object frm_Design: Tfrm_Design
       TabStop = False
     end
     object des_Button3: TcxButton
-      Left = 188
-      Top = 464
+      Left = 199
+      Top = 453
       Width = 72
       Height = 24
       Caption = 'Button3'
@@ -219,8 +219,8 @@ object frm_Design: Tfrm_Design
       TabStop = False
     end
     object cxGrid2: TcxGrid
-      Left = 32
-      Top = 378
+      Left = 43
+      Top = 367
       Width = 367
       Height = 72
       TabOrder = 9
@@ -266,12 +266,11 @@ object frm_Design: Tfrm_Design
       AlignVert = avClient
       CaptionOptions.ImageIndex = 0
       CaptionOptions.Text = 'Personalisierung'
-      ItemIndex = 2
       ShowBorder = False
       Index = 0
     end
     object dxLayoutItem1: TdxLayoutItem
-      Parent = dxLayoutGroup3
+      Parent = dxLayoutGroup5
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'dxBarDockControl1'
@@ -288,7 +287,7 @@ object frm_Design: Tfrm_Design
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'Programmdesign'
-      Index = 1
+      Index = 0
     end
     object dxLayoutItem2: TdxLayoutItem
       Parent = dxLayoutGroup5
@@ -299,12 +298,10 @@ object frm_Design: Tfrm_Design
       ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 1042
       ControlOptions.ShowBorder = False
-      Index = 0
+      Index = 1
     end
     object dxLayoutGroup9: TdxLayoutGroup
-      Parent = dxLayoutGroup3
-      AlignHorz = ahClient
-      AlignVert = avClient
+      Parent = dxLayoutGroup5
       CaptionOptions.Text = 'Vorschau'
       Offsets.Bottom = 4
       LayoutDirection = ldHorizontal
