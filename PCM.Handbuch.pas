@@ -9,7 +9,7 @@ uses
   cxLookAndFeels, cxLookAndFeelPainters, cxContainer, cxEdit,
   cxGroupBox, cxPC, System.ImageList, Vcl.ImgList, cxImageList,PCM.Browser,
   cxClasses, dxLayoutLookAndFeels, dxLayoutContainer, dxLayoutControl,
-  dxLayoutcxEditAdapters;
+  dxLayoutcxEditAdapters, dxUIAClasses;
 
 type
   Tfrm_Handbuch = class(TForm)
