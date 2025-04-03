@@ -11,6 +11,7 @@ object frm_Sendmail: Tfrm_Sendmail
   Font.Name = 'Segoe UI'
   Font.Style = []
   Position = poScreenCenter
+  OnClose = FormClose
   OnShow = FormShow
   TextHeight = 15
   object lactrl_Mail: TdxLayoutControl
@@ -21,8 +22,6 @@ object frm_Sendmail: Tfrm_Sendmail
     Align = alClient
     TabOrder = 0
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
-    ExplicitWidth = 1884
-    ExplicitHeight = 1161
     object btn_Send: TcxButton
       Left = 12
       Top = 12
@@ -138,6 +137,17 @@ object frm_Sendmail: Tfrm_Sendmail
       TabOrder = 10
       Height = 969
       Width = 1866
+      object WVWindowParent1: TWVWindowParent
+        Left = 2
+        Top = 2
+        Width = 1862
+        Height = 965
+        Align = alClient
+        TabStop = True
+        TabOrder = 0
+        ExplicitLeft = 0
+        ExplicitTop = 1
+      end
     end
     object btn_Von: TcxButton
       Left = 119
@@ -249,6 +259,7 @@ object frm_Sendmail: Tfrm_Sendmail
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 1
@@ -270,6 +281,7 @@ object frm_Sendmail: Tfrm_Sendmail
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 2
@@ -279,7 +291,7 @@ object frm_Sendmail: Tfrm_Sendmail
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
-      ItemIndex = 1
+      ItemIndex = 4
       ShowBorder = False
       Index = 0
     end
@@ -335,6 +347,7 @@ object frm_Sendmail: Tfrm_Sendmail
     object lagrp_MailBetreff: TdxLayoutGroup
       Parent = lagrp_MailAdresses
       CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 4
@@ -373,6 +386,8 @@ object frm_Sendmail: Tfrm_Sendmail
     end
     object laitm_MailVonEdt: TdxLayoutItem
       Parent = lagrp_MailVon
+      AlignHorz = ahClient
+      AlignVert = avTop
       CaptionOptions.Text = 'New Item'
       CaptionOptions.Visible = False
       Control = edt_Von
@@ -383,6 +398,8 @@ object frm_Sendmail: Tfrm_Sendmail
     end
     object laitm_MailVonBtn: TdxLayoutItem
       Parent = lagrp_MailVon
+      AlignHorz = ahLeft
+      AlignVert = avTop
       CaptionOptions.Text = 'New Item'
       CaptionOptions.Visible = False
       Control = btn_Von
@@ -397,6 +414,7 @@ object frm_Sendmail: Tfrm_Sendmail
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
       Visible = False
+      ItemIndex = 1
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 3
@@ -586,5 +604,40 @@ object frm_Sendmail: Tfrm_Sendmail
     Left = 840
     Top = 752
     PixelsPerInch = 96
+  end
+  object IdHTTPServer1: TIdHTTPServer
+    Bindings = <>
+    DefaultPort = 2132
+    Left = 1109
+    Top = 120
+  end
+  object IDSMTP_Mail: TIdSMTP
+    IOHandler = IdSSLIOHandlerSocketSMTP
+    AuthType = satSASL
+    SASLMechanisms = <>
+    Left = 276
+    Top = 672
+  end
+  object IdSSLIOHandlerSocketSMTP: TIdSSLIOHandlerSocketOpenSSL
+    Destination = ':25'
+    MaxLineAction = maException
+    Port = 25
+    DefaultPort = 0
+    SSLOptions.Method = sslvTLSv1_2
+    SSLOptions.SSLVersions = [sslvTLSv1_2]
+    SSLOptions.Mode = sslmClient
+    SSLOptions.VerifyMode = []
+    SSLOptions.VerifyDepth = 0
+    Left = 264
+    Top = 396
+  end
+  object WVBrowser1: TWVBrowser
+    DefaultURL = 'https://www.bing.com'
+    TargetCompatibleBrowserVersion = '95.0.1020.44'
+    AllowSingleSignOnUsingOSPrimaryAccount = False
+    OnAfterCreated = WVBrowser1AfterCreated
+    OnExecuteScriptCompleted = WVBrowser1ExecuteScriptCompleted
+    Left = 200
+    Top = 156
   end
 end

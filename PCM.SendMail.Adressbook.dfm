@@ -22,8 +22,6 @@ object frm_AdressBook: Tfrm_AdressBook
     Align = alClient
     TabOrder = 0
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
-    ExplicitWidth = 794
-    ExplicitHeight = 583
     object grd_Adress: TcxGrid
       Left = 12
       Top = 44
@@ -31,6 +29,7 @@ object frm_AdressBook: Tfrm_AdressBook
       Height = 416
       TabOrder = 2
       object grdDBTblView_Adress: TcxGridDBTableView
+        OnKeyDown = grdDBTblView_AdressKeyDown
         Navigator.Buttons.CustomButtons = <>
         ScrollbarAnnotations.CustomAnnotations = <>
         OnCellDblClick = grdDBTblView_AdressCellDblClick
@@ -106,11 +105,14 @@ object frm_AdressBook: Tfrm_AdressBook
     object edt_Suche: TcxTextEdit
       Left = 12
       Top = 12
+      AutoSize = False
       Properties.OnChange = edt_SuchePropertiesChange
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 0
       TextHint = 'Suche'
+      OnKeyDown = edt_SucheKeyDown
+      Height = 25
       Width = 744
     end
     object edt_An: TcxTextEdit

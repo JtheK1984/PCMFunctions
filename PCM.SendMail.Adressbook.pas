@@ -105,6 +105,10 @@ type
     procedure edt_SuchePropertiesChange(Sender: TObject);
     procedure memData_MailFilterRecord(DataSet: TDataSet; var Accept: Boolean);
     procedure grdDBTblView_AdressCellDblClick(Sender: TcxCustomGridTableView; ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton; AShift: TShiftState; var AHandled: Boolean);
+    procedure edt_SucheKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure grdDBTblView_AdressKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
   private
     { Private-Deklarationen }
   public
@@ -234,9 +238,9 @@ begin
   btn_CC.Tag:= 0;
   btn_BCC.Tag:= 0;
   if edt_AN.Text = '' then
-    edt_AN.Text := memData_MailVorname.asString + ' ' + memData_MailVorname.asString + ' (' + memData_MailMail.asString + ')'
+    edt_AN.Text := memData_MailVorname.asString + ' ' + memData_Mailnachname.asString + ' (' + memData_MailMail.asString + ')'
   else
-    edt_AN.Text:= edt_AN.Text + '; ' + memData_MailVorname.asString + ' ' + memData_MailVorname.asString + ' (' + memData_MailMail.asString + ')';
+    edt_AN.Text:= edt_AN.Text + '; ' + memData_MailVorname.asString + ' ' + memData_Mailnachname.asString + ' (' + memData_MailMail.asString + ')';
 end;
 procedure Tfrm_AdressBook.btn_BCCClick(Sender: TObject);
 begin
@@ -244,9 +248,9 @@ begin
   btn_CC.Tag:= 0;
   btn_BCC.Tag:= 1;
   if edt_BCC.Text = '' then
-    edt_BCC.Text := memData_MailVorname.asString + ' ' + memData_MailVorname.asString + ' (' + memData_MailMail.asString + ')'
+    edt_BCC.Text := memData_MailVorname.asString + ' ' + memData_Mailnachname.asString + ' (' + memData_MailMail.asString + ')'
   else
-    edt_BCC.Text:= edt_BCC.Text + '; ' + memData_MailVorname.asString + ' ' + memData_MailVorname.asString + ' (' + memData_MailMail.asString + ')';
+    edt_BCC.Text:= edt_BCC.Text + '; ' + memData_MailVorname.asString + ' ' + memData_Mailnachname.asString + ' (' + memData_MailMail.asString + ')';
 end;
 procedure Tfrm_AdressBook.btn_CCClick(Sender: TObject);
 begin
@@ -254,9 +258,9 @@ begin
   btn_CC.Tag:= 1;
   btn_BCC.Tag:= 0;
   if edt_CC.Text = '' then
-    edt_CC.Text := memData_MailVorname.asString + ' ' + memData_MailVorname.asString + ' (' + memData_MailMail.asString + ')'
+    edt_CC.Text := memData_MailVorname.asString + ' ' + memData_Mailnachname.asString + ' (' + memData_MailMail.asString + ')'
   else
-    edt_CC.Text:= edt_CC.Text + '; ' + memData_MailVorname.asString + ' ' + memData_MailVorname.asString + ' (' + memData_MailMail.asString + ')';
+    edt_CC.Text:= edt_CC.Text + '; ' + memData_MailVorname.asString + ' ' + memData_Mailnachname.asString + ' (' + memData_MailMail.asString + ')';
 end;
 procedure Tfrm_AdressBook.btn_OkClick(Sender: TObject);
 begin
@@ -271,6 +275,13 @@ end;
 // Sonstigefunktionen                                                         //
 ////////////////////////////////////////////////////////////////////////////////
 {$Region Sonstigefunktionen}
+procedure Tfrm_AdressBook.edt_SucheKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  if Key = VK_RETURN then
+    grd_Adress.SetFocus;
+end;
+
 procedure Tfrm_AdressBook.edt_SuchePropertiesChange(Sender: TObject);
   procedure ApplyFilter;
   begin
@@ -295,33 +306,65 @@ begin
       if btn_An.Tag = 1 then
       begin
         if edt_An.Text = '' then
-          edt_An.Text := memData_MailVorname.asString + ' ' + memData_MailVorname.asString + ' (' + memData_MailMail.asString + ')'
+          edt_An.Text := memData_MailVorname.asString + ' ' + memData_Mailnachname.asString + ' (' + memData_MailMail.asString + ')'
         else
-          edt_An.Text:= edt_An.Text + '; ' + memData_MailVorname.asString + ' ' + memData_MailVorname.asString + ' (' + memData_MailMail.asString + ')';
+          edt_An.Text:= edt_An.Text + '; ' + memData_MailVorname.asString + ' ' + memData_Mailnachname.asString + ' (' + memData_MailMail.asString + ')';
       end;
       if btn_CC.Tag = 1 then
       begin
         if edt_CC.Text = '' then
-          edt_CC.Text := memData_MailVorname.asString + ' ' + memData_MailVorname.asString + ' (' + memData_MailMail.asString + ')'
+          edt_CC.Text := memData_MailVorname.asString + ' ' + memData_Mailnachname.asString + ' (' + memData_MailMail.asString + ')'
         else
-          edt_CC.Text:= edt_CC.Text + '; ' + memData_MailVorname.asString + ' ' + memData_MailVorname.asString + ' (' + memData_MailMail.asString + ')';
+          edt_CC.Text:= edt_CC.Text + '; ' + memData_MailVorname.asString + ' ' + memData_Mailnachname.asString + ' (' + memData_MailMail.asString + ')';
       end;
       if btn_BCC.Tag = 1 then
       begin
         if edt_BCC.Text = '' then
-          edt_BCC.Text := memData_MailVorname.asString + ' ' + memData_MailVorname.asString + ' (' + memData_MailMail.asString + ')'
+          edt_BCC.Text := memData_MailVorname.asString + ' ' + memData_Mailnachname.asString + ' (' + memData_MailMail.asString + ')'
         else
-          edt_BCC.Text:= edt_BCC.Text + '; ' + memData_MailVorname.asString + ' ' + memData_MailVorname.asString + ' (' + memData_MailMail.asString + ')';
+          edt_BCC.Text:= edt_BCC.Text + '; ' + memData_MailVorname.asString + ' ' + memData_Mailnachname.asString + ' (' + memData_MailMail.asString + ')';
       end;
     end;
   end;
 end;
+procedure Tfrm_AdressBook.grdDBTblView_AdressKeyDown(Sender: TObject;
+  var Key: Word; Shift: TShiftState);
+begin
+  if Key = VK_Return then
+  begin
+    if memData_MailMail.AsString <> '' then
+    begin
+      if btn_An.Tag = 1 then
+      begin
+        if edt_An.Text = '' then
+          edt_An.Text := memData_MailVorname.asString + ' ' + memData_Mailnachname.asString + ' (' + memData_MailMail.asString + ')'
+        else
+          edt_An.Text:= edt_An.Text + '; ' + memData_MailVorname.asString + ' ' + memData_Mailnachname.asString + ' (' + memData_MailMail.asString + ')';
+      end;
+      if btn_CC.Tag = 1 then
+      begin
+        if edt_CC.Text = '' then
+          edt_CC.Text := memData_MailVorname.asString + ' ' + memData_Mailnachname.asString + ' (' + memData_MailMail.asString + ')'
+        else
+          edt_CC.Text:= edt_CC.Text + '; ' + memData_MailVorname.asString + ' ' + memData_Mailnachname.asString + ' (' + memData_MailMail.asString + ')';
+      end;
+      if btn_BCC.Tag = 1 then
+      begin
+        if edt_BCC.Text = '' then
+          edt_BCC.Text := memData_MailVorname.asString + ' ' + memData_Mailnachname.asString + ' (' + memData_MailMail.asString + ')'
+        else
+          edt_BCC.Text:= edt_BCC.Text + '; ' + memData_MailVorname.asString + ' ' + memData_Mailnachname.asString + ' (' + memData_MailMail.asString + ')';
+      end;
+    end;
+  end;
+end;
+
 procedure Tfrm_AdressBook.memData_MailFilterRecord(DataSet: TDataSet; var Accept: Boolean);
 var
   FilterValue: string;
 begin
   FilterValue := edt_Suche.text;
-  Accept := Pos(FilterValue, DataSet.FieldByName('Name').AsString) > 0;
+  Accept := Pos(lowercase(FilterValue), lowercase(DataSet.FieldByName('Name').AsString)) > 0;
 end;
 {$EndRegion Sonstigefunktionen}
 ////////////////////////////////////////////////////////////////////////////////
