@@ -604,7 +604,6 @@ procedure Tfrm_PCM_System.GetRamUsage;
 var
   mst_memory: TMemoryStatusEx;
   dwd_UsedRam, dwd_UsedRamTemp: UInt64;
-  sCPU: string;
 begin
   mst_memory.dwLength := sizeof(mst_memory);
   GlobalMemoryStatusEx(mst_memory);
