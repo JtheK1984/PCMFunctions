@@ -23,8 +23,8 @@ object frm_PCM_System: Tfrm_PCM_System
     LayoutLookAndFeel = dxLayoutCxLookAndFeel1
     object prgbr_ProcUse: TcxProgressBar
       AlignWithMargins = True
-      Left = 21
-      Top = 409
+      Left = 22
+      Top = 364
       Margins.Left = 13
       Margins.Right = 13
       Margins.Bottom = 0
@@ -32,12 +32,12 @@ object frm_PCM_System: Tfrm_PCM_System
       Style.TransparentBorder = False
       TabOrder = 1
       Height = 22
-      Width = 1009
+      Width = 1007
     end
     object prgbr_RamUse: TcxProgressBar
       AlignWithMargins = True
-      Left = 21
-      Top = 361
+      Left = 22
+      Top = 316
       Margins.Left = 13
       Margins.Right = 13
       Margins.Bottom = 0
@@ -45,7 +45,7 @@ object frm_PCM_System: Tfrm_PCM_System
       Style.TransparentBorder = False
       TabOrder = 0
       Height = 22
-      Width = 1009
+      Width = 1007
     end
     object dxLayoutControl1Group_Root: TdxLayoutGroup
       AlignHorz = ahClient
