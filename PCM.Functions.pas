@@ -114,6 +114,7 @@ var
   nNewCPUTime    : ULONG = 0;
 
   procedure WriteLog(AProgram, ALogString: String; AError: integer);
+  function EnDecrypt(AInput: string; AEncrypt: boolean) : RawByteString;
 	function GetHDnr: DWord;
 	function GetPCName: string;
   function GetMD5Hash(AValue: string) :String;
@@ -213,7 +214,9 @@ implementation
 {$R *.dfm}
 
 uses 	PCM.Data,
-			PCM.Strings;
+			PCM.Strings,
+      Prism.Crypto.AES,
+      System.NetEncoding;
 
 procedure TAufgabenThread.Execute;
 begin
@@ -263,6 +266,27 @@ begin
   GetComputerName(pCh_P, dwd_dw);
   Result:= pCh_P;
 end;
+
+function EnDecrypt(AInput: string; AEncrypt: boolean) : RawByteString;
+var
+  ByteInput,OriginalText, Key, IV, EncryptedText,DecryptedText: TBytes;
+  i: integer;
+begin
+  OriginalText := TEncoding.ANSI.GetBytes(AInput);
+  Key := TEncoding.ANSI.GetBytes('PCMDevelopmentJensHenske24021984'); // 256 bits-32 bytes
+  IV := TEncoding.ANSI.GetBytes('PCMJensHenske284'); // 16 bytes
+  if AEncrypt then
+  begin
+    EncryptedText := TAES.Encrypt(OriginalText, Key, 256, IV);
+    Result:= TNetEncoding.Base64.EncodeBytesToString(EncryptedText);
+  end
+  else begin
+    ByteInput:= TNetEncoding.Base64.DecodeStringToBytes(AInput);
+    DecryptedText := TAES.Decrypt(ByteInput, Key, 256, IV);
+    Result:= TEncoding.ANSI.GetString(DecryptedText);
+  end;
+end;
+
 
 procedure WriteLog(AProgram, ALogString: String; AError: integer);
 var
