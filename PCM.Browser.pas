@@ -2,25 +2,29 @@ unit PCM.Browser;
 
 interface
 
-uses  uwvLoader,
-      uWVBrowser,
-      uWVWindowParent,
-      Vcl.ExtCtrls,
-      System.Classes,
-      Winapi.Messages,
-      Windows, Graphics,
-      ActiveX,
-      ComObj,
-      Sysutils,
-      StrUtils,
-      System.Types,
-      Vcl.Menus,
-      Vcl.Controls,
-      IdURI,
-      IdGlobal,
-      Vcl.Dialogs,
-      uWVTypeLibrary;
+uses
+  {$Region uses}
+  uwvLoader,
+  uWVBrowser,
+  uWVWindowParent,
+  Vcl.ExtCtrls,
+  System.Classes,
+  Winapi.Messages,
+  Windows, Graphics,
+  ActiveX,
+  ComObj,
+  Sysutils,
+  StrUtils,
+  System.Types,
+  Vcl.Menus,
+  Vcl.Controls,
+  IdURI,
+  IdGlobal,
+  Vcl.Dialogs,
+  uWVTypeLibrary;
+  {$EndRegion uses}
 type
+  {$Region type}
   TOnBeforeNavigate = procedure (ASender: TObject; var URL:WideString; var Cancel: Boolean) of object;
   TOnDocumentComplete = procedure (ASender: TObject; var URL:WideString) of object;
   TOnBrowserMessage = procedure(ASender: TObject; MessageText:WideString) of object;
@@ -113,11 +117,6 @@ type
 
   IWebKitInitializationListener = interface
     ['{DFB10371-1E9A-4AD1-9344-60AE708204A2}']
-
-    /// <summary>
-    /// Triggered when web kit engine is initialized and/or browser was successfully created. Calling
-    /// thread is CefRenderProcess
-    /// </summary>
     procedure WebKitInitialized;
   end;
 
@@ -174,16 +173,12 @@ type
     destructor Destroy; override;
   published
   end;
-
-
-//const
-//  UNDERSCORE_COMPILATION_UNIT = '_compilationUnit';
-//  COMPILATION_UNIT = 'compilationUnit';
-//  PAGEBUS_CHANNEL_PING = 'id.webforms.ping';
-
-
+  {$EndRegion type}
 implementation
-
+////////////////////////////////////////////////////////////////////////////////
+// AbstractWebBrowser                                                         //
+////////////////////////////////////////////////////////////////////////////////
+{$Region AbstractWebBrowser}
 constructor TAbstractWebBrowser.Create(AOwner:TComponent);
 begin
   inherited Create(AOwner);
@@ -198,6 +193,48 @@ end;
 function TAbstractWebBrowser.GetUrlProcessors: TArray<IUrlProcessor>;
 begin
   Result := FUrlProcessors;
+end;
+function TAbstractWebBrowser.EncodedUrl(AURL:String):String;
+begin
+  Result := StringReplace(AURL, '##','__DOUBLEROUTE__', [rfReplaceAll]);
+  Result := StringReplace(Result, '+','__PLUS__', [rfReplaceAll]);
+  Result := StringReplace(Result, '&&','__DOUBLEAMP__', [rfReplaceAll]);
+  Result := StringReplace(Result, '#','__RAUTE__', [rfReplaceAll]);
+  {$IF CompilerVersion >= 24.0}
+  Result := TIdURI.URLEncode(Result, IndyTextEncoding(encUTF8));
+  {$ELSE}
+  Result := TIdURI.URLEncode(Result, TEncoding.UTF8);
+  {$IFEND}
+  Result := StringReplace(Result, '__DOUBLEAMP__','%26', [rfReplaceAll]);
+  Result := StringReplace(Result, '__PLUS__','%2B', [rfReplaceAll]);
+  Result := StringReplace(Result, '__DOUBLEROUTE__','%23', [rfReplaceAll]);
+  Result := StringReplace(Result, '__RAUTE__','#', [rfReplaceAll]);
+end;
+function TAbstractWebBrowser.ProcessUrl(const Url: String): String;
+var
+  UrlProcessor : IUrlProcessor;
+begin
+  Result := Url;
+  for UrlProcessor in FUrlProcessors do begin
+    Result := UrlProcessor.TransformUrl(Result);
+  end;
+end;
+function TAbstractWebBrowser.AddEncodeParameter(AURL: String): String;
+var
+  HashPos : Integer;
+begin
+   Result := AURL;
+   HashPos := Pos('#', Result);
+   if HashPos > 0 then begin
+     Result := AddEncodeParameter(Copy(Result, 1, HashPos-1)) + Copy(Result, HashPos, Length(Result)-HashPos+1);
+   end else begin
+     Result := Result + IfThen(pos('?', Result) <= 0, '?', '&');
+     Result := Result + 'ENCODED=1';
+   end;
+end;
+function TAbstractWebBrowser.IsWicket:Boolean;
+begin
+  Result := False;
 end;
 procedure TAbstractWebBrowser.UnregisterUrlProcessor(const UrlProcessor: IUrlProcessor);
 var
@@ -219,32 +256,6 @@ begin
   end;
   SetLength(FUrlProcessors, Length(FUrlProcessors)-1);
 end;
-function TAbstractWebBrowser.EncodedUrl(AURL:String):String;
-begin
-  // SPZ-3235
-
-  // '##' is interpreted as a '#', which should be encoded
-  // '#' is interpreted as anchor
-  // '+' will be encoded manually, because is is not an unsafe character in indy
-  // '&&' will be interpreted as a '&', which should be encoded
-
-  Result := StringReplace(AURL, '##','__DOUBLEROUTE__', [rfReplaceAll]);
-  Result := StringReplace(Result, '+','__PLUS__', [rfReplaceAll]);
-  Result := StringReplace(Result, '&&','__DOUBLEAMP__', [rfReplaceAll]);
-  // Single hash means anchor / fragment identifier
-  Result := StringReplace(Result, '#','__RAUTE__', [rfReplaceAll]);
-  // SCR-1740 - Wir arbeiten intern mit UTF-8, also muss das URL-Encoding auch
-  // mit UTF-8 arbeiten, sonst kommt Grütze an
-  {$IF CompilerVersion >= 24.0}
-  Result := TIdURI.URLEncode(Result, IndyTextEncoding(encUTF8));
-  {$ELSE}
-  Result := TIdURI.URLEncode(Result, TEncoding.UTF8);
-  {$IFEND}
-  Result := StringReplace(Result, '__DOUBLEAMP__','%26', [rfReplaceAll]);
-  Result := StringReplace(Result, '__PLUS__','%2B', [rfReplaceAll]);
-  Result := StringReplace(Result, '__DOUBLEROUTE__','%23', [rfReplaceAll]);
-  Result := StringReplace(Result, '__RAUTE__','#', [rfReplaceAll]);
-end;
 procedure TAbstractWebBrowser.RegisterUrlProcessor(const UrlProcessor: IUrlProcessor);
 var
   i : Integer;
@@ -255,15 +266,6 @@ begin
   end;
   SetLength(FUrlProcessors, Length(FUrlProcessors)+1);
   FUrlProcessors[Length(FUrlProcessors)-1] := UrlProcessor;
-end;
-function TAbstractWebBrowser.ProcessUrl(const Url: String): String;
-var
-  UrlProcessor : IUrlProcessor;
-begin
-  Result := Url;
-  for UrlProcessor in FUrlProcessors do begin
-    Result := UrlProcessor.TransformUrl(Result);
-  end;
 end;
 procedure TAbstractWebBrowser.WndProc(var Message: TMessage);
 begin
@@ -279,19 +281,6 @@ procedure TAbstractWebBrowser.RefreshSize;
 begin
   //
 end;
-function TAbstractWebBrowser.AddEncodeParameter(AURL: String): String;
-var
-  HashPos : Integer;
-begin
-   Result := AURL;
-   HashPos := Pos('#', Result);
-   if HashPos > 0 then begin
-     Result := AddEncodeParameter(Copy(Result, 1, HashPos-1)) + Copy(Result, HashPos, Length(Result)-HashPos+1);
-   end else begin
-     Result := Result + IfThen(pos('?', Result) <= 0, '?', '&');
-     Result := Result + 'ENCODED=1';
-   end;
-end;
 procedure TAbstractWebBrowser.Blur;
 begin
 end;
@@ -305,15 +294,15 @@ end;
 procedure TAbstractWebBrowser.Submit;
 begin
 end;
-function TAbstractWebBrowser.IsWicket:Boolean;
-begin
-  Result := False;
-end;
 destructor TAbstractWebBrowser.Destroy;
 begin
   inherited;
 end;
-
+{$EndRegion AbstractWebBrowser}
+////////////////////////////////////////////////////////////////////////////////
+// WebView2Browser                                                            //
+////////////////////////////////////////////////////////////////////////////////
+{$Region WebView2Browser}
 class constructor TWebView2WebBrowser.Create;
 begin
   FInstanceCount := 0;
@@ -345,6 +334,47 @@ begin
   FWebview2Timer.OnTimer := OnTimerCreateWebViewWindow;
 
   Inc(FInstanceCount);
+end;
+function TWebView2WebBrowser.DevToolsVisible: Boolean;
+begin
+    Result := GetWebView2Component.DevToolsEnabled;
+end;
+function TWebView2WebBrowser.GetWebview2Component;
+begin
+  if FBrowser = nil then
+  begin
+    FBrowser:= TWVBrowser.Create(Self);
+    FBrowser.AllowSingleSignOnUsingOSPrimaryAccount:= false;
+    FBrowser.DefaultURL:=   FFirstURL;
+    FBrowser.TargetCompatibleBrowserVersion:= '95.0.1020.44';
+    FBrowser.OnAfterCreated:=  onWebView2Created;
+    FBrowser.OnBasicAuthenticationRequested:= BasicAuthenticationRequested;
+    FBrowser.OnNavigationCompleted:= NavigationCompleted;
+    FWebView2Window:= TWVWindowParent.Create(Self);
+    FWebView2Window.Parent:= Self ;
+    FWebView2Window.Align:= alClient;
+    FWebView2Window.Height:= 338;
+    FWebView2Window.TabStop:= true;
+
+    FWebView2Window.Browser:= FBrowser;
+  end;
+  Result:= FBrowser;
+end;
+function TWebView2WebBrowser.GetPopupMenu_:TPopupMenu;
+begin
+  Result := FPopupMenu;
+end;
+function TWebView2WebBrowser.Unwrap:Pointer;
+begin
+  Result := Pointer(FBrowser);
+end;
+function TWebView2WebBrowser.GetBitmap(AWidth, AHeight: Integer): TBitmap;
+begin
+  Result := nil;
+  if (FBrowser <> NIL) then begin
+    Result := TBitmap. Create;
+//    CaptureChromiumPicture(GetWebView2Component, AHeight, AWidth, Result);
+  end;
 end;
 procedure TWebView2WebBrowser.CreateHandle;
 begin
@@ -436,28 +466,6 @@ begin
   FBrowser.CoreWebView2Settings.AreBrowserAcceleratorKeysEnabled:= false;
   FBrowser.CoreWebView2Settings.HiddenPdfToolbarItems:= COREWEBVIEW2_PDF_TOOLBAR_ITEMS_FULL_SCREEN +  COREWEBVIEW2_PDF_TOOLBAR_ITEMS_Save;
 end;
-function TWebView2WebBrowser.GetWebview2Component;
-begin
-  if FBrowser = nil then
-  begin
-    FBrowser:= TWVBrowser.Create(Self);
-    FBrowser.AllowSingleSignOnUsingOSPrimaryAccount:= false;
-    FBrowser.DefaultURL:=   FFirstURL;
-    FBrowser.TargetCompatibleBrowserVersion:= '95.0.1020.44';
-    FBrowser.OnAfterCreated:=  onWebView2Created;
-    FBrowser.OnBasicAuthenticationRequested:= BasicAuthenticationRequested;
-    FBrowser.OnNavigationCompleted:= NavigationCompleted;
-    FWebView2Window:= TWVWindowParent.Create(Self);
-    FWebView2Window.Parent:= Self ;
-    FWebView2Window.Align:= alClient;
-    FWebView2Window.Height:= 338;
-    FWebView2Window.TabStop:= true;
-
-    FWebView2Window.Browser:= FBrowser;
-  end;
-  Result:= FBrowser;
-end;
-
 procedure TWebView2WebBrowser.NavigationCompleted(Sender: TObject; const aWebView: ICoreWebView2; const aArgs: ICoreWebView2NavigationCompletedEventArgs);
 var
   success: integer;
@@ -533,10 +541,6 @@ begin
     end).Start;
   end;
 end;
-function TWebView2WebBrowser.GetPopupMenu_:TPopupMenu;
-begin
-  Result := FPopupMenu;
-end;
 procedure TWebView2WebBrowser.SetPopupMenu_(AValue:TPopupMenu);
 begin
   FPopupMenu := AValue;
@@ -579,10 +583,6 @@ begin
     end;
   end;
 end;
-function TWebView2WebBrowser.Unwrap:Pointer;
-begin
-  Result := Pointer(FBrowser);
-end;
 procedure TWebView2WebBrowser.Reload;
 begin
   if (Fbrowser <> nil) and (FWebView2Window <> nil) then
@@ -599,14 +599,6 @@ begin
   if (FBrowser <> nil) then
     FreeAndNil(FBrowser);
   GetWebView2Component;
-end;
-function TWebView2WebBrowser.GetBitmap(AWidth, AHeight: Integer): TBitmap;
-begin
-  Result := nil;
-  if (FBrowser <> NIL) then begin
-    Result := TBitmap. Create;
-//    CaptureChromiumPicture(GetWebView2Component, AHeight, AWidth, Result);
-  end;
 end;
 procedure TWebView2WebBrowser.CloseBrowser(const Force: Boolean);
 begin
@@ -632,10 +624,6 @@ procedure TWebView2WebBrowser.SetLocationHash(const HashName: String);
 begin
   FBrowser.ExecuteScriptWithResult(Format('window.location.href="#%s";', [HashName]));
 end;
-function TWebView2WebBrowser.DevToolsVisible: Boolean;
-begin
-    Result := GetWebView2Component.DevToolsEnabled;
-end;
 destructor TWebView2WebBrowser.Destroy;
 begin
   if (Fbrowser <> nil) and (FWebView2Window <> nil) then
@@ -650,7 +638,18 @@ begin
   Dec(FInstanceCount);
   inherited;
 end;
-
+{$EndRegion WebView2Browser}
+////////////////////////////////////////////////////////////////////////////////
+// WebBrowserFactory                                                          //
+////////////////////////////////////////////////////////////////////////////////
+{$Region WebBrowserFactory}
+class constructor TWebBrowserFactory.Create;
+begin
+  SetLength(FUrlProcessors, 0);
+  FBrowserType := 2;
+  FWrapperMode := False;
+  FPreloadUrl := '';
+end;
 class function TWebBrowserFactory.CreateWebBrowser(AOwner:TComponent):TAbstractWebBrowser;
 begin
   Result := TWebBrowserFactory.CreateWebBrowser(AOwner, BrowserType);
@@ -658,13 +657,6 @@ end;
 class function TWebBrowserFactory.CreateWebBrowser(AOwner:TComponent; ABrowserType:Integer):TAbstractWebBrowser;
 begin
   Result := TWebBrowserFactory.CreateWebBrowser(AOwner, ABrowserType, WrapperMode);
-end;
-class constructor TWebBrowserFactory.Create;
-begin
-  SetLength(FUrlProcessors, 0);
-  FBrowserType := 2;
-  FWrapperMode := False;
-  FPreloadUrl := '';
 end;
 class function TWebBrowserFactory.CreateWebBrowser(AOwner:TComponent; ABrowserType:Integer; AWrapperMode:Boolean):TAbstractWebBrowser;
 begin
@@ -707,7 +699,11 @@ begin
   end;
   SetLength(FUrlProcessors, Length(FUrlProcessors)-1);
 end;
-
+{$EndRegion WebBrowserFactory}
+////////////////////////////////////////////////////////////////////////////////
+// DelegateUrlProcessor                                                       //
+////////////////////////////////////////////////////////////////////////////////
+{$Region DelegateUrlProcessor}
 constructor TDelegateUrlProcessor.Create(const TransFormUrlFunc: TTransformUrlFunc);
 begin
   inherited Create;
@@ -717,7 +713,5 @@ function TDelegateUrlProcessor.TransformUrl(const Url: String): String;
 begin
   Result := FTransformProc(Url);
 end;
-
-
-
+{$EndRegion DelegateUrlProcessor}
 end.

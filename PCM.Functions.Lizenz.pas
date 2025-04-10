@@ -3,6 +3,7 @@ unit PCM.Functions.Lizenz;
 interface
 
 uses
+  {$Region uses}
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Buttons,
   dxGDIPlusClasses, Vcl.ExtCtrls, cxGraphics, cxLookAndFeels,FireDac.Stan.Param,
@@ -10,9 +11,10 @@ uses
   Vcl.ImgList,inifiles, dxSkinMetropolisDark, cxControls, cxContainer, cxEdit,
   cxTextEdit, cxImage, cxLabel, cxGroupBox, dxLayoutcxEditAdapters,
   dxLayoutControlAdapters, cxClasses, dxLayoutLookAndFeels, dxLayoutContainer,
-  dxLayoutControl;
-
+  dxLayoutControl, dxUIAClasses;
+  {$EndRegion uses}
 type
+  {$Region type}
   Tfrm_PCM_Lizenz = class(TForm)
     btn_SaveLicence: TcxButton;
     btn_LizenzCancel: TcxButton;
@@ -44,17 +46,22 @@ type
     function Check: Boolean;
     function GetAppVersion: string;
   end;
-
+  {$EndRegion type}
 var
+  {$Region var}
   frm_PCM_Lizenz: Tfrm_PCM_Lizenz;
-
+  {$EndRegion var}
 implementation
-
 {$R *.dfm}
-
-uses  PCM.Data,
-      PCM.Strings;
-
+uses
+  {$Region uses}
+  PCM.Data,
+  PCM.Strings;
+  {$EndRegion uses}
+////////////////////////////////////////////////////////////////////////////////
+// Hilfsfunktionen                                                            //
+////////////////////////////////////////////////////////////////////////////////
+{$Region Hilfsfunktionen}
 function Tfrm_PCM_Lizenz.GetAppVersion: string;
 var
   dwdVerInfoSize: DWord;
@@ -294,6 +301,33 @@ begin
   end;
   frm_PCM_Lizenz.Close;
 end;
+{$EndRegion Hilfsfunktionen}
+////////////////////////////////////////////////////////////////////////////////
+// Buttonfunktionen                                                           //
+////////////////////////////////////////////////////////////////////////////////
+{$Region Buttonfunktionen}
+procedure Tfrm_PCM_Lizenz.AbbrechenClick(Sender: TObject);
+begin
+  if not dm_PCM.bAppTerm then
+    Close
+  else
+    Application.Terminate;
+end;
+procedure Tfrm_PCM_Lizenz.btn_SaveLicenceClick(Sender: TObject);
+begin
+  if edt_kunde.Text = '' then
+  begin
+    MessageDlg(rs_PCMLizenzgenerator_MessageKundenname, mtwarning,[mbok],0);
+    exit;
+  end;
+
+  if edt_Lizenz.Text = '' then
+  begin
+    MessageDlg(rs_PCM_LizenzEintragen, mtwarning,[mbok],0);
+    exit;
+  end;
+  Check;
+end;
 procedure Tfrm_PCM_Lizenz.edt_lizenzChange(Sender: TObject);
 begin
   if Length(edt_lizenz.text) < 23 then
@@ -301,6 +335,11 @@ begin
   else
     btn_SaveLicence.Enabled:= true;
 end;
+{$EndRegion Buttonfunktionen}
+////////////////////////////////////////////////////////////////////////////////
+// Formfunktionen                                                             //
+////////////////////////////////////////////////////////////////////////////////
+{$Region Formfunktionen}
 procedure Tfrm_PCM_Lizenz.FormCreate(Sender: TObject);
 begin
   dm_PCM.bAppTerm:= true;
@@ -335,29 +374,7 @@ begin
     end;
   end;
 end;
-procedure Tfrm_PCM_Lizenz.AbbrechenClick(Sender: TObject);
-begin
-  if not dm_PCM.bAppTerm then
-    Close
-  else
-    Application.Terminate;
-end;
-procedure Tfrm_PCM_Lizenz.btn_SaveLicenceClick(Sender: TObject);
-begin
-  if edt_kunde.Text = '' then
-  begin
-    MessageDlg(rs_PCMLizenzgenerator_MessageKundenname, mtwarning,[mbok],0);
-    exit;
-  end;
-
-  if edt_Lizenz.Text = '' then
-  begin
-    MessageDlg(rs_PCM_LizenzEintragen, mtwarning,[mbok],0);
-    exit;
-  end;
-  Check;
-end;
-
+{$EndRegion Formfunktionen}
 end.
 
 

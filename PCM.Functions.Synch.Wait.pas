@@ -3,11 +3,16 @@ unit PCM.Functions.Synch.Wait;
 interface
 
 uses
+  {$Region uses}
   System.SysUtils,
   Vcl.Forms,
-  WinApi.Windows, WinApi.Messages,
+  WinApi.Windows,
+  WinApi.Messages,
+  Vcl.Menus,
   Vcl.Controls;
-
+  {$EndRegion uses}
+// Deklarationen
+{$Region Deklarationen}
 procedure ShowWaitForm(const AForm: TForm; const AWaitText: String; const iCount: Integer; const AWidth: Integer = 0; const AHeight: Integer = 0);
 procedure WaitFormStep; overload;
 procedure WaitFormStep(const AText: String); overload;
@@ -16,17 +21,22 @@ procedure WaitFormPosition(const APostion: Integer);
 procedure WaitFormSetText(const AText: String);
 procedure CloseWaitForm;
 procedure LockControl(const AControl: TWinControl; const ALock: Boolean);
-
+{$EndRegion Deklarationen}
 implementation
 
 uses
-  PCM.Functions.Synch.Transparenz, PCM.Functions.Synch.ProgressDialog, Vcl.Menus;
-
+  {$Region uses}
+  PCM.Functions.Synch.Transparenz,
+  PCM.Functions.Synch.ProgressDialog;
+  {$EndRegion uses}
 var
+  {$Region var}
   FForm: TForm;
   FfrmWait: TfrmProgressDialog; //TfrmWait;
   FfrmTransparenz: TfrmTransparenz;
-
+  {$EndRegion var}
+// Prozeduren
+{$Region Prozeduren}
 procedure ShowWaitForm(const AForm: TForm; const AWaitText: String; const iCount: Integer;const AWidth: Integer = 0; const AHeight: Integer = 0);
 begin
   // 6.2.0.20 - AM
@@ -119,5 +129,5 @@ begin
        RDW_ERASE or RDW_FRAME or RDW_INVALIDATE or RDW_ALLCHILDREN);
    end;
 end;
-
+{$EndRegion Prozeduren}
 end.

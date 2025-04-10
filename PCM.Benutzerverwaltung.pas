@@ -3,231 +3,284 @@ unit PCM.Benutzerverwaltung;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
-  System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, dxBarBuiltInMenu, cxGraphics,
-  cxControls, cxLookAndFeels, cxLookAndFeelPainters, cxContainer, cxEdit, Vcl.Menus, cxStyles, cxCustomData,
-  cxFilter, cxData, cxDataStorage, cxNavigator, dxDateRanges,
-  dxScrollbarAnnotations, Data.DB, cxDBData, dxBar, cxClasses, System.ImageList,
-  Vcl.ImgList, cxImageList, cxMaskEdit, cxDropDownEdit, cxGridLevel,
-  cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGridCustomView,
-  cxGrid, Vcl.StdCtrls, cxRadioGroup, cxCheckBox, cxTextEdit, cxLabel,
-  cxButtons, dxGDIPlusClasses, cxImage, cxGroupBox, cxPC,inifiles, Vcl.Themes,system.UITypes,
-  cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox, cxDBEdit, FireDAC.Stan.Intf,
-  FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
-  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
-  FireDAC.Comp.DataSet, FireDAC.Comp.Client,PCM.Functions, dxSkinWXI,
-  cxGridCustomPopupMenu, cxGridPopupMenu, cxScrollBox, dxLayoutContainer,
-  dxLayoutControl, dxLayoutcxEditAdapters, dxLayoutControlAdapters, cxMemo,
-  cxCalendar, dxUIAClasses, dxLayoutLookAndFeels;
-
+  {$Region uses}
+  cxButtons,
+  cxCalendar,
+  cxCheckBox,
+  cxClasses,
+  cxContainer,
+  cxControls,
+  cxCustomData,
+  cxData,
+  cxDataStorage,
+  cxDBData,
+  cxDBEdit,
+  cxDBLookupComboBox,
+  cxDBLookupEdit,
+  cxDropDownEdit,
+  cxEdit,
+  cxFilter,
+  cxGraphics,
+  cxGrid,
+  cxGridCustomPopupMenu,
+  cxGridCustomTableView,
+  cxGridCustomView,
+  cxGridDBTableView,
+  cxGridLevel,
+  cxGridPopupMenu,
+  cxGridTableView,
+  cxGroupBox,
+  cxImage,
+  cxImageList,
+  cxLabel,
+  cxLookAndFeelPainters,
+  cxLookAndFeels,
+  cxLookupEdit,
+  cxMaskEdit,
+  cxMemo,
+  cxNavigator,
+  cxPC,
+  cxRadioGroup,
+  cxScrollBox,
+  cxStyles,
+  cxTextEdit,
+  Data.DB,
+  dxBar,
+  dxBarBuiltInMenu,
+  dxDateRanges,
+  dxGDIPlusClasses,
+  dxLayoutContainer,
+  dxLayoutControl,
+  dxLayoutControlAdapters,
+  dxLayoutcxEditAdapters,
+  dxLayoutLookAndFeels,
+  dxScrollbarAnnotations,
+  dxSkinWXI,
+  dxUIAClasses,
+  FireDAC.Comp.Client,
+  FireDAC.Comp.DataSet,
+  FireDAC.DApt,
+  FireDAC.DApt.Intf,
+  FireDAC.DatS,
+  FireDAC.Phys.Intf,
+  FireDAC.Stan.Async,
+  FireDAC.Stan.Error,
+  FireDAC.Stan.Intf,
+  FireDAC.Stan.Option,
+  FireDAC.Stan.Param,
+  inifiles,
+  PCM.Functions,
+  System.Classes,
+  System.ImageList,
+  System.SysUtils,
+  system.UITypes,
+  System.Variants,
+  Vcl.Controls,
+  Vcl.Dialogs,
+  Vcl.Forms,
+  Vcl.Graphics,
+  Vcl.ImgList,
+  Vcl.Menus,
+  Vcl.StdCtrls,
+  Vcl.Themes,
+  Winapi.Messages,
+  Winapi.Windows, dxCoreGraphics, cxButtonEdit;
+  {$EndRegion uses}
 type
+  {$Region type}
   Tfrm_User = class(TForm)
-    cxGrid3: TcxGrid;
-    cxGridDBTableView3: TcxGridDBTableView;
+    brdckCtrl_Benutzer: TdxBarDockControl;
+    brdckCtrl_Rechte: TdxBarDockControl;
+    brmgr_Benutzer: TdxBarManager;
+    btn_BenutzerCancel: TdxBarLargeButton;
+    btn_BenutzerChangePassword: TcxButton;
+    btn_BenutzerDelete: TdxBarLargeButton;
+    btn_BenutzerNew: TdxBarLargeButton;
+    btn_BenutzerSave: TdxBarLargeButton;
+    btn_RechtCancel: TdxBarLargeButton;
+    btn_RechtDelete: TdxBarLargeButton;
+    btn_RechtNew: TdxBarLargeButton;
+    btn_RechtSave: TdxBarLargeButton;
+    chkbx_BenutzerAutologin: TcxDBCheckBox;
+    chkbx_BenutzerRestapi: TcxDBCheckBox;
+    chkbx_RechtAll: TcxDBCheckBox;
     cxGridDBColumn2: TcxGridDBColumn;
-    cxGridDBTableView3Column1: TcxGridDBColumn;
-    cxGridDBTableView3Column2: TcxGridDBColumn;
-    cxGridLevel3: TcxGridLevel;
-    btn_OptionChangePassword: TcxButton;
-    edt_OptionName: TcxDBTextEdit;
-    edt_OptionPassword: TcxDBTextEdit;
-    edt_OptionUser: TcxDBTextEdit;
-    cxGrid1: TcxGrid;
-    cxGridDBTableView1: TcxGridDBTableView;
-    cxGridDBTableView1ID: TcxGridDBColumn;
-    cxGridDBTableView1Bezeichnung: TcxGridDBColumn;
-    cxGridLevel1: TcxGridLevel;
-    qBenutzer: TFDQuery;
-    qRechte: TFDQuery;
-    qRechte_Detail: TFDQuery;
-    dsBenutzer: TDataSource;
-    dsRechte: TDataSource;
-    dsRechte_Detail: TDataSource;
-    dxBarManager1: TdxBarManager;
-    dxBarManager1Bar1: TdxBar;
-    dxBarManager1Bar2: TdxBar;
-    btn_OptionNewUser: TdxBarLargeButton;
-    btn_OptionSaveUser: TdxBarLargeButton;
-    btn_OptionCancelUser: TdxBarLargeButton;
-    btn_OptionDeleteUser: TdxBarLargeButton;
-    btn_OptionNewRight: TdxBarLargeButton;
-    btn_OptionDeleteRight: TdxBarLargeButton;
-    btn_OptionCancelRight: TdxBarLargeButton;
-    btn_OptionSaveRight: TdxBarLargeButton;
-    dxBarDockControl1: TdxBarDockControl;
-    dxBarDockControl2: TdxBarDockControl;
-    cxGridPopupMenu1: TcxGridPopupMenu;
-    cxGridPopupMenu2: TcxGridPopupMenu;
-    cxDBLookupComboBox18: TcxDBLookupComboBox;
-    cxDBLookupComboBox20: TcxDBLookupComboBox;
-    cxDBCheckBox2: TcxDBCheckBox;
-    cxDBCheckBox3: TcxDBCheckBox;
-    lucbx_OptionRights: TcxDBLookupComboBox;
-    edt_OptionSurName: TcxDBTextEdit;
-    edt_OptionRight: TcxDBTextEdit;
-    lactrl_Main: TdxLayoutControl;
-    lagrp_Personal: TdxLayoutGroup;
-    dxLayoutGroup1: TdxLayoutGroup;
-    lagrp_Suche: TdxLayoutGroup;
-    lagrp_Mitarbeiter: TdxLayoutGroup;
-    lagrp_SucheFilter: TdxLayoutGroup;
-    dxLayoutGroup2: TdxLayoutGroup;
-    dxLayoutItem4: TdxLayoutItem;
-    dxLayoutItem5: TdxLayoutItem;
-    dxLayoutItem6: TdxLayoutItem;
-    dxLayoutItem7: TdxLayoutItem;
-    dxLayoutItem8: TdxLayoutItem;
-    dxLayoutItem9: TdxLayoutItem;
-    dxLayoutItem10: TdxLayoutItem;
-    dxLayoutItem11: TdxLayoutItem;
-    dxLayoutItem1: TdxLayoutItem;
-    dxLayoutItem2: TdxLayoutItem;
-    dxLayoutItem3: TdxLayoutItem;
-    dxLayoutItem12: TdxLayoutItem;
-    dxLayoutItem13: TdxLayoutItem;
-    lucbx_Backup: TcxDBLookupComboBox;
-    dxLayoutItem14: TdxLayoutItem;
-    lucbx_Option: TcxDBLookupComboBox;
+    ds_Benutzer: TDataSource;
+    ds_Rechte: TDataSource;
+    ds_RechteDetail: TDataSource;
     dxLayoutItem15: TdxLayoutItem;
-    cxDBCheckBox1: TcxDBCheckBox;
-    dxLayoutGroup3: TdxLayoutGroup;
-    dxLayoutGroup4: TdxLayoutGroup;
-    dxLayoutGroup5: TdxLayoutGroup;
-    dxLayoutGroup7: TdxLayoutGroup;
-    dxLayoutGroup8: TdxLayoutGroup;
-    dxLayoutItem16: TdxLayoutItem;
-    cxDBLookupComboBox22: TcxDBLookupComboBox;
-    cxDBLookupComboBox23: TcxDBLookupComboBox;
-    dxLayoutItem17: TdxLayoutItem;
-    dxLayoutItem18: TdxLayoutItem;
-    cxDBLookupComboBox1: TcxDBLookupComboBox;
-    dxLayoutItem19: TdxLayoutItem;
-    cxDBLookupComboBox3: TcxDBLookupComboBox;
-    dxLayoutItem20: TdxLayoutItem;
-    cxDBLookupComboBox5: TcxDBLookupComboBox;
-    dxLayoutItem21: TdxLayoutItem;
-    cxDBLookupComboBox7: TcxDBLookupComboBox;
-    dxLayoutItem22: TdxLayoutItem;
-    cxDBLookupComboBox9: TcxDBLookupComboBox;
-    dxLayoutItem23: TdxLayoutItem;
-    cxDBLookupComboBox10: TcxDBLookupComboBox;
-    dxLayoutItem24: TdxLayoutItem;
-    cxDBLookupComboBox2: TcxDBLookupComboBox;
-    dxLayoutItem25: TdxLayoutItem;
-    cxDBLookupComboBox4: TcxDBLookupComboBox;
-    dxLayoutItem26: TdxLayoutItem;
-    cxDBLookupComboBox6: TcxDBLookupComboBox;
-    dxLayoutItem27: TdxLayoutItem;
-    cxDBLookupComboBox8: TcxDBLookupComboBox;
-    dxLayoutItem28: TdxLayoutItem;
-    cxDBLookupComboBox11: TcxDBLookupComboBox;
-    dxLayoutItem29: TdxLayoutItem;
-    cxDBLookupComboBox13: TcxDBLookupComboBox;
-    dxLayoutItem30: TdxLayoutItem;
-    cxDBLookupComboBox12: TcxDBLookupComboBox;
-    dxLayoutItem31: TdxLayoutItem;
-    cxDBLookupComboBox14: TcxDBLookupComboBox;
-    dxLayoutItem32: TdxLayoutItem;
-    cxDBLookupComboBox15: TcxDBLookupComboBox;
-    dxLayoutGroup6: TdxLayoutGroup;
-    dxLayoutGroup9: TdxLayoutGroup;
-    dxLayoutGroup10: TdxLayoutGroup;
-    dxLayoutItem33: TdxLayoutItem;
-    dxLayoutItem34: TdxLayoutItem;
-    cxDBLookupComboBox16: TcxDBLookupComboBox;
-    dxLayoutItem35: TdxLayoutItem;
-    cxDBLookupComboBox17: TcxDBLookupComboBox;
-    dxLayoutItem36: TdxLayoutItem;
-    cxDBLookupComboBox19: TcxDBLookupComboBox;
-    dxLayoutItem37: TdxLayoutItem;
-    dxLayoutItem38: TdxLayoutItem;
-    dxLayoutItem39: TdxLayoutItem;
-    cxDBLookupComboBox21: TcxDBLookupComboBox;
-    dxLayoutGroup11: TdxLayoutGroup;
-    dxLayoutGroup12: TdxLayoutGroup;
-    dxLayoutGroup13: TdxLayoutGroup;
-    dxLayoutGroup14: TdxLayoutGroup;
-    dxLayoutGroup15: TdxLayoutGroup;
-    dxLayoutGroup16: TdxLayoutGroup;
-    dxLayoutGroup17: TdxLayoutGroup;
-    dxLayoutGroup18: TdxLayoutGroup;
-    dxLayoutGroup19: TdxLayoutGroup;
-    dxLayoutLookAndFeelList1: TdxLayoutLookAndFeelList;
-    dxLayoutCxLookAndFeel1: TdxLayoutCxLookAndFeel;
-    dxLayoutGroup20: TdxLayoutGroup;
-    dxLayoutGroup21: TdxLayoutGroup;
-    procedure btn_OptionChangePasswordClick(Sender: TObject);
-    procedure edt_OptionPasswordExit(Sender: TObject);
-    procedure btn_OptionNewRightClick(Sender: TObject);
-    procedure btn_OptionSaveRightClick(Sender: TObject);
-    procedure btn_OptionDeleteRightClick(Sender: TObject);
-    procedure btn_OptionNewUserClick(Sender: TObject);
-    procedure btn_OptionSaveUserClick(Sender: TObject);
-    procedure btn_OptionDeleteUserClick(Sender: TObject);
-    procedure edt_OptionPasswordEnter(Sender: TObject);
-    procedure btn_OptionCancelUserClick(Sender: TObject);
-    procedure SetButtonsEnableVisible(DataSet: TDataSet);
-    procedure btn_OptionCancelRightClick(Sender: TObject);
-    procedure lucbx_BackupPropertiesChange(Sender: TObject);
-    procedure lucbx_OptionPropertiesChange(Sender: TObject);
-    procedure FormShow(Sender: TObject);
+    edt_BenutzerName: TcxDBTextEdit;
+    edt_BenutzerPassword: TcxDBTextEdit;
+    edt_BenutzerSucheBenutzer: TcxButtonEdit;
+    edt_BenutzerSurname: TcxDBTextEdit;
+    edt_BenutzerUser: TcxDBTextEdit;
+    edt_OptionRight: TcxDBTextEdit;
+    edt_RechteSucheBezeichnung: TcxButtonEdit;
+    grd_Benutzer: TcxGrid;
+    grd_Rechte: TcxGrid;
+    grdDBTblView_Benutzer: TcxGridDBTableView;
+    grdDBTblView_BenutzerColumn1: TcxGridDBColumn;
+    grdDBTblView_BenutzerColumn2: TcxGridDBColumn;
+    grdDBTblView_Rechte: TcxGridDBTableView;
+    grdDBTblView_RechteBezeichnung: TcxGridDBColumn;
+    grdDBTblView_RechteID: TcxGridDBColumn;
+    grdLvl_Benutzer: TcxGridLevel;
+    grdLvl_Rechte: TcxGridLevel;
+    lactrl_Main: TdxLayoutControl;
+    laCxlaf_Benutzer: TdxLayoutCxLookAndFeel;
+    lagrp_Benutzer: TdxLayoutGroup;
+    lagrp_BenutzerHeader: TdxLayoutGroup;
+    lagrp_BenutzerPassword: TdxLayoutGroup;
+    lagrp_BenutzerRechteTab: TdxLayoutGroup;
+    lagrp_BenutzerSuche: TdxLayoutGroup;
+    lagrp_BenutzerSucheDetails: TdxLayoutGroup;
+    lagrp_BenutzerSucheDetailsLeft: TdxLayoutGroup;
+    lagrp_BenutzerSucheDetailsRight: TdxLayoutGroup;
+    lagrp_Personal: TdxLayoutGroup;
+    lagrp_Rechte: TdxLayoutGroup;
+    lagrp_RechteAlleModule: TdxLayoutGroup;
+    lagrp_RechteAllgemein: TdxLayoutGroup;
+    lagrp_RechteAllgemeinDetail: TdxLayoutGroup;
+    lagrp_RechteArchiv: TdxLayoutGroup;
+    lagrp_RechteBackup: TdxLayoutGroup;
+    lagrp_RechteHeader: TdxLayoutGroup;
+    lagrp_RechteManager: TdxLayoutGroup;
+    lagrp_RechteManagerLeft: TdxLayoutGroup;
+    lagrp_RechteManagerRight: TdxLayoutGroup;
+    lagrp_RechteMediacenter: TdxLayoutGroup;
+    lagrp_RechteMediacenterLeft: TdxLayoutGroup;
+    lagrp_RechteMediacenterRight: TdxLayoutGroup;
+    lagrp_RechteMP3Manager: TdxLayoutGroup;
+    lagrp_RechteNotenrechner: TdxLayoutGroup;
+    lagrp_RechteServicemanager: TdxLayoutGroup;
+    lagrp_RechteSuche: TdxLayoutGroup;
+    lagrp_RechteVokabeltrainer: TdxLayoutGroup;
+    lagrp_RechteVokabeltrainerLeft: TdxLayoutGroup;
+    laitem_RechteAllgemeinBenutzer: TdxLayoutItem;
+    laitem_RechteAllgemeinBezeichnung: TdxLayoutItem;
+    laitem_RechteAllgemeinOption: TdxLayoutItem;
+    laitm_BenutzerAutologin: TdxLayoutItem;
+    laitm_BenutzerBar: TdxLayoutItem;
+    laitm_BenutzerBenutzer: TdxLayoutItem;
+    laitm_BenutzerGrid: TdxLayoutItem;
+    laitm_BenutzerNachname: TdxLayoutItem;
+    laitm_BenutzerPassword: TdxLayoutItem;
+    laitm_BenutzerPasswordBtn: TdxLayoutItem;
+    laitm_BenutzerRecht: TdxLayoutItem;
+    laitm_BenutzerRestapi: TdxLayoutItem;
+    laitm_BenutzerSuche: TdxLayoutItem;
+    laitm_BenutzerVorname: TdxLayoutItem;
+    laitm_RechteArchivArchiv: TdxLayoutItem;
+    laitm_RechteBackupBackup: TdxLayoutItem;
+    laitm_RechteBar: TdxLayoutItem;
+    laitm_RechteGrid: TdxLayoutItem;
+    laitm_RechteManagerAusgaben: TdxLayoutItem;
+    laitm_RechteManagerEinnahmen: TdxLayoutItem;
+    laitm_RechteManagerKalender: TdxLayoutItem;
+    laitm_RechteManagerKontakte: TdxLayoutItem;
+    laitm_RechteManagerMail: TdxLayoutItem;
+    laitm_RechteManagerMonatsbericht: TdxLayoutItem;
+    laitm_RechteManagerPassword: TdxLayoutItem;
+    laitm_RechteManagerSerials: TdxLayoutItem;
+    laitm_RechteManagerStundenplan: TdxLayoutItem;
+    laitm_RechteManagerVerfuegung: TdxLayoutItem;
+    laitm_RechteMediacenterAudio: TdxLayoutItem;
+    laitm_RechteMediacenterFotos: TdxLayoutItem;
+    laitm_RechteMediacenterVideo: TdxLayoutItem;
+    laitm_RechteMediacenterWeb: TdxLayoutItem;
+    laitm_RechteMP3ManagerMP3: TdxLayoutItem;
+    laitm_RechteNotenrechnerNoten: TdxLayoutItem;
+    laitm_RechteServicemanagerBackup: TdxLayoutItem;
+    laitm_RechteServicemanagerShutdown: TdxLayoutItem;
+    laitm_RechteSuche: TdxLayoutItem;
+    laitm_RechteVokabeltrainerStatistik: TdxLayoutItem;
+    laitm_RechteVokabeltrainerTest: TdxLayoutItem;
+    laitm_RechteVokabeltrainerVokabeln: TdxLayoutItem;
+    lalaflst_Benutzer: TdxLayoutLookAndFeelList;
+    lucmbbx_BenutzerRights: TcxDBLookupComboBox;
+    lucmbbx_RechteAllgemeinBenutzer: TcxDBLookupComboBox;
+    lucmbbx_RechteAllgemeinOptionen: TcxDBLookupComboBox;
+    lucmbbx_RechteArchivArchiv: TcxDBLookupComboBox;
+    lucmbbx_RechteBackupBackup: TcxDBLookupComboBox;
+    lucmbbx_RechteManagerAusgaben: TcxDBLookupComboBox;
+    lucmbbx_RechteManagerEinnahmen: TcxDBLookupComboBox;
+    lucmbbx_RechteManagerKalender: TcxDBLookupComboBox;
+    lucmbbx_RechteManagerKontakt: TcxDBLookupComboBox;
+    lucmbbx_RechteManagerMail: TcxDBLookupComboBox;
+    lucmbbx_RechteManagerMonatsbericht: TcxDBLookupComboBox;
+    lucmbbx_RechteManagerPassword: TcxDBLookupComboBox;
+    lucmbbx_RechteManagerSerials: TcxDBLookupComboBox;
+    lucmbbx_RechteManagerStundenplan: TcxDBLookupComboBox;
+    lucmbbx_RechteManagerVerfuegung: TcxDBLookupComboBox;
+    lucmbbx_RechteMediacenterAudio: TcxDBLookupComboBox;
+    lucmbbx_RechteMediacenterFoto: TcxDBLookupComboBox;
+    lucmbbx_RechteMediacenterVideo: TcxDBLookupComboBox;
+    lucmbbx_RechteMediacenterWeb: TcxDBLookupComboBox;
+    lucmbbx_RechteMP3MangerMP3: TcxDBLookupComboBox;
+    lucmbbx_RechteNotenrechnerNoten: TcxDBLookupComboBox;
+    lucmbbx_RechteServiceManagerBackup: TcxDBLookupComboBox;
+    lucmbbx_RechteServiceManagerShutdown: TcxDBLookupComboBox;
+    lucmbbx_RechteVokabeltrainerStatistik: TcxDBLookupComboBox;
+    lucmbbx_RechteVokabeltrainerTest: TcxDBLookupComboBox;
+    lucmbbx_RechteVokabeltrainerVokabeln: TcxDBLookupComboBox;
+    qry_Benutzer: TFDQuery;
+    qry_Rechte: TFDQuery;
+    qry_RechteDetail: TFDQuery;
+    tb_Benutzer: TdxBar;
+    tb_Rechte: TdxBar;
+    procedure btn_BenutzerCancelClick(Sender: TObject);
+    procedure btn_BenutzerChangePasswordClick(Sender: TObject);
+    procedure btn_BenutzerDeleteClick(Sender: TObject);
+    procedure btn_BenutzerNewClick(Sender: TObject);
+    procedure btn_BenutzerSaveClick(Sender: TObject);
+    procedure btn_RechtCancelClick(Sender: TObject);
+    procedure btn_RechtDeleteClick(Sender: TObject);
+    procedure btn_RechtNewClick(Sender: TObject);
+    procedure btn_RechtSaveClick(Sender: TObject);
+    procedure edt_BenutzerPasswordEnter(Sender: TObject);
+    procedure edt_BenutzerPasswordExit(Sender: TObject);
+    procedure edt_RechteSucheBenutzerPropertiesButtonClick(Sender: TObject; AButtonIndex: Integer);
+    procedure edt_RechteSucheBenutzerPropertiesChange(Sender: TObject);
+    procedure edt_searchUserPropertiesButtonClick(Sender: TObject; AButtonIndex: Integer);
+    procedure edt_searchUserPropertiesChange(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
-    procedure cxDBLookupComboBox1PropertiesChange(Sender: TObject);
-    procedure cxDBLookupComboBox10PropertiesChange(Sender: TObject);
-    procedure cxDBLookupComboBox2PropertiesChange(Sender: TObject);
-    procedure cxDBLookupComboBox3PropertiesChange(Sender: TObject);
-    procedure cxDBLookupComboBox4PropertiesChange(Sender: TObject);
-    procedure cxDBLookupComboBox5PropertiesChange(Sender: TObject);
-    procedure cxDBLookupComboBox6PropertiesChange(Sender: TObject);
-    procedure cxDBLookupComboBox7PropertiesChange(Sender: TObject);
-    procedure cxDBLookupComboBox8PropertiesChange(Sender: TObject);
-    procedure cxDBLookupComboBox9PropertiesChange(Sender: TObject);
-    procedure cxDBLookupComboBox11PropertiesChange(Sender: TObject);
-    procedure cxDBLookupComboBox12PropertiesChange(Sender: TObject);
-    procedure cxDBLookupComboBox13PropertiesChange(Sender: TObject);
-    procedure cxDBLookupComboBox14PropertiesChange(Sender: TObject);
-    procedure cxDBLookupComboBox15PropertiesChange(Sender: TObject);
-    procedure cxDBLookupComboBox16PropertiesChange(Sender: TObject);
-    procedure cxDBLookupComboBox19PropertiesChange(Sender: TObject);
-    procedure cxDBLookupComboBox17PropertiesChange(Sender: TObject);
-    procedure cxDBLookupComboBox18PropertiesChange(Sender: TObject);
-    procedure cxDBLookupComboBox21PropertiesChange(Sender: TObject);
-    procedure cxDBLookupComboBox20PropertiesChange(Sender: TObject);
-    procedure OpenData;
-    procedure cxDBLookupComboBox22PropertiesChange(Sender: TObject);
-    procedure cxDBLookupComboBox23PropertiesChange(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure lucmbbx_ChangeColorRight(Sender: TObject);
+    procedure SetButtonsEnableVisible(DataSet: TDataSet);
   private
     { Private-Deklarationen }
     SaveGridViewUser,SaveGridViewRight: TSavedGridView;
-    procedure SetRightColor(ARight: TcxDBLookupComboBox);
     procedure SetGridViews(Show:boolean);
     procedure SetButtons;
-    procedure InitializeRights;
   public
     { Public-Deklarationen }
   end;
-
+  {$EndRegion type}
 var
+  {$Region var}
   frm_User: Tfrm_User;
-
+  {$EndRegion var}
 implementation
-
 {$R *.dfm}
-
-uses  PCM.Main,
-      PCM.Data,
-      PCM.Functions.ChangePW,
-      PCM.strings,
-      PCM.SQL;
-
+uses
+  {$Region uses}
+  PCM.Data,
+  PCM.Functions.ChangePW,
+  PCM.Main,
+  PCM.SQL,
+  PCM.strings;
+  {$EndRegion uses}
+////////////////////////////////////////////////////////////////////////////////
+// Hilfsfunktionen                                                            //
+////////////////////////////////////////////////////////////////////////////////
+{$Region Hilfsfunktionen}
 procedure Tfrm_User.SetGridViews(Show:boolean);
 begin
   if Show then
   begin
-    SaveGridViewUser := TSavedGridView.Create(GV_Benutzer,dm_PCM.iIDBenutzerPCM, cxGridDBTableView3);
+    SaveGridViewUser := TSavedGridView.Create(GV_Benutzer,dm_PCM.iIDBenutzerPCM, grdDBTblView_Benutzer);
     SaveGridViewUser.LoadView;
-    SaveGridViewRight := TSavedGridView.Create(GV_Recht,dm_PCM.iIDBenutzerPCM, cxGridDBTableView1);
+    SaveGridViewRight := TSavedGridView.Create(GV_Recht,dm_PCM.iIDBenutzerPCM, grdDBTblView_Rechte);
     SaveGridViewRight.LoadView;
   end
   else begin
@@ -237,9 +290,202 @@ begin
     SaveGridViewRight.Free;
   end;
 end;
-procedure Tfrm_User.SetRightColor(ARight: TcxDBLookupComboBox);
+procedure Tfrm_User.SetButtons;
 begin
- case ARight.ItemIndex of
+  // Benutzer
+  if dm_PCM.iBenutzer >= 2 then
+  begin
+    btn_BenutzerSave.Enabled := qry_Benutzer.State in [dsInsert, dsEdit];
+    btn_BenutzerCancel.Enabled := qry_Benutzer.State in [dsInsert, dsEdit];
+    //Rechte
+    btn_RechtSave.Enabled := qry_Rechte.State in [dsInsert, dsEdit];
+    btn_RechtCancel.Enabled := qry_Rechte.State in [dsInsert, dsEdit];
+  end;
+
+  if dm_PCM.iBenutzer = 3 then
+  begin
+    // Benutzer
+    btn_BenutzerDelete.Enabled := (not qry_Benutzer.Eof) and not (qry_Benutzer.State in [dsInsert, dsEdit]);
+    //Rechte
+    btn_RechtDelete.Enabled := (not qry_Rechte.Eof) and not (qry_Rechte.State in [dsInsert, dsEdit]);
+  end;
+end;
+{$EndRegion Hilfsfunktionen}
+////////////////////////////////////////////////////////////////////////////////
+// Buttonfunktionen                                                           //
+////////////////////////////////////////////////////////////////////////////////
+{$Region Buttonfunktionen}
+procedure Tfrm_User.btn_BenutzerCancelClick(Sender: TObject);
+begin
+  qry_Benutzer.Cancel;
+end;
+procedure Tfrm_User.btn_BenutzerChangePasswordClick(Sender: TObject);
+begin
+  dm_PCM.iIDBenutzerPCM:= qry_Benutzer.FieldByName('ID').AsInteger;
+  Application.CreateForm(TfrM_PCM_ChangePW,frM_PCM_ChangePW);
+  frM_PCM_ChangePW.ShowModal;
+end;
+procedure Tfrm_User.btn_BenutzerDeleteClick(Sender: TObject);
+begin
+  if qry_Benutzer.FieldByName('ID').AsInteger > 1 then
+  begin
+    qry_Benutzer.Delete;
+  end
+  else begin
+    MessageDlg(rs_PCMBenutzerverwaltung_BenutzerLoeschen , mtWarning, [mbOk], 0);
+  end;
+end;
+procedure Tfrm_User.btn_BenutzerNewClick(Sender: TObject);
+begin
+  if qry_Benutzer.State in [dsInsert, dsedit] then
+    qry_Benutzer.Post;
+  qry_Benutzer.Append;
+  qry_Benutzer.Insert;
+  if dm_PCM.iBenutzer = 2 then
+    qry_Benutzer.FieldByName('ID_Rechte').AsInteger:= 2
+
+  else
+    qry_Benutzer.FieldByName('ID_Rechte').AsInteger:= 1;
+  edt_BenutzerUser.SetFocus;
+end;
+procedure Tfrm_User.btn_BenutzerSaveClick(Sender: TObject);
+begin
+  if qry_Benutzer.State in [dsInsert, dsEdit] then
+  begin
+    edt_BenutzerUser.PostEditValue;
+    edt_BenutzerPassword.PostEditValue;
+    edt_BenutzerName.PostEditValue;
+    edt_BenutzerSurName.PostEditValue;
+    qry_Benutzer.Post;
+  end;
+end;
+procedure Tfrm_User.btn_RechtCancelClick(Sender: TObject);
+begin
+  qry_Rechte.Cancel;
+end;
+procedure Tfrm_User.btn_RechtDeleteClick(Sender: TObject);
+begin
+  if qry_Rechte.FieldByName('ID').AsInteger > 4 then
+  begin
+    qry_Rechte.Delete;
+  end
+  else begin
+    MessageDlg(rs_PCMBenutzerverwaltung_RechteLoeschen  , mtWarning, [mbOk], 0);
+  end;
+end;
+procedure Tfrm_User.btn_RechtNewClick(Sender: TObject);
+begin
+  if qry_Rechte.State in [dsInsert, dsedit] then
+    qry_Rechte.Post;
+  qry_Rechte.Append;
+  qry_Rechte.Insert;
+  qry_Rechte.FieldByName('Benutzer').AsInteger:= 3;
+  qry_Rechte.FieldByName('Konfiguration').AsInteger:= 3;
+  qry_Rechte.FieldByName('Alle_Benutzer').AsInteger:= 3;
+  qry_Rechte.FieldByName('ma_Kontakte').AsInteger:= 3;
+  qry_Rechte.FieldByName('ma_Kalender').AsInteger:= 3;
+  qry_Rechte.FieldByName('ma_Stundenplan').AsInteger:= 3;
+  qry_Rechte.FieldByName('ma_Email').AsInteger:= 3;
+  qry_Rechte.FieldByName('ma_Password').AsInteger:= 3;
+  qry_Rechte.FieldByName('ma_Serials').AsInteger:= 3;
+  qry_Rechte.FieldByName('ma_Monatsuebersicht').AsInteger:= 3;
+  qry_Rechte.FieldByName('ma_Verfuegung').AsInteger:= 3;
+  qry_Rechte.FieldByName('ma_Einnahmen').AsInteger:= 3;
+  qry_Rechte.FieldByName('ma_Ausgaben').AsInteger:= 3;
+  qry_Rechte.FieldByName('mc_Audioplayer').AsInteger:= 3;
+  qry_Rechte.FieldByName('mc_Webradio').AsInteger:= 3;
+  qry_Rechte.FieldByName('mc_Videoplayer').AsInteger:= 3;
+  qry_Rechte.FieldByName('mc_Fotos').AsInteger:= 3;
+  qry_Rechte.FieldByName('mm_MP3').AsInteger:= 3;
+  qry_Rechte.FieldByName('nr_Noten').AsInteger:= 3;
+  qry_Rechte.FieldByName('sm_Backup').AsInteger:= 3;
+  qry_Rechte.FieldByName('sm_Shutdown').AsInteger:= 3;
+  qry_Rechte.FieldByName('vk_Vokabeluebersicht').AsInteger:= 3;
+  qry_Rechte.FieldByName('Vk_Vokabeltest').AsInteger:= 3;
+  qry_Rechte.FieldByName('vk_Lernstatistik').AsInteger:= 3;
+  edt_OptionRight.SetFocus;
+end;
+procedure Tfrm_User.btn_RechtSaveClick(Sender: TObject);
+begin
+  if (qry_Rechte.FieldByName('ID').AsInteger > 4) or (qry_Rechte.FieldByName('ID').AsInteger < 0) then
+  begin
+    if qry_Rechte.State in [dsInsert, dsEdit] then
+    begin
+      edt_OptionRight.PostEditValue;
+      qry_Rechte.Post;
+    end;
+  end
+  else begin
+    qry_Rechte.Cancel;
+    MessageDlg(rs_PCMBenutzerverwaltung_RechteBearbeiten, mtWarning, [mbOk], 0);
+  end;
+end;
+{$EndRegion Buttonfunktionen}
+////////////////////////////////////////////////////////////////////////////////
+// Editfunktionen                                                             //
+////////////////////////////////////////////////////////////////////////////////
+{$Region Editfunktionen}
+procedure Tfrm_User.edt_BenutzerPasswordEnter(Sender: TObject);
+begin
+  if Length(edt_BenutzerPassword.Text) > 0 then
+    edt_BenutzerPassword.Properties.ReadOnly:= true
+  else
+    edt_BenutzerPassword.Properties.ReadOnly:= false;
+end;
+procedure Tfrm_User.edt_BenutzerPasswordExit(Sender: TObject);
+var
+  astr_password: string;
+begin
+  if (edt_BenutzerPassword.text <> '') and (Length(edt_BenutzerPassword.text) < 32) then
+  begin
+    astr_password:= GetMD5Hash(edt_BenutzerPassword.text);
+    edt_BenutzerPassword.text:= astr_password;
+    btn_BenutzerSave.Click;
+  end;
+end;
+procedure Tfrm_User.edt_RechteSucheBenutzerPropertiesButtonClick(Sender: TObject; AButtonIndex: Integer);
+begin
+  edt_RechteSucheBezeichnung.Text:= '';
+  qry_Rechte.Filtered:= false;
+end;
+procedure Tfrm_User.edt_RechteSucheBenutzerPropertiesChange(Sender: TObject);
+begin
+  if Length(edt_RechteSucheBezeichnung.text) = 0 then
+  begin
+    qry_Benutzer.Filtered:= false;
+  end
+  else begin
+    qry_Benutzer.Filter:= 'lower(Bezeichnung) like lower(' + QuotedStr('%' + edt_RechteSucheBezeichnung.text + '%' ) + ')';
+    qry_Benutzer.Filtered:= true;
+  end;
+end;
+procedure Tfrm_User.edt_searchUserPropertiesButtonClick(Sender: TObject; AButtonIndex: Integer);
+begin
+  edt_BenutzerSucheBenutzer.Text:= '';
+  qry_Benutzer.Filtered:= false;
+end;
+procedure Tfrm_User.edt_searchUserPropertiesChange(Sender: TObject);
+begin
+  if Length(edt_BenutzerSucheBenutzer.text) = 0 then
+  begin
+    qry_Benutzer.Filtered:= false;
+  end
+  else begin
+    qry_Benutzer.Filter:= 'lower(Benutzer) like lower(' + QuotedStr('%' + edt_BenutzerSucheBenutzer.text + '%' ) + ')';
+    qry_Benutzer.Filtered:= true;
+  end;
+end;
+{$EndRegion Editfunktionen}
+////////////////////////////////////////////////////////////////////////////////
+// Sonstigefunktionen                                                         //
+////////////////////////////////////////////////////////////////////////////////
+{$Region Sonstigefunktionen}
+procedure Tfrm_User.lucmbbx_ChangeColorRight(Sender: TObject);
+var
+  ARight: TcxDBLookupComboBox;
+begin
+  ARight:= Sender as TcxDBLookupComboBox;
+  case ARight.ItemIndex of
   0:
     begin
       ARight.Style.Color := ColorRed;
@@ -257,366 +503,124 @@ begin
       ARight.Style.Color := ColorGreen;
     end;
   end;
-
-end;
-procedure Tfrm_User.OpenData;
-begin
-  qBenutzer.SQL.Text:= ASSQL_GetUSer[dm_PCM.iDBType];
-  qBenutzer.Open;
-  qRechte.SQL.Text:= ASSQL_GetRights[dm_PCM.iDBType];
-  qRechte.Open;
-  qRechte_Detail.SQL.Text:= ASSQL_GetRightsDetail[dm_PCM.iDBType];
-  qRechte_Detail.Open;
-  cxGridDBColumn2.Caption:= rs_PCMBenutzerverwaltung_Benutzer;
-  cxGridDBTableView3Column1.Caption:= rs_PCMBenutzerverwaltung_Vorname;
-  cxGridDBTableView3Column2.Caption:= rs_PCMBenutzerverwaltung_Nachname;
-  cxGridDBTableView1Bezeichnung.Caption:= rs_PCMBenutzerverwaltung_Bezeichnung;
-end;
-procedure Tfrm_User.SetButtons;
-begin
-  // Benutzer
-  if dm_PCM.iBenutzer >= 2 then
-  begin
-    btn_OptionSaveUser.Enabled := qBenutzer.State in [dsInsert, dsEdit];
-    btn_OptionCancelUser.Enabled := qBenutzer.State in [dsInsert, dsEdit];
-    //Rechte
-    btn_OptionSaveRight.Enabled := qRechte.State in [dsInsert, dsEdit];
-    btn_OptionCancelRight.Enabled := qRechte.State in [dsInsert, dsEdit];
-  end;
-
-  if dm_PCM.iBenutzer = 3 then
-  begin
-    // Benutzer
-    btn_OptionDeleteUser.Enabled := (not qBenutzer.Eof) and not (qBenutzer.State in [dsInsert, dsEdit]);
-    //Rechte
-    btn_OptionDeleteRight.Enabled := (not qRechte.Eof) and not (qRechte.State in [dsInsert, dsEdit]);
-  end;
-end;
-procedure Tfrm_User.InitializeRights;
-begin
-  // Benutzerverwaltung / Lesen
-  if dm_PCM.iBenutzer = 1 then
-  begin
-    //// Benutzer
-    // Toolbar
-    btn_OptionNewUser.Enabled:= false;
-    btn_OptionSaveUser.Enabled:= false;
-    btn_OptionCancelUser.Enabled:= false;
-    btn_OptionDeleteUser.Enabled:= false;
-    // Editfelder
-    edt_OptionUser.Enabled:= false;
-    edt_OptionPassword.Enabled:= false;
-    edt_OptionName.Enabled:= false;
-    edt_OptionSurName.Enabled:= false;
-    lucbx_OptionRights.Enabled:= false;
-    // Button
-    btn_OptionChangePassword.Enabled:= false;
-    //// Rechte
-    // Toolbar
-    btn_OptionNewRight.Enabled:= false;
-    btn_OptionSaveRight.Enabled:= false;
-    btn_OptionCancelRight.Enabled:= false;
-    btn_OptionDeleteRight.Enabled:= false;
-    // Editfelder
-    edt_OptionRight.Enabled:= false;
-    lucbx_Option.Enabled:= false;
-    lucbx_Backup.Enabled:= false;
-  end;
-  // Benutzerverwaltung / Ändern
-  if dm_PCM.iBenutzer = 2 then
-  begin
-    //// Benutzer
-    // Toolbar
-    btn_OptionNewUser.Enabled:= true;
-    btn_OptionSaveUser.Enabled:= true;
-    btn_OptionCancelUser.Enabled:= true;
-    btn_OptionDeleteUser.Enabled:= false;
-    // Editfelder
-    edt_OptionUser.Enabled:= true;
-    edt_OptionPassword.Enabled:= true;
-    edt_OptionName.Enabled:= true;
-    edt_OptionSurName.Enabled:= true;
-    lucbx_OptionRights.Enabled:= true;
-    // Button
-    btn_OptionChangePassword.Enabled:= true;
-    //// Rechte
-    // Toolbar
-    btn_OptionNewRight.Enabled:= true;
-    btn_OptionSaveRight.Enabled:= true;
-    btn_OptionCancelRight.Enabled:= true;
-    btn_OptionDeleteRight.Enabled:= false;
-    // Editfelder
-    edt_OptionRight.Enabled:= true;
-    lucbx_Option.Enabled:= true;
-    lucbx_Backup.Enabled:= true;
-  end;
-
-   // Benutzerverwaltung / Vollzugriff
-  if dm_PCM.iBenutzer = 3 then
-  begin
-    //// Benutzer
-    // Toolbar
-    btn_OptionNewUser.Enabled:= true;
-    btn_OptionSaveUser.Enabled:= true;
-    btn_OptionCancelUser.Enabled:= true;
-    btn_OptionDeleteUser.Enabled:= true;
-    // Editfelder
-    edt_OptionUser.Enabled:= true;
-    edt_OptionPassword.Enabled:= true;
-    edt_OptionName.Enabled:= true;
-    edt_OptionSurName.Enabled:= true;
-    lucbx_OptionRights.Enabled:= true;
-    // Button
-    btn_OptionChangePassword.Enabled:= true;
-    //// Rechte
-    // Toolbar
-    btn_OptionNewRight.Enabled:= true;
-    btn_OptionSaveRight.Enabled:= true;
-    btn_OptionCancelRight.Enabled:= true;
-    btn_OptionDeleteRight.Enabled:= true;
-    // Editfelder
-    edt_OptionRight.Enabled:= true;
-    lucbx_Option.Enabled:= true;
-    lucbx_Backup.Enabled:= true;
-  end;
-end;
-procedure Tfrm_User.edt_OptionPasswordEnter(Sender: TObject);
-begin
-  if Length(edt_OptionPassword.Text) > 0 then
-    edt_OptionPassword.Properties.ReadOnly:= true
-  else
-    edt_OptionPassword.Properties.ReadOnly:= false;
-end;
-procedure Tfrm_User.edt_OptionPasswordExit(Sender: TObject);
-var
-  astr_password: string;
-begin
-  if (edt_OptionPassword.text <> '') and (Length(edt_OptionPassword.text) < 32) then
-  begin
-    astr_password:= GetMD5Hash(edt_OptionPassword.text);
-    edt_OptionPassword.text:= astr_password;
-    btn_OptionSaveUser.Click;
-  end;
-end;
-procedure Tfrm_User.FormDestroy(Sender: TObject);
-begin
-  SetGridViews(false);
-end;
-procedure Tfrm_User.FormShow(Sender: TObject);
-begin
-  OPendata;
-  InitializeRights;
-  SetGridViews(true);
-end;
-procedure Tfrm_User.lucbx_BackupPropertiesChange(Sender: TObject);
-begin
-  SetRightColor(lucbx_Backup);
-end;
-procedure Tfrm_User.lucbx_OptionPropertiesChange(Sender: TObject);
-begin
-  SetRightColor(lucbx_Option);
 end;
 procedure Tfrm_User.SetButtonsEnableVisible(DataSet: TDataSet);
 begin
   SetButtons;
 end;
-procedure Tfrm_User.btn_OptionCancelRightClick(Sender: TObject);
+{$EndRegion Sonstigefunktionen}
+////////////////////////////////////////////////////////////////////////////////
+// Formfunktionen                                                             //
+////////////////////////////////////////////////////////////////////////////////
+{$Region Formfunktionen}
+procedure Tfrm_User.FormDestroy(Sender: TObject);
 begin
-  qRechte.Cancel;
+  SetGridViews(false);
 end;
-procedure Tfrm_User.btn_OptionCancelUserClick(Sender: TObject);
-begin
-  qBenutzer.Cancel;
-end;
-procedure Tfrm_User.btn_OptionChangePasswordClick(Sender: TObject);
-begin
-  dm_PCM.iIDBenutzerPCM:= qBenutzer.FieldByName('ID').AsInteger;
-  Application.CreateForm(TfrM_PCM_ChangePW,frM_PCM_ChangePW);
-  frM_PCM_ChangePW.ShowModal;
-end;
-procedure Tfrm_User.btn_OptionSaveRightClick(Sender: TObject);
-begin
-  if (qRechte.FieldByName('ID').AsInteger > 4) or (qRechte.FieldByName('ID').AsInteger < 0) then
+procedure Tfrm_User.FormShow(Sender: TObject);
+  procedure InitializeRights;
   begin
-    if qRechte.State in [dsInsert, dsEdit] then
+    // Benutzerverwaltung / Lesen
+    if dm_PCM.iBenutzer = 1 then
     begin
-      edt_OptionRight.PostEditValue;
-      qRechte.Post;
+      //// Benutzer
+      // Toolbar
+      btn_BenutzerNew.Enabled:= false;
+      btn_BenutzerSave.Enabled:= false;
+      btn_BenutzerCancel.Enabled:= false;
+      btn_BenutzerDelete.Enabled:= false;
+      // Editfelder
+      edt_BenutzerUser.Enabled:= false;
+      edt_BenutzerPassword.Enabled:= false;
+      edt_BenutzerName.Enabled:= false;
+      edt_BenutzerSurName.Enabled:= false;
+      lucmbbx_BenutzerRights.Enabled:= false;
+      // Button
+      btn_BenutzerChangePassword.Enabled:= false;
+      //// Rechte
+      // Toolbar
+      btn_RechtNew.Enabled:= false;
+      btn_RechtSave.Enabled:= false;
+      btn_RechtCancel.Enabled:= false;
+      btn_RechtDelete.Enabled:= false;
+      // Editfelder
+      edt_OptionRight.Enabled:= false;
+      lagrp_RechteAlleModule.Enabled:= false;
     end;
-  end
-  else begin
-    qRechte.Cancel;
-    MessageDlg(rs_PCMBenutzerverwaltung_RechteBearbeiten, mtWarning, [mbOk], 0);
-  end;
-end;
-procedure Tfrm_User.btn_OptionDeleteRightClick(Sender: TObject);
-begin
-  if qRechte.FieldByName('ID').AsInteger > 4 then
-  begin
-    qRechte.Delete;
-  end
-  else begin
-    MessageDlg(rs_PCMBenutzerverwaltung_RechteLoeschen  , mtWarning, [mbOk], 0);
-  end;
-end;
-procedure Tfrm_User.btn_OptionNewUserClick(Sender: TObject);
-begin
-  if qBenutzer.State in [dsInsert, dsedit] then
-    qBenutzer.Post;
-  qBenutzer.Append;
-  qBenutzer.Insert;
-  if dm_PCM.iBenutzer = 2 then
-    qBenutzer.FieldByName('ID_Rechte').AsInteger:= 2
+    // Benutzerverwaltung / Ändern
+    if dm_PCM.iBenutzer = 2 then
+    begin
+      //// Benutzer
+      // Toolbar
+      btn_BenutzerNew.Enabled:= true;
+      btn_BenutzerSave.Enabled:= true;
+      btn_BenutzerCancel.Enabled:= true;
+      btn_BenutzerDelete.Enabled:= false;
+      // Editfelder
+      edt_BenutzerUser.Enabled:= true;
+      edt_BenutzerPassword.Enabled:= true;
+      edt_BenutzerName.Enabled:= true;
+      edt_BenutzerSurName.Enabled:= true;
+      lucmbbx_BenutzerRights.Enabled:= true;
+      // Button
+      btn_BenutzerChangePassword.Enabled:= true;
+      //// Rechte
+      // Toolbar
+      btn_RechtNew.Enabled:= true;
+      btn_RechtSave.Enabled:= true;
+      btn_RechtCancel.Enabled:= true;
+      btn_RechtDelete.Enabled:= false;
+      // Editfelder
+      edt_OptionRight.Enabled:= true;
+      lagrp_RechteAlleModule.Enabled:= true;
+    end;
 
-  else
-    qBenutzer.FieldByName('ID_Rechte').AsInteger:= 1;
-  edt_OptionUser.SetFocus;
-end;
-procedure Tfrm_User.btn_OptionSaveUserClick(Sender: TObject);
-begin
-  if qBenutzer.State in [dsInsert, dsEdit] then
-  begin
-    edt_OptionUser.PostEditValue;
-    edt_OptionPassword.PostEditValue;
-    edt_OptionName.PostEditValue;
-    edt_OptionSurName.PostEditValue;
-    qBenutzer.Post;
+     // Benutzerverwaltung / Vollzugriff
+    if dm_PCM.iBenutzer = 3 then
+    begin
+      //// Benutzer
+      // Toolbar
+      btn_BenutzerNew.Enabled:= true;
+      btn_BenutzerSave.Enabled:= true;
+      btn_BenutzerCancel.Enabled:= true;
+      btn_BenutzerDelete.Enabled:= true;
+      // Editfelder
+      edt_BenutzerUser.Enabled:= true;
+      edt_BenutzerPassword.Enabled:= true;
+      edt_BenutzerName.Enabled:= true;
+      edt_BenutzerSurName.Enabled:= true;
+      lucmbbx_BenutzerRights.Enabled:= true;
+      // Button
+      btn_BenutzerChangePassword.Enabled:= true;
+      //// Rechte
+      // Toolbar
+      btn_RechtNew.Enabled:= true;
+      btn_RechtSave.Enabled:= true;
+      btn_RechtCancel.Enabled:= true;
+      btn_RechtDelete.Enabled:= true;
+      // Editfelder
+      edt_OptionRight.Enabled:= true;
+      lagrp_RechteAlleModule.Enabled:= true;
+    end;
   end;
-end;
-procedure Tfrm_User.cxDBLookupComboBox10PropertiesChange(Sender: TObject);
-begin
-  SetRightColor(cxDBLookupComboBox10);
-end;
-procedure Tfrm_User.cxDBLookupComboBox11PropertiesChange(Sender: TObject);
-begin
-  SetRightColor(cxDBLookupComboBox11);
-end;
-procedure Tfrm_User.cxDBLookupComboBox12PropertiesChange(Sender: TObject);
-begin
-  SetRightColor(cxDBLookupComboBox12);
-end;
-procedure Tfrm_User.cxDBLookupComboBox13PropertiesChange(Sender: TObject);
-begin
-  SetRightColor(cxDBLookupComboBox13);
-end;
-procedure Tfrm_User.cxDBLookupComboBox14PropertiesChange(Sender: TObject);
-begin
-  SetRightColor(cxDBLookupComboBox14);
-end;
-procedure Tfrm_User.cxDBLookupComboBox15PropertiesChange(Sender: TObject);
-begin
-  SetRightColor(cxDBLookupComboBox15);
-end;
-procedure Tfrm_User.cxDBLookupComboBox16PropertiesChange(Sender: TObject);
-begin
-  SetRightColor(cxDBLookupComboBox16);
-end;
-procedure Tfrm_User.cxDBLookupComboBox17PropertiesChange(Sender: TObject);
-begin
-  SetRightColor(cxDBLookupComboBox17);
-end;
-procedure Tfrm_User.cxDBLookupComboBox18PropertiesChange(Sender: TObject);
-begin
-  SetRightColor(cxDBLookupComboBox18);
-end;
-procedure Tfrm_User.cxDBLookupComboBox19PropertiesChange(Sender: TObject);
-begin
-  SetRightColor(cxDBLookupComboBox19);
-end;
-procedure Tfrm_User.cxDBLookupComboBox1PropertiesChange(Sender: TObject);
-begin
-  SetRightColor(cxDBLookupComboBox1);
-end;
-procedure Tfrm_User.cxDBLookupComboBox20PropertiesChange(Sender: TObject);
-begin
-  SetRightColor(cxDBLookupComboBox20);
-end;
-procedure Tfrm_User.cxDBLookupComboBox21PropertiesChange(Sender: TObject);
-begin
-  SetRightColor(cxDBLookupComboBox21);
-end;
-procedure Tfrm_User.cxDBLookupComboBox22PropertiesChange(Sender: TObject);
-begin
-  SetRightColor(cxDBLookupComboBox22);
-end;
-procedure Tfrm_User.cxDBLookupComboBox23PropertiesChange(Sender: TObject);
-begin
-  SetRightColor(cxDBLookupComboBox23);
-end;
-procedure Tfrm_User.cxDBLookupComboBox2PropertiesChange(Sender: TObject);
-begin
-  SetRightColor(cxDBLookupComboBox2);
-end;
-procedure Tfrm_User.cxDBLookupComboBox3PropertiesChange(Sender: TObject);
-begin
-  SetRightColor(cxDBLookupComboBox3);
-end;
-procedure Tfrm_User.cxDBLookupComboBox4PropertiesChange(Sender: TObject);
-begin
-  SetRightColor(cxDBLookupComboBox4);
-end;
-procedure Tfrm_User.cxDBLookupComboBox5PropertiesChange(Sender: TObject);
-begin
-  SetRightColor(cxDBLookupComboBox5);
-end;
-procedure Tfrm_User.cxDBLookupComboBox6PropertiesChange(Sender: TObject);
-begin
-  SetRightColor(cxDBLookupComboBox6);
-end;
-procedure Tfrm_User.cxDBLookupComboBox7PropertiesChange(Sender: TObject);
-begin
-  SetRightColor(cxDBLookupComboBox7);
-end;
-procedure Tfrm_User.cxDBLookupComboBox8PropertiesChange(Sender: TObject);
-begin
-  SetRightColor(cxDBLookupComboBox8);
-end;
-procedure Tfrm_User.cxDBLookupComboBox9PropertiesChange(Sender: TObject);
-begin
-  SetRightColor(cxDBLookupComboBox9);
-end;
-procedure Tfrm_User.btn_OptionDeleteUserClick(Sender: TObject);
-begin
-  if qBenutzer.FieldByName('ID').AsInteger > 1 then
+  procedure OpenData;
   begin
-    qBenutzer.Delete;
-  end
-  else begin
-    MessageDlg(rs_PCMBenutzerverwaltung_BenutzerLoeschen , mtWarning, [mbOk], 0);
+    qry_Benutzer.SQL.Text:= ASSQL_GetUSer[dm_PCM.iDBType];
+    qry_Benutzer.Open;
+    qry_Rechte.SQL.Text:= ASSQL_GetRights[dm_PCM.iDBType];
+    qry_Rechte.Open;
+    qry_RechteDetail.SQL.Text:= ASSQL_GetRightsDetail[dm_PCM.iDBType];
+    qry_RechteDetail.Open;
+    cxGridDBColumn2.Caption:= rs_PCMBenutzerverwaltung_Benutzer;
+    grdDBTblView_BenutzerColumn1.Caption:= rs_PCMBenutzerverwaltung_Vorname;
+    grdDBTblView_BenutzerColumn2.Caption:= rs_PCMBenutzerverwaltung_Nachname;
+    grdDBTblView_RechteBezeichnung.Caption:= rs_PCMBenutzerverwaltung_Bezeichnung;
   end;
-end;
-procedure Tfrm_User.btn_OptionNewRightClick(Sender: TObject);
 begin
-  if qRechte.State in [dsInsert, dsedit] then
-    qRechte.Post;
-  qRechte.Append;
-  qRechte.Insert;
-  qRechte.FieldByName('Benutzer').AsInteger:= 3;
-  qRechte.FieldByName('Konfiguration').AsInteger:= 3;
-  qRechte.FieldByName('Alle_Benutzer').AsInteger:= 3;
-  qRechte.FieldByName('ma_Kontakte').AsInteger:= 3;
-  qRechte.FieldByName('ma_Kalender').AsInteger:= 3;
-  qRechte.FieldByName('ma_Stundenplan').AsInteger:= 3;
-  qRechte.FieldByName('ma_Email').AsInteger:= 3;
-  qRechte.FieldByName('ma_Password').AsInteger:= 3;
-  qRechte.FieldByName('ma_Serials').AsInteger:= 3;
-  qRechte.FieldByName('ma_Monatsuebersicht').AsInteger:= 3;
-  qRechte.FieldByName('ma_Verfuegung').AsInteger:= 3;
-  qRechte.FieldByName('ma_Einnahmen').AsInteger:= 3;
-  qRechte.FieldByName('ma_Ausgaben').AsInteger:= 3;
-  qRechte.FieldByName('mc_Audioplayer').AsInteger:= 3;
-  qRechte.FieldByName('mc_Webradio').AsInteger:= 3;
-  qRechte.FieldByName('mc_Videoplayer').AsInteger:= 3;
-  qRechte.FieldByName('mc_Fotos').AsInteger:= 3;
-  qRechte.FieldByName('mm_MP3').AsInteger:= 3;
-  qRechte.FieldByName('nr_Noten').AsInteger:= 3;
-  qRechte.FieldByName('sm_Backup').AsInteger:= 3;
-  qRechte.FieldByName('sm_Shutdown').AsInteger:= 3;
-  qRechte.FieldByName('vk_Vokabeluebersicht').AsInteger:= 3;
-  qRechte.FieldByName('Vk_Vokabeltest').AsInteger:= 3;
-  qRechte.FieldByName('vk_Lernstatistik').AsInteger:= 3;
-  edt_OptionRight.SetFocus;
+  OPendata;
+  InitializeRights;
+  SetGridViews(true);
 end;
-
+{$EndRegion Formfunktionen}
 end.
 

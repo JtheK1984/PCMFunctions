@@ -145,8 +145,6 @@ object frm_Sendmail: Tfrm_Sendmail
         Align = alClient
         TabStop = True
         TabOrder = 0
-        ExplicitLeft = 0
-        ExplicitTop = 1
       end
     end
     object btn_Von: TcxButton

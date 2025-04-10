@@ -135,7 +135,7 @@ function Tfrm_AdressBook.Execute(AModal: boolean; out AN, CC, BCC: string): Bool
   function RecordExists(MemData: TdxMemData; const FieldName, PartialValue: string): Boolean;
   begin
     Result := False;
-    MemData.DisableControls; // Prevent UI updates for better performance
+    MemData.DisableControls;
     try
       MemData.First;
       while not MemData.Eof do
@@ -148,7 +148,7 @@ function Tfrm_AdressBook.Execute(AModal: boolean; out AN, CC, BCC: string): Bool
         MemData.Next;
       end;
     finally
-      MemData.EnableControls; // Re-enable UI updates
+      MemData.EnableControls;
     end;
   end;
 begin

@@ -22,6 +22,8 @@ object frm_AdressBook: Tfrm_AdressBook
     Align = alClient
     TabOrder = 0
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
+    ExplicitWidth = 794
+    ExplicitHeight = 583
     object grd_Adress: TcxGrid
       Left = 12
       Top = 44

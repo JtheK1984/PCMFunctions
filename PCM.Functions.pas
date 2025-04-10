@@ -3,6 +3,7 @@ unit PCM.Functions;
 interface
 
 uses
+  {$Region uses}
   Winapi.Windows, Winapi.Messages, SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, cxGraphics, cxControls, cxLookAndFeels,
   cxLookAndFeelPainters, cxContainer, cxEdit, System.ImageList, Vcl.ImgList,
@@ -14,8 +15,9 @@ uses
   FireDAC.Comp.Client, FireDAC.Comp.DataSet, dxBarBuiltInMenu, cxPC,
   dxLayoutcxEditAdapters, cxClasses, dxLayoutLookAndFeels, dxLayoutContainer,
   dxLayoutControl, dxUIAClasses ;
-
+  {$EndRegion uses}
 type
+  {$Region type}
   TAufgabenThread = class(TThread)
   private
     { Private-Deklarationen }
@@ -24,8 +26,6 @@ type
   public
     Proc: TProcedure;
   end;
-
-type
   TSavedGridView = class
   private
     function GetTempDir: string;
@@ -43,8 +43,6 @@ type
     procedure LoadFromFile(FileName: string);
     procedure SaveTofile(FileName: string);
   end;
-
-type
   Tfrm_PCM_System = class(TForm)
     tmr_GetRamUsage: TTimer;
     prgbr_RamUse: TcxProgressBar;
@@ -106,20 +104,24 @@ type
     { Public-Deklarationen }
     function GetCurrentUserName: string;
   end;
-
+  {$EndRegion type}
 var
+  {$Region var}
   frm_PCM_System: Tfrm_PCM_System;
   nOldIdleTime: Int64 = 0;
   nOldSystemTime : INT64 = 0;
   nNewCPUTime    : ULONG = 0;
-
-  procedure WriteLog(AProgram, ALogString: String; AError: integer);
-  function EnDecrypt(AInput: string; AEncrypt: boolean) : RawByteString;
-	function GetHDnr: DWord;
-	function GetPCName: string;
-  function GetMD5Hash(AValue: string) :String;
-
+  {$EndRegion var}
+// Deklarationen
+{$Region Deklarationen}
+procedure WriteLog(AProgram, ALogString: String; AError: integer);
+function EnDecrypt(AInput: string; AEncrypt: boolean) : RawByteString;
+function GetHDnr: DWord;
+function GetPCName: string;
+function GetMD5Hash(AValue: string) :String;
+{$EndRegion Deklarationen}
 const
+  {$Region const}
   SYS_BASIC_INFO            = 0;
   SYS_PERFORMANCE_INFO      = 2;
   SYS_TIME_INFO             = 3;
@@ -173,21 +175,23 @@ const
   GV_Sub = 402;
   GV_Index = 403;
   GV_Archiv = 404;
+  {$EndRegion const}
 type
-    SYSTEM_BASIC_INFORMATION = packed record
-    dwUnknown1              : DWORD;
-    uKeMaximumIncrement     : ULONG;
-    uPageSize               : ULONG;
-    uMmNumberOfPhysicalPages: ULONG;
-    uMmLowestPhysicalPage   : ULONG;
-    uMmHighestPhysicalPage  : ULONG;
-    uAllocationGranularity  : ULONG;
-    pLowestUserAddress      : POINTER;
-    pMmHighestUserAddress   : POINTER;
-    uKeActiveProcessors     : POINTER;
-    bKeNumberProcessors     : BYTE;
-    bUnknown2               : BYTE;
-    wUnknown3               : WORD;
+  {$Region type}
+   SYSTEM_BASIC_INFORMATION = packed record
+   dwUnknown1              : DWORD;
+   uKeMaximumIncrement     : ULONG;
+   uPageSize               : ULONG;
+   uMmNumberOfPhysicalPages: ULONG;
+   uMmLowestPhysicalPage   : ULONG;
+   uMmHighestPhysicalPage  : ULONG;
+   uAllocationGranularity  : ULONG;
+   pLowestUserAddress      : POINTER;
+   pMmHighestUserAddress   : POINTER;
+   uKeActiveProcessors     : POINTER;
+   bKeNumberProcessors     : BYTE;
+   bUnknown2               : BYTE;
+   wUnknown3               : WORD;
   end;
 
   SYSTEM_PERFORMANCE_INFORMATION = packed record
@@ -208,16 +212,20 @@ type
                                     SystemInformationLength: Longint;
                                     ReturnLength: Longint): Longint; stdcall;
                                     external 'ntdll.dll' name 'NtQuerySystemInformation';
-
+  {$EndRegion type}
 implementation
-
 {$R *.dfm}
-
-uses 	PCM.Data,
-			PCM.Strings,
-      Prism.Crypto.AES,
-      System.NetEncoding;
-
+uses
+  {$Region uses}
+  PCM.Data,
+  PCM.Strings,
+  Prism.Crypto.AES,
+  System.NetEncoding;
+  {$EndRegion uses}
+////////////////////////////////////////////////////////////////////////////////
+// Hilfsfunktionen                                                            //
+////////////////////////////////////////////////////////////////////////////////
+{$Region Hilfsfunktionen}
 procedure TAufgabenThread.Execute;
 begin
   try
@@ -227,8 +235,6 @@ begin
       Writelog(PCM_logname,'Exception: ' + E.Message, 2);
   end;
 end;
-
-
 function GetWindowsRootDir: string;
 var
   Dir: string;
@@ -245,7 +251,6 @@ begin
   else
     RaiseLastOSError;
 end;
-
 function GetHDnr: DWord;
 var
   HD,D2,d3: Dword;
@@ -255,7 +260,6 @@ begin
   GetVolumeInformation(PCHAR(Root),nil,0,@HD,d2,d3,nil,0);
   Result:= HD;
 end;
-
 function GetPCName: String;
 var
  pCh_P: PChar;
@@ -266,7 +270,6 @@ begin
   GetComputerName(pCh_P, dwd_dw);
   Result:= pCh_P;
 end;
-
 function EnDecrypt(AInput: string; AEncrypt: boolean) : RawByteString;
 var
   ByteInput,OriginalText, Key, IV, EncryptedText,DecryptedText: TBytes;
@@ -286,8 +289,6 @@ begin
     Result:= TEncoding.ANSI.GetString(DecryptedText);
   end;
 end;
-
-
 procedure WriteLog(AProgram, ALogString: String; AError: integer);
 var
   tfLog: TextFile;
@@ -327,7 +328,6 @@ begin
   Writeln(tfLog, sLogLine + ALogString);
   CloseFile(tfLog);
 end;
-
 constructor TSavedGridView.Create(ViewTyp, ID_Benutzer: Integer; GridView:  TcxGridDBTableView);
 begin
   FViewTyp := ViewTyp;
@@ -477,8 +477,6 @@ begin
     end;
   end;
 end;
-
-
 // Prozessername ermitteln
 function Tfrm_PCM_System.GetProzessorName: string;
 var reg: TRegistry;
@@ -493,7 +491,6 @@ begin
     reg.free;
   end;
 end;
-
 {$ifDef WIN64}
 function Tfrm_PCM_System.GetCPUSpeed : real;
 var
@@ -566,37 +563,6 @@ begin
   FLastKernelTime := KernelTime;
   FLastUserTime := UserTime;
 end;
-
-//function Tfrm_PCM_System.GetCPUUsage: Integer;
-//var
-//  spi : SYSTEM_PERFORMANCE_INFORMATION;
-//  sti : SYSTEM_TIME_INFORMATION;
-//  sbi : SYSTEM_BASIC_INFORMATION;
-//begin
-//  result := 0;
-//
-//  if (NTQuerySystemInformation(SYS_BASIC_INFO, @sbi, sizeof(SYSTEM_BASIC_INFORMATION), 0) = NO_ERROR) then
-//  begin
-//    if (NTQuerySystemInformation(SYS_TIME_INFO, @sti, sizeof(SYSTEM_TIME_INFORMATION), 0) = NO_ERROR) then
-//    if (NTQuerySystemInformation(SYS_PERFORMANCE_INFO, @spi, sizeof(SYSTEM_PERFORMANCE_INFORMATION), 0)= NO_ERROR) then
-//    begin
-//      if (nOldIdleTime <> 0) then
-//      begin
-//        try
-//          nNewCPUTime:= trunc(100-((spi.nIdleTime-nOldIdleTime)/(sti.nKeSystemTime-nOldSystemTime)*100)/sbi.bKeNumberProcessors+0.5);
-//          if (nNewCPUTime <> nOldIdleTime) then
-//          begin
-//            Result := nNewCPUTIME;
-//          end;
-//        except
-//          Result := 0;
-//        end;
-//      end;
-//      nOldIdleTime   := spi.nIdleTime;
-//      nOldSystemTime := sti.nKeSystemTime;
-//    end;
-//  end;
-//end;
 function GetMD5Hash(AValue: string): String;
 var
     hashMessageDigest5 : TIdHashMessageDigest5;
@@ -609,7 +575,6 @@ begin
         hashMessageDigest5.Free;
     end;
 end;
-
 function Tfrm_PCM_System.GetCurrentUserName: string;
 const
   cnMaxUserNameLen = 254;
@@ -638,10 +603,20 @@ begin
   lbl_RAMFree_data.Caption := Format('%.2f MB', [mst_memory.ullAvailPhys / (1024 * 1024)]);
   prgbr_ProcUse.Position:= GetCPUUsage;
 end;
+{$EndRegion Hilfsfunktionen}
+////////////////////////////////////////////////////////////////////////////////
+// Buttonfunktionen                                                           //
+////////////////////////////////////////////////////////////////////////////////
+{$Region Formfunktionen}
 procedure Tfrm_PCM_System.tmr_GetRamUsageTimer(Sender: TObject);
 begin
   GetRamUsage;
 end;
+{$EndRegion Formfunktionen}
+////////////////////////////////////////////////////////////////////////////////
+// Formfunktionen                                                             //
+////////////////////////////////////////////////////////////////////////////////
+{$Region Formfunktionen}
 procedure Tfrm_PCM_System.FormShow(Sender: TObject);
 var
   sys_systeminfo: TSystemInfo;
@@ -670,5 +645,5 @@ begin
     reg_Registry.free;
   end;
 end;
-
+{$EndRegion Formfunktionen}
 end.

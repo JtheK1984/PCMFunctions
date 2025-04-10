@@ -25,10 +25,8 @@ object frm_PCM_Lizenz: Tfrm_PCM_Lizenz
     TabOrder = 0
     AutoSize = True
     LayoutLookAndFeel = dxLayoutCxLookAndFeel1
-    ExplicitLeft = 16
-    ExplicitTop = 120
-    ExplicitWidth = 300
-    ExplicitHeight = 250
+    ExplicitWidth = 310
+    ExplicitHeight = 441
     object btn_SaveLicence: TcxButton
       Left = 10
       Top = 423
@@ -1272,12 +1270,12 @@ object frm_PCM_Lizenz: Tfrm_PCM_Lizenz
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 0
-      Height = 321
+      Height = 317
       Width = 296
     end
     object edt_kunde: TcxTextEdit
       Left = 10
-      Top = 355
+      Top = 351
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 1
@@ -1286,7 +1284,7 @@ object frm_PCM_Lizenz: Tfrm_PCM_Lizenz
     end
     object edt_lizenz: TcxTextEdit
       Left = 10
-      Top = 398
+      Top = 396
       Properties.OnChange = edt_lizenzChange
       Style.HotTrack = False
       Style.TransparentBorder = False
@@ -1329,7 +1327,7 @@ object frm_PCM_Lizenz: Tfrm_PCM_Lizenz
       CaptionOptions.Text = 'Name:'
       CaptionOptions.Layout = clTop
       Control = edt_kunde
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 284
       ControlOptions.ShowBorder = False
       Index = 0
@@ -1341,7 +1339,7 @@ object frm_PCM_Lizenz: Tfrm_PCM_Lizenz
       CaptionOptions.Text = 'Lizenz:'
       CaptionOptions.Layout = clTop
       Control = edt_lizenz
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 284
       ControlOptions.ShowBorder = False
       Index = 1

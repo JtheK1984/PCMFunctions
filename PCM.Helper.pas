@@ -3,7 +3,7 @@ unit PCM.Helper;
 interface
 
 uses
-{$Region Uses}
+  {$Region Uses}
   inifiles,
   vcl.Dialogs,
   vcl.forms,
@@ -19,11 +19,12 @@ uses
   system.UITypes,
   system.Classes,
   system.netencoding;
-{$EndRegion Uses}
+  {$EndRegion Uses}
 var
+  {$Region var}
   Base64DllString: string;
-
-// Declared Functions & Procedures
+  {$EndRegion var}
+// Deklarationen
 {$Region Proc_Func}
 function CheckAutologin: String;
 function Autologin: boolean;
@@ -35,7 +36,8 @@ function ReadServerAdress: boolean;
 function ReadServerAdressAppserver: boolean;
 {$EndRegion Proc_Func}
 implementation
-
+// Prozeduren
+{$Region Prozeduren}
 function CheckAutologin: String;
 begin
   Result:= '';
@@ -8462,5 +8464,6 @@ begin
     Writelog(PCM_Logname,rs_PCMLog_PCMINIPruefen + ExtractFilePath(ParamStr(0)) + PCM_Logname +'.ini.',2);
   end;
 end;
+{$EndRegion Prozeduren}
 end.
 

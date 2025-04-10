@@ -3,21 +3,22 @@ unit PCM.Functions.Synch.ProgressDialog;
 interface
 
 uses
+  {$Region uses}
   WinApi.Windows, WinApi.Messages,
   System.SysUtils, System.Variants, System.Classes,
   Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls,
   Vcl.Imaging.pngimage,
   cxControls, cxContainer, cxEdit, cxProgressBar, cxGraphics, cxLookAndFeels,
   cxLookAndFeelPainters, cxGroupBox, cxLabel, cxImage,
-  dxGDIPlusClasses;
-
+  dxGDIPlusClasses, dxUIAClasses;
+  {$EndRegion uses}
 type
+  {$Region type}
   TfrmProgressDialog = class(TForm)
     prgbr_Main: TcxProgressBar;
     pnl_design: TcxGroupBox;
     Image1: TcxImage;
     lNachricht: TcxLabel;
-    procedure FormDestroy(Sender: TObject);
   private
     { Private-Deklarationen }
   public
@@ -31,14 +32,17 @@ type
     procedure Step; overload;
     procedure Step(Text: String); overload;
   end;
-
+  {$EndRegion type}
 var
+  {$Region var}
   frmProgressDialog: TfrmProgressDialog;
-
+  {$EndRegion var}
 implementation
-
 {$R *.dfm}
-
+////////////////////////////////////////////////////////////////////////////////
+// Hilfsfunktionen                                                            //
+////////////////////////////////////////////////////////////////////////////////
+{$Region Hilfsfunktionen}
 procedure TfrmProgressDialog.ShowDialog(Text: string; Max: Integer);
 begin
   lNachricht.Caption := Text;
@@ -48,7 +52,6 @@ begin
   Show;
   Application.ProcessMessages;
 end;
-
 procedure TfrmProgressDialog.Step(Text: String);
 begin
   lNachricht.Caption := Text;
@@ -56,35 +59,26 @@ begin
   prgbr_Main.Position := prgbr_Main.Position + 1;
   Application.ProcessMessages;
 end;
-
 procedure TfrmProgressDialog.Step;
 begin
   prgbr_Main.Position := prgbr_Main.Position + 1;
   Application.ProcessMessages;
 end;
-
-procedure TfrmProgressDialog.FormDestroy(Sender: TObject);
-begin
-    //ZMIDebugMsg('Destroy ProgressDialog');
-end;
-
 procedure TfrmProgressDialog.SetNewCount(const ACount: Integer);
 begin
   prgbr_Main.Properties.Max := ACount;
   Application.ProcessMessages;
 end;
-
 procedure TfrmProgressDialog.SetPosition(Value: Integer);
 begin
   prgbr_Main.Position := Value;
   Application.ProcessMessages;
 end;
-
 procedure TfrmProgressDialog.SetText(const AText: String);
 begin
   lNachricht.Caption := AText;
   Application.ProcessMessages;
 end;
-
+{$EndRegion Hilfsfunktionen}
 end.
 

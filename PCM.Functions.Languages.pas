@@ -3,13 +3,16 @@ unit PCM.Functions.Languages;
 interface
 
 uses
+  {$Region uses}
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, cxGraphics, cxControls, cxLookAndFeels,
   cxLookAndFeelPainters, cxContainer, cxEdit, cxGroupBox, cxRadioGroup, Vcl.Menus, Vcl.StdCtrls,
   cxButtons,StrUtils,inifiles, dxLayoutcxEditAdapters, dxLayoutControlAdapters,
-  dxLayoutContainer, cxClasses, dxLayoutControl, dxLayoutLookAndFeels;
-
+  dxLayoutContainer, cxClasses, dxLayoutControl, dxLayoutLookAndFeels,
+  dxUIAClasses;
+  {$EndRegion uses}
 type
+  {$Region type}
   Tfrm_Language = class(TForm)
     cxRadioGroup1: TcxRadioGroup;
     cxButton1: TcxButton;
@@ -27,23 +30,32 @@ type
   public
     { Public-Deklarationen }
   end;
-
+  {$EndRegion type}
 var
+  {$Region var}
   frm_Language: Tfrm_Language;
-
+  {$EndRegion var}
 implementation
-
-
-
 {$R *.dfm}
-
-uses PCM.Data,PCM.Main;
-
+uses
+  {$Region uses}
+  PCM.Data,
+  PCM.Main;
+  {$EndRegion uses}
+////////////////////////////////////////////////////////////////////////////////
+// Buttonfunktionen                                                           //
+////////////////////////////////////////////////////////////////////////////////
+{$Region Buttonfunktionen}
 procedure Tfrm_Language.cxButton1Click(Sender: TObject);
 begin
   dm_Pcm.slocale:= cxRadioGroup1.Properties.Items[cxRadioGroup1.Itemindex].Value;
   close;
 end;
+{$EndRegion Buttonfunktionen}
+////////////////////////////////////////////////////////////////////////////////
+// Formfunktionen                                                             //
+////////////////////////////////////////////////////////////////////////////////
+{$Region Formfunktionen}
 procedure Tfrm_Language.FormShow(Sender: TObject);
 begin
   case AnsiIndexStr(dm_pcm.slocale, ['DE', 'EN','FR','IT','ES']) of
@@ -54,5 +66,5 @@ begin
   4: cxRadioGroup1.ItemIndex:= 4;
   end;
 end;
-
+{$EndRegion Formfunktionen}
 end.

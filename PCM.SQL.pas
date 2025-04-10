@@ -3,13 +3,16 @@ unit PCM.SQL;
 interface
 
 uses
+  {$Region uses}
   PCM.Main,
   PCM.Data;
-
+  {$EndRegion uses}
 type
+  {$Region type}
   TPCMSQL = array [0 .. 2] of string;
-
+  {$EndRegion type}
 var
+  {$Region var}
   ASSQL_GetAutologin,
   ASSQL_GetAllRights,
   ASSQL_GetUSer,
@@ -60,9 +63,11 @@ var
   // PCM - Vokabeltrainer
   ASSQL_GetLizenzCount_PCMVokabeltrainer,
   ASSQL_GetUserLizenz_PCMVokabeltrainer: TPCMSQL;
-
+  {$EndRegion var}
 implementation
+
 begin
+  {$Region begin}
   // PCM - Allgemein
   ASSQL_GetAutologin[0]:= 'SELECT ID,Benutzer FROM benutzer WHERE benutzer  = :Benutzer and Autologin = True';
   ASSQL_GetAllRights[0]:= 'SELECT mr.ba_backup, mr.dm_archiv,mr.Benutzer,mr.Konfiguration,mr.Design,mr.lg_Lizenzen,mr.lg_Programme, mr.ma_Kontakte as Kontakte,mr.ma_Kalender as Kalender,mr.ma_Stundenplan as Stundenplan,'+
@@ -106,5 +111,5 @@ begin
                                'Version = :Version, Demo = :Demo, Gueltig_bis= :Gueltig_bis ,Programm = :Programm, Lizenz =  :Lizenz, Bemerkung = :Bemerkung, ID_Benutzer = :ID_Benutzer Where ID = :ID';
   ASSQL_GetProgramms[0]:= 'Select DISTINCT Number,Programm From lizenzgenerator_programme Where Lizenz = true order by Programm';
   ASSQL_GetProgramm[0]:= 'Select Programm From lizenzgenerator_programme Where Number = :Number';
-
+  {$EndRegion begin}
 end.

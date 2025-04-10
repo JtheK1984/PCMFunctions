@@ -22,10 +22,8 @@ object frm_Language: Tfrm_Language
     TabOrder = 0
     AutoSize = True
     LayoutLookAndFeel = dxLayoutCxLookAndFeel1
-    ExplicitLeft = 392
-    ExplicitTop = -40
-    ExplicitWidth = 300
-    ExplicitHeight = 250
+    ExplicitWidth = 454
+    ExplicitHeight = 129
     object cxRadioGroup1: TcxRadioGroup
       AlignWithMargins = True
       Left = 12
@@ -46,7 +44,7 @@ object frm_Language: Tfrm_Language
           Caption = 'Englisch'
           Value = 'EN'
         end>
-      Style.Color = 7566195
+      Style.Color = clBtnFace
       Style.TransparentBorder = False
       TabOrder = 0
       Height = 89

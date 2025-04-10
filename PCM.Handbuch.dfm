@@ -22,6 +22,8 @@ object frm_Handbuch: Tfrm_Handbuch
     AutoSize = True
     LayoutLookAndFeel = dxLayoutCxLookAndFeel1
     OptionsImage.Images = cxImageList1
+    ExplicitWidth = 618
+    ExplicitHeight = 424
     object pnl_HTML: TcxGroupBox
       Left = 10000
       Top = 10000

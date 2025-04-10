@@ -3704,10 +3704,8 @@ object frm_PCM_Login: Tfrm_PCM_Login
     TabOrder = 0
     AutoSize = True
     LayoutLookAndFeel = dxLayoutCxLookAndFeel1
-    ExplicitLeft = 16
-    ExplicitTop = 112
-    ExplicitWidth = 300
-    ExplicitHeight = 250
+    ExplicitWidth = 310
+    ExplicitHeight = 441
     object btn_PCManagerLogin_Cancel: TcxButton
       Left = 161
       Top = 423
@@ -3742,7 +3740,7 @@ object frm_PCM_Login: Tfrm_PCM_Login
     end
     object edt_PCManagerLogin_Pass: TcxTextEdit
       Left = 88
-      Top = 373
+      Top = 375
       Properties.EchoMode = eemPassword
       Properties.PasswordChar = '*'
       Style.HotTrack = False
@@ -5004,7 +5002,7 @@ object frm_PCM_Login: Tfrm_PCM_Login
       Parent = dxLayoutGroup6
       CaptionOptions.Text = 'Benutzername:'
       Control = cmbbx_PCManagerLogin_User
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 221
       ControlOptions.ShowBorder = False
       Index = 3
@@ -5013,7 +5011,7 @@ object frm_PCM_Login: Tfrm_PCM_Login
       Parent = dxLayoutGroup6
       CaptionOptions.Text = 'Passwort:'
       Control = edt_PCManagerLogin_Pass
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 221
       ControlOptions.ShowBorder = False
       Index = 4

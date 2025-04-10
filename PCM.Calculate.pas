@@ -25,7 +25,6 @@ procedure StartBooking(ACaption,AMessage,ALocation: String;AStart,AFinish: TDate
 procedure WriteMonatswert(ARest: Double;AaktGLZ,AMonat,AJahr,ASollzeit,AIStzeit,AMehrarbeit,APausen,AFeiertag: integer; AUrlaub_bezahlt,AUrlaub_unbezahlt,AKrank_bezahlt,AKrank_unbezahlt: double);
 {$EndRegion Deklaration}
 implementation
-
 uses
 {$Region Uses}
   Data.DB,

@@ -24,8 +24,8 @@ object frm_Design: Tfrm_Design
     LayoutLookAndFeel = laCxlaf_Main
     object cbx_Design: TcxComboBox
       AlignWithMargins = True
-      Left = 62
-      Top = 109
+      Left = 63
+      Top = 97
       Margins.Left = 8
       Margins.Top = 2
       Margins.Bottom = 2
@@ -94,19 +94,19 @@ object frm_Design: Tfrm_Design
       Style.TransparentBorder = False
       TabOrder = 1
       Height = 21
-      Width = 1112
+      Width = 1110
     end
     object brdckCtrl_Main: TdxBarDockControl
-      Left = 21
-      Top = 40
-      Width = 1153
+      Left = 22
+      Top = 28
+      Width = 1151
       Height = 63
       Align = dalNone
       BarManager = brmgr_Main
     end
     object des_ToolButton3: TcxButton
-      Left = 205
-      Top = 200
+      Left = 208
+      Top = 164
       Width = 75
       Height = 27
       Caption = 'ToolButton3'
@@ -116,8 +116,8 @@ object frm_Design: Tfrm_Design
       TabStop = False
     end
     object des_ToolButton2: TcxButton
-      Left = 124
-      Top = 200
+      Left = 127
+      Top = 164
       Width = 75
       Height = 27
       Caption = 'ToolButton2'
@@ -126,8 +126,8 @@ object frm_Design: Tfrm_Design
       TabStop = False
     end
     object des_ToolButton1: TcxButton
-      Left = 43
-      Top = 200
+      Left = 46
+      Top = 164
       Width = 75
       Height = 27
       Caption = 'ToolButton1'
@@ -136,8 +136,8 @@ object frm_Design: Tfrm_Design
       TabStop = False
     end
     object des_Label1: TcxLabel
-      Left = 43
-      Top = 241
+      Left = 46
+      Top = 205
       AutoSize = False
       Caption = 'Label1'
       Style.HotTrack = False
@@ -148,8 +148,8 @@ object frm_Design: Tfrm_Design
       Width = 367
     end
     object des_Edit1: TcxTextEdit
-      Left = 43
-      Top = 272
+      Left = 46
+      Top = 236
       TabStop = False
       Style.HotTrack = False
       Style.TransparentBorder = False
@@ -158,8 +158,8 @@ object frm_Design: Tfrm_Design
       Width = 367
     end
     object des_CheckBox1: TcxCheckBox
-      Left = 43
-      Top = 305
+      Left = 46
+      Top = 271
       TabStop = False
       AutoSize = False
       Caption = 'CheckBox1'
@@ -172,13 +172,13 @@ object frm_Design: Tfrm_Design
       Width = 367
     end
     object des_RadioButton1: TcxRadioButton
-      Left = 43
-      Top = 336
+      Left = 46
+      Top = 302
       Width = 367
       Height = 17
       Caption = 'RadioButton1'
       Checked = True
-      Color = 7566195
+      Color = clBtnFace
       ParentColor = False
       TabOrder = 8
       TabStop = True
@@ -186,8 +186,8 @@ object frm_Design: Tfrm_Design
       Transparent = True
     end
     object des_Button1: TcxButton
-      Left = 43
-      Top = 453
+      Left = 46
+      Top = 419
       Width = 72
       Height = 24
       Caption = 'Button1'
@@ -197,8 +197,8 @@ object frm_Design: Tfrm_Design
       TabStop = False
     end
     object des_Button2: TcxButton
-      Left = 121
-      Top = 453
+      Left = 124
+      Top = 419
       Width = 72
       Height = 24
       Caption = 'Button2'
@@ -208,8 +208,8 @@ object frm_Design: Tfrm_Design
       TabStop = False
     end
     object des_Button3: TcxButton
-      Left = 199
-      Top = 453
+      Left = 202
+      Top = 419
       Width = 72
       Height = 24
       Caption = 'Button3'
@@ -219,8 +219,8 @@ object frm_Design: Tfrm_Design
       TabStop = False
     end
     object cxGrid2: TcxGrid
-      Left = 43
-      Top = 367
+      Left = 46
+      Top = 333
       Width = 367
       Height = 72
       TabOrder = 9
@@ -260,7 +260,7 @@ object frm_Design: Tfrm_Design
       ShowBorder = False
       Index = -1
     end
-    object dxLayoutGroup3: TdxLayoutGroup
+    object lagrp_Design: TdxLayoutGroup
       Parent = lactrl_MainGroup_Root
       AlignHorz = ahClient
       AlignVert = avClient
@@ -269,8 +269,8 @@ object frm_Design: Tfrm_Design
       ShowBorder = False
       Index = 0
     end
-    object dxLayoutItem1: TdxLayoutItem
-      Parent = dxLayoutGroup5
+    object laitm_DesignBar: TdxLayoutItem
+      Parent = lagrp_DesignGroup
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'dxBarDockControl1'
@@ -282,15 +282,16 @@ object frm_Design: Tfrm_Design
       ControlOptions.ShowBorder = False
       Index = 0
     end
-    object dxLayoutGroup5: TdxLayoutGroup
-      Parent = dxLayoutGroup3
+    object lagrp_DesignGroup: TdxLayoutGroup
+      Parent = lagrp_Design
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'Programmdesign'
+      ItemIndex = 2
       Index = 0
     end
-    object dxLayoutItem2: TdxLayoutItem
-      Parent = dxLayoutGroup5
+    object laitm_DesignDesign: TdxLayoutItem
+      Parent = lagrp_DesignGroup
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'Design:'
@@ -300,32 +301,33 @@ object frm_Design: Tfrm_Design
       ControlOptions.ShowBorder = False
       Index = 1
     end
-    object dxLayoutGroup9: TdxLayoutGroup
-      Parent = dxLayoutGroup5
+    object lagrp_DesignDetail: TdxLayoutGroup
+      Parent = lagrp_DesignGroup
       CaptionOptions.Text = 'Vorschau'
       Offsets.Bottom = 4
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 2
     end
-    object dxLayoutGroup1: TdxLayoutGroup
-      Parent = dxLayoutGroup9
+    object lagrp_DesignDetail1: TdxLayoutGroup
+      Parent = lagrp_DesignDetail
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'Vorschau'
       Index = 0
     end
-    object dxLayoutGroup2: TdxLayoutGroup
-      Parent = dxLayoutGroup4
+    object lagrp_DesignToolButtons: TdxLayoutGroup
+      Parent = lagrp_DesignDetailForm
       CaptionOptions.Text = 'Form1'
       Offsets.Bottom = 4
       Offsets.Top = 4
+      ItemIndex = 2
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 0
     end
-    object dxLayoutItem5: TdxLayoutItem
-      Parent = dxLayoutGroup2
+    object laitm_DesignToolButton3: TdxLayoutItem
+      Parent = lagrp_DesignToolButtons
       CaptionOptions.Text = 'New Item'
       CaptionOptions.Visible = False
       Control = des_ToolButton3
@@ -334,8 +336,8 @@ object frm_Design: Tfrm_Design
       ControlOptions.ShowBorder = False
       Index = 2
     end
-    object dxLayoutItem6: TdxLayoutItem
-      Parent = dxLayoutGroup2
+    object laitm_DesignToolButton2: TdxLayoutItem
+      Parent = lagrp_DesignToolButtons
       CaptionOptions.Text = 'New Item'
       CaptionOptions.Visible = False
       Control = des_ToolButton2
@@ -344,8 +346,8 @@ object frm_Design: Tfrm_Design
       ControlOptions.ShowBorder = False
       Index = 1
     end
-    object dxLayoutItem7: TdxLayoutItem
-      Parent = dxLayoutGroup2
+    object laitm_DesignToolButton1: TdxLayoutItem
+      Parent = lagrp_DesignToolButtons
       CaptionOptions.Text = 'New Item'
       CaptionOptions.Visible = False
       Control = des_ToolButton1
@@ -354,8 +356,8 @@ object frm_Design: Tfrm_Design
       ControlOptions.ShowBorder = False
       Index = 0
     end
-    object dxLayoutItem8: TdxLayoutItem
-      Parent = dxLayoutGroup4
+    object laitm_DesignLabel1: TdxLayoutItem
+      Parent = lagrp_DesignDetailForm
       Offsets.Bottom = 4
       Offsets.Top = 4
       CaptionOptions.Text = 'New Item'
@@ -366,20 +368,20 @@ object frm_Design: Tfrm_Design
       ControlOptions.ShowBorder = False
       Index = 1
     end
-    object dxLayoutItem9: TdxLayoutItem
-      Parent = dxLayoutGroup4
+    object laitm_DesignEdit1: TdxLayoutItem
+      Parent = lagrp_DesignDetailForm
       Offsets.Bottom = 4
       Offsets.Top = 4
       CaptionOptions.Text = 'New Item'
       CaptionOptions.Visible = False
       Control = des_Edit1
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 367
       ControlOptions.ShowBorder = False
       Index = 2
     end
-    object dxLayoutItem10: TdxLayoutItem
-      Parent = dxLayoutGroup4
+    object laitm_DesignCheckBox1: TdxLayoutItem
+      Parent = lagrp_DesignDetailForm
       Offsets.Bottom = 4
       Offsets.Top = 4
       CaptionOptions.Text = 'New Item'
@@ -390,8 +392,8 @@ object frm_Design: Tfrm_Design
       ControlOptions.ShowBorder = False
       Index = 3
     end
-    object dxLayoutItem11: TdxLayoutItem
-      Parent = dxLayoutGroup4
+    object laitm_DesignRadiobutton1: TdxLayoutItem
+      Parent = lagrp_DesignDetailForm
       Offsets.Bottom = 4
       Offsets.Top = 4
       CaptionOptions.Text = 'New Item'
@@ -403,17 +405,16 @@ object frm_Design: Tfrm_Design
       ControlOptions.ShowBorder = False
       Index = 4
     end
-    object dxLayoutGroup4: TdxLayoutGroup
-      Parent = dxLayoutGroup1
+    object lagrp_DesignDetailForm: TdxLayoutGroup
+      Parent = lagrp_DesignDetail1
       AlignHorz = ahLeft
       AlignVert = avTop
       CaptionOptions.Text = 'Form1'
       LayoutLookAndFeel = laCxlaf_Design
-      ItemIndex = 6
       Index = 0
     end
-    object dxLayoutItem12: TdxLayoutItem
-      Parent = dxLayoutGroup4
+    object laitm_DesignGrid: TdxLayoutItem
+      Parent = lagrp_DesignDetailForm
       Offsets.Bottom = 4
       Offsets.Top = 4
       CaptionOptions.Text = 'New Item'
@@ -424,8 +425,8 @@ object frm_Design: Tfrm_Design
       ControlOptions.ShowBorder = False
       Index = 5
     end
-    object dxLayoutItem13: TdxLayoutItem
-      Parent = dxLayoutGroup6
+    object laitm_DesignButton3: TdxLayoutItem
+      Parent = lagrp_DesignButtons
       CaptionOptions.Text = 'New Item'
       CaptionOptions.Visible = False
       Control = des_Button3
@@ -434,8 +435,8 @@ object frm_Design: Tfrm_Design
       ControlOptions.ShowBorder = False
       Index = 2
     end
-    object dxLayoutItem14: TdxLayoutItem
-      Parent = dxLayoutGroup6
+    object laitm_DesignButton2: TdxLayoutItem
+      Parent = lagrp_DesignButtons
       CaptionOptions.Text = 'New Item'
       CaptionOptions.Visible = False
       Control = des_Button2
@@ -444,8 +445,8 @@ object frm_Design: Tfrm_Design
       ControlOptions.ShowBorder = False
       Index = 1
     end
-    object dxLayoutItem15: TdxLayoutItem
-      Parent = dxLayoutGroup6
+    object laitm_DesignButton1: TdxLayoutItem
+      Parent = lagrp_DesignButtons
       CaptionOptions.Text = 'New Item'
       CaptionOptions.Visible = False
       Control = des_Button1
@@ -454,11 +455,12 @@ object frm_Design: Tfrm_Design
       ControlOptions.ShowBorder = False
       Index = 0
     end
-    object dxLayoutGroup6: TdxLayoutGroup
-      Parent = dxLayoutGroup4
+    object lagrp_DesignButtons: TdxLayoutGroup
+      Parent = lagrp_DesignDetailForm
       CaptionOptions.Text = 'New Group'
       Offsets.Bottom = 4
       Offsets.Top = 4
+      ItemIndex = 2
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 6
@@ -499,7 +501,7 @@ object frm_Design: Tfrm_Design
       ItemLinks = <
         item
           Visible = True
-          ItemName = 'cxButton1'
+          ItemName = 'btn_DesignSave'
         end>
       OneOnRow = True
       Row = 0
@@ -519,12 +521,12 @@ object frm_Design: Tfrm_Design
       LargeImageIndex = 12
       Width = 125
     end
-    object cxButton1: TdxBarLargeButton
+    object btn_DesignSave: TdxBarLargeButton
       Caption = 'Speichern'
       Category = 0
       Hint = 'Speichern'
       Visible = ivAlways
-      OnClick = cxButton1Click
+      OnClick = btn_DesignSaveClick
       AutoGrayScale = False
       LargeImageIndex = 12
       Width = 125
