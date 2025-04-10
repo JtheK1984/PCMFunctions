@@ -33,12 +33,11 @@ object frm_User: Tfrm_User
     TabOrder = 0
     LayoutLookAndFeel = laCxlaf_Benutzer
     OptionsImage.Images = dm_PCM.imglst_16x16
-    ExplicitHeight = 659
     object grd_Benutzer: TcxGrid
       Left = 24
-      Top = 298
+      Top = 304
       Width = 1089
-      Height = 1160
+      Height = 1154
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -264,7 +263,7 @@ object frm_User: Tfrm_User
     end
     object chkbx_BenutzerRestapi: TcxDBCheckBox
       Left = 95
-      Top = 261
+      Top = 267
       Hint = 'Zugriff auf PCM-Rest-API'
       AutoSize = False
       BiDiMode = bdLeftToRight
@@ -288,7 +287,7 @@ object frm_User: Tfrm_User
     end
     object edt_BenutzerName: TcxDBTextEdit
       Left = 95
-      Top = 209
+      Top = 215
       Hint = 'Vorname des Benutzers'
       DataBinding.DataField = 'Vorname'
       DataBinding.DataSource = ds_Benutzer
@@ -307,7 +306,7 @@ object frm_User: Tfrm_User
     end
     object edt_BenutzerUser: TcxDBTextEdit
       Left = 95
-      Top = 182
+      Top = 188
       Hint = 'Benutzername des Benutzers'
       DataBinding.DataField = 'Benutzer'
       DataBinding.DataSource = ds_Benutzer
@@ -326,7 +325,7 @@ object frm_User: Tfrm_User
     end
     object edt_BenutzerSurname: TcxDBTextEdit
       Left = 95
-      Top = 236
+      Top = 242
       Hint = 'Nachname des Benutzers'
       AutoSize = False
       DataBinding.DataField = 'Nachname'
@@ -347,7 +346,7 @@ object frm_User: Tfrm_User
     end
     object btn_BenutzerChangePassword: TcxButton
       Left = 981
-      Top = 182
+      Top = 188
       Width = 120
       Height = 21
       Caption = 'Passwort '#228'ndern'
@@ -365,7 +364,7 @@ object frm_User: Tfrm_User
     end
     object chkbx_BenutzerAutologin: TcxDBCheckBox
       Left = 679
-      Top = 236
+      Top = 242
       Hint = 'automatisches Login des Benutzers '
       BiDiMode = bdLeftToRight
       Caption = 'automatisches Login (Windows-Benutzer)'
@@ -386,7 +385,7 @@ object frm_User: Tfrm_User
     end
     object edt_BenutzerPassword: TcxDBTextEdit
       Left = 629
-      Top = 182
+      Top = 188
       Hint = 'Passwort des Benutzers'
       AutoSize = False
       DataBinding.DataField = 'Passwort'
@@ -410,7 +409,7 @@ object frm_User: Tfrm_User
     end
     object lucmbbx_BenutzerRights: TcxDBLookupComboBox
       Left = 629
-      Top = 209
+      Top = 215
       Hint = 'Recht des Benutzers'
       DataBinding.DataField = 'ID_Rechte'
       DataBinding.DataSource = ds_Benutzer
@@ -1047,17 +1046,28 @@ object frm_User: Tfrm_User
         item
           Default = True
           Glyph.SourceDPI = 96
-          Glyph.SourceHeight = 17
-          Glyph.SourceWidth = 17
+          Glyph.SourceHeight = 23
+          Glyph.SourceWidth = 23
           Glyph.Data = {
-            89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
-            6100000011744558745469746C6500436C6F73653B457869743B0519FF850000
-            009549444154785EC5D33B0A84401004D0C904F1738385DD4CC4C03B78130F29
-            C606A686867A0941161D0B99A0719012073178060D55748B2AADB593FDD19785
-            BEE3D182FFF98C17F490402B6635A430B08219BEA02086D6847D33CB60611B54
-            E0994024C201346C03BBC40EF302B9B63C8717D8E1103C59C20A26F888707338
-            2787956DD0C1EF707305098CF4046376F8905EF8179C6CA903753534AA4B6600
-            00000049454E44AE426082}
+            3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+            462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+            617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+            2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+            77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+            22307078222076696577426F783D2230203020333220333222207374796C653D
+            22656E61626C652D6261636B67726F756E643A6E657720302030203332203332
+            3B2220786D6C3A73706163653D227072657365727665223E262331333B262331
+            303B3C7374796C6520747970653D22746578742F6373732220786D6C3A737061
+            63653D227072657365727665223E2E426C75657B66696C6C3A23313137374437
+            3B7D262331333B262331303B2623393B2E5265647B66696C6C3A234431314331
+            433B7D3C2F7374796C653E0D0A3C7061746820636C6173733D22426C75652220
+            643D224D31382C32336C2D342E332C342E35632D302E372C302E372D312E392C
+            302E372D322E362C306C2D362E362D362E36632D302E372D302E372D302E372D
+            312E392C302D322E364C392C31344C31382C32337A222F3E0D0A3C7061746820
+            636C6173733D225265642220643D224D32372E352C31332E374C32302C32316C
+            2D392D396C372E332D372E3563302E372D302E372C312E392D302E372C322E36
+            2C306C362E362C362E364332382E322C31312E382C32382E322C31332C32372E
+            352C31332E377A222F3E0D0A3C2F7376673E0D0A}
           Kind = bkGlyph
         end>
       Properties.OnButtonClick = edt_searchUserPropertiesButtonClick
@@ -1065,7 +1075,7 @@ object frm_User: Tfrm_User
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 1
-      Height = 19
+      Height = 25
       Width = 989
     end
     object edt_RechteSucheBezeichnung: TcxButtonEdit
@@ -1076,17 +1086,28 @@ object frm_User: Tfrm_User
         item
           Default = True
           Glyph.SourceDPI = 96
-          Glyph.SourceHeight = 17
-          Glyph.SourceWidth = 17
+          Glyph.SourceHeight = 23
+          Glyph.SourceWidth = 23
           Glyph.Data = {
-            89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
-            6100000011744558745469746C6500436C6F73653B457869743B0519FF850000
-            009549444154785EC5D33B0A84401004D0C904F1738385DD4CC4C03B78130F29
-            C606A686867A0941161D0B99A0719012073178060D55748B2AADB593FDD19785
-            BEE3D182FFF98C17F490402B6635A430B08219BEA02086D6847D33CB60611B54
-            E0994024C201346C03BBC40EF302B9B63C8717D8E1103C59C20A26F888707338
-            2787956DD0C1EF707305098CF4046376F8905EF8179C6CA903753534AA4B6600
-            00000049454E44AE426082}
+            3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+            462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+            617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+            2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+            77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+            22307078222076696577426F783D2230203020333220333222207374796C653D
+            22656E61626C652D6261636B67726F756E643A6E657720302030203332203332
+            3B2220786D6C3A73706163653D227072657365727665223E262331333B262331
+            303B3C7374796C6520747970653D22746578742F6373732220786D6C3A737061
+            63653D227072657365727665223E2E426C75657B66696C6C3A23313137374437
+            3B7D262331333B262331303B2623393B2E5265647B66696C6C3A234431314331
+            433B7D3C2F7374796C653E0D0A3C7061746820636C6173733D22426C75652220
+            643D224D31382C32336C2D342E332C342E35632D302E372C302E372D312E392C
+            302E372D322E362C306C2D362E362D362E36632D302E372D302E372D302E372D
+            312E392C302D322E364C392C31344C31382C32337A222F3E0D0A3C7061746820
+            636C6173733D225265642220643D224D32372E352C31332E374C32302C32316C
+            2D392D396C372E332D372E3563302E372D302E372C312E392D302E372C322E36
+            2C306C362E362C362E364332382E322C31312E382C32382E322C31332C32372E
+            352C31332E377A222F3E0D0A3C2F7376673E0D0A}
           Kind = bkGlyph
         end>
       Properties.OnButtonClick = edt_RechteSucheBenutzerPropertiesButtonClick
@@ -1095,7 +1116,7 @@ object frm_User: Tfrm_User
       Style.TransparentBorder = False
       TabOrder = 12
       Visible = False
-      Height = 19
+      Height = 25
       Width = 932
     end
     object lagrp_Personal: TdxLayoutGroup
@@ -1771,7 +1792,7 @@ object frm_User: Tfrm_User
       AlignVert = avTop
       CaptionOptions.Text = 'Benutzer:'
       Control = edt_BenutzerSucheBenutzer
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 25
       ControlOptions.OriginalWidth = 865
       ControlOptions.ShowBorder = False
       Index = 0
@@ -1797,7 +1818,7 @@ object frm_User: Tfrm_User
       AlignVert = avTop
       CaptionOptions.Text = 'Bezeichnung:'
       Control = edt_RechteSucheBezeichnung
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 25
       ControlOptions.OriginalWidth = 989
       ControlOptions.ShowBorder = False
       Index = 0

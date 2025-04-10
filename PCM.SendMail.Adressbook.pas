@@ -58,12 +58,10 @@ type
     btn_BCC: TcxButton;
     btn_CC: TcxButton;
     btn_Ok: TcxButton;
-    btn_Reset: TcxButton;
     DataSource1: TDataSource;
     edt_An: TcxTextEdit;
     edt_BCC: TcxTextEdit;
     edt_CC: TcxTextEdit;
-    edt_Suche: TcxTextEdit;
     grd_Adress: TcxGrid;
     grdDBTblView_Adress: TcxGridDBTableView;
     grdDBTblView_AdressMail: TcxGridDBColumn;
@@ -78,7 +76,6 @@ type
     lagrp_AdressbookBtn: TdxLayoutGroup;
     lagrp_AdressbookCC: TdxLayoutGroup;
     lagrp_AdressbookMain: TdxLayoutGroup;
-    lagrp_AdressbookSuche: TdxLayoutGroup;
     laitm_AdressbookAnBtn: TdxLayoutItem;
     laitm_AdressbookAnEdit: TdxLayoutItem;
     laitm_AdressbookBCCBtn: TdxLayoutItem;
@@ -88,27 +85,28 @@ type
     laitm_AdressbookCCEdit: TdxLayoutItem;
     laitm_AdressbookGrid: TdxLayoutItem;
     laitm_AdressbookOk: TdxLayoutItem;
-    laitm_AdressbookReset: TdxLayoutItem;
     laitm_AdressbookSuche: TdxLayoutItem;
     memData_Mail: TdxMemData;
     memData_MailMail: TStringField;
     memData_MailNachname: TStringField;
     memData_MailName: TStringField;
     memData_MailVorname: TStringField;
+    edt_Suche: TcxButtonEdit;
     procedure FormShow(Sender: TObject);
     procedure btn_AbortClick(Sender: TObject);
     procedure btn_AnClick(Sender: TObject);
     procedure btn_CCClick(Sender: TObject);
     procedure btn_BCCClick(Sender: TObject);
     procedure btn_OkClick(Sender: TObject);
-    procedure btn_ResetClick(Sender: TObject);
     procedure edt_SuchePropertiesChange(Sender: TObject);
     procedure memData_MailFilterRecord(DataSet: TDataSet; var Accept: Boolean);
     procedure grdDBTblView_AdressCellDblClick(Sender: TcxCustomGridTableView; ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton; AShift: TShiftState; var AHandled: Boolean);
-    procedure edt_SucheKeyDown(Sender: TObject; var Key: Word;
+    procedure edt_Suche1KeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure grdDBTblView_AdressKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
+    procedure edt_SuchePropertiesButtonClick(Sender: TObject;
+      AButtonIndex: Integer);
   private
     { Private-Deklarationen }
   public
@@ -228,10 +226,6 @@ end;
 // Buttonfunktionen                                                           //
 ////////////////////////////////////////////////////////////////////////////////
 {$Region Buttonfunktionen}
-procedure Tfrm_AdressBook.btn_ResetClick(Sender: TObject);
-begin
-  memData_Mail.Filtered:= false;
-end;
 procedure Tfrm_AdressBook.btn_AnClick(Sender: TObject);
 begin
   btn_An.Tag:= 1;
@@ -275,13 +269,17 @@ end;
 // Sonstigefunktionen                                                         //
 ////////////////////////////////////////////////////////////////////////////////
 {$Region Sonstigefunktionen}
-procedure Tfrm_AdressBook.edt_SucheKeyDown(Sender: TObject; var Key: Word;
+procedure Tfrm_AdressBook.edt_Suche1KeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
   if Key = VK_RETURN then
     grd_Adress.SetFocus;
 end;
 
+procedure Tfrm_AdressBook.edt_SuchePropertiesButtonClick(Sender: TObject;  AButtonIndex: Integer);
+begin
+  memData_Mail.Filtered:= false;
+end;
 procedure Tfrm_AdressBook.edt_SuchePropertiesChange(Sender: TObject);
   procedure ApplyFilter;
   begin

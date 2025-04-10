@@ -29,7 +29,7 @@ object frm_AdressBook: Tfrm_AdressBook
       Top = 44
       Width = 776
       Height = 416
-      TabOrder = 2
+      TabOrder = 1
       object grdDBTblView_Adress: TcxGridDBTableView
         OnKeyDown = grdDBTblView_AdressKeyDown
         Navigator.Buttons.CustomButtons = <>
@@ -65,7 +65,7 @@ object frm_AdressBook: Tfrm_AdressBook
       Width = 75
       Height = 25
       Caption = 'An'
-      TabOrder = 3
+      TabOrder = 2
       OnClick = btn_AnClick
     end
     object btn_CC: TcxButton
@@ -74,7 +74,7 @@ object frm_AdressBook: Tfrm_AdressBook
       Width = 75
       Height = 25
       Caption = 'CC'
-      TabOrder = 5
+      TabOrder = 4
       OnClick = btn_CCClick
     end
     object btn_BCC: TcxButton
@@ -83,7 +83,7 @@ object frm_AdressBook: Tfrm_AdressBook
       Width = 75
       Height = 25
       Caption = 'Bcc'
-      TabOrder = 7
+      TabOrder = 6
       OnClick = btn_BCCClick
     end
     object btn_Ok: TcxButton
@@ -92,7 +92,7 @@ object frm_AdressBook: Tfrm_AdressBook
       Width = 100
       Height = 25
       Caption = 'Ok'
-      TabOrder = 9
+      TabOrder = 8
       OnClick = btn_OkClick
     end
     object btn_Abort: TcxButton
@@ -101,28 +101,15 @@ object frm_AdressBook: Tfrm_AdressBook
       Width = 100
       Height = 25
       Caption = 'Abbrechen'
-      TabOrder = 10
+      TabOrder = 9
       OnClick = btn_AbortClick
-    end
-    object edt_Suche: TcxTextEdit
-      Left = 12
-      Top = 12
-      AutoSize = False
-      Properties.OnChange = edt_SuchePropertiesChange
-      Style.HotTrack = False
-      Style.TransparentBorder = False
-      TabOrder = 0
-      TextHint = 'Suche'
-      OnKeyDown = edt_SucheKeyDown
-      Height = 25
-      Width = 744
     end
     object edt_An: TcxTextEdit
       Left = 94
       Top = 467
       Style.HotTrack = False
       Style.TransparentBorder = False
-      TabOrder = 4
+      TabOrder = 3
       Width = 694
     end
     object edt_BCC: TcxTextEdit
@@ -130,7 +117,7 @@ object frm_AdressBook: Tfrm_AdressBook
       Top = 531
       Style.HotTrack = False
       Style.TransparentBorder = False
-      TabOrder = 8
+      TabOrder = 7
       Width = 694
     end
     object edt_CC: TcxTextEdit
@@ -138,34 +125,47 @@ object frm_AdressBook: Tfrm_AdressBook
       Top = 499
       Style.HotTrack = False
       Style.TransparentBorder = False
-      TabOrder = 6
+      TabOrder = 5
       Width = 694
     end
-    object btn_Reset: TcxButton
-      Left = 763
+    object edt_Suche: TcxButtonEdit
+      Left = 53
       Top = 12
-      Width = 25
-      Height = 25
-      OptionsImage.Glyph.SourceDPI = 96
-      OptionsImage.Glyph.Data = {
-        3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
-        462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D2243
-        6C656172486561646572416E64466F6F7465722220786D6C6E733D2268747470
-        3A2F2F7777772E77332E6F72672F323030302F7376672220786D6C6E733A786C
-        696E6B3D22687474703A2F2F7777772E77332E6F72672F313939392F786C696E
-        6B2220783D223070782220793D22307078222076696577426F783D2230203020
-        333220333222207374796C653D22656E61626C652D6261636B67726F756E643A
-        6E6577203020302033322033323B2220786D6C3A73706163653D227072657365
-        727665223E262331333B262331303B3C7374796C6520747970653D2274657874
-        2F637373223E2E5265647B66696C6C3A234431314331433B7D3C2F7374796C65
-        3E0D0A3C7061746820636C6173733D225265642220643D224D32372C34483543
-        342E352C342C342C342E352C342C3576323263302C302E352C302E352C312C31
-        2C3168323263302E352C302C312D302E352C312D3156354332382C342E352C32
-        372E352C342C32372C347A204D32322C32306C2D322C326C2D342D346C2D342C
-        3420202623393B6C2D322D326C342D346C2D342D346C322D326C342C346C342D
-        346C322C326C2D342C344C32322C32307A222F3E0D0A3C2F7376673E0D0A}
-      TabOrder = 1
-      OnClick = btn_ResetClick
+      Properties.Buttons = <
+        item
+          Default = True
+          Glyph.SourceDPI = 96
+          Glyph.SourceHeight = 23
+          Glyph.SourceWidth = 23
+          Glyph.Data = {
+            3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+            462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+            617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+            2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+            77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+            22307078222076696577426F783D2230203020333220333222207374796C653D
+            22656E61626C652D6261636B67726F756E643A6E657720302030203332203332
+            3B2220786D6C3A73706163653D227072657365727665223E262331333B262331
+            303B3C7374796C6520747970653D22746578742F6373732220786D6C3A737061
+            63653D227072657365727665223E2E426C75657B66696C6C3A23313137374437
+            3B7D262331333B262331303B2623393B2E5265647B66696C6C3A234431314331
+            433B7D3C2F7374796C653E0D0A3C7061746820636C6173733D22426C75652220
+            643D224D31382C32336C2D342E332C342E35632D302E372C302E372D312E392C
+            302E372D322E362C306C2D362E362D362E36632D302E372D302E372D302E372D
+            312E392C302D322E364C392C31344C31382C32337A222F3E0D0A3C7061746820
+            636C6173733D225265642220643D224D32372E352C31332E374C32302C32316C
+            2D392D396C372E332D372E3563302E372D302E372C312E392D302E372C322E36
+            2C306C362E362C362E364332382E322C31312E382C32382E322C31332C32372E
+            352C31332E377A222F3E0D0A3C2F7376673E0D0A}
+          Kind = bkGlyph
+        end>
+      Properties.OnButtonClick = edt_SuchePropertiesButtonClick
+      Properties.OnChange = edt_SuchePropertiesChange
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 0
+      OnKeyDown = edt_Suche1KeyDown
+      Width = 735
     end
     object lactrl_AdressbookGroup_Root: TdxLayoutGroup
       AlignHorz = ahClient
@@ -187,7 +187,6 @@ object frm_AdressBook: Tfrm_AdressBook
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Text = 'Suche'
-      ItemIndex = 1
       ShowBorder = False
       Index = 0
     end
@@ -310,13 +309,10 @@ object frm_AdressBook: Tfrm_AdressBook
       Index = 1
     end
     object laitm_AdressbookSuche: TdxLayoutItem
-      Parent = lagrp_AdressbookSuche
-      AlignHorz = ahClient
-      AlignVert = avClient
-      CaptionOptions.Text = 'New Item'
-      CaptionOptions.Visible = False
+      Parent = lagrp_AdressbookMain
+      CaptionOptions.Text = 'Name:'
       Control = edt_Suche
-      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalHeight = 25
       ControlOptions.OriginalWidth = 121
       ControlOptions.ShowBorder = False
       Index = 0
@@ -348,28 +344,6 @@ object frm_AdressBook: Tfrm_AdressBook
       Control = edt_CC
       ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 121
-      ControlOptions.ShowBorder = False
-      Index = 1
-    end
-    object lagrp_AdressbookSuche: TdxLayoutGroup
-      Parent = lagrp_AdressbookMain
-      AlignHorz = ahClient
-      AlignVert = avTop
-      CaptionOptions.Text = 'New Group'
-      ItemIndex = 1
-      LayoutDirection = ldHorizontal
-      ShowBorder = False
-      Index = 0
-    end
-    object laitm_AdressbookReset: TdxLayoutItem
-      Parent = lagrp_AdressbookSuche
-      AlignHorz = ahRight
-      AlignVert = avClient
-      CaptionOptions.Text = 'New Item'
-      CaptionOptions.Visible = False
-      Control = btn_Reset
-      ControlOptions.OriginalHeight = 25
-      ControlOptions.OriginalWidth = 25
       ControlOptions.ShowBorder = False
       Index = 1
     end
