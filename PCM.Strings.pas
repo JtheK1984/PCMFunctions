@@ -246,7 +246,7 @@ resourcestring
 	rs_PCMManager_AufgabenImportieren = 'Aufgaben importieren';
   rs_PCMManager_Finanzuebersicht = 'Finanzübersicht';
   rs_PCMManager_EMails = 'E-Mails';
-  rs_PCMManager_KalenderStundenplan = 'Kalender / Aufgaben / Jira / Stundenplan';
+  rs_PCMManager_KalenderStundenplan = 'Kalender / Aufgaben / Stundenplan';
   rs_PCMManager_Passwoerter_Serialkeys = 'Passwörter / Serialkeys';
   rs_PCMManager_GridExport1 = 'Daten wurden in ';
   rs_PCMManager_GridExport2 = ' exportiert';
