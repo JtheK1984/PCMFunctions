@@ -2,7 +2,9 @@
 
 interface
 
-uses Winapi.Windows, System.SysUtils, System.Classes, Vcl.Graphics, Vcl.Forms,
+uses
+{$Region uses}
+  Winapi.Windows, System.SysUtils, System.Classes, Vcl.Graphics, Vcl.Forms,
   Vcl.Controls, Vcl.StdCtrls, Vcl.Buttons, dxGDIPlusClasses,
   Vcl.ExtCtrls, cxGraphics, cxLookAndFeels, cxLookAndFeelPainters, Vcl.Menus,
   cxButtons, System.ImageList, Vcl.ImgList,FireDac.Stan.Param,
@@ -10,10 +12,11 @@ uses Winapi.Windows, System.SysUtils, System.Classes, Vcl.Graphics, Vcl.Forms,
   cxLabel, cxImage, cxGroupBox,cxPC,
   Vcl.Dialogs,System.UITypes, cxClasses, dxLayoutLookAndFeels,
   dxLayoutContainer, dxLayoutControl, dxLayoutcxEditAdapters,
-  dxLayoutControlAdapters;
+  dxLayoutControlAdapters, dxUIAClasses;
+  {$EndRegion uses}
 type
+  {$Region type}
   TcxPageControlPropertiesAccess = class(TcxPageControlProperties);
-type
   Tfrm_PCM_ChangePW = class(TForm)
     btn_PCManagerChangePassword_Ok: TcxButton;
     edt_PCManagerChangePassword_NewPass: TcxTextEdit;
@@ -41,19 +44,24 @@ type
     { Public-Deklarationen }
     Procedure Execute(const AShowModal: Boolean);
   end;
-
+  {$EndRegion type}
 var
+  {$Region var}
   frm_PCM_ChangePW: Tfrm_PCM_ChangePW;
-
+  {$EndRegion var}
 implementation
-
 {$R *.dfm}
-
-uses  PCM.Functions.ChangePW.SQL,
-      PCM.Data,
-      PCM.Functions,
-			PCM.Strings;
-
+uses
+  {$Region uses}
+  PCM.Functions.ChangePW.SQL,
+  PCM.Data,
+  PCM.Functions,
+  PCM.Strings;
+  {$EndRegion uses}
+////////////////////////////////////////////////////////////////////////////////
+// Hilfsfunktionen                                                            //
+////////////////////////////////////////////////////////////////////////////////
+{$Region Hilfsfunktionen}
 Procedure Tfrm_PCM_ChangePW.Execute(const AShowModal: Boolean);
 begin
   edt_PCManagerChangePassword_NewPass.Text:= '';
@@ -61,11 +69,11 @@ begin
   if AShowModal then
     ShowModal;
 end;
-procedure Tfrm_PCM_ChangePW.FormShow(Sender: TObject);
-begin
-  caption:= PCM_Programmname + rs_PCM_PasswortAendern;
-  edt_PCManagerChangePassword_NewPass.SetFocus;
-end;
+{$EndRegion Hilfsfunktionen}
+////////////////////////////////////////////////////////////////////////////////
+// Buttonfunktionen                                                           //
+////////////////////////////////////////////////////////////////////////////////
+{$Region Buttonfunktionen}
 procedure Tfrm_PCM_ChangePW.btn_PCManagerChangePassword_CancelClick(Sender: TObject);
 begin
   frm_PCM_ChangePW.close;
@@ -93,6 +101,17 @@ begin
     end;
   end;
 end;
+{$EndRegion Buttonfunktionen}
+////////////////////////////////////////////////////////////////////////////////
+// Formfunktionen                                                             //
+////////////////////////////////////////////////////////////////////////////////
+{$Region Formfunktionen}
+procedure Tfrm_PCM_ChangePW.FormShow(Sender: TObject);
+begin
+  caption:= PCM_Programmname + rs_PCM_PasswortAendern;
+  edt_PCManagerChangePassword_NewPass.SetFocus;
+end;
+{$EndRegion Formfunktionen}
 end.
 
 

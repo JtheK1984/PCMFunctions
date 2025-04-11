@@ -25,10 +25,11 @@ object frm_PCM_InfoApp: Tfrm_PCM_InfoApp
     AutoSize = True
     LayoutLookAndFeel = dxLayoutCxLookAndFeel1
     OptionsImage.Images = cxImageList1
-    ExplicitHeight = 334
+    ExplicitWidth = 680
+    ExplicitHeight = 303
     object img_PCManagerAppInfo_Image: TcxImage
-      Left = 19
-      Top = 22
+      Left = 22
+      Top = 28
       TabStop = False
       Picture.Data = {
         0D546478536D617274496D61676589504E470D0A1A0A0000000D494844520000
@@ -910,8 +911,8 @@ object frm_PCM_InfoApp: Tfrm_PCM_InfoApp
     object cxButton1: TcxButton
       AlignWithMargins = True
       Left = 10
-      Top = 280
-      Width = 666
+      Top = 286
+      Width = 649
       Height = 25
       Margins.Left = 0
       Margins.Right = 0

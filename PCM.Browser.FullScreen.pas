@@ -3,6 +3,7 @@ unit PCM.Browser.FullScreen;
 interface
 
 uses
+  {$Region uses}
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs,PCM.Browser, cxGraphics, cxControls,
   cxLookAndFeels, cxLookAndFeelPainters, cxContainer, cxEdit, dxSkinsCore,
@@ -22,9 +23,10 @@ uses
   dxSkinTheBezier, dxSkinsDefaultPainters, dxSkinValentine,
   dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
   dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint, dxSkinWXI,
-  dxSkinXmas2008Blue, cxSplitter, cxGroupBox;
-
+  dxSkinXmas2008Blue, cxSplitter, cxGroupBox, dxUIAClasses;
+  {$EndRegion uses}
 type
+  {$Region uses}
   Tfrm_Browser_FullScreen = class(TForm)
     pnl_D: TcxGroupBox;
     splt_D: TcxSplitter;
@@ -40,17 +42,21 @@ type
     function Execute(const AShowModal: Boolean; ALabel, AUrl: String): boolean; overload;
     function Execute(const AShowModal: Boolean; ALabel, AUrl: String; ADevTools: boolean; ADevToolsHandle: hwnd): boolean; overload;
   end;
-
+  {$EndRegion uses}
 var
+  {$Region uses}
   frm_Browser_FullScreen: Tfrm_Browser_FullScreen;
-
+  {$EndRegion uses}
 implementation
-
 {$R *.dfm}
-
-uses uWvLoader;
-{ Tfrm_Browser_FullScreen }
-
+uses
+  {$Region uses}
+  uWvLoader;
+  {$EndRegion uses}
+////////////////////////////////////////////////////////////////////////////////
+// Hilfsfunktionen                                                            //
+////////////////////////////////////////////////////////////////////////////////
+{$Region Hilfsfunktionen}
 function Tfrm_Browser_FullScreen.Execute(const AShowModal: Boolean; ALabel, AUrl: String) : boolean;
 begin
   Result:= false;
@@ -85,6 +91,23 @@ begin
       Result:= true;
   end;
 end;
+{$EndRegion Hilfsfunktionen}
+////////////////////////////////////////////////////////////////////////////////
+// Buttonfunktionen                                                           //
+////////////////////////////////////////////////////////////////////////////////
+{$Region Buttonfunktionen}
+procedure Tfrm_Browser_FullScreen.pnl_DResize(Sender: TObject);
+var
+  DevToolsRect: TRect;
+begin
+  GetWindowRect(pnl_D.Handle, DevToolsRect);
+  SetWindowPos(DevToolsHWND, 0, -8, -31,DevToolsRect.Right - DevToolsRect.Left +16,DevToolsRect.Bottom - DevToolsRect.Top + 39,SWP_NOZORDER);
+end;
+{$EndRegion Buttonfunktionen}
+////////////////////////////////////////////////////////////////////////////////
+// Formfunktionen                                                             //
+////////////////////////////////////////////////////////////////////////////////
+{$Region Formfunktionen}
 procedure Tfrm_Browser_FullScreen.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
 //  if DevToolsHWND <> 0 then
@@ -100,12 +123,5 @@ begin
   FWebBrowser.Align := alClient;
   FWebBrowser.OnBeforeNavigate := nil;
 end;
-procedure Tfrm_Browser_FullScreen.pnl_DResize(Sender: TObject);
-var
-  DevToolsRect: TRect;
-begin
-  GetWindowRect(pnl_D.Handle, DevToolsRect);
-  SetWindowPos(DevToolsHWND, 0, -8, -31,DevToolsRect.Right - DevToolsRect.Left +16,DevToolsRect.Bottom - DevToolsRect.Top + 39,SWP_NOZORDER);
-end;
-
+{$EndRegion Formfunktionen}
 end.

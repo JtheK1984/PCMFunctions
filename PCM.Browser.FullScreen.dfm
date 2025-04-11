@@ -22,6 +22,8 @@ object frm_Browser_FullScreen: Tfrm_Browser_FullScreen
     TabOrder = 0
     Visible = False
     OnResize = pnl_DResize
+    ExplicitTop = 174
+    ExplicitWidth = 618
     Height = 250
     Width = 624
   end
@@ -33,5 +35,7 @@ object frm_Browser_FullScreen: Tfrm_Browser_FullScreen
     AlignSplitter = salTop
     Control = pnl_D
     Visible = False
+    ExplicitTop = 169
+    ExplicitWidth = 618
   end
 end

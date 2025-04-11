@@ -18,10 +18,8 @@ object frm_PCM_ChangePW: Tfrm_PCM_ChangePW
     TabOrder = 0
     AutoSize = True
     LayoutLookAndFeel = dxLayoutCxLookAndFeel1
-    ExplicitLeft = 3
-    ExplicitTop = 3
-    ExplicitWidth = 348
-    ExplicitHeight = 131
+    ExplicitWidth = 346
+    ExplicitHeight = 130
     object edt_PCManagerChangePassword_NewPass: TcxTextEdit
       Left = 132
       Top = 33
@@ -30,17 +28,17 @@ object frm_PCM_ChangePW: Tfrm_PCM_ChangePW
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 1
-      Width = 208
+      Width = 191
     end
     object edt_PCManagerChangePassword_RepPass: TcxTextEdit
       Left = 132
-      Top = 82
+      Top = 84
       Properties.EchoMode = eemPassword
       Properties.PasswordChar = '*'
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 2
-      Width = 208
+      Width = 191
     end
     object img_PCManagerChangePassword_Image: TcxImage
       Left = 12
@@ -461,13 +459,13 @@ object frm_PCM_ChangePW: Tfrm_PCM_ChangePW
       Style.TransparentBorder = False
       TabOrder = 0
       Transparent = True
-      Height = 123
+      Height = 127
       Width = 113
     end
     object btn_PCManagerChangePassword_Cancel: TcxButton
-      Left = 240
-      Top = 110
-      Width = 100
+      Left = 231
+      Top = 114
+      Width = 92
       Height = 25
       Caption = 'Abbrechen'
       OptionsImage.ImageIndex = 57
@@ -477,8 +475,8 @@ object frm_PCM_ChangePW: Tfrm_PCM_ChangePW
     end
     object btn_PCManagerChangePassword_Ok: TcxButton
       Left = 132
-      Top = 110
-      Width = 101
+      Top = 114
+      Width = 92
       Height = 25
       Caption = 'Ok'
       OptionsImage.ImageIndex = 56
@@ -521,7 +519,7 @@ object frm_PCM_ChangePW: Tfrm_PCM_ChangePW
       CaptionOptions.Text = 'Neues Passwort:'
       CaptionOptions.Layout = clTop
       Control = edt_PCManagerChangePassword_NewPass
-      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalHeight = 23
       ControlOptions.OriginalWidth = 217
       ControlOptions.ShowBorder = False
       Index = 0
@@ -533,7 +531,7 @@ object frm_PCM_ChangePW: Tfrm_PCM_ChangePW
       CaptionOptions.Text = 'Passwort wiederholen:'
       CaptionOptions.Layout = clTop
       Control = edt_PCManagerChangePassword_RepPass
-      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalHeight = 23
       ControlOptions.OriginalWidth = 217
       ControlOptions.ShowBorder = False
       Index = 1

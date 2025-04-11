@@ -1,4 +1,5 @@
 object dm_PCM: Tdm_PCM
-  Height = 347
-  Width = 520
+  Height = 521
+  Width = 780
+  PixelsPerInch = 144
 end

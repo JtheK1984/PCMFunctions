@@ -2,7 +2,9 @@
 
 interface
 
-uses WinApi.Windows, SysUtils, System.Classes, Vcl.Graphics,
+uses
+  {$Region uses}
+  WinApi.Windows, SysUtils, System.Classes, Vcl.Graphics,
   Vcl.Forms, Vcl.Controls, Vcl.StdCtrls, Vcl.Buttons, Vcl.ExtCtrls,
   dxGDIPlusClasses, cxGraphics, cxLookAndFeels, cxLookAndFeelPainters,
   Vcl.Menus, System.ImageList, Vcl.ImgList, cxButtons,
@@ -10,9 +12,10 @@ uses WinApi.Windows, SysUtils, System.Classes, Vcl.Graphics,
   cxImage,Vcl.Styles,vcl.themes,inifiles, Vcl.Imaging.pngimage,
   dxBarBuiltInMenu, cxPC, cxImageList, dxLayoutcxEditAdapters,
   dxLayoutControlAdapters, dxLayoutContainer, cxClasses, dxLayoutControl,
-  dxLayoutLookAndFeels;
-
+  dxLayoutLookAndFeels, dxUIAClasses;
+  {$EndRegion uses}
 type
+  {$Region type}
   Tfrm_PCM_InfoApp = class(TForm)
     img_PCManagerAppInfo_Image: TcxImage;
     cxButton1: TcxButton;
@@ -70,21 +73,24 @@ type
     function GetFileDate :String;
     function GetAppVersion: string;
   end;
+  {$EndRegion type}
 var
+  {$Region var}
   frm_PCM_InfoApp: Tfrm_PCM_InfoApp;
-
+  {$EndRegion var}
 implementation
-
 {$R *.dfm}
-
-uses PCM.Data,
-     PCM.Functions.Lizenz,
-     PCM.Main,PCM.Strings,
-     PCM.Helper;
-
+uses
+  {$Region uses}
+  PCM.Data,
+  PCM.Functions.Lizenz,
+  PCM.Main,PCM.Strings,
+  PCM.Helper;
+  {$EndRegion uses}
 ////////////////////////////////////////////////////////////////////////////////
 // Hilfsfunktionen                                                            //
 ////////////////////////////////////////////////////////////////////////////////
+{$Region Hilfsfunktionen}
 // Ermitteln des Dateierzeugungsdatum
 function Tfrm_PCM_InfoApp.GetFileDate :String;
 var
@@ -122,9 +128,11 @@ begin
   end;
   FreeMem(poiVerInfo, dwVerInfoSize);
 end;
+{$EndRegion Hilfsfunktionen}
 ////////////////////////////////////////////////////////////////////////////////
-// Hauptfunktionen                                                            //
+// Buttonfunktionen                                                           //
 ////////////////////////////////////////////////////////////////////////////////
+{$Region Buttonfunktionen}
 // Formular anzeigen
 procedure Tfrm_PCM_InfoApp.cxButton1Click(Sender: TObject);
 begin
@@ -149,7 +157,11 @@ begin
     frm_PCM_main.Caption:=PCM_Programmname + rs_PCM_Demolizenz + DateTostr(dm_PCM.dtGueltig);
   end;
 end;
-
+{$EndRegion Buttonfunktionen}
+////////////////////////////////////////////////////////////////////////////////
+// Formfunktionen                                                             //
+////////////////////////////////////////////////////////////////////////////////
+{$Region Formfunktionen}
 procedure Tfrm_PCM_InfoApp.FormShow(Sender: TObject);
 begin
   case dm_PCM.iDBType of
@@ -199,6 +211,6 @@ begin
     cxLabel6.CaptionOptions.Text:= rs_PCM_unbegrenzt;
   end;
 end;
-
+{$EndRegion Formfunktionen}
 end.
  

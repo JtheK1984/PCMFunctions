@@ -21,6 +21,8 @@ object frm_PCM_System: Tfrm_PCM_System
     TabOrder = 0
     AutoSize = True
     LayoutLookAndFeel = dxLayoutCxLookAndFeel1
+    ExplicitWidth = 1045
+    ExplicitHeight = 462
     object prgbr_ProcUse: TcxProgressBar
       AlignWithMargins = True
       Left = 22

@@ -3,6 +3,7 @@ unit PCM.Functions.Login;
 interface
 
 uses
+  {$Region uses}
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, dxGDIPlusClasses,
   Vcl.ExtCtrls, Vcl.Buttons, Data.FMTBcd, Data.DB, Data.SqlExpr,
@@ -11,9 +12,10 @@ uses
   cxControls, cxContainer, cxEdit, cxTextEdit, cxMaskEdit,
   cxDropDownEdit, cxClasses, cxLabel, cxImage, cxGroupBox,
   dxLayoutcxEditAdapters, dxLayoutControlAdapters, dxLayoutContainer,
-  dxLayoutLookAndFeels, dxLayoutControl;
-
+  dxLayoutLookAndFeels, dxLayoutControl, dxUIAClasses;
+  {$EndRegion uses}
 type
+  {$Region type}
   Tfrm_PCM_Login = class(TForm)
     btn_PCManagerLogin_Ok: TcxButton;
     btn_PCManagerLogin_Cancel: TcxButton;
@@ -50,64 +52,39 @@ type
     { Public-Deklarationen }
     function Login_User : boolean;
   end;
-
+  {$EndRegion type}
 var
+  {$Region var}
   frm_PCM_Login: Tfrm_PCM_Login;
-
-
-
+  {$EndRegion var}
 implementation
-
 {$R *.dfm}
-
-uses  PCM.Functions,
-      PCM.Functions.Login.SQL,
-      PCM.Data,
-      PCM.Strings;
-
-
+uses
+  {$Region uses}
+  PCM.Functions,
+  PCM.Functions.Login.SQL,
+  PCM.Data,
+  PCM.Strings;
+  {$EndRegion uses}
+////////////////////////////////////////////////////////////////////////////////
+// Hilfsfunktionen                                                            //
+////////////////////////////////////////////////////////////////////////////////
+{$Region Hilfsfunktionen}
 function Tfrm_PCM_Login.Login_User : boolean;
 begin
   Application.CreateForm(Tfrm_PCM_Login, frm_PCM_Login);
   Result := frm_PCM_Login.ShowModal = mrOk;
-end;
-procedure Tfrm_PCM_Login.cbx_PCManagerLogin_UserExit(Sender: TObject);
-begin
-  cmbbx_PCManagerLogin_User.Text:= cmbbx_PCManagerLogin_User.Properties.Items[cmbbx_PCManagerLogin_User.ItemIndex];
 end;
 procedure Tfrm_PCM_Login.CreateParams(var Params: TCreateParams);
 begin
   inherited;
   Params.WndParent:= 0;
 end;
-procedure Tfrm_PCM_Login.edt_PCManagerLogin_PassKeyPress(Sender: TObject; var Key: Char);
-begin
-  if key= Chr(VK_RETURN) then
-  begin
-    key := #0;
-    btn_PCManagerLogin_Ok.Click;
-  end;
-end;
-procedure Tfrm_PCM_Login.edt_PCManagerLogin_PassKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
-begin
-  if (Key = 13) and (Length(edt_PCManagerLogin_Pass.Text) > 0) then
-    btn_PCManagerLogin_OkClick(Sender);
-end;
-procedure Tfrm_PCM_Login.FormShow(Sender: TObject);
-begin
-  caption:= PCM_Programmname + rs_PCM_Anmeldung;
-  cmbbx_PCManagerLogin_User.clear;
-  dm_pcm.qry_Work.Connection:= dm_PCM.con_PCM;
-  dm_pcm.qry_Work.SQL.Text:= ASSQL_GetUser[dm_PCM.iDBType];
-  dm_pcm.qry_Work.open;
-  dm_pcm.qry_Work.First;
-  while not dm_pcm.qry_Work.Eof do begin
-    cmbbx_PCManagerLogin_User.Properties.Items.Add(dm_pcm.qry_Work.FieldByName('benutzer').AsString);
-    dm_pcm.qry_Work.Next;
-  end;
-  dm_pcm.qry_Work.close;
-  cmbbx_PCManagerLogin_User.SetFocus;
-end;
+{$EndRegion Hilfsfunktionen}
+////////////////////////////////////////////////////////////////////////////////
+// Buttonfunktionen                                                           //
+////////////////////////////////////////////////////////////////////////////////
+{$Region Buttonfunktionen}
 procedure Tfrm_PCM_Login.btn_PCManagerLogin_OkClick(Sender: TObject);
 var
   sPassword: string;
@@ -150,5 +127,42 @@ begin
   dm_pcm.bClose:= true;
   ModalResult:= MRCancel;
 end;
-
+procedure Tfrm_PCM_Login.cbx_PCManagerLogin_UserExit(Sender: TObject);
+begin
+  cmbbx_PCManagerLogin_User.Text:= cmbbx_PCManagerLogin_User.Properties.Items[cmbbx_PCManagerLogin_User.ItemIndex];
+end;
+procedure Tfrm_PCM_Login.edt_PCManagerLogin_PassKeyPress(Sender: TObject; var Key: Char);
+begin
+  if key= Chr(VK_RETURN) then
+  begin
+    key := #0;
+    btn_PCManagerLogin_Ok.Click;
+  end;
+end;
+procedure Tfrm_PCM_Login.edt_PCManagerLogin_PassKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
+begin
+  if (Key = 13) and (Length(edt_PCManagerLogin_Pass.Text) > 0) then
+    btn_PCManagerLogin_OkClick(Sender);
+end;
+{$EndRegion Buttonfunktionen}
+////////////////////////////////////////////////////////////////////////////////
+// Formfunktionen                                                             //
+////////////////////////////////////////////////////////////////////////////////
+{$Region Formfunktionen}
+procedure Tfrm_PCM_Login.FormShow(Sender: TObject);
+begin
+  caption:= PCM_Programmname + rs_PCM_Anmeldung;
+  cmbbx_PCManagerLogin_User.clear;
+  dm_pcm.qry_Work.Connection:= dm_PCM.con_PCM;
+  dm_pcm.qry_Work.SQL.Text:= ASSQL_GetUser[dm_PCM.iDBType];
+  dm_pcm.qry_Work.open;
+  dm_pcm.qry_Work.First;
+  while not dm_pcm.qry_Work.Eof do begin
+    cmbbx_PCManagerLogin_User.Properties.Items.Add(dm_pcm.qry_Work.FieldByName('benutzer').AsString);
+    dm_pcm.qry_Work.Next;
+  end;
+  dm_pcm.qry_Work.close;
+  cmbbx_PCManagerLogin_User.SetFocus;
+end;
+{$EndRegion Formfunktionen}
 end.

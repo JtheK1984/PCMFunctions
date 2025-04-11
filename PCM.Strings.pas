@@ -2,10 +2,15 @@ unit PCM.Strings;
 
 interface
 
-uses Windows, Classes;
-
+uses
+  {$Region uses}
+  Classes,
+  SysUtils,
+  Windows;
+  {$EndRegion uses}
 // allgemein
 resourcestring
+  {$Region resourcestring}
   rs_PCM_Benutzerverwaltung ='Benutzerverwaltung';
   rs_PCM_Systeminformation = 'Systeminformation';
   rs_PCM_Konfiguration = 'Konfiguration';
@@ -241,7 +246,7 @@ resourcestring
 	rs_PCMManager_AufgabenImportieren = 'Aufgaben importieren';
   rs_PCMManager_Finanzuebersicht = 'Finanzübersicht';
   rs_PCMManager_EMails = 'E-Mails';
-  rs_PCMManager_KalenderStundenplan = 'Kalender / Aufgaben / Jira / Stundenplan';
+  rs_PCMManager_KalenderStundenplan = 'Kalender / Aufgaben / Stundenplan';
   rs_PCMManager_Passwoerter_Serialkeys = 'Passwörter / Serialkeys';
   rs_PCMManager_GridExport1 = 'Daten wurden in ';
   rs_PCMManager_GridExport2 = ' exportiert';
@@ -404,36 +409,40 @@ resourcestring
   rs_PCMService_Shutdown = 'automatisches Herunterfahren';
   rs_PCMService_Backup = 'Sicherungen';
   rs_PCMService_Jobs = 'Termine / Aufgaben für PCM-Service';
-	
+  {$EndRegion resourcestring}
 type
+  {$Region type}
   TResourceStringID = Pointer;
 
   TResOriginalStrings = class(TStringList)
   public
     constructor Create;
   end;
-
+  {$EndRegion type}
 var
+  {$Region var}
   FResOriginalStrings: TResOriginalStrings = nil;
   FResStrings: TStringList = nil;
   FUseResCache: Boolean = true;
-
+  {$EndRegion var}
 Const
+  {$Region const}
   SetNone = 0;
   SetRead = 1;
   SetReadWrite = 2;
   SetComplete = 3;
-
+  {$EndRegion const}
+// Deklarationen
+{$Region Deklarationen}
 procedure initNewLanguage(locale: LCID);
 procedure CreateResStringLists;
 procedure DestroyResStringLists;
 procedure ClearResourceStrings;
 function GetResourceString(AResString: TResourceStringID): string;
-
+{$EndRegion Deklarationen}
 implementation
-
-uses SysUtils;
-
+// Deklarationen
+{$Region Prozeduren}
 constructor TResOriginalStrings.Create;
 begin
   inherited Create;
@@ -497,7 +506,7 @@ procedure initNewLanguage(locale: LCID);
 begin
   ClearResourceStrings;
 end;
-
+{$EndRegion Prozeduren}
 initialization
   CreateResStringLists;
 finalization

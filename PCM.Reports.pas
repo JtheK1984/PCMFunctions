@@ -10,7 +10,6 @@ procedure Drucke_PCM_ZE_Jahresbericht(AJahr: String);
 procedure Drucke_PCM_ZE_Monatsbericht(AMonat: integer; AJahr: String);
 // PCM-Manager
 procedure Drucke_PCM_Manager_Finanzuebersicht(AMonat,AJahr:integer);
-
 {$EndRegion Deklaration}
 implementation
 
@@ -38,6 +37,10 @@ uses
   Data.DB;
 
   {$EndRegion Uses}
+////////////////////////////////////////////////////////////////////////////////
+// Deklaration                                                                //
+////////////////////////////////////////////////////////////////////////////////
+{$Region Prozeduren}
 procedure Drucke_PCM_ZE_Jahresbericht(AJahr: String);
 var
   slFileXML: TStringList;
@@ -886,4 +889,5 @@ begin
   frm_Browser_FullScreen.Execute(True,'PCM - Manager: Finanzübersicht',TPath.Combine(TPath.GetDirectoryName(Application.ExeName), 'Report') + '_Finanzübersicht.html');
   slFileXML.Free;
 end;
+{$EndRegion Prozeduren}
 end.

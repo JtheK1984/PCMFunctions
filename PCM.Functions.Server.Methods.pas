@@ -2,29 +2,37 @@ unit PCM.Functions.Server.Methods;
 
 interface
 
-uses Winapi.Windows, System.IOUtils, System.Classes, SysUtils,  IdBaseComponent, IdComponent, IdTCPConnection,
+uses
+  {$Region uses}
+  Winapi.Windows, System.IOUtils, System.Classes, SysUtils,  IdBaseComponent, IdComponent, IdTCPConnection,
   IdTCPClient, IdHTTP, Data.DB,DateUtils,winapi.shellapi, FireDAC.Stan.Intf,  FireDAC.Stan.Option,
   FireDAC.Stan.Error,  FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def, FireDAC.Stan.Pool,
   FireDAC.Stan.Async,  FireDAC.Phys, FireDAC.Comp.Client,FireDAC.Stan.Param, System.Json,REST.Types,
   AbBase, AbBrowse, AbZBrows, AbZipper;
-
+  {$EndRegion uses}
+// Deklarationen
+  {$Region Deklarationen}
   procedure Shutdown;
   procedure SendPushNotification;
 //  procedure BackupFiles;
   procedure BackupDatabase;
   procedure BackupQuellcode;
-
   procedure ExecuteAndWaitFor(FileName: AnsiString);
+  {$EndRegion Deklarationen}
 type
+  {$Region type}
   TZipDateien = array of string;
-
+  {$EndRegion type}
 implementation
-
-uses  PCM.Data,
-      PCM.Functions,
-      PCM.Main,
-      PCM.Strings;
-
+uses
+  {$Region uses}
+  PCM.Data,
+  PCM.Functions,
+  PCM.Main,
+  PCM.Strings;
+  {$EndRegion uses}
+// Prozeduren
+{$Region Prozeduren}
 procedure BackupDatabase;
 begin
   ExecuteAndWaitFor(AnsiString(ExtractFilePath(ParamStr(0)) + 'PCMBackup\PCMBackupService.exe'));
@@ -678,5 +686,5 @@ begin
   except
   end;
 end;
-
+{$EndRegion Prozeduren}
 end.

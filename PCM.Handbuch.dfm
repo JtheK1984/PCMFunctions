@@ -22,17 +22,15 @@ object frm_Handbuch: Tfrm_Handbuch
     AutoSize = True
     LayoutLookAndFeel = dxLayoutCxLookAndFeel1
     OptionsImage.Images = cxImageList1
-    ExplicitLeft = 168
-    ExplicitTop = 112
-    ExplicitWidth = 300
-    ExplicitHeight = 250
+    ExplicitWidth = 618
+    ExplicitHeight = 424
     object pnl_HTML: TcxGroupBox
       Left = 10000
       Top = 10000
       PanelStyle.Active = True
       ParentBackground = False
       ParentColor = False
-      Style.Color = 7566195
+      Style.Color = clBtnFace
       Style.TransparentBorder = False
       TabOrder = 1
       Visible = False
@@ -40,15 +38,15 @@ object frm_Handbuch: Tfrm_Handbuch
       Width = 185
     end
     object pnl_PDF: TcxGroupBox
-      Left = 26
-      Top = 53
+      Left = 28
+      Top = 50
       PanelStyle.Active = True
       ParentBackground = False
       ParentColor = False
-      Style.Color = 7566195
+      Style.Color = clBtnFace
       Style.TransparentBorder = False
       TabOrder = 0
-      Height = 358
+      Height = 363
       Width = 568
     end
     object dxLayoutControl1Group_Root: TdxLayoutGroup
