@@ -96,9 +96,9 @@ begin
   ASSQL_OpenLizenz[0]:= 'Select ID, ID_Kunden,Datum, Uhrzeit, Version, Demo, Gueltig_bis,Lizenz, Programm,Bemerkung,ID_Benutzer From lizenzgenerator_lizenzen Order By ID_Kunden';
   ASSQL_OpenProgramme[0]:= 'Select Number, Programm From lizenzgenerator_programme Group by Number, Programm order by Programm';
   ASSQL_OpenAProgramme[0]:= 'Select ID,Major,minor, Number, Programm,Lizenz From lizenzgenerator_programme ORDER by Number, Major,Minor';
-  ASSQL_ChartKunde[0]:= 'SELECT COUNT(*) as Wert, kun.Name FROM lizenzgenerator_lizenzen liz LEFT OUTER JOIN lizenzgenerator_kunden kun ON liz.ID_Kunden = kun.ID GROUP BY ID_Kunden';
-  ASSQL_ChartLizenz[0]:= 'SELECT COUNT(*) as Wert, pro.Programm FROM lizenzgenerator_lizenzen liz LEFT OUTER JOIN lizenzgenerator_programme pro ON liz.Programm = pro.ID GROUP BY liz.programm';
-  ASSQL_ChartProg[0]:= 'SELECT COUNT(*) as Wert,Programm FROM lizenzgenerator_programme Group BY number';
+  ASSQL_ChartKunde[0]:= 'SELECT COUNT(*) as Wert, kun.Name FROM lizenzgenerator_lizenzen liz LEFT OUTER JOIN lizenzgenerator_kunden kun ON liz.ID_Kunden = kun.ID GROUP BY ID_Kunden order by kun.name';
+  ASSQL_ChartLizenz[0]:= 'SELECT COUNT(*) as Wert, pro.Programm FROM lizenzgenerator_lizenzen liz LEFT OUTER JOIN lizenzgenerator_programme pro ON liz.Programm = pro.Number GROUP BY liz.programm order by Programm';
+  ASSQL_ChartProg[0]:= 'SELECT COUNT(*) as Wert,Programm FROM lizenzgenerator_programme Group BY number order by Programm';
   ASSQL_GetCustomerCount[0]:= 'SELECT COUNT(*) as Anzahl  FROM lizenzgenerator_Kunden WHERE Name  = :Name AND Strasse = :Strasse AND PLZ = :PLZ AND Ort = :Ort and ID_benutzer = :ID_benutzer';
   ASSQL_InsCustomer[0]:= 'Insert Into lizenzgenerator_Kunden (name,Strasse,PLZ,Ort,ID_Benutzer) values(:name,:Strasse,:PLZ,:Ort,:ID_Benutzer)';
   ASSQL_UpdCustomer[0]:= 'Update lizenzgenerator_Kunden Set name = :name ,Strasse = :Strasse,PLZ = :PLZ,Ort = :Ort,ID_Benutzer = :ID_Benutzer Where ID = :ID';
