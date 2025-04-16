@@ -3,8 +3,8 @@ object frm_User: Tfrm_User
   Top = 0
   BorderStyle = bsNone
   Caption = 'frm_Config'
-  ClientHeight = 1482
-  ClientWidth = 1137
+  ClientHeight = 800
+  ClientWidth = 1280
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -17,8 +17,8 @@ object frm_User: Tfrm_User
   object lactrl_Main: TdxLayoutControl
     Left = 0
     Top = 0
-    Width = 1137
-    Height = 1482
+    Width = 1280
+    Height = 800
     Margins.Left = 0
     Margins.Top = 0
     Margins.Right = 0
@@ -34,10 +34,10 @@ object frm_User: Tfrm_User
     LayoutLookAndFeel = laCxlaf_Benutzer
     OptionsImage.Images = dm_PCM.imglst_16x16
     object grd_Benutzer: TcxGrid
-      Left = 24
-      Top = 304
-      Width = 1089
-      Height = 1154
+      Left = 36
+      Top = 292
+      Width = 1208
+      Height = 472
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -104,7 +104,7 @@ object frm_User: Tfrm_User
     end
     object edt_OptionRight: TcxDBTextEdit
       Left = 10000
-      Top = 10000
+      Top = 10123
       DataBinding.DataField = 'Bezeichnung'
       DataBinding.DataSource = ds_Rechte
       ParentFont = False
@@ -119,7 +119,7 @@ object frm_User: Tfrm_User
       TabOrder = 13
       Visible = False
       OnExit = btn_RechtSaveClick
-      Width = 932
+      Width = 1058
     end
     object lucmbbx_RechteVokabeltrainerTest: TcxDBLookupComboBox
       Left = 10000
@@ -144,7 +144,7 @@ object frm_User: Tfrm_User
       Style.IsFontAssigned = True
       TabOrder = 38
       Visible = False
-      Width = 409
+      Width = 472
     end
     object lucmbbx_RechteVokabeltrainerVokabeln: TcxDBLookupComboBox
       Left = 10000
@@ -169,7 +169,7 @@ object frm_User: Tfrm_User
       Style.IsFontAssigned = True
       TabOrder = 37
       Visible = False
-      Width = 409
+      Width = 472
     end
     object lucmbbx_RechteVokabeltrainerStatistik: TcxDBLookupComboBox
       Left = 10000
@@ -194,13 +194,13 @@ object frm_User: Tfrm_User
       Style.IsFontAssigned = True
       TabOrder = 39
       Visible = False
-      Width = 408
+      Width = 471
     end
     object grd_Rechte: TcxGrid
       Left = 10000
       Top = 10000
-      Width = 1065
-      Height = 150
+      Width = 1208
+      Height = 324
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -283,7 +283,7 @@ object frm_User: Tfrm_User
       TabOrder = 5
       Transparent = True
       Height = 19
-      Width = 473
+      Width = 545
     end
     object edt_BenutzerName: TcxDBTextEdit
       Left = 95
@@ -302,7 +302,7 @@ object frm_User: Tfrm_User
       Style.IsFontAssigned = True
       TabOrder = 3
       OnExit = btn_BenutzerSaveClick
-      Width = 473
+      Width = 545
     end
     object edt_BenutzerUser: TcxDBTextEdit
       Left = 95
@@ -321,7 +321,7 @@ object frm_User: Tfrm_User
       Style.IsFontAssigned = True
       TabOrder = 2
       OnExit = btn_BenutzerSaveClick
-      Width = 473
+      Width = 545
     end
     object edt_BenutzerSurname: TcxDBTextEdit
       Left = 95
@@ -342,10 +342,10 @@ object frm_User: Tfrm_User
       TabOrder = 4
       OnExit = btn_BenutzerSaveClick
       Height = 19
-      Width = 473
+      Width = 545
     end
     object btn_BenutzerChangePassword: TcxButton
-      Left = 981
+      Left = 1124
       Top = 188
       Width = 120
       Height = 21
@@ -363,7 +363,7 @@ object frm_User: Tfrm_User
       OnClick = btn_BenutzerChangePasswordClick
     end
     object chkbx_BenutzerAutologin: TcxDBCheckBox
-      Left = 679
+      Left = 751
       Top = 242
       Hint = 'automatisches Login des Benutzers '
       BiDiMode = bdLeftToRight
@@ -384,7 +384,7 @@ object frm_User: Tfrm_User
       Transparent = True
     end
     object edt_BenutzerPassword: TcxDBTextEdit
-      Left = 629
+      Left = 701
       Top = 188
       Hint = 'Passwort des Benutzers'
       AutoSize = False
@@ -405,10 +405,10 @@ object frm_User: Tfrm_User
       OnEnter = edt_BenutzerPasswordEnter
       OnExit = edt_BenutzerPasswordExit
       Height = 19
-      Width = 346
+      Width = 417
     end
     object lucmbbx_BenutzerRights: TcxDBLookupComboBox
-      Left = 629
+      Left = 701
       Top = 215
       Hint = 'Recht des Benutzers'
       DataBinding.DataField = 'ID_Rechte'
@@ -430,12 +430,12 @@ object frm_User: Tfrm_User
       Style.IsFontAssigned = True
       TabOrder = 8
       OnExit = btn_BenutzerSaveClick
-      Width = 472
+      Width = 543
     end
     object brdckCtrl_Benutzer: TdxBarDockControl
       Left = 36
       Top = 63
-      Width = 1065
+      Width = 1208
       Height = 58
       Align = dalNone
       BarManager = brmgr_Benutzer
@@ -443,7 +443,7 @@ object frm_User: Tfrm_User
     object brdckCtrl_Rechte: TdxBarDockControl
       Left = 10000
       Top = 10000
-      Width = 1065
+      Width = 1208
       Height = 58
       Align = dalNone
       BarManager = brmgr_Benutzer
@@ -451,7 +451,7 @@ object frm_User: Tfrm_User
     end
     object lucmbbx_RechteAllgemeinOptionen: TcxDBLookupComboBox
       Left = 10000
-      Top = 10000
+      Top = 10123
       DataBinding.DataField = 'Konfiguration'
       DataBinding.DataSource = ds_Rechte
       ParentFont = False
@@ -471,11 +471,11 @@ object frm_User: Tfrm_User
       Style.IsFontAssigned = True
       TabOrder = 15
       Visible = False
-      Width = 408
+      Width = 471
     end
     object lucmbbx_RechteAllgemeinBenutzer: TcxDBLookupComboBox
       Left = 10000
-      Top = 10000
+      Top = 10123
       DataBinding.DataField = 'Benutzer'
       DataBinding.DataSource = ds_Rechte
       ParentFont = False
@@ -496,11 +496,11 @@ object frm_User: Tfrm_User
       Style.IsFontAssigned = True
       TabOrder = 14
       Visible = False
-      Width = 409
+      Width = 472
     end
     object chkbx_RechtAll: TcxDBCheckBox
       Left = 10000
-      Top = 10000
+      Top = 10123
       AutoSize = False
       BiDiMode = bdLeftToRight
       Caption = 'Alle Benutzer'
@@ -520,11 +520,11 @@ object frm_User: Tfrm_User
       Transparent = True
       Visible = False
       Height = 19
-      Width = 1041
+      Width = 1167
     end
     object lucmbbx_RechteArchivArchiv: TcxDBLookupComboBox
       Left = 10000
-      Top = 10000
+      Top = 10123
       DataBinding.DataField = 'dm_Archiv'
       DataBinding.DataSource = ds_Rechte
       ParentFont = False
@@ -545,11 +545,11 @@ object frm_User: Tfrm_User
       Style.IsFontAssigned = True
       TabOrder = 17
       Visible = False
-      Width = 932
+      Width = 1058
     end
     object lucmbbx_RechteBackupBackup: TcxDBLookupComboBox
       Left = 10000
-      Top = 10000
+      Top = 10123
       DataBinding.DataField = 'dm_Archiv'
       DataBinding.DataSource = ds_Rechte
       ParentFont = False
@@ -570,11 +570,11 @@ object frm_User: Tfrm_User
       Style.IsFontAssigned = True
       TabOrder = 18
       Visible = False
-      Width = 932
+      Width = 1058
     end
     object lucmbbx_RechteManagerKontakt: TcxDBLookupComboBox
       Left = 10000
-      Top = 10000
+      Top = 10123
       DataBinding.DataField = 'ma_Kontakte'
       DataBinding.DataSource = ds_Rechte
       ParentFont = False
@@ -595,11 +595,11 @@ object frm_User: Tfrm_User
       Style.IsFontAssigned = True
       TabOrder = 19
       Visible = False
-      Width = 409
+      Width = 472
     end
     object lucmbbx_RechteManagerKalender: TcxDBLookupComboBox
       Left = 10000
-      Top = 10000
+      Top = 10123
       AutoSize = False
       DataBinding.DataField = 'ma_Kalender'
       DataBinding.DataSource = ds_Rechte
@@ -622,11 +622,11 @@ object frm_User: Tfrm_User
       TabOrder = 20
       Visible = False
       Height = 19
-      Width = 409
+      Width = 472
     end
     object lucmbbx_RechteManagerStundenplan: TcxDBLookupComboBox
       Left = 10000
-      Top = 10000
+      Top = 10123
       DataBinding.DataField = 'ma_Stundenplan'
       DataBinding.DataSource = ds_Rechte
       ParentFont = False
@@ -647,11 +647,11 @@ object frm_User: Tfrm_User
       Style.IsFontAssigned = True
       TabOrder = 21
       Visible = False
-      Width = 409
+      Width = 472
     end
     object lucmbbx_RechteManagerMail: TcxDBLookupComboBox
       Left = 10000
-      Top = 10000
+      Top = 10123
       DataBinding.DataField = 'ma_Email'
       DataBinding.DataSource = ds_Rechte
       ParentFont = False
@@ -672,11 +672,11 @@ object frm_User: Tfrm_User
       Style.IsFontAssigned = True
       TabOrder = 22
       Visible = False
-      Width = 409
+      Width = 472
     end
     object lucmbbx_RechteManagerPassword: TcxDBLookupComboBox
       Left = 10000
-      Top = 10000
+      Top = 10123
       DataBinding.DataField = 'ma_Password'
       DataBinding.DataSource = ds_Rechte
       ParentFont = False
@@ -697,11 +697,11 @@ object frm_User: Tfrm_User
       Style.IsFontAssigned = True
       TabOrder = 23
       Visible = False
-      Width = 409
+      Width = 472
     end
     object lucmbbx_RechteManagerAusgaben: TcxDBLookupComboBox
       Left = 10000
-      Top = 10000
+      Top = 10123
       AutoSize = False
       DataBinding.DataField = 'ma_Ausgaben'
       DataBinding.DataSource = ds_Rechte
@@ -724,11 +724,11 @@ object frm_User: Tfrm_User
       TabOrder = 28
       Visible = False
       Height = 19
-      Width = 408
+      Width = 471
     end
     object lucmbbx_RechteManagerSerials: TcxDBLookupComboBox
       Left = 10000
-      Top = 10000
+      Top = 10123
       AutoSize = False
       DataBinding.DataField = 'ma_Kalender'
       DataBinding.DataSource = ds_Rechte
@@ -751,11 +751,11 @@ object frm_User: Tfrm_User
       TabOrder = 24
       Visible = False
       Height = 19
-      Width = 408
+      Width = 471
     end
     object lucmbbx_RechteManagerMonatsbericht: TcxDBLookupComboBox
       Left = 10000
-      Top = 10000
+      Top = 10123
       AutoSize = False
       DataBinding.DataField = 'ma_Email'
       DataBinding.DataSource = ds_Rechte
@@ -778,11 +778,11 @@ object frm_User: Tfrm_User
       TabOrder = 25
       Visible = False
       Height = 19
-      Width = 408
+      Width = 471
     end
     object lucmbbx_RechteManagerVerfuegung: TcxDBLookupComboBox
       Left = 10000
-      Top = 10000
+      Top = 10123
       AutoSize = False
       DataBinding.DataField = 'ma_Serials'
       DataBinding.DataSource = ds_Rechte
@@ -805,11 +805,11 @@ object frm_User: Tfrm_User
       TabOrder = 26
       Visible = False
       Height = 19
-      Width = 408
+      Width = 471
     end
     object lucmbbx_RechteManagerEinnahmen: TcxDBLookupComboBox
       Left = 10000
-      Top = 10000
+      Top = 10123
       DataBinding.DataField = 'ma_Verfuegung'
       DataBinding.DataSource = ds_Rechte
       ParentFont = False
@@ -830,11 +830,11 @@ object frm_User: Tfrm_User
       Style.IsFontAssigned = True
       TabOrder = 27
       Visible = False
-      Width = 408
+      Width = 471
     end
     object lucmbbx_RechteMediacenterAudio: TcxDBLookupComboBox
       Left = 10000
-      Top = 10000
+      Top = 10033
       AutoSize = False
       DataBinding.DataField = 'mc_Audioplayer'
       DataBinding.DataSource = ds_Rechte
@@ -857,11 +857,11 @@ object frm_User: Tfrm_User
       TabOrder = 29
       Visible = False
       Height = 19
-      Width = 409
+      Width = 472
     end
     object lucmbbx_RechteMediacenterWeb: TcxDBLookupComboBox
       Left = 10000
-      Top = 10000
+      Top = 10033
       DataBinding.DataField = 'mc_Webradio'
       DataBinding.DataSource = ds_Rechte
       ParentFont = False
@@ -882,11 +882,11 @@ object frm_User: Tfrm_User
       Style.IsFontAssigned = True
       TabOrder = 30
       Visible = False
-      Width = 409
+      Width = 472
     end
     object lucmbbx_RechteMediacenterVideo: TcxDBLookupComboBox
       Left = 10000
-      Top = 10000
+      Top = 10033
       DataBinding.DataField = 'mc_Videoplayer'
       DataBinding.DataSource = ds_Rechte
       ParentFont = False
@@ -907,11 +907,11 @@ object frm_User: Tfrm_User
       Style.IsFontAssigned = True
       TabOrder = 31
       Visible = False
-      Width = 408
+      Width = 471
     end
     object lucmbbx_RechteMediacenterFoto: TcxDBLookupComboBox
       Left = 10000
-      Top = 10000
+      Top = 10033
       DataBinding.DataField = 'mc_Fotos'
       DataBinding.DataSource = ds_Rechte
       ParentFont = False
@@ -932,7 +932,7 @@ object frm_User: Tfrm_User
       Style.IsFontAssigned = True
       TabOrder = 32
       Visible = False
-      Width = 408
+      Width = 471
     end
     object lucmbbx_RechteMP3MangerMP3: TcxDBLookupComboBox
       Left = 10000
@@ -957,7 +957,7 @@ object frm_User: Tfrm_User
       Style.IsFontAssigned = True
       TabOrder = 33
       Visible = False
-      Width = 932
+      Width = 1058
     end
     object lucmbbx_RechteNotenrechnerNoten: TcxDBLookupComboBox
       Left = 10000
@@ -984,7 +984,7 @@ object frm_User: Tfrm_User
       TabOrder = 34
       Visible = False
       Height = 19
-      Width = 932
+      Width = 1058
     end
     object lucmbbx_RechteServiceManagerShutdown: TcxDBLookupComboBox
       Left = 10000
@@ -1009,7 +1009,7 @@ object frm_User: Tfrm_User
       Style.IsFontAssigned = True
       TabOrder = 35
       Visible = False
-      Width = 409
+      Width = 472
     end
     object lucmbbx_RechteServiceManagerBackup: TcxDBLookupComboBox
       Left = 10000
@@ -1036,7 +1036,7 @@ object frm_User: Tfrm_User
       TabOrder = 36
       Visible = False
       Height = 19
-      Width = 408
+      Width = 471
     end
     object edt_BenutzerSucheBenutzer: TcxButtonEdit
       Left = 100
@@ -1076,7 +1076,7 @@ object frm_User: Tfrm_User
       Style.TransparentBorder = False
       TabOrder = 1
       Height = 25
-      Width = 989
+      Width = 1132
     end
     object edt_RechteSucheBezeichnung: TcxButtonEdit
       Left = 10000
@@ -1117,7 +1117,7 @@ object frm_User: Tfrm_User
       TabOrder = 12
       Visible = False
       Height = 25
-      Width = 932
+      Width = 1075
     end
     object lagrp_Personal: TdxLayoutGroup
       AlignHorz = ahClient
@@ -1160,8 +1160,9 @@ object frm_User: Tfrm_User
     object lagrp_BenutzerHeader: TdxLayoutGroup
       Parent = lagrp_Benutzer
       AlignHorz = ahClient
-      AlignVert = avTop
+      AlignVert = avClient
       CaptionOptions.Text = '[B]Benutzerdetails[/B]'
+      ItemIndex = 3
       Index = 0
     end
     object lagrp_RechteAllgemein: TdxLayoutGroup
@@ -1170,6 +1171,7 @@ object frm_User: Tfrm_User
       AlignVert = avTop
       CaptionOptions.Text = '[B]Rechte Allgemein[/B]'
       ButtonOptions.ShowExpandButton = True
+      Expanded = False
       ItemIndex = 1
       Index = 0
     end
@@ -1287,14 +1289,14 @@ object frm_User: Tfrm_User
       Index = 0
     end
     object laitm_BenutzerGrid: TdxLayoutItem
-      Parent = lagrp_Benutzer
+      Parent = lagrp_BenutzerHeader
       AlignHorz = ahClient
       AlignVert = avClient
       Control = grd_Benutzer
       ControlOptions.OriginalHeight = 5
       ControlOptions.OriginalWidth = 1129
       ControlOptions.ShowBorder = False
-      Index = 1
+      Index = 3
     end
     object laitem_RechteAllgemeinBezeichnung: TdxLayoutItem
       Parent = lagrp_RechteAllgemein
@@ -1348,6 +1350,7 @@ object frm_User: Tfrm_User
       AlignVert = avTop
       CaptionOptions.Text = '[B]Rechte PCM - Archiv[/B]'
       ButtonOptions.ShowExpandButton = True
+      Expanded = False
       Index = 1
     end
     object lagrp_RechteBackup: TdxLayoutGroup
@@ -1356,6 +1359,7 @@ object frm_User: Tfrm_User
       AlignVert = avTop
       CaptionOptions.Text = '[B]Rechte PCM - Backup[/B]'
       ButtonOptions.ShowExpandButton = True
+      Expanded = False
       Index = 2
     end
     object lagrp_RechteManager: TdxLayoutGroup
@@ -1364,6 +1368,7 @@ object frm_User: Tfrm_User
       AlignVert = avTop
       CaptionOptions.Text = '[B]Rechte PCM - Manager[/B]'
       ButtonOptions.ShowExpandButton = True
+      Expanded = False
       ItemIndex = 1
       LayoutDirection = ldHorizontal
       Index = 3
@@ -1374,6 +1379,7 @@ object frm_User: Tfrm_User
       AlignVert = avTop
       CaptionOptions.Text = '[B]Rechte PCM - MP3Manager[/B]'
       ButtonOptions.ShowExpandButton = True
+      Expanded = False
       Index = 5
     end
     object lagrp_RechteMediacenter: TdxLayoutGroup
@@ -1382,6 +1388,7 @@ object frm_User: Tfrm_User
       AlignVert = avTop
       CaptionOptions.Text = '[B]Rechte PCM - Mediacenter[/B]'
       ButtonOptions.ShowExpandButton = True
+      Expanded = False
       ItemIndex = 1
       LayoutDirection = ldHorizontal
       Index = 4
@@ -1582,6 +1589,7 @@ object frm_User: Tfrm_User
       AlignVert = avTop
       CaptionOptions.Text = '[B]Rechte PCM - Vokabeltrainer[/B]'
       ButtonOptions.ShowExpandButton = True
+      Expanded = False
       ItemIndex = 1
       LayoutDirection = ldHorizontal
       Index = 8
@@ -1592,6 +1600,7 @@ object frm_User: Tfrm_User
       AlignVert = avTop
       CaptionOptions.Text = '[B]Rechte PCM - Servicemanager[/B]'
       ButtonOptions.ShowExpandButton = True
+      Expanded = False
       ItemIndex = 1
       LayoutDirection = ldHorizontal
       Index = 7
@@ -1602,10 +1611,13 @@ object frm_User: Tfrm_User
       AlignVert = avTop
       CaptionOptions.Text = '[B]Rechte PCM - Notenrechner[/B]'
       ButtonOptions.ShowExpandButton = True
+      Expanded = False
       Index = 6
     end
     object laitm_RechteGrid: TdxLayoutItem
       Parent = lagrp_RechteHeader
+      AlignHorz = ahClient
+      AlignVert = avClient
       Control = grd_Rechte
       ControlOptions.OriginalHeight = 150
       ControlOptions.OriginalWidth = 1118
@@ -1740,7 +1752,6 @@ object frm_User: Tfrm_User
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
-      ItemIndex = 1
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 0
@@ -1765,6 +1776,8 @@ object frm_User: Tfrm_User
     end
     object lagrp_BenutzerSucheDetails: TdxLayoutGroup
       Parent = lagrp_BenutzerHeader
+      AlignHorz = ahClient
+      AlignVert = avTop
       CaptionOptions.Text = 'New Group'
       ItemIndex = 1
       LayoutDirection = ldHorizontal
@@ -1776,7 +1789,7 @@ object frm_User: Tfrm_User
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Text = '[B]Rechtedetails[/B]'
-      ItemIndex = 2
+      ItemIndex = 3
       Index = 0
     end
     object lagrp_BenutzerSuche: TdxLayoutGroup
@@ -1802,6 +1815,7 @@ object frm_User: Tfrm_User
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
+      ItemIndex = 8
       ShowBorder = False
       Index = 2
     end
