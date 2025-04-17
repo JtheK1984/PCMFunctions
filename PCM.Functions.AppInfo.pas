@@ -187,7 +187,11 @@ begin
   lbl_PCManagerAppInfo_Version.CaptionOptions.Text:= GetAppVersion;
   lbl_PCManagerAppInfo_Revision.CaptionOptions.Text:= GetFileDate;
   lbl_PCManagerAppInfo_Server.CaptionOptions.Text:= dm_PCM.sServer;
-  if (PCM_Logname <> 'PCMLizenzgenerator') and (PCM_Logname <> 'PCMBackup') then
+  if (PCM_Logname <> 'PCMBackup') and
+     (PCM_Logname <> 'PCMBenutzerverwaltung') and
+     (PCM_Logname <> 'PCMDevManager') and
+     (PCM_Logname <> 'PCMLizenzgenerator') and
+     (PCM_Logname <> 'PCMUpdate') then
   begin
     cxLabel1.CaptionOptions.Text:= dm_PCM.Firma;
     if not dm_PCM.bDemo then

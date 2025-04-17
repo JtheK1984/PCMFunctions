@@ -25,8 +25,6 @@ object frm_PCM_InfoApp: Tfrm_PCM_InfoApp
     AutoSize = True
     LayoutLookAndFeel = dxLayoutCxLookAndFeel1
     OptionsImage.Images = cxImageList1
-    ExplicitWidth = 680
-    ExplicitHeight = 303
     object img_PCManagerAppInfo_Image: TcxImage
       Left = 22
       Top = 28
