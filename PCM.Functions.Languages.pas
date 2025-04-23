@@ -8,7 +8,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, cxGraphics, cxControls, cxLookAndFeels,
   cxLookAndFeelPainters, cxContainer, cxEdit, cxGroupBox, cxRadioGroup, Vcl.Menus, Vcl.StdCtrls,
   cxButtons,StrUtils,inifiles, dxLayoutcxEditAdapters, dxLayoutControlAdapters,
-  dxLayoutContainer, cxClasses, dxLayoutControl, dxLayoutLookAndFeels,
+  dxLayoutContainer, cxClasses, dxLayoutControl, dxLayoutLookAndFeels, System.UITypes,
   dxUIAClasses,shellapi;
   {$EndRegion uses}
 type
