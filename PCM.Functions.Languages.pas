@@ -28,6 +28,7 @@ type
     cxButton2: TcxButton;
     procedure cxButton1Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure cxButton2Click(Sender: TObject);
   private
     { Private-Deklarationen }
   public
@@ -69,6 +70,11 @@ end;
 // Formfunktionen                                                             //
 ////////////////////////////////////////////////////////////////////////////////
 {$Region Formfunktionen}
+procedure Tfrm_Language.cxButton2Click(Sender: TObject);
+begin
+  Close;
+end;
+
 procedure Tfrm_Language.FormShow(Sender: TObject);
 begin
   case AnsiIndexStr(dm_pcm.slocale, ['DE', 'EN','FR','IT','ES']) of

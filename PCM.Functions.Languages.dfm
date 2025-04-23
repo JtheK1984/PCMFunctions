@@ -22,8 +22,6 @@ object frm_Language: Tfrm_Language
     TabOrder = 0
     AutoSize = True
     LayoutLookAndFeel = dxLayoutCxLookAndFeel1
-    ExplicitWidth = 491
-    ExplicitHeight = 161
     object cxRadioGroup1: TcxRadioGroup
       AlignWithMargins = True
       Left = 12
@@ -71,6 +69,7 @@ object frm_Language: Tfrm_Language
       Height = 25
       Caption = 'Abbrechen'
       TabOrder = 2
+      OnClick = cxButton2Click
     end
     object dxLayoutControl1Group_Root: TdxLayoutGroup
       AlignHorz = ahClient
