@@ -11,6 +11,16 @@ uses
 // allgemein
 resourcestring
   {$Region resourcestring}
+  // Splashscreen
+  rs_Splash_Sprache = 'Sprachdatei laden...';
+  rs_Splash_Lizenz = 'Lizenz prüfen...';
+  rs_Splash_Login = 'Benutzerlogin prüfen...';
+  rs_Splash_Rechte = 'Benutzerrechte prüfen...';
+  rs_Splash_Konfig = 'Konfiguration laden...';
+  rs_Splash_MenuLaden = 'Menüs laden...';
+  rs_Splash_MenuReg = 'Menüs registrieren...';
+
+
   rs_PCM_Benutzerverwaltung ='Benutzerverwaltung';
   rs_PCM_Systeminformation = 'Systeminformation';
   rs_PCM_Konfiguration = 'Konfiguration';
