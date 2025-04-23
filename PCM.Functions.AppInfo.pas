@@ -206,7 +206,7 @@ begin
     end;
   end
   else begin
-    cxButton1.Visible:= false;
+    dxLayoutItem7.Visible:= false;
     dm_PCM.qry_work.SQL.Text:= 'Select Benutzer From manager_lizenz';
     dm_PCM.qry_work.Open;
     cxLabel1.CaptionOptions.Text:= dm_PCM.qry_work.FieldByName('Benutzer').AsString;
