@@ -70,12 +70,14 @@ begin
   {$Region begin}
   // PCM - Allgemein
   ASSQL_GetAutologin[0]:= 'SELECT ID,Benutzer FROM benutzer WHERE benutzer  = :Benutzer and Autologin = True';
-  ASSQL_GetAllRights[0]:= 'SELECT mr.ba_backup, mr.dm_archiv,mr.Benutzer,mr.Konfiguration,mr.Design,mr.lg_Lizenzen,mr.lg_Programme, mr.ma_Kontakte as Kontakte,mr.ma_Kalender as Kalender,mr.ma_Stundenplan as Stundenplan,'+
-                       'mr.ma_Email as Email,mr.ma_Password as Password,mr.ma_Serials as Serials,mr.ma_Monatsuebersicht as Monatsuebersicht,'+
-                       'mr.ma_Verfuegung as Verfuegung,mr.ma_Einnahmen as Einnahmen,mr.ma_Ausgaben as Ausgaben,'+
-                       'mr.mc_Audioplayer AS Audioplayer,mr.mc_webradio AS  Webradio,mr.mc_Videoplayer AS Videoplayer,mr.mc_Fotos AS Fotos, ' +
-                       'mr.mm_mp3 as MP3 ' +
-                       'FROM benutzer mb LEFT OUTER JOIN rechte mr ON mr.ID = mb.ID_rechte WHERE mb.id = :ID';
+  ASSQL_GetAllRights[0]:= 'SELECT mr.Benutzer,mr.Konfiguration,mr.Design,mr.dm_archiv,mr.ba_backup,mr.lg_Lizenzen,' +
+                          'mr.lg_Programme,mr.ma_Kontakte as Kontakte,mr.ma_Kalender as Kalender,mr.ma_Stundenplan as Stundenplan,'+
+                          'mr.ma_Email as Email,mr.ma_Password as PASSWORD,mr.ma_Serials as Serials,mr.ma_Monatsuebersicht as Monatsuebersicht,'+
+                          'mr.ma_Verfuegung as Verfuegung,mr.ma_Einnahmen as Einnahmen,mr.ma_Ausgaben as Ausgaben,mr.mc_Audioplayer AS Audioplayer,'+
+                          'mr.mc_webradio AS Webradio,mr.mc_Videoplayer AS Videoplayer,mr.mc_Fotos AS Fotos,mr.mm_mp3 as MP3 ,mr.nr_Noten as Noten,'+
+                          'mr.sm_Backup as SMBackup,mr.sm_Shutdown as SmShutdown,mr.vk_Vokabeluebersicht as Vokabeluebersicht,'+
+                          'mr.Vk_Vokabeltest as Vokabeltest,mr.vk_Lernstatistik as Lernstatistik ' +
+                          'FROM benutzer mb LEFT OUTER JOIN rechte mr ON mr.ID = mb.ID_rechte WHERE mb.id = :ID';
   ASSQL_GetUSer[0]:= 'Select ID, Benutzer, Vorname, Nachname,Passwort,Autologin, ID_Rechte,Restapi  From Benutzer';
   ASSQL_GetRights[0]:= 'Select *  From Rechte';
   ASSQL_GetRightsDetail[0]:= 'Select Nummer, Bezeichnung From Rechte_detail';
