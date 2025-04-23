@@ -43,7 +43,6 @@ end;
 class function TAES.Decrypt(const Crypt: TBytes; const Key: TBytes; KeySize: integer; const InitVector: TBytes): TBytes;
 var
   Cipher: TDCP_rijndael;
-  I: integer;
 begin
   Cipher := TDCP_rijndael.Create(nil);
   try

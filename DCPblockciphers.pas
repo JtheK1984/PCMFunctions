@@ -37,7 +37,7 @@ type
   private
     IV, CV: array[0..15] of byte;
 
-    procedure IncCounter;
+//    procedure IncCounter;
   public
     class function GetBlockSize: integer; override;
       { Get the block size of the cipher (in bits) }
@@ -64,18 +64,18 @@ implementation
 
 {** TDCP_blockcipher256 ********************************************************}
 
-procedure TDCP_blockcipher256.IncCounter;
-var
-  i: integer;
-begin
-  Inc(CV[15]);
-  i:= 15;
-  while (i> 0) and (CV[i] = 0) do
-  begin
-    Inc(CV[i-1]);
-    Dec(i);
-  end;
-end;
+//procedure TDCP_blockcipher256.IncCounter;
+//var
+//  i: integer;
+//begin
+//  Inc(CV[15]);
+//  i:= 15;
+//  while (i> 0) and (CV[i] = 0) do
+//  begin
+//    Inc(CV[i-1]);
+//    Dec(i);
+//  end;
+//end;
 
 class function TDCP_blockcipher256.GetBlockSize: integer;
 begin

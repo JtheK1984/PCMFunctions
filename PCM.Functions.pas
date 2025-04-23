@@ -270,25 +270,50 @@ begin
   GetComputerName(pCh_P, dwd_dw);
   Result:= pCh_P;
 end;
-function EnDecrypt(AInput: string; AEncrypt: boolean) : RawByteString;
+//function EnDecrypt(AInput: string; AEncrypt: boolean) : RawByteString;
+//var
+//  ByteInput,OriginalText, Key, IV, EncryptedText,DecryptedText: TBytes;
+//begin
+//  OriginalText := TEncoding.ANSI.GetBytes(AInput);
+//  Key := TEncoding.ANSI.GetBytes('PCMDevelopmentJensHenske24021984'); // 256 bits-32 bytes
+//  IV := TEncoding.ANSI.GetBytes('PCMJensHenske284'); // 16 bytes
+//  if AEncrypt then
+//  begin
+//    EncryptedText := TAES.Encrypt(OriginalText, Key, 256, IV);
+//    Result:= TNetEncoding.Base64.EncodeBytesToString(EncryptedText);
+//  end
+//  else begin
+//    ByteInput:= TNetEncoding.Base64.DecodeStringToBytes(AInput);
+//    DecryptedText := TAES.Decrypt(ByteInput, Key, 256, IV);
+//    Result:= TEncoding.ANSI.GetString(DecryptedText);
+//  end;
+//end;
+
+function EnDecrypt(AInput: string; AEncrypt: boolean): RawByteString;
 var
-  ByteInput,OriginalText, Key, IV, EncryptedText,DecryptedText: TBytes;
-  i: integer;
+  ByteInput, OriginalText, Key, IV, EncryptedText, DecryptedText: TBytes;
+  TempStr: string;  // Zwischenspeicher für String-Result
 begin
   OriginalText := TEncoding.ANSI.GetBytes(AInput);
   Key := TEncoding.ANSI.GetBytes('PCMDevelopmentJensHenske24021984'); // 256 bits-32 bytes
   IV := TEncoding.ANSI.GetBytes('PCMJensHenske284'); // 16 bytes
+
   if AEncrypt then
   begin
     EncryptedText := TAES.Encrypt(OriginalText, Key, 256, IV);
-    Result:= TNetEncoding.Base64.EncodeBytesToString(EncryptedText);
+    TempStr := TNetEncoding.Base64.EncodeBytesToString(EncryptedText);
+    Result := RawByteString(TempStr);  // Explizite Typumwandlung
   end
-  else begin
-    ByteInput:= TNetEncoding.Base64.DecodeStringToBytes(AInput);
+  else
+  begin
+    ByteInput := TNetEncoding.Base64.DecodeStringToBytes(AInput);
     DecryptedText := TAES.Decrypt(ByteInput, Key, 256, IV);
-    Result:= TEncoding.ANSI.GetString(DecryptedText);
+    TempStr := TEncoding.ANSI.GetString(DecryptedText);
+    Result := RawByteString(TempStr);  // Explizite Typumwandlung
   end;
 end;
+
+
 procedure WriteLog(AProgram, ALogString: String; AError: integer);
 var
   tfLog: TextFile;
