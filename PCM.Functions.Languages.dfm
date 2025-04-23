@@ -2,8 +2,8 @@ object frm_Language: Tfrm_Language
   Left = 0
   Top = 0
   Caption = 'Sprache w'#228'hlen'
-  ClientHeight = 146
-  ClientWidth = 460
+  ClientHeight = 178
+  ClientWidth = 497
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -16,14 +16,14 @@ object frm_Language: Tfrm_Language
   object dxLayoutControl1: TdxLayoutControl
     Left = 0
     Top = 0
-    Width = 460
-    Height = 146
+    Width = 497
+    Height = 178
     Align = alClient
     TabOrder = 0
     AutoSize = True
     LayoutLookAndFeel = dxLayoutCxLookAndFeel1
-    ExplicitWidth = 454
-    ExplicitHeight = 129
+    ExplicitWidth = 460
+    ExplicitHeight = 146
     object cxRadioGroup1: TcxRadioGroup
       AlignWithMargins = True
       Left = 12
@@ -48,13 +48,13 @@ object frm_Language: Tfrm_Language
       Style.TransparentBorder = False
       TabOrder = 0
       Height = 89
-      Width = 436
+      Width = 473
     end
     object cxButton1: TcxButton
       AlignWithMargins = True
       Left = 12
-      Top = 109
-      Width = 436
+      Top = 141
+      Width = 473
       Height = 25
       Margins.Left = 5
       Margins.Top = 0
