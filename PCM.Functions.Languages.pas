@@ -9,7 +9,7 @@ uses
   cxLookAndFeelPainters, cxContainer, cxEdit, cxGroupBox, cxRadioGroup, Vcl.Menus, Vcl.StdCtrls,
   cxButtons,StrUtils,inifiles, dxLayoutcxEditAdapters, dxLayoutControlAdapters,
   dxLayoutContainer, cxClasses, dxLayoutControl, dxLayoutLookAndFeels,
-  dxUIAClasses;
+  dxUIAClasses,shellapi;
   {$EndRegion uses}
 type
   {$Region type}
@@ -23,6 +23,9 @@ type
     dxLayoutLookAndFeelList1: TdxLayoutLookAndFeelList;
     dxLayoutCxLookAndFeel1: TdxLayoutCxLookAndFeel;
     dxLayoutGroup1: TdxLayoutGroup;
+    dxLayoutGroup2: TdxLayoutGroup;
+    dxLayoutItem3: TdxLayoutItem;
+    cxButton2: TcxButton;
     procedure cxButton1Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
   private
@@ -49,7 +52,17 @@ uses
 procedure Tfrm_Language.cxButton1Click(Sender: TObject);
 begin
   dm_Pcm.slocale:= cxRadioGroup1.Properties.Items[cxRadioGroup1.Itemindex].Value;
-  close;
+  if MessageDlg('Soll die gewählte Sprache sofort übernommen werden? '
+  + slinebreak + 'Bei Ja wird das Programm neu gestartet.'
+   + slinebreak + 'Bei Nein wird die Sprache erst beim nächsten Start geändert.',mtInformation,[mbYes,mbNo], 0) = mrYes then
+  begin
+    dm_Pcm.slocale:= cxRadioGroup1.Properties.Items[cxRadioGroup1.Itemindex].Value;
+    ShellExecute(Handle, nil, PChar(Application.ExeName), nil, nil, SW_SHOWNORMAL);
+    Application.Terminate; // or Halt(0) for immediate exit[1][3]
+  end
+  else begin
+
+  end;
 end;
 {$EndRegion Buttonfunktionen}
 ////////////////////////////////////////////////////////////////////////////////

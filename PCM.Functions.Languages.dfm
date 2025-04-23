@@ -2,7 +2,7 @@ object frm_Language: Tfrm_Language
   Left = 0
   Top = 0
   Caption = 'Sprache w'#228'hlen'
-  ClientHeight = 178
+  ClientHeight = 150
   ClientWidth = 497
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -17,13 +17,13 @@ object frm_Language: Tfrm_Language
     Left = 0
     Top = 0
     Width = 497
-    Height = 178
+    Height = 150
     Align = alClient
     TabOrder = 0
     AutoSize = True
     LayoutLookAndFeel = dxLayoutCxLookAndFeel1
-    ExplicitWidth = 460
-    ExplicitHeight = 146
+    ExplicitWidth = 491
+    ExplicitHeight = 161
     object cxRadioGroup1: TcxRadioGroup
       AlignWithMargins = True
       Left = 12
@@ -53,8 +53,8 @@ object frm_Language: Tfrm_Language
     object cxButton1: TcxButton
       AlignWithMargins = True
       Left = 12
-      Top = 141
-      Width = 473
+      Top = 108
+      Width = 233
       Height = 25
       Margins.Left = 5
       Margins.Top = 0
@@ -63,6 +63,14 @@ object frm_Language: Tfrm_Language
       Caption = 'Sprache wechseln'
       TabOrder = 1
       OnClick = cxButton1Click
+    end
+    object cxButton2: TcxButton
+      Left = 252
+      Top = 108
+      Width = 233
+      Height = 25
+      Caption = 'Abbrechen'
+      TabOrder = 2
     end
     object dxLayoutControl1Group_Root: TdxLayoutGroup
       AlignHorz = ahClient
@@ -86,16 +94,16 @@ object frm_Language: Tfrm_Language
       Index = 0
     end
     object dxLayoutItem2: TdxLayoutItem
-      Parent = dxLayoutGroup1
+      Parent = dxLayoutGroup2
       AlignHorz = ahClient
-      AlignVert = avBottom
+      AlignVert = avTop
       CaptionOptions.Text = 'cxButton1'
       CaptionOptions.Visible = False
       Control = cxButton1
       ControlOptions.OriginalHeight = 25
-      ControlOptions.OriginalWidth = 1056
+      ControlOptions.OriginalWidth = 100
       ControlOptions.ShowBorder = False
-      Index = 1
+      Index = 0
     end
     object dxLayoutGroup1: TdxLayoutGroup
       Parent = dxLayoutControl1Group_Root
@@ -105,6 +113,28 @@ object frm_Language: Tfrm_Language
       ItemIndex = 1
       ShowBorder = False
       Index = 0
+    end
+    object dxLayoutGroup2: TdxLayoutGroup
+      Parent = dxLayoutGroup1
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem3: TdxLayoutItem
+      Parent = dxLayoutGroup2
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = cxButton2
+      ControlOptions.OriginalHeight = 25
+      ControlOptions.OriginalWidth = 100
+      ControlOptions.ShowBorder = False
+      Index = 1
     end
   end
   object dxLayoutLookAndFeelList1: TdxLayoutLookAndFeelList
