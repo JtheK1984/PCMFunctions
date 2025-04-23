@@ -283,7 +283,7 @@ object frm_User: Tfrm_User
       TabOrder = 5
       Transparent = True
       Height = 19
-      Width = 545
+      Width = 546
     end
     object edt_BenutzerName: TcxDBTextEdit
       Left = 95
@@ -302,7 +302,7 @@ object frm_User: Tfrm_User
       Style.IsFontAssigned = True
       TabOrder = 3
       OnExit = btn_BenutzerSaveClick
-      Width = 545
+      Width = 546
     end
     object edt_BenutzerUser: TcxDBTextEdit
       Left = 95
@@ -321,7 +321,7 @@ object frm_User: Tfrm_User
       Style.IsFontAssigned = True
       TabOrder = 2
       OnExit = btn_BenutzerSaveClick
-      Width = 545
+      Width = 546
     end
     object edt_BenutzerSurname: TcxDBTextEdit
       Left = 95
@@ -342,7 +342,7 @@ object frm_User: Tfrm_User
       TabOrder = 4
       OnExit = btn_BenutzerSaveClick
       Height = 19
-      Width = 545
+      Width = 546
     end
     object btn_BenutzerChangePassword: TcxButton
       Left = 1124
@@ -363,7 +363,7 @@ object frm_User: Tfrm_User
       OnClick = btn_BenutzerChangePasswordClick
     end
     object chkbx_BenutzerAutologin: TcxDBCheckBox
-      Left = 751
+      Left = 752
       Top = 242
       Hint = 'automatisches Login des Benutzers '
       BiDiMode = bdLeftToRight
@@ -384,7 +384,7 @@ object frm_User: Tfrm_User
       Transparent = True
     end
     object edt_BenutzerPassword: TcxDBTextEdit
-      Left = 701
+      Left = 700
       Top = 188
       Hint = 'Passwort des Benutzers'
       AutoSize = False
@@ -405,10 +405,10 @@ object frm_User: Tfrm_User
       OnEnter = edt_BenutzerPasswordEnter
       OnExit = edt_BenutzerPasswordExit
       Height = 19
-      Width = 417
+      Width = 418
     end
     object lucmbbx_BenutzerRights: TcxDBLookupComboBox
-      Left = 701
+      Left = 700
       Top = 215
       Hint = 'Recht des Benutzers'
       DataBinding.DataField = 'ID_Rechte'
@@ -430,7 +430,7 @@ object frm_User: Tfrm_User
       Style.IsFontAssigned = True
       TabOrder = 8
       OnExit = btn_BenutzerSaveClick
-      Width = 543
+      Width = 544
     end
     object brdckCtrl_Benutzer: TdxBarDockControl
       Left = 36
@@ -1225,7 +1225,7 @@ object frm_User: Tfrm_User
       Parent = lagrp_BenutzerPassword
       AlignHorz = ahClient
       AlignVert = avTop
-      CaptionOptions.Text = 'Password:'
+      CaptionOptions.Text = 'Passwort:'
       Control = edt_BenutzerPassword
       ControlOptions.OriginalHeight = 19
       ControlOptions.OriginalWidth = 40
