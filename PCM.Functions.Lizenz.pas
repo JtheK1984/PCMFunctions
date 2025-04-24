@@ -16,27 +16,27 @@ uses
 type
   {$Region type}
   Tfrm_PCM_Lizenz = class(TForm)
-    btn_SaveLicence: TcxButton;
-    btn_LizenzCancel: TcxButton;
+    btn_Save: TcxButton;
+    btn_Cancel: TcxButton;
     edt_kunde: TcxTextEdit;
     edt_lizenz: TcxTextEdit;
     img_PCManagerLogin_Image: TcxImage;
-    dxLayoutControl1Group_Root: TdxLayoutGroup;
-    dxLayoutControl1: TdxLayoutControl;
-    dxLayoutItem1: TdxLayoutItem;
-    dxLayoutGroup5: TdxLayoutGroup;
-    dxLayoutItem2: TdxLayoutItem;
-    dxLayoutItem3: TdxLayoutItem;
-    dxLayoutItem4: TdxLayoutItem;
-    dxLayoutItem5: TdxLayoutItem;
-    dxLayoutLookAndFeelList1: TdxLayoutLookAndFeelList;
+    lactrl_LizenzGroup_Root: TdxLayoutGroup;
+    lactrl_Lizenz: TdxLayoutControl;
+    laitm_LizenzImage: TdxLayoutItem;
+    lagrp_LizenzDetails: TdxLayoutGroup;
+    laitm_LizenzName: TdxLayoutItem;
+    laitm_LizenzLizenz: TdxLayoutItem;
+    laitm_LizenzEintragen: TdxLayoutItem;
+    laitm_LizenzAbbrechen: TdxLayoutItem;
+    lalaflst_Lizenz: TdxLayoutLookAndFeelList;
     dxLayoutCxLookAndFeel1: TdxLayoutCxLookAndFeel;
-    dxLayoutGroup8: TdxLayoutGroup;
-    dxLayoutGroup9: TdxLayoutGroup;
+    lagrp_Lizenz: TdxLayoutGroup;
+    lagrp_LizenzBtn: TdxLayoutGroup;
     procedure AbbrechenClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure edt_lizenzChange(Sender: TObject);
-    procedure btn_SaveLicenceClick(Sender: TObject);
+    procedure btn_SaveClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
   private
     { Private-Deklarationen }
@@ -313,7 +313,7 @@ begin
   else
     Application.Terminate;
 end;
-procedure Tfrm_PCM_Lizenz.btn_SaveLicenceClick(Sender: TObject);
+procedure Tfrm_PCM_Lizenz.btn_SaveClick(Sender: TObject);
 begin
   if edt_kunde.Text = '' then
   begin
@@ -331,9 +331,9 @@ end;
 procedure Tfrm_PCM_Lizenz.edt_lizenzChange(Sender: TObject);
 begin
   if Length(edt_lizenz.text) < 23 then
-    btn_SaveLicence.Enabled:= false
+    btn_Save.Enabled:= false
   else
-    btn_SaveLicence.Enabled:= true;
+    btn_Save.Enabled:= true;
 end;
 {$EndRegion Buttonfunktionen}
 ////////////////////////////////////////////////////////////////////////////////
@@ -341,16 +341,24 @@ end;
 ////////////////////////////////////////////////////////////////////////////////
 {$Region Formfunktionen}
 procedure Tfrm_PCM_Lizenz.FormCreate(Sender: TObject);
+	procedure LoadRessourceStrings;
+	begin
+    laitm_LizenzName.CaptionOptions.Text:= rs_Function_Lizenz_Name;
+    laitm_LizenzLizenz.CaptionOptions.Text:= rs_Function_Lizenz_Lizenz;
+    btn_Save.Caption:= rs_Function_Lizenz_Eintragen;
+    btn_Cancel.Caption:= rs_general_Abbrechen;
+	end;
 begin
   dm_PCM.bAppTerm:= true;
+  LoadRessourceStrings;
 end;
 procedure Tfrm_PCM_Lizenz.FormShow(Sender: TObject);
 var
   f: textfile;
   text:String;
 begin
-  btn_SaveLicence.optionsimage.images:= dm_PCM.imglst_16x16;
-  btn_LizenzCancel.optionsimage.images:= dm_PCM.imglst_16x16;
+  btn_Save.optionsimage.images:= dm_PCM.imglst_16x16;
+  btn_Cancel.optionsimage.images:= dm_PCM.imglst_16x16;
   sVersion:= GetAppVersion;
   caption:= PCM_Programmname + rs_PCM_Lizenz;
   if FileExists(ExtractFilepath(Paramstr(0)) + PCM_Logname + '_Lizenz.liz') then
@@ -368,8 +376,8 @@ begin
         edt_kunde.Text:= text;
         ReadLn(f, text);
         edt_lizenz.Text:= text;
-        btn_SaveLicence.Enabled:= true;
-        btn_SaveLicence.SetFocus;
+        btn_Save.Enabled:= true;
+        btn_Save.SetFocus;
       end;
     end;
   end;

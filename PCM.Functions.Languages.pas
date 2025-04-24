@@ -13,22 +13,23 @@ uses
   {$EndRegion uses}
 type
   {$Region type}
-  Tfrm_Language = class(TForm)
-    cxRadioGroup1: TcxRadioGroup;
-    cxButton1: TcxButton;
-    dxLayoutControl1Group_Root: TdxLayoutGroup;
-    dxLayoutControl1: TdxLayoutControl;
-    dxLayoutItem1: TdxLayoutItem;
-    dxLayoutItem2: TdxLayoutItem;
-    dxLayoutLookAndFeelList1: TdxLayoutLookAndFeelList;
+  Tfrm_PCM_Language = class(TForm)
+    rgrp_Sprache: TcxRadioGroup;
+    btn_Ok: TcxButton;
+    lactrl_SpracheGroup_Root: TdxLayoutGroup;
+    lactrl_Sprache: TdxLayoutControl;
+    laitm_Sprache: TdxLayoutItem;
+    laitm_SpracheOk: TdxLayoutItem;
+    lalaflst_Sprache: TdxLayoutLookAndFeelList;
     dxLayoutCxLookAndFeel1: TdxLayoutCxLookAndFeel;
-    dxLayoutGroup1: TdxLayoutGroup;
-    dxLayoutGroup2: TdxLayoutGroup;
-    dxLayoutItem3: TdxLayoutItem;
-    cxButton2: TcxButton;
-    procedure cxButton1Click(Sender: TObject);
+    lagrp_Sprache: TdxLayoutGroup;
+    lagrp_SpracheBtn: TdxLayoutGroup;
+    laitm_SpracheCancel: TdxLayoutItem;
+    btn_Cancel: TcxButton;
+    procedure btn_OkClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
-    procedure cxButton2Click(Sender: TObject);
+    procedure btn_CancelClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private-Deklarationen }
   public
@@ -37,32 +38,27 @@ type
   {$EndRegion type}
 var
   {$Region var}
-  frm_Language: Tfrm_Language;
+  frm_PCM_Language: Tfrm_PCM_Language;
   {$EndRegion var}
 implementation
 {$R *.dfm}
 uses
   {$Region uses}
   PCM.Data,
-  PCM.Main;
+  PCM.Main,
+  PCm.Strings;
   {$EndRegion uses}
 ////////////////////////////////////////////////////////////////////////////////
 // Buttonfunktionen                                                           //
 ////////////////////////////////////////////////////////////////////////////////
 {$Region Buttonfunktionen}
-procedure Tfrm_Language.cxButton1Click(Sender: TObject);
+procedure Tfrm_PCM_Language.btn_OkClick(Sender: TObject);
 begin
-  dm_Pcm.slocale:= cxRadioGroup1.Properties.Items[cxRadioGroup1.Itemindex].Value;
-  if MessageDlg('Soll die gewählte Sprache sofort übernommen werden? '
-  + slinebreak + 'Bei Ja wird das Programm neu gestartet.'
-   + slinebreak + 'Bei Nein wird die Sprache erst beim nächsten Start geändert.',mtInformation,[mbYes,mbNo], 0) = mrYes then
+  dm_Pcm.slocale:= rgrp_Sprache.Properties.Items[rgrp_Sprache.Itemindex].Value;
+  if MessageDlg(rs_Function_Sprache_Message,mtInformation,[mbYes,mbNo], 0) = mrYes then
   begin
-    dm_Pcm.slocale:= cxRadioGroup1.Properties.Items[cxRadioGroup1.Itemindex].Value;
     ShellExecute(Handle, nil, PChar(Application.ExeName), nil, nil, SW_SHOWNORMAL);
-    Application.Terminate; // or Halt(0) for immediate exit[1][3]
-  end
-  else begin
-
+    Application.Terminate;
   end;
 end;
 {$EndRegion Buttonfunktionen}
@@ -70,19 +66,28 @@ end;
 // Formfunktionen                                                             //
 ////////////////////////////////////////////////////////////////////////////////
 {$Region Formfunktionen}
-procedure Tfrm_Language.cxButton2Click(Sender: TObject);
+procedure Tfrm_PCM_Language.btn_CancelClick(Sender: TObject);
 begin
   Close;
 end;
-
-procedure Tfrm_Language.FormShow(Sender: TObject);
+procedure Tfrm_PCM_Language.FormCreate(Sender: TObject);
+  procedure LoadRessourceStrings;
+  begin
+    Caption:= rs_Function_Sprache_FormCaption;
+    rgrp_Sprache.Caption:= rs_Function_Sprache_Sprache;
+  	rgrp_Sprache.Properties.Items[0].Caption:= rs_Function_Sprache_SpracheDE;
+  	rgrp_Sprache.Properties.Items[1].Caption:= rs_Function_Sprache_SpracheEN;
+  	btn_ok.Caption:= rs_Function_Sprache_SpracheWchseln;
+ 	  btn_Cancel.Caption:= rs_general_Abbrechen;
+  end;
 begin
-  case AnsiIndexStr(dm_pcm.slocale, ['DE', 'EN','FR','IT','ES']) of
-  0: cxRadioGroup1.ItemIndex:= 0;
-  1: cxRadioGroup1.ItemIndex:= 1;
-  2: cxRadioGroup1.ItemIndex:= 2;
-  3: cxRadioGroup1.ItemIndex:= 3;
-  4: cxRadioGroup1.ItemIndex:= 4;
+  LoadRessourceStrings;
+end;
+procedure Tfrm_PCM_Language.FormShow(Sender: TObject);
+begin
+  case AnsiIndexStr(dm_pcm.slocale, ['DE', 'EN']) of
+  0: rgrp_Sprache.ItemIndex:= 0;
+  1: rgrp_Sprache.ItemIndex:= 1;
   end;
 end;
 {$EndRegion Formfunktionen}

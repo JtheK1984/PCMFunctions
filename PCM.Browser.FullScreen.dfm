@@ -1,7 +1,6 @@
-object frm_Browser_FullScreen: Tfrm_Browser_FullScreen
+object frm_PCM_Browser_FullScreen: Tfrm_PCM_Browser_FullScreen
   Left = 0
   Top = 0
-  Caption = 'frm_Browser_FullScreen'
   ClientHeight = 441
   ClientWidth = 624
   Color = clBtnFace

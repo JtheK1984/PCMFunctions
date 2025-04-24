@@ -70,55 +70,27 @@ uses
 
 type
   {$Region Type}
-  Tfrm_Design = class(TForm)
+  Tfrm_PCM_Design = class(TForm)
     brdckCtrl_Main: TdxBarDockControl;
     brmgr_Main: TdxBarManager;
-    btn_OptionSaveUser: TdxBarLargeButton;
     cbx_Design: TcxComboBox;
     btn_DesignSave: TdxBarLargeButton;
-    cxGrid1DBTableView1: TcxGridDBTableView;
-    cxGrid1DBTableView1Column1: TcxGridDBColumn;
-    cxGrid1DBTableView1Column2: TcxGridDBColumn;
-    cxGrid1DBTableView1Column3: TcxGridDBColumn;
-    cxGrid1Level1: TcxGridLevel;
-    cxGrid2: TcxGrid;
-    des_Button1: TcxButton;
-    des_Button2: TcxButton;
-    des_Button3: TcxButton;
-    des_CheckBox1: TcxCheckBox;
-    des_Edit1: TcxTextEdit;
-    des_Label1: TcxLabel;
-    des_RadioButton1: TcxRadioButton;
-    des_ToolButton1: TcxButton;
-    des_ToolButton2: TcxButton;
-    des_ToolButton3: TcxButton;
-    dxBarManager1Bar1: TdxBar;
+    tb_design: TdxBar;
     lactrl_Main: TdxLayoutControl;
     lactrl_MainGroup_Root: TdxLayoutGroup;
     laCxlaf_Design: TdxLayoutCxLookAndFeel;
     laCxlaf_Main: TdxLayoutCxLookAndFeel;
     lagrp_Design: TdxLayoutGroup;
-    lagrp_DesignButtons: TdxLayoutGroup;
     lagrp_DesignDetail: TdxLayoutGroup;
-    lagrp_DesignDetail1: TdxLayoutGroup;
-    lagrp_DesignDetailForm: TdxLayoutGroup;
     lagrp_DesignGroup: TdxLayoutGroup;
-    lagrp_DesignToolButtons: TdxLayoutGroup;
     laitm_DesignBar: TdxLayoutItem;
-    laitm_DesignButton1: TdxLayoutItem;
-    laitm_DesignButton2: TdxLayoutItem;
-    laitm_DesignButton3: TdxLayoutItem;
-    laitm_DesignCheckBox1: TdxLayoutItem;
     laitm_DesignDesign: TdxLayoutItem;
-    laitm_DesignEdit1: TdxLayoutItem;
-    laitm_DesignGrid: TdxLayoutItem;
-    laitm_DesignLabel1: TdxLayoutItem;
-    laitm_DesignRadiobutton1: TdxLayoutItem;
-    laitm_DesignToolButton1: TdxLayoutItem;
-    laitm_DesignToolButton2: TdxLayoutItem;
-    laitm_DesignToolButton3: TdxLayoutItem;
     lalaflst_Design: TdxLayoutLookAndFeelList;
     lalaflst_Main: TdxLayoutLookAndFeelList;
+    ImageCollection1: TImageCollection;
+    dxLayoutItem1: TdxLayoutItem;
+    lagrp_DesignDetail1: TdxLayoutGroup;
+    VirtualImage1: TVirtualImage;
     procedure btn_DesignSaveClick(Sender: TObject);
     procedure cbx_DesignPropertiesChange(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -130,7 +102,7 @@ type
   {$EndRegion Type}
 var
   {$Region var}
-  frm_Design: Tfrm_Design;
+  frm_PCM_Design: Tfrm_PCM_Design;
   {$EndRegion var}
 implementation
 {$R *.dfm}
@@ -145,25 +117,11 @@ uses
 // Buttonfunktionen                                                           //
 ////////////////////////////////////////////////////////////////////////////////
 {$Region Buttonfunktionen}
-procedure Tfrm_Design.cbx_DesignPropertiesChange(Sender: TObject);
+procedure Tfrm_PCM_Design.cbx_DesignPropertiesChange(Sender: TObject);
 begin
-  if cbx_Design.ItemIndex > -1 then
-  begin
-    des_Label1.Style.LookAndFeel.SkinName:= cbx_Design.Properties.Items[cbx_Design.Itemindex];
-    des_Edit1.Style.LookAndFeel.SkinName:= cbx_Design.Properties.Items[cbx_Design.Itemindex];
-    des_CheckBox1.Style.LookAndFeel.SkinName:= cbx_Design.Properties.Items[cbx_Design.Itemindex];
-    des_RadioButton1.LookAndFeel.SkinName:= cbx_Design.Properties.Items[cbx_Design.Itemindex];
-    cxGrid2.LookAndFeel.SkinName:= cbx_Design.Properties.Items[cbx_Design.Itemindex];
-    des_Button1.LookAndFeel.SkinName:= cbx_Design.Properties.Items[cbx_Design.Itemindex];
-    des_Button2.LookAndFeel.SkinName:= cbx_Design.Properties.Items[cbx_Design.Itemindex];
-    des_Button3.LookAndFeel.SkinName:= cbx_Design.Properties.Items[cbx_Design.Itemindex];
-    des_ToolButton1.LookAndFeel.SkinName:= cbx_Design.Properties.Items[cbx_Design.Itemindex];
-    des_ToolButton2.LookAndFeel.SkinName:= cbx_Design.Properties.Items[cbx_Design.Itemindex];
-    des_ToolButton3.LookAndFeel.SkinName:= cbx_Design.Properties.Items[cbx_Design.Itemindex];
-    laCxlaf_Design.LookAndFeel.SkinName:= cbx_Design.Properties.Items[cbx_Design.Itemindex];
-  end;
+  VirtualImage1.ImageIndex:= cbx_Design.ItemIndex;
 end;
-procedure Tfrm_Design.btn_DesignSaveClick(Sender: TObject);
+procedure Tfrm_PCM_Design.btn_DesignSaveClick(Sender: TObject);
 var
   iniFile : TIniFile;
 begin
@@ -181,8 +139,12 @@ end;
 // Formfunktionen                                                             //
 ////////////////////////////////////////////////////////////////////////////////
 {$Region Formfunktionen}
-procedure Tfrm_Design.FormShow(Sender: TObject);
+procedure Tfrm_PCM_Design.FormShow(Sender: TObject);
 begin
+  btn_DesignSave.Caption:= rs_general_Save;
+  lagrp_DesignGroup.CaptionOptions.Text:= rs_Function_Design_Prgramdesign;
+  laitm_DesignDesign.CaptionOptions.Text:= rs_Function_Design_Design;
+  lagrp_DesignDetail1.CaptionOptions.Text:= rs_Function_Design_Vorschau;
   cbx_Design.ItemIndex := cbx_Design.Properties.Items.IndexOf(dm_PCM.sDesign);
 end;
 {$EndRegion Formfunktionen}

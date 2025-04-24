@@ -11,7 +11,7 @@ uses
   {$EndRegion uses}
 type
   {$Region uses}
-  Tfrm_Browser_FullScreen = class(TForm)
+  Tfrm_PCM_Browser_FullScreen = class(TForm)
     pnl_D: TcxGroupBox;
     splt_D: TcxSplitter;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -29,7 +29,7 @@ type
   {$EndRegion uses}
 var
   {$Region uses}
-  frm_Browser_FullScreen: Tfrm_Browser_FullScreen;
+  frm_PCM_Browser_FullScreen: Tfrm_PCM_Browser_FullScreen;
   {$EndRegion uses}
 implementation
 {$R *.dfm}
@@ -41,12 +41,12 @@ uses
 // Hilfsfunktionen                                                            //
 ////////////////////////////////////////////////////////////////////////////////
 {$Region Hilfsfunktionen}
-function Tfrm_Browser_FullScreen.Execute(const AShowModal: Boolean; ALabel, AUrl: String) : boolean;
+function Tfrm_PCM_Browser_FullScreen.Execute(const AShowModal: Boolean; ALabel, AUrl: String) : boolean;
 begin
   Result:= false;
   pnl_d.Visible:= false;
   splt_D.Visible:= false;
-  frm_Browser_FullScreen.caption:= ALabel;
+  frm_PCM_Browser_FullScreen.caption:= ALabel;
   FWebBrowser.Navigate(AURL);
   if AShowModal then
   begin
@@ -55,14 +55,14 @@ begin
       Result:= true;
   end;
 end;
-function Tfrm_Browser_FullScreen.Execute(const AShowModal: Boolean; ALabel, AUrl: String; ADevTools: boolean; ADevToolsHandle: hwnd) : boolean;
+function Tfrm_PCM_Browser_FullScreen.Execute(const AShowModal: Boolean; ALabel, AUrl: String; ADevTools: boolean; ADevToolsHandle: hwnd) : boolean;
 var
   DevToolsRect: TRect;
 begin
   DevToolsHWND:= ADevToolsHandle;
   pnl_d.Visible:= true;
   splt_D.Visible:= true;
-  frm_Browser_FullScreen.caption:= ALabel;
+  frm_PCM_Browser_FullScreen.caption:= ALabel;
   FWebBrowser.Navigate(AURL);
   GetWindowRect(pnl_d.Handle, DevToolsRect);
   Winapi.Windows.SetParent(DevToolsHWND, pnl_d.Handle);
@@ -80,7 +80,7 @@ end;
 // Buttonfunktionen                                                           //
 ////////////////////////////////////////////////////////////////////////////////
 {$Region Buttonfunktionen}
-procedure Tfrm_Browser_FullScreen.pnl_DResize(Sender: TObject);
+procedure Tfrm_PCM_Browser_FullScreen.pnl_DResize(Sender: TObject);
 var
   DevToolsRect: TRect;
 begin
@@ -92,7 +92,7 @@ end;
 // Formfunktionen                                                             //
 ////////////////////////////////////////////////////////////////////////////////
 {$Region Formfunktionen}
-procedure Tfrm_Browser_FullScreen.FormClose(Sender: TObject; var Action: TCloseAction);
+procedure Tfrm_PCM_Browser_FullScreen.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
 //  if DevToolsHWND <> 0 then
 //  begin
@@ -100,10 +100,10 @@ begin
 //  end;
   ModalResult := mrOk;
 end;
-procedure Tfrm_Browser_FullScreen.FormCreate(Sender: TObject);
+procedure Tfrm_PCM_Browser_FullScreen.FormCreate(Sender: TObject);
 begin
   FWebBrowser := TWebBrowserFactory.CreateWebBrowser(Self);
-  FWebBrowser.Parent := frm_Browser_FullScreen;
+  FWebBrowser.Parent := frm_PCM_Browser_FullScreen;
   FWebBrowser.Align := alClient;
   FWebBrowser.OnBeforeNavigate := nil;
 end;

@@ -88,7 +88,7 @@ uses
   {$EndRegion uses}
 type
   {$Region type}
-  Tfrm_User = class(TForm)
+  Tfrm_PCM_User = class(TForm)
     brdckCtrl_Benutzer: TdxBarDockControl;
     brdckCtrl_Rechte: TdxBarDockControl;
     brmgr_Benutzer: TdxBarManager;
@@ -258,7 +258,7 @@ type
   {$EndRegion type}
 var
   {$Region var}
-  frm_User: Tfrm_User;
+  frm_PCM_User: Tfrm_PCM_User;
   {$EndRegion var}
 implementation
 {$R *.dfm}
@@ -274,7 +274,7 @@ uses
 // Hilfsfunktionen                                                            //
 ////////////////////////////////////////////////////////////////////////////////
 {$Region Hilfsfunktionen}
-procedure Tfrm_User.SetGridViews(Show:boolean);
+procedure Tfrm_PCM_User.SetGridViews(Show:boolean);
 begin
   if Show then
   begin
@@ -290,7 +290,7 @@ begin
     SaveGridViewRight.Free;
   end;
 end;
-procedure Tfrm_User.SetButtons;
+procedure Tfrm_PCM_User.SetButtons;
 begin
   // Benutzer
   if dm_PCM.iBenutzer >= 2 then
@@ -315,17 +315,17 @@ end;
 // Buttonfunktionen                                                           //
 ////////////////////////////////////////////////////////////////////////////////
 {$Region Buttonfunktionen}
-procedure Tfrm_User.btn_BenutzerCancelClick(Sender: TObject);
+procedure Tfrm_PCM_User.btn_BenutzerCancelClick(Sender: TObject);
 begin
   qry_Benutzer.Cancel;
 end;
-procedure Tfrm_User.btn_BenutzerChangePasswordClick(Sender: TObject);
+procedure Tfrm_PCM_User.btn_BenutzerChangePasswordClick(Sender: TObject);
 begin
   dm_PCM.iIDBenutzerPCM:= qry_Benutzer.FieldByName('ID').AsInteger;
   Application.CreateForm(TfrM_PCM_ChangePW,frM_PCM_ChangePW);
   frM_PCM_ChangePW.ShowModal;
 end;
-procedure Tfrm_User.btn_BenutzerDeleteClick(Sender: TObject);
+procedure Tfrm_PCM_User.btn_BenutzerDeleteClick(Sender: TObject);
 begin
   if qry_Benutzer.FieldByName('ID').AsInteger > 1 then
   begin
@@ -335,7 +335,7 @@ begin
     MessageDlg(rs_PCMBenutzerverwaltung_BenutzerLoeschen , mtWarning, [mbOk], 0);
   end;
 end;
-procedure Tfrm_User.btn_BenutzerNewClick(Sender: TObject);
+procedure Tfrm_PCM_User.btn_BenutzerNewClick(Sender: TObject);
 begin
   if qry_Benutzer.State in [dsInsert, dsedit] then
     qry_Benutzer.Post;
@@ -348,7 +348,7 @@ begin
     qry_Benutzer.FieldByName('ID_Rechte').AsInteger:= 1;
   edt_BenutzerUser.SetFocus;
 end;
-procedure Tfrm_User.btn_BenutzerSaveClick(Sender: TObject);
+procedure Tfrm_PCM_User.btn_BenutzerSaveClick(Sender: TObject);
 begin
   if qry_Benutzer.State in [dsInsert, dsEdit] then
   begin
@@ -359,11 +359,11 @@ begin
     qry_Benutzer.Post;
   end;
 end;
-procedure Tfrm_User.btn_RechtCancelClick(Sender: TObject);
+procedure Tfrm_PCM_User.btn_RechtCancelClick(Sender: TObject);
 begin
   qry_Rechte.Cancel;
 end;
-procedure Tfrm_User.btn_RechtDeleteClick(Sender: TObject);
+procedure Tfrm_PCM_User.btn_RechtDeleteClick(Sender: TObject);
 begin
   if qry_Rechte.FieldByName('ID').AsInteger > 4 then
   begin
@@ -373,7 +373,7 @@ begin
     MessageDlg(rs_PCMBenutzerverwaltung_RechteLoeschen  , mtWarning, [mbOk], 0);
   end;
 end;
-procedure Tfrm_User.btn_RechtNewClick(Sender: TObject);
+procedure Tfrm_PCM_User.btn_RechtNewClick(Sender: TObject);
 begin
   if qry_Rechte.State in [dsInsert, dsedit] then
     qry_Rechte.Post;
@@ -405,7 +405,7 @@ begin
   qry_Rechte.FieldByName('vk_Lernstatistik').AsInteger:= 3;
   edt_OptionRight.SetFocus;
 end;
-procedure Tfrm_User.btn_RechtSaveClick(Sender: TObject);
+procedure Tfrm_PCM_User.btn_RechtSaveClick(Sender: TObject);
 begin
   if (qry_Rechte.FieldByName('ID').AsInteger > 4) or (qry_Rechte.FieldByName('ID').AsInteger < 0) then
   begin
@@ -425,14 +425,14 @@ end;
 // Editfunktionen                                                             //
 ////////////////////////////////////////////////////////////////////////////////
 {$Region Editfunktionen}
-procedure Tfrm_User.edt_BenutzerPasswordEnter(Sender: TObject);
+procedure Tfrm_PCM_User.edt_BenutzerPasswordEnter(Sender: TObject);
 begin
   if Length(edt_BenutzerPassword.Text) > 0 then
     edt_BenutzerPassword.Properties.ReadOnly:= true
   else
     edt_BenutzerPassword.Properties.ReadOnly:= false;
 end;
-procedure Tfrm_User.edt_BenutzerPasswordExit(Sender: TObject);
+procedure Tfrm_PCM_User.edt_BenutzerPasswordExit(Sender: TObject);
 var
   astr_password: string;
 begin
@@ -443,12 +443,12 @@ begin
     btn_BenutzerSave.Click;
   end;
 end;
-procedure Tfrm_User.edt_RechteSucheBenutzerPropertiesButtonClick(Sender: TObject; AButtonIndex: Integer);
+procedure Tfrm_PCM_User.edt_RechteSucheBenutzerPropertiesButtonClick(Sender: TObject; AButtonIndex: Integer);
 begin
   edt_RechteSucheBezeichnung.Text:= '';
   qry_Rechte.Filtered:= false;
 end;
-procedure Tfrm_User.edt_RechteSucheBenutzerPropertiesChange(Sender: TObject);
+procedure Tfrm_PCM_User.edt_RechteSucheBenutzerPropertiesChange(Sender: TObject);
 begin
   if Length(edt_RechteSucheBezeichnung.text) = 0 then
   begin
@@ -459,12 +459,12 @@ begin
     qry_Benutzer.Filtered:= true;
   end;
 end;
-procedure Tfrm_User.edt_searchUserPropertiesButtonClick(Sender: TObject; AButtonIndex: Integer);
+procedure Tfrm_PCM_User.edt_searchUserPropertiesButtonClick(Sender: TObject; AButtonIndex: Integer);
 begin
   edt_BenutzerSucheBenutzer.Text:= '';
   qry_Benutzer.Filtered:= false;
 end;
-procedure Tfrm_User.edt_searchUserPropertiesChange(Sender: TObject);
+procedure Tfrm_PCM_User.edt_searchUserPropertiesChange(Sender: TObject);
 begin
   if Length(edt_BenutzerSucheBenutzer.text) = 0 then
   begin
@@ -480,7 +480,7 @@ end;
 // Sonstigefunktionen                                                         //
 ////////////////////////////////////////////////////////////////////////////////
 {$Region Sonstigefunktionen}
-procedure Tfrm_User.lucmbbx_ChangeColorRight(Sender: TObject);
+procedure Tfrm_PCM_User.lucmbbx_ChangeColorRight(Sender: TObject);
 var
   ARight: TcxDBLookupComboBox;
 begin
@@ -504,7 +504,7 @@ begin
     end;
   end;
 end;
-procedure Tfrm_User.SetButtonsEnableVisible(DataSet: TDataSet);
+procedure Tfrm_PCM_User.SetButtonsEnableVisible(DataSet: TDataSet);
 begin
   SetButtons;
 end;
@@ -513,11 +513,11 @@ end;
 // Formfunktionen                                                             //
 ////////////////////////////////////////////////////////////////////////////////
 {$Region Formfunktionen}
-procedure Tfrm_User.FormDestroy(Sender: TObject);
+procedure Tfrm_PCM_User.FormDestroy(Sender: TObject);
 begin
   SetGridViews(false);
 end;
-procedure Tfrm_User.FormShow(Sender: TObject);
+procedure Tfrm_PCM_User.FormShow(Sender: TObject);
   procedure InitializeRights;
   begin
     // Benutzerverwaltung / Lesen
@@ -617,6 +617,71 @@ procedure Tfrm_User.FormShow(Sender: TObject);
     grdDBTblView_RechteBezeichnung.Caption:= rs_PCMBenutzerverwaltung_Bezeichnung;
   end;
 begin
+  btn_BenutzerNew.Caption:= rs_Function_Benutzer_New;
+  btn_BenutzerSave.Caption:= rs_Function_Benutzer_Save;
+  btn_BenutzerCancel.Caption:= rs_general_Abbrechen;
+  btn_BenutzerDelete.Caption:= rs_Function_Benutzer_Delete;
+  btn_BenutzerChangePassword.Caption:= rs_Function_Benutzer_ChangePassword;
+
+  btn_RechtNew.Caption:= rs_Function_Benutzer_RechtNew;
+  btn_RechtSave.Caption:= rs_Function_Benutzer_RechtSave;
+  btn_RechtCancel.Caption:= rs_general_Abbrechen;
+  btn_RechtDelete.Caption:= rs_Function_Benutzer_RechtDelete;
+  lagrp_Benutzer.CaptionOptions.Text:= rs_Function_Benutzer_Benutzer;
+  lagrp_BenutzerHeader.CaptionOptions.Text:= '[B]' + rs_Function_Benutzer_Benutzerdetails + '[/B]';
+  lagrp_BenutzerSuche.CaptionOptions.Text:= rs_general_Suche;
+  laitm_BenutzerSuche.CaptionOptions.Text:= rs_Function_Benutzer_Benutzer1;
+  laitm_BenutzerBenutzer.CaptionOptions.Text:= rs_Function_Benutzer_Benutzer1;
+  laitm_BenutzerVorname.CaptionOptions.Text:= rs_Function_Benutzer_Vorname;
+  laitm_BenutzerNachname.CaptionOptions.Text:= rs_Function_Benutzer_Nachname;
+  chkbx_BenutzerRestapi.Caption:= rs_Function_Benutzer_Restapi;
+  laitm_BenutzerPassword.CaptionOptions.Text:= rs_Function_Benutzer_Password;
+  laitm_BenutzerRecht.CaptionOptions.Text:= rs_Function_Benutzer_Rechte1;
+  chkbx_BenutzerAutologin.Caption:= rs_Function_Benutzer_Autologin;
+  cxGridDBColumn2.Caption:= rs_Function_Benutzer_Benutzer;
+  grdDBTblView_BenutzerColumn1.Caption:= rs_Function_Benutzer_Vorname1;
+  grdDBTblView_BenutzerColumn2.Caption:= rs_Function_Benutzer_Nachname1;
+  lagrp_Rechte.CaptionOptions.Text:= rs_Function_Benutzer_Rechte;
+  chkbx_RechtAll.Caption:= rs_Function_Benutzer_RechtAlleBenutzer;
+  lagrp_RechteAllgemein.CaptionOptions.Text:=	'[B]' + rs_Function_Benutzer_RechtAllgemein + '[/B]';
+  lagrp_RechteArchiv.CaptionOptions.Text:= '[B]' + rs_Function_Benutzer_RechtPCM_Archiv + '[/B]';
+  lagrp_RechteBackup.CaptionOptions.Text:= '[B]' + rs_Function_Benutzer_RechtPCM_Backup + '[/B]';
+  lagrp_RechteHeader.CaptionOptions.Text:= '[B]' + rs_Function_Benutzer_RechtDetails + '[/B]';
+  lagrp_RechteManager.CaptionOptions.Text:=	'[B]' + rs_Function_Benutzer_RechtPCM_Manager + '[/B]';
+  lagrp_RechteMediacenter.CaptionOptions.Text:=	'[B]' + rs_Function_Benutzer_RechtPCM_Mediacenter + '[/B]';
+  lagrp_RechteMP3Manager.CaptionOptions.Text:= '[B]' + rs_Function_Benutzer_RechtPCM_MP3Manager + '[/B]';
+  lagrp_RechteNotenrechner.CaptionOptions.Text:= '[B]' + rs_Function_Benutzer_RechtPCM_Notenrechner + '[/B]';
+  lagrp_RechteServicemanager.CaptionOptions.Text:= '[B]' + rs_Function_Benutzer_RechtPCM_Servicemanager + '[/B]';
+  lagrp_RechteSuche.CaptionOptions.Text:=	rs_general_Suche;
+  lagrp_RechteVokabeltrainer.CaptionOptions.Text:= '[B]' + rs_Function_Benutzer_RechtPCM_Vokabeltrainer + '[/B]';
+  laitem_RechteAllgemeinBenutzer.CaptionOptions.Text:= rs_Function_Benutzer_RechtBenutzerverwaltung;
+  laitem_RechteAllgemeinBezeichnung.CaptionOptions.Text:=	rs_general_Bezeichnung;
+  laitem_RechteAllgemeinOption.CaptionOptions.Text:= rs_Function_Benutzer_RechtOptionen;
+  laitm_RechteArchivArchiv.CaptionOptions.Text:= rs_Function_Benutzer_RechtArchiv;
+  laitm_RechteBackupBackup.CaptionOptions.Text:= rs_Function_Benutzer_RechtBackup;
+  laitm_RechteManagerAusgaben.CaptionOptions.Text:=	rs_Function_Benutzer_RechtAusgaben;
+  laitm_RechteManagerEinnahmen.CaptionOptions.Text:= rs_Function_Benutzer_RechtEinnahmen;
+  laitm_RechteManagerKalender.CaptionOptions.Text:=	rs_Function_Benutzer_RechtKalender;
+  laitm_RechteManagerKontakte.CaptionOptions.Text:=	rs_Function_Benutzer_RechtKontakte;
+  laitm_RechteManagerMail.CaptionOptions.Text:=	rs_Function_Benutzer_RechtEMail;
+  laitm_RechteManagerMonatsbericht.CaptionOptions.Text:= rs_Function_Benutzer_RechtMonatsübersicht;
+  laitm_RechteManagerPassword.CaptionOptions.Text:=	rs_Function_Benutzer_RechtPasswort;
+  laitm_RechteManagerSerials.CaptionOptions.Text:= rs_Function_Benutzer_RechtSerials;
+  laitm_RechteManagerStundenplan.CaptionOptions.Text:= rs_Function_Benutzer_RechtStundenplan;
+  laitm_RechteManagerVerfuegung.CaptionOptions.Text:=	rs_Function_Benutzer_RechtVerfuegung;
+  laitm_RechteMediacenterAudio.CaptionOptions.Text:= rs_Function_Benutzer_RechtMp3Player;
+  laitm_RechteMediacenterFotos.CaptionOptions.Text:= rs_Function_Benutzer_RechtFotos;
+  laitm_RechteMediacenterVideo.CaptionOptions.Text:= rs_Function_Benutzer_RechtVideoplayer;
+  laitm_RechteMediacenterWeb.CaptionOptions.Text:= rs_Function_Benutzer_RechtWebradio;
+  laitm_RechteMP3ManagerMP3.CaptionOptions.Text:=	rs_Function_Benutzer_RechtMP3Tags;
+  laitm_RechteNotenrechnerNoten.CaptionOptions.Text:=	rs_Function_Benutzer_RechtNoten;
+  laitm_RechteServicemanagerBackup.CaptionOptions.Text:= rs_Function_Benutzer_RechtBackup;
+  laitm_RechteServicemanagerShutdown.CaptionOptions.Text:= rs_Function_Benutzer_RechtShutdown;
+  laitm_RechteSuche.CaptionOptions.Text:=	rs_general_Bezeichnung;
+  laitm_RechteVokabeltrainerStatistik.CaptionOptions.Text:=	rs_Function_Benutzer_RechtStatistik;
+  laitm_RechteVokabeltrainerTest.CaptionOptions.Text:= rs_Function_Benutzer_RechtTest;
+  laitm_RechteVokabeltrainerVokabeln.CaptionOptions.Text:= rs_Function_Benutzer_RechtVokabeln;
+  grdDBTblView_RechteBezeichnung.Caption:= rs_general_Bezeichnung;
   OPendata;
   InitializeRights;
   SetGridViews(true);

@@ -4,9 +4,8 @@ object frmProgressDialog: TfrmProgressDialog
   AutoSize = True
   BorderIcons = []
   BorderStyle = bsToolWindow
-  Caption = 'Bitte warten...'
-  ClientHeight = 82
-  ClientWidth = 423
+  ClientHeight = 65
+  ClientWidth = 417
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -15,6 +14,7 @@ object frmProgressDialog: TfrmProgressDialog
   Font.Style = []
   FormStyle = fsStayOnTop
   Position = poScreenCenter
+  OnCreate = FormCreate
   TextHeight = 13
   object pnl_design: TcxGroupBox
     Left = 0

@@ -7,7 +7,7 @@ uses
   WinApi.Windows, WinApi.Messages,
   System.SysUtils, System.Variants, System.Classes,
   Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls,
-  Vcl.Imaging.pngimage,
+  Vcl.Imaging.pngimage, Pcm.Strings,
   cxControls, cxContainer, cxEdit, cxProgressBar, cxGraphics, cxLookAndFeels,
   cxLookAndFeelPainters, cxGroupBox, cxLabel, cxImage,
   dxGDIPlusClasses, dxUIAClasses;
@@ -19,6 +19,7 @@ type
     pnl_design: TcxGroupBox;
     Image1: TcxImage;
     lNachricht: TcxLabel;
+    procedure FormCreate(Sender: TObject);
   private
     { Private-Deklarationen }
   public
@@ -64,6 +65,11 @@ begin
   prgbr_Main.Position := prgbr_Main.Position + 1;
   Application.ProcessMessages;
 end;
+procedure TfrmProgressDialog.FormCreate(Sender: TObject);
+begin
+  caption:= rs_Function_Wait_FormCaption;
+end;
+
 procedure TfrmProgressDialog.SetNewCount(const ACount: Integer);
 begin
   prgbr_Main.Properties.Max := ACount;

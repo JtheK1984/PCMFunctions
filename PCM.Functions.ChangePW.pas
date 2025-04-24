@@ -19,6 +19,7 @@ type
   TcxPageControlPropertiesAccess = class(TcxPageControlProperties);
   Tfrm_PCM_ChangePW = class(TForm)
     btn_PCManagerChangePassword_Ok: TcxButton;
+    btn_PCManagerChangePassword_Cancel: TcxButton;
     edt_PCManagerChangePassword_NewPass: TcxTextEdit;
     edt_PCManagerChangePassword_RepPass: TcxTextEdit;
     img_PCManagerChangePassword_Image: TcxImage;
@@ -28,8 +29,8 @@ type
     dxLayoutCxLookAndFeel1: TdxLayoutCxLookAndFeel;
     dxLayoutGroup3: TdxLayoutGroup;
     dxLayoutItem1: TdxLayoutItem;
-    dxLayoutItem2: TdxLayoutItem;
-    dxLayoutItem3: TdxLayoutItem;
+    laitm_PWChangeNewPW: TdxLayoutItem;
+    laitm_PWChangeRepPW: TdxLayoutItem;
     dxLayoutItem4: TdxLayoutItem;
     dxLayoutItem5: TdxLayoutItem;
     dxLayoutGroup8: TdxLayoutGroup;
@@ -109,6 +110,10 @@ end;
 procedure Tfrm_PCM_ChangePW.FormShow(Sender: TObject);
 begin
   caption:= PCM_Programmname + rs_PCM_PasswortAendern;
+  laitm_PWChangeNewPW.CaptionOptions.Text:= rs_Function_PasswordChange_new;
+  laitm_PWChangeRepPW.CaptionOptions.Text:= rs_Function_PasswordChange_rep;
+  btn_PCManagerChangePassword_Ok.Caption:= rs_general_Ok;
+  btn_PCManagerChangePassword_Cancel.Caption:= rs_general_Abbrechen;
   edt_PCManagerChangePassword_NewPass.SetFocus;
 end;
 {$EndRegion Formfunktionen}

@@ -11,6 +11,85 @@ uses
 // allgemein
 resourcestring
   {$Region resourcestring}
+  // Waitform
+  {$Region Waitform}
+  rs_Function_Wait_FormCaption = 'Bitte warten';
+  {$EndRegion Waitform}
+  // Login
+  {$Region Login}
+  rs_Function_Login_BtnAnmelden = 'Anmelden';
+  rs_Function_Login_Info = 'Bitte melden Sie sich an:';
+  rs_Function_Login_Benutzer = 'Benutzername:';
+  rs_Function_Login_Passwort = 'Passwort:';
+  {$EndRegion Login}
+  // AppInfo
+  {$Region AppInfo}
+  rs_Function_AppInfo_32Bit = 'MySQL 32-Bit Version: ';
+  rs_Function_AppInfo_64Bit = 'MySQL 64-Bit Version: ';
+  rs_Function_Appinfo_Lizenz = 'Lizenz:';
+  rs_Function_Appinfo_Database = 'Datenbank:';
+  rs_Function_AppInfo_Lizenzfor = 'Lizenziert für:';
+  rs_Function_AppInfo_Valid = 'Gültig bis:';
+  rs_Function_AppInfo_Datenversion = 'Datenversion:';
+  rs_Function_APPInfo_JensHenske = 'Jens Henske';
+  rs_Function_APPInfo_Version = 'Version:';
+  rs_Function_APPInfo_Revision = 'Revision:';
+  rs_Function_APPInfo_Server = 'Server:';
+  rs_Function_APPInfo_CopyRight = 'Copyright:';
+  rs_Function_APPInfo_Demo = 'Demo:';
+  rs_Function_APPInfo_LizenzEintragen = 'Neue Lizenz eintragen';
+  {$EndRegion AppInfo}
+  // Design
+  {$Region Design}
+  rs_Function_Design_Prgramdesign = 'Programmdesign';
+  rs_Function_Design_Design = 'Design:';
+  rs_Function_Design_Vorschau = 'Vorschau';
+  rs_Function_Design_Form = 'Form1';
+  rs_Function_Design_ToolButton1 = 'ToolButton1';
+  rs_Function_Design_ToolButton2 = 'ToolButton2';
+  rs_Function_Design_ToolButton3 = 'ToolButton3';
+  {$EndRegion Design}
+  // Handbuch
+  {$Region Handbuch}
+  rs_Function_Handbuch_PDF = 'PDF';
+  rs_Function_Handbuch_HTML = 'HTML';
+  {$EndRegion Handbuch}
+  // Lizenz
+  {$Region DLizenz}
+  rs_Function_Lizenz_Eintragen = 'Lizenz eintragen';
+  rs_Function_Lizenz_Name = 'Name:';
+  rs_Function_Lizenz_Lizenz = 'Lizenz:';
+  {$EndRegion DLizenz}
+  // Sprache
+  {$Region Sprache}
+  rs_Function_Sprache_Sprache = 'Sprachen';
+  rs_Function_Sprache_SpracheDE = 'Deutsch';
+  rs_Function_Sprache_SpracheEN = 'Englisch';
+  rs_Function_Sprache_SpracheWchseln = 'Sprache wechseln';
+  rs_Function_Sprache_FormCaption = 'Sprache wählen';
+  rs_Function_Sprache_Message ='Soll die gewählte Sprache sofort übernommen werden? ' + slinebreak + 'Bei Ja wird das Programm neu gestartet.' + slinebreak + 'Bei Nein wird die Sprache erst beim nächsten Start geändert.';
+  {$EndRegion Sprache}
+  // Passwört ändern
+  {$Region PWChange}
+  rs_Function_PasswordChange_new = 'Neues Passwort:';
+  rs_Function_PasswordChange_rep = 'Passwort wiederholen:';
+  {$EndRegion PWChange}
+  // System
+  {$Region System}
+  rs_Function_System_Windows = 'Windows';
+  rs_Function_System_OS = 'Betriebssystem:' ;
+  rs_Function_system_PCName = 'Computername:';
+  rs_Function_System_Grphic ='Grafikauflösung:';
+  rs_Function_System_Sysdir = 'Systemlaufwerk:';
+  rs_Function_System_Processor = 'Prozessor';
+  rs_Function_System_ProcessorType = 'Prozessortyp:';
+  rs_Function_System_ProcessorCount = 'Prozessoranzahl:';
+  rs_Function_System_ProcessorSpeed = 'Prozessorgeschwindigkeit:';
+  rs_Function_System_Ram = 'Arbeitsspeicher';
+  rs_Function_System_RamTotal = 'Gesamter Arbeitsspeicher:';
+  rs_Function_System_RamFree  = 'freier Arbeitsspeicher:';
+  rs_Function_System_Auslastung = 'Auslastung';
+  {$EndRegion System}
   // Splashscreen
   {$Region Splashscreen}
   rs_Splash_Sprache = 'Sprachdatei laden...';
@@ -21,14 +100,91 @@ resourcestring
   rs_Splash_MenuLaden = 'Menüs laden...';
   rs_Splash_MenuReg = 'Menüs registrieren...';
   {$EndRegion Splashscreen}
+  // Benutzerverwaltung
+  {$Region Benutzerverwaltung}
+  rs_Function_Benutzer_New = 'Benutzer anlegen';
+  rs_Function_Benutzer_Save = 'Benutzer speichern';
+  rs_Function_Benutzer_Delete = 'Benutzer löschen';
+  rs_Function_Benutzer_ChangePassword = 'Passwort ändern';
+  rs_Function_Benutzer_Benutzer = 'Benutzer';
+  rs_Function_Benutzer_Benutzerdetails = 'Benutzerdetails';
+  rs_Function_Benutzer_Benutzer1 = 'Benutzer:';
+  rs_Function_Benutzer_Vorname = 'Vorname:';
+  rs_Function_Benutzer_Nachname = 'Nachname:';
+  rs_Function_Benutzer_Restapi = 'Rest-Api';
+  rs_Function_Benutzer_Password = 'Passwort:';
+  rs_Function_Benutzer_Rechte1 = 'Recht:';
+  rs_Function_Benutzer_Autologin = 'automatisches Login (Windows-Benutzer)';
+  rs_Function_Benutzer_Vorname1 = 'Vorname';
+  rs_Function_Benutzer_Nachname1 = 'Nachname';
+  rs_Function_Benutzer_Rechte = 'Rechte';
+  rs_Function_Benutzer_RechtNew = 'Recht anlegen';
+  rs_Function_Benutzer_RechtSave = 'Recht speichern';
+  rs_Function_Benutzer_RechtDelete = 'Recht löschen';
+  rs_Function_Benutzer_RechtAlleBenutzer = 'Alle Benutzer';
+  rs_Function_Benutzer_RechtAllgemein	= 'Rechte Allgemein';
+  rs_Function_Benutzer_RechtPCM_Archiv = 'Rechte PCM - Archiv';
+  rs_Function_Benutzer_RechtPCM_Backup =  'Rechte PCM - Backup';
+  rs_Function_Benutzer_RechtDetails = 'Rechtedetails';
+  rs_Function_Benutzer_RechtPCM_Manager	= 'Rechte PCM - Manager';
+  rs_Function_Benutzer_RechtPCM_Mediacenter = 'Rechte PCM - Mediacenter';
+  rs_Function_Benutzer_RechtPCM_MP3Manager = 'Rechte PCM - MP3Manager';
+  rs_Function_Benutzer_RechtPCM_Notenrechner =  'Rechte PCM - Notenrechner';
+  rs_Function_Benutzer_RechtPCM_Servicemanager = 'Rechte PCM - Servicemanager';
+  rs_Function_Benutzer_RechtPCM_Vokabeltrainer = 'Rechte PCM - Vokabeltrainer';
+  rs_Function_Benutzer_RechtBenutzerverwaltung = 'Benutzerverwaltung:';
+  rs_Function_Benutzer_RechtOptionen = 'Optionen:';
+  rs_Function_Benutzer_RechtArchiv = 'Archiv:';
+  rs_Function_Benutzer_RechtBackup = 'Backup:';
+  rs_Function_Benutzer_RechtAusgaben = 'Ausgaben:';
+  rs_Function_Benutzer_RechtEinnahmen = 'Einnahmen:';
+  rs_Function_Benutzer_RechtKalender = 'Kalender:';
+  rs_Function_Benutzer_RechtKontakte = 'Kontakte:';
+  rs_Function_Benutzer_RechtEMail	= 'E-Mail:';
+  rs_Function_Benutzer_RechtMonatsübersicht = 'Monatsübersicht:';
+  rs_Function_Benutzer_RechtPasswort =  'Passwörter:';
+  rs_Function_Benutzer_RechtSerials	=  'Serials:';
+  rs_Function_Benutzer_RechtStundenplan =  'Stundenplan:';
+  rs_Function_Benutzer_RechtVerfuegung =  'Verfügung:';
+  rs_Function_Benutzer_RechtMp3Player =  'MP3 - Player:';
+  rs_Function_Benutzer_RechtFotos	= 'Fotos:';
+  rs_Function_Benutzer_RechtVideoplayer	= 'Videoplayer:';
+  rs_Function_Benutzer_RechtWebradio =  'Webradio:';
+  rs_Function_Benutzer_RechtMP3Tags	= 'MP3 - Tags:';
+  rs_Function_Benutzer_RechtNoten	= 'Noten: ';
+  rs_Function_Benutzer_RechtShutdown = 'Shutdown:';
+  rs_Function_Benutzer_RechtStatistik	= 'Statistik:';
+  rs_Function_Benutzer_RechtTest = 'Test:';
+  rs_Function_Benutzer_RechtVokabeln = 'Vokabeln:';
+  {$EndRegion Benutzerverwaltung}
+
+
+
+
   // General
+
+
+
+
+
   {$Region General}
+  rs_general_Abbrechen = 'Abbrechen';
+  rs_general_Ok = 'Ok';
+  rs_general_Save = 'Speichern';
+  rs_general_Bezeichnung = 'Bezeichnung:';
+  rs_general_Suche = 'Suche';
   rs_General_Formload = 'Formular wird geladen';
   rs_General_Dashboard = 'Dashboard';
   {$EndRegion General}
   // PCM-Archiv
+  {$Region PCM_Archiv}
+  rs_Archiv_ChooseFile = 'Bitte Datei auswählen!';
+  rs_Archiv_ChooseUSer = 'Bitte Benutzer auswählen!';
+  rs_Archiv_ChooseMainCat = 'Bitte Hauptkategorie auswählen!';
+  rs_Archiv_DocExists = 'Dokument existiert schon. Wenn das Dokument geändert werden soll, klicken Sie auf Dokument bearbeiten!';
+  rs_Archiv_DeleteDocOrg = 'Soll die Originaldatei gelöscht werden?';
 
-
+  {$EndRegion PCM_Archiv}
 
 
 

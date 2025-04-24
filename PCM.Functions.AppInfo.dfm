@@ -3,7 +3,6 @@ object frm_PCM_InfoApp: Tfrm_PCM_InfoApp
   Top = 108
   Align = alClient
   BorderStyle = bsDialog
-  Caption = 'Programminfo'
   ClientHeight = 320
   ClientWidth = 686
   Color = clBtnFace
@@ -15,7 +14,7 @@ object frm_PCM_InfoApp: Tfrm_PCM_InfoApp
   Position = poScreenCenter
   OnShow = FormShow
   TextHeight = 13
-  object dxLayoutControl1: TdxLayoutControl
+  object lactrl_Appinfo: TdxLayoutControl
     Left = 0
     Top = 0
     Width = 686
@@ -24,7 +23,6 @@ object frm_PCM_InfoApp: Tfrm_PCM_InfoApp
     TabOrder = 0
     AutoSize = True
     LayoutLookAndFeel = dxLayoutCxLookAndFeel1
-    OptionsImage.Images = cxImageList1
     object img_PCManagerAppInfo_Image: TcxImage
       Left = 22
       Top = 28
@@ -906,7 +904,7 @@ object frm_PCM_InfoApp: Tfrm_PCM_InfoApp
       Height = 240
       Width = 240
     end
-    object cxButton1: TcxButton
+    object btn_Lizenz: TcxButton
       AlignWithMargins = True
       Left = 10
       Top = 286
@@ -914,11 +912,10 @@ object frm_PCM_InfoApp: Tfrm_PCM_InfoApp
       Height = 25
       Margins.Left = 0
       Margins.Right = 0
-      Caption = 'Neue Lizenz eintragen'
       TabOrder = 1
-      OnClick = cxButton1Click
+      OnClick = btn_LizenzClick
     end
-    object dxLayoutControl1Group_Root: TdxLayoutGroup
+    object lactrl_AppinfoGroup_Root: TdxLayoutGroup
       AlignHorz = ahClient
       AlignVert = avClient
       Hidden = True
@@ -926,8 +923,8 @@ object frm_PCM_InfoApp: Tfrm_PCM_InfoApp
       ShowBorder = False
       Index = -1
     end
-    object dxLayoutGroup3: TdxLayoutGroup
-      Parent = dxLayoutGroup12
+    object lagrp_AppinfoDetailsImg: TdxLayoutGroup
+      Parent = lagrp_AppinfoDetails
       AlignHorz = ahClient
       AlignVert = avTop
       ItemIndex = 1
@@ -935,17 +932,17 @@ object frm_PCM_InfoApp: Tfrm_PCM_InfoApp
       ShowBorder = False
       Index = 0
     end
-    object dxLayoutGroup5: TdxLayoutGroup
-      Parent = dxLayoutGroup1
+    object lagrp_PCManagerAppInfo_DatenbankDetail: TdxLayoutGroup
+      Parent = lagrp_AppinfoInfo
+      ItemIndex = 1
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 9
     end
-    object dxLayoutItem1: TdxLayoutItem
-      Parent = dxLayoutGroup3
+    object laitm_AppinfoDetailsImg: TdxLayoutItem
+      Parent = lagrp_AppinfoDetailsImg
       AlignHorz = ahLeft
       AlignVert = avTop
-      CaptionOptions.Text = 'img_PCManagerAppInfo_Image'
       CaptionOptions.Visible = False
       Control = img_PCManagerAppInfo_Image
       ControlOptions.OriginalHeight = 240
@@ -953,338 +950,263 @@ object frm_PCM_InfoApp: Tfrm_PCM_InfoApp
       ControlOptions.ShowBorder = False
       Index = 0
     end
-    object lbl_PCManagerAppInfo_AppName: TdxLayoutLabeledItem
-      Parent = dxLayoutGroup11
+    object laitm_PCManagerAppInfo_AppName: TdxLayoutLabeledItem
+      Parent = lagrp_PCManagerAppInfo_AppName
       AlignHorz = ahLeft
       AlignVert = avTop
       CaptionOptions.AlignVert = tavTop
-      CaptionOptions.Text = '[B]PCM ServiceManager[/B]'
       CaptionOptions.Width = 200
       Index = 0
     end
-    object cxLabel7: TdxLayoutLabeledItem
-      Parent = dxLayoutGroup17
+    object laitm_PCManagerAppInfo_LizenzForlbl: TdxLayoutLabeledItem
+      Parent = lagrp_PCManagerAppInfo_LizenzFor
       AlignHorz = ahLeft
       AlignVert = avTop
       CaptionOptions.AlignVert = tavTop
-      CaptionOptions.Text = 'Lizenziert f'#252'r:'
       CaptionOptions.Width = 200
       Index = 0
     end
-    object cxLabel5: TdxLayoutLabeledItem
-      Parent = dxLayoutGroup18
+    object laitm_PCManagerAppInfo_Demolbl: TdxLayoutLabeledItem
+      Parent = lagrp_PCManagerAppInfo_Demo
       AlignHorz = ahLeft
       AlignVert = avTop
       CaptionOptions.AlignVert = tavTop
-      CaptionOptions.Text = 'Demo:'
       CaptionOptions.Width = 200
       Index = 0
     end
-    object cxLabel9: TdxLayoutLabeledItem
-      Parent = dxLayoutGroup5
+    object laitm_PCManagerAppInfo_DatenbankDetaillbl: TdxLayoutLabeledItem
+      Parent = lagrp_PCManagerAppInfo_DatenbankDetail
       AlignHorz = ahLeft
       AlignVert = avTop
       CaptionOptions.AlignVert = tavTop
-      CaptionOptions.Text = 'Datenbank:'
       CaptionOptions.Width = 200
       Index = 0
     end
-    object lbl_PCManagerAppInfo_ServerLabel: TdxLayoutLabeledItem
-      Parent = dxLayoutGroup7
+    object laitm_PCManagerAppInfo_ServerLabel: TdxLayoutLabeledItem
+      Parent = lagrp_PCManagerAppInfo_Server
       AlignHorz = ahLeft
       AlignVert = avTop
       CaptionOptions.AlignVert = tavTop
-      CaptionOptions.Text = 'Server:'
       CaptionOptions.Width = 200
       Index = 0
     end
-    object dxLayoutItem7: TdxLayoutItem
-      Parent = dxLayoutGroup9
-      CaptionOptions.Text = 'cxButton1'
+    object lagrp_AppinfoBtn: TdxLayoutItem
+      Parent = lagrp_Appinfo
       CaptionOptions.Visible = False
-      Control = cxButton1
+      Control = btn_Lizenz
       ControlOptions.OriginalHeight = 25
       ControlOptions.OriginalWidth = 674
       ControlOptions.ShowBorder = False
       Index = 1
     end
-    object dxLayoutGroup1: TdxLayoutGroup
-      Parent = dxLayoutGroup2
+    object lagrp_AppinfoInfo: TdxLayoutGroup
+      Parent = lagrp_AppinfoDetailsWithoutImg
       AlignHorz = ahClient
       AlignVert = avClient
-      CaptionOptions.Text = 'New Group'
-      ItemIndex = 11
+      ItemIndex = 6
       ShowBorder = False
       Index = 0
     end
-    object dxLayoutGroup11: TdxLayoutGroup
-      Parent = dxLayoutGroup1
+    object lagrp_PCManagerAppInfo_AppName: TdxLayoutGroup
+      Parent = lagrp_AppinfoInfo
       AlignHorz = ahClient
       AlignVert = avTop
-      CaptionOptions.Text = 'New Group'
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 0
     end
-    object dxLayoutGroup2: TdxLayoutGroup
-      Parent = dxLayoutGroup3
+    object lagrp_AppinfoDetailsWithoutImg: TdxLayoutGroup
+      Parent = lagrp_AppinfoDetailsImg
       AlignHorz = ahClient
       AlignVert = avClient
-      CaptionOptions.Text = 'New Group'
       ShowBorder = False
       Index = 1
     end
-    object dxLayoutGroup12: TdxLayoutGroup
-      Parent = dxLayoutGroup9
+    object lagrp_AppinfoDetails: TdxLayoutGroup
+      Parent = lagrp_Appinfo
       AlignHorz = ahClient
       AlignVert = avTop
-      CaptionOptions.Text = 'New Group'
       CaptionOptions.Visible = False
       Index = 0
     end
-    object lbl_PCManagerAppInfo_Version: TdxLayoutLabeledItem
-      Parent = dxLayoutGroup15
+    object laitm_PCManagerAppInfo_Version: TdxLayoutLabeledItem
+      Parent = lagrp_PCManagerAppInfo_Version
       AlignHorz = ahClient
       AlignVert = avTop
-      CaptionOptions.Text = 'Label'
       Index = 1
     end
-    object dxLayoutGroup13: TdxLayoutGroup
-      Parent = dxLayoutGroup1
-      CaptionOptions.Text = 'New Group'
+    object lagrp_PCManagerAppInfo_Revision: TdxLayoutGroup
+      Parent = lagrp_AppinfoInfo
       ItemIndex = 1
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 2
     end
-    object dxLayoutLabeledItem1: TdxLayoutLabeledItem
-      Parent = dxLayoutGroup13
+    object laitm_PCManagerAppInfo_Revisionlbl: TdxLayoutLabeledItem
+      Parent = lagrp_PCManagerAppInfo_Revision
       AlignHorz = ahLeft
       AlignVert = avTop
-      CaptionOptions.Text = 'Revision:'
       CaptionOptions.Width = 200
       Index = 0
     end
-    object lbl_PCManagerAppInfo_Revision: TdxLayoutLabeledItem
-      Parent = dxLayoutGroup13
+    object laitm_PCManagerAppInfo_Revision: TdxLayoutLabeledItem
+      Parent = lagrp_PCManagerAppInfo_Revision
       AlignHorz = ahClient
       AlignVert = avTop
-      CaptionOptions.Text = 'Label'
       Index = 1
     end
-    object dxLayoutLabeledItem2: TdxLayoutLabeledItem
-      Parent = dxLayoutGroup14
+    object laitm_PCManagerAppInfo_AppCopyRightLbl: TdxLayoutLabeledItem
+      Parent = lagrp_PCManagerAppInfo_AppCopyRight
       AlignHorz = ahLeft
       AlignVert = avTop
-      CaptionOptions.Text = 'Copyright:'
       CaptionOptions.Width = 200
       Index = 0
     end
-    object lbl_PCManagerAppInfo_AppCopyRight: TdxLayoutLabeledItem
-      Parent = dxLayoutGroup14
+    object laitm_PCManagerAppInfo_AppCopyRight: TdxLayoutLabeledItem
+      Parent = lagrp_PCManagerAppInfo_AppCopyRight
       AlignHorz = ahClient
       AlignVert = avTop
-      CaptionOptions.Text = 'Jens Henske'
       Index = 1
     end
-    object dxLayoutGroup14: TdxLayoutGroup
-      Parent = dxLayoutGroup1
+    object lagrp_PCManagerAppInfo_AppCopyRight: TdxLayoutGroup
+      Parent = lagrp_AppinfoInfo
       AlignVert = avTop
-      CaptionOptions.Text = 'New Group'
-      ItemIndex = 1
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 3
     end
-    object dxLayoutGroup15: TdxLayoutGroup
-      Parent = dxLayoutGroup1
-      CaptionOptions.Text = 'New Group'
+    object lagrp_PCManagerAppInfo_Version: TdxLayoutGroup
+      Parent = lagrp_AppinfoInfo
+      ItemIndex = 1
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 1
     end
-    object dxLayoutLabeledItem4: TdxLayoutLabeledItem
-      Parent = dxLayoutGroup15
+    object laitm_PCManagerAppInfo_VersionLbl: TdxLayoutLabeledItem
+      Parent = lagrp_PCManagerAppInfo_Version
       AlignHorz = ahLeft
       AlignVert = avTop
-      CaptionOptions.Text = 'Version:'
       CaptionOptions.Width = 200
       Index = 0
     end
-    object dxLayoutGroup16: TdxLayoutGroup
-      Parent = dxLayoutGroup1
+    object lagrp_PCManagerAppInfo_Lizenz: TdxLayoutGroup
+      Parent = lagrp_AppinfoInfo
       ShowBorder = False
       Index = 4
     end
-    object dxLayoutLabeledItem5: TdxLayoutLabeledItem
-      Parent = dxLayoutGroup16
+    object laitm_PCManagerAppInfo_Lizenz: TdxLayoutLabeledItem
+      Parent = lagrp_PCManagerAppInfo_Lizenz
       AlignHorz = ahLeft
       AlignVert = avTop
-      CaptionOptions.Text = '[B]Lizenz:[/B]'
       Index = 0
     end
-    object dxLayoutGroup17: TdxLayoutGroup
-      Parent = dxLayoutGroup1
-      CaptionOptions.Text = 'New Group'
+    object lagrp_PCManagerAppInfo_LizenzFor: TdxLayoutGroup
+      Parent = lagrp_AppinfoInfo
       ItemIndex = 1
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 5
     end
-    object cxLabel1: TdxLayoutLabeledItem
-      Parent = dxLayoutGroup17
+    object laitm_PCManagerAppInfo_LizenzFor: TdxLayoutLabeledItem
+      Parent = lagrp_PCManagerAppInfo_LizenzFor
       AlignHorz = ahClient
       AlignVert = avTop
-      CaptionOptions.Text = 'Label'
       Index = 1
     end
-    object dxLayoutGroup18: TdxLayoutGroup
-      Parent = dxLayoutGroup1
-      CaptionOptions.Text = 'New Group'
+    object lagrp_PCManagerAppInfo_Demo: TdxLayoutGroup
+      Parent = lagrp_AppinfoInfo
       ItemIndex = 1
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 6
     end
-    object cxLabel4: TdxLayoutLabeledItem
-      Parent = dxLayoutGroup18
+    object laitm_PCManagerAppInfo_Demo: TdxLayoutLabeledItem
+      Parent = lagrp_PCManagerAppInfo_Demo
       AlignHorz = ahClient
       AlignVert = avTop
-      CaptionOptions.Text = 'Label'
       Index = 1
     end
-    object dxLayoutGroup4: TdxLayoutGroup
-      Parent = dxLayoutGroup1
-      CaptionOptions.Text = 'New Group'
+    object lagrp_PCManagerAppInfo_Valid: TdxLayoutGroup
+      Parent = lagrp_AppinfoInfo
       ItemIndex = 1
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 7
     end
-    object dxLayoutLabeledItem3: TdxLayoutLabeledItem
-      Parent = dxLayoutGroup4
+    object laitm_PCManagerAppInfo_Validlbl: TdxLayoutLabeledItem
+      Parent = lagrp_PCManagerAppInfo_Valid
       AlignHorz = ahLeft
       AlignVert = avTop
-      CaptionOptions.Text = 'G'#252'ltig bis:'
       CaptionOptions.Width = 200
       Index = 0
     end
-    object cxLabel6: TdxLayoutLabeledItem
-      Parent = dxLayoutGroup4
+    object laitm_PCManagerAppInfo_Valid: TdxLayoutLabeledItem
+      Parent = lagrp_PCManagerAppInfo_Valid
       AlignHorz = ahClient
       AlignVert = avTop
-      CaptionOptions.Text = 'Label'
       Index = 1
     end
-    object dxLayoutLabeledItem6: TdxLayoutLabeledItem
-      Parent = dxLayoutGroup8
+    object laitm_PCManagerAppInfo_Datenbank: TdxLayoutLabeledItem
+      Parent = lagrp_PCManagerAppInfo_Datenbank
       AlignHorz = ahLeft
       AlignVert = avTop
-      CaptionOptions.Text = '[B]Datenbank:[/B]'
       Index = 0
     end
-    object dxLayoutGroup8: TdxLayoutGroup
-      Parent = dxLayoutGroup1
+    object lagrp_PCManagerAppInfo_Datenbank: TdxLayoutGroup
+      Parent = lagrp_AppinfoInfo
       AlignHorz = ahClient
-      CaptionOptions.Text = 'New Group'
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 8
     end
-    object dxLayoutGroup6: TdxLayoutGroup
-      Parent = dxLayoutGroup1
-      CaptionOptions.Text = 'New Group'
+    object lagrp_PCManagerAppInfo_Datenversion: TdxLayoutGroup
+      Parent = lagrp_AppinfoInfo
       ItemIndex = 1
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 10
     end
-    object dxLayoutGroup7: TdxLayoutGroup
-      Parent = dxLayoutGroup1
-      CaptionOptions.Text = 'New Group'
+    object lagrp_PCManagerAppInfo_Server: TdxLayoutGroup
+      Parent = lagrp_AppinfoInfo
       ItemIndex = 1
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 11
     end
-    object lblDBVersion: TdxLayoutLabeledItem
-      Parent = dxLayoutGroup5
+    object laitm_PCManagerAppInfo_DatenbankDetail: TdxLayoutLabeledItem
+      Parent = lagrp_PCManagerAppInfo_DatenbankDetail
       AlignHorz = ahClient
       AlignVert = avTop
-      CaptionOptions.Text = 'Label'
       Index = 1
     end
-    object dxLayoutLabeledItem8: TdxLayoutLabeledItem
-      Parent = dxLayoutGroup6
+    object laitml_PCManagerAppInfo_Datenversionlbl: TdxLayoutLabeledItem
+      Parent = lagrp_PCManagerAppInfo_Datenversion
       AlignHorz = ahLeft
       AlignVert = avTop
-      CaptionOptions.Text = 'Datenversion:'
       CaptionOptions.Width = 200
       Index = 0
     end
-    object lblDataVersion: TdxLayoutLabeledItem
-      Parent = dxLayoutGroup6
+    object laitm_PCManagerAppInfo_Datenversion: TdxLayoutLabeledItem
+      Parent = lagrp_PCManagerAppInfo_Datenversion
       AlignHorz = ahClient
       AlignVert = avTop
-      CaptionOptions.Text = 'Label'
       Index = 1
     end
-    object lbl_PCManagerAppInfo_Server: TdxLayoutLabeledItem
-      Parent = dxLayoutGroup7
+    object laitm_PCManagerAppInfo_Server: TdxLayoutLabeledItem
+      Parent = lagrp_PCManagerAppInfo_Server
       AlignHorz = ahClient
-      CaptionOptions.Text = 'Label'
       Index = 1
     end
-    object dxLayoutGroup9: TdxLayoutGroup
-      Parent = dxLayoutControl1Group_Root
+    object lagrp_Appinfo: TdxLayoutGroup
+      Parent = lactrl_AppinfoGroup_Root
       AlignHorz = ahClient
       AlignVert = avTop
-      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
       ShowBorder = False
       Index = 0
     end
   end
-  object cxImageList1: TcxImageList
-    SourceDPI = 96
-    FormatVersion = 1
-    DesignInfo = 5046834
-    ImageInfo = <
-      item
-        ImageClass = 'TdxPNGImage'
-        Image.Data = {
-          89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
-          61000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
-          00097048597300000EC300000EC301C76FA8640000033F49444154384F6593FB
-          4B53611CC6CF5FD0BF1044A466D3963AB714A39028BB88978490646166B45233
-          B59B6EB98BBAFBC54DB739ADB9313D66CE95691773B59A66EA7249A5B58242EC
-          420511115D384FEF39FA4BF5C0035FBEEFF379BFE7BCBC2FF5AF2A658AAC0A79
-          8B57E3722FDABC3EC6E6F1315A525729D59E1A95266325F6BF8A65B255B53A13
-          7DF1B29F516A0DA83ADD8083474FE2C0916A486ACF41A535825DAB33987BD9EC
-          0AB62CB6516FB24EF9FC7E949F5240EFBB89AEE05378430BE8B8F514CAFE87A8
-          B1F971A04A8ADEC100EA8DD6A9BF366127F75CB982232A3B348159024CA3D91F
-          41D3C00CA43481BBC32877042171DD45D129337A8786C07E09071F6F506DE9F2
-          0798137A378E75DE478D6702F5F4346C6472ECDD17BC78FB059AAB51943AEF61
-          BF65147BD52338AC728165B833A990377B9D7D7E141B8650EA0841E29E4475CF
-          3474D7E6F0F2FD57C488E503B328758D63BF3584DDDA1BC896F6C1796910550A
-          B5876AECE85A6C74D228340551E21C4779F70CF6B54F42A4BA8DF8BA01ACADEE
-          47DCD911A4C8C7B0A525889DFA3164375DC7D9361FE4CEAE45CAD04333956D83
-          D86B0CA2A86D02A9AA1012E5F730FFEE1BE6DF2F3B4919064F791F09B231AC3B
-          731D5B9B475166EA87B1A78FA114ED0EA6C2318CEDBA10788D4124A9C6C16F9E
-          44AEED21163E7CE79CA29D015F13216B61AC3F3F0681E216C4A6009484A52452
-          D992DC73033CB2FB063299AF9E41AAF131D2F4113CFFF883B3D0FC0469C47CF5
-          1432B50FC0570671BA73189206D912555022D6755F1DC6EABA1132610229BA28
-          84D67994D0AFF1E2D32FCE62FA0DE92D20C31CC54E6B046BC86F5C0C5C5B2A2A
-          2D6BA1F28A8B85B5D206A6CC3E8A84A649A41A1E43D83A4FC09F887DFECD99AD
-          B7D99F638FEB19D2F5D33864BF891AC2E489C569DC5DD8915748DB5D1DC8D1DF
-          C126C31C325A9F416478844C4304DBCC11E4B447917B2186CCD627D841325CB6
-          A070F922B1120804AB845959B316AB0527DCE31018A3C876C4B0ABF3157288B7
-          DA63D8A87D844A771896560BD82CCBACE0CB5A4B1A8274119D5F90CBB4757442
-          73290CE9C01C67B66E27BDFCFC5C462012F5B2D915EC7FF178BCACF8C4046F52
-          E2FAC5CDE9A90C6BB68E8F8BF3242727FFF39C29EA0F33683B6C0E3015740000
-          000049454E44AE426082}
-      end>
-  end
-  object dxLayoutLookAndFeelList1: TdxLayoutLookAndFeelList
+  object lalaflst_Appinfo: TdxLayoutLookAndFeelList
     object dxLayoutCxLookAndFeel1: TdxLayoutCxLookAndFeel
       PixelsPerInch = 96
     end

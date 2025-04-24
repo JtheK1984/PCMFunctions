@@ -1,7 +1,6 @@
-object frm_Handbuch: Tfrm_Handbuch
+object frm_PCM_Handbuch: Tfrm_PCM_Handbuch
   Left = 0
   Top = 0
-  Caption = 'frm_Handbuch'
   ClientHeight = 441
   ClientWidth = 624
   Color = clBtnFace
@@ -12,7 +11,7 @@ object frm_Handbuch: Tfrm_Handbuch
   Font.Style = []
   OnShow = FormShow
   TextHeight = 15
-  object dxLayoutControl1: TdxLayoutControl
+  object lactrl_Handbuch: TdxLayoutControl
     Left = 0
     Top = 0
     Width = 624
@@ -21,7 +20,7 @@ object frm_Handbuch: Tfrm_Handbuch
     TabOrder = 0
     AutoSize = True
     LayoutLookAndFeel = dxLayoutCxLookAndFeel1
-    OptionsImage.Images = cxImageList1
+    OptionsImage.Images = imglst_16x16
     ExplicitWidth = 618
     ExplicitHeight = 424
     object pnl_HTML: TcxGroupBox
@@ -34,8 +33,8 @@ object frm_Handbuch: Tfrm_Handbuch
       Style.TransparentBorder = False
       TabOrder = 1
       Visible = False
-      Height = 105
-      Width = 185
+      Height = 363
+      Width = 568
     end
     object pnl_PDF: TcxGroupBox
       Left = 28
@@ -49,7 +48,7 @@ object frm_Handbuch: Tfrm_Handbuch
       Height = 363
       Width = 568
     end
-    object dxLayoutControl1Group_Root: TdxLayoutGroup
+    object lactrl_HandbuchGroup_Root: TdxLayoutGroup
       AlignHorz = ahClient
       AlignVert = avClient
       Hidden = True
@@ -57,8 +56,8 @@ object frm_Handbuch: Tfrm_Handbuch
       ShowBorder = False
       Index = -1
     end
-    object dxLayoutGroup2: TdxLayoutGroup
-      Parent = dxLayoutControl1Group_Root
+    object lagrp_HandbuchTab: TdxLayoutGroup
+      Parent = lactrl_HandbuchGroup_Root
       AlignHorz = ahClient
       AlignVert = avClient
       LayoutDirection = ldTabbed
@@ -66,31 +65,28 @@ object frm_Handbuch: Tfrm_Handbuch
       OnTabChanged = cxPageControl1Change
       Index = 0
     end
-    object dxLayoutGroup3: TdxLayoutGroup
-      Parent = dxLayoutGroup2
+    object lagrp_HandbuchPDF: TdxLayoutGroup
+      Parent = lagrp_HandbuchTab
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.ImageIndex = 1
-      CaptionOptions.Text = 'PDF'
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 0
     end
-    object dxLayoutGroup4: TdxLayoutGroup
-      Parent = dxLayoutGroup2
+    object lagrp_HandbuchHtml: TdxLayoutGroup
+      Parent = lagrp_HandbuchTab
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.ImageIndex = 0
-      CaptionOptions.Text = 'HTML'
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 1
     end
-    object dxLayoutItem1: TdxLayoutItem
-      Parent = dxLayoutGroup3
+    object laitm_HandbuchPDF: TdxLayoutItem
+      Parent = lagrp_HandbuchPDF
       AlignHorz = ahClient
       AlignVert = avClient
-      CaptionOptions.Text = 'New Item'
       CaptionOptions.Visible = False
       Control = pnl_PDF
       ControlOptions.AutoColor = True
@@ -99,11 +95,10 @@ object frm_Handbuch: Tfrm_Handbuch
       ControlOptions.ShowBorder = False
       Index = 0
     end
-    object dxLayoutItem2: TdxLayoutItem
-      Parent = dxLayoutGroup4
+    object laitm_HandbuchHtml: TdxLayoutItem
+      Parent = lagrp_HandbuchHtml
       AlignHorz = ahClient
       AlignVert = avClient
-      CaptionOptions.Text = 'New Item'
       CaptionOptions.Visible = False
       Control = pnl_HTML
       ControlOptions.AutoColor = True
@@ -113,7 +108,7 @@ object frm_Handbuch: Tfrm_Handbuch
       Index = 0
     end
   end
-  object cxImageList1: TcxImageList
+  object imglst_16x16: TcxImageList
     SourceDPI = 96
     FormatVersion = 1
     DesignInfo = 14680368
@@ -164,7 +159,7 @@ object frm_Handbuch: Tfrm_Handbuch
           CF9B7F00B2C0259947DC87E10000000049454E44AE426082}
       end>
   end
-  object dxLayoutLookAndFeelList1: TdxLayoutLookAndFeelList
+  object lalaflst_Handbuch: TdxLayoutLookAndFeelList
     Left = 208
     object dxLayoutCxLookAndFeel1: TdxLayoutCxLookAndFeel
       PixelsPerInch = 96

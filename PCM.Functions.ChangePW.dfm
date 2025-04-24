@@ -2,18 +2,18 @@ object frm_PCM_ChangePW: Tfrm_PCM_ChangePW
   Left = 245
   Top = 108
   BorderStyle = bsDialog
-  Caption = 'Passwort '#228'ndern'
-  ClientHeight = 147
+  ClientHeight = 172
   ClientWidth = 352
   Color = clWhite
   ParentFont = True
   Position = poScreenCenter
+  OnShow = FormShow
   TextHeight = 15
   object dxLayoutControl1: TdxLayoutControl
     Left = 0
     Top = 0
     Width = 352
-    Height = 147
+    Height = 172
     Align = alClient
     TabOrder = 0
     AutoSize = True
@@ -22,23 +22,23 @@ object frm_PCM_ChangePW: Tfrm_PCM_ChangePW
     ExplicitHeight = 130
     object edt_PCManagerChangePassword_NewPass: TcxTextEdit
       Left = 132
-      Top = 33
+      Top = 12
       Properties.EchoMode = eemPassword
       Properties.PasswordChar = '*'
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 1
-      Width = 191
+      Width = 208
     end
     object edt_PCManagerChangePassword_RepPass: TcxTextEdit
       Left = 132
-      Top = 84
+      Top = 42
       Properties.EchoMode = eemPassword
       Properties.PasswordChar = '*'
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 2
-      Width = 191
+      Width = 208
     end
     object img_PCManagerChangePassword_Image: TcxImage
       Left = 12
@@ -459,15 +459,14 @@ object frm_PCM_ChangePW: Tfrm_PCM_ChangePW
       Style.TransparentBorder = False
       TabOrder = 0
       Transparent = True
-      Height = 127
+      Height = 148
       Width = 113
     end
     object btn_PCManagerChangePassword_Cancel: TcxButton
-      Left = 231
-      Top = 114
-      Width = 92
+      Left = 240
+      Top = 72
+      Width = 100
       Height = 25
-      Caption = 'Abbrechen'
       OptionsImage.ImageIndex = 57
       OptionsImage.Images = dm_PCM.imglst_16x16
       TabOrder = 4
@@ -475,10 +474,9 @@ object frm_PCM_ChangePW: Tfrm_PCM_ChangePW
     end
     object btn_PCManagerChangePassword_Ok: TcxButton
       Left = 132
-      Top = 114
-      Width = 92
+      Top = 72
+      Width = 101
       Height = 25
-      Caption = 'Ok'
       OptionsImage.ImageIndex = 56
       OptionsImage.Images = dm_PCM.imglst_16x16
       TabOrder = 3
@@ -504,7 +502,6 @@ object frm_PCM_ChangePW: Tfrm_PCM_ChangePW
       Parent = dxLayoutGroup8
       AlignHorz = ahLeft
       AlignVert = avClient
-      CaptionOptions.Text = 'img_PCManagerChangePassword_Image'
       CaptionOptions.Visible = False
       Control = img_PCManagerChangePassword_Image
       ControlOptions.OriginalHeight = 117
@@ -512,11 +509,10 @@ object frm_PCM_ChangePW: Tfrm_PCM_ChangePW
       ControlOptions.ShowBorder = False
       Index = 0
     end
-    object dxLayoutItem2: TdxLayoutItem
+    object laitm_PWChangeNewPW: TdxLayoutItem
       Parent = dxLayoutGroup3
       AlignHorz = ahClient
       AlignVert = avTop
-      CaptionOptions.Text = 'Neues Passwort:'
       CaptionOptions.Layout = clTop
       Control = edt_PCManagerChangePassword_NewPass
       ControlOptions.OriginalHeight = 23
@@ -524,11 +520,10 @@ object frm_PCM_ChangePW: Tfrm_PCM_ChangePW
       ControlOptions.ShowBorder = False
       Index = 0
     end
-    object dxLayoutItem3: TdxLayoutItem
+    object laitm_PWChangeRepPW: TdxLayoutItem
       Parent = dxLayoutGroup3
       AlignHorz = ahClient
       AlignVert = avTop
-      CaptionOptions.Text = 'Passwort wiederholen:'
       CaptionOptions.Layout = clTop
       Control = edt_PCManagerChangePassword_RepPass
       ControlOptions.OriginalHeight = 23
@@ -540,7 +535,6 @@ object frm_PCM_ChangePW: Tfrm_PCM_ChangePW
       Parent = dxLayoutGroup1
       AlignHorz = ahClient
       AlignVert = avTop
-      CaptionOptions.Text = 'btn_PCManagerChangePassword_Ok'
       CaptionOptions.Visible = False
       Control = btn_PCManagerChangePassword_Ok
       ControlOptions.OriginalHeight = 25
@@ -552,7 +546,6 @@ object frm_PCM_ChangePW: Tfrm_PCM_ChangePW
       Parent = dxLayoutGroup1
       AlignHorz = ahClient
       AlignVert = avTop
-      CaptionOptions.Text = 'btn_PCManagerChangePassword_Cancel'
       CaptionOptions.Visible = False
       Control = btn_PCManagerChangePassword_Cancel
       ControlOptions.OriginalHeight = 25
@@ -564,7 +557,6 @@ object frm_PCM_ChangePW: Tfrm_PCM_ChangePW
       Parent = dxLayoutControl1Group_Root
       AlignHorz = ahClient
       AlignVert = avClient
-      CaptionOptions.Text = 'New Group'
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 0
@@ -573,7 +565,6 @@ object frm_PCM_ChangePW: Tfrm_PCM_ChangePW
       Parent = dxLayoutGroup8
       AlignHorz = ahClient
       AlignVert = avClient
-      CaptionOptions.Text = 'New Group'
       ItemIndex = 1
       ShowBorder = False
       Index = 1
@@ -582,7 +573,6 @@ object frm_PCM_ChangePW: Tfrm_PCM_ChangePW
       Parent = dxLayoutGroup9
       AlignHorz = ahClient
       AlignVert = avTop
-      CaptionOptions.Text = 'New Group'
       ItemIndex = 1
       LayoutDirection = ldHorizontal
       ShowBorder = False

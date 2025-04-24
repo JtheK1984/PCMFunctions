@@ -18,54 +18,53 @@ type
   {$Region type}
   Tfrm_PCM_InfoApp = class(TForm)
     img_PCManagerAppInfo_Image: TcxImage;
-    cxButton1: TcxButton;
-    cxImageList1: TcxImageList;
-    dxLayoutControl1Group_Root: TdxLayoutGroup;
-    dxLayoutControl1: TdxLayoutControl;
-    dxLayoutGroup3: TdxLayoutGroup;
-    dxLayoutGroup5: TdxLayoutGroup;
-    dxLayoutItem1: TdxLayoutItem;
-    lbl_PCManagerAppInfo_AppName: TdxLayoutLabeledItem;
-    cxLabel7: TdxLayoutLabeledItem;
-    cxLabel5: TdxLayoutLabeledItem;
-    cxLabel9: TdxLayoutLabeledItem;
-    lbl_PCManagerAppInfo_ServerLabel: TdxLayoutLabeledItem;
-    dxLayoutItem7: TdxLayoutItem;
-    dxLayoutGroup1: TdxLayoutGroup;
-    dxLayoutGroup11: TdxLayoutGroup;
-    dxLayoutGroup2: TdxLayoutGroup;
-    dxLayoutGroup12: TdxLayoutGroup;
-    lbl_PCManagerAppInfo_Version: TdxLayoutLabeledItem;
-    dxLayoutGroup13: TdxLayoutGroup;
-    dxLayoutLabeledItem1: TdxLayoutLabeledItem;
-    lbl_PCManagerAppInfo_Revision: TdxLayoutLabeledItem;
-    dxLayoutLabeledItem2: TdxLayoutLabeledItem;
-    lbl_PCManagerAppInfo_AppCopyRight: TdxLayoutLabeledItem;
-    dxLayoutGroup14: TdxLayoutGroup;
-    dxLayoutGroup15: TdxLayoutGroup;
-    dxLayoutLabeledItem4: TdxLayoutLabeledItem;
-    dxLayoutGroup16: TdxLayoutGroup;
-    dxLayoutLabeledItem5: TdxLayoutLabeledItem;
-    dxLayoutGroup17: TdxLayoutGroup;
-    cxLabel1: TdxLayoutLabeledItem;
-    dxLayoutGroup18: TdxLayoutGroup;
-    cxLabel4: TdxLayoutLabeledItem;
-    dxLayoutGroup4: TdxLayoutGroup;
-    dxLayoutLabeledItem3: TdxLayoutLabeledItem;
-    cxLabel6: TdxLayoutLabeledItem;
-    dxLayoutLabeledItem6: TdxLayoutLabeledItem;
-    dxLayoutGroup8: TdxLayoutGroup;
-    dxLayoutGroup6: TdxLayoutGroup;
-    dxLayoutGroup7: TdxLayoutGroup;
-    lblDBVersion: TdxLayoutLabeledItem;
-    dxLayoutLabeledItem8: TdxLayoutLabeledItem;
-    lblDataVersion: TdxLayoutLabeledItem;
-    lbl_PCManagerAppInfo_Server: TdxLayoutLabeledItem;
-    dxLayoutLookAndFeelList1: TdxLayoutLookAndFeelList;
+    btn_Lizenz: TcxButton;
+    lactrl_AppinfoGroup_Root: TdxLayoutGroup;
+    lactrl_Appinfo: TdxLayoutControl;
+    lagrp_AppinfoDetailsImg: TdxLayoutGroup;
+    lagrp_PCManagerAppInfo_DatenbankDetail: TdxLayoutGroup;
+    laitm_AppinfoDetailsImg: TdxLayoutItem;
+    laitm_PCManagerAppInfo_AppName: TdxLayoutLabeledItem;
+    laitm_PCManagerAppInfo_LizenzForlbl: TdxLayoutLabeledItem;
+    laitm_PCManagerAppInfo_Demolbl: TdxLayoutLabeledItem;
+    laitm_PCManagerAppInfo_DatenbankDetaillbl: TdxLayoutLabeledItem;
+    laitm_PCManagerAppInfo_ServerLabel: TdxLayoutLabeledItem;
+    lagrp_AppinfoBtn: TdxLayoutItem;
+    lagrp_AppinfoInfo: TdxLayoutGroup;
+    lagrp_PCManagerAppInfo_AppName: TdxLayoutGroup;
+    lagrp_AppinfoDetailsWithoutImg: TdxLayoutGroup;
+    lagrp_AppinfoDetails: TdxLayoutGroup;
+    laitm_PCManagerAppInfo_Version: TdxLayoutLabeledItem;
+    lagrp_PCManagerAppInfo_Revision: TdxLayoutGroup;
+    laitm_PCManagerAppInfo_Revisionlbl: TdxLayoutLabeledItem;
+    laitm_PCManagerAppInfo_Revision: TdxLayoutLabeledItem;
+    laitm_PCManagerAppInfo_AppCopyRightLbl: TdxLayoutLabeledItem;
+    laitm_PCManagerAppInfo_AppCopyRight: TdxLayoutLabeledItem;
+    lagrp_PCManagerAppInfo_AppCopyRight: TdxLayoutGroup;
+    lagrp_PCManagerAppInfo_Version: TdxLayoutGroup;
+    laitm_PCManagerAppInfo_VersionLbl: TdxLayoutLabeledItem;
+    lagrp_PCManagerAppInfo_Lizenz: TdxLayoutGroup;
+    laitm_PCManagerAppInfo_Lizenz: TdxLayoutLabeledItem;
+    lagrp_PCManagerAppInfo_LizenzFor: TdxLayoutGroup;
+    laitm_PCManagerAppInfo_LizenzFor: TdxLayoutLabeledItem;
+    lagrp_PCManagerAppInfo_Demo: TdxLayoutGroup;
+    laitm_PCManagerAppInfo_Demo: TdxLayoutLabeledItem;
+    lagrp_PCManagerAppInfo_Valid: TdxLayoutGroup;
+    laitm_PCManagerAppInfo_Validlbl: TdxLayoutLabeledItem;
+    laitm_PCManagerAppInfo_Valid: TdxLayoutLabeledItem;
+    laitm_PCManagerAppInfo_Datenbank: TdxLayoutLabeledItem;
+    lagrp_PCManagerAppInfo_Datenbank: TdxLayoutGroup;
+    lagrp_PCManagerAppInfo_Datenversion: TdxLayoutGroup;
+    lagrp_PCManagerAppInfo_Server: TdxLayoutGroup;
+    laitm_PCManagerAppInfo_DatenbankDetail: TdxLayoutLabeledItem;
+    laitml_PCManagerAppInfo_Datenversionlbl: TdxLayoutLabeledItem;
+    laitm_PCManagerAppInfo_Datenversion: TdxLayoutLabeledItem;
+    laitm_PCManagerAppInfo_Server: TdxLayoutLabeledItem;
+    lalaflst_Appinfo: TdxLayoutLookAndFeelList;
     dxLayoutCxLookAndFeel1: TdxLayoutCxLookAndFeel;
-    dxLayoutGroup9: TdxLayoutGroup;
+    lagrp_Appinfo: TdxLayoutGroup;
     procedure FormShow(Sender: TObject);
-    procedure cxButton1Click(Sender: TObject);
+    procedure btn_LizenzClick(Sender: TObject);
   private
     { Private-Deklarationen }
   public
@@ -84,7 +83,8 @@ uses
   {$Region uses}
   PCM.Data,
   PCM.Functions.Lizenz,
-  PCM.Main,PCM.Strings,
+  PCM.Main,
+  PCM.Strings,
   PCM.Helper;
   {$EndRegion uses}
 ////////////////////////////////////////////////////////////////////////////////
@@ -134,26 +134,25 @@ end;
 ////////////////////////////////////////////////////////////////////////////////
 {$Region Buttonfunktionen}
 // Formular anzeigen
-procedure Tfrm_PCM_InfoApp.cxButton1Click(Sender: TObject);
+procedure Tfrm_PCM_InfoApp.btn_LizenzClick(Sender: TObject);
 begin
   Application.CreateForm(Tfrm_PCM_lizenz,frm_PCM_lizenz);
-  frm_PCM_lizenz.btn_SaveLicence.Enabled:= false;
+  frm_PCM_lizenz.btn_Save.enabled:= false;
   dm_PCM.bAppTerm:= false;
   frm_PCM_lizenz.Showmodal;
   frm_PCM_lizenz.Free;
-
   CheckLizenzNew;
-  cxLabel1.Caption:= dm_PCM.Firma;
+  laitm_PCManagerAppInfo_LizenzFor.Caption:= dm_PCM.Firma;
   if not dm_PCM.bDemo then
   begin
-    cxLabel4.Caption:= rs_PCM_Nein;
-    cxLabel6.Caption:= rs_PCM_unbegrenzt;
+    laitm_PCManagerAppInfo_Demo.Caption:= rs_PCM_Nein;
+    laitm_PCManagerAppInfo_Valid.Caption:= rs_PCM_unbegrenzt;
     frm_PCM_main.Caption:=PCM_Programmname;
   end
   else
   begin
-    cxLabel4.Caption:= rs_PCM_Ja;
-    cxLabel6.Caption:= DateToStr(dm_PCM.dtGueltig);
+    laitm_PCManagerAppInfo_Demo.Caption:= rs_PCM_Ja;
+    laitm_PCManagerAppInfo_Valid.Caption:= DateToStr(dm_PCM.dtGueltig);
     frm_PCM_main.Caption:=PCM_Programmname + rs_PCM_Demolizenz + DateTostr(dm_PCM.dtGueltig);
   end;
 end;
@@ -170,51 +169,62 @@ begin
       dm_PCM.qry_work.SQL.Text:= 'SELECT VERSION() as Version';
       dm_PCM.qry_work.Open;
       if StrToInt(Copy(dm_PCM.qry_work.FieldByName('Version').AsString,1,1 )) > 5 then
-        lblDBVersion.Caption:= 'MySQL 64-Bit Version: ' + dm_PCM.qry_work.FieldByName('Version').AsString
+        laitm_PCManagerAppInfo_DatenbankDetail.Caption:= rs_Function_AppInfo_64Bit + dm_PCM.qry_work.FieldByName('Version').AsString
       else
-        lblDBVersion.Caption:= 'MySQL 32-Bit Version: ' + dm_PCM.qry_work.FieldByName('Version').AsString;
+        laitm_PCManagerAppInfo_DatenbankDetail.Caption:= rs_Function_AppInfo_32Bit + dm_PCM.qry_work.FieldByName('Version').AsString;
       dm_PCM.qry_work.close;
 
       dm_PCM.qry_work.SQL.Text:= 'SELECT CONCAT(Major,''.'',Minor) as Version from version_db';
       dm_PCM.qry_work.Open;
-      lblDataVersion.Caption:= rs_PCM_Version + dm_PCM.qry_work.FieldByName('Version').AsString;
+      laitm_PCManagerAppInfo_Datenversion.Caption:= rs_PCM_Version + dm_PCM.qry_work.FieldByName('Version').AsString;
       dm_PCM.qry_work.close;
     end;
   end;
-
-
-  lbl_PCManagerAppInfo_AppName.CaptionOptions.Text:= '[B]' + PCM_Programmname + '[/B]';
-  lbl_PCManagerAppInfo_Version.CaptionOptions.Text:= GetAppVersion;
-  lbl_PCManagerAppInfo_Revision.CaptionOptions.Text:= GetFileDate;
-  lbl_PCManagerAppInfo_Server.CaptionOptions.Text:= dm_PCM.sServer;
+  btn_Lizenz.Caption:= rs_Function_APPInfo_LizenzEintragen;
+  laitm_PCManagerAppInfo_Lizenz.CaptionOptions.Text:= '[B]' + rs_Function_Appinfo_Lizenz  + '[/B]';
+  laitm_PCManagerAppInfo_Datenbank.CaptionOptions.Text:= '[B]' + rs_Function_Appinfo_Database  + '[/B]';
+  laitm_PCManagerAppInfo_DatenbankDetaillbl.CaptionOptions.Text:= rs_Function_Appinfo_Database;
+  laitm_PCManagerAppInfo_LizenzForlbl.CaptionOptions.Text:= rs_Function_AppInfo_Lizenzfor;
+  laitm_PCManagerAppInfo_Validlbl.CaptionOptions.text:= rs_Function_AppInfo_Valid;
+  laitml_PCManagerAppInfo_Datenversionlbl.CaptionOptions.text:= rs_Function_AppInfo_Datenversion;
+  laitm_PCManagerAppInfo_AppCopyRight.CaptionOptions.text:= rs_Function_APPInfo_JensHenske;
+  laitm_PCManagerAppInfo_VersionLbl.CaptionOptions.text:= rs_Function_APPInfo_Version;
+  laitm_PCManagerAppInfo_Revisionlbl.CaptionOptions.text:= rs_Function_APPInfo_Revision;
+  laitm_PCManagerAppInfo_AppCopyRightLbl.CaptionOptions.Text:= rs_Function_APPInfo_CopyRight;
+  laitm_PCManagerAppInfo_Demolbl.CaptionOptions.Text:= rs_Function_APPInfo_Demo;
+  laitm_PCManagerAppInfo_ServerLabel.CaptionOptions.Text:= rs_Function_APPInfo_Server;
+  laitm_PCManagerAppInfo_AppName.CaptionOptions.Text:= '[B]' + PCM_Programmname + '[/B]';
+  laitm_PCManagerAppInfo_Version.CaptionOptions.Text:= GetAppVersion;
+  laitm_PCManagerAppInfo_Revision.CaptionOptions.Text:= GetFileDate;
+  laitm_PCManagerAppInfo_Server.CaptionOptions.Text:= dm_PCM.sServer;
   if (PCM_Logname <> 'PCMBackup') and
      (PCM_Logname <> 'PCMBenutzerverwaltung') and
      (PCM_Logname <> 'PCMDevManager') and
      (PCM_Logname <> 'PCMLizenzgenerator') and
      (PCM_Logname <> 'PCMUpdate') then
   begin
-    cxLabel1.CaptionOptions.Text:= dm_PCM.Firma;
+    laitm_PCManagerAppInfo_LizenzFor.CaptionOptions.Text:= dm_PCM.Firma;
     if not dm_PCM.bDemo then
     begin
-      cxLabel4.CaptionOptions.Text:= rs_PCM_Nein;
-      cxLabel6.CaptionOptions.Text:= rs_PCM_unbegrenzt;
+      laitm_PCManagerAppInfo_Demo.CaptionOptions.Text:= rs_PCM_Nein;
+      laitm_PCManagerAppInfo_Valid.CaptionOptions.Text:= rs_PCM_unbegrenzt;
     end
     else
     begin
-      cxLabel4.CaptionOptions.Text:= rs_PCM_Ja;
-      cxLabel6.CaptionOptions.Text:= DateToStr(dm_PCM.dtGueltig);
+      laitm_PCManagerAppInfo_Demo.CaptionOptions.Text:= rs_PCM_Ja;
+      laitm_PCManagerAppInfo_Valid.CaptionOptions.Text:= DateToStr(dm_PCM.dtGueltig);
     end;
   end
   else begin
-    dxLayoutItem7.Visible:= false;
+    lagrp_AppinfoBtn.Visible:= false;
     dm_PCM.qry_work.SQL.Text:= 'Select Benutzer From manager_lizenz';
     dm_PCM.qry_work.Open;
-    cxLabel1.CaptionOptions.Text:= dm_PCM.qry_work.FieldByName('Benutzer').AsString;
+    laitm_PCManagerAppInfo_Server.CaptionOptions.Text:= dm_PCM.qry_work.FieldByName('Benutzer').AsString;
     dm_PCM.qry_work.close;
-    cxLabel4.CaptionOptions.Text:= rs_PCM_Nein;
-    cxLabel6.CaptionOptions.Text:= rs_PCM_unbegrenzt;
+    laitm_PCManagerAppInfo_Demo.CaptionOptions.Text:= rs_PCM_Nein;
+    laitm_PCManagerAppInfo_Valid.CaptionOptions.Text:= rs_PCM_unbegrenzt;
   end;
 end;
 {$EndRegion Formfunktionen}
 end.
- 
+

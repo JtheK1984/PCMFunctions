@@ -293,7 +293,7 @@ begin
   if iRecordLizenz = 0 then
   begin
     Application.CreateForm(Tfrm_PCM_lizenz,frm_PCM_lizenz);
-    frm_PCM_lizenz.btn_SaveLicence.Enabled:= false;
+    frm_PCM_lizenz.btn_Save.Enabled:= false;
     frm_PCM_lizenz.Showmodal;
     frm_PCM_lizenz.Free;
   end

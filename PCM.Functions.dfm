@@ -12,7 +12,7 @@ object frm_PCM_System: Tfrm_PCM_System
   Font.Style = []
   OnShow = FormShow
   TextHeight = 13
-  object dxLayoutControl1: TdxLayoutControl
+  object lactrl_System: TdxLayoutControl
     Left = 0
     Top = 0
     Width = 1051
@@ -26,7 +26,7 @@ object frm_PCM_System: Tfrm_PCM_System
     object prgbr_ProcUse: TcxProgressBar
       AlignWithMargins = True
       Left = 22
-      Top = 364
+      Top = 245
       Margins.Left = 13
       Margins.Right = 13
       Margins.Bottom = 0
@@ -39,7 +39,7 @@ object frm_PCM_System: Tfrm_PCM_System
     object prgbr_RamUse: TcxProgressBar
       AlignWithMargins = True
       Left = 22
-      Top = 316
+      Top = 217
       Margins.Left = 13
       Margins.Right = 13
       Margins.Bottom = 0
@@ -49,7 +49,7 @@ object frm_PCM_System: Tfrm_PCM_System
       Height = 22
       Width = 1007
     end
-    object dxLayoutControl1Group_Root: TdxLayoutGroup
+    object lactrl_SystemGroup_Root: TdxLayoutGroup
       AlignHorz = ahClient
       AlignVert = avClient
       Hidden = True
@@ -57,70 +57,61 @@ object frm_PCM_System: Tfrm_PCM_System
       ShowBorder = False
       Index = -1
     end
-    object dxLayoutGroup3: TdxLayoutGroup
-      Parent = dxLayoutControl1Group_Root
+    object lagrp_System: TdxLayoutGroup
+      Parent = lactrl_SystemGroup_Root
       AlignHorz = ahClient
       AlignVert = avClient
-      CaptionOptions.Text = 'Systeminfo'
       ItemIndex = 3
       ShowBorder = False
       Index = 0
     end
-    object dxLayoutGroup5: TdxLayoutGroup
-      Parent = dxLayoutGroup3
+    object lagrp_SystemWindows: TdxLayoutGroup
+      Parent = lagrp_System
       AlignHorz = ahClient
       AlignVert = avTop
-      CaptionOptions.Text = 'Windows'
+      ItemIndex = 1
       Index = 0
     end
-    object lbl_os: TdxLayoutLabeledItem
-      Parent = dxLayoutGroup1
+    object laitm_SystemOSlbl: TdxLayoutLabeledItem
+      Parent = lagrp_SystemOS
       AlignHorz = ahLeft
       AlignVert = avTop
       Offsets.Left = 8
       CaptionOptions.AlignVert = tavTop
-      CaptionOptions.Text = 'Betriebssystem:'
       CaptionOptions.Width = 200
       Index = 0
     end
-    object lbl_os_data: TdxLayoutLabeledItem
-      Parent = dxLayoutGroup1
+    object laitm_SystemOS: TdxLayoutLabeledItem
+      Parent = lagrp_SystemOS
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.AlignVert = tavTop
-      CaptionOptions.Text = 'Label2'
       CaptionOptions.Width = 200
       Index = 1
     end
-    object dxLayoutGroup9: TdxLayoutGroup
-      Parent = dxLayoutGroup3
+    object lagrp_SystemCPU: TdxLayoutGroup
+      Parent = lagrp_System
       AlignHorz = ahClient
       AlignVert = avTop
-      CaptionOptions.Text = 'Prozessor'
-      ItemIndex = 2
       Index = 1
     end
-    object dxLayoutGroup12: TdxLayoutGroup
-      Parent = dxLayoutGroup3
+    object lagrp_SystemRam: TdxLayoutGroup
+      Parent = lagrp_System
       AlignHorz = ahClient
       AlignVert = avTop
-      CaptionOptions.Text = 'Arbeitsspeicher'
       ItemIndex = 1
       Index = 2
     end
-    object dxLayoutGroup15: TdxLayoutGroup
-      Parent = dxLayoutGroup13
+    object lagrp_SystemAuslastungDetails: TdxLayoutGroup
+      Parent = lagrp_SystemAuslastung
       AlignHorz = ahClient
       AlignVert = avTop
-      CaptionOptions.Text = 'Auslastung'
-      ItemIndex = 2
       Index = 0
     end
-    object dxLayoutItem7: TdxLayoutItem
-      Parent = dxLayoutGroup15
+    object laitm_SystemRamUSE: TdxLayoutItem
+      Parent = lagrp_SystemAuslastungDetails
       AlignHorz = ahClient
       AlignVert = avTop
-      CaptionOptions.Text = 'Arbeitsspeicher:'
       CaptionOptions.Layout = clTop
       Control = prgbr_RamUse
       ControlOptions.OriginalHeight = 22
@@ -128,246 +119,211 @@ object frm_PCM_System: Tfrm_PCM_System
       ControlOptions.ShowBorder = False
       Index = 0
     end
-    object lbl_ProcUse: TdxLayoutLabeledItem
-      Parent = dxLayoutGroup15
+    object laitm_SystemCPUUSE: TdxLayoutItem
+      Parent = lagrp_SystemAuslastungDetails
       AlignHorz = ahClient
       AlignVert = avTop
-      CaptionOptions.AlignVert = tavTop
-      CaptionOptions.Text = 'Prozessor:'
-      Index = 1
-    end
-    object dxLayoutItem8: TdxLayoutItem
-      Parent = dxLayoutGroup15
-      AlignHorz = ahClient
-      AlignVert = avTop
-      CaptionOptions.Text = 'prgbr_ProcUse'
-      CaptionOptions.Visible = False
+      CaptionOptions.Layout = clTop
       Control = prgbr_ProcUse
       ControlOptions.OriginalHeight = 22
       ControlOptions.OriginalWidth = 1009
       ControlOptions.ShowBorder = False
-      Index = 2
+      Index = 1
     end
-    object dxLayoutGroup1: TdxLayoutGroup
-      Parent = dxLayoutGroup5
+    object lagrp_SystemOS: TdxLayoutGroup
+      Parent = lagrp_SystemWindows
       AlignHorz = ahClient
       AlignVert = avTop
-      CaptionOptions.Text = 'New Group'
       ItemIndex = 1
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 0
     end
-    object dxLayoutGroup2: TdxLayoutGroup
-      Parent = dxLayoutGroup5
+    object lagrp_SystemPCNAME: TdxLayoutGroup
+      Parent = lagrp_SystemWindows
       AlignHorz = ahClient
       AlignVert = avTop
-      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 1
     end
-    object dxLayoutLabeledItem1: TdxLayoutLabeledItem
-      Parent = dxLayoutGroup2
+    object laitm_SystemPCNAMElbl: TdxLayoutLabeledItem
+      Parent = lagrp_SystemPCNAME
       AlignHorz = ahLeft
       AlignVert = avTop
       Offsets.Left = 8
-      CaptionOptions.Text = 'Computername:'
       CaptionOptions.Width = 200
       Index = 0
     end
-    object lbl_PCName_data: TdxLayoutLabeledItem
-      Parent = dxLayoutGroup2
+    object laitm_SystemPCNAME: TdxLayoutLabeledItem
+      Parent = lagrp_SystemPCNAME
       AlignHorz = ahClient
       AlignVert = avTop
-      CaptionOptions.Text = 'Label'
       Index = 1
     end
-    object dxLayoutLabeledItem3: TdxLayoutLabeledItem
-      Parent = dxLayoutGroup6
+    object laitm_SystemGraphiclbl: TdxLayoutLabeledItem
+      Parent = lagrp_SystemGraphic
       AlignHorz = ahLeft
       AlignVert = avTop
       Offsets.Left = 8
-      CaptionOptions.Text = 'Grafikaufl'#246'sung:'
       CaptionOptions.Width = 200
       Index = 0
     end
-    object lbl_Graphic_data: TdxLayoutLabeledItem
-      Parent = dxLayoutGroup6
+    object laitm_SystemGraphic: TdxLayoutLabeledItem
+      Parent = lagrp_SystemGraphic
       AlignHorz = ahClient
       AlignVert = avTop
-      CaptionOptions.Text = 'Label'
       Index = 1
     end
-    object dxLayoutGroup6: TdxLayoutGroup
-      Parent = dxLayoutGroup5
+    object lagrp_SystemGraphic: TdxLayoutGroup
+      Parent = lagrp_SystemWindows
       AlignHorz = ahClient
       AlignVert = avTop
-      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 2
     end
-    object dxLayoutLabeledItem5: TdxLayoutLabeledItem
-      Parent = dxLayoutGroup7
+    object laitm_SystemSysdirlbl: TdxLayoutLabeledItem
+      Parent = lagrp_SystemSysdir
       AlignHorz = ahLeft
       AlignVert = avTop
       Offsets.Left = 8
-      CaptionOptions.Text = 'Systemlaufwerk:'
       CaptionOptions.Width = 200
       Index = 0
     end
-    object lbl_SysDir_data: TdxLayoutLabeledItem
-      Parent = dxLayoutGroup7
+    object laitm_SystemSysdir: TdxLayoutLabeledItem
+      Parent = lagrp_SystemSysdir
       AlignHorz = ahClient
       AlignVert = avTop
-      CaptionOptions.Text = 'Label'
       Index = 1
     end
-    object dxLayoutGroup7: TdxLayoutGroup
-      Parent = dxLayoutGroup5
+    object lagrp_SystemSysdir: TdxLayoutGroup
+      Parent = lagrp_SystemWindows
       AlignHorz = ahClient
       AlignVert = avTop
-      CaptionOptions.Text = 'New Group'
       ItemIndex = 1
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 3
     end
-    object dxLayoutGroup8: TdxLayoutGroup
-      Parent = dxLayoutGroup9
+    object lagrp_SystemCPUType: TdxLayoutGroup
+      Parent = lagrp_SystemCPU
       AlignHorz = ahClient
       AlignVert = avTop
-      CaptionOptions.Text = 'New Group'
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 0
     end
-    object dxLayoutGroup18: TdxLayoutGroup
-      Parent = dxLayoutGroup9
+    object lagrp_SystemCPUCount: TdxLayoutGroup
+      Parent = lagrp_SystemCPU
       AlignHorz = ahClient
       AlignVert = avTop
-      CaptionOptions.Text = 'New Group'
       ItemIndex = 1
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 1
     end
-    object dxLayoutGroup19: TdxLayoutGroup
-      Parent = dxLayoutGroup9
+    object lagrp_SystemCPUSpeed: TdxLayoutGroup
+      Parent = lagrp_SystemCPU
       AlignHorz = ahClient
       AlignVert = avTop
-      CaptionOptions.Text = 'New Group'
       ItemIndex = 1
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 2
     end
-    object dxLayoutLabeledItem2: TdxLayoutLabeledItem
-      Parent = dxLayoutGroup19
+    object laitm_SystemCPUSpeedlbl: TdxLayoutLabeledItem
+      Parent = lagrp_SystemCPUSpeed
       AlignHorz = ahLeft
       AlignVert = avTop
       Offsets.Left = 8
-      CaptionOptions.Text = 'Prozessorgeschwindigkeit:'
       CaptionOptions.Width = 200
       Index = 0
     end
-    object lbl_ProcSpeed_data: TdxLayoutLabeledItem
-      Parent = dxLayoutGroup19
+    object laitm_SystemCPUSpeed: TdxLayoutLabeledItem
+      Parent = lagrp_SystemCPUSpeed
       AlignHorz = ahClient
       AlignVert = avTop
-      CaptionOptions.Text = 'Label'
       Index = 1
     end
-    object dxLayoutLabeledItem6: TdxLayoutLabeledItem
-      Parent = dxLayoutGroup18
+    object laitm_SystemCPUCountlbl: TdxLayoutLabeledItem
+      Parent = lagrp_SystemCPUCount
       AlignHorz = ahLeft
       AlignVert = avTop
       Offsets.Left = 8
-      CaptionOptions.Text = 'Prozessoranzahl:'
       CaptionOptions.Width = 200
       Index = 0
     end
-    object lbl_ProcCount_data: TdxLayoutLabeledItem
-      Parent = dxLayoutGroup18
+    object laitm_SystemCPUCount: TdxLayoutLabeledItem
+      Parent = lagrp_SystemCPUCount
       AlignHorz = ahClient
       AlignVert = avTop
-      CaptionOptions.Text = 'Label'
       Index = 1
     end
-    object dxLayoutLabeledItem8: TdxLayoutLabeledItem
-      Parent = dxLayoutGroup8
+    object laitm_SystemCPUTypelbl: TdxLayoutLabeledItem
+      Parent = lagrp_SystemCPUType
       AlignHorz = ahLeft
       AlignVert = avTop
       Offsets.Left = 8
-      CaptionOptions.Text = 'Prozessortyp:'
       CaptionOptions.Width = 200
       Index = 0
     end
-    object lbl_ProcType_data: TdxLayoutLabeledItem
-      Parent = dxLayoutGroup8
+    object laitm_SystemCPUType: TdxLayoutLabeledItem
+      Parent = lagrp_SystemCPUType
       AlignHorz = ahClient
       AlignVert = avTop
-      CaptionOptions.Text = 'Label'
       Index = 1
     end
-    object dxLayoutGroup10: TdxLayoutGroup
-      Parent = dxLayoutGroup12
+    object lagrp_SystemRamTotal: TdxLayoutGroup
+      Parent = lagrp_SystemRam
       AlignHorz = ahClient
       AlignVert = avTop
-      CaptionOptions.Text = 'New Group'
-      ItemIndex = 1
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 0
     end
-    object dxLayoutGroup11: TdxLayoutGroup
-      Parent = dxLayoutGroup12
+    object lagrp_SystemRamTotalFree: TdxLayoutGroup
+      Parent = lagrp_SystemRam
       AlignHorz = ahClient
       AlignVert = avTop
-      CaptionOptions.Text = 'New Group'
-      ItemIndex = 1
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 1
     end
-    object dxLayoutLabeledItem4: TdxLayoutLabeledItem
-      Parent = dxLayoutGroup11
+    object laitm_SystemRamTotalFreelbl: TdxLayoutLabeledItem
+      Parent = lagrp_SystemRamTotalFree
       AlignHorz = ahLeft
       AlignVert = avTop
       Offsets.Left = 8
-      CaptionOptions.Text = 'freier Arbeitsspeicher:'
       CaptionOptions.Width = 200
       Index = 0
     end
-    object lbl_RAMFree_data: TdxLayoutLabeledItem
-      Parent = dxLayoutGroup11
+    object laitm_SystemRamTotalFree: TdxLayoutLabeledItem
+      Parent = lagrp_SystemRamTotalFree
       AlignHorz = ahClient
       AlignVert = avTop
-      CaptionOptions.Text = 'Label'
       Index = 1
     end
-    object dxLayoutLabeledItem9: TdxLayoutLabeledItem
-      Parent = dxLayoutGroup10
+    object laitm_SystemRamTotallbl: TdxLayoutLabeledItem
+      Parent = lagrp_SystemRamTotal
       AlignHorz = ahLeft
       AlignVert = avTop
       Offsets.Left = 8
-      CaptionOptions.Text = 'Gesamter Arbeitsspeicher:'
       CaptionOptions.Width = 200
       Index = 0
     end
-    object lbl_RAMTotal_data: TdxLayoutLabeledItem
-      Parent = dxLayoutGroup10
+    object laitm_SystemRamTotal: TdxLayoutLabeledItem
+      Parent = lagrp_SystemRamTotal
       AlignHorz = ahClient
       AlignVert = avTop
-      CaptionOptions.Text = 'Label'
       Index = 1
     end
-    object dxLayoutGroup13: TdxLayoutGroup
-      Parent = dxLayoutGroup3
+    object lagrp_SystemAuslastung: TdxLayoutGroup
+      Parent = lagrp_System
       AlignHorz = ahClient
       AlignVert = avTop
-      CaptionOptions.Text = 'New Group'
       ShowBorder = False
       Index = 3
     end
@@ -378,7 +334,7 @@ object frm_PCM_System: Tfrm_PCM_System
     Left = 96
     Top = 521
   end
-  object cxImageList1: TcxImageList
+  object imglst_16x16: TcxImageList
     SourceDPI = 96
     FormatVersion = 1
     DesignInfo = 20710061
@@ -417,7 +373,7 @@ object frm_PCM_System: Tfrm_PCM_System
           0FF6A463B24326885F7EE8F77F30340F1C0000000049454E44AE426082}
       end>
   end
-  object dxLayoutLookAndFeelList1: TdxLayoutLookAndFeelList
+  object lalaflst_System: TdxLayoutLookAndFeelList
     object dxLayoutCxLookAndFeel1: TdxLayoutCxLookAndFeel
       PixelsPerInch = 96
     end
