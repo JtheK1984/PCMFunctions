@@ -145,15 +145,15 @@ begin
   laitm_PCManagerAppInfo_LizenzFor.Caption:= dm_PCM.Firma;
   if not dm_PCM.bDemo then
   begin
-    laitm_PCManagerAppInfo_Demo.Caption:= rs_PCM_Nein;
-    laitm_PCManagerAppInfo_Valid.Caption:= rs_PCM_unbegrenzt;
+    laitm_PCManagerAppInfo_Demo.Caption:= rs_General_Nein;
+    laitm_PCManagerAppInfo_Valid.Caption:= rs_Function_APPInfo_unbegrenzt;
     frm_PCM_main.Caption:=PCM_Programmname;
   end
   else
   begin
-    laitm_PCManagerAppInfo_Demo.Caption:= rs_PCM_Ja;
+    laitm_PCManagerAppInfo_Demo.Caption:= rs_General_Ja;
     laitm_PCManagerAppInfo_Valid.Caption:= DateToStr(dm_PCM.dtGueltig);
-    frm_PCM_main.Caption:=PCM_Programmname + rs_PCM_Demolizenz + DateTostr(dm_PCM.dtGueltig);
+    frm_PCM_main.Caption:=PCM_Programmname + rs_Function_APPInfo_Demolizenz + DateTostr(dm_PCM.dtGueltig);
   end;
 end;
 {$EndRegion Buttonfunktionen}
@@ -176,7 +176,7 @@ begin
 
       dm_PCM.qry_work.SQL.Text:= 'SELECT CONCAT(Major,''.'',Minor) as Version from version_db';
       dm_PCM.qry_work.Open;
-      laitm_PCManagerAppInfo_Datenversion.Caption:= rs_PCM_Version + dm_PCM.qry_work.FieldByName('Version').AsString;
+      laitm_PCManagerAppInfo_Datenversion.Caption:= rs_Function_APPInfo_Version + ' ' + dm_PCM.qry_work.FieldByName('Version').AsString;
       dm_PCM.qry_work.close;
     end;
   end;
@@ -206,12 +206,12 @@ begin
     laitm_PCManagerAppInfo_LizenzFor.CaptionOptions.Text:= dm_PCM.Firma;
     if not dm_PCM.bDemo then
     begin
-      laitm_PCManagerAppInfo_Demo.CaptionOptions.Text:= rs_PCM_Nein;
-      laitm_PCManagerAppInfo_Valid.CaptionOptions.Text:= rs_PCM_unbegrenzt;
+      laitm_PCManagerAppInfo_Demo.CaptionOptions.Text:= rs_General_Nein;
+      laitm_PCManagerAppInfo_Valid.CaptionOptions.Text:= rs_Function_APPInfo_unbegrenzt;
     end
     else
     begin
-      laitm_PCManagerAppInfo_Demo.CaptionOptions.Text:= rs_PCM_Ja;
+      laitm_PCManagerAppInfo_Demo.CaptionOptions.Text:= rs_General_Ja;
       laitm_PCManagerAppInfo_Valid.CaptionOptions.Text:= DateToStr(dm_PCM.dtGueltig);
     end;
   end
@@ -221,8 +221,8 @@ begin
     dm_PCM.qry_work.Open;
     laitm_PCManagerAppInfo_Server.CaptionOptions.Text:= dm_PCM.qry_work.FieldByName('Benutzer').AsString;
     dm_PCM.qry_work.close;
-    laitm_PCManagerAppInfo_Demo.CaptionOptions.Text:= rs_PCM_Nein;
-    laitm_PCManagerAppInfo_Valid.CaptionOptions.Text:= rs_PCM_unbegrenzt;
+    laitm_PCManagerAppInfo_Demo.CaptionOptions.Text:= rs_General_Nein;
+    laitm_PCManagerAppInfo_Valid.CaptionOptions.Text:= rs_Function_APPInfo_unbegrenzt;
   end;
 end;
 {$EndRegion Formfunktionen}

@@ -332,7 +332,7 @@ begin
     qry_Benutzer.Delete;
   end
   else begin
-    MessageDlg(rs_PCMBenutzerverwaltung_BenutzerLoeschen , mtWarning, [mbOk], 0);
+    MessageDlg(rs_Function_Benutzer_BenutzerLoeschen , mtWarning, [mbOk], 0);
   end;
 end;
 procedure Tfrm_PCM_User.btn_BenutzerNewClick(Sender: TObject);
@@ -370,7 +370,7 @@ begin
     qry_Rechte.Delete;
   end
   else begin
-    MessageDlg(rs_PCMBenutzerverwaltung_RechteLoeschen  , mtWarning, [mbOk], 0);
+    MessageDlg(rs_Function_Benutzer_RechteLoeschen  , mtWarning, [mbOk], 0);
   end;
 end;
 procedure Tfrm_PCM_User.btn_RechtNewClick(Sender: TObject);
@@ -417,7 +417,7 @@ begin
   end
   else begin
     qry_Rechte.Cancel;
-    MessageDlg(rs_PCMBenutzerverwaltung_RechteBearbeiten, mtWarning, [mbOk], 0);
+    MessageDlg(rs_Function_Benutzer_RechteBearbeiten, mtWarning, [mbOk], 0);
   end;
 end;
 {$EndRegion Buttonfunktionen}
@@ -611,10 +611,6 @@ procedure Tfrm_PCM_User.FormShow(Sender: TObject);
     qry_Rechte.Open;
     qry_RechteDetail.SQL.Text:= ASSQL_GetRightsDetail[dm_PCM.iDBType];
     qry_RechteDetail.Open;
-    cxGridDBColumn2.Caption:= rs_PCMBenutzerverwaltung_Benutzer;
-    grdDBTblView_BenutzerColumn1.Caption:= rs_PCMBenutzerverwaltung_Vorname;
-    grdDBTblView_BenutzerColumn2.Caption:= rs_PCMBenutzerverwaltung_Nachname;
-    grdDBTblView_RechteBezeichnung.Caption:= rs_PCMBenutzerverwaltung_Bezeichnung;
   end;
 begin
   btn_BenutzerNew.Caption:= rs_Function_Benutzer_New;

@@ -449,7 +449,7 @@ begin
     except
       on E: Exception do
       begin
-        ShowMessage(rs_PCM_GridSpeichernFehler + E.Message);
+        ShowMessage(rs_Function_System_GridLadenFehler + E.Message);
       end;
     end;
 
@@ -480,7 +480,7 @@ begin
   except
     on E: Exception do
     begin
-      ShowMessage(rs_PCM_GridLadenFehler + E.Message);
+      ShowMessage(rs_Function_System_GridLadenFehler + E.Message);
     end;
   end;
 
@@ -497,7 +497,7 @@ begin
   except
     on E: Exception do
     begin
-      ShowMessage(rs_PCM_GridSpeichernFehler + E.Message);
+      ShowMessage(rs_Function_System_GridLadenFehler + E.Message);
     end;
   end;
 end;

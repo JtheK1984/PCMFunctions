@@ -24,8 +24,6 @@ object frm_PCM_Lizenz: Tfrm_PCM_Lizenz
     TabOrder = 0
     AutoSize = True
     LayoutLookAndFeel = dxLayoutCxLookAndFeel1
-    ExplicitWidth = 310
-    ExplicitHeight = 441
     object btn_Save: TcxButton
       Left = 10
       Top = 423

@@ -85,12 +85,12 @@ var
 begin
   if edt_PCManagerChangePassword_NewPass.Text <> edt_PCManagerChangePassword_RepPass.Text  then
   begin
-    MessageDlg(rs_PCM_PasswortStimmtNicht + slinebreak + rs_PCM_EingabePruefen ,mtWarning,[mbOk], 0);
+    MessageDlg(rs_Function_PasswordChange_PasswortStimmtNicht + slinebreak + rs_Function_PasswordChange_EingabePruefen ,mtWarning,[mbOk], 0);
   end
   else begin
     if (edt_PCManagerChangePassword_NewPass.Text = '') or (edt_PCManagerChangePassword_RepPass.Text = '') then
     begin
-      MessageDlg(rs_PCM_KeinPasswort + slinebreak + rs_PCM_EingabePruefen ,mtWarning,[mbOk], 0);
+      MessageDlg(rs_Function_PasswordChange_KeinPasswort + slinebreak + rs_Function_PasswordChange_EingabePruefen ,mtWarning,[mbOk], 0);
     end
     else begin
       sPassword:= GetMD5Hash(edt_PCManagerChangePassword_RepPass.text);
@@ -109,7 +109,7 @@ end;
 {$Region Formfunktionen}
 procedure Tfrm_PCM_ChangePW.FormShow(Sender: TObject);
 begin
-  caption:= PCM_Programmname + rs_PCM_PasswortAendern;
+  caption:= PCM_Programmname + rs_Function_PasswordChange_PasswortAendern;
   laitm_PWChangeNewPW.CaptionOptions.Text:= rs_Function_PasswordChange_new;
   laitm_PWChangeRepPW.CaptionOptions.Text:= rs_Function_PasswordChange_rep;
   btn_PCManagerChangePassword_Ok.Caption:= rs_general_Ok;

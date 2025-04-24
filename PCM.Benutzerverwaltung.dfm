@@ -280,6 +280,7 @@ object frm_PCM_User: Tfrm_PCM_User
       Style.IsFontAssigned = True
       TabOrder = 5
       Transparent = True
+      Visible = False
       Height = 19
       Width = 583
     end
@@ -378,6 +379,7 @@ object frm_PCM_User: Tfrm_PCM_User
       Style.IsFontAssigned = True
       TabOrder = 9
       Transparent = True
+      Visible = False
     end
     object edt_BenutzerPassword: TcxDBTextEdit
       Left = 10000
@@ -496,7 +498,7 @@ object frm_PCM_User: Tfrm_PCM_User
     end
     object chkbx_RechtAll: TcxDBCheckBox
       Left = 10000
-      Top = 10123
+      Top = 10000
       AutoSize = False
       BiDiMode = bdLeftToRight
       DataBinding.DataField = 'Alle_Benutzer'
@@ -513,6 +515,7 @@ object frm_PCM_User: Tfrm_PCM_User
       Style.IsFontAssigned = True
       TabOrder = 16
       Transparent = True
+      Visible = False
       Height = 19
       Width = 1167
     end

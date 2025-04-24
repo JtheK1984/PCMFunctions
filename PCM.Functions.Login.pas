@@ -93,7 +93,7 @@ var
 begin
   if cmbbx_User.Text = '' then
   begin
-    MessageDlg(rs_PCM_Benutzereingeben, mtWarning, [mbOk], 0);
+    MessageDlg(rs_Function_Login_Benutzereingeben, mtWarning, [mbOk], 0);
     exit;
   end;
   if edt_Pass.text <> '' then
@@ -108,7 +108,7 @@ begin
 
     if iBenutzer = 0 then
     begin
-      MessageDlg(rs_PCM_Benutzerfalsch, mtWarning, [mbOk], 0);
+      MessageDlg(rs_Function_Login_Benutzerfalsch, mtWarning, [mbOk], 0);
       edt_Pass.Text:= '';
       exit;
     end
@@ -119,7 +119,7 @@ begin
     end;
   end
   else begin
-    MessageDlg(rs_PCM_Passworteingeben, mtWarning, [mbOk], 0);
+    MessageDlg(rs_Function_Login_Passworteingeben, mtWarning, [mbOk], 0);
     exit;
   end;
 end;
@@ -164,7 +164,7 @@ begin
 end;
 procedure Tfrm_PCM_Login.FormShow(Sender: TObject);
 begin
-  caption:= PCM_Programmname + rs_PCM_Anmeldung;
+  caption:= PCM_Programmname + rs_Function_Login_Anmeldung;
   cmbbx_User.clear;
   dm_pcm.qry_Work.Connection:= dm_PCM.con_PCM;
   dm_pcm.qry_Work.SQL.Text:= ASSQL_GetUser[dm_PCM.iDBType];
