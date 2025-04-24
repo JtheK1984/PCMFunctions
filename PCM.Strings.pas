@@ -12,6 +12,7 @@ uses
 resourcestring
   {$Region resourcestring}
   // Splashscreen
+  {$Region Splashscreen}
   rs_Splash_Sprache = 'Sprachdatei laden...';
   rs_Splash_Lizenz = 'Lizenz prüfen...';
   rs_Splash_Login = 'Benutzerlogin prüfen...';
@@ -19,6 +20,17 @@ resourcestring
   rs_Splash_Konfig = 'Konfiguration laden...';
   rs_Splash_MenuLaden = 'Menüs laden...';
   rs_Splash_MenuReg = 'Menüs registrieren...';
+  {$EndRegion Splashscreen}
+  // General
+  {$Region General}
+  rs_General_Formload = 'Formular wird geladen';
+  rs_General_Dashboard = 'Dashboard';
+  {$EndRegion General}
+  // PCM-Archiv
+
+
+
+
 
 
   rs_PCM_Benutzerverwaltung ='Benutzerverwaltung';
