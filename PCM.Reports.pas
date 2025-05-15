@@ -241,8 +241,8 @@ begin
   slFileXML.Add('  </body>');
   slFileXML.Add('</html>');
   slFileXML.SaveToFile(TPath.Combine(TPath.GetDirectoryName(Application.ExeName), 'Report') + '_Monatsbericht.html');
-  Application.CreateForm(Tfrm_Browser_FullScreen, frm_Browser_FullScreen);
-  frm_Browser_FullScreen.Execute(True,'PCM - Manager: Monatsbericht',TPath.Combine(TPath.GetDirectoryName(Application.ExeName), 'Report') + '_Monatsbericht.html');
+  Application.CreateForm(Tfrm_PCM_Browser_FullScreen, frm_PCM_Browser_FullScreen);
+  frm_PCM_Browser_FullScreen.Execute(True,'PCM - Manager: Monatsbericht',TPath.Combine(TPath.GetDirectoryName(Application.ExeName), 'Report') + '_Monatsbericht.html');
 end;
 procedure Drucke_PCM_ZE_Monatsbericht(AMonat: integer; AJahr: String);
 var
@@ -653,8 +653,8 @@ begin
   slFileXML.Add('  </body>');
   slFileXML.Add('</html>');
   slFileXML.SaveToFile(TPath.Combine(TPath.GetDirectoryName(Application.ExeName), 'Report') + '_Monatsbericht.html');
-  Application.CreateForm(Tfrm_Browser_FullScreen, frm_Browser_FullScreen);
-  frm_Browser_FullScreen.Execute(True,'PCM - Manager: Monatsbericht',TPath.Combine(TPath.GetDirectoryName(Application.ExeName), 'Report') + '_Monatsbericht.html');
+  Application.CreateForm(Tfrm_PCM_Browser_FullScreen, frm_PCM_Browser_FullScreen);
+  frm_PCM_Browser_FullScreen.Execute(True,'PCM - Manager: Monatsbericht',TPath.Combine(TPath.GetDirectoryName(Application.ExeName), 'Report') + '_Monatsbericht.html');
 end;
 procedure Drucke_PCM_Manager_Finanzuebersicht(AMonat,AJahr: integer);
 var
@@ -885,8 +885,8 @@ begin
   slFileXML.Add('  </body>');
   slFileXML.Add('</html>');
   slFileXML.SaveToFile(TPath.Combine(TPath.GetDirectoryName(Application.ExeName), 'Report') + '_Finanzübersicht.html');
-  Application.CreateForm(Tfrm_Browser_FullScreen, frm_Browser_FullScreen);
-  frm_Browser_FullScreen.Execute(True,'PCM - Manager: Finanzübersicht',TPath.Combine(TPath.GetDirectoryName(Application.ExeName), 'Report') + '_Finanzübersicht.html');
+  Application.CreateForm(Tfrm_PCM_Browser_FullScreen, frm_PCM_Browser_FullScreen);
+  frm_PCM_Browser_FullScreen.Execute(True,'PCM - Manager: Finanzübersicht',TPath.Combine(TPath.GetDirectoryName(Application.ExeName), 'Report') + '_Finanzübersicht.html');
   slFileXML.Free;
 end;
 {$EndRegion Prozeduren}

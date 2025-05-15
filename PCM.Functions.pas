@@ -114,7 +114,7 @@ var
 // Deklarationen
 {$Region Deklarationen}
 procedure WriteLog(AProgram, ALogString: String; AError: integer);
-function EnDecrypt(AInput: string; AEncrypt: boolean) : RawByteString;
+function EnDecrypt(AInput: string; AEncrypt: boolean) : String;
 function GetHDnr: DWord;
 function GetPCName: string;
 function GetMD5Hash(AValue: string) :String;
@@ -218,8 +218,9 @@ uses
   {$Region uses}
   PCM.Data,
   PCM.Strings,
-  Prism.Crypto.AES,
-  System.NetEncoding;
+//  Prism.Crypto.AES,
+//  System.NetEncoding;
+  LbCipher, LbClass;
   {$EndRegion uses}
 ////////////////////////////////////////////////////////////////////////////////
 // Hilfsfunktionen                                                            //
@@ -269,50 +270,24 @@ begin
   GetComputerName(pCh_P, dwd_dw);
   Result:= pCh_P;
 end;
-//function EnDecrypt(AInput: string; AEncrypt: boolean) : RawByteString;
-//var
-//  ByteInput,OriginalText, Key, IV, EncryptedText,DecryptedText: TBytes;
-//begin
-//  OriginalText := TEncoding.ANSI.GetBytes(AInput);
-//  Key := TEncoding.ANSI.GetBytes('PCMDevelopmentJensHenske24021984'); // 256 bits-32 bytes
-//  IV := TEncoding.ANSI.GetBytes('PCMJensHenske284'); // 16 bytes
-//  if AEncrypt then
-//  begin
-//    EncryptedText := TAES.Encrypt(OriginalText, Key, 256, IV);
-//    Result:= TNetEncoding.Base64.EncodeBytesToString(EncryptedText);
-//  end
-//  else begin
-//    ByteInput:= TNetEncoding.Base64.DecodeStringToBytes(AInput);
-//    DecryptedText := TAES.Decrypt(ByteInput, Key, 256, IV);
-//    Result:= TEncoding.ANSI.GetString(DecryptedText);
-//  end;
-//end;
-
-function EnDecrypt(AInput: string; AEncrypt: boolean): RawByteString;
+function EnDecrypt(AInput: String; AEncrypt: boolean) : String;
 var
-  ByteInput, OriginalText, Key, IV, EncryptedText, DecryptedText: TBytes;
-  TempStr: string;  // Zwischenspeicher für String-Result
+  Rijndael: TLbRijndael;
+  PlainText, EncryptedText: string;
 begin
-  OriginalText := TEncoding.ANSI.GetBytes(AInput);
-  Key := TEncoding.ANSI.GetBytes('PCMDevelopmentJensHenske24021984'); // 256 bits-32 bytes
-  IV := TEncoding.ANSI.GetBytes('PCMJensHenske284'); // 16 bytes
+  Rijndael := TLbRijndael.Create(nil);
+  try
+    Rijndael.GenerateKey('PCMDevelopmentJensHenske24021984'); // Replace with your actual key
 
-  if AEncrypt then
-  begin
-    EncryptedText := TAES.Encrypt(OriginalText, Key, 256, IV);
-    TempStr := TNetEncoding.Base64.EncodeBytesToString(EncryptedText);
-    Result := RawByteString(TempStr);  // Explizite Typumwandlung
-  end
-  else
-  begin
-    ByteInput := TNetEncoding.Base64.DecodeStringToBytes(AInput);
-    DecryptedText := TAES.Decrypt(ByteInput, Key, 256, IV);
-    TempStr := TEncoding.ANSI.GetString(DecryptedText);
-    Result := RawByteString(TempStr);  // Explizite Typumwandlung
+    if not AEncrypt then
+      Result := Rijndael.DecryptString(AInput)//  EncryptString(PlainText);
+    else
+      Result := Rijndael.EncryptString(AInput);//  EncryptString(PlainText);
+//    Writeln('Encrypted Text: ', EncryptedText);
+  finally
+    Rijndael.Free;
   end;
 end;
-
-
 procedure WriteLog(AProgram, ALogString: String; AError: integer);
 var
   tfLog: TextFile;
