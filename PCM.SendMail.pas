@@ -466,16 +466,16 @@ var
   slEmailCOntentOrg: TStringlist;
   slEmailCOntent: TStringlist;
   xoauthSASL : TIdSASLListEntry;
-  msgCount : Integer;
-  mailboxes : TStringList;
+//  msgCount : Integer;
+//  mailboxes : TStringList;
   idSmtpMail: TIdSMTP;
   idSSLIOHndOPSSLPostfach: TIdSSLIOHandlerSocketOpenSSL;
   idmsgMail: TIdMessage;
   idSSLIOHndOPSSLMail: TIdSSLIOHandlerSocketOpenSSL;
-  slMail: TStringlist;
+//  slMail: TStringlist;
   HTMLContent: string;
-  FileName: string;
-  FileStream: TFileStream;
+//  FileName: string;
+//  FileStream: TFileStream;
   TextPart: TIdText;
   bFound: Boolean;
   ImageStream: TMemoryStream;
@@ -485,6 +485,7 @@ var
   iHoehe: integer;
   slSignaturAbschluss: TStringlist;
 begin
+  bFound:= false;
   HTMLContent := TJSONObject.ParseJSONValue(aResultObjectAsJson).Value;
   slEmailCOntentorg:= TStringlist.Create;
   slEmailCOntent:= TStringlist.Create;

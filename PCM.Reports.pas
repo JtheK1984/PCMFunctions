@@ -44,8 +44,8 @@ uses
 procedure Drucke_PCM_ZE_Jahresbericht(AJahr: String);
 var
   slFileXML: TStringList;
-  iIstnetto: integer;
-  iFehlzeit: integer;
+//  iIstnetto: integer;
+//  iFehlzeit: integer;
 begin
   slFileXML:= TStringList.Create;
   slFileXML.Add('<!DOCTYPE html>');

@@ -273,7 +273,6 @@ end;
 function EnDecrypt(AInput: String; AEncrypt: boolean) : String;
 var
   Rijndael: TLbRijndael;
-  PlainText, EncryptedText: string;
 begin
   Rijndael := TLbRijndael.Create(nil);
   try

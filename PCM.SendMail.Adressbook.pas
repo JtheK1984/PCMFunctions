@@ -38,6 +38,7 @@ uses
   dxmdaset,
   dxScrollbarAnnotations,
   dxUIAClasses,
+  Firedac.stan.Param,
   System.Classes,
   System.SysUtils,
   System.Variants,

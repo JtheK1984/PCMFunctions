@@ -583,27 +583,29 @@ begin
 end;
 procedure BerechneMonate;
 var
-  fResturlaub: double;
-  fULgen: double;
-  fULges: double;
-  iaktGLZ: integer;
+//  fResturlaub: double;
+//  fULgen: double;
+//  fULges: double;
+//  iaktGLZ: integer;
   iBJahr: integer;
   iBMonat: integer;
-  iFeiertag: integer;
-  iIStzeit: integer;
-  iJahresAnspruch: double;
-  iKrank_bezahlt: integer;
-  iKrank_unbezahlt: integer;
-  iMehrarbeit: integer;
+//  iFeiertag: integer;
+//  iIStzeit: integer;
+//  iJahresAnspruch: double;
+//  iKrank_bezahlt: integer;
+//  iKrank_unbezahlt: integer;
+//  iMehrarbeit: integer;
   iMonthCount: integer;
-  iPausen: integer;
-  iSollzeit: integer;
-  iUrlaub_bezahlt: integer;
-  iUrlaub_unbezahlt: integer;
+//  iPausen: integer;
+//  iSollzeit: integer;
+//  iUrlaub_bezahlt: integer;
+//  iUrlaub_unbezahlt: integer;
   qry_Month: TFDQuery;
   wJahr: Word;
   wMonat: Word;
   wTag: Word;
+//  iVMonat: Integer;
+//  iVJahr: Integer;
 begin
   DecodeDate(Date,wJahr,wMonat,wTag);
   qry_Month:= TFDQuery.Create(nil);
@@ -622,13 +624,17 @@ begin
     WaitFormSetText('Berechne Monate für Monat: ' + GetMonthName(iBMonat) + ', Jahr:' + IntToStr(iBJahr));
     WaitFormSetNewCount(iMonthCount);
     WaitFormPosition(i+1);
-    var iVMonat := iBMonat -1;
-    var iVJahr:= iBjahr;
-    if iVMonat = 0 then
-    begin
-      iVMonat := 12;
-      iVJahr:= iBjahr-1;
-    end;
+
+//    if iVMonat = 0 then
+//    begin
+//      iVMonat := 12;
+//      iVJahr:= iBjahr-1;
+//    end
+//    else begin
+//      iVMonat := iBMonat -1;
+//      iVJahr:= iBjahr;
+//    end;
+
     BerechneTage(0,iBMonat,iBJahr);
     BerechneMonat(iBMonat,iBJahr);
     qry_Month.Next;

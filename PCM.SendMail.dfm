@@ -132,19 +132,23 @@ object frm_Sendmail: Tfrm_Sendmail
       PanelStyle.Active = True
       ParentBackground = False
       ParentColor = False
-      Style.Color = 7566195
+      Style.Color = clBtnFace
       Style.TransparentBorder = False
       TabOrder = 10
       Height = 969
       Width = 1866
       object WVWindowParent1: TWVWindowParent
-        Left = 2
-        Top = 2
-        Width = 1862
-        Height = 965
+        Left = 1
+        Top = 1
+        Width = 1864
+        Height = 967
         Align = alClient
         TabStop = True
         TabOrder = 0
+        ExplicitLeft = 2
+        ExplicitTop = 2
+        ExplicitWidth = 1862
+        ExplicitHeight = 965
       end
     end
     object btn_Von: TcxButton
