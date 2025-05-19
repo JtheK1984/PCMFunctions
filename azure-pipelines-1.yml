@@ -1,0 +1,27 @@
+variables:
+  version.MajorMinor: '1.0.0' # Manually adjust the version number as needed. Patch is auto-incremented.
+  version.Patch: $[counter(variables['version.MajorMinor'], 0)] 
+  versionNumber: '$(version.MajorMinor).$(VersionBuild)' 
+
+steps:
+- task: PowerShell@2
+  displayName: Set the name of the build (i.e. the Build.BuildNumber)
+  inputs:
+    targetType: 'inline'
+    script: |
+      [string] $buildName = "$(versionNumber)"
+      [string] $buildbranch = "$(Build.SourceBranchName)"
+      Write-Host "Setting the name of the build to '$buildName'."
+      Write-Host "##vso[build.updatebuildnumber]$buildbranch-$buildName"
+- task: mspremier.PostBuildCleanup.PostBuildCleanup-task.PostBuildCleanup@3
+  displayName: 'CleanUp Agent Directories'
+
+- task: gitsync@1
+  displayName: Synchronsiere mit GitHub
+  inputs:
+    GitRepoUrl: 'https://github.com/JtheK1984/PCMFunctions.git'
+
+- task: BatchScript@1
+  displayName: Cleanup Buildverzeichnis
+  inputs:
+    filename: E:\PrepareCleanup.cmd

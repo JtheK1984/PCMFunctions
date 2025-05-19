@@ -1,0 +1,168 @@
+object frm_PCM_Handbuch: Tfrm_PCM_Handbuch
+  Left = 0
+  Top = 0
+  ClientHeight = 441
+  ClientWidth = 624
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -12
+  Font.Name = 'Segoe UI'
+  Font.Style = []
+  OnShow = FormShow
+  TextHeight = 15
+  object lactrl_Handbuch: TdxLayoutControl
+    Left = 0
+    Top = 0
+    Width = 624
+    Height = 441
+    Align = alClient
+    TabOrder = 0
+    AutoSize = True
+    LayoutLookAndFeel = dxLayoutCxLookAndFeel1
+    OptionsImage.Images = imglst_16x16
+    ExplicitWidth = 618
+    ExplicitHeight = 424
+    object pnl_HTML: TcxGroupBox
+      Left = 10000
+      Top = 10000
+      PanelStyle.Active = True
+      ParentBackground = False
+      ParentColor = False
+      Style.Color = clBtnFace
+      Style.TransparentBorder = False
+      TabOrder = 1
+      Visible = False
+      Height = 363
+      Width = 568
+    end
+    object pnl_PDF: TcxGroupBox
+      Left = 28
+      Top = 50
+      PanelStyle.Active = True
+      ParentBackground = False
+      ParentColor = False
+      Style.Color = clBtnFace
+      Style.TransparentBorder = False
+      TabOrder = 0
+      Height = 363
+      Width = 568
+    end
+    object lactrl_HandbuchGroup_Root: TdxLayoutGroup
+      AlignHorz = ahClient
+      AlignVert = avClient
+      Hidden = True
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = -1
+    end
+    object lagrp_HandbuchTab: TdxLayoutGroup
+      Parent = lactrl_HandbuchGroup_Root
+      AlignHorz = ahClient
+      AlignVert = avClient
+      LayoutDirection = ldTabbed
+      ShowBorder = False
+      OnTabChanged = cxPageControl1Change
+      Index = 0
+    end
+    object lagrp_HandbuchPDF: TdxLayoutGroup
+      Parent = lagrp_HandbuchTab
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.ImageIndex = 1
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 0
+    end
+    object lagrp_HandbuchHtml: TdxLayoutGroup
+      Parent = lagrp_HandbuchTab
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.ImageIndex = 0
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 1
+    end
+    object laitm_HandbuchPDF: TdxLayoutItem
+      Parent = lagrp_HandbuchPDF
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Visible = False
+      Control = pnl_PDF
+      ControlOptions.AutoColor = True
+      ControlOptions.OriginalHeight = 105
+      ControlOptions.OriginalWidth = 185
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object laitm_HandbuchHtml: TdxLayoutItem
+      Parent = lagrp_HandbuchHtml
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Visible = False
+      Control = pnl_HTML
+      ControlOptions.AutoColor = True
+      ControlOptions.OriginalHeight = 105
+      ControlOptions.OriginalWidth = 185
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+  end
+  object imglst_16x16: TcxImageList
+    SourceDPI = 96
+    FormatVersion = 1
+    DesignInfo = 14680368
+    ImageInfo = <
+      item
+        ImageClass = 'TdxPNGImage'
+        Image.Data = {
+          89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
+          61000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+          00097048597300000B1300000B1301009A9C180000017049444154384FA5D24B
+          2B6E511CC7F1ED76DC4B2E294A275E0251A25C4A660606DE80D721C9C8996042
+          316540CEE0D4E92453323378CC18890C904BC8E5795CBEDFFD5842FB3913BFFA
+          B45AFFBDF77FAFBDD68EBE9BBCBAB1F410631B9EE20A355CE3CFE944D15E5CF9
+          4F6CF0C0F8233B7DCF195691A2C97C5CC9917C7C7DD8DCA00073BC6020AEE488
+          0D9262D3639C6292268D169392AB4103BAF11BFB684562DC8317C647ACE1DC22
+          B17109DCD042FCC35F14C3F84C9AFDB90C0D96E3721475C087EF7009AF95A21A
+          95F074DC9B3298D1F009DEDC8C1DD4630B292CE00433D8C434B651F3A6353470
+          7CC63A7EC1531841173A71802518AF8564420393410B06E132FD3FEE718B5E4C
+          C1BA27E309A59D8706FE85E518463BFAE0127B508B7EFC84ABF284DCD02364C2
+          26EE62054D883BC3A68E7E9A2BB982FF872FF5745CD9626860FCB60B78F1635C
+          D93847369B9D7E8EDD36E029F8CD15F081C0B90D0F91185750C458959D2626C3
+          DB5D5942A2E81547EF6200F42090DC0000000049454E44AE426082}
+      end
+      item
+        ImageClass = 'TdxPNGImage'
+        Image.Data = {
+          89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
+          61000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+          00097048597300000B1300000B1301009A9C180000024D49444154384F8D52CD
+          6B134114FFCD64B3F924B5B6366815857A10147A9234B660053F29428F52D083
+          8208A5FA0778F50FF0D09B07C14331205468296A235AF59282D68B87823D6994
+          5A499A90349B999D1DDF6EB6496A24F883B76F67DE7BBF795F2C3775DD1C3043
+          8B002E9034A0011E60DFC2D1D074727676016329763512454D93E12FF05E23D8
+          4BFA74E3D802F91EE160CFB6666626F121A7176A3B8830E65B5BE0C4E9D2DA8D
+          633BE89AC1A498CCAF5D12AB9384FBBA0B98C919CBFCBE777712EF733AAA89B6
+          0DFF262017B75CAB2620EAD2155358F2E9F7DB774632D9378EEFE5A16B0652DA
+          B02CE149DD122129EC4BBEA989AE048CEADD15FA5056BAC3FF3F7AD006E2F0FF
+          9AD843A02B5538C56D38DBA50ED1A532D4FA8674FDB2D9B7DA15CE69D0EB376E
+          0ED0ACBE4039FDD189CB081F1F7253855676A3DD01C3EBA89602E6E0E195E8B1
+          A3CB741B711CE763201098F732D0B6023F9844EFC415B060909C25E2274F213C
+          44649605A32781443A0DBB58385B5C79F7A0945BBDAF6DFB515DEBFD7E09345C
+          D3841612A5F9E7903F7E626B6E0ED5B5CFD8F9B486D2D20B9473AB282F2E918F
+          20776F929A3234786B2B1AFD61E1B0B707EED12D25961E416CF40CE4E6A667E3
+          910812A914383DA8283BEE50016E9CB73914A5EB023C1E47FFD435700A50E532
+          EC4201CCA05E50A90E6540E9BBECEE7BE0279E3C2E3895EA2DDED7F790194161
+          0C1EC2BE73E3082612DE6B95E5D7105F37101B1E462079003D63A35E9F0806ED
+          07C3C5F3E3CD2A94522FED5A4D93D6D465AD84D0B252F1B443F5ECB129F52A9F
+          CF9B7F00B2C0259947DC87E10000000049454E44AE426082}
+      end>
+  end
+  object lalaflst_Handbuch: TdxLayoutLookAndFeelList
+    Left = 208
+    object dxLayoutCxLookAndFeel1: TdxLayoutCxLookAndFeel
+      PixelsPerInch = 96
+    end
+  end
+end
