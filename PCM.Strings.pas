@@ -203,6 +203,7 @@ resourcestring
   rs_General_Ja = 'Ja';
   {$EndRegion General}
   // PCM Main
+  {$Region PCM_MAIN}
   rs_PCM_Modulliste_verstecken = 'Modulliste verstecken';
   rs_PCM_Modulliste_anzeigen = 'Modulliste anzeigen';
   rs_PCM_Benutzerverwaltung ='Benutzerverwaltung';
@@ -214,13 +215,46 @@ resourcestring
   rs_PCM_Handbuch = 'Handbuch';
   rs_PCM_Start = 'Programm gestartet';
   rs_PCM_Beenden = 'Programm beendet';
+  {$EndRegion PCM_MAIN}
+  // PCM - Appserver
+  {$Region PCM_APPSERVER}
+  rs_PCMAPPServer_Start = 'PCM - APPServer mit HTTPS gestartet';
+  rs_PCMAPPServer_Dienst = 'Appserver für PCM-Apps';
+  rs_PCMAPPServer_BenutzerausPCMpruefen = 'Benutzer von APP prüfen';
+  rs_PCMAPPServer_BenutzerausPCMpruefen1 = 'ID_Benutzer von Server laden';
+  rs_PCMAPPServer_LoginausPCMpruefen = 'Logindaten vom Server laden';
+  rs_PCMAPPServer_Tokenpruefung = 'Token von APP prüfen';
+  rs_PCMAPPServer_Kontakteanzahl = 'Kontakte vom Server laden, Anzahl:';
+  rs_PCMAPPServer_Kontaktepruefung = 'Kontakte von APP prüfen, Anzahl:';
+  rs_PCMAPPServer_Kalenderanzahl = 'Kalender vom Server laden, Anzahl:';
+  rs_PCMAPPServer_Kalenderpruefung = 'Kalender von APP prüfen, Anzahl:';
+  rs_PCMAPPServer_Passwordanzahl = 'Passwörter vom Server laden, Anzahl:';
+  rs_PCMAPPServer_Passwordpruefung = 'Passwörter von APP prüfen, Anzahl:';
+  rs_PCMAPPServer_Serialsanzahl = 'Serials vom Server laden, Anzahl:';
+  rs_PCMAPPServer_Serialspruefung = 'Serials von APP prüfen, Anzahl:';
+  rs_PCMAPPServer_Ausgabenanzahl = 'Ausgaben vom Server laden, Anzahl:';
+  rs_PCMAPPServer_Ausgabenpruefung = 'Ausgaben von APP prüfen, Anzahl:';
+  rs_PCMAPPServer_Einnahmenanzahl = 'Einnahmen vom Server laden, Anzahl:';
+  rs_PCMAPPServer_Einnahmenpruefung = 'Einnahmen von APP prüfen, Anzahl:';
+  rs_PCMAPPServer_Belegeanzahl = 'Belege vom Server laden, Anzahl:';
+  rs_PCMAPPServer_Belegepruefung = 'Belege von APP prüfen, Anzahl:';
+  rs_PCMAPPServer_Gutscheinanzahl = 'Gutscheine vom Server laden, Anzahl:';
+  rs_PCMAPPServer_Gutscheinpruefung = 'Gutscheine von APP prüfen, Anzahl:';
+  rs_PCMAPPServer_GeraeteRegistrierung = 'Gerät wird registriert';
+  rs_PCMAPPServer_Monatswerteanzahl = 'Monatswerte vom Server laden, Anzahl:';
+  rs_PCMAPPServer_FehltageConfiganzahl = 'Fehltagekonfiguration vom Server laden, Anzahl:';
+  rs_PCMAPPServer_Fehltageanzahl = 'Fehltage vom Server laden, Anzahl:';
+  rs_PCMAPPServer_LetzteBuchunganzahl = 'Letzte Buchung vom Server laden, Anzahl:';
+  rs_PCMAPPServer_Buchungsjahresdatenanzahl = 'Buchungen Jahr vom Server laden, Anzahl:';
+  rs_PCMAPPServer_Personalanzahl = 'Personaldaten vom Server laden, Anzahl:';
+  rs_PCMAPPServer_Buchungpruefung = 'Buchung von APP prüfen, Anzahl:';
+  rs_PCMAPPServer_LetzteBuchungpruefung = 'Letzte Buchung von APP prüfen, Anzahl:';
+  rs_PCMAPPServer_FalschesPW = 'Falsches Passwort';
+  {$EndRegion PCM_APPSERVER}
 
 
 
 
-
-
-  //  rs_PCMLog_FalschesPW = 'Falsches Passwort';
 
 
 
@@ -325,38 +359,7 @@ resourcestring
   rs_PCM_Hauptpostfach = 'Hauptpostfach';
   rs_PCM_Fehler = 'Fehler: ';
 //  rs_PCM_ChooseModul = 'Bitte Modul wählen';
-//// PCM - Appserver
-//  rs_PCMAPPServer_Start = 'PCM - APPServer mit HTTPS gestartet';
-//  rs_PCMAPPServer_Dienst = 'Appserver für PCM-Apps';
-//  rs_PCMAPPServer_BenutzerausPCMpruefen = 'Benutzer von APP prüfen';
-//  rs_PCMAPPServer_BenutzerausPCMpruefen1 = 'ID_Benutzer von Server laden';
-//  rs_PCMAPPServer_LoginausPCMpruefen = 'Logindaten vom Server laden';
-//  rs_PCMAPPServer_Tokenpruefung = 'Token von APP prüfen';
-//  rs_PCMAPPServer_Kontakteanzahl = 'Kontakte vom Server laden, Anzahl:';
-//  rs_PCMAPPServer_Kontaktepruefung = 'Kontakte von APP prüfen, Anzahl:';
-//  rs_PCMAPPServer_Kalenderanzahl = 'Kalender vom Server laden, Anzahl:';
-//  rs_PCMAPPServer_Kalenderpruefung = 'Kalender von APP prüfen, Anzahl:';
-//  rs_PCMAPPServer_Passwordanzahl = 'Passwörter vom Server laden, Anzahl:';
-//  rs_PCMAPPServer_Passwordpruefung = 'Passwörter von APP prüfen, Anzahl:';
-//  rs_PCMAPPServer_Serialsanzahl = 'Serials vom Server laden, Anzahl:';
-//  rs_PCMAPPServer_Serialspruefung = 'Serials von APP prüfen, Anzahl:';
-//  rs_PCMAPPServer_Ausgabenanzahl = 'Ausgaben vom Server laden, Anzahl:';
-//  rs_PCMAPPServer_Ausgabenpruefung = 'Ausgaben von APP prüfen, Anzahl:';
-//  rs_PCMAPPServer_Einnahmenanzahl = 'Einnahmen vom Server laden, Anzahl:';
-//  rs_PCMAPPServer_Einnahmenpruefung = 'Einnahmen von APP prüfen, Anzahl:';
-//  rs_PCMAPPServer_Belegeanzahl = 'Belege vom Server laden, Anzahl:';
-//  rs_PCMAPPServer_Belegepruefung = 'Belege von APP prüfen, Anzahl:';
-//  rs_PCMAPPServer_Gutscheinanzahl = 'Gutscheine vom Server laden, Anzahl:';
-//  rs_PCMAPPServer_Gutscheinpruefung = 'Gutscheine von APP prüfen, Anzahl:';
-//  rs_PCMAPPServer_GeraeteRegistrierung = 'Gerät wird registriert';
-//  rs_PCMAPPServer_Monatswerteanzahl = 'Monatswerte vom Server laden, Anzahl:';
-//  rs_PCMAPPServer_FehltageConfiganzahl = 'Fehltagekonfiguration vom Server laden, Anzahl:';
-//  rs_PCMAPPServer_Fehltageanzahl = 'Fehltage vom Server laden, Anzahl:';
-//  rs_PCMAPPServer_LetzteBuchunganzahl = 'Letzte Buchung vom Server laden, Anzahl:';
-//  rs_PCMAPPServer_Buchungsjahresdatenanzahl = 'Buchungen Jahr vom Server laden, Anzahl:';
-//  rs_PCMAPPServer_Personalanzahl = 'Personaldaten vom Server laden, Anzahl:';
-//  rs_PCMAPPServer_Buchungpruefung = 'Buchung von APP prüfen, Anzahl:';
-//  rs_PCMAPPServer_LetzteBuchungpruefung = 'Letzte Buchung von APP prüfen, Anzahl:';
+
 //// PCM - Archiv
 
 //  rs_PCMArchiv_DeleteIndex1 = 'Soll der Index ';
