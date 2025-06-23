@@ -579,8 +579,8 @@ resourcestring
 //  rs_PCMMP3Manger_MP3DateiEdit1 = 'Es wurden ';
 //  rs_PCMMP3Manger_MP3DateiEdit2 = ' Dateien editiert';
 //// PCM - Restserver
-//  rs_PCMRestserver_Registry = 'Erstelle Registryeinträge';
-//  rs_PCMRestserver_StartError = 'Fehler beim Starten des PCM - REST Server: ';
+  rs_PCMRestserver_Registry = 'Erstelle Registryeinträge';
+  rs_PCMRestserver_StartError = 'Fehler beim Starten des PCM - REST Server: ';
 //// PCM - Service / Servicemanager
 //  rs_PCMService_AktuelleZeit = 'aktuelles Datum/Zeit: ';
 //  rs_PCMService_naechsterZeitpunkt = 'nächster zeitpunkt: ';
