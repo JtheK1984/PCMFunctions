@@ -275,9 +275,9 @@ resourcestring
 
 
 
-//  rs_PCM_Lizenzen = 'Lizenzen';
-//  rs_PCM_Programme = 'Programme';
-//  rs_PCM_Sprachdatei = 'Sprachdatei kann nicht geladen werden';
+  rs_PCM_Lizenzen = 'Lizenzen';
+  rs_PCM_Programme = 'Programme';
+  rs_PCM_Sprachdatei = 'Sprachdatei kann nicht geladen werden';
 
 
 //  rs_PCM_Datensicherung = 'Datensicherung';
@@ -372,36 +372,35 @@ resourcestring
   rs_PCMBackup_Ordnerwaehlen = 'Zielverzeichnis für Backup auswählen';
 
 //// PCM  - Lizenzgenerator
-//  rs_PCMLizenzgenerator_Demolizenz = 'Demolizenz für: ';
-//  rs_PCMLizenzgenerator_Programm = 'Programm: ';
-//  rs_PCMLizenzgenerator_Gueltig = 'Gültig bis: ';
-//  rs_PCMLizenzgenerator_Benutzer = 'Benutzer: PCM';
-//  rs_PCMLizenzgenerator_Lizenz = 'Lizenz: ';
-//  rs_PCMLizenzgenerator_Loeschen1 = 'Soll die Lizenz für ';
-//  rs_PCMLizenzgenerator_Loeschen2 = ' für den Kunden ';
-//  rs_PCMLizenzgenerator_Loeschen3 = ' gelöscht werden?';
-//  rs_PCMLizenzgenerator_KundeLizenz = 'Kunden / Lizenzen';
-//  rs_PCMLizenzgenerator_Programme = 'Programme';
-//  rs_PCMLizenzgenerator_Lizenzautomatic = 'automatische Lizenz';
-
-//  rs_PCMLizenzgenerator_MessageStrasse = 'Bitte Straße eingeben!';
-//  rs_PCMLizenzgenerator_MessagePLZ = 'Bitte PLZ eingeben!';
-//  rs_PCMLizenzgenerator_MessageORT = 'Bitte Ort eingeben!';
-//  rs_PCMLizenzgenerator_MessageKundeexists = 'Kunde exisitiert bereits!';
-//  rs_PCMLizenzgenerator_Lizenfuer = 'Lizenz für "';
-//  rs_PCMLizenzgenerator_DatumFuerLizenz = 'Bitte Datum für die Demolizenz angeben!';
-//  rs_PCMLizenzgenerator_Lizenzerstellen ='Soll die Lizenz wirklich erstellt werden?';
-//  rs_PCMLizenzgenerator_Lizenzexistiert ='Lizenz existiert bereits!';
-//  rs_PCMLizenzgenerator_KundeName = 'Name';
+  rs_PCMLizenzgenerator_Demolizenz = 'Demolizenz für: ';
+  rs_PCMLizenzgenerator_Programm = 'Programm: ';
+  rs_PCMLizenzgenerator_Gueltig = 'Gültig bis: ';
+  rs_PCMLizenzgenerator_Benutzer = 'Benutzer: PCM';
+  rs_PCMLizenzgenerator_Lizenz = 'Lizenz: ';
+  rs_PCMLizenzgenerator_Loeschen1 = 'Soll die Lizenz für ';
+  rs_PCMLizenzgenerator_Loeschen2 = ' für den Kunden ';
+  rs_PCMLizenzgenerator_Loeschen3 = ' gelöscht werden?';
+  rs_PCMLizenzgenerator_KundeLizenz = 'Kunden / Lizenzen';
+  rs_PCMLizenzgenerator_Programme = 'Programme';
+  rs_PCMLizenzgenerator_Lizenzautomatic = 'automatische Lizenz';
+  rs_PCMLizenzgenerator_MessageStrasse = 'Bitte Straße eingeben!';
+  rs_PCMLizenzgenerator_MessagePLZ = 'Bitte PLZ eingeben!';
+  rs_PCMLizenzgenerator_MessageORT = 'Bitte Ort eingeben!';
+  rs_PCMLizenzgenerator_MessageKundeexists = 'Kunde exisitiert bereits!';
+  rs_PCMLizenzgenerator_Lizenfuer = 'Lizenz für "';
+  rs_PCMLizenzgenerator_DatumFuerLizenz = 'Bitte Datum für die Demolizenz angeben!';
+  rs_PCMLizenzgenerator_Lizenzerstellen ='Soll die Lizenz wirklich erstellt werden?';
+  rs_PCMLizenzgenerator_Lizenzexistiert ='Lizenz existiert bereits!';
+  rs_PCMLizenzgenerator_KundeName = 'Name';
   rs_PCMLizenzgenerator_KundeStrasse = 'Straße';
   rs_PCMLizenzgenerator_KundePLZ = 'PLZ';
   rs_PCMLizenzgenerator_KundeORT = 'Ort';
-//  rs_PCMLizenzgenerator_KundeAngelegt = 'Angelegt von';
-//  rs_PCMLizenzgenerator_ProgrammProgramm = 'Programm';
-//  rs_PCMLizenzgenerator_ProgrammNummer = 'Nummer';
-//  rs_PCMLizenzgenerator_ProgrammMajor = 'Major-Version';
-//  rs_PCMLizenzgenerator_ProgrammMinor = 'Minor-Version';
-//  rs_PCMLizenzgenerator_ProgrammLizenz = 'Lizenzerstellung';
+  rs_PCMLizenzgenerator_KundeAngelegt = 'Angelegt von';
+  rs_PCMLizenzgenerator_ProgrammProgramm = 'Programm';
+  rs_PCMLizenzgenerator_ProgrammNummer = 'Nummer';
+  rs_PCMLizenzgenerator_ProgrammMajor = 'Major-Version';
+  rs_PCMLizenzgenerator_ProgrammMinor = 'Minor-Version';
+  rs_PCMLizenzgenerator_ProgrammLizenz = 'Lizenzerstellung';
 // PCM - Manager
   rs_PCMManager_KeineVerbindung = 'Verbindung mit Outlook kann nicht hergestellt werden. Grund: ';
   rs_PCMManager_Namespace = 'Namespace ermitteln';
