@@ -336,8 +336,8 @@ resourcestring
   rs_PCM_Wochenend_Tag = 'Wochenend-Tag';
   rs_PCM_alleTage = 'alle %d Tage';
   rs_PCM_jedentag = 'jeden Tag';
-//  rs_PCM_Modulliste_verstecken = 'Modulliste verstecken';
-//  rs_PCM_Modulliste_anzeigen = 'Modulliste anzeigen';
+  //  rs_PCM_Modulliste_verstecken = 'Modulliste verstecken';
+  //  rs_PCM_Modulliste_anzeigen = 'Modulliste anzeigen';
   rs_PCM_Kalender = 'Kalender';
   rs_PCM_Erinnerung = 'Erinnerung';
   rs_PCM_ErinnerungVor = 'Erinnerung in Minuten';
@@ -358,12 +358,9 @@ resourcestring
   rs_PCM_Sortierung = 'Sortierung';
   rs_PCM_Hauptpostfach = 'Hauptpostfach';
   rs_PCM_Fehler = 'Fehler: ';
-//  rs_PCM_ChooseModul = 'Bitte Modul wählen';
+  //  rs_PCM_ChooseModul = 'Bitte Modul wählen';
 
-//// PCM - Archiv
-
-//  rs_PCMArchiv_DeleteIndex1 = 'Soll der Index ';
-//// PCM  - Backup / Backupservice
+  // PCM  - Backup / Backupservice
   rs_PCMBackup_BackupMod = 'Datensicherung';
   rs_PCMBackup_Backupgesichert = ' gesichert';
   rs_PCMBackup_Backup = 'Sicherung: Datenbank PCM wird gesichert';
@@ -371,7 +368,7 @@ resourcestring
   rs_PCMBackup_BackupErfolgreich = 'Sicherung: Datenbanken wurden erfolgreich gesichert';
   rs_PCMBackup_Ordnerwaehlen = 'Zielverzeichnis für Backup auswählen';
 
-//// PCM  - Lizenzgenerator
+  // PCM  - Lizenzgenerator
   rs_PCMLizenzgenerator_Demolizenz = 'Demolizenz für: ';
   rs_PCMLizenzgenerator_Programm = 'Programm: ';
   rs_PCMLizenzgenerator_Gueltig = 'Gültig bis: ';
@@ -401,7 +398,7 @@ resourcestring
   rs_PCMLizenzgenerator_ProgrammMajor = 'Major-Version';
   rs_PCMLizenzgenerator_ProgrammMinor = 'Minor-Version';
   rs_PCMLizenzgenerator_ProgrammLizenz = 'Lizenzerstellung';
-// PCM - Manager
+  // PCM - Manager
   rs_PCMManager_KeineVerbindung = 'Verbindung mit Outlook kann nicht hergestellt werden. Grund: ';
   rs_PCMManager_Namespace = 'Namespace ermitteln';
   rs_PCMManager_CalendarsRoot = 'CalendarsRoot ermitteln: ';
@@ -562,25 +559,26 @@ resourcestring
   rs_PCMManager_WocheVor = 'Eine Woche vor springen';
   rs_PCMManager_Terminopen = 'Termin öffnen';
   rs_PCMManager_Adresseengefunden = ' Adressen gefunden!';
-//// PCM - Mediacenter
-//  rs_PCMMediacenter_Musikplayer = 'Musikplayer';
-//  rs_PCMMediacenter_Webradio = 'Webradio';
-//  rs_PCMMediacenter_Videoplayer = 'Videoplayer';
-//  rs_PCMMediacenter_Fotos = 'Fotos';
-//// PCM - MP3Manager
-//  rs_PCMMP3Manger_MP3Verzeichnis = 'MP3-Verzeichnis auswählen';
-//  rs_PCMMP3Manger_MP3Tags = 'MP3-Tags bearbeiten';
-//  rs_PCMMP3Manger_MP3DateiHinweis1 = 'Hinweis:  Datei ';
-//  rs_PCMMP3Manger_MP3DateiHinweis2 = ' wird geändert';
-//  rs_PCMMP3Manger_MP3DateiFehler1 = 'Fehler:  Datei ';
-//  rs_PCMMP3Manger_MP3DateiFehler2 = ' kann nicht geändert werden. Grund: Falsche Konvention';
-//  rs_PCMMP3Manger_MP3DateiFehler3 = ' kann nicht geändert werden. Grund: ';
-//  rs_PCMMP3Manger_MP3DateiEdit1 = 'Es wurden ';
-//  rs_PCMMP3Manger_MP3DateiEdit2 = ' Dateien editiert';
-//// PCM - Restserver
+  // PCM - Mediacenter
+  rs_PCMMediacenter_Musikplayer = 'Musikplayer';
+  rs_PCMMediacenter_Webradio = 'Webradio';
+  rs_PCMMediacenter_Videoplayer = 'Videoplayer';
+  rs_PCMMediacenter_Fotos = 'Fotos';
+
+  // PCM - MP3Manager
+  rs_PCMMP3Manger_MP3Verzeichnis = 'MP3-Verzeichnis auswählen';
+  rs_PCMMP3Manger_MP3Tags = 'MP3-Tags bearbeiten';
+  rs_PCMMP3Manger_MP3DateiHinweis1 = 'Hinweis:  Datei ';
+  rs_PCMMP3Manger_MP3DateiHinweis2 = ' wird geändert';
+  rs_PCMMP3Manger_MP3DateiFehler1 = 'Fehler:  Datei ';
+  rs_PCMMP3Manger_MP3DateiFehler2 = ' kann nicht geändert werden. Grund: Falsche Konvention';
+  rs_PCMMP3Manger_MP3DateiFehler3 = ' kann nicht geändert werden. Grund: ';
+  rs_PCMMP3Manger_MP3DateiEdit1 = 'Es wurden ';
+  rs_PCMMP3Manger_MP3DateiEdit2 = ' Dateien editiert';
+  // PCM - Restserver
   rs_PCMRestserver_Registry = 'Erstelle Registryeinträge';
   rs_PCMRestserver_StartError = 'Fehler beim Starten des PCM - REST Server: ';
-//// PCM - Service / Servicemanager
+ // PCM - Service / Servicemanager
   rs_PCMService_AktuelleZeit = 'aktuelles Datum/Zeit: ';
   rs_PCMService_naechsterZeitpunkt = 'nächster zeitpunkt: ';
   rs_PCMService_Herunterfahren = 'PC wird heruntergefahren';
