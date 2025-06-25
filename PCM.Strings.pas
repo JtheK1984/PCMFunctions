@@ -582,30 +582,31 @@ resourcestring
   rs_PCMRestserver_Registry = 'Erstelle Registryeinträge';
   rs_PCMRestserver_StartError = 'Fehler beim Starten des PCM - REST Server: ';
 //// PCM - Service / Servicemanager
-//  rs_PCMService_AktuelleZeit = 'aktuelles Datum/Zeit: ';
-//  rs_PCMService_naechsterZeitpunkt = 'nächster zeitpunkt: ';
-//  rs_PCMService_Herunterfahren = 'PC wird heruntergefahren';
-//  rs_PCMService_Beenden = 'Service beendet';
-//  rs_PCMService_Termin1 = 'Termin ';
-//  rs_PCMService_Termin2 = ' wird ausgeführt.';
-//  rs_PCMService_Aufgabeneinlesen = 'Aufgaben einlesen';
-//  rs_PCMService_AufgabePush = 'Aufgabe Pushnotification wird ausgeführt.';
-//  rs_PCMService_NaechsterZeitpunktSetzen = 'Nächsten Zeitpunkt setzen';
-//  rs_PCMService_ExceptionTermin = 'Exception beim Ausführen des Termins "';
-//  rs_PCMService_ExecuteWaitFor = 'ExecuteAndWaitFor konnte nicht ausgeführt werden. ';
-//  rs_PCMService_HIID = 'HD-ID:';
-//  rs_PCMService_PCID = 'PC-ID:';
-//  rs_PCMService_Aufrufvon = 'Aufruf von ';
-//  rs_PCMService_TerminAufgabenloeschen = 'Wollen Sie wirklich diesen Termin und alle zugewiesenen Aufgaben löschen?';
-//  rs_PCMService_KeinQuellVerzeichnis1 = 'Es wurde kein Quell-Verzeichnis gewählt.';
-//  rs_PCMService_KeinQuellVerzeichnis2 = 'Damit Dateiendungen gewählt werden können, muss ein Quell-Verzeichnis angegeben werden';
-//	rs_PCMService_ZielVerzeichnisBackup = 'Zielverzeichnis für Backup auswählen';
-//	rs_PCMService_QuellverzeichnissBackup = 'Quellverzeichnis für Backup auswählen';
-//	rs_PCMService_ZielVerzeichnisINNO = 'Bitte Verzeichnis für INNO-Setup wählen';
+  rs_PCMService_AktuelleZeit = 'aktuelles Datum/Zeit: ';
+  rs_PCMService_naechsterZeitpunkt = 'nächster zeitpunkt: ';
+  rs_PCMService_Herunterfahren = 'PC wird heruntergefahren';
+  rs_PCMService_Beenden = 'Service beendet';
+  rs_PCMService_Termin1 = 'Termin ';
+  rs_PCMService_Termin2 = ' wird ausgeführt.';
+  rs_PCMService_Aufgabeneinlesen = 'Aufgaben einlesen';
+  rs_PCMService_AufgabePush = 'Aufgabe Pushnotification wird ausgeführt.';
+  rs_PCMService_NaechsterZeitpunktSetzen = 'Nächsten Zeitpunkt setzen';
+  rs_PCMService_ExceptionTermin = 'Exception beim Ausführen des Termins "';
+  rs_PCMService_ExecuteWaitFor = 'ExecuteAndWaitFor konnte nicht ausgeführt werden. ';
+  rs_PCMService_HIID = 'HD-ID:';
+  rs_PCMService_PCID = 'PC-ID:';
+  rs_PCMService_Aufrufvon = 'Aufruf von ';
+  rs_PCMService_TerminAufgabenloeschen = 'Wollen Sie wirklich diesen Termin und alle zugewiesenen Aufgaben löschen?';
+  rs_PCMService_KeinQuellVerzeichnis1 = 'Es wurde kein Quell-Verzeichnis gewählt.';
+  rs_PCMService_KeinQuellVerzeichnis2 = 'Damit Dateiendungen gewählt werden können, muss ein Quell-Verzeichnis angegeben werden';
+	rs_PCMService_ZielVerzeichnisBackup = 'Zielverzeichnis für Backup auswählen';
+	rs_PCMService_QuellverzeichnissBackup = 'Quellverzeichnis für Backup auswählen';
+	rs_PCMService_ZielVerzeichnisINNO = 'Bitte Verzeichnis für INNO-Setup wählen';
 	rs_PCMService_QuellVerzeichnis = 'Bitte Quell-Verzeichnis wählen';
-//  rs_PCMService_Shutdown = 'automatisches Herunterfahren';
-//  rs_PCMService_Backup = 'Sicherungen';
-//  rs_PCMService_Jobs = 'Termine / Aufgaben für PCM-Service';
+  rs_PCMService_ZielVerzeichnis = 'Bitte Ziel-Verzeichnis wählen';
+  rs_PCMService_Shutdown = 'automatisches Herunterfahren';
+  rs_PCMService_Backup = 'Sicherungen';
+  rs_PCMService_Jobs = 'Termine / Aufgaben für PCM-Service';
   {$EndRegion resourcestring}
 type
   {$Region type}
