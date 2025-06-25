@@ -364,12 +364,12 @@ resourcestring
 
 //  rs_PCMArchiv_DeleteIndex1 = 'Soll der Index ';
 //// PCM  - Backup / Backupservice
-//  rs_PCMBackup_BackupMod = 'Datensicherung';
-//  rs_PCMBackup_Backupgesichert = ' gesichert';
-//  rs_PCMBackup_Backup = 'Sicherung: Datenbank PCM wird gesichert';
-//  rs_PCMBackup_BackupLoeschen = 'Temporäre Dateien löschen: PCM wird gelöscht';
-//  rs_PCMBackup_BackupErfolgreich = 'Sicherung: Datenbanken wurden erfolgreich gesichert';
-//  rs_PCMBackup_Ordnerwaehlen = 'Zielverzeichnis für Backup auswählen';
+  rs_PCMBackup_BackupMod = 'Datensicherung';
+  rs_PCMBackup_Backupgesichert = ' gesichert';
+  rs_PCMBackup_Backup = 'Sicherung: Datenbank PCM wird gesichert';
+  rs_PCMBackup_BackupLoeschen = 'Temporäre Dateien löschen: PCM wird gelöscht';
+  rs_PCMBackup_BackupErfolgreich = 'Sicherung: Datenbanken wurden erfolgreich gesichert';
+  rs_PCMBackup_Ordnerwaehlen = 'Zielverzeichnis für Backup auswählen';
 
 //// PCM  - Lizenzgenerator
 //  rs_PCMLizenzgenerator_Demolizenz = 'Demolizenz für: ';
