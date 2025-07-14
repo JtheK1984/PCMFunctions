@@ -94,7 +94,7 @@
 - Webview2
 
 # Entwicklungsumgebung:
-  DELPHI 12 Athens
+  DELPHI 12.3 Athens
 
 # Entwickler:
   Jens Henske
@@ -114,5 +114,5 @@
   - PrepareCopy.cmd (erzeugte Versionen werden in das Inno-Setupverzeichnis abgelgt)
 
 # Stand:
-  31.01.2025
+  14.07.2025
   
