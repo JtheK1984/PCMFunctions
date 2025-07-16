@@ -34,8 +34,8 @@ object frm_PCM_User: Tfrm_PCM_User
     LayoutLookAndFeel = laCxlaf_Benutzer
     OptionsImage.Images = dm_PCM.imglst_16x16
     object grd_Benutzer: TcxGrid
-      Left = 10000
-      Top = 10000
+      Left = 36
+      Top = 292
       Width = 1208
       Height = 472
       Font.Charset = DEFAULT_CHARSET
@@ -46,7 +46,6 @@ object frm_PCM_User: Tfrm_PCM_User
       ParentFont = False
       TabOrder = 10
       TabStop = False
-      Visible = False
       LockedStateImageOptions.Effect = lsieDark
       object grdDBTblView_Benutzer: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
@@ -198,8 +197,8 @@ object frm_PCM_User: Tfrm_PCM_User
       Width = 471
     end
     object grd_Rechte: TcxGrid
-      Left = 36
-      Top = 440
+      Left = 10000
+      Top = 10000
       Width = 1208
       Height = 324
       Font.Charset = DEFAULT_CHARSET
@@ -210,6 +209,7 @@ object frm_PCM_User: Tfrm_PCM_User
       ParentFont = False
       TabOrder = 40
       TabStop = False
+      Visible = False
       LockedStateImageOptions.Effect = lsieDark
       object grdDBTblView_Rechte: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
@@ -262,8 +262,8 @@ object frm_PCM_User: Tfrm_PCM_User
       end
     end
     object chkbx_BenutzerRestapi: TcxDBCheckBox
-      Left = 10000
-      Top = 10000
+      Left = 95
+      Top = 267
       AutoSize = False
       BiDiMode = bdLeftToRight
       DataBinding.DataField = 'Restapi'
@@ -280,13 +280,12 @@ object frm_PCM_User: Tfrm_PCM_User
       Style.IsFontAssigned = True
       TabOrder = 5
       Transparent = True
-      Visible = False
       Height = 19
       Width = 583
     end
     object edt_BenutzerName: TcxDBTextEdit
-      Left = 10000
-      Top = 10000
+      Left = 36
+      Top = 215
       DataBinding.DataField = 'Vorname'
       DataBinding.DataSource = ds_Benutzer
       ParentFont = False
@@ -299,13 +298,12 @@ object frm_PCM_User: Tfrm_PCM_User
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 3
-      Visible = False
       OnExit = btn_BenutzerSaveClick
       Width = 642
     end
     object edt_BenutzerUser: TcxDBTextEdit
-      Left = 10000
-      Top = 10000
+      Left = 36
+      Top = 188
       DataBinding.DataField = 'Benutzer'
       DataBinding.DataSource = ds_Benutzer
       ParentFont = False
@@ -318,13 +316,12 @@ object frm_PCM_User: Tfrm_PCM_User
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 2
-      Visible = False
       OnExit = btn_BenutzerSaveClick
       Width = 642
     end
     object edt_BenutzerSurname: TcxDBTextEdit
-      Left = 10000
-      Top = 10000
+      Left = 36
+      Top = 242
       AutoSize = False
       DataBinding.DataField = 'Nachname'
       DataBinding.DataSource = ds_Benutzer
@@ -338,21 +335,19 @@ object frm_PCM_User: Tfrm_PCM_User
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 4
-      Visible = False
       OnExit = btn_BenutzerSaveClick
       Height = 19
       Width = 642
     end
     object btn_BenutzerChangePassword: TcxButton
-      Left = 10000
-      Top = 10000
+      Left = 1124
+      Top = 188
       Width = 120
       Height = 21
       OptionsImage.ImageIndex = 9
       OptionsImage.Images = dm_PCM.imglst_16x16
       TabOrder = 7
       TabStop = False
-      Visible = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -362,8 +357,8 @@ object frm_PCM_User: Tfrm_PCM_User
       OnClick = btn_BenutzerChangePasswordClick
     end
     object chkbx_BenutzerAutologin: TcxDBCheckBox
-      Left = 10000
-      Top = 10000
+      Left = 789
+      Top = 242
       BiDiMode = bdLeftToRight
       DataBinding.DataField = 'Autologin'
       DataBinding.DataSource = ds_Benutzer
@@ -379,11 +374,10 @@ object frm_PCM_User: Tfrm_PCM_User
       Style.IsFontAssigned = True
       TabOrder = 9
       Transparent = True
-      Visible = False
     end
     object edt_BenutzerPassword: TcxDBTextEdit
-      Left = 10000
-      Top = 10000
+      Left = 684
+      Top = 188
       AutoSize = False
       DataBinding.DataField = 'Passwort'
       DataBinding.DataSource = ds_Benutzer
@@ -399,15 +393,14 @@ object frm_PCM_User: Tfrm_PCM_User
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 6
-      Visible = False
       OnEnter = edt_BenutzerPasswordEnter
       OnExit = edt_BenutzerPasswordExit
       Height = 19
       Width = 434
     end
     object lucmbbx_BenutzerRights: TcxDBLookupComboBox
-      Left = 10000
-      Top = 10000
+      Left = 684
+      Top = 215
       DataBinding.DataField = 'ID_Rechte'
       DataBinding.DataSource = ds_Benutzer
       ParentFont = False
@@ -426,11 +419,18 @@ object frm_PCM_User: Tfrm_PCM_User
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 8
-      Visible = False
       OnExit = btn_BenutzerSaveClick
       Width = 560
     end
     object brdckCtrl_Benutzer: TdxBarDockControl
+      Left = 36
+      Top = 63
+      Width = 1208
+      Height = 58
+      Align = dalNone
+      BarManager = brmgr_Benutzer
+    end
+    object brdckCtrl_Rechte: TdxBarDockControl
       Left = 10000
       Top = 10000
       Width = 1208
@@ -438,14 +438,6 @@ object frm_PCM_User: Tfrm_PCM_User
       Align = dalNone
       BarManager = brmgr_Benutzer
       Visible = False
-    end
-    object brdckCtrl_Rechte: TdxBarDockControl
-      Left = 36
-      Top = 63
-      Width = 1208
-      Height = 58
-      Align = dalNone
-      BarManager = brmgr_Benutzer
     end
     object lucmbbx_RechteAllgemeinOptionen: TcxDBLookupComboBox
       Left = 10000
@@ -1036,8 +1028,8 @@ object frm_PCM_User: Tfrm_PCM_User
       Width = 471
     end
     object edt_BenutzerSucheBenutzer: TcxButtonEdit
-      Left = 10000
-      Top = 10000
+      Left = 48
+      Top = 145
       AutoSize = False
       Properties.Buttons = <
         item
@@ -1072,13 +1064,12 @@ object frm_PCM_User: Tfrm_PCM_User
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 1
-      Visible = False
       Height = 25
       Width = 1184
     end
     object edt_RechteSucheBezeichnung: TcxButtonEdit
-      Left = 48
-      Top = 145
+      Left = 10000
+      Top = 10000
       AutoSize = False
       Properties.Buttons = <
         item
@@ -1113,6 +1104,7 @@ object frm_PCM_User: Tfrm_PCM_User
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 12
+      Visible = False
       Height = 25
       Width = 1184
     end
@@ -1129,7 +1121,6 @@ object frm_PCM_User: Tfrm_PCM_User
       AlignHorz = ahClient
       AlignVert = avClient
       SizeOptions.Height = 800
-      ItemIndex = 1
       LayoutDirection = ldTabbed
       ShowBorder = False
       TabbedOptions.HotTrack = True
