@@ -267,20 +267,7 @@ resourcestring
   rs_Archiv_DocExists = 'Dokument existiert schon. Wenn das Dokument geändert werden soll, klicken Sie auf Dokument bearbeiten!';
   rs_Archiv_DeleteDocOrg = 'Soll die Originaldatei gelöscht werden?';
 	rs_Config_ZielVerzeichnis = 'Bitte Ziel-Verzeichnis wählen';
-
   {$EndRegion PCM_Archiv}
-//  rs_Archiv_ChooseFile = 'Bitte Datei auswählen!';
-//  rs_Archiv_ChooseUSer = 'Bitte Benutzer auswählen!';
-//  rs_Archiv_ChooseMainCat = 'Bitte Hauptkategorie auswählen!';
-//  rs_Archiv_DocExists = 'Dokument existiert schon. Wenn das Dokument geändert werden soll, klicken Sie auf Dokument bearbeiten!';
-//  rs_Archiv_DeleteDocOrg = 'Soll die Originaldatei gelöscht werden?';
-//
-
-//
-//
-//
-//
-
 
 
   rs_PCM_Lizenzen = 'Lizenzen';
