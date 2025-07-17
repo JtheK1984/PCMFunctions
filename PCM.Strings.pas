@@ -352,6 +352,38 @@ resourcestring
   {$Region PCM_Cleaner}
   rs_PCMCleaner_Bereinigung = 'Bereinigung';
   {$EndRegion PCM_Cleaner}
+  // PCM  - DevManager
+  {$Region PCM_DevManager}
+  rs_PCMDevManager_Modul_DevPro = 'Entwicklung Projekte' ;
+  rs_PCMDevManager_Modul_DevWeb = 'Entwicklung Web' ;
+  rs_PCMDevManager_Modul_API = 'Rest-API Dokumentation' ;
+  rs_PCMDevManager_Modul_Dokumentation = 'Dokumentation' ;
+  rs_PCMDevManager_Modul_UpdateXML = 'Update XML' ;
+  rs_PCMDevManager_MSGCHooseProgramm = 'Bitte Programm auswählen!';
+  rs_PCMDevManager_MSGCHooseSort = 'Bitte Sortierung auswählen!';
+  rs_PCMDevManager_MSGSetDesc = 'Bitte Bezeichnung eingeben!';
+  rs_PCMDevManager_MSGChooseApp = 'Bitte Applikation wählen';
+  rs_PCMDevManager_MSGDeleteEntry = 'Möchten Die den eintrag wirklich löschen?';
+  rs_PCMDevManager_MSGCheckSQLCONSuc = 'Verbindungstest erfolgreich.';
+  rs_PCMDevManager_MSGCheckSQLCONErr = 'Verbindungstest nicht erfolgreich.';
+  rs_PCMDevManager_MSGNoMainScript = 'Kein Mainscript vorhanden';
+  rs_PCMDevManager_BTNVerNew = 'Version anlegen';
+  rs_PCMDevManager_BTNVerSav = 'Version &speichern';
+  rs_PCMDevManager_BTNDevToolsEnable = 'Devtools einblenden';
+  rs_PCMDevManager_BTNDevToolsDisable = 'Devtools ausblenden';
+  rs_PCMDevManager_BTNShowDoneTicketsEnable = 'erledigte Tickets einblenden';
+  rs_PCMDevManager_BTNShowDoneTicketsDisable = 'erledigte Tickets ausblenden';
+  rs_PCMDevManager_CAPProjekte =  'Projekte / ';
+
+  rs_PCMDevManager_CAPXML = 'XML wird eingelesen';
+  rs_PCMDevManager_CAPDatabase = 'Datenbank: ';
+  rs_PCMDevManager_CAPCompress = ' wird komprimiert';
+  rs_PCMDevManager_CAPCopy = ' wird kopiert';
+  rs_PCMDevManager_CAPSave = 'Speichere Konfigurationen';
+  rs_PCMDevManager_CAPCodeSave = 'QuellCode-Sicherung:';
+  rs_PCMDevManager_CAPCompressCopy = 'Komprimieren und ins Setupverzeichniss kopieren:';
+  {$EndRegion PCM_DevManager}
+
   rs_PCM_Lizenzen = 'Lizenzen';
   rs_PCM_Programme = 'Programme';
   rs_PCM_Sprachdatei = 'Sprachdatei kann nicht geladen werden';
