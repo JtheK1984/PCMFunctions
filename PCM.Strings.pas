@@ -353,7 +353,7 @@ resourcestring
   rs_PCM_Sortierung = 'Sortierung';
   rs_PCM_Hauptpostfach = 'Hauptpostfach';
   rs_PCM_Fehler = 'Fehler: ';
-  //  rs_PCM_ChooseModul = 'Bitte Modul wählen';
+  rs_PCM_ChooseModul = 'Bitte Modul wählen';
 
   // PCM  - Backup / Backupservice
   rs_PCMBackup_BackupMod = 'Datensicherung';
@@ -362,6 +362,7 @@ resourcestring
   rs_PCMBackup_BackupLoeschen = 'Temporäre Dateien löschen: PCM wird gelöscht';
   rs_PCMBackup_BackupErfolgreich = 'Sicherung: Datenbanken wurden erfolgreich gesichert';
   rs_PCMBackup_Ordnerwaehlen = 'Zielverzeichnis für Backup auswählen';
+  rs_PCMBackup_ErrorMSQLDUMP ='Error: mysqldump.exe nicht vorhanden';
 
   // PCM  - Lizenzgenerator
   rs_PCMLizenzgenerator_Demolizenz = 'Demolizenz für: ';
