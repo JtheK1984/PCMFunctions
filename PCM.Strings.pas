@@ -201,95 +201,12 @@ resourcestring
   rs_General_Ende = 'Das Programm wird beendet.';
   rs_General_Nein = 'Nein';
   rs_General_Ja = 'Ja';
-  {$EndRegion General}
-  // PCM Main
-  {$Region PCM_MAIN}
-  rs_PCM_Modulliste_verstecken = 'Modulliste verstecken';
-  rs_PCM_Modulliste_anzeigen = 'Modulliste anzeigen';
-  rs_PCM_Benutzerverwaltung ='Benutzerverwaltung';
-  rs_PCM_Konfiguration = 'Konfiguration';
-  rs_PCM_Design = 'Design';
-  rs_PCM_Archiv = 'Archiv';
-  rs_PCM_Systeminformation = 'Systeminformation';
-  rs_PCM_Programminfo = 'Programminfo';
-  rs_PCM_Handbuch = 'Handbuch';
-  rs_PCM_Start = 'Programm gestartet';
-  rs_PCM_Beenden = 'Programm beendet';
-  {$EndRegion PCM_MAIN}
-  // PCM - Appserver
-  {$Region PCM_APPSERVER}
-  rs_PCMAPPServer_Start = 'PCM - APPServer mit HTTPS gestartet';
-  rs_PCMAPPServer_Dienst = 'Appserver für PCM-Apps';
-  rs_PCMAPPServer_BenutzerausPCMpruefen = 'Benutzer von APP prüfen';
-  rs_PCMAPPServer_BenutzerausPCMpruefen1 = 'ID_Benutzer von Server laden';
-  rs_PCMAPPServer_LoginausPCMpruefen = 'Logindaten vom Server laden';
-  rs_PCMAPPServer_Tokenpruefung = 'Token von APP prüfen';
-  rs_PCMAPPServer_Kontakteanzahl = 'Kontakte vom Server laden, Anzahl:';
-  rs_PCMAPPServer_Kontaktepruefung = 'Kontakte von APP prüfen, Anzahl:';
-  rs_PCMAPPServer_Kalenderanzahl = 'Kalender vom Server laden, Anzahl:';
-  rs_PCMAPPServer_Kalenderpruefung = 'Kalender von APP prüfen, Anzahl:';
-  rs_PCMAPPServer_Passwordanzahl = 'Passwörter vom Server laden, Anzahl:';
-  rs_PCMAPPServer_Passwordpruefung = 'Passwörter von APP prüfen, Anzahl:';
-  rs_PCMAPPServer_Serialsanzahl = 'Serials vom Server laden, Anzahl:';
-  rs_PCMAPPServer_Serialspruefung = 'Serials von APP prüfen, Anzahl:';
-  rs_PCMAPPServer_Ausgabenanzahl = 'Ausgaben vom Server laden, Anzahl:';
-  rs_PCMAPPServer_Ausgabenpruefung = 'Ausgaben von APP prüfen, Anzahl:';
-  rs_PCMAPPServer_Einnahmenanzahl = 'Einnahmen vom Server laden, Anzahl:';
-  rs_PCMAPPServer_Einnahmenpruefung = 'Einnahmen von APP prüfen, Anzahl:';
-  rs_PCMAPPServer_Belegeanzahl = 'Belege vom Server laden, Anzahl:';
-  rs_PCMAPPServer_Belegepruefung = 'Belege von APP prüfen, Anzahl:';
-  rs_PCMAPPServer_Gutscheinanzahl = 'Gutscheine vom Server laden, Anzahl:';
-  rs_PCMAPPServer_Gutscheinpruefung = 'Gutscheine von APP prüfen, Anzahl:';
-  rs_PCMAPPServer_GeraeteRegistrierung = 'Gerät wird registriert';
-  rs_PCMAPPServer_Monatswerteanzahl = 'Monatswerte vom Server laden, Anzahl:';
-  rs_PCMAPPServer_FehltageConfiganzahl = 'Fehltagekonfiguration vom Server laden, Anzahl:';
-  rs_PCMAPPServer_Fehltageanzahl = 'Fehltage vom Server laden, Anzahl:';
-  rs_PCMAPPServer_LetzteBuchunganzahl = 'Letzte Buchung vom Server laden, Anzahl:';
-  rs_PCMAPPServer_Buchungsjahresdatenanzahl = 'Buchungen Jahr vom Server laden, Anzahl:';
-  rs_PCMAPPServer_Personalanzahl = 'Personaldaten vom Server laden, Anzahl:';
-  rs_PCMAPPServer_Buchungpruefung = 'Buchung von APP prüfen, Anzahl:';
-  rs_PCMAPPServer_LetzteBuchungpruefung = 'Letzte Buchung von APP prüfen, Anzahl:';
-  rs_PCMAPPServer_FalschesPW = 'Falsches Passwort';
-  {$EndRegion PCM_APPSERVER}
-  // PCM-Archiv
-  {$Region PCM_Archiv}
-  rs_Archiv_Benutzer = 'Benutzer';
-  rs_Archiv_Hauptkategorie = 'Hauptkategorie';
-  rs_Archiv_Unterkategorie = 'Unterkategorie';
-  rs_Archiv_MSGSetDesc = 'Bitte Bezeichnung angeben!';
-  rs_Archiv_MSGSetDescforFileType = 'Bitte geben Sie eine Bezeichnung für den Dateinamen an!';
-  rs_Archiv_MSGChooseType = 'Bitte Typ auswählen!';
-  rs_Archiv_MSGScanart = 'Bitte wählen Sie die Scannerart aus!';
-  rs_Archiv_MSGScanError = 'Fehler beim Scannen';
-  rs_Archiv_ChooseFile = 'Bitte Datei auswählen!';
-  rs_Archiv_ChooseUSer = 'Bitte Benutzer auswählen!';
-  rs_Archiv_ChooseMainCat = 'Bitte Hauptkategorie auswählen!';
-  rs_Archiv_DocExists = 'Dokument existiert schon. Wenn das Dokument geändert werden soll, klicken Sie auf Dokument bearbeiten!';
-  rs_Archiv_DeleteDocOrg = 'Soll die Originaldatei gelöscht werden?';
-	rs_Config_ZielVerzeichnis = 'Bitte Ziel-Verzeichnis wählen';
-  {$EndRegion PCM_Archiv}
-
-
-  rs_PCM_Lizenzen = 'Lizenzen';
-  rs_PCM_Programme = 'Programme';
-  rs_PCM_Sprachdatei = 'Sprachdatei kann nicht geladen werden';
-
-
-//  rs_PCM_Datensicherung = 'Datensicherung';
-
   rs_PCM_Abbrechen ='Abbrechen';
   rs_PCM_Schliessen = 'Schließen';
-
   rs_PCM_Style1 = 'Soll der gewählte Style sofort übernommen werden? ';
   rs_PCM_Style2 = 'Bei Ja wird das Programm neu gestartet.';
-
-
-
-
   rs_PCM_PasswortAendern1 = 'Passwort ändern';
   rs_PCM_GridSpeichernFehler = 'Fehler beim Speichern des Layouts: ';
-
-
   rs_PCM_Exception= 'Exception: ';
   rs_PCM_Januar = 'Januar';
   rs_PCM_Februar ='Februar';
@@ -354,8 +271,75 @@ resourcestring
   rs_PCM_Hauptpostfach = 'Hauptpostfach';
   rs_PCM_Fehler = 'Fehler: ';
   rs_PCM_ChooseModul = 'Bitte Modul wählen';
-
+  {$EndRegion General}
+  // PCM Main
+  {$Region PCM_MAIN}
+  rs_PCM_Modulliste_verstecken = 'Modulliste verstecken';
+  rs_PCM_Modulliste_anzeigen = 'Modulliste anzeigen';
+  rs_PCM_Benutzerverwaltung ='Benutzerverwaltung';
+  rs_PCM_Konfiguration = 'Konfiguration';
+  rs_PCM_Design = 'Design';
+  rs_PCM_Archiv = 'Archiv';
+  rs_PCM_Systeminformation = 'Systeminformation';
+  rs_PCM_Programminfo = 'Programminfo';
+  rs_PCM_Handbuch = 'Handbuch';
+  rs_PCM_Start = 'Programm gestartet';
+  rs_PCM_Beenden = 'Programm beendet';
+  {$EndRegion PCM_MAIN}
+  // PCM - Appserver
+  {$Region PCM_APPSERVER}
+  rs_PCMAPPServer_Start = 'PCM - APPServer mit HTTPS gestartet';
+  rs_PCMAPPServer_Dienst = 'Appserver für PCM-Apps';
+  rs_PCMAPPServer_BenutzerausPCMpruefen = 'Benutzer von APP prüfen';
+  rs_PCMAPPServer_BenutzerausPCMpruefen1 = 'ID_Benutzer von Server laden';
+  rs_PCMAPPServer_LoginausPCMpruefen = 'Logindaten vom Server laden';
+  rs_PCMAPPServer_Tokenpruefung = 'Token von APP prüfen';
+  rs_PCMAPPServer_Kontakteanzahl = 'Kontakte vom Server laden, Anzahl:';
+  rs_PCMAPPServer_Kontaktepruefung = 'Kontakte von APP prüfen, Anzahl:';
+  rs_PCMAPPServer_Kalenderanzahl = 'Kalender vom Server laden, Anzahl:';
+  rs_PCMAPPServer_Kalenderpruefung = 'Kalender von APP prüfen, Anzahl:';
+  rs_PCMAPPServer_Passwordanzahl = 'Passwörter vom Server laden, Anzahl:';
+  rs_PCMAPPServer_Passwordpruefung = 'Passwörter von APP prüfen, Anzahl:';
+  rs_PCMAPPServer_Serialsanzahl = 'Serials vom Server laden, Anzahl:';
+  rs_PCMAPPServer_Serialspruefung = 'Serials von APP prüfen, Anzahl:';
+  rs_PCMAPPServer_Ausgabenanzahl = 'Ausgaben vom Server laden, Anzahl:';
+  rs_PCMAPPServer_Ausgabenpruefung = 'Ausgaben von APP prüfen, Anzahl:';
+  rs_PCMAPPServer_Einnahmenanzahl = 'Einnahmen vom Server laden, Anzahl:';
+  rs_PCMAPPServer_Einnahmenpruefung = 'Einnahmen von APP prüfen, Anzahl:';
+  rs_PCMAPPServer_Belegeanzahl = 'Belege vom Server laden, Anzahl:';
+  rs_PCMAPPServer_Belegepruefung = 'Belege von APP prüfen, Anzahl:';
+  rs_PCMAPPServer_Gutscheinanzahl = 'Gutscheine vom Server laden, Anzahl:';
+  rs_PCMAPPServer_Gutscheinpruefung = 'Gutscheine von APP prüfen, Anzahl:';
+  rs_PCMAPPServer_GeraeteRegistrierung = 'Gerät wird registriert';
+  rs_PCMAPPServer_Monatswerteanzahl = 'Monatswerte vom Server laden, Anzahl:';
+  rs_PCMAPPServer_FehltageConfiganzahl = 'Fehltagekonfiguration vom Server laden, Anzahl:';
+  rs_PCMAPPServer_Fehltageanzahl = 'Fehltage vom Server laden, Anzahl:';
+  rs_PCMAPPServer_LetzteBuchunganzahl = 'Letzte Buchung vom Server laden, Anzahl:';
+  rs_PCMAPPServer_Buchungsjahresdatenanzahl = 'Buchungen Jahr vom Server laden, Anzahl:';
+  rs_PCMAPPServer_Personalanzahl = 'Personaldaten vom Server laden, Anzahl:';
+  rs_PCMAPPServer_Buchungpruefung = 'Buchung von APP prüfen, Anzahl:';
+  rs_PCMAPPServer_LetzteBuchungpruefung = 'Letzte Buchung von APP prüfen, Anzahl:';
+  rs_PCMAPPServer_FalschesPW = 'Falsches Passwort';
+  {$EndRegion PCM_APPSERVER}
+  // PCM - Archiv
+  {$Region PCM_Archiv}
+  rs_Archiv_Benutzer = 'Benutzer';
+  rs_Archiv_Hauptkategorie = 'Hauptkategorie';
+  rs_Archiv_Unterkategorie = 'Unterkategorie';
+  rs_Archiv_MSGSetDesc = 'Bitte Bezeichnung angeben!';
+  rs_Archiv_MSGSetDescforFileType = 'Bitte geben Sie eine Bezeichnung für den Dateinamen an!';
+  rs_Archiv_MSGChooseType = 'Bitte Typ auswählen!';
+  rs_Archiv_MSGScanart = 'Bitte wählen Sie die Scannerart aus!';
+  rs_Archiv_MSGScanError = 'Fehler beim Scannen';
+  rs_Archiv_ChooseFile = 'Bitte Datei auswählen!';
+  rs_Archiv_ChooseUSer = 'Bitte Benutzer auswählen!';
+  rs_Archiv_ChooseMainCat = 'Bitte Hauptkategorie auswählen!';
+  rs_Archiv_DocExists = 'Dokument existiert schon. Wenn das Dokument geändert werden soll, klicken Sie auf Dokument bearbeiten!';
+  rs_Archiv_DeleteDocOrg = 'Soll die Originaldatei gelöscht werden?';
+	rs_Config_ZielVerzeichnis = 'Bitte Ziel-Verzeichnis wählen';
+  {$EndRegion PCM_Archiv}
   // PCM  - Backup / Backupservice
+  {$Region PCM_Backup}
   rs_PCMBackup_BackupMod = 'Datensicherung';
   rs_PCMBackup_Backupgesichert = ' gesichert';
   rs_PCMBackup_Backup = 'Sicherung: Datenbank PCM wird gesichert';
@@ -363,6 +347,22 @@ resourcestring
   rs_PCMBackup_BackupErfolgreich = 'Sicherung: Datenbanken wurden erfolgreich gesichert';
   rs_PCMBackup_Ordnerwaehlen = 'Zielverzeichnis für Backup auswählen';
   rs_PCMBackup_ErrorMSQLDUMP ='Error: mysqldump.exe nicht vorhanden';
+  {$EndRegion PCM_Backup}
+  // PCM  - Cleaner
+  {$Region PCM_Cleaner}
+  rs_PCMCleaner_Bereinigung = 'Bereinigung';
+  {$EndRegion PCM_Cleaner}
+  rs_PCM_Lizenzen = 'Lizenzen';
+  rs_PCM_Programme = 'Programme';
+  rs_PCM_Sprachdatei = 'Sprachdatei kann nicht geladen werden';
+
+
+//  rs_PCM_Datensicherung = 'Datensicherung';
+
+
+
+
+
 
   // PCM  - Lizenzgenerator
   rs_PCMLizenzgenerator_Demolizenz = 'Demolizenz für: ';
