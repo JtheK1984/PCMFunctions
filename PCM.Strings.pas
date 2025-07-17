@@ -251,23 +251,31 @@ resourcestring
   rs_PCMAPPServer_LetzteBuchungpruefung = 'Letzte Buchung von APP prüfen, Anzahl:';
   rs_PCMAPPServer_FalschesPW = 'Falsches Passwort';
   {$EndRegion PCM_APPSERVER}
-
-
-
-
-
-
-
-
   // PCM-Archiv
-//  {$Region PCM_Archiv}
+  {$Region PCM_Archiv}
+  rs_Archiv_Benutzer = 'Benutzer';
+  rs_Archiv_Hauptkategorie = 'Hauptkategorie';
+  rs_Archiv_Unterkategorie = 'Unterkategorie';
+  rs_Archiv_MSGSetDesc = 'Bitte Bezeichnung angeben!';
+  rs_Archiv_MSGSetDescforFileType = 'Bitte geben Sie eine Bezeichnung für den Dateinamen an!';
+  rs_Archiv_MSGChooseType = 'Bitte Typ auswählen!';
+  rs_Archiv_MSGScanart = 'Bitte wählen Sie die Scannerart aus!';
+  rs_Archiv_MSGScanError = 'Fehler beim Scannen';
+  rs_Archiv_ChooseFile = 'Bitte Datei auswählen!';
+  rs_Archiv_ChooseUSer = 'Bitte Benutzer auswählen!';
+  rs_Archiv_ChooseMainCat = 'Bitte Hauptkategorie auswählen!';
+  rs_Archiv_DocExists = 'Dokument existiert schon. Wenn das Dokument geändert werden soll, klicken Sie auf Dokument bearbeiten!';
+  rs_Archiv_DeleteDocOrg = 'Soll die Originaldatei gelöscht werden?';
+	rs_Config_ZielVerzeichnis = 'Bitte Ziel-Verzeichnis wählen';
+
+  {$EndRegion PCM_Archiv}
 //  rs_Archiv_ChooseFile = 'Bitte Datei auswählen!';
 //  rs_Archiv_ChooseUSer = 'Bitte Benutzer auswählen!';
 //  rs_Archiv_ChooseMainCat = 'Bitte Hauptkategorie auswählen!';
 //  rs_Archiv_DocExists = 'Dokument existiert schon. Wenn das Dokument geändert werden soll, klicken Sie auf Dokument bearbeiten!';
 //  rs_Archiv_DeleteDocOrg = 'Soll die Originaldatei gelöscht werden?';
 //
-//  {$EndRegion PCM_Archiv}
+
 //
 //
 //
