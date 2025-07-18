@@ -189,6 +189,14 @@ resourcestring
   rs_Function_Helper_Verbindungerfolgreich ='Verbindung erfolgreich hergestellt';
   rs_Function_Helper_PCMINIPruefen = 'Bitte überprüfen Sie die Serveradresse in der Konfigurationsdatei:';
   {$EndRegion Helper}
+  // Calculate
+  rs_Function_Helper_BerechneTag ='Berechne Tag: ';
+  rs_Function_Helper_BerechneYearEnd = ', Jahr:';
+  rs_Function_Helper_BerechneMonat ='Berechne Monat: ';
+  rs_Function_Helper_BerechneMonate = 'Berechne Monate';
+  rs_Function_Helper_BerechneJahr = 'Berechne Jahr: ';
+  rs_Function_Helper_Berechne = 'Berechne ';
+  rs_Function_Helper_BerechneMonatfuerMonat = 'Berechne Monate für Monat: ';
   // General
   {$Region General}
   rs_general_Abbrechen = 'Abbrechen';
@@ -374,14 +382,32 @@ resourcestring
   rs_PCMDevManager_BTNShowDoneTicketsEnable = 'erledigte Tickets einblenden';
   rs_PCMDevManager_BTNShowDoneTicketsDisable = 'erledigte Tickets ausblenden';
   rs_PCMDevManager_CAPProjekte =  'Projekte / ';
-
   rs_PCMDevManager_CAPXML = 'XML wird eingelesen';
   rs_PCMDevManager_CAPDatabase = 'Datenbank: ';
   rs_PCMDevManager_CAPCompress = ' wird komprimiert';
   rs_PCMDevManager_CAPCopy = ' wird kopiert';
   rs_PCMDevManager_CAPSave = 'Speichere Konfigurationen';
   rs_PCMDevManager_CAPCodeSave = 'QuellCode-Sicherung:';
-  rs_PCMDevManager_CAPCompressCopy = 'Komprimieren und ins Setupverzeichniss kopieren:';
+  rs_PCMDevManager_CAPCompressCopy = 'Komprimieren und ins Setupverzeichnis kopieren:';
+  rs_PCMDevManager_COL_Architektur = 'Architektur';
+  rs_PCMDevManager_COL_Licence = 'Lizenz';
+  rs_PCMDevManager_COL_Stichwort = 'Stichwort';
+  rs_PCMDevManager_COL_FixVersion = 'FixVersion';
+  rs_PCMDevManager_COL_Zugewiesen = 'Zugewiesen';
+  rs_PCMDevManager_COL_Breite = 'Breite';
+  rs_PCMDevManager_COL_Leerzeile = 'Leerzeile';
+  rs_PCMDevManager_WAIT_Scripts = 'Scripte werden erstellt';
+  rs_PCMDevManager_WAIT_DokuHTM = 'Dokumentation HTM wird erstellt';
+  rs_PCMDevManager_WAIT_DokuPDF = 'Dokumentation DOC wird erstellt';
+  rs_PCMDevManager_WAIT_FileEnd = 'Dateiendungen werden geladen...';
+  rs_PCMDevManager_WAIT_Doku = 'Dokumentation DOC: ';
+  rs_PCMDevManager_WAIT_SavePDF = 'Dokumentation PDF speichern';
+  rs_PCMDevManager_WAIT_SaveDOC = 'Dokumentation DOC speichern';
+
+  rs_PCMDevManager_WAIT_Create = ' wird erstellt';
+  rs_PCMDevManager_WAIT_CreateOther ='sonstige Script werden erstellt';
+
+  rs_PCMDevManager_CMBBX_Alle = 'Alle';
   {$EndRegion PCM_DevManager}
 
   rs_PCM_Lizenzen = 'Lizenzen';
