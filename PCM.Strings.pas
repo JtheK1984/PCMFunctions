@@ -190,6 +190,7 @@ resourcestring
   rs_Function_Helper_PCMINIPruefen = 'Bitte überprüfen Sie die Serveradresse in der Konfigurationsdatei:';
   {$EndRegion Helper}
   // Calculate
+  {$Region PCM_DevManager}
   rs_Function_Helper_BerechneTag ='Berechne Tag: ';
   rs_Function_Helper_BerechneYearEnd = ', Jahr:';
   rs_Function_Helper_BerechneMonat ='Berechne Monat: ';
@@ -197,6 +198,7 @@ resourcestring
   rs_Function_Helper_BerechneJahr = 'Berechne Jahr: ';
   rs_Function_Helper_Berechne = 'Berechne ';
   rs_Function_Helper_BerechneMonatfuerMonat = 'Berechne Monate für Monat: ';
+  {$EndRegion PCM_DevManager}
   // General
   {$Region General}
   rs_general_Abbrechen = 'Abbrechen';
@@ -403,26 +405,15 @@ resourcestring
   rs_PCMDevManager_WAIT_Doku = 'Dokumentation DOC: ';
   rs_PCMDevManager_WAIT_SavePDF = 'Dokumentation PDF speichern';
   rs_PCMDevManager_WAIT_SaveDOC = 'Dokumentation DOC speichern';
-
   rs_PCMDevManager_WAIT_Create = ' wird erstellt';
   rs_PCMDevManager_WAIT_CreateOther ='sonstige Script werden erstellt';
-
   rs_PCMDevManager_CMBBX_Alle = 'Alle';
   {$EndRegion PCM_DevManager}
-
+  // PCM  - Lizenzgenerator
+  {$Region PCM_Lizenzgenerator}
   rs_PCM_Lizenzen = 'Lizenzen';
   rs_PCM_Programme = 'Programme';
   rs_PCM_Sprachdatei = 'Sprachdatei kann nicht geladen werden';
-
-
-//  rs_PCM_Datensicherung = 'Datensicherung';
-
-
-
-
-
-
-  // PCM  - Lizenzgenerator
   rs_PCMLizenzgenerator_Demolizenz = 'Demolizenz für: ';
   rs_PCMLizenzgenerator_Programm = 'Programm: ';
   rs_PCMLizenzgenerator_Gueltig = 'Gültig bis: ';
@@ -452,6 +443,20 @@ resourcestring
   rs_PCMLizenzgenerator_ProgrammMajor = 'Major-Version';
   rs_PCMLizenzgenerator_ProgrammMinor = 'Minor-Version';
   rs_PCMLizenzgenerator_ProgrammLizenz = 'Lizenzerstellung';
+  rs_PCMLizenzgenerator_Testzeitraum = 'Testzeitraum: ';
+  rs_PCMLizenzgenerator_COLDatum = 'Datum';
+  rs_PCMLizenzgenerator_COLUhrzeit = 'Uhrzeit';
+  rs_PCMDevManager_COL_Bemerkung = 'Bemerkung';
+  {$EndRegion PCM_Lizenzgenerator}
+
+//  rs_PCM_Datensicherung = 'Datensicherung';
+
+
+
+
+
+
+
   // PCM - Manager
   rs_PCMManager_KeineVerbindung = 'Verbindung mit Outlook kann nicht hergestellt werden. Grund: ';
   rs_PCMManager_Namespace = 'Namespace ermitteln';
