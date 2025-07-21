@@ -1,31 +1,16 @@
-# Projekt: 
-  PCM.Functions (dieses Projekt ist nicht kompilierbar)
+# Projekt:
+  PCMFunctions.exe Version: 1.0.0.0
 
-# Enthaltene Units und Formualare 
-  - PCM.Benutzerverwaltung.dfm
-  - PCM.Benutzerverwaltung.pas
-  - PCM.Functions.AppInfo.dfm
-  - PCM.Functions.AppInfo.pas
-  - PCM.Functions.ChangePW.dfm
-  - PCM.Functions.ChangePW.pas
-  - PCM.Functions.Lizenz.dfm
-  - PCM.Functions.Lizenz.pas
-  - PCM.Functions.Login.dfm
-  - PCM.Functions.Login.pas 
-  - PCM.Functions.Login.SQL.pas
-  - PCM.Functions.dfm
-  - PCM-Functions
-  - PCM.Functions.Server.Methods.pas
-  - PCM.Functions.Synch.ProgressDialog.dfm
-  - PCM.Functions.Synch.ProgressDialog.pas
-  - PCM.Functions.Synch.Transparenz.dfm
-  - PCM.Functions.Synch.Transparenz.pas
-  - PCM.Functions.Synch.Wait.pas
+# Kurzbeschreibung:
+  Functionssammlung Delphi für PCM-Applikationen (dieses Projekt ist nicht kompilierbar)
 
-# Kurzbeschreibung
-  Functionssammlung Delphi 
+# Entwicklungsumgebung:
+  DELPHI 12.3 Athens
 
-# Enthaltene Units und Formualare PCM-Functions 
+# Entwickler:
+  Jens Henske
+
+# Enthaltene Units und Formualare PCM-Functions
 - Root (Soluling - Übersetzer)
   - NTBase.pas
   - NtBaseTranslator.pas
@@ -91,28 +76,15 @@
   - PCM.Reports.pas
   - PCM.Strings.pas
   - skins.inc
-- Webview2
+- Webview2 
 
-# Entwicklungsumgebung:
-  DELPHI 12.3 Athens
+# Erforderliche Komponenten (DELPHI-IDE):
+  - Devexpress 24.2.4
+  - Abrevia 2025.03 (Getit-Package)
 
-# Entwickler:
-  Jens Henske
-	
-# Abhängigkeiten zu folgenden DLL's:
-  - 32-Bit 
-    - libmysql.dll (DLL für Verbindung zur MySQL-Datenbank)
-  - 64-Bit 
-    - libmysql.dll (DLL für Verbindung zur MySQL-Datenbank)
-	
-# Erforderliche Komponenten (DELPHI-IDE)
-  - Devexpress
-  - Abrevia (Get-IT)
-	
-# Erforderliche Scripte (nur für die Buildpipelines in Azure DevOps): 
+# Erforderliche Scripte (nur für die Buildpipelines in Azure DevOps):
   - PrepareBuild.cmd (Umgebungsvariablen für Delphi anpassen, wird für den Build benötigt)
   - PrepareCopy.cmd (erzeugte Versionen werden in das Inno-Setupverzeichnis abgelgt)
 
 # Stand:
-  01.06.2025
-  
+  21.07.2025
