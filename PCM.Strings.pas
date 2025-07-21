@@ -348,7 +348,7 @@ resourcestring
   rs_Archiv_DeleteDocOrg = 'Soll die Originaldatei gelöscht werden?';
 	rs_Config_ZielVerzeichnis = 'Bitte Ziel-Verzeichnis wählen';
   {$EndRegion PCM_Archiv}
-  // PCM  - Backup / Backupservice
+  // PCM - Backup / Backupservice
   {$Region PCM_Backup}
   rs_PCMBackup_BackupMod = 'Datensicherung';
   rs_PCMBackup_Backupgesichert = ' gesichert';
@@ -358,11 +358,15 @@ resourcestring
   rs_PCMBackup_Ordnerwaehlen = 'Zielverzeichnis für Backup auswählen';
   rs_PCMBackup_ErrorMSQLDUMP ='Error: mysqldump.exe nicht vorhanden';
   {$EndRegion PCM_Backup}
-  // PCM  - Cleaner
+  // PCM - Cleaner
   {$Region PCM_Cleaner}
   rs_PCMCleaner_Bereinigung = 'Bereinigung';
   {$EndRegion PCM_Cleaner}
-  // PCM  - DevManager
+  // PCM - Dashboard
+  {$Region PCM_Dashboard}
+  rs_PCMDashboard = 'Eigenschaften von ' ;
+  {$Region PCM_Dashboard}
+  // PCM - DevManager
   {$Region PCM_DevManager}
   rs_PCMDevManager_Modul_DevPro = 'Entwicklung Projekte' ;
   rs_PCMDevManager_Modul_DevWeb = 'Entwicklung Web' ;
@@ -409,7 +413,7 @@ resourcestring
   rs_PCMDevManager_WAIT_CreateOther ='sonstige Script werden erstellt';
   rs_PCMDevManager_CMBBX_Alle = 'Alle';
   {$EndRegion PCM_DevManager}
-  // PCM  - Lizenzgenerator
+  // PCM - Lizenzgenerator
   {$Region PCM_Lizenzgenerator}
   rs_PCM_Lizenzen = 'Lizenzen';
   rs_PCM_Programme = 'Programme';
