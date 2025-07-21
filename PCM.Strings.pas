@@ -462,6 +462,7 @@ resourcestring
 
 
   // PCM - Manager
+  {$Region PCM_Manager}
   rs_PCMManager_KeineVerbindung = 'Verbindung mit Outlook kann nicht hergestellt werden. Grund: ';
   rs_PCMManager_Namespace = 'Namespace ermitteln';
   rs_PCMManager_CalendarsRoot = 'CalendarsRoot ermitteln: ';
@@ -622,6 +623,7 @@ resourcestring
   rs_PCMManager_WocheVor = 'Eine Woche vor springen';
   rs_PCMManager_Terminopen = 'Termin öffnen';
   rs_PCMManager_Adresseengefunden = ' Adressen gefunden!';
+  {$EndRegion PCM_Manager}
   // PCM - Mediacenter
   rs_PCMMediacenter_Musikplayer = 'Musikplayer';
   rs_PCMMediacenter_Webradio = 'Webradio';
