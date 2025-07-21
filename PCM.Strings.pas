@@ -365,7 +365,7 @@ resourcestring
   // PCM - Dashboard
   {$Region PCM_Dashboard}
   rs_PCMDashboard = 'Eigenschaften von ' ;
-  {$Region PCM_Dashboard}
+  {$EndRegion PCM_Dashboard}
   // PCM - DevManager
   {$Region PCM_DevManager}
   rs_PCMDevManager_Modul_DevPro = 'Entwicklung Projekte' ;
