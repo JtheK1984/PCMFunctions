@@ -452,15 +452,6 @@ resourcestring
   rs_PCMLizenzgenerator_COLUhrzeit = 'Uhrzeit';
   rs_PCMDevManager_COL_Bemerkung = 'Bemerkung';
   {$EndRegion PCM_Lizenzgenerator}
-
-//  rs_PCM_Datensicherung = 'Datensicherung';
-
-
-
-
-
-
-
   // PCM - Manager
   {$Region PCM_Manager}
   rs_PCMManager_KeineVerbindung = 'Verbindung mit Outlook kann nicht hergestellt werden. Grund: ';
@@ -623,12 +614,55 @@ resourcestring
   rs_PCMManager_WocheVor = 'Eine Woche vor springen';
   rs_PCMManager_Terminopen = 'Termin öffnen';
   rs_PCMManager_Adresseengefunden = ' Adressen gefunden!';
+  rs_PCMManager_Aufgaben1 = 'Aufgaben';
+  rs_PCMManager_Stundenplan = 'Stundenplan';
+  rs_PCMManager_MSGDeleteevent = 'Möchten sie den Termin wirklich löschen?';
+  rs_PCMManager_MSChooseEevent = 'Bitte einen Termin auswählen!';
+  rs_PCMManager_MSChooseMailbox = 'Bitte Ordner auswählen!';
+  rs_PCMManager_MSGFehler = 'Fehler:';
+  rs_PCMManager_AdressIncomplete ='Adresse unvollständig';
+  rs_PCMManager_APPIPAdresse = 'APP IP-Adresse:';
+  rs_PCMManager_VPNIPAdresse = 'VPN IP-Adresse:';
+  rs_PCMManager_Verbundenmit = 'Verbunden mit ';
+  rs_PCMManager_Ordnerwerdeneingelesen = 'Ordner werden eingelesen...';
+  rs_PCMManager_AnzahlElemente = 'Anzahl Elemente: %d';
+  rs_PCMManager_AnzahlungelesenerElemente = 'Anzahl ungelesener Elemente: %d';
+  rs_PCMManager_Uebermittlungabgeschlossen = 'Übermittlung abgeschlossen      ';
+  rs_PCMManager_EmailDownload ='E-Mail wird heruntergeladen...';
+  rs_PCMManager_EmailRefresh = 'E-Mails aktualisieren...';
+  rs_PCMManager_StatuswithValue = 'Übermittlungsstatus %d';
+  rs_PCMManager_StatuswithoutValue = 'Übermittlungsstatus: ';
+  rs_PCMManager_StatuswithoutValue1 = ' von ';
+  rs_PCMManager_StatuswithoutValue2 = ' Mails verarbeitet';
+  rs_PCMManager_Flagread = 'gelesen';
+  rs_PCMManager_Flagunread = 'ungelesen';
+  rs_PCMManager_PushChange = ' wurde geändert';
+  rs_PCMManager_PushNewChange = ' wurde angelegt';
+  rs_PCMManager_PushVon = ' von  ';
+  rs_PCMManager_PushBis = ' bis ';
+  rs_PCMManager_PushAufgabe = 'Aufgabe ';
+  rs_PCMManager_PushNachricht = 'Nachricht ';
+  rs_PCMManager_PushNeue = 'Neue ';
+  rs_PCMManager_PushNeuer = 'Neuer ';
+  rs_PCMManager_Tag = 'Tag ';
+  rs_PCMManager_Woche = 'Woche ';
+  rs_PCMManager_ArbeitsWoche = 'Arbeitswoche ';
+  rs_PCMManager_Monat = 'Monat ';
+  rs_PCMManager_Jahr = 'Jahr ';
+  rs_PCMManager_Vor = 'vor';
+  rs_PCMManager_zurueck = 'zurück';
+  rs_PCMManager_Vorname2 = 'Vorname:';
+  rs_PCMManager_Nachname2 = 'Nachname:';
+  rs_PCMManager_Firma2 = 'Firma:';
+  rs_PCMManager_Ort2 = 'Ort:';
+
   {$EndRegion PCM_Manager}
   // PCM - Mediacenter
   rs_PCMMediacenter_Musikplayer = 'Musikplayer';
   rs_PCMMediacenter_Webradio = 'Webradio';
   rs_PCMMediacenter_Videoplayer = 'Videoplayer';
   rs_PCMMediacenter_Fotos = 'Fotos';
+
 
   // PCM - MP3Manager
   rs_PCMMP3Manger_MP3Verzeichnis = 'MP3-Verzeichnis auswählen';
@@ -670,6 +704,7 @@ resourcestring
   rs_PCMService_Backup = 'Sicherungen';
   rs_PCMService_Jobs = 'Termine / Aufgaben für PCM-Service';
   {$EndRegion resourcestring}
+  //  rs_PCM_Datensicherung = 'Datensicherung';
 type
   {$Region type}
   TResourceStringID = Pointer;
