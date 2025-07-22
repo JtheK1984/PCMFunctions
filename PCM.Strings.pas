@@ -662,6 +662,8 @@ resourcestring
   rs_PCMMediacenter_Webradio = 'Webradio';
   rs_PCMMediacenter_Videoplayer = 'Videoplayer';
   rs_PCMMediacenter_Fotos = 'Fotos';
+  rs_PCMMediacenter_MSGRechteMaustaste = 'Rechte Maustaste, um Vollbild zu verlassen';
+  rs_PCMMediacenter_MSGBassnichtgefunden = 'Bass 2.3 nicht gefunden';
 
 
   // PCM - MP3Manager
