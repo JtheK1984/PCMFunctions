@@ -83,9 +83,9 @@ uses
   {$Region uses}
   PCM.Data,
   PCM.Functions.Lizenz,
+  PCM.Helper,
   PCM.Main,
-  PCM.Strings,
-  PCM.Helper;
+  PCM.Strings;
   {$EndRegion uses}
 ////////////////////////////////////////////////////////////////////////////////
 // Hilfsfunktionen                                                            //
@@ -199,7 +199,7 @@ begin
   laitm_PCManagerAppInfo_Server.CaptionOptions.Text:= dm_PCM.sServer;
   if (PCM_Logname <> 'PCMBackup') and
      (PCM_Logname <> 'PCMBenutzerverwaltung') and
-     (PCM_Logname <> 'PCMCleaner') and
+     (PCM_Logname <> 'PCMcleaner') and
      (PCM_Logname <> 'PCMDevManager') and
      (PCM_Logname <> 'PCMLizenzgenerator') and
      (PCM_Logname <> 'PCMUpdate') then
