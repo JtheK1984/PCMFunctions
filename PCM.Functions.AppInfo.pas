@@ -220,7 +220,7 @@ begin
     lagrp_AppinfoBtn.Visible:= false;
     dm_PCM.qry_work.SQL.Text:= 'Select Benutzer From manager_lizenz';
     dm_PCM.qry_work.Open;
-    laitm_PCManagerAppInfo_Server.CaptionOptions.Text:= dm_PCM.qry_work.FieldByName('Benutzer').AsString;
+    laitm_PCManagerAppInfo_LizenzForlbl.CaptionOptions.Text:= dm_PCM.qry_work.FieldByName('Benutzer').AsString;
     dm_PCM.qry_work.close;
     laitm_PCManagerAppInfo_Demo.CaptionOptions.Text:= rs_General_Nein;
     laitm_PCManagerAppInfo_Valid.CaptionOptions.Text:= rs_Function_APPInfo_unbegrenzt;

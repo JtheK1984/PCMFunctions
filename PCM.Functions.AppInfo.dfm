@@ -23,8 +23,6 @@ object frm_PCM_InfoApp: Tfrm_PCM_InfoApp
     TabOrder = 0
     AutoSize = True
     LayoutLookAndFeel = dxLayoutCxLookAndFeel1
-    ExplicitWidth = 680
-    ExplicitHeight = 303
     object img_PCManagerAppInfo_Image: TcxImage
       Left = 22
       Top = 28
@@ -1005,7 +1003,7 @@ object frm_PCM_InfoApp: Tfrm_PCM_InfoApp
       Parent = lagrp_AppinfoDetailsWithoutImg
       AlignHorz = ahClient
       AlignVert = avClient
-      ItemIndex = 6
+      ItemIndex = 5
       ShowBorder = False
       Index = 0
     end
@@ -1104,7 +1102,6 @@ object frm_PCM_InfoApp: Tfrm_PCM_InfoApp
     end
     object lagrp_PCManagerAppInfo_LizenzFor: TdxLayoutGroup
       Parent = lagrp_AppinfoInfo
-      ItemIndex = 1
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 5
@@ -1203,7 +1200,6 @@ object frm_PCM_InfoApp: Tfrm_PCM_InfoApp
       Parent = lactrl_AppinfoGroup_Root
       AlignHorz = ahClient
       AlignVert = avTop
-      ItemIndex = 1
       ShowBorder = False
       Index = 0
     end
