@@ -658,15 +658,16 @@ resourcestring
 
   {$EndRegion PCM_Manager}
   // PCM - Mediacenter
+  {$Region PCM_Mediacenter}
   rs_PCMMediacenter_Musikplayer = 'Musikplayer';
   rs_PCMMediacenter_Webradio = 'Webradio';
   rs_PCMMediacenter_Videoplayer = 'Videoplayer';
   rs_PCMMediacenter_Fotos = 'Fotos';
   rs_PCMMediacenter_MSGRechteMaustaste = 'Rechte Maustaste, um Vollbild zu verlassen';
   rs_PCMMediacenter_MSGBassnichtgefunden = 'Bass 2.3 nicht gefunden';
-
-
+  {$EndRegion PCM_Mediacenter}
   // PCM - MP3Manager
+  {$Region PCM_MP3Manager}
   rs_PCMMP3Manger_MP3Verzeichnis = 'MP3-Verzeichnis auswählen';
   rs_PCMMP3Manger_MP3Tags = 'MP3-Tags bearbeiten';
   rs_PCMMP3Manger_MP3DateiHinweis1 = 'Hinweis:  Datei ';
@@ -676,6 +677,12 @@ resourcestring
   rs_PCMMP3Manger_MP3DateiFehler3 = ' kann nicht geändert werden. Grund: ';
   rs_PCMMP3Manger_MP3DateiEdit1 = 'Es wurden ';
   rs_PCMMP3Manger_MP3DateiEdit2 = ' Dateien editiert';
+  {$EndRegion PCM_MP3Manager}
+  // PCM - Notenerechner
+  {$Region PCM_Notenerechner}
+  rs_PCMNotenrechner_Notenuebersicht = 'Notenübersicht';
+  rs_PCMNotenrechner_Faktor = 'Faktor';
+  {$EndRegion PCM_Notenerechner}
   // PCM - Restserver
   rs_PCMRestserver_Registry = 'Erstelle Registryeinträge';
   rs_PCMRestserver_StartError = 'Fehler beim Starten des PCM - REST Server: ';
