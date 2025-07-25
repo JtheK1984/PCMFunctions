@@ -8,7 +8,7 @@ uses
   IdTCPClient, IdHTTP, Data.DB,DateUtils,winapi.shellapi, FireDAC.Stan.Intf,  FireDAC.Stan.Option,
   FireDAC.Stan.Error,  FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def, FireDAC.Stan.Pool,
   FireDAC.Stan.Async,  FireDAC.Phys, FireDAC.Comp.Client,FireDAC.Stan.Param, System.Json,REST.Types,
-  AbBase, AbBrowse, AbZBrows, AbZipper;
+  AbBase, AbBrowse, AbZBrows, AbZipper, iniFiles;
   {$EndRegion uses}
 // Deklarationen
   {$Region Deklarationen}
@@ -16,6 +16,8 @@ uses
   procedure SendPushNotification;
 //  procedure BackupFiles;
   procedure BackupDatabase;
+
+  procedure ExecuteCustomTask(ATyp: integer);
   procedure BackupQuellcode;
   procedure ExecuteAndWaitFor(FileName: AnsiString);
   {$EndRegion Deklarationen}
@@ -33,6 +35,22 @@ uses
   {$EndRegion uses}
 // Prozeduren
 {$Region Prozeduren}
+procedure ExecuteCustomTask(ATyp: integer);
+var
+  Ini: TIniFile;
+  TaskName, TaskCommand: string;
+begin
+  Ini := TIniFile.Create(ExtractFilePath(ParamStr(0)) + 'PCMService.ini');
+  try
+    TaskName := Ini.ReadString('CustomTasks', Format('Name%d', [ATyp - 100]), '');
+    TaskCommand := Ini.ReadString('CustomTasks', Format('Command%d', [ATyp - 100]), '');
+    if (TaskName = '') and (TaskCommand = '') then
+      exit;
+    ExecuteAndWaitFor(AnsiString(TaskCommand));
+  finally
+    Ini.Free;
+  end;
+end;
 procedure BackupDatabase;
 begin
   ExecuteAndWaitFor(AnsiString(ExtractFilePath(ParamStr(0)) + 'PCMBackup\PCMBackupService.exe'));

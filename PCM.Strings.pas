@@ -201,6 +201,8 @@ resourcestring
   {$EndRegion PCM_DevManager}
   // General
   {$Region General}
+  rs_general_Manuell = 'Manuell';
+  rs_general_Alle = 'Alle ';
   rs_general_Abbrechen = 'Abbrechen';
   rs_general_Ok = 'Ok';
   rs_general_Save = 'Speichern';
@@ -254,6 +256,7 @@ resourcestring
   rs_PCM_Mittwoch = 'Mittwoch';
   rs_PCM_Montag = 'Montag';
   rs_PCM_Samstag = 'Samstag';
+  rs_PCM_Sonntag = 'Sonntag';
   rs_PCM_Wochentag = 'Wochentag';
   rs_PCM_Wochenend_Tag = 'Wochenend-Tag';
   rs_PCM_alleTage = 'alle %d Tage';
@@ -728,12 +731,29 @@ resourcestring
   rs_PCMService_BreakHint = 'Unterbricht den ZMI - ServerService';
   rs_PCMService_Continue = 'Fortsetzen';
   rs_PCMService_ContinueHint = 'Setzt den ZMI - ServerService fort';
-  rs_PCMServic_Dic = 'Verzeichnis:';
-  rs_PCMServic_DicChoose = 'Bitte Verzeichnis auswählen';
-  rs_PCMServic_File = 'Dateiname:';
-  rs_PCMServic_FileChoose = 'Bitte Datei auswählen';
-  rs_PCMServic_Ziel = 'Ziel';
+  rs_PCMService_Dic = 'Verzeichnis:';
+  rs_PCMService_DicChoose = 'Bitte Verzeichnis auswählen';
+  rs_PCMService_File = 'Dateiname:';
+  rs_PCMService_FileChoose = 'Bitte Datei auswählen';
+  rs_PCMService_Ziel = 'Ziel';
   rs_PCMService_HintText =  'Wählen Sie einen Termin aus der ' + slineBreak + 'rechten Liste.';
+  rs_PCMService_TerminAusgefuehrt1 = 'Bitte warten.'#13#13'Termin'#13'"';
+  rs_PCMService_TerminAusgefuehrt2 = '"'#13'wird ausgeführt...';
+  rs_PCMService_ErrorTime = 'Bitte geben Sie eine gültige Uhrzeit ein.';
+  rs_PCMService_Werkzeug = 'Benutzen Sie die Werkzeugleiste, ' + slinebreak + 'um den Termin zu bearbeiten.';
+  rs_PCMService_NextTime = 'Nächster Zeitpunkt: '#13;
+  rs_PCMService_Time = 'Zeitpunkt: '#13;
+  rs_PCMService_FormatTime = 'hh:mm "Uhr"';
+  rs_PCMService_FormatDateTime = 'dddd, dd.mm.yyyy", " '#13'hh:mm:ss" Uhr"';
+  rs_PCMService_Minuten = ' Minuten';
+  rs_PCMService_Stunden = ' Stunden, ';
+  rs_PCMService_Sekunden = ' Sekunden';
+  rs_PCMService_Stunden1 = ' Minuten nach der vollen Stunde';
+  rs_PCMService_JedenTagUm = 'Jeden Tag um ';
+  rs_PCMService_JedeWoche = 'Jede Woche, ';
+  rs_PCMService_Um = ' um ';
+  rs_PCMService_Jeden = 'Jeden ';
+  rs_PCMService_einesMonats = '. eines Monats um ';
   {$EndRegion PCM_Service}
 
   {$EndRegion resourcestring}

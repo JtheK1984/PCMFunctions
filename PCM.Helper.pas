@@ -16,6 +16,7 @@ uses
   PCM.Functions,
   PCM.Functions.Lizenz,
   FireDAC.Stan.Param,
+  system.DateUtils,
   system.UITypes,
   system.Classes,
   system.netencoding;
@@ -34,10 +35,90 @@ procedure CheckLizenzNew;
 procedure Checkinis;
 function ReadServerAdress: boolean;
 function ReadServerAdressAppserver: boolean;
+function BerechneNaechstenZeitpunkt(AZeitTyp, AZeit1, AZeit2: Integer; AZeit3: TDatetime): TDateTime;
 {$EndRegion Proc_Func}
 implementation
 // Prozeduren
 {$Region Prozeduren}
+function BerechneNaechstenZeitpunkt(AZeitTyp, AZeit1, AZeit2: Integer; AZeit3: TDatetime): TDateTime;
+var
+  Jetzt, Heute: TDateTime;
+  Year, Month, Day, Hour, Min, Sec, MSec: Word;
+  WeekDay, NextWeekDay, Diff: Integer;
+begin
+  Jetzt := Now;
+  Heute := Date;
+
+  DecodeTime(Jetzt, Hour, Min, Sec, MSec);
+  DecodeDate(Jetzt, Year, Month, Day);
+  case AZeitTyp of
+    // Minuten
+    // Jetzt + n Minuten
+    0: Result := IncMinute(Jetzt, AZeit1);
+    // Stunden
+    // Datum von Heute + Momentane Stunde + n Stunden + n Minuten
+    1: Result :=
+      // Geändert 2202021454 konnte Exception erzeugen, wenn um 23:00 um eine Stunde erhöht wird
+      IncMinute(IncHour(Heute, Hour + AZeit1),
+        AZeit2);
+    // Täglich
+    2:
+      begin
+        // Heute + Zeitpunkt
+        Result := Heute + AZeit3;
+        // Schon vorbei?
+        if Result < Jetzt then
+          // -> Tag um eins erhöhen
+          Result := IncDay(Result, 1);
+      end;
+    // Wöchentlich
+    3:
+      begin
+        // Heutiger Wochentag (1 bis 7)
+        WeekDay := DayOfWeek(Heute);
+        Dec(WeekDay);
+        if WeekDay = 0 then
+          WeekDay := 7;
+        // Nächster Wochentag (1 bis 7)
+        NextWeekDay := AZeit1;
+        // Differenz an Tagen ausrechnen
+        if WeekDay > NextWeekDay then
+          Diff := NextWeekDay + 7 - WeekDay
+        else
+          Diff := NextWeekDay - WeekDay;
+
+        // Heute + Tagdifferenz + Zeitpunkt
+        Result := IncDay(Heute, Diff) + AZeit3;
+        // Schon vorbei?
+        if Result < Jetzt then
+          // Nächste Woche
+          Result := IncDay(Result, 7);
+      end;
+    // Monatlich
+    4:
+      begin
+        // n. Tag des aktuellen Monats, zur angegebenen Zeit
+        Result := EncodeDate(Year, Month, AZeit1) +
+          AZeit3;
+        // Schon vorbei?
+        if Result < Jetzt then
+          // Nächster Monat
+          Result := IncMonth(Result, 1);
+      end;
+    // Manuell
+    5:
+      begin
+        Result := 0;
+      end;
+    // Sekunden
+    6:
+      begin
+        Result := IncSecond(Jetzt, AZeit1);
+      end;
+  else
+    Result := 0;
+  end;
+end;
 function CheckAutologin: String;
 begin
   Result:= '';
