@@ -401,10 +401,10 @@ procedure SendPushNotification;
     FreeandNil(joBodyMain);
   end;
 var
-  bReminder:            Boolean;
+//  bReminder:            Boolean;
   dtStart:              TDateTime;
   dtDateTimeEvent:      TDateTime;
-  dtReminderdate:       TDateTime;
+//  dtReminderdate:       TDateTime;
   iID:                  Integer;
   iID_Benutzer:         Integer;
   iReminder:            Integer;
@@ -438,8 +438,8 @@ begin
     begin
       sCaption:= dm_PCM.qry_Work_Sub.FieldByName('Caption').AsString;
       iID:= dm_PCM.qry_Work_Sub.FieldByName('ID').asInteger;
-      bReminder:= dm_PCM.qry_Work_Sub.FieldByName('Reminder').asBoolean;
-      dtReminderdate:= dm_PCM.qry_Work_Sub.FieldByName('Reminderdate').AsDateTime;
+//      bReminder:= dm_PCM.qry_Work_Sub.FieldByName('Reminder').asBoolean;
+//      dtReminderdate:= dm_PCM.qry_Work_Sub.FieldByName('Reminderdate').AsDateTime;
       iReminder:= dm_PCM.qry_Work_Sub.FieldByName('ReminderMinutesbeforeStart').asInteger;
       dtDateTimeEvent:= CheckReccurence(dm_PCM.qry_Work_Sub.FieldByName('ID').asInteger,dm_PCM.qry_Work_Sub.FieldByName('Start').asDatetime,Date,dm_PCM.qry_Work_Sub.FieldByName('wiederholung_text').asString);
       if (DateOf(dtDateTimeEvent) = Date) and (dm_PCM.qry_Work_Sub.FieldByName('wiederholung_text').asString <> '') and  (IncMinute(dtDateTimeEvent,iReminder *-1) <= Now()) then
