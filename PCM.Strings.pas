@@ -732,8 +732,9 @@ resourcestring
   rs_PCMServic_DicChoose = 'Bitte Verzeichnis auswählen';
   rs_PCMServic_File = 'Dateiname:';
   rs_PCMServic_FileChoose = 'Bitte Datei auswählen';
+  rs_PCMServic_Ziel = 'Ziel';
+  rs_PCMService_HintText =  'Wählen Sie einen Termin aus der ' + slineBreak + 'rechten Liste.';
   {$EndRegion PCM_Service}
-
 
   {$EndRegion resourcestring}
   //  rs_PCM_Datensicherung = 'Datensicherung';
