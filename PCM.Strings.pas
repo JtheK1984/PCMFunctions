@@ -684,9 +684,12 @@ resourcestring
   rs_PCMNotenrechner_Faktor = 'Faktor';
   {$EndRegion PCM_Notenerechner}
   // PCM - Restserver
+  {$Region PCM_Restserver}
   rs_PCMRestserver_Registry = 'Erstelle Registryeinträge';
   rs_PCMRestserver_StartError = 'Fehler beim Starten des PCM - REST Server: ';
+  {$ENdRegion PCM_Restserver}
  // PCM - Service / Servicemanager
+  {$Region PCM_Service}
   rs_PCMService_AktuelleZeit = 'aktuelles Datum/Zeit: ';
   rs_PCMService_naechsterZeitpunkt = 'nächster zeitpunkt: ';
   rs_PCMService_Herunterfahren = 'PC wird heruntergefahren';
@@ -712,6 +715,26 @@ resourcestring
   rs_PCMService_Shutdown = 'automatisches Herunterfahren';
   rs_PCMService_Backup = 'Sicherungen';
   rs_PCMService_Jobs = 'Termine / Aufgaben für PCM-Service';
+  rs_PCMService_Ausfuehrung = 'Der Ausführungszeitraum liegt im "Nicht ausführen"-Zeitraum. Bitte anpassen.';
+  rs_PCMService_TerminnameExist = 'Der Terminname ist bereits vergeben.';
+  rs_PCMService_NameforTermin = 'Bitte vergeben Sie einen Namen für den Termin.';
+  rs_PCMService_Zielverzeichniss = 'Bitte Zielverzeichniss auswählen!';
+  rs_PCMService_VerzeichnisforSicherung = 'Bitte Verzeichnis für Sicherung auswählen!';
+  rs_PCMService_DateiforSicherung = 'Bitte Datei für Sicherung auswählen!';
+  rs_PCMService_NeuerTermin = 'Neuer Termin';
+  rs_PCMService_EditTermin ='Termin bearbeiten';
+  rs_PCMService_ErrorInput = 'Unzulässige Eingabe.';
+  rs_PCMService_Break = 'Unterbrechen';
+  rs_PCMService_BreakHint = 'Unterbricht den ZMI - ServerService';
+  rs_PCMService_Continue = 'Fortsetzen';
+  rs_PCMService_ContinueHint = 'Setzt den ZMI - ServerService fort';
+  rs_PCMServic_Dic = 'Verzeichnis:';
+  rs_PCMServic_DicChoose = 'Bitte Verzeichnis auswählen';
+  rs_PCMServic_File = 'Dateiname:';
+  rs_PCMServic_FileChoose = 'Bitte Datei auswählen';
+  {$EndRegion PCM_Service}
+
+
   {$EndRegion resourcestring}
   //  rs_PCM_Datensicherung = 'Datensicherung';
 type
