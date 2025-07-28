@@ -11,16 +11,14 @@ uses
 // allgemein
 resourcestring
   {$Region resourcestring}
+  // DE
+  {$Region DE}
   // Waitform
   {$Region Waitform}
-  // DE
   rs_Function_Wait_FormCaption = 'Bitte warten';
-  // EN
-  rs_Function_Wait_FormCaptionEN = 'Please wait';
   {$EndRegion Waitform}
   // Login
   {$Region Login}
-  // DE
   rs_Function_Login_BtnAnmelden = 'Anmelden';
   rs_Function_Login_Info = 'Bitte melden Sie sich an:';
   rs_Function_Login_Benutzer = 'Benutzername:';
@@ -29,15 +27,6 @@ resourcestring
   rs_Function_Login_Benutzerfalsch = 'Benutzerdaten sind nicht korrekt.';
   rs_Function_Login_Passworteingeben = 'Bitte Passwort eingeben.';
   rs_Function_Login_Anmeldung = ': Anmeldung';
-  // EN
-  rs_Function_Login_BtnAnmeldenEN = 'Login';
-  rs_Function_Login_InfoEN = 'Please log in:';
-  rs_Function_Login_BenutzerEN = 'Username:';
-  rs_Function_Login_PasswortEN = 'Password:';
-  rs_Function_Login_BenutzereingebenEN = 'Please enter user.';
-  rs_Function_Login_BenutzerfalschEN = 'User data is not correct.';
-  rs_Function_Login_PassworteingebenEN = 'Please enter password.';
-  rs_Function_Login_AnmeldungEN = ': Login';
   {$EndRegion Login}
   // AppInfo
   {$Region AppInfo}
@@ -795,9 +784,8 @@ resourcestring
   rs_PCMTime_StatistikULDays = ' Tage';
   rs_PCMTime_Auswertung = 'Auswertung von ';
   {$EndRegion PCM_Time}
-
   // PCM - Update
-   {$Region PCM_Update}
+  {$Region PCM_Update}
   rs_PCMUpdate_Update1 = '[B]Prüfe Versionstabellen PCM[/B]';
   rs_PCMUpdate_Update2 = 'Prüfe Version PCM Database';
   rs_PCMUpdate_Update3 = 'Datenbankupdate durchführen';
@@ -813,6 +801,127 @@ resourcestring
   rs_PCMUpdate_Update = 'Datenbankupdate';
 
   {$EndRegion PCM_Update}
+  {$EndRegion DE}
+//  // EN
+//  {$Region EN}
+//  // Waitform
+//  {$Region Waitform}
+//  rs_Function_Wait_FormCaptionEN = 'Please wait';
+//  {$EndRegion Waitform}
+//
+//  // Login
+//  {$Region Login}
+//  rs_Function_Login_BtnAnmeldenE = 'Login';
+//  rs_Function_Login_Info = 'Please log in:';
+//  rs_Function_Login_Benutzer = 'Username:';
+//  rs_Function_Login_Passwort = 'Password:';
+//  rs_Function_Login_Benutzereingeben = 'Please enter username.';
+//  rs_Function_Login_Benutzerfalsch = 'User data is not correct.';
+//  rs_Function_Login_Passworteingeben = 'Please enter password.';
+//  rs_Function_Login_Anmeldung = ': Login';
+//  {$EndRegion Login}
+//
+//  // AppInfo
+//  {$Region AppInfo}
+//  rs_Function_AppInfo_32Bit = 'MySQL 32-bit version: ';
+//  rs_Function_AppInfo_64Bit = 'MySQL 64-bit version: ';
+//  rs_Function_Appinfo_Lizenz = 'License:';
+//  rs_Function_Appinfo_Database = 'Database:';
+//  rs_Function_AppInfo_Lizenzfor = 'Licensed for:';
+//  rs_Function_AppInfo_Valid = 'Valid until:';
+//  rs_Function_AppInfo_Datenversion = 'Data version:';
+//  rs_Function_APPInfo_JensHenske = 'Jens Henske';
+//  rs_Function_APPInfo_Version = 'Version:';
+//  rs_Function_APPInfo_Revision = 'Revision:';
+//  rs_Function_APPInfo_Server = 'Server:';
+//  rs_Function_APPInfo_CopyRight = 'Copyright:';
+//  rs_Function_APPInfo_Demo = 'Demo:';
+//  rs_Function_APPInfo_LizenzEintragen = 'Enter new license';
+//  rs_Function_APPInfo_unbegrenzt = 'unlimited';
+//  rs_Function_APPInfo_Demolizenz = ' - Demo license valid until ';
+//  {$EndRegion AppInfo}
+//
+//  // Design
+//  {$Region Design}
+//  rs_Function_Design_Prgramdesign = 'Program design';
+//  rs_Function_Design_Design = 'Design:';
+//  rs_Function_Design_Vorschau = 'Preview';
+//  rs_Function_Design_Form = 'Form1';
+//  rs_Function_Design_ToolButton1 = 'ToolButton1';
+//  rs_Function_Design_ToolButton2 = 'ToolButton2';
+//  rs_Function_Design_ToolButton3 = 'ToolButton3';
+//  {$EndRegion Design}
+//
+//  // Handbook
+//  {$Region Handbuch}
+//  rs_Function_Handbuch_PDF = 'PDF';
+//  rs_Function_Handbuch_HTML = 'HTML';
+//  {$EndRegion Handbuch}
+//
+//  // License
+//  {$Region DLizenz}
+//  rs_Function_Lizenz_Eintragen = 'Enter license';
+//  rs_Function_Lizenz_Name = 'Name:';
+//  rs_Function_Lizenz_Lizenz = 'License:';
+//  rs_Function_Lizenz_LizenzFalsch = 'License is not valid!';
+//  rs_Function_Lizenz_LizenzAbgelaufen = 'License has expired!';
+//  rs_Function_Lizenz_Demolizenz1 = 'Demo license valid until ';
+//  rs_Function_Lizenz_MessageKundenname = 'Please enter customer name!';
+//  rs_Function_Lizenz_LizenzEintragen = 'Please enter license!';
+//  rs_Function_Lizenz_Lizenz1 = ': License';
+//  rs_Function_Lizenz_TestLizenz = 'A 30-day trial license is available. Would you like to use the trial license?';
+//  rs_Function_Lizenz_LizenzGueltig = ': License valid until ';
+//  {$EndRegion DLizenz}
+//
+//  // Language
+//  {$Region Sprache}
+//  rs_Function_Sprache_Sprache = 'Languages';
+//  rs_Function_Sprache_SpracheDE = 'German';
+//  rs_Function_Sprache_SpracheEN = 'English';
+//  rs_Function_Sprache_SpracheWchseln = 'Change language';
+//  rs_Function_Sprache_FormCaption = 'Select language';
+//  rs_Function_Sprache_Message = 'Should the selected language be applied immediately? ' + slinebreak + 'If Yes, the program will restart.' + slinebreak + 'If No, the language will be changed at the next start.';
+//  {$EndRegion Sprache}
+//
+//  // Change password
+//  {$Region PWChange}
+//  rs_Function_PasswordChange_new = 'New password:';
+//  rs_Function_PasswordChange_rep = 'Repeat password:';
+//  rs_Function_PasswordChange_PasswortStimmtNicht = 'The passwords do not match.';
+//  rs_Function_PasswordChange_EingabePruefen = 'Please check your input.';
+//  rs_Function_PasswordChange_KeinPasswort = 'No password entered.';
+//  rs_Function_PasswordChange_PasswortAendern = ': Change password';
+//  {$EndRegion PWChange}
+//
+//  // System
+//  {$Region System}
+//  rs_Function_System_Windows = 'Windows';
+//  rs_Function_System_OS = 'Operating system:';
+//  rs_Function_system_PCName = 'Computer name:';
+//  rs_Function_System_Grphic ='Graphics resolution:';
+//  rs_Function_System_Sysdir = 'System drive:';
+//  rs_Function_System_Processor = 'Processor';
+//  rs_Function_System_ProcessorType = 'Processor type:';
+//  rs_Function_System_ProcessorCount = 'Number of processors:';
+//  rs_Function_System_ProcessorSpeed = 'Processor speed:';
+//  rs_Function_System_Ram = 'RAM';
+//  rs_Function_System_RamTotal = 'Total RAM:';
+//  rs_Function_System_RamFree  = 'Free RAM:';
+//  rs_Function_System_Auslastung = 'Usage';
+//  rs_Function_System_GridLadenFehler = 'Error loading layout: ';
+//  {$EndRegion System}
+//
+//  // Splashscreen
+//  {$Region Splashscreen}
+//  rs_Splash_Sprache = 'Loading language file...';
+//  rs_Splash_Lizenz = 'Checking license...';
+//  rs_Splash_Login = 'Checking user login...';
+//  rs_Splash_Rechte = 'Checking user rights...';
+//  rs_Splash_Konfig = 'Loading configuration...';
+//  rs_Splash_MenuLaden = 'Loading menus...';
+//  rs_Splash_MenuReg = 'Registering menus...';
+//  {$EndRegion Splashscreen}
+//  {$EndRegion EN}
   {$EndRegion resourcestring}
   //  rs_PCM_Datensicherung = 'Datensicherung';
 type
