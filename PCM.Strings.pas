@@ -193,11 +193,16 @@ resourcestring
   {$Region PCM_DevManager}
   rs_Function_Helper_BerechneTag ='Berechne Tag: ';
   rs_Function_Helper_BerechneYearEnd = ', Jahr:';
-  rs_Function_Helper_BerechneMonat ='Berechne Monat: ';
+  rs_Function_Helper_BerechneMonat = 'Berechne Monat: ';
+  rs_Function_Helper_BerechneMonat1 = 'Berechne Monat';
+  rs_Function_Helper_BerechneMonate1 = 'Berechne Monate';
+  rs_Function_Helper_BerechneTag1 = 'Berechne Tag';
   rs_Function_Helper_BerechneMonate = 'Berechne Monate';
   rs_Function_Helper_BerechneJahr = 'Berechne Jahr: ';
+  rs_Function_Helper_BerechneJahr1 = 'Berechne Jahr';
   rs_Function_Helper_Berechne = 'Berechne ';
   rs_Function_Helper_BerechneMonatfuerMonat = 'Berechne Monate für Monat: ';
+  rs_Function_Helper_Datenwerdenerstellt = 'Daten werden erstellt';
   {$EndRegion PCM_DevManager}
   // General
   {$Region General}
@@ -691,7 +696,7 @@ resourcestring
   rs_PCMRestserver_Registry = 'Erstelle Registryeinträge';
   rs_PCMRestserver_StartError = 'Fehler beim Starten des PCM - REST Server: ';
   {$ENdRegion PCM_Restserver}
- // PCM - Service / Servicemanager
+  // PCM - Service / Servicemanager
   {$Region PCM_Service}
   rs_PCMService_AktuelleZeit = 'aktuelles Datum/Zeit: ';
   rs_PCMService_naechsterZeitpunkt = 'nächster zeitpunkt: ';
@@ -755,7 +760,26 @@ resourcestring
   rs_PCMService_Jeden = 'Jeden ';
   rs_PCMService_einesMonats = '. eines Monats um ';
   {$EndRegion PCM_Service}
-
+  // PCM - Time
+  rs_PCMTime_MSGDataNotSaved = 'Datensatz wurde noch nicht gespeichert. Wollen sie die Buchungsmaske verlassen?';
+  rs_PCMTime_Overyear = 'Fehltage können nicht jahresübergreifend eingetragen werden!';
+  rs_PCMTime_Zeitraumgroesser = 'Zeitraum-Von kann ich größer als Zeitraum-Bis sein!';
+  rs_PCMTime_Fehltagexists = 'Im ausgewählten Zeitraum gibt es schon eingetragene Fehltage!';
+  rs_PCMTime_FehltaNone = 'Es wurde kein Fehltag ausgewählt!';
+  rs_PCMTime_FeiertagforYear = 'Bitte erst Feiertage für das Jahr ';
+  rs_PCMTime_FeiertagforYear1 =  ' eintragen ';
+  rs_PCMTime_LastBookingKommen = 'Letzte Buchung: Kommen am ';
+  rs_PCMTime_LastBooking1PauseBeginn = 'Letzte Buchung: 1. Pause Beginn am ';
+  rs_PCMTime_LastBooking2PauseBeginn = 'Letzte Buchung: 2. Pause Beginn am ';
+  rs_PCMTime_LastBooking1PauseEnd = 'Letzte Buchung: 1. Pause Ende am ';
+  rs_PCMTime_LastBooking2PauseEnd = 'Letzte Buchung: 2. Pause Ende am ';
+  rs_PCMTime_LastBookingGehen = 'Letzte Buchung: Gehen am ';
+  rs_PCMTime_CurrentDatetime = 'Aktuelles Datum / Uhrzeit: ';
+  rs_PCMTime_Mitarbeiter = 'Mitarbeiter';
+  rs_PCMTime_Zeiterfassung = 'Zeiterfassung';
+  rs_PCMTime_StatistikUL = 'Statistik: Urlaubsanspruch für Jahr ';
+  rs_PCMTime_StatistikULDays = ' Tage';
+  rs_PCMTime_Auswertung = 'Auswertung von ';
   {$EndRegion resourcestring}
   //  rs_PCM_Datensicherung = 'Datensicherung';
 type
