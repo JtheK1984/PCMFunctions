@@ -13,10 +13,14 @@ resourcestring
   {$Region resourcestring}
   // Waitform
   {$Region Waitform}
+  // DE
   rs_Function_Wait_FormCaption = 'Bitte warten';
+  // EN
+  rs_Function_Wait_FormCaptionEN = 'Please wait';
   {$EndRegion Waitform}
   // Login
   {$Region Login}
+  // DE
   rs_Function_Login_BtnAnmelden = 'Anmelden';
   rs_Function_Login_Info = 'Bitte melden Sie sich an:';
   rs_Function_Login_Benutzer = 'Benutzername:';
@@ -25,6 +29,15 @@ resourcestring
   rs_Function_Login_Benutzerfalsch = 'Benutzerdaten sind nicht korrekt.';
   rs_Function_Login_Passworteingeben = 'Bitte Passwort eingeben.';
   rs_Function_Login_Anmeldung = ': Anmeldung';
+  // EN
+  rs_Function_Login_BtnAnmeldenEN = 'Login';
+  rs_Function_Login_InfoEN = 'Please log in:';
+  rs_Function_Login_BenutzerEN = 'Username:';
+  rs_Function_Login_PasswortEN = 'Password:';
+  rs_Function_Login_BenutzereingebenEN = 'Please enter user.';
+  rs_Function_Login_BenutzerfalschEN = 'User data is not correct.';
+  rs_Function_Login_PassworteingebenEN = 'Please enter password.';
+  rs_Function_Login_AnmeldungEN = ': Login';
   {$EndRegion Login}
   // AppInfo
   {$Region AppInfo}
@@ -761,6 +774,7 @@ resourcestring
   rs_PCMService_einesMonats = '. eines Monats um ';
   {$EndRegion PCM_Service}
   // PCM - Time
+  {$Region PCM_Time}
   rs_PCMTime_MSGDataNotSaved = 'Datensatz wurde noch nicht gespeichert. Wollen sie die Buchungsmaske verlassen?';
   rs_PCMTime_Overyear = 'Fehltage können nicht jahresübergreifend eingetragen werden!';
   rs_PCMTime_Zeitraumgroesser = 'Zeitraum-Von kann ich größer als Zeitraum-Bis sein!';
@@ -780,6 +794,25 @@ resourcestring
   rs_PCMTime_StatistikUL = 'Statistik: Urlaubsanspruch für Jahr ';
   rs_PCMTime_StatistikULDays = ' Tage';
   rs_PCMTime_Auswertung = 'Auswertung von ';
+  {$EndRegion PCM_Time}
+
+  // PCM - Update
+   {$Region PCM_Update}
+  rs_PCMUpdate_Update1 = '[B]Prüfe Versionstabellen PCM[/B]';
+  rs_PCMUpdate_Update2 = 'Prüfe Version PCM Database';
+  rs_PCMUpdate_Update3 = 'Datenbankupdate durchführen';
+  rs_PCMUpdate_Update4 = 'Prüfe Versionstabellen PCM';
+  rs_PCMUpdate_Update5 = '[B]Prüfe Version PCM Database[/B]';
+  rs_PCMUpdate_Update6 = 'Datenbankupdate durchführen';
+  rs_PCMUpdate_Update7 = 'Prüfe Versionstabellen PCM';
+  rs_PCMUpdate_Update8 = 'Prüfe Version PCM Database';
+  rs_PCMUpdate_Update9 = '[B]Datenbankupdate durchführen[/B]';
+  rs_PCMUpdate_Update10 = 'Prüfe Versionstabellen PCM';
+  rs_PCMUpdate_Update11 = 'Prüfe Version PCM Database';
+  rs_PCMUpdate_Update12 = 'Datenbankupdate durchführen';
+  rs_PCMUpdate_Update = 'Datenbankupdate';
+
+  {$EndRegion PCM_Update}
   {$EndRegion resourcestring}
   //  rs_PCM_Datensicherung = 'Datensicherung';
 type
