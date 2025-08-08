@@ -72,6 +72,7 @@ procedure CloseWaitForm;
 begin
   if Assigned(FfrmWait) then
   begin
+    FfrmWait.ind_wait.Active:= false;
     FfrmWait.Close;
     FreeAndNil(FfrmWait);
   end;
