@@ -12,18 +12,21 @@ uses
 type
   Tfrm_Dialog = class(TForm)
     lactrl_Dialog: TdxLayoutControl;
-    img_Dialog: TcxImage;
     lactrl_DialogGroup_Root1: TdxLayoutGroup;
     lagrp_Dialog: TdxLayoutGroup;
-    laitm_Dialogimage: TdxLayoutItem;
-    dxLayoutGroup2: TdxLayoutGroup;
-    lalbl_DialogText: TdxLayoutLabeledItem;
+    lagrp_DialogMessage: TdxLayoutGroup;
     btn_Yes: TcxButton;
     laitm_DialogYes: TdxLayoutItem;
     btn_No: TcxButton;
     laitm_DialogNo: TdxLayoutItem;
     laitm_DialogCancel: TdxLayoutItem;
     btn_Cancel: TcxButton;
+    lagrp_DialogImages: TdxLayoutGroup;
+    lagrp_DialogButtons: TdxLayoutGroup;
+    lalbl_DialogText: TdxLayoutLabeledItem;
+    laitm_DialogimageInfo: TdxLayoutImageItem;
+    laitm_DialogimageWarn: TdxLayoutImageItem;
+    laitm_DialogimageError: TdxLayoutImageItem;
   private
     { Private-Deklarationen }
   public
@@ -40,28 +43,4 @@ implementation
 uses
   PCM.Data,
   PCM.Main;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 end.
