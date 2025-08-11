@@ -266,6 +266,7 @@ uses
   {$Region uses}
   PCM.Data,
   PCM.Functions.ChangePW,
+  PCM.Helper,
   PCM.Main,
   PCM.SQL,
   PCM.strings;
@@ -332,7 +333,7 @@ begin
     qry_Benutzer.Delete;
   end
   else begin
-    MessageDlg(rs_Function_Benutzer_BenutzerLoeschen , mtWarning, [mbOk], 0);
+    SetMessageDialog(2,rs_Function_Benutzer_BenutzerLoeschen,[rs_general_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
   end;
 end;
 procedure Tfrm_PCM_User.btn_BenutzerNewClick(Sender: TObject);
@@ -370,7 +371,7 @@ begin
     qry_Rechte.Delete;
   end
   else begin
-    MessageDlg(rs_Function_Benutzer_RechteLoeschen  , mtWarning, [mbOk], 0);
+    SetMessageDialog(2,rs_Function_Benutzer_RechteLoeschen,[rs_general_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
   end;
 end;
 procedure Tfrm_PCM_User.btn_RechtNewClick(Sender: TObject);
@@ -417,7 +418,7 @@ begin
   end
   else begin
     qry_Rechte.Cancel;
-    MessageDlg(rs_Function_Benutzer_RechteBearbeiten, mtWarning, [mbOk], 0);
+    SetMessageDialog(2,rs_Function_Benutzer_RechteBearbeiten,[rs_general_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
   end;
 end;
 {$EndRegion Buttonfunktionen}
@@ -615,13 +616,13 @@ procedure Tfrm_PCM_User.FormShow(Sender: TObject);
 begin
   btn_BenutzerNew.Caption:= rs_Function_Benutzer_New;
   btn_BenutzerSave.Caption:= rs_Function_Benutzer_Save;
-  btn_BenutzerCancel.Caption:= rs_general_Abbrechen;
+  btn_BenutzerCancel.Caption:= rs_general_BTN_Cancel;
   btn_BenutzerDelete.Caption:= rs_Function_Benutzer_Delete;
   btn_BenutzerChangePassword.Caption:= rs_Function_Benutzer_ChangePassword;
 
   btn_RechtNew.Caption:= rs_Function_Benutzer_RechtNew;
   btn_RechtSave.Caption:= rs_Function_Benutzer_RechtSave;
-  btn_RechtCancel.Caption:= rs_general_Abbrechen;
+  btn_RechtCancel.Caption:= rs_general_BTN_Cancel;
   btn_RechtDelete.Caption:= rs_Function_Benutzer_RechtDelete;
   lagrp_Benutzer.CaptionOptions.Text:= rs_Function_Benutzer_Benutzer;
   lagrp_BenutzerHeader.CaptionOptions.Text:= '[B]' + rs_Function_Benutzer_Benutzerdetails + '[/B]';

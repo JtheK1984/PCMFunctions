@@ -65,6 +65,7 @@ uses
   PCM.Functions,
   PCM.Functions.Login.SQL,
   PCM.Data,
+  PCm.Helper,
   PCM.Strings;
   {$EndRegion uses}
 ////////////////////////////////////////////////////////////////////////////////
@@ -93,7 +94,7 @@ var
 begin
   if cmbbx_User.Text = '' then
   begin
-    MessageDlg(rs_Function_Login_Benutzereingeben, mtWarning, [mbOk], 0);
+    SetMessageDialog(2,rs_Function_Login_Benutzereingeben,[rs_general_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
     exit;
   end;
   if edt_Pass.text <> '' then
@@ -108,7 +109,7 @@ begin
 
     if iBenutzer = 0 then
     begin
-      MessageDlg(rs_Function_Login_Benutzerfalsch, mtWarning, [mbOk], 0);
+      SetMessageDialog(2,rs_Function_Login_Benutzerfalsch,[rs_general_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
       edt_Pass.Text:= '';
       exit;
     end
@@ -119,7 +120,7 @@ begin
     end;
   end
   else begin
-    MessageDlg(rs_Function_Login_Passworteingeben, mtWarning, [mbOk], 0);
+    SetMessageDialog(2,rs_Function_Login_Passworteingeben,[rs_general_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
     exit;
   end;
 end;
@@ -157,7 +158,7 @@ procedure Tfrm_PCM_Login.FormCreate(Sender: TObject);
     laitm_LoginBenutzer.CaptionOptions.text:= rs_Function_Login_Benutzer;
     laitm_LoginPasswort.CaptionOptions.text:= rs_Function_Login_Passwort;
     btn_Ok.Caption:= rs_Function_Login_BtnAnmelden;
-    btn_Cancel.Caption:= rs_general_Abbrechen;
+    btn_Cancel.Caption:= rs_general_BTN_Cancel;
   end;
 begin
   LoadRessourceStrings;

@@ -9,6 +9,7 @@ uses
   vcl.forms,
   Winapi.Windows,
   System.SysUtils,
+  PCM.Dialog,
   PCM.Main,
   PCM.Data,
   PCM.SQL,
@@ -36,6 +37,7 @@ procedure Checkinis;
 function ReadServerAdress: boolean;
 function ReadServerAdressAppserver: boolean;
 function BerechneNaechstenZeitpunkt(AZeitTyp, AZeit1, AZeit2: Integer; AZeit3: TDatetime): TDateTime;
+function SetMessageDialog(AType: integer;AText: String; AButtons: array of string; AButtonsMR: array of Integer) : integer;
 {$EndRegion Proc_Func}
 implementation
 // Prozeduren
@@ -8483,9 +8485,9 @@ begin
       end;
     end;
   except
-    MessageDlg(rs_Function_Helper_KeineVerbindung1 + dm_PCM.sServer + rs_Function_Helper_KeineVerbindung2
+    SetMessageDialog(3,rs_Function_Helper_KeineVerbindung1 + dm_PCM.sServer + rs_Function_Helper_KeineVerbindung2
     + rs_Function_Helper_PCMINIPruefen + sLineBreak + GetEnvironmentVariable('LOCALAPPDATA') + '\PCM\PCM.ini.' + sLineBreak
-    + rs_General_Ende, mtError, [mbOk], 0);
+    + rs_General_Ende,[rs_general_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
   end;
 end;
 function ReadServerAdressAppserver: boolean;
@@ -8544,6 +8546,51 @@ begin
     Writelog(PCM_Logname,rs_Function_Helper_KeineVerbindung1 + dm_PCM.sServer + rs_Function_Helper_KeineVerbindung2,2);
     Writelog(PCM_Logname,rs_Function_Helper_PCMINIPruefen + ExtractFilePath(ParamStr(0)) + PCM_Logname +'.ini.',2);
   end;
+end;
+function SetMessageDialog(AType: integer;AText: String; AButtons: array of string; AButtonsMR: array of Integer) : integer;
+var
+  Dialog: Tfrm_Dialog;
+  ResultCode: Integer;
+begin
+  Dialog:= Tfrm_Dialog.Create(nil);
+  Dialog.Caption:= PCM_Programmname;
+  case AType of
+  1:
+    begin
+      Dialog.dxLayoutImageItem1.visible:= true;
+      Dialog.dxLayoutImageItem2.visible:= false;
+      Dialog.dxLayoutImageItem3.visible:= false;
+      Dialog.Caption:= PCM_Programmname + ': Info';
+    end;
+  2:
+    begin
+      Dialog.dxLayoutImageItem1.visible:= false;
+      Dialog.dxLayoutImageItem2.visible:= true;
+      Dialog.dxLayoutImageItem3.visible:= false;
+      Dialog.Caption:= PCM_Programmname + ': Warnung';
+    end;
+  3:
+    begin
+      Dialog.dxLayoutImageItem1.visible:= false;
+      Dialog.dxLayoutImageItem2.visible:= false;
+      Dialog.dxLayoutImageItem3.visible:= true;
+      Dialog.Caption:= PCM_Programmname + ': Fehler';
+    end;
+  end;
+  Dialog.lalbl_DialogText.Caption:= AText;
+  Dialog.cxButton1.Caption:= AButtons[0];
+  Dialog.cxButton2.Caption:= AButtons[1];
+  Dialog.cxButton3.Caption:= AButtons[2];
+
+  Dialog.cxButton1.ModalResult := AButtonsMR[0];
+  Dialog.cxButton2.ModalResult := AButtonsMR[1];
+  Dialog.cxButton3.ModalResult := AButtonsMR[2];
+
+  Dialog.dxLayoutItem1.Visible := AButtons[0] <> '';
+  Dialog.dxLayoutItem2.Visible := AButtons[1] <> '';
+  Dialog.dxLayoutItem3.Visible := AButtons[2] <> '';
+  ResultCode := Dialog.ShowModal;
+  Dialog.free;
 end;
 {$EndRegion Prozeduren}
 end.

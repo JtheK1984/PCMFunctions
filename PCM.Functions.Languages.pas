@@ -45,6 +45,7 @@ implementation
 uses
   {$Region uses}
   PCM.Data,
+  PCM.Helper,
   PCM.Main,
   PCm.Strings;
   {$EndRegion uses}
@@ -55,7 +56,7 @@ uses
 procedure Tfrm_PCM_Language.btn_OkClick(Sender: TObject);
 begin
   dm_Pcm.slocale:= rgrp_Sprache.Properties.Items[rgrp_Sprache.Itemindex].Value;
-  if MessageDlg(rs_Function_Sprache_Message,mtInformation,[mbYes,mbNo], 0) = mrYes then
+  if SetMessageDialog(2,rs_Function_Sprache_Message,[rs_general_BTN_Yes,rs_general_BTN_No,''],[mryes,mrNo,mrNone]) = mrYes then
   begin
     ShellExecute(Handle, nil, PChar(Application.ExeName), nil, nil, SW_SHOWNORMAL);
     Application.Terminate;
@@ -78,7 +79,7 @@ procedure Tfrm_PCM_Language.FormCreate(Sender: TObject);
   	rgrp_Sprache.Properties.Items[0].Caption:= rs_Function_Sprache_SpracheDE;
   	rgrp_Sprache.Properties.Items[1].Caption:= rs_Function_Sprache_SpracheEN;
   	btn_ok.Caption:= rs_Function_Sprache_SpracheWchseln;
- 	  btn_Cancel.Caption:= rs_general_Abbrechen;
+ 	  btn_Cancel.Caption:= rs_general_BTN_Cancel;
   end;
 begin
   LoadRessourceStrings;

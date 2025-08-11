@@ -5,28 +5,27 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, cxGraphics, dxUIAClasses, cxControls,
-  cxLookAndFeels, cxLookAndFeelPainters, cxClasses, dxLayoutContainer,
-  dxLayoutControl, dxLayoutcxEditAdapters, cxContainer, cxEdit, Vcl.Menus,
-  cxLabel, cxGroupBox, Vcl.StdCtrls, cxButtons, dxGDIPlusClasses, cxImage,
-  dxSkinsCore, dxLayoutControlAdapters;
+  cxLookAndFeels, cxLookAndFeelPainters, dxLayoutContainer, cxClasses,
+  dxLayoutControl, dxLayoutControlAdapters, Vcl.Menus, Vcl.StdCtrls, cxButtons;
+
 type
   Tfrm_Dialog = class(TForm)
-    lactrl_Dialog: TdxLayoutControl;
-    lactrl_DialogGroup_Root1: TdxLayoutGroup;
-    lagrp_Dialog: TdxLayoutGroup;
-    lagrp_DialogMessage: TdxLayoutGroup;
-    btn_Yes: TcxButton;
-    laitm_DialogYes: TdxLayoutItem;
-    btn_No: TcxButton;
-    laitm_DialogNo: TdxLayoutItem;
-    laitm_DialogCancel: TdxLayoutItem;
-    btn_Cancel: TcxButton;
-    lagrp_DialogImages: TdxLayoutGroup;
-    lagrp_DialogButtons: TdxLayoutGroup;
+    cxButton1: TcxButton;
+    cxButton2: TcxButton;
+    cxButton3: TcxButton;
+    dxLayoutControl1Group_Root: TdxLayoutGroup;
+    dxLayoutControl1: TdxLayoutControl;
+    dxLayoutGroup1: TdxLayoutGroup;
+    dxLayoutGroup2: TdxLayoutGroup;
+    dxLayoutImageItem1: TdxLayoutImageItem;
+    dxLayoutImageItem2: TdxLayoutImageItem;
+    dxLayoutImageItem3: TdxLayoutImageItem;
+    dxLayoutItem1: TdxLayoutItem;
+    dxLayoutGroup3: TdxLayoutGroup;
+    dxLayoutItem2: TdxLayoutItem;
+    dxLayoutItem3: TdxLayoutItem;
     lalbl_DialogText: TdxLayoutLabeledItem;
-    laitm_DialogimageInfo: TdxLayoutImageItem;
-    laitm_DialogimageWarn: TdxLayoutImageItem;
-    laitm_DialogimageError: TdxLayoutImageItem;
+    procedure FormShow(Sender: TObject);
   private
     { Private-Deklarationen }
   public
@@ -41,6 +40,18 @@ implementation
 {$R *.dfm}
 
 uses
-  PCM.Data,
-  PCM.Main;
+  PCM.Data;
+
+procedure Tfrm_Dialog.FormShow(Sender: TObject);
+begin
+    dxLayoutControl1.AutoSize:= true;
+    HandleNeeded;
+    dxLayoutControl1.Realign;
+    dxLayoutControl1.Refresh;
+
+    // Formgröße an LayoutControl anpassen
+    ClientWidth := dxLayoutControl1.Width;
+    ClientHeight := dxLayoutControl1.Height;
+end;
+
 end.

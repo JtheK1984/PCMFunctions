@@ -56,6 +56,7 @@ implementation
 uses
   {$Region uses}
   PCM.Data,
+  PCM.Helper,
   PCM.Strings;
   {$EndRegion uses}
 ////////////////////////////////////////////////////////////////////////////////
@@ -249,27 +250,27 @@ begin
     iProgramm := GetBits(1, 8);
     if iProgramm <> PCM_Programmnummer then
     begin
-      MessageDlg(rs_Function_Lizenz_LizenzFalsch,mtwarning,[mbok],0);
+      SetMessageDialog(2,rs_Function_Lizenz_LizenzFalsch,[rs_general_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
       exit;
     end;
     iGeburtTagMonat:= GetBits(17,16);
     if iGeburtTagMonat <> 2402 then
     begin
-      MessageDlg(rs_Function_Lizenz_LizenzFalsch,mtwarning,[mbok],0);
+      SetMessageDialog(2,rs_Function_Lizenz_LizenzFalsch,[rs_general_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
       exit;
     end;
 
     iGeburtJahr:= GetBits(33, 16);
     if iGeburtJahr <> 1984 then
     begin
-      MessageDlg(rs_Function_Lizenz_LizenzFalsch,mtwarning,[mbok],0);
+      SetMessageDialog(2,rs_Function_Lizenz_LizenzFalsch,[rs_general_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
       exit;
     end;
 
     iDevJahr:= GetBits(49, 16);
     if iDevJahr <> 2015 then
     begin
-      MessageDlg(rs_Function_Lizenz_LizenzFalsch,mtwarning,[mbok],0);
+      SetMessageDialog(2,rs_Function_Lizenz_LizenzFalsch,[rs_general_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
       exit;
     end;
 
@@ -279,11 +280,11 @@ begin
       datCurrDate := StrToDate(DateToStr(Now));
       if datGueltig < datCurrDate then
       begin
-        MessageDlg(rs_Function_Lizenz_LizenzAbgelaufen,mtwarning,[mbok],0);
+        SetMessageDialog(2,rs_Function_Lizenz_LizenzAbgelaufen,[rs_general_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
         exit;
       end
       else begin
-        MessageDlg(rs_Function_Lizenz_Demolizenz1 + DateToStr(datGueltig) ,mtInformation,[mbok],0);
+        SetMessageDialog(2,rs_Function_Lizenz_Demolizenz1 + DateToStr(datGueltig) ,[rs_general_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
       end;
     end;
     dm_PCM.dtGueltig:= datGueltig;
@@ -296,7 +297,7 @@ begin
     dm_PCM.qry_Work.ExecSQL;
   end
   else begin
-    MessageDlg(rs_Function_Lizenz_LizenzFalsch,mtwarning,[mbok],0);
+    SetMessageDialog(2,rs_Function_Lizenz_LizenzFalsch,[rs_general_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
     exit;
   end;
   frm_PCM_Lizenz.Close;
@@ -317,13 +318,13 @@ procedure Tfrm_PCM_Lizenz.btn_SaveClick(Sender: TObject);
 begin
   if edt_kunde.Text = '' then
   begin
-    MessageDlg(rs_Function_Lizenz_MessageKundenname, mtwarning,[mbok],0);
+    SetMessageDialog(2,rs_Function_Lizenz_MessageKundenname,[rs_general_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
     exit;
   end;
 
   if edt_Lizenz.Text = '' then
   begin
-    MessageDlg(rs_Function_Lizenz_LizenzEintragen, mtwarning,[mbok],0);
+    SetMessageDialog(2,rs_Function_Lizenz_LizenzEintragen,[rs_general_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
     exit;
   end;
   Check;
@@ -346,7 +347,7 @@ procedure Tfrm_PCM_Lizenz.FormCreate(Sender: TObject);
     laitm_LizenzName.CaptionOptions.Text:= rs_Function_Lizenz_Name;
     laitm_LizenzLizenz.CaptionOptions.Text:= rs_Function_Lizenz_Lizenz;
     btn_Save.Caption:= rs_Function_Lizenz_Eintragen;
-    btn_Cancel.Caption:= rs_general_Abbrechen;
+    btn_Cancel.Caption:= rs_general_BTN_Cancel;
 	end;
 begin
   dm_PCM.bAppTerm:= true;
@@ -363,7 +364,7 @@ begin
   caption:= PCM_Programmname + rs_Function_Lizenz_Lizenz1;
   if FileExists(ExtractFilepath(Paramstr(0)) + PCM_Logname + '_Lizenz.liz') then
   begin
-    if MessageDlg(rs_Function_Lizenz_TestLizenz,mtConfirmation, [mbYes, mbNo], 0, mbYes) = mrYes then
+    if SetMessageDialog(2,rs_Function_Lizenz_TestLizenz,[rs_general_BTN_Ok,'',''],[mrOk,mrNone,mrNone]) = mrYes then
     begin
       AssignFile(f,ExtractFilepath(Paramstr(0)) + PCM_Logname + '_Lizenz.liz');
       Reset(f);
