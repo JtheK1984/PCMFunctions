@@ -8560,6 +8560,7 @@ begin
       Dialog.dxLayoutImageItem1.visible:= true;
       Dialog.dxLayoutImageItem2.visible:= false;
       Dialog.dxLayoutImageItem3.visible:= false;
+      Dialog.dxLayoutImageItem4.visible:= false;
       Dialog.Caption:= PCM_Programmname + ': Info';
     end;
   2:
@@ -8567,6 +8568,7 @@ begin
       Dialog.dxLayoutImageItem1.visible:= false;
       Dialog.dxLayoutImageItem2.visible:= true;
       Dialog.dxLayoutImageItem3.visible:= false;
+      Dialog.dxLayoutImageItem4.visible:= false;
       Dialog.Caption:= PCM_Programmname + ': Warnung';
     end;
   3:
@@ -8574,7 +8576,16 @@ begin
       Dialog.dxLayoutImageItem1.visible:= false;
       Dialog.dxLayoutImageItem2.visible:= false;
       Dialog.dxLayoutImageItem3.visible:= true;
+      Dialog.dxLayoutImageItem4.visible:= false;
       Dialog.Caption:= PCM_Programmname + ': Fehler';
+    end;
+  4:
+    begin
+      Dialog.dxLayoutImageItem1.visible:= false;
+      Dialog.dxLayoutImageItem2.visible:= false;
+      Dialog.dxLayoutImageItem3.visible:= false;
+      Dialog.dxLayoutImageItem4.visible:= true;
+      Dialog.Caption:= PCM_Programmname + ': Frage';
     end;
   end;
   Dialog.lalbl_DialogText.Caption:= AText;
@@ -8590,6 +8601,7 @@ begin
   Dialog.dxLayoutItem2.Visible := AButtons[1] <> '';
   Dialog.dxLayoutItem3.Visible := AButtons[2] <> '';
   ResultCode := Dialog.ShowModal;
+  Result:= ResultCode;
   Dialog.free;
 end;
 {$EndRegion Prozeduren}
