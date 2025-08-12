@@ -189,18 +189,18 @@ resourcestring
   {$EndRegion Helper}
 //  // Calculate
 //  {$Region PCM_DevManager}
-//  rs_Function_Helper_BerechneTag ='Berechne Tag: ';
-//  rs_Function_Helper_BerechneYearEnd = ', Jahr:';
-//  rs_Function_Helper_BerechneMonat = 'Berechne Monat: ';
-//  rs_Function_Helper_BerechneMonat1 = 'Berechne Monat';
-//  rs_Function_Helper_BerechneMonate1 = 'Berechne Monate';
-//  rs_Function_Helper_BerechneTag1 = 'Berechne Tag';
-//  rs_Function_Helper_BerechneMonate = 'Berechne Monate';
-//  rs_Function_Helper_BerechneJahr = 'Berechne Jahr: ';
-//  rs_Function_Helper_BerechneJahr1 = 'Berechne Jahr';
-//  rs_Function_Helper_Berechne = 'Berechne ';
-//  rs_Function_Helper_BerechneMonatfuerMonat = 'Berechne Monate für Monat: ';
-//  rs_Function_Helper_Datenwerdenerstellt = 'Daten werden erstellt';
+  rs_Function_Helper_BerechneTag ='Berechne Tag: ';
+  rs_Function_Helper_BerechneYearEnd = ', Jahr:';
+  rs_Function_Helper_BerechneMonat = 'Berechne Monat: ';
+  rs_Function_Helper_BerechneMonat1 = 'Berechne Monat';
+  rs_Function_Helper_BerechneMonate1 = 'Berechne Monate';
+  rs_Function_Helper_BerechneTag1 = 'Berechne Tag';
+  rs_Function_Helper_BerechneMonate = 'Berechne Monate';
+  rs_Function_Helper_BerechneJahr = 'Berechne Jahr: ';
+  rs_Function_Helper_BerechneJahr1 = 'Berechne Jahr';
+  rs_Function_Helper_Berechne = 'Berechne ';
+  rs_Function_Helper_BerechneMonatfuerMonat = 'Berechne Monate für Monat: ';
+  rs_Function_Helper_Datenwerdenerstellt = 'Daten werden erstellt';
 //  {$EndRegion PCM_DevManager}
 //  // General
 //  {$Region General}
