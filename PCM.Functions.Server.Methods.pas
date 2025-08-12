@@ -598,7 +598,6 @@ begin
     except
       on e:Exception do
         Writelog(PCM_Logname,e.message,2);
-
     end;
     btimer:= dm_PCM.qry_work.FieldByName('timeactive').AsBoolean;
     dtdatetime:= dm_PCM.qry_work.FieldByName('timesd').AsDateTime;

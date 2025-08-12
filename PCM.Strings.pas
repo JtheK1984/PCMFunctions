@@ -701,10 +701,10 @@ resourcestring
 //  {$ENdRegion PCM_Restserver}
 //  // PCM - Service / Servicemanager
 //  {$Region PCM_Service}
-//  rs_PCMService_AktuelleZeit = 'aktuelles Datum/Zeit: ';
-//  rs_PCMService_naechsterZeitpunkt = 'nächster zeitpunkt: ';
-//  rs_PCMService_Herunterfahren = 'PC wird heruntergefahren';
-//  rs_PCMService_Beenden = 'Service beendet';
+  rs_PCMService_AktuelleZeit = 'aktuelles Datum/Zeit: ';
+  rs_PCMService_naechsterZeitpunkt = 'nächster zeitpunkt: ';
+  rs_PCMService_Herunterfahren = 'PC wird heruntergefahren';
+  rs_PCMService_Beenden = 'Service beendet';
 //  rs_PCMService_Termin1 = 'Termin ';
 //  rs_PCMService_Termin2 = ' wird ausgeführt.';
 //  rs_PCMService_Aufgabeneinlesen = 'Aufgaben einlesen';
