@@ -8449,7 +8449,6 @@ var
 begin
   iniFile:=TIniFile.create(GetEnvironmentVariable('LOCALAPPDATA') + '\PCM\PCM.ini');
   dm_PCM.sServer:= iniFile.ReadString('PCM','Server','localhost');
-  dm_PCM.sStyle:= iniFile.ReadString(PCM_Logname,'Style','Windows10');
   dm_PCM.sDesign:= iniFile.ReadString(PCM_Logname,'Design','Basic');
   dm_PCM.iDBType:= iniFile.ReadInteger('Database','Type',0);
   dm_PCM.slocale:= iniFile.ReadString(PCM_Logname,'Language','DE');

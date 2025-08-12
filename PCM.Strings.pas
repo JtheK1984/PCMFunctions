@@ -11,7 +11,9 @@ uses
 // allgemein
 resourcestring
   // Wait
+  {$Region Wait}
   rs_Function_Wait_FormCaption = 'Formular wird geladen';
+  {$EndRegion Wait}
   // Login
   {$Region Login}
   rs_Function_Login_BtnAnmelden = 'Anmelden';
@@ -214,7 +216,7 @@ resourcestring
   rs_general_Save = 'Speichern';
   rs_general_Bezeichnung = 'Bezeichnung:';
   rs_general_Suche = 'Suche';
-//  rs_General_Formload = 'Formular wird geladen';
+  rs_General_Formload = 'Formular wird geladen';  // neue Unit
 //  rs_General_Dashboard = 'Dashboard';
   rs_General_Ende = 'Das Programm wird beendet.';
   rs_General_Nein = 'Nein';
@@ -289,21 +291,21 @@ resourcestring
 //  rs_PCM_Sortierung = 'Sortierung';
 //  rs_PCM_Hauptpostfach = 'Hauptpostfach';
 //  rs_PCM_Fehler = 'Fehler: ';
-//  rs_PCM_ChooseModul = 'Bitte Modul wählen';
+  rs_PCM_ChooseModul = 'Bitte Modul wählen'; // neue Unit
 //  {$EndRegion General}
 //  // PCM Main
 //  {$Region PCM_MAIN}
   rs_PCM_Modulliste_verstecken = 'Modulliste verstecken';
   rs_PCM_Modulliste_anzeigen = 'Modulliste anzeigen';
-//  rs_PCM_Benutzerverwaltung ='Benutzerverwaltung';
-//  rs_PCM_Konfiguration = 'Konfiguration';
-//  rs_PCM_Design = 'Design';
-//  rs_PCM_Archiv = 'Archiv';
-//  rs_PCM_Systeminformation = 'Systeminformation';
-//  rs_PCM_Programminfo = 'Programminfo';
-//  rs_PCM_Handbuch = 'Handbuch';
-//  rs_PCM_Start = 'Programm gestartet';
-//  rs_PCM_Beenden = 'Programm beendet';
+  rs_PCM_Benutzerverwaltung ='Benutzerverwaltung';  // neue Unit
+  rs_PCM_Konfiguration = 'Konfiguration'; // neue Unit
+  rs_PCM_Design = 'Design'; // neue Unit
+  rs_PCM_Archiv = 'Archiv'; // neue Unit
+  rs_PCM_Systeminformation = 'Systeminformation'; // neue Unit
+  rs_PCM_Programminfo = 'Programminfo'; // neue Unit
+  rs_PCM_Handbuch = 'Handbuch';                      // neue Unit
+  rs_PCM_Start = 'Programm gestartet'; // neue Unit
+  rs_PCM_Beenden = 'Programm beendet'; // neue Unit
 //  {$EndRegion PCM_MAIN}
 //  // PCM - Appserver
 //  {$Region PCM_APPSERVER}
@@ -369,7 +371,7 @@ resourcestring
 //  {$EndRegion PCM_Backup}
 //  // PCM - Cleaner
 //  {$Region PCM_Cleaner}
-//  rs_PCMCleaner_Bereinigung = 'Bereinigung';
+
 //  {$EndRegion PCM_Cleaner}
 //  // PCM - Dashboard
 //  {$Region PCM_Dashboard}
