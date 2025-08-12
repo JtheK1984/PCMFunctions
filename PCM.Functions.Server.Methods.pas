@@ -31,7 +31,7 @@ uses
   PCM.Data,
   PCM.Functions,
   PCM.Main,
-  PCM.Service.Strings;
+  PCM.Strings;
   {$EndRegion uses}
 // Prozeduren
 {$Region Prozeduren}
