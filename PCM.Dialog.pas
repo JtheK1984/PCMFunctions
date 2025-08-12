@@ -25,6 +25,7 @@ type
     dxLayoutItem2: TdxLayoutItem;
     dxLayoutItem3: TdxLayoutItem;
     lalbl_DialogText: TdxLayoutLabeledItem;
+    dxLayoutImageItem4: TdxLayoutImageItem;
     procedure FormShow(Sender: TObject);
   private
     { Private-Deklarationen }
