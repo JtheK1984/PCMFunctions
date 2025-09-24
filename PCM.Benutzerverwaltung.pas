@@ -228,6 +228,7 @@ type
     qry_RechteDetail: TFDQuery;
     tb_Benutzer: TdxBar;
     tb_Rechte: TdxBar;
+    cxImageList1: TcxImageList;
     procedure btn_BenutzerCancelClick(Sender: TObject);
     procedure btn_BenutzerChangePasswordClick(Sender: TObject);
     procedure btn_BenutzerDeleteClick(Sender: TObject);
