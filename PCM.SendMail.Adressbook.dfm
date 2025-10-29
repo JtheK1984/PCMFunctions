@@ -22,13 +22,11 @@ object frm_AdressBook: Tfrm_AdressBook
     Align = alClient
     TabOrder = 0
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
-    ExplicitWidth = 794
-    ExplicitHeight = 583
     object grd_Adress: TcxGrid
       Left = 12
-      Top = 50
+      Top = 44
       Width = 776
-      Height = 410
+      Height = 416
       TabOrder = 1
       object grdDBTblView_Adress: TcxGridDBTableView
         OnKeyDown = grdDBTblView_AdressKeyDown
@@ -48,6 +46,8 @@ object frm_AdressBook: Tfrm_AdressBook
         OptionsView.GroupByBox = False
         object grdDBTblView_AdressName: TcxGridDBColumn
           DataBinding.FieldName = 'Name'
+          SortIndex = 0
+          SortOrder = soAscending
           Width = 375
         end
         object grdDBTblView_AdressMail: TcxGridDBColumn
@@ -384,7 +384,7 @@ object frm_AdressBook: Tfrm_AdressBook
       Parent = lagrp_AdressbookMain
       CaptionOptions.Text = 'Name:'
       Control = edt_Suche
-      ControlOptions.OriginalHeight = 31
+      ControlOptions.OriginalHeight = 25
       ControlOptions.OriginalWidth = 121
       ControlOptions.ShowBorder = False
       Index = 0
@@ -394,7 +394,7 @@ object frm_AdressBook: Tfrm_AdressBook
       AlignHorz = ahClient
       AlignVert = avTop
       Control = edt_An
-      ControlOptions.OriginalHeight = 23
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 121
       ControlOptions.ShowBorder = False
       Index = 1
@@ -404,7 +404,7 @@ object frm_AdressBook: Tfrm_AdressBook
       AlignHorz = ahClient
       AlignVert = avTop
       Control = edt_BCC
-      ControlOptions.OriginalHeight = 23
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 121
       ControlOptions.ShowBorder = False
       Index = 1
@@ -414,7 +414,7 @@ object frm_AdressBook: Tfrm_AdressBook
       AlignHorz = ahClient
       AlignVert = avTop
       Control = edt_CC
-      ControlOptions.OriginalHeight = 23
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 121
       ControlOptions.ShowBorder = False
       Index = 1
