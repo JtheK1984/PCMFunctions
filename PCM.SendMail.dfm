@@ -587,7 +587,6 @@ object frm_Sendmail: Tfrm_Sendmail
       True)
     LookAndFeel.NativeStyle = False
     PopupMenuLinks = <>
-    Style = bmsUseLookAndFeel
     UseSystemFont = True
     Left = 1064
     Top = 409
