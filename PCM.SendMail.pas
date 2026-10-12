@@ -41,6 +41,7 @@ uses
   IdSSL,
   IdSSLOpenSSL,
 system.JSON,
+System.uitypes,
   PCMManager.Helper.Email.OAuth,
   Shellapi,
   System.Classes,
@@ -65,7 +66,7 @@ system.JSON,
   IdIOHandlerStack, Winapi.ActiveX, Vcl.OleCtrls,
   uWVBrowser, uWVWinControl, uWVWindowParent, uWVTypes, uWVConstants, uWVTypeLibrary,
   uWVLibFunctions, uWVLoader, uWVInterfaces, uWVCoreWebView2Args,
-  uWVBrowserBase;
+  uWVBrowserBase, IdCTypes, IdSSLOpenSSLHeaders;
 
   {$EndRegion Uses}
 type
