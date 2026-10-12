@@ -43,6 +43,7 @@ uses
   PCM.Functions.Synch.Wait,
 //  PCM.Modul.C_ZE,
   PCM.Main,
+  PCM.Strings,
   System.Classes,
   System.DateUtils,
   System.Sysutils,
@@ -65,9 +66,9 @@ begin
   qry_BA.Connection:= dm_PCM.con_PCM;
 
   qry_BA.SQL.Text:=  'SELECT Count(*) as Anzahl ' +
-                              'FROM manager_buchungen zeb ' +
-                              'LEFT OUTER JOIN manager_kontakte zeu ON ID_Zeiterfasser = :ID ' +
-                              'LEFT OUTER JOIN manager_Fehltag zeft ON zeft.Kuerzel = zeb.Fehltag ' +
+                              'FROM time_buchungen zeb ' +
+                              'LEFT OUTER JOIN time_user zeu ON ID_Zeiterfasser = :ID ' +
+                              'LEFT OUTER JOIN time_Fehltag zeft ON zeft.Kuerzel = zeb.Fehltag ' +
                               'WHERE Kommen <> ''00:00'' and  zeb.Datum >= :Von and zeb.Datum <= :Bis AND Buchungsart = :Typ';
   qry_BA.ParamByName('ID').AsInteger:= dm_PCM.iIDBenutzerPCM;
   qry_BA.ParamByName('Von').asDate:= AVon;
@@ -87,9 +88,9 @@ begin
   qry_FT:= TFDQuery.Create(nil);
   qry_FT.Connection:= dm_PCM.con_PCM;
   qry_FT.SQL.Text:=  'SELECT Sum(Zeb.SollstundenI / zeft.faktor) / 480 as Anzahl ' +
-                     'FROM manager_buchungen zeb ' +
-                     'LEFT OUTER JOIN manager_kontakte zeu ON ID_Zeiterfasser = :ID ' +
-                     'LEFT OUTER JOIN manager_Fehltag zeft ON zeft.Kuerzel = zeb.Fehltag ' +
+                     'FROM time_buchungen zeb ' +
+                     'LEFT OUTER JOIN time_user zeu ON ID_Zeiterfasser = :ID ' +
+                     'LEFT OUTER JOIN time_Fehltag zeft ON zeft.Kuerzel = zeb.Fehltag ' +
                      'WHERE  zeb.Feiertag <> :Feiertag AND zeb.Sollstunden = zeu.Sollstunden and zeb.Datum >= :Von and zeb.Datum <= :Bis AND zeft.Typ = :Typ AND zeft.Bezahlt = :Bezahlt';
   qry_FT.ParamByName('ID').AsInteger:= dm_PCM.iIDBenutzerPCM;
   qry_FT.ParamByName('Von').asDate:= AVon;
@@ -111,9 +112,9 @@ begin
   qry_FT:= TFDQuery.Create(nil);
   qry_FT.Connection:= dm_PCM.con_PCM;
   qry_FT.SQL.Text:=  'SELECT Sum(Zeb.SollstundenI / zeft.faktor) / 480 as Anzahl ' +
-                     'FROM manager_buchungen zeb ' +
-                     'LEFT OUTER JOIN manager_kontakte zeu ON ID_Zeiterfasser = :ID ' +
-                     'LEFT OUTER JOIN manager_Fehltag zeft ON zeft.Kuerzel = zeb.Fehltag ' +
+                     'FROM time_buchungen zeb ' +
+                     'LEFT OUTER JOIN time_user zeu ON ID_Zeiterfasser = :ID ' +
+                     'LEFT OUTER JOIN time_Fehltag zeft ON zeft.Kuerzel = zeb.Fehltag ' +
                      'WHERE  zeb.Feiertag <> 1 AND zeb.Sollstunden = zeu.Sollstunden and ID_Fehltage = :IDFT';
   qry_FT.ParamByName('ID').AsInteger:= dm_PCM.iIDBenutzerPCM;
   qry_FT.ParamByName('IDFT').AsInteger:= AID_Fehltage;
@@ -131,8 +132,8 @@ begin
   qry_FT:= TFDQuery.Create(nil);
   qry_FT.Connection:= dm_PCM.con_PCM;
   qry_FT.SQL.Text:= 'SELECT Sum(if(Feiertag = 2, 0.5,1)) AS Anzahl ' +
-                    'FROM manager_buchungen zeb ' +
-                    'LEFT OUTER JOIN manager_kontakte zeu ON ID_zeiterfasser = :ID ' +
+                    'FROM time_buchungen zeb ' +
+                    'LEFT OUTER JOIN time_user zeu ON ID_zeiterfasser = :ID ' +
                     'WHERE zeb.Sollstunden = zeu.Sollstunden and zeb.Datum >= :Von and zeb.Datum <= :Bis AND zeb.feiertag > 0';
   qry_FT.ParamByName('ID').AsInteger:= dm_PCM.iIDBenutzerPCM;
   qry_FT.ParamByName('Von').asDate:= AVon;
@@ -150,7 +151,7 @@ var
 begin
   qry_MA:= TFDQuery.Create(nil);
   qry_MA.Connection:= dm_PCM.con_PCM;
-  qry_MA.SQL.Text:= 'Select aktuelleMehrarbeit From manager_Monatswerte Where ID_Benutzer = :ID and Jahr = :Jahr and Monat = :Monat';
+  qry_MA.SQL.Text:= 'Select aktuelleMehrarbeit From time_Monatswerte Where ID_Benutzer = :ID and Jahr = :Jahr and Monat = :Monat';
   qry_MA.ParamByName('ID').AsInteger:= dm_PCM.iIDBenutzerPCM;
   qry_MA.ParamByName('Jahr').AsInteger:= AJahr;
   qry_MA.ParamByName('Monat').AsInteger:= AMonat;
@@ -184,7 +185,7 @@ var
 begin
   qry_Soll:= TFDQuery.Create(nil);
   qry_Soll.Connection:= dm_PCM.con_PCM;
-  qry_Soll.SQL.Text:= 'Select Sollstunden From manager_kontakte Where ID_Zeiterfasser = :ID';
+  qry_Soll.SQL.Text:= 'Select Sollstunden From time_user Where ID_Zeiterfasser = :ID';
   qry_Soll.ParamByName('ID').AsInteger:= dm_pcm.iIDBenutzerPCM;
   qry_Soll.Prepare;
   qry_Soll.open;
@@ -199,7 +200,7 @@ var
 begin
   qry_Rul:= TFDQuery.Create(nil);
   qry_Rul.Connection:= dm_PCM.con_PCM;
-  qry_Rul.SQL.Text:= 'Select Resturlaub From manager_Monatswerte Where Monat = :Monat and Jahr = :Jahr';
+  qry_Rul.SQL.Text:= 'Select Resturlaub From time_Monatswerte Where Monat = :Monat and Jahr = :Jahr';
   qry_Rul.ParamByName('Jahr').AsInteger:= AJahr;
   qry_Rul.ParamByName('Monat').AsInteger:= AMonat;
   qry_Rul.Prepare;
@@ -231,7 +232,7 @@ var
 begin
   qry_UL:= TFDQuery.Create(nil);
   qry_UL.Connection:= dm_PCM.con_PCM;
-  qry_UL.SQL.Text:= 'Select Urlaub From manager_kontakte Where ID_Zeiterfasser = :ID';
+  qry_UL.SQL.Text:= 'Select Urlaub From time_user Where ID_Zeiterfasser = :ID';
   qry_UL.ParamByName('ID').AsInteger:= dm_PCM.iIDBenutzerPCM;
   qry_UL.Prepare;
   qry_UL.open;
@@ -246,7 +247,7 @@ var
 begin
   qry_UL:= TFDQuery.Create(nil);
   qry_UL.Connection:= dm_PCM.con_PCM;
-  qry_UL.SQL.Text:= 'Select Resturlaub From manager_Monatswerte Where ID_Benutzer = :ID and Jahr = :Jahr and Monat = :Monat';
+  qry_UL.SQL.Text:= 'Select Resturlaub From time_Monatswerte Where ID_Benutzer = :ID and Jahr = :Jahr and Monat = :Monat';
   qry_UL.ParamByName('ID').AsInteger:= dm_PCM.iIDBenutzerPCM;
   qry_UL.ParamByName('Jahr').AsInteger:= AJahr;
   qry_UL.ParamByName('Monat').AsInteger:= AMonat;
@@ -263,7 +264,7 @@ var
 begin
   qry_UL:= TFDQuery.Create(nil);
   qry_UL.Connection:= dm_PCM.con_PCM;
-  qry_UL.SQL.Text:= 'Select Resturlaub From manager_Monatswerte Where ID_Benutzer = :ID and Jahr = :Jahr and Monat = :Monat';
+  qry_UL.SQL.Text:= 'Select Resturlaub From time_Monatswerte Where ID_Benutzer = :ID and Jahr = :Jahr and Monat = :Monat';
   qry_UL.ParamByName('ID').AsInteger:= dm_PCM.iIDBenutzerPCM;
   qry_UL.ParamByName('Jahr').AsInteger:= AJahr;
   qry_UL.ParamByName('Monat').AsInteger:= AMonat;
@@ -316,7 +317,7 @@ begin
                                'LEFT OUTER  JOIN manager_Fehltag ze_ft ON ze_ft.Kuerzel = ze_B.Fehltag ' +
                                'WHERE ze_B.Datum = :Datum order by ze_B.Datum';
     dm_pcm.qry_Calc.ParamByName('Datum').AsDate:= EncodeDate(AJahr,AMonat,ATag);
-    WaitFormSetText('Berechne Tag: ' + IntToStr(ATag) + '. ' + GetMonthName(AMonat) + ', Jahr:' + IntToStr(AJahr));
+    WaitFormSetText(rs_Function_Helper_BerechneTag + IntToStr(ATag) + '. ' + GetMonthName(AMonat) + rs_Function_Helper_BerechneYearEnd + IntToStr(AJahr));
   end
   else begin
     if AMonat > 0 then
@@ -326,7 +327,7 @@ begin
                                  'WHERE MONTH(ze_B.Datum) = :monat and YEAR(ze_B.Datum) = :jahr and abgeschlossen is null order by ze_B.Datum';
       dm_pcm.qry_Calc.ParamByName('monat').AsInteger:= AMonat;
       dm_pcm.qry_Calc.ParamByName('jahr').AsInteger:= AJahr;
-      WaitFormSetText('Berechne Monat: ' + GetMonthName(AMonat) + ', Jahr:' + IntToStr(AJahr));
+      WaitFormSetText(rs_Function_Helper_BerechneMonat + GetMonthName(AMonat) + rs_Function_Helper_BerechneYearEnd + IntToStr(AJahr));
     end
     else begin
       dm_pcm.qry_Calc.SQL.Text:= 'SELECT ze_b.*, ze_FT.* FROM manager_buchungen ze_B ' +
@@ -334,7 +335,7 @@ begin
                                  'WHERE ze_B.Datum >= :Von and ze_B.Datum <= :Bis and abgeschlossen is null order by ze_B.Datum';
       dm_pcm.qry_Calc.ParamByName('Von').AsDate:= EncodeDate(AJahr,1,1);
       dm_pcm.qry_Calc.ParamByName('Bis').AsDate:= EncodeDate(AJahr,12,31);
-      WaitFormSetText('Berechne Jahr: '  + IntToStr(AJahr));
+      WaitFormSetText(rs_Function_Helper_BerechneJahr  + IntToStr(AJahr));
     end;
 
   end;
@@ -348,7 +349,7 @@ begin
     iFehltag:= 0;
     iFeiertag:= 0;
     iSollstunden:= 0;
-    WaitFormSetText('Berechne ' + dm_pcm.qry_Calc.FieldByName('Datum').AsString);
+    WaitFormSetText(rs_Function_Helper_Berechne + dm_pcm.qry_Calc.FieldByName('Datum').AsString);
     if dm_pcm.qry_Calc.FieldByName('Datum').asDateTime < Date then
     begin
       iSollstunden:= MinutesBetween(dm_pcm.qry_Calc.FieldByName('Sollstunden').asDateTime,StrToTime('00:00'));
@@ -616,12 +617,12 @@ begin
   qry_Month.Prepare;
   qry_Month.open;
   iMonthCount:= qry_Month.RecordCount;
-  ShowWaitForm(TForm(frm_PCM_Main), PWideChar('Berechne Monate'),iMonthCount ,417, 65);
+  ShowWaitForm(TForm(frm_PCM_Main), PWideChar(rs_Function_Helper_BerechneMonate),iMonthCount ,417, 65);
   for var i := 1 to qry_Month.RecordCount do
   begin
     iBMonat:= qry_Month.FieldByName('Monat').AsInteger;
     iBJahr:= qry_Month.FieldByName('jahr').AsInteger;
-    WaitFormSetText('Berechne Monate für Monat: ' + GetMonthName(iBMonat) + ', Jahr:' + IntToStr(iBJahr));
+    WaitFormSetText(rs_Function_Helper_BerechneMonatfuerMonat + GetMonthName(iBMonat) + rs_Function_Helper_BerechneYearEnd + IntToStr(iBJahr));
     WaitFormSetNewCount(iMonthCount);
     WaitFormPosition(i+1);
 

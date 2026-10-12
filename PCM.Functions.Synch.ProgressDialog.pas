@@ -10,15 +10,15 @@ uses
   Vcl.Imaging.pngimage, Pcm.Strings,
   cxControls, cxContainer, cxEdit, cxProgressBar, cxGraphics, cxLookAndFeels,
   cxLookAndFeelPainters, cxGroupBox, cxLabel, cxImage,
-  dxGDIPlusClasses, dxUIAClasses;
+  dxGDIPlusClasses, dxUIAClasses, dxActivityIndicator;
   {$EndRegion uses}
 type
   {$Region type}
   TfrmProgressDialog = class(TForm)
     prgbr_Main: TcxProgressBar;
     pnl_design: TcxGroupBox;
-    Image1: TcxImage;
     lNachricht: TcxLabel;
+    ind_wait: TdxActivityIndicator;
     procedure FormCreate(Sender: TObject);
   private
     { Private-Deklarationen }
@@ -51,6 +51,7 @@ begin
   prgbr_Main.Position := 0;
 //  Self.Owner := FParentForm;
   Show;
+  ind_wait.Active:= true;
   Application.ProcessMessages;
 end;
 procedure TfrmProgressDialog.Step(Text: String);

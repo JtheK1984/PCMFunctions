@@ -9,6 +9,7 @@ uses
   vcl.forms,
   Winapi.Windows,
   System.SysUtils,
+  PCM.Dialog,
   PCM.Main,
   PCM.Data,
   PCM.SQL,
@@ -16,6 +17,7 @@ uses
   PCM.Functions,
   PCM.Functions.Lizenz,
   FireDAC.Stan.Param,
+  system.DateUtils,
   system.UITypes,
   system.Classes,
   system.netencoding;
@@ -34,10 +36,91 @@ procedure CheckLizenzNew;
 procedure Checkinis;
 function ReadServerAdress: boolean;
 function ReadServerAdressAppserver: boolean;
+function BerechneNaechstenZeitpunkt(AZeitTyp, AZeit1, AZeit2: Integer; AZeit3: TDatetime): TDateTime;
+function SetMessageDialog(AType: integer;AText: String; AButtons: array of string; AButtonsMR: array of Integer) : integer;
 {$EndRegion Proc_Func}
 implementation
 // Prozeduren
 {$Region Prozeduren}
+function BerechneNaechstenZeitpunkt(AZeitTyp, AZeit1, AZeit2: Integer; AZeit3: TDatetime): TDateTime;
+var
+  Jetzt, Heute: TDateTime;
+  Year, Month, Day, Hour, Min, Sec, MSec: Word;
+  WeekDay, NextWeekDay, Diff: Integer;
+begin
+  Jetzt := Now;
+  Heute := Date;
+
+  DecodeTime(Jetzt, Hour, Min, Sec, MSec);
+  DecodeDate(Jetzt, Year, Month, Day);
+  case AZeitTyp of
+    // Minuten
+    // Jetzt + n Minuten
+    0: Result := IncMinute(Jetzt, AZeit1);
+    // Stunden
+    // Datum von Heute + Momentane Stunde + n Stunden + n Minuten
+    1: Result :=
+      // Geändert 2202021454 konnte Exception erzeugen, wenn um 23:00 um eine Stunde erhöht wird
+      IncMinute(IncHour(Heute, Hour + AZeit1),
+        AZeit2);
+    // Täglich
+    2:
+      begin
+        // Heute + Zeitpunkt
+        Result := Heute + AZeit3;
+        // Schon vorbei?
+        if Result < Jetzt then
+          // -> Tag um eins erhöhen
+          Result := IncDay(Result, 1);
+      end;
+    // Wöchentlich
+    3:
+      begin
+        // Heutiger Wochentag (1 bis 7)
+        WeekDay := DayOfWeek(Heute);
+        Dec(WeekDay);
+        if WeekDay = 0 then
+          WeekDay := 7;
+        // Nächster Wochentag (1 bis 7)
+        NextWeekDay := AZeit1;
+        // Differenz an Tagen ausrechnen
+        if WeekDay > NextWeekDay then
+          Diff := NextWeekDay + 7 - WeekDay
+        else
+          Diff := NextWeekDay - WeekDay;
+
+        // Heute + Tagdifferenz + Zeitpunkt
+        Result := IncDay(Heute, Diff) + AZeit3;
+        // Schon vorbei?
+        if Result < Jetzt then
+          // Nächste Woche
+          Result := IncDay(Result, 7);
+      end;
+    // Monatlich
+    4:
+      begin
+        // n. Tag des aktuellen Monats, zur angegebenen Zeit
+        Result := EncodeDate(Year, Month, AZeit1) +
+          AZeit3;
+        // Schon vorbei?
+        if Result < Jetzt then
+          // Nächster Monat
+          Result := IncMonth(Result, 1);
+      end;
+    // Manuell
+    5:
+      begin
+        Result := 0;
+      end;
+    // Sekunden
+    6:
+      begin
+        Result := IncSecond(Jetzt, AZeit1);
+      end;
+  else
+    Result := 0;
+  end;
+end;
 function CheckAutologin: String;
 begin
   Result:= '';
@@ -8366,7 +8449,6 @@ var
 begin
   iniFile:=TIniFile.create(GetEnvironmentVariable('LOCALAPPDATA') + '\PCM\PCM.ini');
   dm_PCM.sServer:= iniFile.ReadString('PCM','Server','localhost');
-  dm_PCM.sStyle:= iniFile.ReadString(PCM_Logname,'Style','Windows10');
   dm_PCM.sDesign:= iniFile.ReadString(PCM_Logname,'Design','Basic');
   dm_PCM.iDBType:= iniFile.ReadInteger('Database','Type',0);
   dm_PCM.slocale:= iniFile.ReadString(PCM_Logname,'Language','DE');
@@ -8402,9 +8484,9 @@ begin
       end;
     end;
   except
-    MessageDlg(rs_Function_Helper_KeineVerbindung1 + dm_PCM.sServer + rs_Function_Helper_KeineVerbindung2
+    SetMessageDialog(3,rs_Function_Helper_KeineVerbindung1 + dm_PCM.sServer + rs_Function_Helper_KeineVerbindung2
     + rs_Function_Helper_PCMINIPruefen + sLineBreak + GetEnvironmentVariable('LOCALAPPDATA') + '\PCM\PCM.ini.' + sLineBreak
-    + rs_General_Ende, mtError, [mbOk], 0);
+    + rs_General_Ende,[rs_general_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
   end;
 end;
 function ReadServerAdressAppserver: boolean;
@@ -8463,6 +8545,63 @@ begin
     Writelog(PCM_Logname,rs_Function_Helper_KeineVerbindung1 + dm_PCM.sServer + rs_Function_Helper_KeineVerbindung2,2);
     Writelog(PCM_Logname,rs_Function_Helper_PCMINIPruefen + ExtractFilePath(ParamStr(0)) + PCM_Logname +'.ini.',2);
   end;
+end;
+function SetMessageDialog(AType: integer;AText: String; AButtons: array of string; AButtonsMR: array of Integer) : integer;
+var
+  Dialog: Tfrm_Dialog;
+  ResultCode: Integer;
+begin
+  Dialog:= Tfrm_Dialog.Create(nil);
+  Dialog.Caption:= PCM_Programmname;
+  case AType of
+  1:
+    begin
+      Dialog.dxLayoutImageItem1.visible:= true;
+      Dialog.dxLayoutImageItem2.visible:= false;
+      Dialog.dxLayoutImageItem3.visible:= false;
+      Dialog.dxLayoutImageItem4.visible:= false;
+      Dialog.Caption:= PCM_Programmname + ': Info';
+    end;
+  2:
+    begin
+      Dialog.dxLayoutImageItem1.visible:= false;
+      Dialog.dxLayoutImageItem2.visible:= true;
+      Dialog.dxLayoutImageItem3.visible:= false;
+      Dialog.dxLayoutImageItem4.visible:= false;
+      Dialog.Caption:= PCM_Programmname + ': Warnung';
+    end;
+  3:
+    begin
+      Dialog.dxLayoutImageItem1.visible:= false;
+      Dialog.dxLayoutImageItem2.visible:= false;
+      Dialog.dxLayoutImageItem3.visible:= true;
+      Dialog.dxLayoutImageItem4.visible:= false;
+      Dialog.Caption:= PCM_Programmname + ': Fehler';
+    end;
+  4:
+    begin
+      Dialog.dxLayoutImageItem1.visible:= false;
+      Dialog.dxLayoutImageItem2.visible:= false;
+      Dialog.dxLayoutImageItem3.visible:= false;
+      Dialog.dxLayoutImageItem4.visible:= true;
+      Dialog.Caption:= PCM_Programmname + ': Frage';
+    end;
+  end;
+  Dialog.lalbl_DialogText.Caption:= AText;
+  Dialog.cxButton1.Caption:= AButtons[0];
+  Dialog.cxButton2.Caption:= AButtons[1];
+  Dialog.cxButton3.Caption:= AButtons[2];
+
+  Dialog.cxButton1.ModalResult := AButtonsMR[0];
+  Dialog.cxButton2.ModalResult := AButtonsMR[1];
+  Dialog.cxButton3.ModalResult := AButtonsMR[2];
+
+  Dialog.dxLayoutItem1.Visible := AButtons[0] <> '';
+  Dialog.dxLayoutItem2.Visible := AButtons[1] <> '';
+  Dialog.dxLayoutItem3.Visible := AButtons[2] <> '';
+  ResultCode := Dialog.ShowModal;
+  Result:= ResultCode;
+  Dialog.free;
 end;
 {$EndRegion Prozeduren}
 end.

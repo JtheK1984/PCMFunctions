@@ -56,6 +56,7 @@ uses
   {$Region uses}
   PCM.Functions.ChangePW.SQL,
   PCM.Data,
+  PCM.Helper,
   PCM.Functions,
   PCM.Strings;
   {$EndRegion uses}
@@ -85,12 +86,12 @@ var
 begin
   if edt_PCManagerChangePassword_NewPass.Text <> edt_PCManagerChangePassword_RepPass.Text  then
   begin
-    MessageDlg(rs_Function_PasswordChange_PasswortStimmtNicht + slinebreak + rs_Function_PasswordChange_EingabePruefen ,mtWarning,[mbOk], 0);
+    SetMessageDialog(2,rs_Function_PasswordChange_PasswortStimmtNicht + slinebreak + rs_Function_PasswordChange_EingabePruefen ,[rs_general_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
   end
   else begin
     if (edt_PCManagerChangePassword_NewPass.Text = '') or (edt_PCManagerChangePassword_RepPass.Text = '') then
     begin
-      MessageDlg(rs_Function_PasswordChange_KeinPasswort + slinebreak + rs_Function_PasswordChange_EingabePruefen ,mtWarning,[mbOk], 0);
+      SetMessageDialog(2,rs_Function_PasswordChange_KeinPasswort + slinebreak + rs_Function_PasswordChange_EingabePruefen,[rs_general_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
     end
     else begin
       sPassword:= GetMD5Hash(edt_PCManagerChangePassword_RepPass.text);
@@ -112,8 +113,8 @@ begin
   caption:= PCM_Programmname + rs_Function_PasswordChange_PasswortAendern;
   laitm_PWChangeNewPW.CaptionOptions.Text:= rs_Function_PasswordChange_new;
   laitm_PWChangeRepPW.CaptionOptions.Text:= rs_Function_PasswordChange_rep;
-  btn_PCManagerChangePassword_Ok.Caption:= rs_general_Ok;
-  btn_PCManagerChangePassword_Cancel.Caption:= rs_general_Abbrechen;
+  btn_PCManagerChangePassword_Ok.Caption:= rs_general_BTN_Ok;
+  btn_PCManagerChangePassword_Cancel.Caption:= rs_general_BTN_Cancel;
   edt_PCManagerChangePassword_NewPass.SetFocus;
 end;
 {$EndRegion Formfunktionen}

@@ -6,7 +6,10 @@ interface
 ////////////////////////////////////////////////////////////////////////////////
 {$Region Deklaration}
 // PCM-Zeiterfassung
-procedure Drucke_PCM_ZE_Jahresbericht(AJahr: String);
+procedure DruckeBericht(ABericht: Integer; AFirma,AAbteilung,APersonal: String; AMonat, AJahr: Integer; Avon,Abis:TDate);
+
+procedure Drucke_PCM_ZE_Personalauswertung(AFirma,AAbteilung,APersonal: String);
+procedure Drucke_PCM_ZE_Jahresbericht(AFirma,AAbteilung,APersonal: string; AJahr: Integer);
 procedure Drucke_PCM_ZE_Monatsbericht(AMonat: integer; AJahr: String);
 // PCM-Manager
 procedure Drucke_PCM_Manager_Finanzuebersicht(AMonat,AJahr:integer);
@@ -41,10 +44,42 @@ uses
 // Deklaration                                                                //
 ////////////////////////////////////////////////////////////////////////////////
 {$Region Prozeduren}
-procedure Drucke_PCM_ZE_Jahresbericht(AJahr: String);
+procedure DruckeBericht(ABericht: Integer; AFirma,AAbteilung,APersonal: String; AMonat, AJahr: Integer; Avon,Abis:TDate);
+begin
+  case ABericht of
+    // Personalauswertung
+    101: Drucke_PCM_ZE_Personalauswertung(AFirma,AAbteilung,APersonal);
+    // Monatsbericht
+    201: ;
+    // Monatsbericht mit Wochensummen
+    202: ;
+    // Jahreswerte
+    301: Drucke_PCM_ZE_Jahresbericht(AFirma,AAbteilung,APersonal,AJahr);
+    // Monatsbericht variabel
+    401: ;
+    // Jahresbericht variabel
+    402: ;
+  end;
+end;
+
+
+procedure Drucke_PCM_ZE_Personalauswertung(AFirma,AAbteilung,APersonal: String);
+begin
+
+end;
+
+//procedure Drucke_PCM_ZE_Monatsbericht(AFirma,AAbteilung,APersonal: String);
+//begin
+//
+//end;
+
+
+
+
+procedure Drucke_PCM_ZE_Jahresbericht(AFirma,AAbteilung,APersonal: string; AJahr: Integer);
 var
   slFileXML: TStringList;
-//  iIstnetto: integer;
+  sSQL, sWhere, sOrder: String;
 //  iFehlzeit: integer;
 begin
   slFileXML:= TStringList.Create;
@@ -62,7 +97,7 @@ begin
   slFileXML.Add('		.Report {width: calc(50% - 15px); float: left; text-align: left;}');
   slFileXML.Add('		.Datumuhrzeit {width: calc(50% - 15px); float: right; text-align: right;}');
   slFileXML.Add('		.divider {height: 5px; width: 100%; background-color: #086A87}');
-  slFileXML.Add('		#search {outline: none; margin-top: 0px; margin-bottom: 15px;  width: 100%; display: block; border: none; border-bottom: solid 2px #c9c9c9; transition: border 0.3s;}');
+  slFileXML.Add('		#search {outline: none; margin-top: 0px; margin-bottom: 15px;  width: 99.8%; display: block; border: none; border-bottom: solid 2px #c9c9c9; transition: border 0.3s;}');
   slFileXML.Add('		#search:focus, #search.focus {border-bottom: solid 2px #969696;}');
   slFileXML.Add('		table {width: 100%;border-collapse:collapse; padding: 0px 15px 0px 15px;}');
   slFileXML.Add('		table thead th {padding: 15px 0px 0px 0px;}');
@@ -78,168 +113,267 @@ begin
   slFileXML.Add('		.status-fields {float: left; display: flex; flex-wrap: wrap; width: calc( 100% - 20px ); text-align: center; margin: 20px 10px 20px 10px;}');
   slFileXML.Add('		div.status-fields>div {width: calc( 20% - 20px ); display: flex; align-items: center; justify-content: center; flex-direction: column; margin: 5px 5px 5px 5px; padding: 10px 5px 10px 5px; float: left; }');
   slFileXML.Add('		div.status-fields>tr {display: none;} div.status-fields>tr>td {display: none;}');
-  slFileXML.Add('		.mobile-hidden {display: none;}</style>');
+  slFileXML.Add('		.mobile-hidden {display: none;}');
+  slFileXML.Add('   .column {float: left;width: 50.00%; padding: 0px;}');
+  slFileXML.Add('   .columnSmall {float: left;Width: 35.00%;  padding: 0px;}');
+  slFileXML.Add('   .row:after {clear: both;}</style>');
   slFileXML.Add('  </head>');
   slFileXML.Add('  <body>');
   slFileXML.Add('      <div class="container-table container-table-background">');
   slFileXML.Add('      <div class="Report">');
-  slFileXML.Add('        <h2>PCM - Jahresübersicht für ' + AJahr + '</h2>');
+  slFileXML.Add('        <h2>PCM - Jahresübersicht für ' + IntToStr(AJahr) + '</h2>');
   slFileXML.Add('      </div>');
   slFileXML.Add('      <div class="Datumuhrzeit">');
   slFileXML.Add('        <h2>' + DatetoStr(Date()) + ' - ' + Copy(TimeToStr(Now()),1,5) + ' Uhr</h2>');
   slFileXML.Add('      </div>');
-  slFileXML.Add('      <div style="clear: both;">');
-  slFileXML.Add('				<input id="search" placeholder="Suchen"/>');
-  slFileXML.Add('				<div class="divider">');
-  slFileXML.Add('					<div class="status-fields">');
-  slFileXML.Add('						<table id="tblData">');
-  ////////////////////////////////////////////////////////////////////////////
-  // Monatswerte                                                            //
-  ////////////////////////////////////////////////////////////////////////////
-  slFileXML.Add('             <tbody>');
-  slFileXML.Add('							  <tr>');
-  slFileXML.Add('									<th class="big1">Monat</th>');
-  slFileXML.Add('									<th class="big1">Sollzeit</th>');
-  slFileXML.Add('									<th class="big1">Istzeit</th>');
-  slFileXML.Add('									<th class="big1">Pause</th>');
-  slFileXML.Add('									<th class="big1">Gleitzeit</th>');
-  slFileXML.Add('									<th class="big1">Gleitzeit. ges.</th>');
-  slFileXML.Add('									<th class="big1">Urlaub</th>');
-  slFileXML.Add('									<th class="big1">Krank</th>');
-  slFileXML.Add('									<th class="big1">Resturlaub</th>');
-  slFileXML.Add('									<th class="big1">Feiertage</th>');
-  slFileXML.Add('									<th class="big1">Büro</th>');
-  slFileXML.Add('									<th class="big1">Homeoffice</th>');
-  slFileXML.Add('								</tr>');
-  slFileXML.Add('							</tbody>');
-  dm_PCM.qry_work.SQL.Text:= 'Select * From time_monatswerte Where Jahr = :Jahr ORDER BY Monat';
-  dm_PCM.qry_work.ParamByName('Jahr').asInteger:= StrToInt(AJahr);
+  sSQL:=  'SELECT tu.ID_Zeiterfasser as ID, tu.Personalnummer, tu.Nachname, tu.Vorname, tf.Bezeichnung as Firma, tf.Strasse, tf.ID Plz, tf.Ort, ta.Bezeichnung as Abteilung ' +
+          'FROM time_user tu ' +
+          'LEFT OUTER JOIN time_firma tf ON tf.ID = tu.ID_Firma ' +
+          'LEFT OUTER JOIN time_abteilung ta ON ta.ID = tu.ID_Abteilung ';
+
+
+  if AFirma <> '' then
+  begin
+    sWhere := 'Where ID_Firma in (' + AFirma + ')';
+  end;
+
+
+  if AAbteilung <> '' then
+  begin
+    if sWhere = '' then
+      sWhere := 'Where ID_Abteilung in (' + AAbteilung + ')'
+    else
+      sWhere := ' And ID_Abteilung in (' + AAbteilung + ')'
+  end;
+
+  if APersonal <> '' then
+  begin
+    if sWhere = '' then
+      sWhere := 'Where ID_Benutzer in (' + APersonal + ')'
+    else
+      sWhere := ' And ID_Benutzer in (' + APersonal + ')'
+  end;
+
+
+
+  sOrder := 'ORDER BY tu.Personalnummer asc';
+  dm_PCM.qry_work.Sql.Text:= sSQL + sWhere + sOrder;
   dm_PCM.qry_work.open;
   while not dm_PCM.qry_work.Eof do
   begin
+    slFileXML.Add('      <div style="clear: both;">');
+    slFileXML.Add('       <div class="row">');
+    slFileXML.Add('         <div class="column">');
+    slFileXML.Add('     			<table>');
+    slFileXML.Add('     				<tr>');
+    slFileXML.Add('     					<td Width="90px"><b>Personalnr.:</b></td>');
+    slFileXML.Add('   						<td>'+ dm_PCM.qry_work.FieldByName('Personalnummer').AsString +'</td>');
+    slFileXML.Add(' 						</tr>');
+    slFileXML.Add(' 					</table>');
+    slFileXML.Add(' 				</div>');
+    slFileXML.Add(' 				<div class="column">');
+    slFileXML.Add(' 					<table>');
+    slFileXML.Add(' 						<tr>');
+    slFileXML.Add(' 							<td Width="90px"><b>Firma:</b></td>');
+    slFileXML.Add(' 							<td>'+ dm_PCM.qry_work.FieldByName('Firma').AsString +'</td>');
+    slFileXML.Add(' 						</tr>');
+    slFileXML.Add(' 					</table>');
+    slFileXML.Add(' 				</div>');
+    slFileXML.Add(' 			</div>');
+    slFileXML.Add(' 			<div class="row">');
+    slFileXML.Add(' 				<div class="column">');
+    slFileXML.Add(' 					<table>');
+    slFileXML.Add(' 						<tr>');
+    slFileXML.Add(' 							<td Width="90px"><b>Nachname:</b></td>');
+    slFileXML.Add(' 							<td>'+ dm_PCM.qry_work.FieldByName('Nachname').AsString +'</td>');
+    slFileXML.Add(' 						</tr>');
+    slFileXML.Add(' 					</table>');
+    slFileXML.Add(' 				</div>');
+    slFileXML.Add(' 				<div class="column">');
+    slFileXML.Add(' 					<table>');
+    slFileXML.Add(' 						<tr>');
+    slFileXML.Add(' 							<td Width="90px"><b>Abteilung:</b></td>');
+    slFileXML.Add(' 							<td>' + dm_PCM.qry_work.FieldByName('Abteilung').AsString + '</td>');
+    slFileXML.Add(' 						</tr>');
+    slFileXML.Add(' 					</table>');
+    slFileXML.Add(' 				</div>');
+    slFileXML.Add(' 			</div>');
+    slFileXML.Add(' 			<div class="row">');
+    slFileXML.Add(' 				<div class="column">');
+    slFileXML.Add(' 					<table>');
+    slFileXML.Add(' 						<tr>');
+    slFileXML.Add(' 							<td Width="90px"><b>Vorname:</b></td>');
+    slFileXML.Add(' 							<td>' + dm_PCM.qry_work.FieldByName('Vorname').AsString + '</td>');
+    slFileXML.Add(' 						</tr>');
+    slFileXML.Add(' 					</table>');
+    slFileXML.Add(' 				</div>');
+    slFileXML.Add(' 				<div class="column">');
+    slFileXML.Add(' 					<table>');
+    slFileXML.Add(' 						<tr>');
+    slFileXML.Add(' 							<td Width="90px"><b>Arbeitsort:</b></td>');
+    slFileXML.Add(' 							<td>' + dm_PCM.qry_work.FieldByName('Strasse').AsString + ', ' + dm_PCM.qry_work.FieldByName('Plz').AsString + ' ' + dm_PCM.qry_work.FieldByName('Ort').AsString + '</td>');
+    slFileXML.Add(' 						</tr>');
+    slFileXML.Add(' 					</table>');
+    slFileXML.Add(' 				</div>');
+    slFileXML.Add(' 				</div>');
+    slFileXML.Add(' 			</div>');
+    slFileXML.Add('				<input id="search" placeholder="Suchen"/>');
+    slFileXML.Add('				<div class="divider">');
+    slFileXML.Add('					<div class="status-fields">');
+    slFileXML.Add('						<table id="tblData">');
+    ////////////////////////////////////////////////////////////////////////////
+    // Monatswerte                                                            //
+    ////////////////////////////////////////////////////////////////////////////
     slFileXML.Add('             <tbody>');
     slFileXML.Add('							  <tr>');
-    slFileXML.Add('									<th class="big1">' + dm_PCM.qry_work.FieldByName('Monat').asString + '</th>');
-    slFileXML.Add('									<th class="big1">' + GetTimeValue(dm_PCM.qry_work.FieldByName('Sollzeit').asinteger) + ' &nbsp; &nbsp;' +  FormatFloat('0.00',dm_PCM.qry_work.FieldByName('Sollzeit').asinteger / 60)  + '</th>');
-    slFileXML.Add('									<th class="big1">' + GetTimeValue(dm_PCM.qry_work.FieldByName('Istzeit').asinteger) + ' &nbsp; &nbsp;' +  FormatFloat('0.00',dm_PCM.qry_work.FieldByName('istzeit').asinteger / 60)  + '</th>');
-    slFileXML.Add('									<th class="big1">' + GetTimeValue(dm_PCM.qry_work.FieldByName('Pausen').asinteger) + ' &nbsp; &nbsp;' +  FormatFloat('0.00',dm_PCM.qry_work.FieldByName('Pausen').asinteger / 60)  + '</th>');
-    if dm_PCM.qry_work.FieldByName('Mehrarbeit').asinteger < 0 then
-      slFileXML.Add('									<th class="big1">-' + GetTimeValue(dm_PCM.qry_work.FieldByName('Mehrarbeit').asinteger * -1) + ' &nbsp; &nbsp;-' +  FormatFloat('0.00',dm_PCM.qry_work.FieldByName('Mehrarbeit').asinteger / 60 * -1)  + '</th>')
-    else
-      slFileXML.Add('									<th class="big1">' + GetTimeValue(dm_PCM.qry_work.FieldByName('Mehrarbeit').asinteger) + ' &nbsp; &nbsp;' +  FormatFloat('0.00',dm_PCM.qry_work.FieldByName('Mehrarbeit').asinteger / 60)  + '</th>');
-    if dm_PCM.qry_work.FieldByName('aktuelleMehrarbeit').asinteger < 0 then
-      slFileXML.Add('									<th class="big1">-' + GetTimeValue(dm_PCM.qry_work.FieldByName('aktuelleMehrarbeit').asinteger * -1) + ' &nbsp; &nbsp;-' +  FormatFloat('0.00',dm_PCM.qry_work.FieldByName('aktuelleMehrarbeit').asinteger / 60 * -1)  + '</th>')
-    else
-      slFileXML.Add('									<th class="big1">' + GetTimeValue(dm_PCM.qry_work.FieldByName('aktuelleMehrarbeit').asinteger) + ' &nbsp; &nbsp;' +  FormatFloat('0.00',dm_PCM.qry_work.FieldByName('aktuelleMehrarbeit').asinteger / 60)  + '</th>');
-    slFileXML.Add('									<th class="big1">' + FormatFloat('0.0',dm_PCM.qry_work.FieldByName('Urlaub_Bezahlt').AsFloat)  + '</th>');
-    slFileXML.Add('									<th class="big1">' + FormatFloat('0.0',dm_PCM.qry_work.FieldByName('Krank_Bezahlt').AsFloat )  + '</th>');
-    slFileXML.Add('									<th class="big1">' + FormatFloat('0.0',dm_PCM.qry_work.FieldByName('Resturlaub').AsFloat)  + '</th>');
-    slFileXML.Add('									<th class="big1">' + FormatFloat('0.0',dm_PCM.qry_work.FieldByName('Feiertag').AsInteger / 480)  + '</th>');
-    slFileXML.Add('									<th class="big1">' + IntToStr(GetBuchungsart(0, StartOfAMonth(StrToInt(AJahr),dm_PCM.qry_work.FieldByName('Monat').AsInteger),EndOfAMonth(StrToInt(AJahr),dm_PCM.qry_work.FieldByName('Monat').AsInteger))) +'</th>');
-    slFileXML.Add('									<th class="big1">' + IntToStr(GetBuchungsart(1, StartOfAMonth(StrToInt(AJahr),dm_PCM.qry_work.FieldByName('Monat').AsInteger),EndOfAMonth(StrToInt(AJahr),dm_PCM.qry_work.FieldByName('Monat').AsInteger))) +'</th>');
+    slFileXML.Add('									<th class="big1">Monat</th>');
+    slFileXML.Add('									<th class="big1">Sollzeit</th>');
+    slFileXML.Add('									<th class="big1">Istzeit</th>');
+    slFileXML.Add('									<th class="big1">Pause</th>');
+    slFileXML.Add('									<th class="big1">Gleitzeit</th>');
+    slFileXML.Add('									<th class="big1">Gleitzeit. ges.</th>');
+    slFileXML.Add('									<th class="big1">Urlaub</th>');
+    slFileXML.Add('									<th class="big1">Krank</th>');
+    slFileXML.Add('									<th class="big1">Resturlaub</th>');
+    slFileXML.Add('									<th class="big1">Feiertage</th>');
+    slFileXML.Add('									<th class="big1">Büro</th>');
+    slFileXML.Add('									<th class="big1">Homeoffice</th>');
     slFileXML.Add('								</tr>');
     slFileXML.Add('							</tbody>');
-    dm_PCm.qry_Work.Next;
+    dm_PCM.qry_work1.SQL.Text:= 'Select * From time_monatswerte Where ID_Benutzer = :ID and Jahr = :Jahr ORDER BY Monat';
+    dm_PCM.qry_work1.ParamByName('Jahr').asInteger:= AJahr;
+    dm_PCM.qry_work1.ParamByName('ID').asInteger:= dm_PCM.qry_Work.FieldByName('ID').asInteger;
+    dm_PCM.qry_work1.open;
+    while not dm_PCM.qry_work1.Eof do
+    begin
+      slFileXML.Add('             <tbody>');
+      slFileXML.Add('							  <tr>');
+      slFileXML.Add('									<th class="big1">' + dm_PCM.qry_work1.FieldByName('Monat').asString + '</th>');
+      slFileXML.Add('									<th class="big1">' + GetTimeValue(dm_PCM.qry_work1.FieldByName('Sollzeit').asinteger) + ' &nbsp; &nbsp;' +  FormatFloat('0.00',dm_PCM.qry_work1.FieldByName('Sollzeit').asinteger / 60)  + '</th>');
+      slFileXML.Add('									<th class="big1">' + GetTimeValue(dm_PCM.qry_work1.FieldByName('Istzeit').asinteger) + ' &nbsp; &nbsp;' +  FormatFloat('0.00',dm_PCM.qry_work1.FieldByName('istzeit').asinteger / 60)  + '</th>');
+      slFileXML.Add('									<th class="big1">' + GetTimeValue(dm_PCM.qry_work1.FieldByName('Pausen').asinteger) + ' &nbsp; &nbsp;' +  FormatFloat('0.00',dm_PCM.qry_work1.FieldByName('Pausen').asinteger / 60)  + '</th>');
+      if dm_PCM.qry_work1.FieldByName('Mehrarbeit').asinteger < 0 then
+        slFileXML.Add('									<th class="big1">-' + GetTimeValue(dm_PCM.qry_work1.FieldByName('Mehrarbeit').asinteger * -1) + ' &nbsp; &nbsp;-' +  FormatFloat('0.00',dm_PCM.qry_work1.FieldByName('Mehrarbeit').asinteger / 60 * -1)  + '</th>')
+      else
+        slFileXML.Add('									<th class="big1">' + GetTimeValue(dm_PCM.qry_work1.FieldByName('Mehrarbeit').asinteger) + ' &nbsp; &nbsp;' +  FormatFloat('0.00',dm_PCM.qry_work1.FieldByName('Mehrarbeit').asinteger / 60)  + '</th>');
+      if dm_PCM.qry_work1.FieldByName('aktuelleMehrarbeit').asinteger < 0 then
+        slFileXML.Add('									<th class="big1">-' + GetTimeValue(dm_PCM.qry_work1.FieldByName('aktuelleMehrarbeit').asinteger * -1) + ' &nbsp; &nbsp;-' +  FormatFloat('0.00',dm_PCM.qry_work1.FieldByName('aktuelleMehrarbeit').asinteger / 60 * -1)  + '</th>')
+      else
+        slFileXML.Add('									<th class="big1">' + GetTimeValue(dm_PCM.qry_work1.FieldByName('aktuelleMehrarbeit').asinteger) + ' &nbsp; &nbsp;' +  FormatFloat('0.00',dm_PCM.qry_work1.FieldByName('aktuelleMehrarbeit').asinteger / 60)  + '</th>');
+      slFileXML.Add('									<th class="big1">' + FormatFloat('0.0',dm_PCM.qry_work1.FieldByName('Urlaub_Bezahlt').AsFloat)  + '</th>');
+      slFileXML.Add('									<th class="big1">' + FormatFloat('0.0',dm_PCM.qry_work1.FieldByName('Krank_Bezahlt').AsFloat )  + '</th>');
+      slFileXML.Add('									<th class="big1">' + FormatFloat('0.0',dm_PCM.qry_work1.FieldByName('Resturlaub').AsFloat)  + '</th>');
+      slFileXML.Add('									<th class="big1">' + FormatFloat('0.0',dm_PCM.qry_work1.FieldByName('Feiertag').AsInteger / 480)  + '</th>');
+      slFileXML.Add('									<th class="big1">' + IntToStr(GetBuchungsart(0, StartOfAMonth(AJahr,dm_PCM.qry_work1.FieldByName('Monat').AsInteger),EndOfAMonth(AJahr,dm_PCM.qry_work1.FieldByName('Monat').AsInteger))) +'</th>');
+      slFileXML.Add('									<th class="big1">' + IntToStr(GetBuchungsart(1, StartOfAMonth(AJahr,dm_PCM.qry_work1.FieldByName('Monat').AsInteger),EndOfAMonth(AJahr,dm_PCM.qry_work1.FieldByName('Monat').AsInteger))) +'</th>');
+      slFileXML.Add('								</tr>');
+      slFileXML.Add('							</tbody>');
+      dm_PCm.qry_work1.Next;
+    end;
+    dm_PCm.qry_work1.Close;
+    slFileXML.Add('             <tbody>');
+    slFileXML.Add('							  <tr>');
+    slFileXML.Add('									<th class="big1"></th>');
+    slFileXML.Add('									<th class="big1"></th>');
+    slFileXML.Add('									<th class="big1"></th>');
+    slFileXML.Add('									<th class="big1"></th>');
+    slFileXML.Add('									<th class="big1"></th>');
+    slFileXML.Add('									<th class="big1"></th>');
+    slFileXML.Add('									<th class="big1"></th>');
+    slFileXML.Add('									<th class="big1"></th>');
+    slFileXML.Add('									<th class="big1"></th>');
+    slFileXML.Add('									<th class="big1"></th>');
+    slFileXML.Add('									<th class="big1"></th>');
+    slFileXML.Add('									<th class="big1"></th>');
+    slFileXML.Add('								</tr>');
+    slFileXML.Add('							</tbody>');
+    slFileXML.Add('					</div>');
+    slFileXML.Add('				</div>');
+    slFileXML.Add('			</div>');
+    slFileXML.Add('    </div>');
+    slFileXML.Add('  </div>');
+    slFileXML.Add('</div>');
+    dm_PCM.qry_work1.SQL.Text:= 'SELECT SUM(sollzeit) as Sollzeit,SUM(Istzeit) as Istzeit,' +
+                               'SUM(Pausen) as Pausen,SUM(Istzeit) - SUM(sollzeit) as aktuelleMehrarbeit,'+
+                               'SUM(Urlaub_bezahlt) AS UL,SUM(KRank_bezahlt) AS KR,SUM(Feiertag) as Feiertag '+
+                               'From time_monatswerte Where ID_Benutzer = :ID and Jahr = :Jahr';
+    dm_PCM.qry_work1.ParamByName('Jahr').AsInteger:= AJahr;
+    dm_PCM.qry_work1.ParamByName('ID').AsInteger:= dm_PCM.qry_Work.FieldByName('ID').AsInteger;
+    dm_PCM.qry_work1.open;
+    slFileXML.Add('    <tfoot>');
+    slFileXML.Add('		   <tr>');
+    slFileXML.Add('			   <th class="big1">Gesamt:</th>');
+    slFileXML.Add('				 <th class="big1">' + GetTimeValue(dm_PCM.qry_work1.FieldByName('Sollzeit').asinteger) + ' &nbsp; &nbsp;' +  FormatFloat('0.00',dm_PCM.qry_work1.FieldByName('Sollzeit').asinteger / 60)  + '</th>');
+    slFileXML.Add('				 <th class="big1">' + GetTimeValue(dm_PCM.qry_work1.FieldByName('Istzeit').asinteger) + ' &nbsp; &nbsp;' +  FormatFloat('0.00',dm_PCM.qry_work1.FieldByName('istzeit').asinteger / 60)  + '</th>');
+    slFileXML.Add('				 <th class="big1">' + GetTimeValue(dm_PCM.qry_work1.FieldByName('Pausen').asinteger) + ' &nbsp; &nbsp;' +  FormatFloat('0.00',dm_PCM.qry_work1.FieldByName('Pausen').asinteger / 60)  + '</th>');
+    slFileXML.Add('				 <th class="big1"></th>');
+    if dm_PCM.qry_work1.FieldByName('aktuelleMehrarbeit').asinteger < 0 then
+      slFileXML.Add('			   <th class="big1">-' + GetTimeValue(dm_PCM.qry_work1.FieldByName('aktuelleMehrarbeit').asinteger * -1) + ' &nbsp; &nbsp;-' +  FormatFloat('0.00',dm_PCM.qry_work1.FieldByName('aktuelleMehrarbeit').asinteger / 60 * -1)  + '</th>')
+    else
+      slFileXML.Add('				 <th class="big1">' + GetTimeValue(dm_PCM.qry_work1.FieldByName('aktuelleMehrarbeit').asinteger) + ' &nbsp; &nbsp;' +  FormatFloat('0.00',dm_PCM.qry_work1.FieldByName('aktuelleMehrarbeit').asinteger / 60)  + '</th>');
+    slFileXML.Add('				 <th class="big1">' + FormatFloat('0.0',dm_PCM.qry_work1.FieldByName('UL').AsFloat)  + '</th>');
+    slFileXML.Add('				 <th class="big1">' + FormatFloat('0.0',dm_PCM.qry_work1.FieldByName('KR').AsFloat )  + '</th>');
+    slFileXML.Add('				 <th class="big1">' + FormatFloat('0.0',GetRestUrlaub(AJahr,12))  + '</th>');
+    slFileXML.Add(' 			 <th class="big1">' + FormatFloat('0.0',dm_PCM.qry_work1.FieldByName('Feiertag').AsInteger / 480)  + '</th>');
+    slFileXML.Add('				 <th class="big1">' + IntToStr(GetBuchungsart(0, StartOfAMonth(AJahr,1),EndOfAMonth(AJahr,12))) +'</th>');
+    slFileXML.Add('				 <th class="big1">' + IntToStr(GetBuchungsart(1, StartOfAMonth(AJahr,1),EndOfAMonth(AJahr,12))) +'</th>');
+    slFileXML.Add('			 </tr>');
+    slFileXML.Add('		 </tfoot>');
+    dm_PCM.qry_work1.Close;
+    slFileXML.Add('    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>');
+    slFileXML.Add('    <script type="text/javascript">$(document).ready(function()');
+    slFileXML.Add('{');
+    slFileXML.Add('	$(''#search'').keyup(function()');
+    slFileXML.Add('	{');
+    slFileXML.Add('		searchTable($(this).val());');
+    slFileXML.Add('	});');
+    slFileXML.Add('});');
+    slFileXML.Add('function searchTable(inputVal)');
+    slFileXML.Add('{');
+    slFileXML.Add('	// Tabellenvariable festlegen');
+    slFileXML.Add('	var table = $(''#tblData'');');
+    slFileXML.Add('	// Tabelleninhalt Tr finden');
+    slFileXML.Add('	table.find(''tr'').each(function(index, row)');
+    slFileXML.Add('	{');
+    slFileXML.Add('		var allCells = $(row).find(''td'');');
+    slFileXML.Add('		if(allCells.length > 0)');
+    slFileXML.Add('		{');
+    slFileXML.Add('			var found = false;');
+    slFileXML.Add('			allCells.each(function(index, td)');
+    slFileXML.Add('			{');
+    slFileXML.Add('				var regExp = new RegExp(inputVal, ''i'');');
+    slFileXML.Add('				if(regExp.test($(td).text()))');
+    slFileXML.Add('				{');
+    slFileXML.Add('					found = true;');
+    slFileXML.Add('					return false;');
+    slFileXML.Add('				}');
+    slFileXML.Add('			});');
+    slFileXML.Add('			if(found == true)$(row).show();else $(row).hide();');
+    slFileXML.Add('		};');
+    slFileXML.Add('		if(allCells.length < 1)');
+    slFileXML.Add('		{');
+    slFileXML.Add('			var allCells = $(row).find(''th'');');
+    slFileXML.Add('			if(allCells.length > 0)');
+    slFileXML.Add('			{');
+    slFileXML.Add('				var found = false;');
+    slFileXML.Add('				allCells.each(function(index, td)');
+    slFileXML.Add('				{');
+    slFileXML.Add('					var regExp = new RegExp(inputVal, ''i'');');
+    slFileXML.Add('					if(regExp.test($(td).text()))');
+    slFileXML.Add('					{');
+    slFileXML.Add('						found = true;');
+    slFileXML.Add('						return false;');
+    slFileXML.Add('					}');
+    slFileXML.Add('				});');
+    slFileXML.Add('				if(found == true)$(row).show();else $(row).hide();');
+    slFileXML.Add('			};');
+    slFileXML.Add('		};');
+    slFileXML.Add('	});');
+    slFileXML.Add('}</script>');
+    slFileXML.Add('  </body>');
+    slFileXML.Add('</html>');
+    dm_pcm.qry_Work.next;
   end;
-  dm_PCm.qry_Work.Close;
-  slFileXML.Add('             <tbody>');
-  slFileXML.Add('							  <tr>');
-  slFileXML.Add('									<th class="big1"></th>');
-  slFileXML.Add('									<th class="big1"></th>');
-  slFileXML.Add('									<th class="big1"></th>');
-  slFileXML.Add('									<th class="big1"></th>');
-  slFileXML.Add('									<th class="big1"></th>');
-  slFileXML.Add('									<th class="big1"></th>');
-  slFileXML.Add('									<th class="big1"></th>');
-  slFileXML.Add('									<th class="big1"></th>');
-  slFileXML.Add('									<th class="big1"></th>');
-  slFileXML.Add('									<th class="big1"></th>');
-  slFileXML.Add('									<th class="big1"></th>');
-  slFileXML.Add('									<th class="big1"></th>');
-  slFileXML.Add('								</tr>');
-  slFileXML.Add('							</tbody>');
-  slFileXML.Add('					</div>');
-  slFileXML.Add('				</div>');
-  slFileXML.Add('			</div>');
-  slFileXML.Add('    </div>');
-  dm_PCM.qry_work.SQL.Text:= 'SELECT SUM(sollzeit) as Sollzeit,SUM(Istzeit) as Istzeit,' +
-                             'SUM(Pausen) as Pausen,SUM(Istzeit) - SUM(sollzeit) as aktuelleMehrarbeit,'+
-                             'SUM(Urlaub_bezahlt) AS UL,SUM(KRank_bezahlt) AS KR,SUM(Feiertag) as Feiertag '+
-                             'From time_monatswerte Where Jahr = :Jahr';
-  dm_PCM.qry_work.ParamByName('Jahr').AsInteger:= StrToInt(AJahr);
-  dm_PCM.qry_work.open;
-  slFileXML.Add('    <tfoot>');
-  slFileXML.Add('		   <tr>');
-  slFileXML.Add('			   <th class="big1">Gesamt:</th>');
-  slFileXML.Add('				 <th class="big1">' + GetTimeValue(dm_PCM.qry_work.FieldByName('Sollzeit').asinteger) + ' &nbsp; &nbsp;' +  FormatFloat('0.00',dm_PCM.qry_work.FieldByName('Sollzeit').asinteger / 60)  + '</th>');
-  slFileXML.Add('				 <th class="big1">' + GetTimeValue(dm_PCM.qry_work.FieldByName('Istzeit').asinteger) + ' &nbsp; &nbsp;' +  FormatFloat('0.00',dm_PCM.qry_work.FieldByName('istzeit').asinteger / 60)  + '</th>');
-  slFileXML.Add('				 <th class="big1">' + GetTimeValue(dm_PCM.qry_work.FieldByName('Pausen').asinteger) + ' &nbsp; &nbsp;' +  FormatFloat('0.00',dm_PCM.qry_work.FieldByName('Pausen').asinteger / 60)  + '</th>');
-  slFileXML.Add('				 <th class="big1"></th>');
-  if dm_PCM.qry_work.FieldByName('aktuelleMehrarbeit').asinteger < 0 then
-    slFileXML.Add('			   <th class="big1">-' + GetTimeValue(dm_PCM.qry_work.FieldByName('aktuelleMehrarbeit').asinteger * -1) + ' &nbsp; &nbsp;-' +  FormatFloat('0.00',dm_PCM.qry_work.FieldByName('aktuelleMehrarbeit').asinteger / 60 * -1)  + '</th>')
-  else
-    slFileXML.Add('				 <th class="big1">' + GetTimeValue(dm_PCM.qry_work.FieldByName('aktuelleMehrarbeit').asinteger) + ' &nbsp; &nbsp;' +  FormatFloat('0.00',dm_PCM.qry_work.FieldByName('aktuelleMehrarbeit').asinteger / 60)  + '</th>');
-  slFileXML.Add('				 <th class="big1">' + FormatFloat('0.0',dm_PCM.qry_work.FieldByName('UL').AsFloat)  + '</th>');
-  slFileXML.Add('				 <th class="big1">' + FormatFloat('0.0',dm_PCM.qry_work.FieldByName('KR').AsFloat )  + '</th>');
-  slFileXML.Add('				 <th class="big1">' + FormatFloat('0.0',GetRestUrlaub(StrToInt(AJahr),12))  + '</th>');
-  slFileXML.Add(' 			 <th class="big1">' + FormatFloat('0.0',dm_PCM.qry_work.FieldByName('Feiertag').AsInteger / 480)  + '</th>');
-  slFileXML.Add('				 <th class="big1">' + IntToStr(GetBuchungsart(0, StartOfAMonth(StrToInt(AJahr),1),EndOfAMonth(StrToInt(AJahr),12))) +'</th>');
-  slFileXML.Add('				 <th class="big1">' + IntToStr(GetBuchungsart(1, StartOfAMonth(StrToInt(AJahr),1),EndOfAMonth(StrToInt(AJahr),12))) +'</th>');
-  slFileXML.Add('			 </tr>');
-  slFileXML.Add('		 </tfoot>');
-  dm_PCM.qry_work.Close;
-  slFileXML.Add('    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>');
-  slFileXML.Add('    <script type="text/javascript">$(document).ready(function()');
-  slFileXML.Add('{');
-  slFileXML.Add('	$(''#search'').keyup(function()');
-  slFileXML.Add('	{');
-  slFileXML.Add('		searchTable($(this).val());');
-  slFileXML.Add('	});');
-  slFileXML.Add('});');
-  slFileXML.Add('function searchTable(inputVal)');
-  slFileXML.Add('{');
-  slFileXML.Add('	// Tabellenvariable festlegen');
-  slFileXML.Add('	var table = $(''#tblData'');');
-  slFileXML.Add('	// Tabelleninhalt Tr finden');
-  slFileXML.Add('	table.find(''tr'').each(function(index, row)');
-  slFileXML.Add('	{');
-  slFileXML.Add('		var allCells = $(row).find(''td'');');
-  slFileXML.Add('		if(allCells.length > 0)');
-  slFileXML.Add('		{');
-  slFileXML.Add('			var found = false;');
-  slFileXML.Add('			allCells.each(function(index, td)');
-  slFileXML.Add('			{');
-  slFileXML.Add('				var regExp = new RegExp(inputVal, ''i'');');
-  slFileXML.Add('				if(regExp.test($(td).text()))');
-  slFileXML.Add('				{');
-  slFileXML.Add('					found = true;');
-  slFileXML.Add('					return false;');
-  slFileXML.Add('				}');
-  slFileXML.Add('			});');
-  slFileXML.Add('			if(found == true)$(row).show();else $(row).hide();');
-  slFileXML.Add('		};');
-  slFileXML.Add('		if(allCells.length < 1)');
-  slFileXML.Add('		{');
-  slFileXML.Add('			var allCells = $(row).find(''th'');');
-  slFileXML.Add('			if(allCells.length > 0)');
-  slFileXML.Add('			{');
-  slFileXML.Add('				var found = false;');
-  slFileXML.Add('				allCells.each(function(index, td)');
-  slFileXML.Add('				{');
-  slFileXML.Add('					var regExp = new RegExp(inputVal, ''i'');');
-  slFileXML.Add('					if(regExp.test($(td).text()))');
-  slFileXML.Add('					{');
-  slFileXML.Add('						found = true;');
-  slFileXML.Add('						return false;');
-  slFileXML.Add('					}');
-  slFileXML.Add('				});');
-  slFileXML.Add('				if(found == true)$(row).show();else $(row).hide();');
-  slFileXML.Add('			};');
-  slFileXML.Add('		};');
-  slFileXML.Add('	});');
-  slFileXML.Add('}</script>');
-  slFileXML.Add('  </body>');
-  slFileXML.Add('</html>');
   slFileXML.SaveToFile(TPath.Combine(TPath.GetDirectoryName(Application.ExeName), 'Report') + '_Monatsbericht.html');
   Application.CreateForm(Tfrm_PCM_Browser_FullScreen, frm_PCM_Browser_FullScreen);
   frm_PCM_Browser_FullScreen.Execute(True,'PCM - Manager: Monatsbericht',TPath.Combine(TPath.GetDirectoryName(Application.ExeName), 'Report') + '_Monatsbericht.html');
