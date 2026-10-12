@@ -4,6 +4,9 @@
 # Kurzbeschreibung:
   Functionssammlung Delphi für PCM-Applikationen (dieses Projekt ist nicht kompilierbar)
 
+# Beschreibung
+  Funktionssammlung für wiederkehrende Funktionen wie Sprachwechsel, Designanpassung, Ladebildschirm
+  
 # Entwicklungsumgebung:
   DELPHI 12.3 Athens
 
@@ -87,4 +90,4 @@
   - PrepareCopy.cmd (erzeugte Versionen werden in das Inno-Setupverzeichnis abgelgt)
 
 # Stand:
-  12.08.2025
+  12.07.2026
